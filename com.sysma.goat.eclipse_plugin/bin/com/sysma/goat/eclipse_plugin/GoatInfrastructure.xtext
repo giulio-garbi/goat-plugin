@@ -1,0 +1,20 @@
+grammar com.sysma.goat.eclipse_plugin.GoatInfrastructure with org.eclipse.xtext.common.Terminals
+
+generate goatInfrastructure "http://www.sysma.com/goat/eclipse_plugin/GoatInfrastructure"
+
+Infrastructure:
+	SingleServer
+;
+
+SingleServer:
+	(external?='external')? 'singleServer' params = Params
+;
+
+Params: 
+'{'
+	{Params}
+	(
+		(keys += ID ':' values += STRING ',')*
+		keys += ID ':' values += STRING
+	)?
+'}';

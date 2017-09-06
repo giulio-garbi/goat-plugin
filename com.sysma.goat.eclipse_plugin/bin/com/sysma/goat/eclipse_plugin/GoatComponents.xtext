@@ -1,0 +1,210 @@
+grammar com.sysma.goat.eclipse_plugin.GoatComponents with org.eclipse.xtext.common.Terminals
+
+generate goatComponents "http://www.sysma.com/goat/eclipse_plugin/GoatComponents"
+
+Model:
+	(processes += ProcessDefinition |
+	components += ComponentDefinition | 
+	functions += FuncDefinition)*;
+
+// Process
+Proc returns Process:
+	InterleavingProcess|NonDeterminismProcess
+;
+
+InterleavingProcess returns Process:
+	CallProcess {InterleavingProcess.subProcs+=current} ("|" subProcs+=CallProcess)*
+;
+
+NonDeterminismProcess returns Process:
+	//(PreconditionProcess ({NonDeterminismProcess.procLeft=current} "+" procRight=NonDeterminismProcess)?) |
+	PredOutputProcessOrInputProcesses |
+	IfProcesses |
+	NProcess
+;
+
+Preconditions:
+	{Preconditions} (precond += (Update | Awareness))*
+;
+
+PredOutputProcessOrInputProcesses returns Process:
+	Preconditions (
+		({OutputProcess.precond = current} OutputProcessPart)|
+		({InputProcesses.preconds += current} InputProcessesPart)
+	)
+;
+
+PredOutputProcessOrInputProcess returns Process:
+	Preconditions (
+		({OutputProcess.precond = current} OutputProcessPart)|
+		({InputProcesses.preconds += current} inputs += InputProcess)
+	)
+;
+
+fragment InputProcessesPart:
+	inputs += InputProcess ('+' preconds += Preconditions inputs += InputProcess)*
+;
+
+InputProcess returns Process:
+	{InputProcess} "{"rec_pred=Predicate"}" "(" (msgInParts+=Attribute ("," msgInParts+=Attribute)*)? ")" (output = STRING)? 
+		"."next=NZCProcess
+;
+
+fragment OutputProcessPart:
+	"(" (msgOutParts+=Value ("," msgOutParts+=Value)*)? ")" "@" send_pred=Predicate (output = STRING)? 
+	("sleep""("msec = INT")")?"."next=NZCProcess	
+;
+
+IfProcesses returns Process:
+	{IfProcesses} branches += IfBranchProcess ("else" branches += IfBranchProcess)*
+;
+
+IfBranchProcess returns Process:
+	{IfBranchProcess} "if" cond = Preconditions '{' then = (PredOutputProcessOrInputProcess) '}'
+;
+
+Update:
+	"[" vars += Attribute ":=" vals += Value ("," vars += Attribute ":=" vals += Value)* "]"  
+;
+
+Awareness:
+	"<" pred = Predicate ">"
+;
+
+NZCProcess returns Process:
+	"(" Proc ")" | ZeroProcess | CallProcess
+;
+	
+NProcess returns Process:
+	"(" Proc ")" | ZeroProcess //| CallProcess
+;
+
+CallProcess returns Process:
+	{CallProcess}
+	procname = [ProcessDefinition] ("["params+=Value (","params+=Value)*"]")?
+;
+
+ZeroProcess returns Process:
+	{ZeroProcess} "0"
+;
+
+ProcessDefinition:
+	'proc' name=ID ("["params+=ID (","params+=ID)*"]")? '=' proc = Proc 
+;
+
+// Component
+
+Environment:
+	{Environment} "{"(attrs += ID ':=' vals+=STRING (","attrs += ID ':=' vals+=STRING)*)?"}"
+;
+
+ComponentDefinition:
+	"component" env = Environment proc = [ProcessDefinition] ("["params+=STRING (","params+=STRING)*"]")? 'at' address=STRING
+;
+
+// Attributes
+Attribute:
+	(comp?="this"".")? ident=ID
+;
+
+RecAttribute:
+	"receiver""." ident=ID
+;
+// Value
+Value:
+	//((hd?="head"|tl?="tail") "("list = Attribute")") | 
+	//"join""("hd_el = Attribute "," tl_el = Attribute ")" | 
+	//(empty_list ?= "[]") |
+	AttributeValue |
+	ImmediateValue |
+	GoStringFunction
+;
+
+AttributeValue returns Value:
+	{AttributeValue} attr = Attribute
+;
+ImmediateValue returns Value:
+	{ImmediateValue} imm = STRING
+;
+
+GoStringFunction returns Value:
+	{GoStringFunction} funcname=[FuncDefinition] "(" (params+=Value (","params+=Value)*)? ")"
+;
+
+// Predicate
+Predicate returns Pred:
+	And ({Predicate.or += current} "||" or += And)*
+;
+And returns Pred:
+	Not ({And.and += current} "&&" and += Not)*
+;
+Not returns Pred:
+	Term | {Not} neg?="!" term = Term
+;
+Term returns Pred:
+	Immediate | EqualityTest | "(" Predicate ")" 
+;
+Immediate returns Pred:
+	{Immediate} (isTrue ?= "true" | "false")
+;
+EqualityTest returns Pred:
+	{EqualityTest} op1 = (Value|RecAttribute) operand=("<"|">"|"<="|">="|"="|"!=") op2 = Value
+;
+
+// Functions
+FuncParam:
+	name = ID
+;
+FuncDefinition:
+	'function' name=ID '('(params+=FuncParam (',' params+=FuncParam)*)?')' blk = FuncBlock
+;
+FuncBlock:
+	'{' {FuncBlock} (statements += FuncStatement)* '}'
+;
+FuncStatement:
+	(FuncVarAssign | FuncIfElse | FuncReturn | FuncVarDeclaration) 
+;
+
+FuncVarDeclaration:
+	'var' name = ID '=' val = FuncVal
+;
+
+FuncVarAssign:
+	var = [FuncVarDeclaration] '=' val = FuncVal
+;
+
+FuncVarParam:
+	FuncParam|FuncVarDeclaration
+;
+
+FuncVal:
+	{FuncString} imm = STRING |
+	{FuncMemoryRef} ref = [FuncVarParam]
+;
+
+FuncPredicate returns FuncPred:
+	FuncAnd ({FuncPredicate.or += current} "||" or += FuncAnd)*
+;
+FuncAnd returns FuncPred:
+	FuncNot ({FuncAnd.and += current} "&&" and += FuncNot)*
+;
+FuncNot returns FuncPred:
+	FuncTerm | {FuncNot} neg?="!" term = FuncTerm
+;
+FuncTerm returns FuncPred:
+	FuncImmediate | FuncEqualityTest | "(" FuncPredicate ")" 
+;
+FuncImmediate returns FuncPred:
+	{FuncImmediate} (isTrue ?= "true" | "false")
+;
+FuncEqualityTest returns FuncPred:
+	{FuncEqualityTest} op1 = FuncVal operand=("<"|">"|"<="|">="|"="|"!=") op2 = FuncVal
+;
+FuncIfElse:
+	'if' '('test += FuncPredicate')' then += FuncBlock
+	('elif' '('test += FuncPredicate')' then += FuncBlock)*
+	('else' elseBranch = FuncBlock)?
+;
+FuncReturn:
+	'return' val = FuncVal
+;
