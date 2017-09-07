@@ -16,7 +16,7 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 	
 	def getComponentDeclaration(){
 		'''
-			«compName» := goat.NewComponentWithAttributes("«cdef.address»",  map[string]string{
+			«compName» := goat.NewComponentWithAttributes(goat.NewSingleServerAgent("«cdef.address»"),  map[string]string{
 				«FOR i : 0..<cdef.env.attrs.length»
 					"«cdef.env.attrs.get(i)»" : "«cdef.env.vals.get(i)»",
 				«ENDFOR»

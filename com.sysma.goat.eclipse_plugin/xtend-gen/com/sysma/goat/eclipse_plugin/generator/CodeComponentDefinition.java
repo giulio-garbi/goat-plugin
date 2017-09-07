@@ -23,10 +23,10 @@ public class CodeComponentDefinition extends CodeTree {
   public CharSequence getComponentDeclaration() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(this.compName);
-    _builder.append(" := goat.NewComponentWithAttributes(\"");
+    _builder.append(" := goat.NewComponentWithAttributes(goat.NewSingleServerAgent(\"");
     String _address = this.cdef.getAddress();
     _builder.append(_address);
-    _builder.append("\",  map[string]string{");
+    _builder.append("\"),  map[string]string{");
     _builder.newLineIfNotEmpty();
     {
       int _length = ((Object[])Conversions.unwrapArray(this.cdef.getEnv().getAttrs(), Object.class)).length;
