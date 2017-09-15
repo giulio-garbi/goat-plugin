@@ -14,8 +14,10 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
 import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 import com.sysma.goat.eclipse_plugin.goatComponents.Value;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
@@ -68,22 +70,15 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
     StringConcatenation _builder = new StringConcatenation();
     String _messageVar = CodeOutputProcess.getMessageVar();
     _builder.append(_messageVar);
-    _builder.append(" := strings.Join([]string{");
+    _builder.append(" := goat.NewTuple(");
+    final Function1<Value, CharSequence> _function = (Value part) -> {
+      String _localVariablesMap = CodeModel.getLocalVariablesMap();
+      return new CodeValue(part, componentAttributesMap, _localVariablesMap).getCode();
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Value, CharSequence>map(this.proc.getMsgOutParts(), _function), ",");
+    _builder.append(_join);
+    _builder.append(")");
     _builder.newLineIfNotEmpty();
-    {
-      EList<Value> _msgOutParts = this.proc.getMsgOutParts();
-      for(final Value part : _msgOutParts) {
-        _builder.append("\t");
-        String _localVariablesMap = CodeModel.getLocalVariablesMap();
-        CharSequence _code = new CodeValue(part, componentAttributesMap, _localVariablesMap).getCode();
-        _builder.append(_code, "\t");
-        _builder.append(",");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t");
-    _builder.append("}, \" \")");
-    _builder.newLine();
     return _builder;
   }
   
@@ -94,7 +89,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       StringConcatenation _builder = new StringConcatenation();
       String _goatProcessReference = CodeModel.getGoatProcessReference();
       _builder.append(_goatProcessReference);
-      _builder.append(".Send(func(attrs *goat.Attributes) (string, goat.Predicate, bool){");
+      _builder.append(".Send(func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
@@ -116,7 +111,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("return \"\", goat.False{}, false");
+          _builder.append("return goat.NewTuple(), goat.False{}, false");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("}");
@@ -218,7 +213,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
   @Override
   public CharSequence getBranchCode() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("func(attrs *goat.Attributes) (string, goat.Predicate, bool){");
+    _builder.append("func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){");
     _builder.newLine();
     _builder.append("\t");
     String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
@@ -250,7 +245,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         _builder.newLine();
         _builder.append("\t");
         _builder.append("\t");
-        _builder.append("return \"\", goat.False{}, false");
+        _builder.append("return goat.NewTuple(), goat.False{}, false");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("}");
@@ -294,7 +289,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         _builder.append("attrsWrap.Commit()");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append("return \"\", goat.False{}, true");
+        _builder.append("return goat.NewTuple(), goat.False{}, true");
         _builder.newLine();
       }
     }
@@ -364,7 +359,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         _builder.newLineIfNotEmpty();
       } else {
         _builder.append("\t");
-        _builder.append("return goat.ThenSend(\"\", goat.False{})");
+        _builder.append("return goat.ThenSend(goat.NewTuple(), goat.False{})");
         _builder.newLine();
       }
     }

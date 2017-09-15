@@ -24,7 +24,7 @@ class CodeInputProcesses extends CodeTree {
 		var «varForChoice» int
 		«CodeModel.goatProcessReference».Receive(func(attrs *goat.Attributes) bool{
 			return true
-		}, func(attrs *goat.Attributes, «messageVar» string)bool{
+		}, func(attrs *goat.Attributes, «messageVar» goat.Tuple)bool{
 			«FOR input: inputs.indexed»
 			if(«input.value.branchCode»(attrs, «messageVar»)){
 				«varForChoice» = «input.key»

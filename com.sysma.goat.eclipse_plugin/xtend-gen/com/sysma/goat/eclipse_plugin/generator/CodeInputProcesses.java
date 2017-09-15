@@ -52,7 +52,7 @@ public class CodeInputProcesses extends CodeTree {
     _builder.newLine();
     _builder.append("}, func(attrs *goat.Attributes, ");
     _builder.append(CodeInputProcesses.messageVar);
-    _builder.append(" string)bool{");
+    _builder.append(" goat.Tuple)bool{");
     _builder.newLineIfNotEmpty();
     {
       Iterable<Pair<Integer, CodeInputProcess>> _indexed = IterableExtensions.<CodeInputProcess>indexed(this.inputs);

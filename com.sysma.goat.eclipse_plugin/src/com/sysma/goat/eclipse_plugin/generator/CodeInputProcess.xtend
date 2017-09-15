@@ -37,28 +37,26 @@ class CodeInputProcess implements CodeInputOutputProcess {
 	}
 	
 	def private getSetupMessageParts(String componentAttributesMap){
-		//TODO replace with tuple code!
 		val nbrParts = actualInput.msgInParts.length
 		val attributes = actualInput.msgInParts.map[new CodeAttribute(it, componentAttributesMap, CodeModel.localVariablesMap)]
 		val attributesToBackup = actualInput.msgInParts.filter[!comp].map[new LocalBackupAttributes(it)]
-		
+		//TODO remove string type assertion
 		'''
-					msgTokens := strings.Split(«messageVar», " ")
-					if (len(msgTokens) != «nbrParts»){
-						attrsWrap.Rollback()
-						return false
-					}
-					
-					«FOR locAttr:attributesToBackup»
-						if «locAttr.original.exists»{
-							«locAttr.backup.assign(locAttr.original.read)»
-						}
-					«ENDFOR»
-					
-					«FOR i : 0 ..< nbrParts»
-						«attributes.get(i).assign('''msgTokens[«i»]''')»
-					«ENDFOR»
-				'''
+			if (!«messageVar».IsLong(«nbrParts»)){
+				attrsWrap.Rollback()
+				return false
+			}
+			
+			«FOR locAttr:attributesToBackup»
+				if «locAttr.original.exists»{
+					«locAttr.backup.assign(locAttr.original.read)»
+				}
+			«ENDFOR»
+			
+			«FOR i : 0 ..< nbrParts»
+				«attributes.get(i).assign('''«messageVar».Get(«i»).(string)''')»
+			«ENDFOR»
+		'''
 	}
 	
 	def private static getRollbackLocalVars(){
@@ -71,7 +69,7 @@ class CodeInputProcess implements CodeInputOutputProcess {
 	
 	override getBranchCode(){
 		'''
-				func(attrs *goat.Attributes, «messageVar» string)bool{
+				func(attrs *goat.Attributes, «messageVar» goat.Tuple)bool{
 					«localBackupMap» := map[string]string{}
 					_ = «localBackupMap»
 					attrsWrap := goat.AttributesWrapper{}
@@ -88,9 +86,6 @@ class CodeInputProcess implements CodeInputOutputProcess {
 							fmt.Println(«StdoutStringHelper.convertString(actualInput.output, "attrsWrap", CodeModel.localVariablesMap)»)
 						«ENDIF»
 						attrsWrap.Commit()
-						«IF actualInput.output !== null»
-							fmt.Println("DBG",«StdoutStringHelper.convertString(actualInput.output, "attrs", CodeModel.localVariablesMap)»)
-						«ENDIF»
 						return true
 					} else {
 						«rollbackLocalVars»

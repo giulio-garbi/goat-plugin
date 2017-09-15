@@ -79,14 +79,12 @@ public class CodeInputProcess implements CodeInputOutputProcess {
       };
       final Iterable<CodeInputProcess.LocalBackupAttributes> attributesToBackup = IterableExtensions.<Attribute, CodeInputProcess.LocalBackupAttributes>map(IterableExtensions.<Attribute>filter(this.actualInput.getMsgInParts(), _function_1), _function_2);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("msgTokens := strings.Split(");
+      _builder.append("if (!");
       String _messageVar = CodeInputProcess.getMessageVar();
       _builder.append(_messageVar);
-      _builder.append(", \" \")");
-      _builder.newLineIfNotEmpty();
-      _builder.append("if (len(msgTokens) != ");
+      _builder.append(".IsLong(");
       _builder.append(nbrParts);
-      _builder.append("){");
+      _builder.append(")){");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       _builder.append("attrsWrap.Rollback()");
@@ -118,9 +116,11 @@ public class CodeInputProcess implements CodeInputOutputProcess {
         for(final Integer i : _doubleDotLessThan) {
           CodeAttribute _get = attributes.get((i).intValue());
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("msgTokens[");
+          String _messageVar_1 = CodeInputProcess.getMessageVar();
+          _builder_1.append(_messageVar_1);
+          _builder_1.append(".Get(");
           _builder_1.append(i);
-          _builder_1.append("]");
+          _builder_1.append(").(string)");
           CharSequence _assign_1 = _get.assign(_builder_1);
           _builder.append(_assign_1);
           _builder.newLineIfNotEmpty();
@@ -154,7 +154,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append("func(attrs *goat.Attributes, ");
     String _messageVar = CodeInputProcess.getMessageVar();
     _builder.append(_messageVar);
-    _builder.append(" string)bool{");
+    _builder.append(" goat.Tuple)bool{");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     String _localBackupMap = CodeInputProcess.getLocalBackupMap();
@@ -220,18 +220,6 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append("\t\t");
     _builder.append("attrsWrap.Commit()");
     _builder.newLine();
-    {
-      String _output_1 = this.actualInput.getOutput();
-      boolean _tripleNotEquals_1 = (_output_1 != null);
-      if (_tripleNotEquals_1) {
-        _builder.append("\t\t");
-        _builder.append("fmt.Println(\"DBG\",");
-        String _convertString_1 = StdoutStringHelper.convertString(this.actualInput.getOutput(), "attrs", CodeModel.getLocalVariablesMap());
-        _builder.append(_convertString_1, "\t\t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
     _builder.append("\t\t");
     _builder.append("return true");
     _builder.newLine();

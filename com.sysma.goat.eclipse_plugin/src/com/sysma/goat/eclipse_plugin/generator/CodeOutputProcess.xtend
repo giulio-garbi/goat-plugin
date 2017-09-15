@@ -43,25 +43,21 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	}
 	
 	def private getSetupMessageParts(String componentAttributesMap){
-		//TODO replace with tuple code!
 		'''
-		«messageVar» := strings.Join([]string{
-			«FOR part: proc.msgOutParts»
-				«new CodeValue(part, componentAttributesMap, CodeModel.localVariablesMap).code»,
-			«ENDFOR»
-			}, " ")
+		«messageVar» := goat.NewTuple(«proc.msgOutParts.map[part|new CodeValue(part, componentAttributesMap, CodeModel.localVariablesMap).code].join(",")»)
 		'''
+		
 	}
 	
 	override getCode(){
 		if(isRealOutput){
 			'''
-			«CodeModel.goatProcessReference».Send(func(attrs *goat.Attributes) (string, goat.Predicate, bool){
+			«CodeModel.goatProcessReference».Send(func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
 				«localBackupMap» := map[string]string{}
 				_ = «localBackupMap»
 				«IF precond !== null»
 					if (!«precond.getPreconditionCode(localBackupMap, "attrs")»()){
-						return "", goat.False{}, false
+						return goat.NewTuple(), goat.False{}, false
 					}
 				«ENDIF»
 				«getSetupMessageParts("attrs")»
@@ -95,7 +91,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	
 	override getBranchCode() {
 		'''
-		func(attrs *goat.Attributes) (string, goat.Predicate, bool){
+		func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
 			«localBackupMap» := map[string]string{}
 			_ = «localBackupMap»
 			attrsWrap := goat.AttributeWrapper{}
@@ -103,7 +99,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 			«IF precond !== null»
 				if (!«precond.getPreconditionCode(localBackupMap, "attrsWrap")»()){
 					attrsWrap.Rollback()
-					return "", goat.False{}, false
+					return goat.NewTuple(), goat.False{}, false
 				}
 			«ENDIF»
 			«IF proc.output !== null»
@@ -115,7 +111,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 				return «messageVar», «new CodeSendPred(proc.send_pred,CodeModel.localVariablesMap).code», true
 			«ELSE»
 				attrsWrap.Commit()
-				return "", goat.False{}, true
+				return goat.NewTuple(), goat.False{}, true
 			«ENDIF»
 		}'''
 	}
@@ -137,7 +133,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 				«getSetupMessageParts("attrs")»
 				return goat.ThenSend(«messageVar», «new CodeSendPred(proc.send_pred,CodeModel.localVariablesMap).code»)
 			«ELSE»
-				return goat.ThenSend("", goat.False{})
+				return goat.ThenSend(goat.NewTuple(), goat.False{})
 			«ENDIF»
 		}(attr)'''
 	}
