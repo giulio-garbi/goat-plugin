@@ -6,20 +6,14 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +24,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getProc <em>Proc</em>}</li>
  * </ul>
  *
@@ -57,16 +50,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> params;
 
   /**
    * The cached value of the '{@link #getProc() <em>Proc</em>}' containment reference.
@@ -120,20 +103,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_DEFINITION__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<String> getParams()
-  {
-    if (params == null)
-    {
-      params = new EDataTypeEList<String>(String.class, this, GoatComponentsPackage.PROCESS_DEFINITION__PARAMS);
-    }
-    return params;
   }
 
   /**
@@ -212,8 +181,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         return getName();
-      case GoatComponentsPackage.PROCESS_DEFINITION__PARAMS:
-        return getParams();
       case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
         return getProc();
     }
@@ -225,7 +192,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -233,10 +199,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         setName((String)newValue);
-        return;
-      case GoatComponentsPackage.PROCESS_DEFINITION__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends String>)newValue);
         return;
       case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
         setProc((com.sysma.goat.eclipse_plugin.goatComponents.Process)newValue);
@@ -258,9 +220,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GoatComponentsPackage.PROCESS_DEFINITION__PARAMS:
-        getParams().clear();
-        return;
       case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
         setProc((com.sysma.goat.eclipse_plugin.goatComponents.Process)null);
         return;
@@ -280,8 +239,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GoatComponentsPackage.PROCESS_DEFINITION__PARAMS:
-        return params != null && !params.isEmpty();
       case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
         return proc != null;
     }
@@ -301,8 +258,6 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", params: ");
-    result.append(params);
     result.append(')');
     return result.toString();
   }

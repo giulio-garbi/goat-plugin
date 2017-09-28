@@ -14,18 +14,20 @@ public class StdoutStringHelper {
       boolean _startsWith = escapedSequence.startsWith("this.");
       if (_startsWith) {
         StringConcatenation _builder = new StringConcatenation();
+        _builder.append("fmt.Sprintf(\"%v\",");
         _builder.append(componentAttr);
         _builder.append(".GetValue(\"");
         String _substring = escapedSequence.substring(5);
         _builder.append(_substring);
-        _builder.append("\")");
+        _builder.append("\"))");
         return _builder.toString();
       } else {
         StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append("fmt.Sprintf(\"%v\",");
         _builder_1.append(localAttr);
         _builder_1.append("[\"");
         _builder_1.append(escapedSequence);
-        _builder_1.append("\"]");
+        _builder_1.append("\"])");
         return _builder_1.toString();
       }
     }

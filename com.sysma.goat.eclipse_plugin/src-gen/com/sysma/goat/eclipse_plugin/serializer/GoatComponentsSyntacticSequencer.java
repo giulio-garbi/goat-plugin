@@ -21,24 +21,20 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GoatComponentsGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_FuncTerm_LeftParenthesisKeyword_2_0_a;
-	protected AbstractElementAlias match_FuncTerm_LeftParenthesisKeyword_2_0_p;
 	protected AbstractElementAlias match_NProcess_LeftParenthesisKeyword_0_0_a;
 	protected AbstractElementAlias match_NProcess_LeftParenthesisKeyword_0_0_p;
 	protected AbstractElementAlias match_NProcess_NZCProcess___LeftParenthesisKeyword_0_0_LeftParenthesisKeyword_0_0_a__q;
-	protected AbstractElementAlias match_Term_LeftParenthesisKeyword_2_0_a;
-	protected AbstractElementAlias match_Term_LeftParenthesisKeyword_2_0_p;
+	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_a;
+	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GoatComponentsGrammarAccess) access;
-		match_FuncTerm_LeftParenthesisKeyword_2_0_a = new TokenAlias(true, true, grammarAccess.getFuncTermAccess().getLeftParenthesisKeyword_2_0());
-		match_FuncTerm_LeftParenthesisKeyword_2_0_p = new TokenAlias(true, false, grammarAccess.getFuncTermAccess().getLeftParenthesisKeyword_2_0());
 		match_NProcess_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getNProcessAccess().getLeftParenthesisKeyword_0_0());
 		match_NProcess_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getNProcessAccess().getLeftParenthesisKeyword_0_0());
 		match_NProcess_NZCProcess___LeftParenthesisKeyword_0_0_LeftParenthesisKeyword_0_0_a__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getNZCProcessAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(true, true, grammarAccess.getNProcessAccess().getLeftParenthesisKeyword_0_0()));
-		match_Term_LeftParenthesisKeyword_2_0_a = new TokenAlias(true, true, grammarAccess.getTermAccess().getLeftParenthesisKeyword_2_0());
-		match_Term_LeftParenthesisKeyword_2_0_p = new TokenAlias(true, false, grammarAccess.getTermAccess().getLeftParenthesisKeyword_2_0());
+		match_Primary_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
+		match_Primary_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
 	}
 	
 	@Override
@@ -53,20 +49,16 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_FuncTerm_LeftParenthesisKeyword_2_0_a.equals(syntax))
-				emit_FuncTerm_LeftParenthesisKeyword_2_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_FuncTerm_LeftParenthesisKeyword_2_0_p.equals(syntax))
-				emit_FuncTerm_LeftParenthesisKeyword_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NProcess_LeftParenthesisKeyword_0_0_a.equals(syntax))
+			if (match_NProcess_LeftParenthesisKeyword_0_0_a.equals(syntax))
 				emit_NProcess_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_NProcess_LeftParenthesisKeyword_0_0_p.equals(syntax))
 				emit_NProcess_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_NProcess_NZCProcess___LeftParenthesisKeyword_0_0_LeftParenthesisKeyword_0_0_a__q.equals(syntax))
 				emit_NProcess_NZCProcess___LeftParenthesisKeyword_0_0_LeftParenthesisKeyword_0_0_a__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Term_LeftParenthesisKeyword_2_0_a.equals(syntax))
-				emit_Term_LeftParenthesisKeyword_2_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Term_LeftParenthesisKeyword_2_0_p.equals(syntax))
-				emit_Term_LeftParenthesisKeyword_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Primary_LeftParenthesisKeyword_0_0_a.equals(syntax))
+				emit_Primary_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Primary_LeftParenthesisKeyword_0_0_p.equals(syntax))
+				emit_Primary_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -76,40 +68,11 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'false' (rule start)
-	 *     (rule start) (ambiguity) isTrue?='true'
-	 *     (rule start) (ambiguity) neg?='!'
-	 *     (rule start) (ambiguity) op1=FuncVal
-	 *     (rule start) (ambiguity) {FuncAnd.and+=}
-	 *     (rule start) (ambiguity) {FuncPredicate.or+=}
-	 */
-	protected void emit_FuncTerm_LeftParenthesisKeyword_2_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) neg?='!'
-	 *     (rule start) (ambiguity) {FuncAnd.and+=}
-	 *     (rule start) (ambiguity) {FuncPredicate.or+=}
-	 */
-	protected void emit_FuncTerm_LeftParenthesisKeyword_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('*
-	 *
-	 * This ambiguous syntax occurs at:
 	 *     (rule start) '(' (ambiguity) branches+=IfBranchProcess
 	 *     (rule start) '(' (ambiguity) {InputProcesses.preconds+=}
 	 *     (rule start) '(' (ambiguity) {InterleavingProcess.subProcs+=}
 	 *     (rule start) '(' (ambiguity) {OutputProcess.precond=}
-	 *     (rule start) (ambiguity) '0' (rule start)
+	 *     (rule start) (ambiguity) 'nil' (rule start)
 	 *     (rule start) (ambiguity) branches+=IfBranchProcess
 	 *     (rule start) (ambiguity) {InputProcesses.preconds+=}
 	 *     (rule start) (ambiguity) {InterleavingProcess.subProcs+=}
@@ -138,7 +101,7 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     ('(' '('*)?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '0' (rule start)
+	 *     (rule start) (ambiguity) 'nil' (rule start)
 	 */
 	protected void emit_NProcess_NZCProcess___LeftParenthesisKeyword_0_0_LeftParenthesisKeyword_0_0_a__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -149,15 +112,26 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'false' (rule start)
-	 *     (rule start) (ambiguity) isTrue?='true'
-	 *     (rule start) (ambiguity) neg?='!'
-	 *     (rule start) (ambiguity) op1=RecAttribute
-	 *     (rule start) (ambiguity) op1=Value
-	 *     (rule start) (ambiguity) {And.and+=}
-	 *     (rule start) (ambiguity) {Predicate.or+=}
+	 *     (rule start) (ambiguity) '!' '(' expression=Primary
+	 *     (rule start) (ambiguity) 'proc' '.' attribute=ID
+	 *     (rule start) (ambiguity) 'receiver' '.' attribute=ID
+	 *     (rule start) (ambiguity) 'this' '.' attribute=ID
+	 *     (rule start) (ambiguity) function=[FuncDefinition|ID]
+	 *     (rule start) (ambiguity) ref=[LRef|ID]
+	 *     (rule start) (ambiguity) value='false'
+	 *     (rule start) (ambiguity) value='true'
+	 *     (rule start) (ambiguity) value=INT
+	 *     (rule start) (ambiguity) value=STRING
+	 *     (rule start) (ambiguity) {And.left=}
+	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Concatenate.left=}
+	 *     (rule start) (ambiguity) {Equality.left=}
+	 *     (rule start) (ambiguity) {Minus.left=}
+	 *     (rule start) (ambiguity) {MulOrDiv.left=}
+	 *     (rule start) (ambiguity) {Or.left=}
+	 *     (rule start) (ambiguity) {Plus.left=}
 	 */
-	protected void emit_Term_LeftParenthesisKeyword_2_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primary_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -166,11 +140,16 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     '('+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) neg?='!'
-	 *     (rule start) (ambiguity) {And.and+=}
-	 *     (rule start) (ambiguity) {Predicate.or+=}
+	 *     (rule start) (ambiguity) {And.left=}
+	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Concatenate.left=}
+	 *     (rule start) (ambiguity) {Equality.left=}
+	 *     (rule start) (ambiguity) {Minus.left=}
+	 *     (rule start) (ambiguity) {MulOrDiv.left=}
+	 *     (rule start) (ambiguity) {Or.left=}
+	 *     (rule start) (ambiguity) {Plus.left=}
 	 */
-	protected void emit_Term_LeftParenthesisKeyword_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Primary_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

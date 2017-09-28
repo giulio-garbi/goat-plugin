@@ -39,6 +39,8 @@ Workflow {
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 				composedCheck = "com.sysma.goat.eclipse_plugin.validation.FunctionValidator"
+				composedCheck = "com.sysma.goat.eclipse_plugin.validation.ExpressionContextValidator"
+				composedCheck = "com.sysma.goat.eclipse_plugin.validation.ExpressionTypingValidator"
 			}
 			
 			newProjectWizardForEclipse = {
@@ -50,6 +52,26 @@ Workflow {
 				combinedGrammar = false
 			}
 		}
+		/*language = StandardLanguage {
+			name = "org.example.expressions.Expressions"
+
+			serializer = {
+				generateStub = false
+			}
+			validator = {
+				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+				composedCheck = "org.example.expressions.validation.ExpressionsValidator"
+			}
+			
+			newProjectWizardForEclipse = {
+				pluginProject = false
+				generate = true
+			}
+			
+			parserGenerator = {
+				combinedGrammar = false
+			}
+		}*/
 		language = StandardLanguage {
 			name = "com.sysma.goat.eclipse_plugin.GoatInfrastructure"
 			fileExtensions = "ginf"

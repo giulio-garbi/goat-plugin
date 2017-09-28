@@ -13,66 +13,39 @@ package com.sysma.goat.eclipse_plugin.goatComponents;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#isNeg <em>Neg</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getTerm <em>Term</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getNot()
  * @model
  * @generated
  */
-public interface Not extends Pred
+public interface Not extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Neg</b></em>' attribute.
+   * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Neg</em>' attribute isn't clear,
+   * If the meaning of the '<em>Expression</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Neg</em>' attribute.
-   * @see #setNeg(boolean)
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getNot_Neg()
-   * @model
-   * @generated
-   */
-  boolean isNeg();
-
-  /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#isNeg <em>Neg</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Neg</em>' attribute.
-   * @see #isNeg()
-   * @generated
-   */
-  void setNeg(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Term</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Term</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Term</em>' containment reference.
-   * @see #setTerm(Pred)
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getNot_Term()
+   * @return the value of the '<em>Expression</em>' containment reference.
+   * @see #setExpression(Expression)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getNot_Expression()
    * @model containment="true"
    * @generated
    */
-  Pred getTerm();
+  Expression getExpression();
 
   /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getTerm <em>Term</em>}' containment reference.
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getExpression <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Term</em>' containment reference.
-   * @see #getTerm()
+   * @param value the new value of the '<em>Expression</em>' containment reference.
+   * @see #getExpression()
    * @generated
    */
-  void setTerm(Pred value);
+  void setExpression(Expression value);
 
 } // Not

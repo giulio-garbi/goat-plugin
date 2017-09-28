@@ -16,9 +16,9 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 	
 	def getComponentDeclaration(){
 		'''
-			«compName» := goat.NewComponentWithAttributes(goat.NewSingleServerAgent("«cdef.address»"),  map[string]string{
+			«compName» := goat.NewComponentWithAttributes(goat.NewSingleServerAgent("«cdef.address»"),  map[string]interface{}{
 				«FOR i : 0..<cdef.env.attrs.length»
-					"«cdef.env.attrs.get(i)»" : "«cdef.env.vals.get(i)»",
+					"«cdef.env.attrs.get(i)»" : «CodeExpression.getExpressionWithoutAttributes(cdef.env.vals.get(i))»,
 				«ENDFOR»
 			})
 		'''
@@ -27,11 +27,7 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 	override getCode() {
 		'''
 		goat.NewProcess(«compName»).Run(func(p *goat.Process){
-			«mainFunc»("«cdef.proc.name»", map[string]string{
-				«FOR i: 0..<cdef.params.length»
-					"«cdef.proc.params.get(i)»" : "«cdef.params.get(i)»",
-				«ENDFOR»
-			}, p)
+			«mainFunc»("«cdef.proc.name»", map[string]interface{}{}, p)
 		})'''
 	}
 	

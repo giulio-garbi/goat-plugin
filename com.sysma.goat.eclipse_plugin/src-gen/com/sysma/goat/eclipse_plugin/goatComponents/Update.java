@@ -28,7 +28,7 @@ public interface Update extends EObject
 {
   /**
    * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute}.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Vars</em>' containment reference list isn't clear,
@@ -40,11 +40,11 @@ public interface Update extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Attribute> getVars();
+  EList<AttributeToSet> getVars();
 
   /**
    * Returns the value of the '<em><b>Vals</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Value}.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Vals</em>' containment reference list isn't clear,
@@ -56,6 +56,6 @@ public interface Update extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Value> getVals();
+  EList<Expression> getVals();
 
 } // Update

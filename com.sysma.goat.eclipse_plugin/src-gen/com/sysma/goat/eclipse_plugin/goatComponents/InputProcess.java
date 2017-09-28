@@ -33,12 +33,12 @@ public interface InputProcess extends com.sysma.goat.eclipse_plugin.goatComponen
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rec pred</em>' containment reference.
-   * @see #setRec_pred(Pred)
+   * @see #setRec_pred(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getInputProcess_Rec_pred()
    * @model containment="true"
    * @generated
    */
-  Pred getRec_pred();
+  Expression getRec_pred();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.InputProcess#getRec_pred <em>Rec pred</em>}' containment reference.
@@ -48,11 +48,11 @@ public interface InputProcess extends com.sysma.goat.eclipse_plugin.goatComponen
    * @see #getRec_pred()
    * @generated
    */
-  void setRec_pred(Pred value);
+  void setRec_pred(Expression value);
 
   /**
    * Returns the value of the '<em><b>Msg In Parts</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute}.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Msg In Parts</em>' containment reference list isn't clear,
@@ -64,6 +64,6 @@ public interface InputProcess extends com.sysma.goat.eclipse_plugin.goatComponen
    * @model containment="true"
    * @generated
    */
-  EList<Attribute> getMsgInParts();
+  EList<AttributeToSet> getMsgInParts();
 
 } // InputProcess

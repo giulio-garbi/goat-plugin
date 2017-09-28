@@ -4,53 +4,53 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd;
+import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncNot;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPred;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncString;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction;
+import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
+import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
+import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Predicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 
 import org.eclipse.emf.ecore.EClass;
@@ -121,21 +121,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.UPDATE: return createUpdate();
       case GoatComponentsPackage.AWARENESS: return createAwareness();
       case GoatComponentsPackage.PROCESS_DEFINITION: return createProcessDefinition();
+      case GoatComponentsPackage.EXPRESSION: return createExpression();
       case GoatComponentsPackage.ENVIRONMENT: return createEnvironment();
       case GoatComponentsPackage.COMPONENT_DEFINITION: return createComponentDefinition();
-      case GoatComponentsPackage.ATTRIBUTE: return createAttribute();
-      case GoatComponentsPackage.REC_ATTRIBUTE: return createRecAttribute();
-      case GoatComponentsPackage.VALUE: return createValue();
-      case GoatComponentsPackage.PRED: return createPred();
+      case GoatComponentsPackage.LREF: return createLRef();
+      case GoatComponentsPackage.ATTRIBUTE_TO_SET: return createAttributeToSet();
       case GoatComponentsPackage.FUNC_PARAM: return createFuncParam();
       case GoatComponentsPackage.FUNC_DEFINITION: return createFuncDefinition();
       case GoatComponentsPackage.FUNC_BLOCK: return createFuncBlock();
       case GoatComponentsPackage.FUNC_STATEMENT: return createFuncStatement();
       case GoatComponentsPackage.FUNC_VAR_DECLARATION: return createFuncVarDeclaration();
       case GoatComponentsPackage.FUNC_VAR_ASSIGN: return createFuncVarAssign();
-      case GoatComponentsPackage.FUNC_VAR_PARAM: return createFuncVarParam();
-      case GoatComponentsPackage.FUNC_VAL: return createFuncVal();
-      case GoatComponentsPackage.FUNC_PRED: return createFuncPred();
       case GoatComponentsPackage.FUNC_IF_ELSE: return createFuncIfElse();
       case GoatComponentsPackage.FUNC_RETURN: return createFuncReturn();
       case GoatComponentsPackage.INTERLEAVING_PROCESS: return createInterleavingProcess();
@@ -146,21 +142,25 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.IF_BRANCH_PROCESS: return createIfBranchProcess();
       case GoatComponentsPackage.CALL_PROCESS: return createCallProcess();
       case GoatComponentsPackage.ZERO_PROCESS: return createZeroProcess();
-      case GoatComponentsPackage.ATTRIBUTE_VALUE: return createAttributeValue();
-      case GoatComponentsPackage.IMMEDIATE_VALUE: return createImmediateValue();
-      case GoatComponentsPackage.GO_STRING_FUNCTION: return createGoStringFunction();
-      case GoatComponentsPackage.PREDICATE: return createPredicate();
+      case GoatComponentsPackage.INT_CONSTANT: return createIntConstant();
+      case GoatComponentsPackage.STRING_CONSTANT: return createStringConstant();
+      case GoatComponentsPackage.BOOL_CONSTANT: return createBoolConstant();
+      case GoatComponentsPackage.OR: return createOr();
       case GoatComponentsPackage.AND: return createAnd();
+      case GoatComponentsPackage.EQUALITY: return createEquality();
+      case GoatComponentsPackage.COMPARISON: return createComparison();
+      case GoatComponentsPackage.PLUS: return createPlus();
+      case GoatComponentsPackage.MINUS: return createMinus();
+      case GoatComponentsPackage.CONCATENATE: return createConcatenate();
+      case GoatComponentsPackage.MUL_OR_DIV: return createMulOrDiv();
       case GoatComponentsPackage.NOT: return createNot();
-      case GoatComponentsPackage.IMMEDIATE: return createImmediate();
-      case GoatComponentsPackage.EQUALITY_TEST: return createEqualityTest();
-      case GoatComponentsPackage.FUNC_STRING: return createFuncString();
-      case GoatComponentsPackage.FUNC_MEMORY_REF: return createFuncMemoryRef();
-      case GoatComponentsPackage.FUNC_PREDICATE: return createFuncPredicate();
-      case GoatComponentsPackage.FUNC_AND: return createFuncAnd();
-      case GoatComponentsPackage.FUNC_NOT: return createFuncNot();
-      case GoatComponentsPackage.FUNC_IMMEDIATE: return createFuncImmediate();
-      case GoatComponentsPackage.FUNC_EQUALITY_TEST: return createFuncEqualityTest();
+      case GoatComponentsPackage.LOCAL_VAR_REF: return createLocalVarRef();
+      case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF: return createLocalAttributeRef();
+      case GoatComponentsPackage.FUNCTION_CALL: return createFunctionCall();
+      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_REF: return createComponentAttributeRef();
+      case GoatComponentsPackage.REC_ATTRIBUTE_REF: return createRecAttributeRef();
+      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_TO_SET: return createComponentAttributeToSet();
+      case GoatComponentsPackage.LOCAL_ATTRIBUTE_TO_SET: return createLocalAttributeToSet();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -259,6 +259,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Environment createEnvironment()
   {
     EnvironmentImpl environment = new EnvironmentImpl();
@@ -281,10 +292,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Attribute createAttribute()
+  public LRef createLRef()
   {
-    AttributeImpl attribute = new AttributeImpl();
-    return attribute;
+    LRefImpl lRef = new LRefImpl();
+    return lRef;
   }
 
   /**
@@ -292,32 +303,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecAttribute createRecAttribute()
+  public AttributeToSet createAttributeToSet()
   {
-    RecAttributeImpl recAttribute = new RecAttributeImpl();
-    return recAttribute;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Value createValue()
-  {
-    ValueImpl value = new ValueImpl();
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Pred createPred()
-  {
-    PredImpl pred = new PredImpl();
-    return pred;
+    AttributeToSetImpl attributeToSet = new AttributeToSetImpl();
+    return attributeToSet;
   }
 
   /**
@@ -384,39 +373,6 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     FuncVarAssignImpl funcVarAssign = new FuncVarAssignImpl();
     return funcVarAssign;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncVarParam createFuncVarParam()
-  {
-    FuncVarParamImpl funcVarParam = new FuncVarParamImpl();
-    return funcVarParam;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncVal createFuncVal()
-  {
-    FuncValImpl funcVal = new FuncValImpl();
-    return funcVal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncPred createFuncPred()
-  {
-    FuncPredImpl funcPred = new FuncPredImpl();
-    return funcPred;
   }
 
   /**
@@ -534,10 +490,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public AttributeValue createAttributeValue()
+  public IntConstant createIntConstant()
   {
-    AttributeValueImpl attributeValue = new AttributeValueImpl();
-    return attributeValue;
+    IntConstantImpl intConstant = new IntConstantImpl();
+    return intConstant;
   }
 
   /**
@@ -545,10 +501,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public ImmediateValue createImmediateValue()
+  public StringConstant createStringConstant()
   {
-    ImmediateValueImpl immediateValue = new ImmediateValueImpl();
-    return immediateValue;
+    StringConstantImpl stringConstant = new StringConstantImpl();
+    return stringConstant;
   }
 
   /**
@@ -556,10 +512,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public GoStringFunction createGoStringFunction()
+  public BoolConstant createBoolConstant()
   {
-    GoStringFunctionImpl goStringFunction = new GoStringFunctionImpl();
-    return goStringFunction;
+    BoolConstantImpl boolConstant = new BoolConstantImpl();
+    return boolConstant;
   }
 
   /**
@@ -567,10 +523,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Predicate createPredicate()
+  public Or createOr()
   {
-    PredicateImpl predicate = new PredicateImpl();
-    return predicate;
+    OrImpl or = new OrImpl();
+    return or;
   }
 
   /**
@@ -589,6 +545,72 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public Equality createEquality()
+  {
+    EqualityImpl equality = new EqualityImpl();
+    return equality;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Comparison createComparison()
+  {
+    ComparisonImpl comparison = new ComparisonImpl();
+    return comparison;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Plus createPlus()
+  {
+    PlusImpl plus = new PlusImpl();
+    return plus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Minus createMinus()
+  {
+    MinusImpl minus = new MinusImpl();
+    return minus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Concatenate createConcatenate()
+  {
+    ConcatenateImpl concatenate = new ConcatenateImpl();
+    return concatenate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MulOrDiv createMulOrDiv()
+  {
+    MulOrDivImpl mulOrDiv = new MulOrDivImpl();
+    return mulOrDiv;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Not createNot()
   {
     NotImpl not = new NotImpl();
@@ -600,10 +622,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Immediate createImmediate()
+  public LocalVarRef createLocalVarRef()
   {
-    ImmediateImpl immediate = new ImmediateImpl();
-    return immediate;
+    LocalVarRefImpl localVarRef = new LocalVarRefImpl();
+    return localVarRef;
   }
 
   /**
@@ -611,10 +633,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EqualityTest createEqualityTest()
+  public LocalAttributeRef createLocalAttributeRef()
   {
-    EqualityTestImpl equalityTest = new EqualityTestImpl();
-    return equalityTest;
+    LocalAttributeRefImpl localAttributeRef = new LocalAttributeRefImpl();
+    return localAttributeRef;
   }
 
   /**
@@ -622,10 +644,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncString createFuncString()
+  public FunctionCall createFunctionCall()
   {
-    FuncStringImpl funcString = new FuncStringImpl();
-    return funcString;
+    FunctionCallImpl functionCall = new FunctionCallImpl();
+    return functionCall;
   }
 
   /**
@@ -633,10 +655,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncMemoryRef createFuncMemoryRef()
+  public ComponentAttributeRef createComponentAttributeRef()
   {
-    FuncMemoryRefImpl funcMemoryRef = new FuncMemoryRefImpl();
-    return funcMemoryRef;
+    ComponentAttributeRefImpl componentAttributeRef = new ComponentAttributeRefImpl();
+    return componentAttributeRef;
   }
 
   /**
@@ -644,10 +666,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncPredicate createFuncPredicate()
+  public RecAttributeRef createRecAttributeRef()
   {
-    FuncPredicateImpl funcPredicate = new FuncPredicateImpl();
-    return funcPredicate;
+    RecAttributeRefImpl recAttributeRef = new RecAttributeRefImpl();
+    return recAttributeRef;
   }
 
   /**
@@ -655,10 +677,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncAnd createFuncAnd()
+  public ComponentAttributeToSet createComponentAttributeToSet()
   {
-    FuncAndImpl funcAnd = new FuncAndImpl();
-    return funcAnd;
+    ComponentAttributeToSetImpl componentAttributeToSet = new ComponentAttributeToSetImpl();
+    return componentAttributeToSet;
   }
 
   /**
@@ -666,32 +688,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncNot createFuncNot()
+  public LocalAttributeToSet createLocalAttributeToSet()
   {
-    FuncNotImpl funcNot = new FuncNotImpl();
-    return funcNot;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncImmediate createFuncImmediate()
-  {
-    FuncImmediateImpl funcImmediate = new FuncImmediateImpl();
-    return funcImmediate;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncEqualityTest createFuncEqualityTest()
-  {
-    FuncEqualityTestImpl funcEqualityTest = new FuncEqualityTestImpl();
-    return funcEqualityTest;
+    LocalAttributeToSetImpl localAttributeToSet = new LocalAttributeToSetImpl();
+    return localAttributeToSet;
   }
 
   /**

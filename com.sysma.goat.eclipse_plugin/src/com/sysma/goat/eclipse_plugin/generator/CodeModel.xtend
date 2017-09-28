@@ -33,6 +33,14 @@ class CodeModel {
 	public static val systemFunction = "model" 
 	
 	def getCode() {
+		getCode(-1)
+	}
+	
+	def getTestCode(int timeout) {
+		getCode(timeout)
+	}
+	
+	def getCode(int timeout){
 		'''
 		package «packageName»
 		
@@ -54,9 +62,9 @@ class CodeModel {
 				strconv.Atoi("")
 			}
 			
-			var «systemFunction» func(string, map[string]string, *goat.Process)
-			«systemFunction» = func(procname string, «localVariablesMap» map[string]string, «goatProcessReference» *goat.Process){
-				var «paramPassingMap» map[string]string
+			var «systemFunction» func(string, map[string]interface{}, *goat.Process)
+			«systemFunction» = func(procname string, «localVariablesMap» map[string]interface{}, «goatProcessReference» *goat.Process){
+				var «paramPassingMap» map[string]interface{}
 				_ = «paramPassingMap»
 				
 				switch(procname) {
@@ -76,6 +84,9 @@ class CodeModel {
 			_ = «systemFunction»
 			
 			term := make(chan struct{})
+			«IF timeout >= 0 »
+				goat.RunCentralServer(17654, term, «timeout»)
+			«ENDIF»
 			«FOR cdef: components»
 				«cdef.componentDeclaration»
 			«ENDFOR»
@@ -86,4 +97,5 @@ class CodeModel {
 		}
 		'''
 	}
+	
 }

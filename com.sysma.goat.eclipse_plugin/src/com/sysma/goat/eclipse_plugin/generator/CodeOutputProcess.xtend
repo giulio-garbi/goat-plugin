@@ -2,8 +2,7 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant
 
 class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	
@@ -15,7 +14,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 		val sPred = p.send_pred
 		proc = p
 		this.precond = new CodePreconditionProcess(p.precond as Preconditions)
-		isRealOutput = !(sPred instanceof Immediate) || ((sPred as Immediate).isTrue) 
+		isRealOutput = !(sPred instanceof BoolConstant) || !((sPred as BoolConstant).value == "false") 
 	}
 	
 	
@@ -25,21 +24,6 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	
 	def private static getLocalBackupMap(){
 		"locVarBak"
-	}
-	
-	static class LocalBackupAttributes{
-		public val Attribute attribute
-		public val CodeAttribute original
-		public val CodeAttribute backup
-		
-		new(Attribute attribute){
-			this.attribute = attribute
-			this.original = new CodeAttribute(attribute, "", CodeModel.localVariablesMap)
-			this.backup = new CodeAttribute(attribute, "", localBackupMap)
-			if (attribute.comp){
-				throw new IllegalArgumentException("You need only to backup local attributes!")
-			}
-		} 
 	}
 	
 	def private getSetupMessageParts(String componentAttributesMap){
@@ -53,7 +37,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 		if(isRealOutput){
 			'''
 			«CodeModel.goatProcessReference».Send(func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
-				«localBackupMap» := map[string]string{}
+				«localBackupMap» := map[string]interface{}{}
 				_ = «localBackupMap»
 				«IF precond !== null»
 					if (!«precond.getPreconditionCode(localBackupMap, "attrs")»()){
@@ -72,7 +56,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 			'''
 			«IF precond !== null»
 				«CodeModel.goatProcessReference».WaitUntilTrue(func(attrs *goat.Attributes)bool{
-					«localBackupMap» := map[string]string{}
+					«localBackupMap» := map[string]interface{}{}
 					_ = «localBackupMap»
 					ok :=  «precond.getPreconditionCode(localBackupMap, "attrs")»()
 					«IF proc.output !== null»
@@ -92,7 +76,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	override getBranchCode() {
 		'''
 		func(attrs *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
-			«localBackupMap» := map[string]string{}
+			«localBackupMap» := map[string]interface{}{}
 			_ = «localBackupMap»
 			attrsWrap := goat.AttributeWrapper{}
 			attrsWrap.Init(attrs)
@@ -119,7 +103,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 	def getCodeForIf() {
 		'''
 		func(attrs *goat.Attributes) goat.SendReceive{
-			«localBackupMap» := map[string]string{}
+			«localBackupMap» := map[string]interface{}{}
 			_ = «localBackupMap»
 			«IF precond !== null»
 				if (!«precond.getPreconditionCode(localBackupMap, "attrs")»()){

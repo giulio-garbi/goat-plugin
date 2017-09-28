@@ -8,20 +8,14 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +27,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getProc <em>Proc</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getAddress <em>Address</em>}</li>
  * </ul>
  *
@@ -60,16 +53,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected ProcessDefinition proc;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> params;
 
   /**
    * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
@@ -208,20 +191,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getParams()
-  {
-    if (params == null)
-    {
-      params = new EDataTypeEList<String>(String.class, this, GoatComponentsPackage.COMPONENT_DEFINITION__PARAMS);
-    }
-    return params;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public String getAddress()
   {
     return address;
@@ -271,8 +240,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         if (resolve) return getProc();
         return basicGetProc();
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PARAMS:
-        return getParams();
       case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
         return getAddress();
     }
@@ -284,7 +251,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -295,10 +261,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
         return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         setProc((ProcessDefinition)newValue);
-        return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends String>)newValue);
         return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
         setAddress((String)newValue);
@@ -323,9 +285,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         setProc((ProcessDefinition)null);
         return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PARAMS:
-        getParams().clear();
-        return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
         setAddress(ADDRESS_EDEFAULT);
         return;
@@ -347,8 +306,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
         return env != null;
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         return proc != null;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PARAMS:
-        return params != null && !params.isEmpty();
       case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
         return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
     }
@@ -366,9 +323,7 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (params: ");
-    result.append(params);
-    result.append(", address: ");
+    result.append(" (address: ");
     result.append(address);
     result.append(')');
     return result.toString();

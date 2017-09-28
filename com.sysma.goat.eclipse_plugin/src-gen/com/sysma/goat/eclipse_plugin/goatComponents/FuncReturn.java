@@ -31,12 +31,12 @@ public interface FuncReturn extends FuncStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(FuncVal)
+   * @see #setVal(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getFuncReturn_Val()
    * @model containment="true"
    * @generated
    */
-  FuncVal getVal();
+  Expression getVal();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn#getVal <em>Val</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface FuncReturn extends FuncStatement
    * @see #getVal()
    * @generated
    */
-  void setVal(FuncVal value);
+  void setVal(Expression value);
 
 } // FuncReturn

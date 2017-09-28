@@ -4,52 +4,52 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.util;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd;
+import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncNot;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPred;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncString;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction;
+import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
+import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
+import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Predicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -163,6 +163,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createProcessDefinitionAdapter();
       }
       @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
       public Adapter caseEnvironment(Environment object)
       {
         return createEnvironmentAdapter();
@@ -173,24 +178,14 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createComponentDefinitionAdapter();
       }
       @Override
-      public Adapter caseAttribute(Attribute object)
+      public Adapter caseLRef(LRef object)
       {
-        return createAttributeAdapter();
+        return createLRefAdapter();
       }
       @Override
-      public Adapter caseRecAttribute(RecAttribute object)
+      public Adapter caseAttributeToSet(AttributeToSet object)
       {
-        return createRecAttributeAdapter();
-      }
-      @Override
-      public Adapter caseValue(Value object)
-      {
-        return createValueAdapter();
-      }
-      @Override
-      public Adapter casePred(Pred object)
-      {
-        return createPredAdapter();
+        return createAttributeToSetAdapter();
       }
       @Override
       public Adapter caseFuncParam(FuncParam object)
@@ -221,21 +216,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFuncVarAssign(FuncVarAssign object)
       {
         return createFuncVarAssignAdapter();
-      }
-      @Override
-      public Adapter caseFuncVarParam(FuncVarParam object)
-      {
-        return createFuncVarParamAdapter();
-      }
-      @Override
-      public Adapter caseFuncVal(FuncVal object)
-      {
-        return createFuncValAdapter();
-      }
-      @Override
-      public Adapter caseFuncPred(FuncPred object)
-      {
-        return createFuncPredAdapter();
       }
       @Override
       public Adapter caseFuncIfElse(FuncIfElse object)
@@ -288,24 +268,24 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createZeroProcessAdapter();
       }
       @Override
-      public Adapter caseAttributeValue(AttributeValue object)
+      public Adapter caseIntConstant(IntConstant object)
       {
-        return createAttributeValueAdapter();
+        return createIntConstantAdapter();
       }
       @Override
-      public Adapter caseImmediateValue(ImmediateValue object)
+      public Adapter caseStringConstant(StringConstant object)
       {
-        return createImmediateValueAdapter();
+        return createStringConstantAdapter();
       }
       @Override
-      public Adapter caseGoStringFunction(GoStringFunction object)
+      public Adapter caseBoolConstant(BoolConstant object)
       {
-        return createGoStringFunctionAdapter();
+        return createBoolConstantAdapter();
       }
       @Override
-      public Adapter casePredicate(Predicate object)
+      public Adapter caseOr(Or object)
       {
-        return createPredicateAdapter();
+        return createOrAdapter();
       }
       @Override
       public Adapter caseAnd(And object)
@@ -313,54 +293,74 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createAndAdapter();
       }
       @Override
+      public Adapter caseEquality(Equality object)
+      {
+        return createEqualityAdapter();
+      }
+      @Override
+      public Adapter caseComparison(Comparison object)
+      {
+        return createComparisonAdapter();
+      }
+      @Override
+      public Adapter casePlus(Plus object)
+      {
+        return createPlusAdapter();
+      }
+      @Override
+      public Adapter caseMinus(Minus object)
+      {
+        return createMinusAdapter();
+      }
+      @Override
+      public Adapter caseConcatenate(Concatenate object)
+      {
+        return createConcatenateAdapter();
+      }
+      @Override
+      public Adapter caseMulOrDiv(MulOrDiv object)
+      {
+        return createMulOrDivAdapter();
+      }
+      @Override
       public Adapter caseNot(Not object)
       {
         return createNotAdapter();
       }
       @Override
-      public Adapter caseImmediate(Immediate object)
+      public Adapter caseLocalVarRef(LocalVarRef object)
       {
-        return createImmediateAdapter();
+        return createLocalVarRefAdapter();
       }
       @Override
-      public Adapter caseEqualityTest(EqualityTest object)
+      public Adapter caseLocalAttributeRef(LocalAttributeRef object)
       {
-        return createEqualityTestAdapter();
+        return createLocalAttributeRefAdapter();
       }
       @Override
-      public Adapter caseFuncString(FuncString object)
+      public Adapter caseFunctionCall(FunctionCall object)
       {
-        return createFuncStringAdapter();
+        return createFunctionCallAdapter();
       }
       @Override
-      public Adapter caseFuncMemoryRef(FuncMemoryRef object)
+      public Adapter caseComponentAttributeRef(ComponentAttributeRef object)
       {
-        return createFuncMemoryRefAdapter();
+        return createComponentAttributeRefAdapter();
       }
       @Override
-      public Adapter caseFuncPredicate(FuncPredicate object)
+      public Adapter caseRecAttributeRef(RecAttributeRef object)
       {
-        return createFuncPredicateAdapter();
+        return createRecAttributeRefAdapter();
       }
       @Override
-      public Adapter caseFuncAnd(FuncAnd object)
+      public Adapter caseComponentAttributeToSet(ComponentAttributeToSet object)
       {
-        return createFuncAndAdapter();
+        return createComponentAttributeToSetAdapter();
       }
       @Override
-      public Adapter caseFuncNot(FuncNot object)
+      public Adapter caseLocalAttributeToSet(LocalAttributeToSet object)
       {
-        return createFuncNotAdapter();
-      }
-      @Override
-      public Adapter caseFuncImmediate(FuncImmediate object)
-      {
-        return createFuncImmediateAdapter();
-      }
-      @Override
-      public Adapter caseFuncEqualityTest(FuncEqualityTest object)
-      {
-        return createFuncEqualityTestAdapter();
+        return createLocalAttributeToSetAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -505,6 +505,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Environment <em>Environment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -535,61 +550,31 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute <em>Attribute</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LRef <em>LRef</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Attribute
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LRef
    * @generated
    */
-  public Adapter createAttributeAdapter()
+  public Adapter createLRefAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute <em>Rec Attribute</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet <em>Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
    * @generated
    */
-  public Adapter createRecAttributeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Value <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Value
-   * @generated
-   */
-  public Adapter createValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Pred <em>Pred</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Pred
-   * @generated
-   */
-  public Adapter createPredAdapter()
+  public Adapter createAttributeToSetAdapter()
   {
     return null;
   }
@@ -680,51 +665,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFuncVarAssignAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam <em>Func Var Param</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam
-   * @generated
-   */
-  public Adapter createFuncVarParamAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVal <em>Func Val</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVal
-   * @generated
-   */
-  public Adapter createFuncValAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPred <em>Func Pred</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncPred
-   * @generated
-   */
-  public Adapter createFuncPredAdapter()
   {
     return null;
   }
@@ -880,61 +820,61 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue <em>Attribute Value</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.IntConstant <em>Int Constant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.IntConstant
    * @generated
    */
-  public Adapter createAttributeValueAdapter()
+  public Adapter createIntConstantAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue <em>Immediate Value</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.StringConstant <em>String Constant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.StringConstant
    * @generated
    */
-  public Adapter createImmediateValueAdapter()
+  public Adapter createStringConstantAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction <em>Go String Function</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant <em>Bool Constant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant
    * @generated
    */
-  public Adapter createGoStringFunctionAdapter()
+  public Adapter createBoolConstantAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Predicate <em>Predicate</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or <em>Or</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Predicate
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Or
    * @generated
    */
-  public Adapter createPredicateAdapter()
+  public Adapter createOrAdapter()
   {
     return null;
   }
@@ -955,6 +895,96 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Equality <em>Equality</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Equality
+   * @generated
+   */
+  public Adapter createEqualityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Comparison <em>Comparison</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Comparison
+   * @generated
+   */
+  public Adapter createComparisonAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Plus <em>Plus</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Plus
+   * @generated
+   */
+  public Adapter createPlusAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Minus <em>Minus</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Minus
+   * @generated
+   */
+  public Adapter createMinusAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Concatenate <em>Concatenate</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Concatenate
+   * @generated
+   */
+  public Adapter createConcatenateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv <em>Mul Or Div</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv
+   * @generated
+   */
+  public Adapter createMulOrDivAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not <em>Not</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -970,136 +1000,106 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Immediate <em>Immediate</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef <em>Local Var Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Immediate
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef
    * @generated
    */
-  public Adapter createImmediateAdapter()
+  public Adapter createLocalVarRefAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest <em>Equality Test</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef <em>Local Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef
    * @generated
    */
-  public Adapter createEqualityTestAdapter()
+  public Adapter createLocalAttributeRefAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncString <em>Func String</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall <em>Function Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncString
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall
    * @generated
    */
-  public Adapter createFuncStringAdapter()
+  public Adapter createFunctionCallAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef <em>Func Memory Ref</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef <em>Component Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef
    * @generated
    */
-  public Adapter createFuncMemoryRefAdapter()
+  public Adapter createComponentAttributeRefAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate <em>Func Predicate</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef <em>Rec Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef
    * @generated
    */
-  public Adapter createFuncPredicateAdapter()
+  public Adapter createRecAttributeRefAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd <em>Func And</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet <em>Component Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
    * @generated
    */
-  public Adapter createFuncAndAdapter()
+  public Adapter createComponentAttributeToSetAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncNot <em>Func Not</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet <em>Local Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncNot
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
    * @generated
    */
-  public Adapter createFuncNotAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate <em>Func Immediate</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate
-   * @generated
-   */
-  public Adapter createFuncImmediateAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest <em>Func Equality Test</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest
-   * @generated
-   */
-  public Adapter createFuncEqualityTestAdapter()
+  public Adapter createLocalAttributeToSetAdapter()
   {
     return null;
   }

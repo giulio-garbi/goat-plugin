@@ -7,9 +7,9 @@ class StdoutStringHelper {
 		if(escapedSequence.length == 0){
 			return ('"$"')
 		} else if (escapedSequence.startsWith("this.")) {
-			return ('''«componentAttr».GetValue("«escapedSequence.substring(5)»")''')
+			return ('''fmt.Sprintf("%v",«componentAttr».GetValue("«escapedSequence.substring(5)»"))''')
 		} else {
-			return ('''«localAttr»["«escapedSequence»"]''')
+			return ('''fmt.Sprintf("%v",«localAttr»["«escapedSequence»"])''')
 		}
 	}
 	

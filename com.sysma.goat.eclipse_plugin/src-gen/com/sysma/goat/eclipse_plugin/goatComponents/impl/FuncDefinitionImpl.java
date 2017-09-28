@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl#getBlk <em>Blk</em>}</li>
@@ -41,6 +42,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements FuncDefinition
 {
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -100,6 +121,29 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
   protected EClass eStaticClass()
   {
     return GoatComponentsPackage.Literals.FUNC_DEFINITION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(String newType)
+  {
+    String oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.FUNC_DEFINITION__TYPE, oldType, type));
   }
 
   /**
@@ -215,6 +259,8 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.FUNC_DEFINITION__TYPE:
+        return getType();
       case GoatComponentsPackage.FUNC_DEFINITION__NAME:
         return getName();
       case GoatComponentsPackage.FUNC_DEFINITION__PARAMS:
@@ -236,6 +282,9 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.FUNC_DEFINITION__TYPE:
+        setType((String)newValue);
+        return;
       case GoatComponentsPackage.FUNC_DEFINITION__NAME:
         setName((String)newValue);
         return;
@@ -260,6 +309,9 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.FUNC_DEFINITION__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
       case GoatComponentsPackage.FUNC_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -283,6 +335,8 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.FUNC_DEFINITION__TYPE:
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case GoatComponentsPackage.FUNC_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GoatComponentsPackage.FUNC_DEFINITION__PARAMS:
@@ -304,7 +358,9 @@ public class FuncDefinitionImpl extends MinimalEObjectImpl.Container implements 
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (type: ");
+    result.append(type);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

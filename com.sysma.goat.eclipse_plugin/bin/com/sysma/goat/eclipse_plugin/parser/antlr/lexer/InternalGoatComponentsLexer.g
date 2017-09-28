@@ -17,11 +17,17 @@ Function : 'function';
 
 Receiver : 'receiver';
 
+Receive : 'receive';
+
 Return : 'return';
 
 False : 'false';
 
+Print : 'print';
+
 Sleep : 'sleep';
+
+Until : 'until';
 
 Elif : 'elif';
 
@@ -29,9 +35,15 @@ Else : 'else';
 
 Proc : 'proc';
 
+Send : 'send';
+
 This : 'this';
 
 True : 'true';
+
+Wait : 'wait';
+
+Nil : 'nil';
 
 Var : 'var';
 
@@ -39,9 +51,13 @@ ExclamationMarkEqualsSign : '!=';
 
 AmpersandAmpersand : '&&';
 
+PlusSignPlusSign : '++';
+
 ColonEqualsSign : ':=';
 
 LessThanSignEqualsSign : '<=';
+
+EqualsSignEqualsSign : '==';
 
 GreaterThanSignEqualsSign : '>=';
 
@@ -57,13 +73,17 @@ LeftParenthesis : '(';
 
 RightParenthesis : ')';
 
+Asterisk : '*';
+
 PlusSign : '+';
 
 Comma : ',';
 
+HyphenMinus : '-';
+
 FullStop : '.';
 
-DigitZero : '0';
+Solidus : '/';
 
 LessThanSign : '<';
 
@@ -82,6 +102,8 @@ LeftCurlyBracket : '{';
 VerticalLine : '|';
 
 RightCurlyBracket : '}';
+
+RULE_TYPE : ('int'|'string'|'bool');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

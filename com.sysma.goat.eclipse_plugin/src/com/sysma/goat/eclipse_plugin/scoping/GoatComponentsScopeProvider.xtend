@@ -12,6 +12,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration
 import org.eclipse.xtext.scoping.Scopes
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement
 
 /**
  * This class contains custom scoping description.
@@ -25,7 +27,7 @@ class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProvider {
 			case GoatComponentsPackage.eINSTANCE.callProcess_Procname,
 			case GoatComponentsPackage.eINSTANCE.componentDefinition_Proc:
 				scopeForProcessDefinition(context)
-			case GoatComponentsPackage.eINSTANCE.funcMemoryRef_Ref:
+			case GoatComponentsPackage.eINSTANCE.localVarRef_Ref:
 				scopeForFuncVarParam(context)
 			default:
 				super.getScope(context, reference)
@@ -52,8 +54,11 @@ class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProvider {
 			FuncBlock:
 				Scopes.scopeFor(container.statements.takeWhile[it != context]
 					.filter(FuncVarDeclaration), scopeForFuncVarParam(container))
-			default:
+			FuncStatement,
+			Expression:
 				scopeForFuncVarParam(container)
+			default:
+				Scopes.scopeFor(#[])
 		}
 	}
 }

@@ -5,6 +5,7 @@ package com.sysma.goat.eclipse_plugin.scoping;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
@@ -12,10 +13,12 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.scoping.AbstractGoatComponentsScopeProvider;
+import java.util.Collections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -45,8 +48,8 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
       _switchResult = this.scopeForProcessDefinition(context);
     }
     if (!_matched) {
-      EReference _funcMemoryRef_Ref = GoatComponentsPackage.eINSTANCE.getFuncMemoryRef_Ref();
-      if (Objects.equal(reference, _funcMemoryRef_Ref)) {
+      EReference _localVarRef_Ref = GoatComponentsPackage.eINSTANCE.getLocalVarRef_Ref();
+      if (Objects.equal(reference, _localVarRef_Ref)) {
         _matched=true;
         _switchResult = this.scopeForFuncVarParam(context);
       }
@@ -95,7 +98,20 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
         }
       }
       if (!_matched) {
-        _switchResult = this.scopeForFuncVarParam(container);
+        if (container instanceof FuncStatement) {
+          _matched=true;
+        }
+        if (!_matched) {
+          if (container instanceof Expression) {
+            _matched=true;
+          }
+        }
+        if (_matched) {
+          _switchResult = this.scopeForFuncVarParam(container);
+        }
+      }
+      if (!_matched) {
+        _switchResult = Scopes.scopeFor(Collections.<EObject>unmodifiableList(CollectionLiterals.<EObject>newArrayList()));
       }
       _xblockexpression = _switchResult;
     }

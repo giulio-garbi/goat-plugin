@@ -4,8 +4,8 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -39,7 +39,7 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
    * @generated
    * @ordered
    */
-  protected Pred pred;
+  protected Expression pred;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pred getPred()
+  public Expression getPred()
   {
     return pred;
   }
@@ -77,9 +77,9 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPred(Pred newPred, NotificationChain msgs)
+  public NotificationChain basicSetPred(Expression newPred, NotificationChain msgs)
   {
-    Pred oldPred = pred;
+    Expression oldPred = pred;
     pred = newPred;
     if (eNotificationRequired())
     {
@@ -94,7 +94,7 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPred(Pred newPred)
+  public void setPred(Expression newPred)
   {
     if (newPred != pred)
     {
@@ -153,7 +153,7 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
     switch (featureID)
     {
       case GoatComponentsPackage.AWARENESS__PRED:
-        setPred((Pred)newValue);
+        setPred((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,7 +170,7 @@ public class AwarenessImpl extends MinimalEObjectImpl.Container implements Aware
     switch (featureID)
     {
       case GoatComponentsPackage.AWARENESS__PRED:
-        setPred((Pred)null);
+        setPred((Expression)null);
         return;
     }
     super.eUnset(featureID);

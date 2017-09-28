@@ -3,10 +3,10 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 
 import java.util.Collection;
 
@@ -46,7 +46,7 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * @generated
    * @ordered
    */
-  protected EList<Attribute> vars;
+  protected EList<AttributeToSet> vars;
 
   /**
    * The cached value of the '{@link #getVals() <em>Vals</em>}' containment reference list.
@@ -56,7 +56,7 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * @generated
    * @ordered
    */
-  protected EList<Value> vals;
+  protected EList<Expression> vals;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,11 +84,11 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Attribute> getVars()
+  public EList<AttributeToSet> getVars()
   {
     if (vars == null)
     {
-      vars = new EObjectContainmentEList<Attribute>(Attribute.class, this, GoatComponentsPackage.UPDATE__VARS);
+      vars = new EObjectContainmentEList<AttributeToSet>(AttributeToSet.class, this, GoatComponentsPackage.UPDATE__VARS);
     }
     return vars;
   }
@@ -98,11 +98,11 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Value> getVals()
+  public EList<Expression> getVals()
   {
     if (vals == null)
     {
-      vals = new EObjectContainmentEList<Value>(Value.class, this, GoatComponentsPackage.UPDATE__VALS);
+      vals = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.UPDATE__VALS);
     }
     return vals;
   }
@@ -156,11 +156,11 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
     {
       case GoatComponentsPackage.UPDATE__VARS:
         getVars().clear();
-        getVars().addAll((Collection<? extends Attribute>)newValue);
+        getVars().addAll((Collection<? extends AttributeToSet>)newValue);
         return;
       case GoatComponentsPackage.UPDATE__VALS:
         getVals().clear();
-        getVals().addAll((Collection<? extends Value>)newValue);
+        getVals().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

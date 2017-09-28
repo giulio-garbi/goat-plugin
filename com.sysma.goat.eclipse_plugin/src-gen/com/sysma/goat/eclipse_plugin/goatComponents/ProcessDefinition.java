@@ -3,8 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getName <em>Name</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getProc <em>Proc</em>}</li>
  * </ul>
  *
@@ -52,22 +49,6 @@ public interface ProcessDefinition extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' attribute list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessDefinition_Params()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getParams();
 
   /**
    * Returns the value of the '<em><b>Proc</b></em>' containment reference.

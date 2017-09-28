@@ -1,23 +1,28 @@
 package com.sysma.goat.eclipse_plugin.generator
 
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
 
 class CodeAttribute {
-	val Attribute attr
+	val AttributeToSet attr
 	val String componentMap
 	val String localMap
 	
-	new(Attribute a, String componentMap, String localMap){
+	new(AttributeToSet a, String componentMap, String localMap){
 		attr = a
 		this.componentMap = componentMap
 		this.localMap = localMap
 	}
 	
+	def boolean isComp(){
+		attr instanceof ComponentAttributeToSet
+	}
+	
 	def assign(CharSequence value) {
-		if (attr.comp) {
-			'''«componentMap».Set("«attr.ident»", «value»)'''
+		if (comp) {
+			'''«componentMap».Set("«attr.attribute»", «value»)'''
 		} else {
-			'''«localMap»["«attr.ident»"] = «value»'''
+			'''«localMap»["«attr.attribute»"] = «value»'''
 		}
 	}
 	
@@ -26,18 +31,18 @@ class CodeAttribute {
 	}
 	
 	def read() {
-		if (attr.comp) {
-			'''«componentMap».GetValue("«attr.ident»")'''
+		if (comp) {
+			'''«componentMap».GetValue("«attr.attribute»")'''
 		} else {
-			'''«localMap»["«attr.ident»"]'''
+			'''«localMap»["«attr.attribute»"]'''
 		}
 	}
 	
 	def exists(){
-		if (attr.comp) {
-			'''«componentMap».Has("«attr.ident»")'''
+		if (comp) {
+			'''«componentMap».Has("«attr.attribute»")'''
 		} else {
-			'''func()bool{_, has:= «localMap»["«attr.ident»"]; return has}()'''
+			'''func()bool{_, has:= «localMap»["«attr.attribute»"]; return has}()'''
 		}
 	}
 }

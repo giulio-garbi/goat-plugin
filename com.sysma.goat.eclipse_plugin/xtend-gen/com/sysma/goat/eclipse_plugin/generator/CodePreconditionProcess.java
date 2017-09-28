@@ -4,12 +4,13 @@ import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodeReceivePred;
 import com.sysma.goat.eclipse_plugin.generator.CodeValue;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
+import com.sysma.goat.eclipse_plugin.generator.LocalBackupAttributes;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -24,27 +25,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class CodePreconditionProcess {
-  public static class LocalBackupAttributes {
-    public final Attribute attribute;
-    
-    public final CodeAttribute original;
-    
-    public final CodeAttribute backup;
-    
-    public LocalBackupAttributes(final Attribute attribute, final String localBackupMap) {
-      this.attribute = attribute;
-      String _localVariablesMap = CodeModel.getLocalVariablesMap();
-      CodeAttribute _codeAttribute = new CodeAttribute(attribute, "", _localVariablesMap);
-      this.original = _codeAttribute;
-      CodeAttribute _codeAttribute_1 = new CodeAttribute(attribute, "", localBackupMap);
-      this.backup = _codeAttribute_1;
-      boolean _isComp = attribute.isComp();
-      if (_isComp) {
-        throw new IllegalArgumentException("You need only to backup local attributes!");
-      }
-    }
-  }
-  
   private final List<EObject> preconds;
   
   public CodePreconditionProcess(final Preconditions p) {
@@ -58,30 +38,29 @@ public class CodePreconditionProcess {
   public CharSequence getPreconditionCode(final String localBackupMap, final String componentMap) {
     CharSequence _xblockexpression = null;
     {
-      final HashSet<Attribute> locVarsToBackupNames = new HashSet<Attribute>();
+      final HashSet<LocalAttributeToSet> locVarsToBackupNames = new HashSet<LocalAttributeToSet>();
       final Function1<EObject, Boolean> _function = (EObject it) -> {
         return Boolean.valueOf((it instanceof Update));
       };
       final Consumer<EObject> _function_1 = (EObject it) -> {
-        final Function1<Attribute, Boolean> _function_2 = (Attribute it_1) -> {
-          boolean _isComp = it_1.isComp();
-          return Boolean.valueOf((!_isComp));
+        final Function1<AttributeToSet, Boolean> _function_2 = (AttributeToSet it_1) -> {
+          return Boolean.valueOf((it_1 instanceof LocalAttributeToSet));
         };
-        final Consumer<Attribute> _function_3 = (Attribute it_1) -> {
-          locVarsToBackupNames.add(it_1);
+        final Consumer<AttributeToSet> _function_3 = (AttributeToSet it_1) -> {
+          locVarsToBackupNames.add(((LocalAttributeToSet) it_1));
         };
-        IterableExtensions.<Attribute>filter(((Update) it).getVars(), _function_2).forEach(_function_3);
+        IterableExtensions.<AttributeToSet>filter(((Update) it).getVars(), _function_2).forEach(_function_3);
       };
       IterableExtensions.<EObject>filter(this.preconds, _function).forEach(_function_1);
-      final Function1<Attribute, CodePreconditionProcess.LocalBackupAttributes> _function_2 = (Attribute it) -> {
-        return new CodePreconditionProcess.LocalBackupAttributes(it, localBackupMap);
+      final Function1<LocalAttributeToSet, LocalBackupAttributes> _function_2 = (LocalAttributeToSet it) -> {
+        return new LocalBackupAttributes(it, localBackupMap);
       };
-      final Iterable<CodePreconditionProcess.LocalBackupAttributes> locVarsToBackup = IterableExtensions.<Attribute, CodePreconditionProcess.LocalBackupAttributes>map(locVarsToBackupNames, _function_2);
+      final Iterable<LocalBackupAttributes> locVarsToBackup = IterableExtensions.<LocalAttributeToSet, LocalBackupAttributes>map(locVarsToBackupNames, _function_2);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("func()bool{");
       _builder.newLine();
       {
-        for(final CodePreconditionProcess.LocalBackupAttributes locAttr : locVarsToBackup) {
+        for(final LocalBackupAttributes locAttr : locVarsToBackup) {
           _builder.append("\t");
           _builder.append("if ");
           CharSequence _exists = locAttr.original.exists();
@@ -110,9 +89,9 @@ public class CodePreconditionProcess {
                 ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _length, true);
                 for(final Integer i : _doubleDotLessThan) {
                   _builder.append("\t\t");
-                  Attribute _get = ((Update)prec).getVars().get((i).intValue());
+                  AttributeToSet _get = ((Update)prec).getVars().get((i).intValue());
                   String _localVariablesMap = CodeModel.getLocalVariablesMap();
-                  Value _get_1 = ((Update)prec).getVals().get((i).intValue());
+                  Expression _get_1 = ((Update)prec).getVals().get((i).intValue());
                   String _localVariablesMap_1 = CodeModel.getLocalVariablesMap();
                   CharSequence _assign_1 = new CodeAttribute(_get, componentMap, _localVariablesMap).assign(new CodeValue(_get_1, componentMap, _localVariablesMap_1).getCode());
                   _builder.append(_assign_1, "\t\t");
@@ -123,7 +102,7 @@ public class CodePreconditionProcess {
               if ((prec instanceof Awareness)) {
                 _builder.append("\t\t");
                 _builder.append("if !(");
-                Pred _pred = ((Awareness) prec).getPred();
+                Expression _pred = ((Awareness) prec).getPred();
                 String _localVariablesMap_2 = CodeModel.getLocalVariablesMap();
                 CharSequence _code = new CodeReceivePred(_pred, componentMap, _localVariablesMap_2).getCode();
                 _builder.append(_code, "\t\t");

@@ -96,6 +96,15 @@ public interface GoatComponentsFactory extends EFactory
   ProcessDefinition createProcessDefinition();
 
   /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
    * Returns a new object of class '<em>Environment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -114,40 +123,22 @@ public interface GoatComponentsFactory extends EFactory
   ComponentDefinition createComponentDefinition();
 
   /**
-   * Returns a new object of class '<em>Attribute</em>'.
+   * Returns a new object of class '<em>LRef</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute</em>'.
+   * @return a new object of class '<em>LRef</em>'.
    * @generated
    */
-  Attribute createAttribute();
+  LRef createLRef();
 
   /**
-   * Returns a new object of class '<em>Rec Attribute</em>'.
+   * Returns a new object of class '<em>Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rec Attribute</em>'.
+   * @return a new object of class '<em>Attribute To Set</em>'.
    * @generated
    */
-  RecAttribute createRecAttribute();
-
-  /**
-   * Returns a new object of class '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value</em>'.
-   * @generated
-   */
-  Value createValue();
-
-  /**
-   * Returns a new object of class '<em>Pred</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Pred</em>'.
-   * @generated
-   */
-  Pred createPred();
+  AttributeToSet createAttributeToSet();
 
   /**
    * Returns a new object of class '<em>Func Param</em>'.
@@ -202,33 +193,6 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   FuncVarAssign createFuncVarAssign();
-
-  /**
-   * Returns a new object of class '<em>Func Var Param</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Var Param</em>'.
-   * @generated
-   */
-  FuncVarParam createFuncVarParam();
-
-  /**
-   * Returns a new object of class '<em>Func Val</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Val</em>'.
-   * @generated
-   */
-  FuncVal createFuncVal();
-
-  /**
-   * Returns a new object of class '<em>Func Pred</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Pred</em>'.
-   * @generated
-   */
-  FuncPred createFuncPred();
 
   /**
    * Returns a new object of class '<em>Func If Else</em>'.
@@ -321,40 +285,40 @@ public interface GoatComponentsFactory extends EFactory
   ZeroProcess createZeroProcess();
 
   /**
-   * Returns a new object of class '<em>Attribute Value</em>'.
+   * Returns a new object of class '<em>Int Constant</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute Value</em>'.
+   * @return a new object of class '<em>Int Constant</em>'.
    * @generated
    */
-  AttributeValue createAttributeValue();
+  IntConstant createIntConstant();
 
   /**
-   * Returns a new object of class '<em>Immediate Value</em>'.
+   * Returns a new object of class '<em>String Constant</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Immediate Value</em>'.
+   * @return a new object of class '<em>String Constant</em>'.
    * @generated
    */
-  ImmediateValue createImmediateValue();
+  StringConstant createStringConstant();
 
   /**
-   * Returns a new object of class '<em>Go String Function</em>'.
+   * Returns a new object of class '<em>Bool Constant</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Go String Function</em>'.
+   * @return a new object of class '<em>Bool Constant</em>'.
    * @generated
    */
-  GoStringFunction createGoStringFunction();
+  BoolConstant createBoolConstant();
 
   /**
-   * Returns a new object of class '<em>Predicate</em>'.
+   * Returns a new object of class '<em>Or</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Predicate</em>'.
+   * @return a new object of class '<em>Or</em>'.
    * @generated
    */
-  Predicate createPredicate();
+  Or createOr();
 
   /**
    * Returns a new object of class '<em>And</em>'.
@@ -366,6 +330,60 @@ public interface GoatComponentsFactory extends EFactory
   And createAnd();
 
   /**
+   * Returns a new object of class '<em>Equality</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equality</em>'.
+   * @generated
+   */
+  Equality createEquality();
+
+  /**
+   * Returns a new object of class '<em>Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Comparison</em>'.
+   * @generated
+   */
+  Comparison createComparison();
+
+  /**
+   * Returns a new object of class '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Plus</em>'.
+   * @generated
+   */
+  Plus createPlus();
+
+  /**
+   * Returns a new object of class '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Minus</em>'.
+   * @generated
+   */
+  Minus createMinus();
+
+  /**
+   * Returns a new object of class '<em>Concatenate</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Concatenate</em>'.
+   * @generated
+   */
+  Concatenate createConcatenate();
+
+  /**
+   * Returns a new object of class '<em>Mul Or Div</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mul Or Div</em>'.
+   * @generated
+   */
+  MulOrDiv createMulOrDiv();
+
+  /**
    * Returns a new object of class '<em>Not</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -375,85 +393,67 @@ public interface GoatComponentsFactory extends EFactory
   Not createNot();
 
   /**
-   * Returns a new object of class '<em>Immediate</em>'.
+   * Returns a new object of class '<em>Local Var Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Immediate</em>'.
+   * @return a new object of class '<em>Local Var Ref</em>'.
    * @generated
    */
-  Immediate createImmediate();
+  LocalVarRef createLocalVarRef();
 
   /**
-   * Returns a new object of class '<em>Equality Test</em>'.
+   * Returns a new object of class '<em>Local Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Equality Test</em>'.
+   * @return a new object of class '<em>Local Attribute Ref</em>'.
    * @generated
    */
-  EqualityTest createEqualityTest();
+  LocalAttributeRef createLocalAttributeRef();
 
   /**
-   * Returns a new object of class '<em>Func String</em>'.
+   * Returns a new object of class '<em>Function Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func String</em>'.
+   * @return a new object of class '<em>Function Call</em>'.
    * @generated
    */
-  FuncString createFuncString();
+  FunctionCall createFunctionCall();
 
   /**
-   * Returns a new object of class '<em>Func Memory Ref</em>'.
+   * Returns a new object of class '<em>Component Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Memory Ref</em>'.
+   * @return a new object of class '<em>Component Attribute Ref</em>'.
    * @generated
    */
-  FuncMemoryRef createFuncMemoryRef();
+  ComponentAttributeRef createComponentAttributeRef();
 
   /**
-   * Returns a new object of class '<em>Func Predicate</em>'.
+   * Returns a new object of class '<em>Rec Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Predicate</em>'.
+   * @return a new object of class '<em>Rec Attribute Ref</em>'.
    * @generated
    */
-  FuncPredicate createFuncPredicate();
+  RecAttributeRef createRecAttributeRef();
 
   /**
-   * Returns a new object of class '<em>Func And</em>'.
+   * Returns a new object of class '<em>Component Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func And</em>'.
+   * @return a new object of class '<em>Component Attribute To Set</em>'.
    * @generated
    */
-  FuncAnd createFuncAnd();
+  ComponentAttributeToSet createComponentAttributeToSet();
 
   /**
-   * Returns a new object of class '<em>Func Not</em>'.
+   * Returns a new object of class '<em>Local Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Not</em>'.
+   * @return a new object of class '<em>Local Attribute To Set</em>'.
    * @generated
    */
-  FuncNot createFuncNot();
-
-  /**
-   * Returns a new object of class '<em>Func Immediate</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Immediate</em>'.
-   * @generated
-   */
-  FuncImmediate createFuncImmediate();
-
-  /**
-   * Returns a new object of class '<em>Func Equality Test</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Func Equality Test</em>'.
-   * @generated
-   */
-  FuncEqualityTest createFuncEqualityTest();
+  LocalAttributeToSet createLocalAttributeToSet();
 
   /**
    * Returns the package supported by this factory.

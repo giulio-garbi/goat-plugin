@@ -58,12 +58,12 @@ public interface FuncVarAssign extends FuncStatement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(FuncVal)
+   * @see #setVal(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getFuncVarAssign_Val()
    * @model containment="true"
    * @generated
    */
-  FuncVal getVal();
+  Expression getVal();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getVal <em>Val</em>}' containment reference.
@@ -73,6 +73,6 @@ public interface FuncVarAssign extends FuncStatement
    * @see #getVal()
    * @generated
    */
-  void setVal(FuncVal value);
+  void setVal(Expression value);
 
 } // FuncVarAssign

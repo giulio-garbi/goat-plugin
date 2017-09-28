@@ -3,10 +3,9 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 
 import java.util.Collection;
 
@@ -51,7 +50,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected EList<Value> msgOutParts;
+  protected EList<Expression> msgOutParts;
 
   /**
    * The cached value of the '{@link #getSend_pred() <em>Send pred</em>}' containment reference.
@@ -61,7 +60,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected Pred send_pred;
+  protected Expression send_pred;
 
   /**
    * The default value of the '{@link #getOutput() <em>Output</em>}' attribute.
@@ -139,11 +138,11 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Value> getMsgOutParts()
+  public EList<Expression> getMsgOutParts()
   {
     if (msgOutParts == null)
     {
-      msgOutParts = new EObjectContainmentEList<Value>(Value.class, this, GoatComponentsPackage.OUTPUT_PROCESS_PART__MSG_OUT_PARTS);
+      msgOutParts = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.OUTPUT_PROCESS_PART__MSG_OUT_PARTS);
     }
     return msgOutParts;
   }
@@ -153,7 +152,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pred getSend_pred()
+  public Expression getSend_pred()
   {
     return send_pred;
   }
@@ -163,9 +162,9 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSend_pred(Pred newSend_pred, NotificationChain msgs)
+  public NotificationChain basicSetSend_pred(Expression newSend_pred, NotificationChain msgs)
   {
-    Pred oldSend_pred = send_pred;
+    Expression oldSend_pred = send_pred;
     send_pred = newSend_pred;
     if (eNotificationRequired())
     {
@@ -180,7 +179,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSend_pred(Pred newSend_pred)
+  public void setSend_pred(Expression newSend_pred)
   {
     if (newSend_pred != send_pred)
     {
@@ -347,10 +346,10 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__MSG_OUT_PARTS:
         getMsgOutParts().clear();
-        getMsgOutParts().addAll((Collection<? extends Value>)newValue);
+        getMsgOutParts().addAll((Collection<? extends Expression>)newValue);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__SEND_PRED:
-        setSend_pred((Pred)newValue);
+        setSend_pred((Expression)newValue);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
         setOutput((String)newValue);
@@ -379,7 +378,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
         getMsgOutParts().clear();
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__SEND_PRED:
-        setSend_pred((Pred)null);
+        setSend_pred((Expression)null);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
         setOutput(OUTPUT_EDEFAULT);

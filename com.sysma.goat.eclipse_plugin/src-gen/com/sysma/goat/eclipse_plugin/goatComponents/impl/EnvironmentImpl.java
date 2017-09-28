@@ -4,17 +4,23 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,14 +49,14 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
   protected EList<String> attrs;
 
   /**
-   * The cached value of the '{@link #getVals() <em>Vals</em>}' attribute list.
+   * The cached value of the '{@link #getVals() <em>Vals</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVals()
    * @generated
    * @ordered
    */
-  protected EList<String> vals;
+  protected EList<Expression> vals;
 
   /**
    * <!-- begin-user-doc -->
@@ -92,13 +98,29 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getVals()
+  public EList<Expression> getVals()
   {
     if (vals == null)
     {
-      vals = new EDataTypeEList<String>(String.class, this, GoatComponentsPackage.ENVIRONMENT__VALS);
+      vals = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.ENVIRONMENT__VALS);
     }
     return vals;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GoatComponentsPackage.ENVIRONMENT__VALS:
+        return ((InternalEList<?>)getVals()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -136,7 +158,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
         return;
       case GoatComponentsPackage.ENVIRONMENT__VALS:
         getVals().clear();
-        getVals().addAll((Collection<? extends String>)newValue);
+        getVals().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,8 +215,6 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (attrs: ");
     result.append(attrs);
-    result.append(", vals: ");
-    result.append(vals);
     result.append(')');
     return result.toString();
   }

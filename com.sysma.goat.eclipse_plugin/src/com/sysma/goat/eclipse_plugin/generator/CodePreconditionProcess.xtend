@@ -5,8 +5,8 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute
 import com.sysma.goat.eclipse_plugin.goatComponents.Update
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
 
 class CodePreconditionProcess {
 	val List<EObject> preconds
@@ -20,25 +20,10 @@ class CodePreconditionProcess {
 		preconds = #[awr]
 	}
 	
-	static class LocalBackupAttributes{
-		public val Attribute attribute
-		public val CodeAttribute original
-		public val CodeAttribute backup
-		
-		new(Attribute attribute, String localBackupMap){
-			this.attribute = attribute
-			this.original = new CodeAttribute(attribute, "", CodeModel.localVariablesMap)
-			this.backup = new CodeAttribute(attribute, "", localBackupMap)
-			if (attribute.comp){
-				throw new IllegalArgumentException("You need only to backup local attributes!")
-			}
-		} 
-	}
-	
 	def getPreconditionCode(String localBackupMap, String componentMap){
-		val locVarsToBackupNames = new HashSet<Attribute>()
+		val locVarsToBackupNames = new HashSet<LocalAttributeToSet>()
 		preconds.filter[it instanceof Update].forEach[
-			(it as Update).vars.filter[!comp].forEach[locVarsToBackupNames.add(it)]
+			(it as Update).vars.filter[it instanceof LocalAttributeToSet].forEach[locVarsToBackupNames.add(it as LocalAttributeToSet)]
 		]
 		
 		val locVarsToBackup = locVarsToBackupNames.map[new LocalBackupAttributes(it, localBackupMap)]

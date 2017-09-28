@@ -1,6 +1,6 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
-import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
+import com.google.common.base.Objects;
 import com.sysma.goat.eclipse_plugin.generator.CodeInputOutputProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
@@ -8,12 +8,10 @@ import com.sysma.goat.eclipse_plugin.generator.CodeSendPred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.generator.CodeValue;
 import com.sysma.goat.eclipse_plugin.generator.StdoutStringHelper;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate;
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -21,28 +19,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
-  public static class LocalBackupAttributes {
-    public final Attribute attribute;
-    
-    public final CodeAttribute original;
-    
-    public final CodeAttribute backup;
-    
-    public LocalBackupAttributes(final Attribute attribute) {
-      this.attribute = attribute;
-      String _localVariablesMap = CodeModel.getLocalVariablesMap();
-      CodeAttribute _codeAttribute = new CodeAttribute(attribute, "", _localVariablesMap);
-      this.original = _codeAttribute;
-      String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
-      CodeAttribute _codeAttribute_1 = new CodeAttribute(attribute, "", _localBackupMap);
-      this.backup = _codeAttribute_1;
-      boolean _isComp = attribute.isComp();
-      if (_isComp) {
-        throw new IllegalArgumentException("You need only to backup local attributes!");
-      }
-    }
-  }
-  
   private final OutputProcess proc;
   
   private final boolean isRealOutput;
@@ -50,12 +26,12 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
   private final CodePreconditionProcess precond;
   
   public CodeOutputProcess(final OutputProcess p) {
-    final Pred sPred = p.getSend_pred();
+    final Expression sPred = p.getSend_pred();
     this.proc = p;
     Preconditions _precond = p.getPrecond();
     CodePreconditionProcess _codePreconditionProcess = new CodePreconditionProcess(((Preconditions) _precond));
     this.precond = _codePreconditionProcess;
-    this.isRealOutput = ((!(sPred instanceof Immediate)) || ((Immediate) sPred).isIsTrue());
+    this.isRealOutput = ((!(sPred instanceof BoolConstant)) || (!Objects.equal(((BoolConstant) sPred).getValue(), "false")));
   }
   
   private static String getMessageVar() {
@@ -71,11 +47,11 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
     String _messageVar = CodeOutputProcess.getMessageVar();
     _builder.append(_messageVar);
     _builder.append(" := goat.NewTuple(");
-    final Function1<Value, CharSequence> _function = (Value part) -> {
+    final Function1<Expression, CharSequence> _function = (Expression part) -> {
       String _localVariablesMap = CodeModel.getLocalVariablesMap();
       return new CodeValue(part, componentAttributesMap, _localVariablesMap).getCode();
     };
-    String _join = IterableExtensions.join(ListExtensions.<Value, CharSequence>map(this.proc.getMsgOutParts(), _function), ",");
+    String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(this.proc.getMsgOutParts(), _function), ",");
     _builder.append(_join);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
@@ -94,7 +70,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       _builder.append("\t");
       String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
       _builder.append(_localBackupMap, "\t");
-      _builder.append(" := map[string]string{}");
+      _builder.append(" := map[string]interface{}{}");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       _builder.append("_ = ");
@@ -139,7 +115,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       String _messageVar = CodeOutputProcess.getMessageVar();
       _builder.append(_messageVar, "\t");
       _builder.append(", ");
-      Pred _send_pred = this.proc.getSend_pred();
+      Expression _send_pred = this.proc.getSend_pred();
       String _localVariablesMap = CodeModel.getLocalVariablesMap();
       CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
       _builder.append(_code, "\t");
@@ -162,7 +138,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
           _builder_1.append("\t");
           String _localBackupMap_2 = CodeOutputProcess.getLocalBackupMap();
           _builder_1.append(_localBackupMap_2, "\t");
-          _builder_1.append(" := map[string]string{}");
+          _builder_1.append(" := map[string]interface{}{}");
           _builder_1.newLineIfNotEmpty();
           _builder_1.append("\t");
           _builder_1.append("_ = ");
@@ -218,7 +194,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
     _builder.append("\t");
     String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
     _builder.append(_localBackupMap, "\t");
-    _builder.append(" := map[string]string{}");
+    _builder.append(" := map[string]interface{}{}");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("_ = ");
@@ -278,7 +254,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         String _messageVar = CodeOutputProcess.getMessageVar();
         _builder.append(_messageVar, "\t");
         _builder.append(", ");
-        Pred _send_pred = this.proc.getSend_pred();
+        Expression _send_pred = this.proc.getSend_pred();
         String _localVariablesMap = CodeModel.getLocalVariablesMap();
         CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
         _builder.append(_code, "\t");
@@ -304,7 +280,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
     _builder.append("\t");
     String _localBackupMap = CodeOutputProcess.getLocalBackupMap();
     _builder.append(_localBackupMap, "\t");
-    _builder.append(" := map[string]string{}");
+    _builder.append(" := map[string]interface{}{}");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("_ = ");
@@ -351,7 +327,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         String _messageVar = CodeOutputProcess.getMessageVar();
         _builder.append(_messageVar, "\t");
         _builder.append(", ");
-        Pred _send_pred = this.proc.getSend_pred();
+        Expression _send_pred = this.proc.getSend_pred();
         String _localVariablesMap = CodeModel.getLocalVariablesMap();
         CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
         _builder.append(_code, "\t");

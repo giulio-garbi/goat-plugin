@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 import org.eclipse.xtext.validation.ComposedChecks;
 
-@ComposedChecks(validators = {FunctionValidator.class})
+@ComposedChecks(validators = {FunctionValidator.class, ExpressionContextValidator.class, ExpressionTypingValidator.class})
 public abstract class AbstractGoatComponentsValidator extends AbstractDeclarativeValidator {
 	
 	@Override

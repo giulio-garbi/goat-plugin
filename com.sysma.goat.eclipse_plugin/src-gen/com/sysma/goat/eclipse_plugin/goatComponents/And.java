@@ -3,7 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,29 +13,66 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getAnd <em>And</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getLeft <em>Left</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getAnd()
  * @model
  * @generated
  */
-public interface And extends Pred
+public interface And extends Expression
 {
   /**
-   * Returns the value of the '<em><b>And</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Pred}.
+   * Returns the value of the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>And</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Left</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>And</em>' containment reference list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getAnd_And()
+   * @return the value of the '<em>Left</em>' containment reference.
+   * @see #setLeft(Expression)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getAnd_Left()
    * @model containment="true"
    * @generated
    */
-  EList<Pred> getAnd();
+  Expression getLeft();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getLeft <em>Left</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Left</em>' containment reference.
+   * @see #getLeft()
+   * @generated
+   */
+  void setLeft(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Right</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Right</em>' containment reference.
+   * @see #setRight(Expression)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getAnd_Right()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getRight();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getRight <em>Right</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Right</em>' containment reference.
+   * @see #getRight()
+   * @generated
+   */
+  void setRight(Expression value);
 
 } // And

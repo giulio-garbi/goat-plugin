@@ -1,8 +1,8 @@
 package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
 
 class CodeInputProcess implements CodeInputOutputProcess {
 	var InputProcess actualInput
@@ -21,25 +21,10 @@ class CodeInputProcess implements CodeInputOutputProcess {
 		"locVarBak"
 	}
 	
-	static class LocalBackupAttributes{
-		public val Attribute attribute
-		public val CodeAttribute original
-		public val CodeAttribute backup
-		
-		new(Attribute attribute){
-			this.attribute = attribute
-			this.original = new CodeAttribute(attribute, "", CodeModel.localVariablesMap)
-			this.backup = new CodeAttribute(attribute, "", localBackupMap)
-			if (attribute.comp){
-				throw new IllegalArgumentException("You need only to backup local attributes!")
-			}
-		} 
-	}
-	
 	def private getSetupMessageParts(String componentAttributesMap){
 		val nbrParts = actualInput.msgInParts.length
 		val attributes = actualInput.msgInParts.map[new CodeAttribute(it, componentAttributesMap, CodeModel.localVariablesMap)]
-		val attributesToBackup = actualInput.msgInParts.filter[!comp].map[new LocalBackupAttributes(it)]
+		val attributesToBackup = actualInput.msgInParts.filter[it instanceof LocalAttributeToSet].map[new LocalBackupAttributes(it as LocalAttributeToSet, localBackupMap)]
 		//TODO remove string type assertion
 		'''
 			if (!«messageVar».IsLong(«nbrParts»)){
@@ -54,23 +39,23 @@ class CodeInputProcess implements CodeInputOutputProcess {
 			«ENDFOR»
 			
 			«FOR i : 0 ..< nbrParts»
-				«attributes.get(i).assign('''«messageVar».Get(«i»).(string)''')»
+				«attributes.get(i).assign('''«messageVar».Get(«i»)''')»
 			«ENDFOR»
 		'''
 	}
 	
 	def private static getRollbackLocalVars(){
 		'''
-					for lv, val := range «localBackupMap» {
-						«CodeModel.localVariablesMap»[lv] = val
-					}
-				'''
+			for lv, val := range «localBackupMap» {
+				«CodeModel.localVariablesMap»[lv] = val
+			}
+		'''
 	}
 	
 	override getBranchCode(){
 		'''
 				func(attrs *goat.Attributes, «messageVar» goat.Tuple)bool{
-					«localBackupMap» := map[string]string{}
+					«localBackupMap» := map[string]interface{}{}
 					_ = «localBackupMap»
 					attrsWrap := goat.AttributesWrapper{}
 					attrsWrap.Init(attrs)

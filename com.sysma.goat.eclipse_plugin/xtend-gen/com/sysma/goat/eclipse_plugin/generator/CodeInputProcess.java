@@ -6,11 +6,13 @@ import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeReceivePred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
+import com.sysma.goat.eclipse_plugin.generator.LocalBackupAttributes;
 import com.sysma.goat.eclipse_plugin.generator.StdoutStringHelper;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -21,28 +23,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class CodeInputProcess implements CodeInputOutputProcess {
-  public static class LocalBackupAttributes {
-    public final Attribute attribute;
-    
-    public final CodeAttribute original;
-    
-    public final CodeAttribute backup;
-    
-    public LocalBackupAttributes(final Attribute attribute) {
-      this.attribute = attribute;
-      String _localVariablesMap = CodeModel.getLocalVariablesMap();
-      CodeAttribute _codeAttribute = new CodeAttribute(attribute, "", _localVariablesMap);
-      this.original = _codeAttribute;
-      String _localBackupMap = CodeInputProcess.getLocalBackupMap();
-      CodeAttribute _codeAttribute_1 = new CodeAttribute(attribute, "", _localBackupMap);
-      this.backup = _codeAttribute_1;
-      boolean _isComp = attribute.isComp();
-      if (_isComp) {
-        throw new IllegalArgumentException("You need only to backup local attributes!");
-      }
-    }
-  }
-  
   private InputProcess actualInput;
   
   private final CodePreconditionProcess precond;
@@ -65,19 +45,19 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     CharSequence _xblockexpression = null;
     {
       final int nbrParts = ((Object[])Conversions.unwrapArray(this.actualInput.getMsgInParts(), Object.class)).length;
-      final Function1<Attribute, CodeAttribute> _function = (Attribute it) -> {
+      final Function1<AttributeToSet, CodeAttribute> _function = (AttributeToSet it) -> {
         String _localVariablesMap = CodeModel.getLocalVariablesMap();
         return new CodeAttribute(it, componentAttributesMap, _localVariablesMap);
       };
-      final List<CodeAttribute> attributes = ListExtensions.<Attribute, CodeAttribute>map(this.actualInput.getMsgInParts(), _function);
-      final Function1<Attribute, Boolean> _function_1 = (Attribute it) -> {
-        boolean _isComp = it.isComp();
-        return Boolean.valueOf((!_isComp));
+      final List<CodeAttribute> attributes = ListExtensions.<AttributeToSet, CodeAttribute>map(this.actualInput.getMsgInParts(), _function);
+      final Function1<AttributeToSet, Boolean> _function_1 = (AttributeToSet it) -> {
+        return Boolean.valueOf((it instanceof LocalAttributeToSet));
       };
-      final Function1<Attribute, CodeInputProcess.LocalBackupAttributes> _function_2 = (Attribute it) -> {
-        return new CodeInputProcess.LocalBackupAttributes(it);
+      final Function1<AttributeToSet, LocalBackupAttributes> _function_2 = (AttributeToSet it) -> {
+        String _localBackupMap = CodeInputProcess.getLocalBackupMap();
+        return new LocalBackupAttributes(((LocalAttributeToSet) it), _localBackupMap);
       };
-      final Iterable<CodeInputProcess.LocalBackupAttributes> attributesToBackup = IterableExtensions.<Attribute, CodeInputProcess.LocalBackupAttributes>map(IterableExtensions.<Attribute>filter(this.actualInput.getMsgInParts(), _function_1), _function_2);
+      final Iterable<LocalBackupAttributes> attributesToBackup = IterableExtensions.<AttributeToSet, LocalBackupAttributes>map(IterableExtensions.<AttributeToSet>filter(this.actualInput.getMsgInParts(), _function_1), _function_2);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("if (!");
       String _messageVar = CodeInputProcess.getMessageVar();
@@ -96,7 +76,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
       _builder.newLine();
       _builder.newLine();
       {
-        for(final CodeInputProcess.LocalBackupAttributes locAttr : attributesToBackup) {
+        for(final LocalBackupAttributes locAttr : attributesToBackup) {
           _builder.append("if ");
           CharSequence _exists = locAttr.original.exists();
           _builder.append(_exists);
@@ -120,7 +100,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
           _builder_1.append(_messageVar_1);
           _builder_1.append(".Get(");
           _builder_1.append(i);
-          _builder_1.append(").(string)");
+          _builder_1.append(")");
           CharSequence _assign_1 = _get.assign(_builder_1);
           _builder.append(_assign_1);
           _builder.newLineIfNotEmpty();
@@ -159,7 +139,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append("\t");
     String _localBackupMap = CodeInputProcess.getLocalBackupMap();
     _builder.append(_localBackupMap, "\t");
-    _builder.append(" := map[string]string{}");
+    _builder.append(" := map[string]interface{}{}");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("_ = ");
@@ -199,7 +179,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("if (");
-    Pred _rec_pred = this.actualInput.getRec_pred();
+    Expression _rec_pred = this.actualInput.getRec_pred();
     String _localVariablesMap = CodeModel.getLocalVariablesMap();
     CharSequence _code = new CodeReceivePred(_rec_pred, "attrsWrap", _localVariablesMap).getCode();
     _builder.append(_code, "\t");

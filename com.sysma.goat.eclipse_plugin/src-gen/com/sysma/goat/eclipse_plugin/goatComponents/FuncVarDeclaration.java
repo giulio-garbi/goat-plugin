@@ -20,7 +20,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents;
  * @model
  * @generated
  */
-public interface FuncVarDeclaration extends FuncStatement, FuncVarParam
+public interface FuncVarDeclaration extends LRef, FuncStatement
 {
   /**
    * Returns the value of the '<em><b>Val</b></em>' containment reference.
@@ -31,12 +31,12 @@ public interface FuncVarDeclaration extends FuncStatement, FuncVarParam
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(FuncVal)
+   * @see #setVal(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getFuncVarDeclaration_Val()
    * @model containment="true"
    * @generated
    */
-  FuncVal getVal();
+  Expression getVal();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration#getVal <em>Val</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface FuncVarDeclaration extends FuncStatement, FuncVarParam
    * @see #getVal()
    * @generated
    */
-  void setVal(FuncVal value);
+  void setVal(Expression value);
 
 } // FuncVarDeclaration

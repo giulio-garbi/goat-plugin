@@ -4,53 +4,53 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd;
+import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncNot;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPred;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncString;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction;
+import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
+import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
+import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Predicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -129,6 +129,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass environmentEClass = null;
 
   /**
@@ -143,28 +150,14 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass attributeEClass = null;
+  private EClass lRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass recAttributeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass valueEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass predEClass = null;
+  private EClass attributeToSetEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -207,27 +200,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass funcVarAssignEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass funcVarParamEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass funcValEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass funcPredEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -304,28 +276,28 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass attributeValueEClass = null;
+  private EClass intConstantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass immediateValueEClass = null;
+  private EClass stringConstantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass goStringFunctionEClass = null;
+  private EClass boolConstantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass predicateEClass = null;
+  private EClass orEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -339,6 +311,48 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass equalityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass comparisonEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass minusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass concatenateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mulOrDivEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass notEClass = null;
 
   /**
@@ -346,63 +360,49 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass immediateEClass = null;
+  private EClass localVarRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass equalityTestEClass = null;
+  private EClass localAttributeRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcStringEClass = null;
+  private EClass functionCallEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcMemoryRefEClass = null;
+  private EClass componentAttributeRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcPredicateEClass = null;
+  private EClass recAttributeRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcAndEClass = null;
+  private EClass componentAttributeToSetEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass funcNotEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass funcImmediateEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass funcEqualityTestEClass = null;
+  private EClass localAttributeToSetEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -702,9 +702,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProcessDefinition_Params()
+  public EReference getProcessDefinition_Proc()
   {
-    return (EAttribute)processDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -712,9 +712,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProcessDefinition_Proc()
+  public EClass getExpression()
   {
-    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(2);
+    return expressionEClass;
   }
 
   /**
@@ -742,9 +742,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEnvironment_Vals()
+  public EReference getEnvironment_Vals()
   {
-    return (EAttribute)environmentEClass.getEStructuralFeatures().get(1);
+    return (EReference)environmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -782,7 +782,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getComponentDefinition_Params()
+  public EAttribute getComponentDefinition_Address()
   {
     return (EAttribute)componentDefinitionEClass.getEStructuralFeatures().get(2);
   }
@@ -792,9 +792,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getComponentDefinition_Address()
+  public EClass getLRef()
   {
-    return (EAttribute)componentDefinitionEClass.getEStructuralFeatures().get(3);
+    return lRefEClass;
   }
 
   /**
@@ -802,9 +802,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAttribute()
+  public EAttribute getLRef_Name()
   {
-    return attributeEClass;
+    return (EAttribute)lRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -812,9 +812,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_Comp()
+  public EClass getAttributeToSet()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(0);
+    return attributeToSetEClass;
   }
 
   /**
@@ -822,49 +822,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttribute_Ident()
+  public EAttribute getAttributeToSet_Attribute()
   {
-    return (EAttribute)attributeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getRecAttribute()
-  {
-    return recAttributeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRecAttribute_Ident()
-  {
-    return (EAttribute)recAttributeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getValue()
-  {
-    return valueEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getPred()
-  {
-    return predEClass;
+    return (EAttribute)attributeToSetEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -882,6 +842,16 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getFuncParam_Type()
+  {
+    return (EAttribute)funcParamEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getFuncDefinition()
   {
     return funcDefinitionEClass;
@@ -892,7 +862,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFuncDefinition_Name()
+  public EAttribute getFuncDefinition_Type()
   {
     return (EAttribute)funcDefinitionEClass.getEStructuralFeatures().get(0);
   }
@@ -902,9 +872,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getFuncDefinition_Name()
+  {
+    return (EAttribute)funcDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getFuncDefinition_Params()
   {
-    return (EReference)funcDefinitionEClass.getEStructuralFeatures().get(1);
+    return (EReference)funcDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -914,7 +894,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    */
   public EReference getFuncDefinition_Blk()
   {
-    return (EReference)funcDefinitionEClass.getEStructuralFeatures().get(2);
+    return (EReference)funcDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -995,46 +975,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EReference getFuncVarAssign_Val()
   {
     return (EReference)funcVarAssignEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncVarParam()
-  {
-    return funcVarParamEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFuncVarParam_Name()
-  {
-    return (EAttribute)funcVarParamEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncVal()
-  {
-    return funcValEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncPred()
-  {
-    return funcPredEClass;
   }
 
   /**
@@ -1252,16 +1192,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCallProcess_Params()
-  {
-    return (EReference)callProcessEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getZeroProcess()
   {
     return zeroProcessEClass;
@@ -1272,9 +1202,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAttributeValue()
+  public EClass getIntConstant()
   {
-    return attributeValueEClass;
+    return intConstantEClass;
   }
 
   /**
@@ -1282,9 +1212,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAttributeValue_Attr()
+  public EAttribute getIntConstant_Value()
   {
-    return (EReference)attributeValueEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)intConstantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1292,9 +1222,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImmediateValue()
+  public EClass getStringConstant()
   {
-    return immediateValueEClass;
+    return stringConstantEClass;
   }
 
   /**
@@ -1302,9 +1232,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImmediateValue_Imm()
+  public EAttribute getStringConstant_Value()
   {
-    return (EAttribute)immediateValueEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)stringConstantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1312,9 +1242,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGoStringFunction()
+  public EClass getBoolConstant()
   {
-    return goStringFunctionEClass;
+    return boolConstantEClass;
   }
 
   /**
@@ -1322,9 +1252,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGoStringFunction_Funcname()
+  public EAttribute getBoolConstant_Value()
   {
-    return (EReference)goStringFunctionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)boolConstantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1332,9 +1262,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGoStringFunction_Params()
+  public EClass getOr()
   {
-    return (EReference)goStringFunctionEClass.getEStructuralFeatures().get(1);
+    return orEClass;
   }
 
   /**
@@ -1342,9 +1272,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPredicate()
+  public EReference getOr_Left()
   {
-    return predicateEClass;
+    return (EReference)orEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1352,9 +1282,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPredicate_Or()
+  public EReference getOr_Right()
   {
-    return (EReference)predicateEClass.getEStructuralFeatures().get(0);
+    return (EReference)orEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1372,9 +1302,229 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAnd_And()
+  public EReference getAnd_Left()
   {
     return (EReference)andEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAnd_Right()
+  {
+    return (EReference)andEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEquality()
+  {
+    return equalityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEquality_Left()
+  {
+    return (EReference)equalityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEquality_Op()
+  {
+    return (EAttribute)equalityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEquality_Right()
+  {
+    return (EReference)equalityEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getComparison()
+  {
+    return comparisonEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComparison_Left()
+  {
+    return (EReference)comparisonEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getComparison_Op()
+  {
+    return (EAttribute)comparisonEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComparison_Right()
+  {
+    return (EReference)comparisonEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPlus()
+  {
+    return plusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPlus_Left()
+  {
+    return (EReference)plusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPlus_Right()
+  {
+    return (EReference)plusEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMinus()
+  {
+    return minusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMinus_Left()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMinus_Right()
+  {
+    return (EReference)minusEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConcatenate()
+  {
+    return concatenateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConcatenate_Left()
+  {
+    return (EReference)concatenateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConcatenate_Right()
+  {
+    return (EReference)concatenateEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMulOrDiv()
+  {
+    return mulOrDivEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMulOrDiv_Left()
+  {
+    return (EReference)mulOrDivEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getMulOrDiv_Op()
+  {
+    return (EAttribute)mulOrDivEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMulOrDiv_Right()
+  {
+    return (EReference)mulOrDivEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1392,9 +1542,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNot_Neg()
+  public EReference getNot_Expression()
   {
-    return (EAttribute)notEClass.getEStructuralFeatures().get(0);
+    return (EReference)notEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1402,9 +1552,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNot_Term()
+  public EClass getLocalVarRef()
   {
-    return (EReference)notEClass.getEStructuralFeatures().get(1);
+    return localVarRefEClass;
   }
 
   /**
@@ -1412,9 +1562,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImmediate()
+  public EReference getLocalVarRef_Ref()
   {
-    return immediateEClass;
+    return (EReference)localVarRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1422,9 +1572,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImmediate_IsTrue()
+  public EClass getLocalAttributeRef()
   {
-    return (EAttribute)immediateEClass.getEStructuralFeatures().get(0);
+    return localAttributeRefEClass;
   }
 
   /**
@@ -1432,9 +1582,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEqualityTest()
+  public EAttribute getLocalAttributeRef_Attribute()
   {
-    return equalityTestEClass;
+    return (EAttribute)localAttributeRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1442,9 +1592,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEqualityTest_Op1()
+  public EClass getFunctionCall()
   {
-    return (EReference)equalityTestEClass.getEStructuralFeatures().get(0);
+    return functionCallEClass;
   }
 
   /**
@@ -1452,9 +1602,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEqualityTest_Operand()
+  public EReference getFunctionCall_Function()
   {
-    return (EAttribute)equalityTestEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1462,9 +1612,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEqualityTest_Op2()
+  public EReference getFunctionCall_Params()
   {
-    return (EReference)equalityTestEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1472,9 +1622,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFuncString()
+  public EClass getComponentAttributeRef()
   {
-    return funcStringEClass;
+    return componentAttributeRefEClass;
   }
 
   /**
@@ -1482,9 +1632,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFuncString_Imm()
+  public EAttribute getComponentAttributeRef_Attribute()
   {
-    return (EAttribute)funcStringEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)componentAttributeRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1492,9 +1642,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFuncMemoryRef()
+  public EClass getRecAttributeRef()
   {
-    return funcMemoryRefEClass;
+    return recAttributeRefEClass;
   }
 
   /**
@@ -1502,9 +1652,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFuncMemoryRef_Ref()
+  public EAttribute getRecAttributeRef_Attribute()
   {
-    return (EReference)funcMemoryRefEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)recAttributeRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1512,9 +1662,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFuncPredicate()
+  public EClass getComponentAttributeToSet()
   {
-    return funcPredicateEClass;
+    return componentAttributeToSetEClass;
   }
 
   /**
@@ -1522,119 +1672,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFuncPredicate_Or()
+  public EClass getLocalAttributeToSet()
   {
-    return (EReference)funcPredicateEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncAnd()
-  {
-    return funcAndEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFuncAnd_And()
-  {
-    return (EReference)funcAndEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncNot()
-  {
-    return funcNotEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFuncNot_Neg()
-  {
-    return (EAttribute)funcNotEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFuncNot_Term()
-  {
-    return (EReference)funcNotEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncImmediate()
-  {
-    return funcImmediateEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFuncImmediate_IsTrue()
-  {
-    return (EAttribute)funcImmediateEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFuncEqualityTest()
-  {
-    return funcEqualityTestEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFuncEqualityTest_Op1()
-  {
-    return (EReference)funcEqualityTestEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFuncEqualityTest_Operand()
-  {
-    return (EAttribute)funcEqualityTestEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFuncEqualityTest_Op2()
-  {
-    return (EReference)funcEqualityTestEClass.getEStructuralFeatures().get(2);
+    return localAttributeToSetEClass;
   }
 
   /**
@@ -1697,33 +1737,30 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     processDefinitionEClass = createEClass(PROCESS_DEFINITION);
     createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
-    createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__PARAMS);
     createEReference(processDefinitionEClass, PROCESS_DEFINITION__PROC);
+
+    expressionEClass = createEClass(EXPRESSION);
 
     environmentEClass = createEClass(ENVIRONMENT);
     createEAttribute(environmentEClass, ENVIRONMENT__ATTRS);
-    createEAttribute(environmentEClass, ENVIRONMENT__VALS);
+    createEReference(environmentEClass, ENVIRONMENT__VALS);
 
     componentDefinitionEClass = createEClass(COMPONENT_DEFINITION);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENV);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__PROC);
-    createEAttribute(componentDefinitionEClass, COMPONENT_DEFINITION__PARAMS);
     createEAttribute(componentDefinitionEClass, COMPONENT_DEFINITION__ADDRESS);
 
-    attributeEClass = createEClass(ATTRIBUTE);
-    createEAttribute(attributeEClass, ATTRIBUTE__COMP);
-    createEAttribute(attributeEClass, ATTRIBUTE__IDENT);
+    lRefEClass = createEClass(LREF);
+    createEAttribute(lRefEClass, LREF__NAME);
 
-    recAttributeEClass = createEClass(REC_ATTRIBUTE);
-    createEAttribute(recAttributeEClass, REC_ATTRIBUTE__IDENT);
-
-    valueEClass = createEClass(VALUE);
-
-    predEClass = createEClass(PRED);
+    attributeToSetEClass = createEClass(ATTRIBUTE_TO_SET);
+    createEAttribute(attributeToSetEClass, ATTRIBUTE_TO_SET__ATTRIBUTE);
 
     funcParamEClass = createEClass(FUNC_PARAM);
+    createEAttribute(funcParamEClass, FUNC_PARAM__TYPE);
 
     funcDefinitionEClass = createEClass(FUNC_DEFINITION);
+    createEAttribute(funcDefinitionEClass, FUNC_DEFINITION__TYPE);
     createEAttribute(funcDefinitionEClass, FUNC_DEFINITION__NAME);
     createEReference(funcDefinitionEClass, FUNC_DEFINITION__PARAMS);
     createEReference(funcDefinitionEClass, FUNC_DEFINITION__BLK);
@@ -1739,13 +1776,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcVarAssignEClass = createEClass(FUNC_VAR_ASSIGN);
     createEReference(funcVarAssignEClass, FUNC_VAR_ASSIGN__VAR);
     createEReference(funcVarAssignEClass, FUNC_VAR_ASSIGN__VAL);
-
-    funcVarParamEClass = createEClass(FUNC_VAR_PARAM);
-    createEAttribute(funcVarParamEClass, FUNC_VAR_PARAM__NAME);
-
-    funcValEClass = createEClass(FUNC_VAL);
-
-    funcPredEClass = createEClass(FUNC_PRED);
 
     funcIfElseEClass = createEClass(FUNC_IF_ELSE);
     createEReference(funcIfElseEClass, FUNC_IF_ELSE__TEST);
@@ -1776,61 +1806,75 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     callProcessEClass = createEClass(CALL_PROCESS);
     createEReference(callProcessEClass, CALL_PROCESS__PROCNAME);
-    createEReference(callProcessEClass, CALL_PROCESS__PARAMS);
 
     zeroProcessEClass = createEClass(ZERO_PROCESS);
 
-    attributeValueEClass = createEClass(ATTRIBUTE_VALUE);
-    createEReference(attributeValueEClass, ATTRIBUTE_VALUE__ATTR);
+    intConstantEClass = createEClass(INT_CONSTANT);
+    createEAttribute(intConstantEClass, INT_CONSTANT__VALUE);
 
-    immediateValueEClass = createEClass(IMMEDIATE_VALUE);
-    createEAttribute(immediateValueEClass, IMMEDIATE_VALUE__IMM);
+    stringConstantEClass = createEClass(STRING_CONSTANT);
+    createEAttribute(stringConstantEClass, STRING_CONSTANT__VALUE);
 
-    goStringFunctionEClass = createEClass(GO_STRING_FUNCTION);
-    createEReference(goStringFunctionEClass, GO_STRING_FUNCTION__FUNCNAME);
-    createEReference(goStringFunctionEClass, GO_STRING_FUNCTION__PARAMS);
+    boolConstantEClass = createEClass(BOOL_CONSTANT);
+    createEAttribute(boolConstantEClass, BOOL_CONSTANT__VALUE);
 
-    predicateEClass = createEClass(PREDICATE);
-    createEReference(predicateEClass, PREDICATE__OR);
+    orEClass = createEClass(OR);
+    createEReference(orEClass, OR__LEFT);
+    createEReference(orEClass, OR__RIGHT);
 
     andEClass = createEClass(AND);
-    createEReference(andEClass, AND__AND);
+    createEReference(andEClass, AND__LEFT);
+    createEReference(andEClass, AND__RIGHT);
+
+    equalityEClass = createEClass(EQUALITY);
+    createEReference(equalityEClass, EQUALITY__LEFT);
+    createEAttribute(equalityEClass, EQUALITY__OP);
+    createEReference(equalityEClass, EQUALITY__RIGHT);
+
+    comparisonEClass = createEClass(COMPARISON);
+    createEReference(comparisonEClass, COMPARISON__LEFT);
+    createEAttribute(comparisonEClass, COMPARISON__OP);
+    createEReference(comparisonEClass, COMPARISON__RIGHT);
+
+    plusEClass = createEClass(PLUS);
+    createEReference(plusEClass, PLUS__LEFT);
+    createEReference(plusEClass, PLUS__RIGHT);
+
+    minusEClass = createEClass(MINUS);
+    createEReference(minusEClass, MINUS__LEFT);
+    createEReference(minusEClass, MINUS__RIGHT);
+
+    concatenateEClass = createEClass(CONCATENATE);
+    createEReference(concatenateEClass, CONCATENATE__LEFT);
+    createEReference(concatenateEClass, CONCATENATE__RIGHT);
+
+    mulOrDivEClass = createEClass(MUL_OR_DIV);
+    createEReference(mulOrDivEClass, MUL_OR_DIV__LEFT);
+    createEAttribute(mulOrDivEClass, MUL_OR_DIV__OP);
+    createEReference(mulOrDivEClass, MUL_OR_DIV__RIGHT);
 
     notEClass = createEClass(NOT);
-    createEAttribute(notEClass, NOT__NEG);
-    createEReference(notEClass, NOT__TERM);
+    createEReference(notEClass, NOT__EXPRESSION);
 
-    immediateEClass = createEClass(IMMEDIATE);
-    createEAttribute(immediateEClass, IMMEDIATE__IS_TRUE);
+    localVarRefEClass = createEClass(LOCAL_VAR_REF);
+    createEReference(localVarRefEClass, LOCAL_VAR_REF__REF);
 
-    equalityTestEClass = createEClass(EQUALITY_TEST);
-    createEReference(equalityTestEClass, EQUALITY_TEST__OP1);
-    createEAttribute(equalityTestEClass, EQUALITY_TEST__OPERAND);
-    createEReference(equalityTestEClass, EQUALITY_TEST__OP2);
+    localAttributeRefEClass = createEClass(LOCAL_ATTRIBUTE_REF);
+    createEAttribute(localAttributeRefEClass, LOCAL_ATTRIBUTE_REF__ATTRIBUTE);
 
-    funcStringEClass = createEClass(FUNC_STRING);
-    createEAttribute(funcStringEClass, FUNC_STRING__IMM);
+    functionCallEClass = createEClass(FUNCTION_CALL);
+    createEReference(functionCallEClass, FUNCTION_CALL__FUNCTION);
+    createEReference(functionCallEClass, FUNCTION_CALL__PARAMS);
 
-    funcMemoryRefEClass = createEClass(FUNC_MEMORY_REF);
-    createEReference(funcMemoryRefEClass, FUNC_MEMORY_REF__REF);
+    componentAttributeRefEClass = createEClass(COMPONENT_ATTRIBUTE_REF);
+    createEAttribute(componentAttributeRefEClass, COMPONENT_ATTRIBUTE_REF__ATTRIBUTE);
 
-    funcPredicateEClass = createEClass(FUNC_PREDICATE);
-    createEReference(funcPredicateEClass, FUNC_PREDICATE__OR);
+    recAttributeRefEClass = createEClass(REC_ATTRIBUTE_REF);
+    createEAttribute(recAttributeRefEClass, REC_ATTRIBUTE_REF__ATTRIBUTE);
 
-    funcAndEClass = createEClass(FUNC_AND);
-    createEReference(funcAndEClass, FUNC_AND__AND);
+    componentAttributeToSetEClass = createEClass(COMPONENT_ATTRIBUTE_TO_SET);
 
-    funcNotEClass = createEClass(FUNC_NOT);
-    createEAttribute(funcNotEClass, FUNC_NOT__NEG);
-    createEReference(funcNotEClass, FUNC_NOT__TERM);
-
-    funcImmediateEClass = createEClass(FUNC_IMMEDIATE);
-    createEAttribute(funcImmediateEClass, FUNC_IMMEDIATE__IS_TRUE);
-
-    funcEqualityTestEClass = createEClass(FUNC_EQUALITY_TEST);
-    createEReference(funcEqualityTestEClass, FUNC_EQUALITY_TEST__OP1);
-    createEAttribute(funcEqualityTestEClass, FUNC_EQUALITY_TEST__OPERAND);
-    createEReference(funcEqualityTestEClass, FUNC_EQUALITY_TEST__OP2);
+    localAttributeToSetEClass = createEClass(LOCAL_ATTRIBUTE_TO_SET);
   }
 
   /**
@@ -1865,9 +1909,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     processEClass.getESuperTypes().add(this.getOutputProcessPart());
     processEClass.getESuperTypes().add(this.getInputProcessesPart());
     preconditionsEClass.getESuperTypes().add(this.getProcess());
-    funcParamEClass.getESuperTypes().add(this.getFuncVarParam());
+    funcParamEClass.getESuperTypes().add(this.getLRef());
+    funcVarDeclarationEClass.getESuperTypes().add(this.getLRef());
     funcVarDeclarationEClass.getESuperTypes().add(this.getFuncStatement());
-    funcVarDeclarationEClass.getESuperTypes().add(this.getFuncVarParam());
     funcVarAssignEClass.getESuperTypes().add(this.getFuncStatement());
     funcIfElseEClass.getESuperTypes().add(this.getFuncStatement());
     funcReturnEClass.getESuperTypes().add(this.getFuncStatement());
@@ -1879,21 +1923,25 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     ifBranchProcessEClass.getESuperTypes().add(this.getProcess());
     callProcessEClass.getESuperTypes().add(this.getProcess());
     zeroProcessEClass.getESuperTypes().add(this.getProcess());
-    attributeValueEClass.getESuperTypes().add(this.getValue());
-    immediateValueEClass.getESuperTypes().add(this.getValue());
-    goStringFunctionEClass.getESuperTypes().add(this.getValue());
-    predicateEClass.getESuperTypes().add(this.getPred());
-    andEClass.getESuperTypes().add(this.getPred());
-    notEClass.getESuperTypes().add(this.getPred());
-    immediateEClass.getESuperTypes().add(this.getPred());
-    equalityTestEClass.getESuperTypes().add(this.getPred());
-    funcStringEClass.getESuperTypes().add(this.getFuncVal());
-    funcMemoryRefEClass.getESuperTypes().add(this.getFuncVal());
-    funcPredicateEClass.getESuperTypes().add(this.getFuncPred());
-    funcAndEClass.getESuperTypes().add(this.getFuncPred());
-    funcNotEClass.getESuperTypes().add(this.getFuncPred());
-    funcImmediateEClass.getESuperTypes().add(this.getFuncPred());
-    funcEqualityTestEClass.getESuperTypes().add(this.getFuncPred());
+    intConstantEClass.getESuperTypes().add(this.getExpression());
+    stringConstantEClass.getESuperTypes().add(this.getExpression());
+    boolConstantEClass.getESuperTypes().add(this.getExpression());
+    orEClass.getESuperTypes().add(this.getExpression());
+    andEClass.getESuperTypes().add(this.getExpression());
+    equalityEClass.getESuperTypes().add(this.getExpression());
+    comparisonEClass.getESuperTypes().add(this.getExpression());
+    plusEClass.getESuperTypes().add(this.getExpression());
+    minusEClass.getESuperTypes().add(this.getExpression());
+    concatenateEClass.getESuperTypes().add(this.getExpression());
+    mulOrDivEClass.getESuperTypes().add(this.getExpression());
+    notEClass.getESuperTypes().add(this.getExpression());
+    localVarRefEClass.getESuperTypes().add(this.getExpression());
+    localAttributeRefEClass.getESuperTypes().add(this.getExpression());
+    functionCallEClass.getESuperTypes().add(this.getExpression());
+    componentAttributeRefEClass.getESuperTypes().add(this.getExpression());
+    recAttributeRefEClass.getESuperTypes().add(this.getExpression());
+    componentAttributeToSetEClass.getESuperTypes().add(this.getAttributeToSet());
+    localAttributeToSetEClass.getESuperTypes().add(this.getAttributeToSet());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1911,48 +1959,45 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEReference(getInputProcessesPart_Preconds(), this.getPreconditions(), null, "preconds", null, 0, -1, InputProcessesPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(outputProcessPartEClass, OutputProcessPart.class, "OutputProcessPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOutputProcessPart_MsgOutParts(), this.getValue(), null, "msgOutParts", null, 0, -1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOutputProcessPart_Send_pred(), this.getPred(), null, "send_pred", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOutputProcessPart_MsgOutParts(), this.getExpression(), null, "msgOutParts", null, 0, -1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOutputProcessPart_Send_pred(), this.getExpression(), null, "send_pred", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOutputProcessPart_Output(), ecorePackage.getEString(), "output", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOutputProcessPart_Msec(), ecorePackage.getEInt(), "msec", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOutputProcessPart_Next(), this.getProcess(), null, "next", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(updateEClass, Update.class, "Update", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getUpdate_Vars(), this.getAttribute(), null, "vars", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUpdate_Vals(), this.getValue(), null, "vals", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUpdate_Vars(), this.getAttributeToSet(), null, "vars", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUpdate_Vals(), this.getExpression(), null, "vals", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(awarenessEClass, Awareness.class, "Awareness", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAwareness_Pred(), this.getPred(), null, "pred", null, 0, 1, Awareness.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAwareness_Pred(), this.getExpression(), null, "pred", null, 0, 1, Awareness.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getProcessDefinition_Params(), ecorePackage.getEString(), "params", null, 0, -1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProcessDefinition_Proc(), this.getProcess(), null, "proc", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnvironment_Attrs(), ecorePackage.getEString(), "attrs", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEnvironment_Vals(), ecorePackage.getEString(), "vals", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironment_Vals(), this.getExpression(), null, "vals", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(componentDefinitionEClass, ComponentDefinition.class, "ComponentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Proc(), this.getProcessDefinition(), null, "proc", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComponentDefinition_Params(), ecorePackage.getEString(), "params", null, 0, -1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getComponentDefinition_Address(), ecorePackage.getEString(), "address", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttribute_Comp(), ecorePackage.getEBoolean(), "comp", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttribute_Ident(), ecorePackage.getEString(), "ident", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(lRefEClass, LRef.class, "LRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, LRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(recAttributeEClass, RecAttribute.class, "RecAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRecAttribute_Ident(), ecorePackage.getEString(), "ident", null, 0, 1, RecAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(predEClass, Pred.class, "Pred", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(attributeToSetEClass, AttributeToSet.class, "AttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAttributeToSet_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, AttributeToSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcParamEClass, FuncParam.class, "FuncParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFuncParam_Type(), ecorePackage.getEString(), "type", null, 0, 1, FuncParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcDefinitionEClass, FuncDefinition.class, "FuncDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFuncDefinition_Type(), ecorePackage.getEString(), "type", null, 0, 1, FuncDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFuncDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, FuncDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncDefinition_Params(), this.getFuncParam(), null, "params", null, 0, -1, FuncDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncDefinition_Blk(), this.getFuncBlock(), null, "blk", null, 0, 1, FuncDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1963,26 +2008,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(funcStatementEClass, FuncStatement.class, "FuncStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(funcVarDeclarationEClass, FuncVarDeclaration.class, "FuncVarDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncVarDeclaration_Val(), this.getFuncVal(), null, "val", null, 0, 1, FuncVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncVarDeclaration_Val(), this.getExpression(), null, "val", null, 0, 1, FuncVarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcVarAssignEClass, FuncVarAssign.class, "FuncVarAssign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncVarAssign_Var(), this.getFuncVarDeclaration(), null, "var", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFuncVarAssign_Val(), this.getFuncVal(), null, "val", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(funcVarParamEClass, FuncVarParam.class, "FuncVarParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFuncVarParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, FuncVarParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(funcValEClass, FuncVal.class, "FuncVal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(funcPredEClass, FuncPred.class, "FuncPred", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncVarAssign_Val(), this.getExpression(), null, "val", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcIfElseEClass, FuncIfElse.class, "FuncIfElse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncIfElse_Test(), this.getFuncPred(), null, "test", null, 0, -1, FuncIfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncIfElse_Test(), this.getExpression(), null, "test", null, 0, -1, FuncIfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncIfElse_Then(), this.getFuncBlock(), null, "then", null, 0, -1, FuncIfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncIfElse_ElseBranch(), this.getFuncBlock(), null, "elseBranch", null, 0, 1, FuncIfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcReturnEClass, FuncReturn.class, "FuncReturn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncReturn_Val(), this.getFuncVal(), null, "val", null, 0, 1, FuncReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncReturn_Val(), this.getExpression(), null, "val", null, 0, 1, FuncReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(interleavingProcessEClass, InterleavingProcess.class, "InterleavingProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInterleavingProcess_SubProcs(), this.getProcess(), null, "subProcs", null, 0, -1, InterleavingProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1993,8 +2031,8 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(inputProcessesEClass, InputProcesses.class, "InputProcesses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(inputProcessEClass, InputProcess.class, "InputProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInputProcess_Rec_pred(), this.getPred(), null, "rec_pred", null, 0, 1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInputProcess_MsgInParts(), this.getAttribute(), null, "msgInParts", null, 0, -1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInputProcess_Rec_pred(), this.getExpression(), null, "rec_pred", null, 0, 1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInputProcess_MsgInParts(), this.getAttributeToSet(), null, "msgInParts", null, 0, -1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ifProcessesEClass, IfProcesses.class, "IfProcesses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIfProcesses_Branches(), this.getProcess(), null, "branches", null, 0, -1, IfProcesses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2005,61 +2043,75 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(callProcessEClass, CallProcess.class, "CallProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCallProcess_Procname(), this.getProcessDefinition(), null, "procname", null, 0, 1, CallProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCallProcess_Params(), this.getValue(), null, "params", null, 0, -1, CallProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(zeroProcessEClass, ZeroProcess.class, "ZeroProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(attributeValueEClass, AttributeValue.class, "AttributeValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAttributeValue_Attr(), this.getAttribute(), null, "attr", null, 0, 1, AttributeValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(intConstantEClass, IntConstant.class, "IntConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntConstant_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(immediateValueEClass, ImmediateValue.class, "ImmediateValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImmediateValue_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, ImmediateValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(stringConstantEClass, StringConstant.class, "StringConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringConstant_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(goStringFunctionEClass, GoStringFunction.class, "GoStringFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGoStringFunction_Funcname(), this.getFuncDefinition(), null, "funcname", null, 0, 1, GoStringFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGoStringFunction_Params(), this.getValue(), null, "params", null, 0, -1, GoStringFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(boolConstantEClass, BoolConstant.class, "BoolConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBoolConstant_Value(), ecorePackage.getEString(), "value", null, 0, 1, BoolConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(predicateEClass, Predicate.class, "Predicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPredicate_Or(), this.getPred(), null, "or", null, 0, -1, Predicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOr_Left(), this.getExpression(), null, "left", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOr_Right(), this.getExpression(), null, "right", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAnd_And(), this.getPred(), null, "and", null, 0, -1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnd_Left(), this.getExpression(), null, "left", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnd_Right(), this.getExpression(), null, "right", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(equalityEClass, Equality.class, "Equality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEquality_Left(), this.getExpression(), null, "left", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEquality_Op(), ecorePackage.getEString(), "op", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEquality_Right(), this.getExpression(), null, "right", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(comparisonEClass, Comparison.class, "Comparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComparison_Left(), this.getExpression(), null, "left", null, 0, 1, Comparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComparison_Op(), ecorePackage.getEString(), "op", null, 0, 1, Comparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparison_Right(), this.getExpression(), null, "right", null, 0, 1, Comparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPlus_Left(), this.getExpression(), null, "left", null, 0, 1, Plus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPlus_Right(), this.getExpression(), null, "right", null, 0, 1, Plus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMinus_Left(), this.getExpression(), null, "left", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMinus_Right(), this.getExpression(), null, "right", null, 0, 1, Minus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(concatenateEClass, Concatenate.class, "Concatenate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConcatenate_Left(), this.getExpression(), null, "left", null, 0, 1, Concatenate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConcatenate_Right(), this.getExpression(), null, "right", null, 0, 1, Concatenate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mulOrDivEClass, MulOrDiv.class, "MulOrDiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMulOrDiv_Left(), this.getExpression(), null, "left", null, 0, 1, MulOrDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMulOrDiv_Op(), ecorePackage.getEString(), "op", null, 0, 1, MulOrDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMulOrDiv_Right(), this.getExpression(), null, "right", null, 0, 1, MulOrDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNot_Neg(), ecorePackage.getEBoolean(), "neg", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNot_Term(), this.getPred(), null, "term", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNot_Expression(), this.getExpression(), null, "expression", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(immediateEClass, Immediate.class, "Immediate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImmediate_IsTrue(), ecorePackage.getEBoolean(), "isTrue", null, 0, 1, Immediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(localVarRefEClass, LocalVarRef.class, "LocalVarRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLocalVarRef_Ref(), this.getLRef(), null, "ref", null, 0, 1, LocalVarRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(equalityTestEClass, EqualityTest.class, "EqualityTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEqualityTest_Op1(), ecorePackage.getEObject(), null, "op1", null, 0, 1, EqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEqualityTest_Operand(), ecorePackage.getEString(), "operand", null, 0, 1, EqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEqualityTest_Op2(), this.getValue(), null, "op2", null, 0, 1, EqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(localAttributeRefEClass, LocalAttributeRef.class, "LocalAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLocalAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, LocalAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(funcStringEClass, FuncString.class, "FuncString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFuncString_Imm(), ecorePackage.getEString(), "imm", null, 0, 1, FuncString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionCall_Function(), this.getFuncDefinition(), null, "function", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionCall_Params(), this.getExpression(), null, "params", null, 0, -1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(funcMemoryRefEClass, FuncMemoryRef.class, "FuncMemoryRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncMemoryRef_Ref(), this.getFuncVarParam(), null, "ref", null, 0, 1, FuncMemoryRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(componentAttributeRefEClass, ComponentAttributeRef.class, "ComponentAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getComponentAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, ComponentAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(funcPredicateEClass, FuncPredicate.class, "FuncPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncPredicate_Or(), this.getFuncPred(), null, "or", null, 0, -1, FuncPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(recAttributeRefEClass, RecAttributeRef.class, "RecAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRecAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, RecAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(funcAndEClass, FuncAnd.class, "FuncAnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncAnd_And(), this.getFuncPred(), null, "and", null, 0, -1, FuncAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(componentAttributeToSetEClass, ComponentAttributeToSet.class, "ComponentAttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(funcNotEClass, FuncNot.class, "FuncNot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFuncNot_Neg(), ecorePackage.getEBoolean(), "neg", null, 0, 1, FuncNot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFuncNot_Term(), this.getFuncPred(), null, "term", null, 0, 1, FuncNot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(funcImmediateEClass, FuncImmediate.class, "FuncImmediate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFuncImmediate_IsTrue(), ecorePackage.getEBoolean(), "isTrue", null, 0, 1, FuncImmediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(funcEqualityTestEClass, FuncEqualityTest.class, "FuncEqualityTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFuncEqualityTest_Op1(), this.getFuncVal(), null, "op1", null, 0, 1, FuncEqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFuncEqualityTest_Operand(), ecorePackage.getEString(), "operand", null, 0, 1, FuncEqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFuncEqualityTest_Op2(), this.getFuncVal(), null, "op2", null, 0, 1, FuncEqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(localAttributeToSetEClass, LocalAttributeToSet.class, "LocalAttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

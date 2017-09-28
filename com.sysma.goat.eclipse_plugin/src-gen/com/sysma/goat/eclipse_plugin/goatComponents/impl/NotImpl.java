@@ -3,9 +3,9 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,43 +23,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NotImpl#isNeg <em>Neg</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NotImpl#getTerm <em>Term</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NotImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class NotImpl extends PredImpl implements Not
+public class NotImpl extends ExpressionImpl implements Not
 {
   /**
-   * The default value of the '{@link #isNeg() <em>Neg</em>}' attribute.
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNeg()
+   * @see #getExpression()
    * @generated
    * @ordered
    */
-  protected static final boolean NEG_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isNeg() <em>Neg</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isNeg()
-   * @generated
-   * @ordered
-   */
-  protected boolean neg = NEG_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getTerm() <em>Term</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTerm()
-   * @generated
-   * @ordered
-   */
-  protected Pred term;
+  protected Expression expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -87,9 +66,9 @@ public class NotImpl extends PredImpl implements Not
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isNeg()
+  public Expression getExpression()
   {
-    return neg;
+    return expression;
   }
 
   /**
@@ -97,36 +76,13 @@ public class NotImpl extends PredImpl implements Not
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNeg(boolean newNeg)
+  public NotificationChain basicSetExpression(Expression newExpression, NotificationChain msgs)
   {
-    boolean oldNeg = neg;
-    neg = newNeg;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.NOT__NEG, oldNeg, neg));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Pred getTerm()
-  {
-    return term;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTerm(Pred newTerm, NotificationChain msgs)
-  {
-    Pred oldTerm = term;
-    term = newTerm;
+    Expression oldExpression = expression;
+    expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.NOT__TERM, oldTerm, newTerm);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.NOT__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -137,20 +93,20 @@ public class NotImpl extends PredImpl implements Not
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTerm(Pred newTerm)
+  public void setExpression(Expression newExpression)
   {
-    if (newTerm != term)
+    if (newExpression != expression)
     {
       NotificationChain msgs = null;
-      if (term != null)
-        msgs = ((InternalEObject)term).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.NOT__TERM, null, msgs);
-      if (newTerm != null)
-        msgs = ((InternalEObject)newTerm).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.NOT__TERM, null, msgs);
-      msgs = basicSetTerm(newTerm, msgs);
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.NOT__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.NOT__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.NOT__TERM, newTerm, newTerm));
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.NOT__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -163,8 +119,8 @@ public class NotImpl extends PredImpl implements Not
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.NOT__TERM:
-        return basicSetTerm(null, msgs);
+      case GoatComponentsPackage.NOT__EXPRESSION:
+        return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -179,10 +135,8 @@ public class NotImpl extends PredImpl implements Not
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.NOT__NEG:
-        return isNeg();
-      case GoatComponentsPackage.NOT__TERM:
-        return getTerm();
+      case GoatComponentsPackage.NOT__EXPRESSION:
+        return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -197,11 +151,8 @@ public class NotImpl extends PredImpl implements Not
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.NOT__NEG:
-        setNeg((Boolean)newValue);
-        return;
-      case GoatComponentsPackage.NOT__TERM:
-        setTerm((Pred)newValue);
+      case GoatComponentsPackage.NOT__EXPRESSION:
+        setExpression((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -217,11 +168,8 @@ public class NotImpl extends PredImpl implements Not
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.NOT__NEG:
-        setNeg(NEG_EDEFAULT);
-        return;
-      case GoatComponentsPackage.NOT__TERM:
-        setTerm((Pred)null);
+      case GoatComponentsPackage.NOT__EXPRESSION:
+        setExpression((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -237,29 +185,10 @@ public class NotImpl extends PredImpl implements Not
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.NOT__NEG:
-        return neg != NEG_EDEFAULT;
-      case GoatComponentsPackage.NOT__TERM:
-        return term != null;
+      case GoatComponentsPackage.NOT__EXPRESSION:
+        return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (neg: ");
-    result.append(neg);
-    result.append(')');
-    return result.toString();
   }
 
 } //NotImpl

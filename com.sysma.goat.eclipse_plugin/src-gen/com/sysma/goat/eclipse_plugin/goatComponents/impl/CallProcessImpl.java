@@ -6,22 +6,13 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +23,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.CallProcessImpl#getProcname <em>Procname</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.CallProcessImpl#getParams <em>Params</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,16 +38,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
    * @ordered
    */
   protected ProcessDefinition procname;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParams()
-   * @generated
-   * @ordered
-   */
-  protected EList<Value> params;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,36 +108,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Value> getParams()
-  {
-    if (params == null)
-    {
-      params = new EObjectContainmentEList<Value>(Value.class, this, GoatComponentsPackage.CALL_PROCESS__PARAMS);
-    }
-    return params;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case GoatComponentsPackage.CALL_PROCESS__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -166,8 +116,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
       case GoatComponentsPackage.CALL_PROCESS__PROCNAME:
         if (resolve) return getProcname();
         return basicGetProcname();
-      case GoatComponentsPackage.CALL_PROCESS__PARAMS:
-        return getParams();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -177,7 +125,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -185,10 +132,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
     {
       case GoatComponentsPackage.CALL_PROCESS__PROCNAME:
         setProcname((ProcessDefinition)newValue);
-        return;
-      case GoatComponentsPackage.CALL_PROCESS__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends Value>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -207,9 +150,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
       case GoatComponentsPackage.CALL_PROCESS__PROCNAME:
         setProcname((ProcessDefinition)null);
         return;
-      case GoatComponentsPackage.CALL_PROCESS__PARAMS:
-        getParams().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -226,8 +166,6 @@ public class CallProcessImpl extends ProcessImpl implements CallProcess
     {
       case GoatComponentsPackage.CALL_PROCESS__PROCNAME:
         return procname != null;
-      case GoatComponentsPackage.CALL_PROCESS__PARAMS:
-        return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
   }

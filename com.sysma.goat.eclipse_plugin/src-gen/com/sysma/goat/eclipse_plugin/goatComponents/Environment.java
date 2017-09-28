@@ -43,19 +43,19 @@ public interface Environment extends EObject
   EList<String> getAttrs();
 
   /**
-   * Returns the value of the '<em><b>Vals</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Vals</b></em>' containment reference list.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Vals</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Vals</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Vals</em>' attribute list.
+   * @return the value of the '<em>Vals</em>' containment reference list.
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getEnvironment_Vals()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getVals();
+  EList<Expression> getVals();
 
 } // Environment

@@ -3,9 +3,9 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPred;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 
 import java.util.Collection;
@@ -48,7 +48,7 @@ public class FuncIfElseImpl extends FuncStatementImpl implements FuncIfElse
    * @generated
    * @ordered
    */
-  protected EList<FuncPred> test;
+  protected EList<Expression> test;
 
   /**
    * The cached value of the '{@link #getThen() <em>Then</em>}' containment reference list.
@@ -96,11 +96,11 @@ public class FuncIfElseImpl extends FuncStatementImpl implements FuncIfElse
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<FuncPred> getTest()
+  public EList<Expression> getTest()
   {
     if (test == null)
     {
-      test = new EObjectContainmentEList<FuncPred>(FuncPred.class, this, GoatComponentsPackage.FUNC_IF_ELSE__TEST);
+      test = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.FUNC_IF_ELSE__TEST);
     }
     return test;
   }
@@ -220,7 +220,7 @@ public class FuncIfElseImpl extends FuncStatementImpl implements FuncIfElse
     {
       case GoatComponentsPackage.FUNC_IF_ELSE__TEST:
         getTest().clear();
-        getTest().addAll((Collection<? extends FuncPred>)newValue);
+        getTest().addAll((Collection<? extends Expression>)newValue);
         return;
       case GoatComponentsPackage.FUNC_IF_ELSE__THEN:
         getThen().clear();

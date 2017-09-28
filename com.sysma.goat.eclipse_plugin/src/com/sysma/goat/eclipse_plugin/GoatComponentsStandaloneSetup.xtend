@@ -3,7 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin
 
-
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */

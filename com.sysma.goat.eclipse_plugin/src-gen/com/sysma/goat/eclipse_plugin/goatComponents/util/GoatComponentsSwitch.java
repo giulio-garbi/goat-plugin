@@ -4,52 +4,52 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.util;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd;
+import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncNot;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPred;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncString;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction;
+import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.Immediate;
-import com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
+import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
+import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
-import com.sysma.goat.eclipse_plugin.goatComponents.Predicate;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 
 import org.eclipse.emf.ecore.EObject;
@@ -181,6 +181,13 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.ENVIRONMENT:
       {
         Environment environment = (Environment)theEObject;
@@ -195,31 +202,17 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.ATTRIBUTE:
+      case GoatComponentsPackage.LREF:
       {
-        Attribute attribute = (Attribute)theEObject;
-        T result = caseAttribute(attribute);
+        LRef lRef = (LRef)theEObject;
+        T result = caseLRef(lRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.REC_ATTRIBUTE:
+      case GoatComponentsPackage.ATTRIBUTE_TO_SET:
       {
-        RecAttribute recAttribute = (RecAttribute)theEObject;
-        T result = caseRecAttribute(recAttribute);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.VALUE:
-      {
-        Value value = (Value)theEObject;
-        T result = caseValue(value);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.PRED:
-      {
-        Pred pred = (Pred)theEObject;
-        T result = casePred(pred);
+        AttributeToSet attributeToSet = (AttributeToSet)theEObject;
+        T result = caseAttributeToSet(attributeToSet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -227,7 +220,7 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         FuncParam funcParam = (FuncParam)theEObject;
         T result = caseFuncParam(funcParam);
-        if (result == null) result = caseFuncVarParam(funcParam);
+        if (result == null) result = caseLRef(funcParam);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -256,8 +249,8 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         FuncVarDeclaration funcVarDeclaration = (FuncVarDeclaration)theEObject;
         T result = caseFuncVarDeclaration(funcVarDeclaration);
+        if (result == null) result = caseLRef(funcVarDeclaration);
         if (result == null) result = caseFuncStatement(funcVarDeclaration);
-        if (result == null) result = caseFuncVarParam(funcVarDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -266,27 +259,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         FuncVarAssign funcVarAssign = (FuncVarAssign)theEObject;
         T result = caseFuncVarAssign(funcVarAssign);
         if (result == null) result = caseFuncStatement(funcVarAssign);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.FUNC_VAR_PARAM:
-      {
-        FuncVarParam funcVarParam = (FuncVarParam)theEObject;
-        T result = caseFuncVarParam(funcVarParam);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.FUNC_VAL:
-      {
-        FuncVal funcVal = (FuncVal)theEObject;
-        T result = caseFuncVal(funcVal);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.FUNC_PRED:
-      {
-        FuncPred funcPred = (FuncPred)theEObject;
-        T result = caseFuncPred(funcPred);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -386,35 +358,35 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.ATTRIBUTE_VALUE:
+      case GoatComponentsPackage.INT_CONSTANT:
       {
-        AttributeValue attributeValue = (AttributeValue)theEObject;
-        T result = caseAttributeValue(attributeValue);
-        if (result == null) result = caseValue(attributeValue);
+        IntConstant intConstant = (IntConstant)theEObject;
+        T result = caseIntConstant(intConstant);
+        if (result == null) result = caseExpression(intConstant);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.IMMEDIATE_VALUE:
+      case GoatComponentsPackage.STRING_CONSTANT:
       {
-        ImmediateValue immediateValue = (ImmediateValue)theEObject;
-        T result = caseImmediateValue(immediateValue);
-        if (result == null) result = caseValue(immediateValue);
+        StringConstant stringConstant = (StringConstant)theEObject;
+        T result = caseStringConstant(stringConstant);
+        if (result == null) result = caseExpression(stringConstant);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.GO_STRING_FUNCTION:
+      case GoatComponentsPackage.BOOL_CONSTANT:
       {
-        GoStringFunction goStringFunction = (GoStringFunction)theEObject;
-        T result = caseGoStringFunction(goStringFunction);
-        if (result == null) result = caseValue(goStringFunction);
+        BoolConstant boolConstant = (BoolConstant)theEObject;
+        T result = caseBoolConstant(boolConstant);
+        if (result == null) result = caseExpression(boolConstant);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.PREDICATE:
+      case GoatComponentsPackage.OR:
       {
-        Predicate predicate = (Predicate)theEObject;
-        T result = casePredicate(predicate);
-        if (result == null) result = casePred(predicate);
+        Or or = (Or)theEObject;
+        T result = caseOr(or);
+        if (result == null) result = caseExpression(or);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -422,7 +394,55 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         And and = (And)theEObject;
         T result = caseAnd(and);
-        if (result == null) result = casePred(and);
+        if (result == null) result = caseExpression(and);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.EQUALITY:
+      {
+        Equality equality = (Equality)theEObject;
+        T result = caseEquality(equality);
+        if (result == null) result = caseExpression(equality);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.COMPARISON:
+      {
+        Comparison comparison = (Comparison)theEObject;
+        T result = caseComparison(comparison);
+        if (result == null) result = caseExpression(comparison);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PLUS:
+      {
+        Plus plus = (Plus)theEObject;
+        T result = casePlus(plus);
+        if (result == null) result = caseExpression(plus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.MINUS:
+      {
+        Minus minus = (Minus)theEObject;
+        T result = caseMinus(minus);
+        if (result == null) result = caseExpression(minus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.CONCATENATE:
+      {
+        Concatenate concatenate = (Concatenate)theEObject;
+        T result = caseConcatenate(concatenate);
+        if (result == null) result = caseExpression(concatenate);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.MUL_OR_DIV:
+      {
+        MulOrDiv mulOrDiv = (MulOrDiv)theEObject;
+        T result = caseMulOrDiv(mulOrDiv);
+        if (result == null) result = caseExpression(mulOrDiv);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -430,79 +450,63 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         Not not = (Not)theEObject;
         T result = caseNot(not);
-        if (result == null) result = casePred(not);
+        if (result == null) result = caseExpression(not);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.IMMEDIATE:
+      case GoatComponentsPackage.LOCAL_VAR_REF:
       {
-        Immediate immediate = (Immediate)theEObject;
-        T result = caseImmediate(immediate);
-        if (result == null) result = casePred(immediate);
+        LocalVarRef localVarRef = (LocalVarRef)theEObject;
+        T result = caseLocalVarRef(localVarRef);
+        if (result == null) result = caseExpression(localVarRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.EQUALITY_TEST:
+      case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF:
       {
-        EqualityTest equalityTest = (EqualityTest)theEObject;
-        T result = caseEqualityTest(equalityTest);
-        if (result == null) result = casePred(equalityTest);
+        LocalAttributeRef localAttributeRef = (LocalAttributeRef)theEObject;
+        T result = caseLocalAttributeRef(localAttributeRef);
+        if (result == null) result = caseExpression(localAttributeRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.FUNC_STRING:
+      case GoatComponentsPackage.FUNCTION_CALL:
       {
-        FuncString funcString = (FuncString)theEObject;
-        T result = caseFuncString(funcString);
-        if (result == null) result = caseFuncVal(funcString);
+        FunctionCall functionCall = (FunctionCall)theEObject;
+        T result = caseFunctionCall(functionCall);
+        if (result == null) result = caseExpression(functionCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.FUNC_MEMORY_REF:
+      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_REF:
       {
-        FuncMemoryRef funcMemoryRef = (FuncMemoryRef)theEObject;
-        T result = caseFuncMemoryRef(funcMemoryRef);
-        if (result == null) result = caseFuncVal(funcMemoryRef);
+        ComponentAttributeRef componentAttributeRef = (ComponentAttributeRef)theEObject;
+        T result = caseComponentAttributeRef(componentAttributeRef);
+        if (result == null) result = caseExpression(componentAttributeRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.FUNC_PREDICATE:
+      case GoatComponentsPackage.REC_ATTRIBUTE_REF:
       {
-        FuncPredicate funcPredicate = (FuncPredicate)theEObject;
-        T result = caseFuncPredicate(funcPredicate);
-        if (result == null) result = caseFuncPred(funcPredicate);
+        RecAttributeRef recAttributeRef = (RecAttributeRef)theEObject;
+        T result = caseRecAttributeRef(recAttributeRef);
+        if (result == null) result = caseExpression(recAttributeRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.FUNC_AND:
+      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_TO_SET:
       {
-        FuncAnd funcAnd = (FuncAnd)theEObject;
-        T result = caseFuncAnd(funcAnd);
-        if (result == null) result = caseFuncPred(funcAnd);
+        ComponentAttributeToSet componentAttributeToSet = (ComponentAttributeToSet)theEObject;
+        T result = caseComponentAttributeToSet(componentAttributeToSet);
+        if (result == null) result = caseAttributeToSet(componentAttributeToSet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.FUNC_NOT:
+      case GoatComponentsPackage.LOCAL_ATTRIBUTE_TO_SET:
       {
-        FuncNot funcNot = (FuncNot)theEObject;
-        T result = caseFuncNot(funcNot);
-        if (result == null) result = caseFuncPred(funcNot);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.FUNC_IMMEDIATE:
-      {
-        FuncImmediate funcImmediate = (FuncImmediate)theEObject;
-        T result = caseFuncImmediate(funcImmediate);
-        if (result == null) result = caseFuncPred(funcImmediate);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.FUNC_EQUALITY_TEST:
-      {
-        FuncEqualityTest funcEqualityTest = (FuncEqualityTest)theEObject;
-        T result = caseFuncEqualityTest(funcEqualityTest);
-        if (result == null) result = caseFuncPred(funcEqualityTest);
+        LocalAttributeToSet localAttributeToSet = (LocalAttributeToSet)theEObject;
+        T result = caseLocalAttributeToSet(localAttributeToSet);
+        if (result == null) result = caseAttributeToSet(localAttributeToSet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -639,6 +643,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Environment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -671,65 +691,33 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>LRef</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+   * @return the result of interpreting the object as an instance of '<em>LRef</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAttribute(Attribute object)
+  public T caseLRef(LRef object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rec Attribute</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rec Attribute</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Attribute To Set</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRecAttribute(RecAttribute object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValue(Value object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Pred</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Pred</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePred(Pred object)
+  public T caseAttributeToSet(AttributeToSet object)
   {
     return null;
   }
@@ -826,54 +814,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFuncVarAssign(FuncVarAssign object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Var Param</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Var Param</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncVarParam(FuncVarParam object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Val</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Val</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncVal(FuncVal object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Pred</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Pred</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncPred(FuncPred object)
   {
     return null;
   }
@@ -1039,65 +979,65 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Attribute Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Int Constant</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attribute Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Int Constant</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAttributeValue(AttributeValue object)
+  public T caseIntConstant(IntConstant object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Immediate Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>String Constant</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Immediate Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>String Constant</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImmediateValue(ImmediateValue object)
+  public T caseStringConstant(StringConstant object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Go String Function</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Bool Constant</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Go String Function</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Bool Constant</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseGoStringFunction(GoStringFunction object)
+  public T caseBoolConstant(BoolConstant object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Predicate</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Predicate</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Or</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePredicate(Predicate object)
+  public T caseOr(Or object)
   {
     return null;
   }
@@ -1119,6 +1059,102 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Equality</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Equality</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEquality(Equality object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparison</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparison(Comparison object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlus(Plus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMinus(Minus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Concatenate</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Concatenate</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConcatenate(Concatenate object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Mul Or Div</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Mul Or Div</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMulOrDiv(MulOrDiv object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Not</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1135,145 +1171,113 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Immediate</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Local Var Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Immediate</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Local Var Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImmediate(Immediate object)
+  public T caseLocalVarRef(LocalVarRef object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Equality Test</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Local Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Equality Test</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Local Attribute Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEqualityTest(EqualityTest object)
+  public T caseLocalAttributeRef(LocalAttributeRef object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func String</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Function Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func String</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Function Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFuncString(FuncString object)
+  public T caseFunctionCall(FunctionCall object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Memory Ref</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Component Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Memory Ref</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Component Attribute Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFuncMemoryRef(FuncMemoryRef object)
+  public T caseComponentAttributeRef(ComponentAttributeRef object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Predicate</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Rec Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Predicate</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Rec Attribute Ref</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFuncPredicate(FuncPredicate object)
+  public T caseRecAttributeRef(RecAttributeRef object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func And</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Component Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func And</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Component Attribute To Set</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFuncAnd(FuncAnd object)
+  public T caseComponentAttributeToSet(ComponentAttributeToSet object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Not</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Local Attribute To Set</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Not</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Local Attribute To Set</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFuncNot(FuncNot object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Immediate</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Immediate</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncImmediate(FuncImmediate object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Func Equality Test</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Func Equality Test</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFuncEqualityTest(FuncEqualityTest object)
+  public T caseLocalAttributeToSet(LocalAttributeToSet object)
   {
     return null;
   }

@@ -27,7 +27,7 @@ public interface FuncIfElse extends FuncStatement
 {
   /**
    * Returns the value of the '<em><b>Test</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPred}.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Test</em>' containment reference list isn't clear,
@@ -39,7 +39,7 @@ public interface FuncIfElse extends FuncStatement
    * @model containment="true"
    * @generated
    */
-  EList<FuncPred> getTest();
+  EList<Expression> getTest();
 
   /**
    * Returns the value of the '<em><b>Then</b></em>' containment reference list.

@@ -3,7 +3,7 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
@@ -50,7 +50,7 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * @generated
    * @ordered
    */
-  protected FuncVal val;
+  protected Expression val;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * <!-- end-user-doc -->
    * @generated
    */
-  public FuncVal getVal()
+  public Expression getVal()
   {
     return val;
   }
@@ -131,9 +131,9 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(FuncVal newVal, NotificationChain msgs)
+  public NotificationChain basicSetVal(Expression newVal, NotificationChain msgs)
   {
-    FuncVal oldVal = val;
+    Expression oldVal = val;
     val = newVal;
     if (eNotificationRequired())
     {
@@ -148,7 +148,7 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVal(FuncVal newVal)
+  public void setVal(Expression newVal)
   {
     if (newVal != val)
     {
@@ -213,7 +213,7 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
         setVar((FuncVarDeclaration)newValue);
         return;
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
-        setVal((FuncVal)newValue);
+        setVal((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,7 +233,7 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
         setVar((FuncVarDeclaration)null);
         return;
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
-        setVal((FuncVal)null);
+        setVal((Expression)null);
         return;
     }
     super.eUnset(featureID);

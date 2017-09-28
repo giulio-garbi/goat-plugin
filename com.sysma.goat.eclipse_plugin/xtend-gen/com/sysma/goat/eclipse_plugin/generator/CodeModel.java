@@ -63,6 +63,14 @@ public class CodeModel {
   public final static String systemFunction = "model";
   
   public CharSequence getCode() {
+    return this.getCode((-1));
+  }
+  
+  public CharSequence getTestCode(final int timeout) {
+    return this.getCode(timeout);
+  }
+  
+  public CharSequence getCode(final int timeout) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     _builder.append(this.packageName);
@@ -117,14 +125,14 @@ public class CodeModel {
     _builder.append("\t");
     _builder.append("var ");
     _builder.append(CodeModel.systemFunction, "\t");
-    _builder.append(" func(string, map[string]string, *goat.Process)");
+    _builder.append(" func(string, map[string]interface{}, *goat.Process)");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append(CodeModel.systemFunction, "\t");
     _builder.append(" = func(procname string, ");
     String _localVariablesMap = CodeModel.getLocalVariablesMap();
     _builder.append(_localVariablesMap, "\t");
-    _builder.append(" map[string]string, ");
+    _builder.append(" map[string]interface{}, ");
     String _goatProcessReference = CodeModel.getGoatProcessReference();
     _builder.append(_goatProcessReference, "\t");
     _builder.append(" *goat.Process){");
@@ -133,7 +141,7 @@ public class CodeModel {
     _builder.append("var ");
     String _paramPassingMap = CodeModel.getParamPassingMap();
     _builder.append(_paramPassingMap, "\t\t");
-    _builder.append(" map[string]string");
+    _builder.append(" map[string]interface{}");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("_ = ");
@@ -192,6 +200,15 @@ public class CodeModel {
     _builder.append("\t");
     _builder.append("term := make(chan struct{})");
     _builder.newLine();
+    {
+      if ((timeout >= 0)) {
+        _builder.append("\t");
+        _builder.append("goat.RunCentralServer(17654, term, ");
+        _builder.append(timeout, "\t");
+        _builder.append(")");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     {
       for(final CodeComponentDefinition cdef : this.components) {
         _builder.append("\t");

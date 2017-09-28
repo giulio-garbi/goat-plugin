@@ -3,8 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getProc <em>Proc</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress <em>Address</em>}</li>
  * </ul>
  *
@@ -79,22 +76,6 @@ public interface ComponentDefinition extends EObject
    * @generated
    */
   void setProc(ProcessDefinition value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' attribute list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getComponentDefinition_Params()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getParams();
 
   /**
    * Returns the value of the '<em><b>Address</b></em>' attribute.

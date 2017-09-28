@@ -1,5 +1,6 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
+import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -26,7 +27,7 @@ public class CodeComponentDefinition extends CodeTree {
     _builder.append(" := goat.NewComponentWithAttributes(goat.NewSingleServerAgent(\"");
     String _address = this.cdef.getAddress();
     _builder.append(_address);
-    _builder.append("\"),  map[string]string{");
+    _builder.append("\"),  map[string]interface{}{");
     _builder.newLineIfNotEmpty();
     {
       int _length = ((Object[])Conversions.unwrapArray(this.cdef.getEnv().getAttrs(), Object.class)).length;
@@ -36,10 +37,10 @@ public class CodeComponentDefinition extends CodeTree {
         _builder.append("\"");
         String _get = this.cdef.getEnv().getAttrs().get((i).intValue());
         _builder.append(_get, "\t");
-        _builder.append("\" : \"");
-        String _get_1 = this.cdef.getEnv().getVals().get((i).intValue());
-        _builder.append(_get_1, "\t");
-        _builder.append("\",");
+        _builder.append("\" : ");
+        CharSequence _expressionWithoutAttributes = CodeExpression.getExpressionWithoutAttributes(this.cdef.getEnv().getVals().get((i).intValue()));
+        _builder.append(_expressionWithoutAttributes, "\t");
+        _builder.append(",");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -60,26 +61,8 @@ public class CodeComponentDefinition extends CodeTree {
     _builder.append("(\"");
     String _name = this.cdef.getProc().getName();
     _builder.append(_name, "\t");
-    _builder.append("\", map[string]string{");
+    _builder.append("\", map[string]interface{}{}, p)");
     _builder.newLineIfNotEmpty();
-    {
-      int _length = ((Object[])Conversions.unwrapArray(this.cdef.getParams(), Object.class)).length;
-      ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _length, true);
-      for(final Integer i : _doubleDotLessThan) {
-        _builder.append("\t\t");
-        _builder.append("\"");
-        String _get = this.cdef.getProc().getParams().get((i).intValue());
-        _builder.append(_get, "\t\t");
-        _builder.append("\" : \"");
-        String _get_1 = this.cdef.getParams().get((i).intValue());
-        _builder.append(_get_1, "\t\t");
-        _builder.append("\",");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t");
-    _builder.append("}, p)");
-    _builder.newLine();
     _builder.append("})");
     return _builder;
   }

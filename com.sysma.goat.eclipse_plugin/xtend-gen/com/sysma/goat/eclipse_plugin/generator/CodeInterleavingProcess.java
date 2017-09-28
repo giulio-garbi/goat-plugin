@@ -3,14 +3,10 @@ package com.sysma.goat.eclipse_plugin.generator;
 import com.sysma.goat.eclipse_plugin.generator.CodeCallProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
-import com.sysma.goat.eclipse_plugin.generator.CodeValue;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.Value;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -37,7 +33,7 @@ public class CodeInterleavingProcess extends CodeTree {
         _builder.append(".Spawn(func(pr *goat.Process){");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        _builder.append("lvars := map[string]string{}");
+        _builder.append("lvars := map[string]interface{}{}");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("for k, v := range ");
@@ -51,22 +47,6 @@ public class CodeInterleavingProcess extends CodeTree {
         _builder.append("\t");
         _builder.append("}");
         _builder.newLine();
-        {
-          int _length = ((Object[])Conversions.unwrapArray(proc.getProcname().getParams(), Object.class)).length;
-          ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _length, true);
-          for(final Integer i : _doubleDotLessThan) {
-            _builder.append("\t");
-            _builder.append("lvars[\"");
-            String _get = proc.getProcname().getParams().get((i).intValue());
-            _builder.append(_get, "\t");
-            _builder.append("\"] = ");
-            Value _get_1 = proc.getParams().get((i).intValue());
-            String _localVariablesMap_1 = CodeModel.getLocalVariablesMap();
-            CharSequence _code = new CodeValue(_get_1, "@ERR@", _localVariablesMap_1).getCode();
-            _builder.append(_code, "\t");
-            _builder.newLineIfNotEmpty();
-          }
-        }
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
@@ -82,8 +62,8 @@ public class CodeInterleavingProcess extends CodeTree {
     }
     _builder.newLine();
     CallProcess _head = IterableExtensions.<CallProcess>head(this.subprocesses);
-    CharSequence _code_1 = new CodeCallProcess(_head).getCode();
-    _builder.append(_code_1);
+    CharSequence _code = new CodeCallProcess(_head).getCode();
+    _builder.append(_code);
     _builder.newLineIfNotEmpty();
     return _builder;
   }

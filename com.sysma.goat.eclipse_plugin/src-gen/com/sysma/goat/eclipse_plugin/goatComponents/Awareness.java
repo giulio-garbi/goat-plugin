@@ -32,12 +32,12 @@ public interface Awareness extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Pred</em>' containment reference.
-   * @see #setPred(Pred)
+   * @see #setPred(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getAwareness_Pred()
    * @model containment="true"
    * @generated
    */
-  Pred getPred();
+  Expression getPred();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.Awareness#getPred <em>Pred</em>}' containment reference.
@@ -47,6 +47,6 @@ public interface Awareness extends EObject
    * @see #getPred()
    * @generated
    */
-  void setPred(Pred value);
+  void setPred(Expression value);
 
 } // Awareness

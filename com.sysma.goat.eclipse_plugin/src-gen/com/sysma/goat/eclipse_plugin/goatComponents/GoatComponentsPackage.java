@@ -462,22 +462,13 @@ public interface GoatComponentsPackage extends EPackage
   int PROCESS_DEFINITION__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROCESS_DEFINITION__PARAMS = 1;
-
-  /**
    * The feature id for the '<em><b>Proc</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESS_DEFINITION__PROC = 2;
+  int PROCESS_DEFINITION__PROC = 1;
 
   /**
    * The number of structural features of the '<em>Process Definition</em>' class.
@@ -486,7 +477,26 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESS_DEFINITION_FEATURE_COUNT = 3;
+  int PROCESS_DEFINITION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ExpressionImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 8;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentImpl <em>Environment</em>}' class.
@@ -496,7 +506,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEnvironment()
    * @generated
    */
-  int ENVIRONMENT = 8;
+  int ENVIRONMENT = 9;
 
   /**
    * The feature id for the '<em><b>Attrs</b></em>' attribute list.
@@ -508,7 +518,7 @@ public interface GoatComponentsPackage extends EPackage
   int ENVIRONMENT__ATTRS = 0;
 
   /**
-   * The feature id for the '<em><b>Vals</b></em>' attribute list.
+   * The feature id for the '<em><b>Vals</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -533,7 +543,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentDefinition()
    * @generated
    */
-  int COMPONENT_DEFINITION = 9;
+  int COMPONENT_DEFINITION = 10;
 
   /**
    * The feature id for the '<em><b>Env</b></em>' containment reference.
@@ -554,22 +564,13 @@ public interface GoatComponentsPackage extends EPackage
   int COMPONENT_DEFINITION__PROC = 1;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPONENT_DEFINITION__PARAMS = 2;
-
-  /**
    * The feature id for the '<em><b>Address</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION__ADDRESS = 3;
+  int COMPONENT_DEFINITION__ADDRESS = 2;
 
   /**
    * The number of structural features of the '<em>Component Definition</em>' class.
@@ -578,120 +579,17 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION_FEATURE_COUNT = 4;
+  int COMPONENT_DEFINITION_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeImpl <em>Attribute</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttribute()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLRef()
    * @generated
    */
-  int ATTRIBUTE = 10;
-
-  /**
-   * The feature id for the '<em><b>Comp</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE__COMP = 0;
-
-  /**
-   * The feature id for the '<em><b>Ident</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE__IDENT = 1;
-
-  /**
-   * The number of structural features of the '<em>Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeImpl <em>Rec Attribute</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttribute()
-   * @generated
-   */
-  int REC_ATTRIBUTE = 11;
-
-  /**
-   * The feature id for the '<em><b>Ident</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REC_ATTRIBUTE__IDENT = 0;
-
-  /**
-   * The number of structural features of the '<em>Rec Attribute</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REC_ATTRIBUTE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ValueImpl <em>Value</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ValueImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getValue()
-   * @generated
-   */
-  int VALUE = 12;
-
-  /**
-   * The number of structural features of the '<em>Value</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PredImpl <em>Pred</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PredImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPred()
-   * @generated
-   */
-  int PRED = 13;
-
-  /**
-   * The number of structural features of the '<em>Pred</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRED_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarParamImpl <em>Func Var Param</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarParamImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarParam()
-   * @generated
-   */
-  int FUNC_VAR_PARAM = 20;
+  int LREF = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -700,16 +598,44 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_VAR_PARAM__NAME = 0;
+  int LREF__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Func Var Param</em>' class.
+   * The number of structural features of the '<em>LRef</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_VAR_PARAM_FEATURE_COUNT = 1;
+  int LREF_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeToSetImpl <em>Attribute To Set</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeToSetImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttributeToSet()
+   * @generated
+   */
+  int ATTRIBUTE_TO_SET = 12;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_TO_SET__ATTRIBUTE = 0;
+
+  /**
+   * The number of structural features of the '<em>Attribute To Set</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE_TO_SET_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncParamImpl <em>Func Param</em>}' class.
@@ -719,7 +645,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncParam()
    * @generated
    */
-  int FUNC_PARAM = 14;
+  int FUNC_PARAM = 13;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -728,7 +654,16 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_PARAM__NAME = FUNC_VAR_PARAM__NAME;
+  int FUNC_PARAM__NAME = LREF__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_PARAM__TYPE = LREF_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Func Param</em>' class.
@@ -737,7 +672,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_PARAM_FEATURE_COUNT = FUNC_VAR_PARAM_FEATURE_COUNT + 0;
+  int FUNC_PARAM_FEATURE_COUNT = LREF_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl <em>Func Definition</em>}' class.
@@ -747,7 +682,16 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncDefinition()
    * @generated
    */
-  int FUNC_DEFINITION = 15;
+  int FUNC_DEFINITION = 14;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_DEFINITION__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -756,7 +700,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_DEFINITION__NAME = 0;
+  int FUNC_DEFINITION__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -765,7 +709,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_DEFINITION__PARAMS = 1;
+  int FUNC_DEFINITION__PARAMS = 2;
 
   /**
    * The feature id for the '<em><b>Blk</b></em>' containment reference.
@@ -774,7 +718,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_DEFINITION__BLK = 2;
+  int FUNC_DEFINITION__BLK = 3;
 
   /**
    * The number of structural features of the '<em>Func Definition</em>' class.
@@ -783,7 +727,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_DEFINITION_FEATURE_COUNT = 3;
+  int FUNC_DEFINITION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncBlockImpl <em>Func Block</em>}' class.
@@ -793,7 +737,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncBlock()
    * @generated
    */
-  int FUNC_BLOCK = 16;
+  int FUNC_BLOCK = 15;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -821,7 +765,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncStatement()
    * @generated
    */
-  int FUNC_STATEMENT = 17;
+  int FUNC_STATEMENT = 16;
 
   /**
    * The number of structural features of the '<em>Func Statement</em>' class.
@@ -840,7 +784,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarDeclaration()
    * @generated
    */
-  int FUNC_VAR_DECLARATION = 18;
+  int FUNC_VAR_DECLARATION = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -849,7 +793,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_VAR_DECLARATION__NAME = FUNC_STATEMENT_FEATURE_COUNT + 0;
+  int FUNC_VAR_DECLARATION__NAME = LREF__NAME;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -858,7 +802,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_VAR_DECLARATION__VAL = FUNC_STATEMENT_FEATURE_COUNT + 1;
+  int FUNC_VAR_DECLARATION__VAL = LREF_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Func Var Declaration</em>' class.
@@ -867,7 +811,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_VAR_DECLARATION_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 2;
+  int FUNC_VAR_DECLARATION_FEATURE_COUNT = LREF_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAssignImpl <em>Func Var Assign</em>}' class.
@@ -877,7 +821,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarAssign()
    * @generated
    */
-  int FUNC_VAR_ASSIGN = 19;
+  int FUNC_VAR_ASSIGN = 18;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' reference.
@@ -907,44 +851,6 @@ public interface GoatComponentsPackage extends EPackage
   int FUNC_VAR_ASSIGN_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncValImpl <em>Func Val</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncValImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVal()
-   * @generated
-   */
-  int FUNC_VAL = 21;
-
-  /**
-   * The number of structural features of the '<em>Func Val</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_VAL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredImpl <em>Func Pred</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncPred()
-   * @generated
-   */
-  int FUNC_PRED = 22;
-
-  /**
-   * The number of structural features of the '<em>Func Pred</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_PRED_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncIfElseImpl <em>Func If Else</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -952,7 +858,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncIfElse()
    * @generated
    */
-  int FUNC_IF_ELSE = 23;
+  int FUNC_IF_ELSE = 19;
 
   /**
    * The feature id for the '<em><b>Test</b></em>' containment reference list.
@@ -998,7 +904,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncReturn()
    * @generated
    */
-  int FUNC_RETURN = 24;
+  int FUNC_RETURN = 20;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1026,7 +932,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getInterleavingProcess()
    * @generated
    */
-  int INTERLEAVING_PROCESS = 25;
+  int INTERLEAVING_PROCESS = 21;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1117,7 +1023,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOutputProcess()
    * @generated
    */
-  int OUTPUT_PROCESS = 26;
+  int OUTPUT_PROCESS = 22;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1208,7 +1114,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getInputProcesses()
    * @generated
    */
-  int INPUT_PROCESSES = 27;
+  int INPUT_PROCESSES = 23;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1290,7 +1196,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getInputProcess()
    * @generated
    */
-  int INPUT_PROCESS = 28;
+  int INPUT_PROCESS = 24;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1390,7 +1296,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIfProcesses()
    * @generated
    */
-  int IF_PROCESSES = 29;
+  int IF_PROCESSES = 25;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1481,7 +1387,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIfBranchProcess()
    * @generated
    */
-  int IF_BRANCH_PROCESS = 30;
+  int IF_BRANCH_PROCESS = 26;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1581,7 +1487,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getCallProcess()
    * @generated
    */
-  int CALL_PROCESS = 31;
+  int CALL_PROCESS = 27;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1656,22 +1562,13 @@ public interface GoatComponentsPackage extends EPackage
   int CALL_PROCESS__PROCNAME = PROCESS_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CALL_PROCESS__PARAMS = PROCESS_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Call Process</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CALL_PROCESS_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 2;
+  int CALL_PROCESS_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ZeroProcessImpl <em>Zero Process</em>}' class.
@@ -1681,7 +1578,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getZeroProcess()
    * @generated
    */
-  int ZERO_PROCESS = 32;
+  int ZERO_PROCESS = 28;
 
   /**
    * The feature id for the '<em><b>Msg Out Parts</b></em>' containment reference list.
@@ -1756,125 +1653,125 @@ public interface GoatComponentsPackage extends EPackage
   int ZERO_PROCESS_FEATURE_COUNT = PROCESS_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeValueImpl <em>Attribute Value</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.IntConstantImpl <em>Int Constant</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeValueImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttributeValue()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.IntConstantImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIntConstant()
    * @generated
    */
-  int ATTRIBUTE_VALUE = 33;
+  int INT_CONSTANT = 29;
 
   /**
-   * The feature id for the '<em><b>Attr</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_VALUE__ATTR = VALUE_FEATURE_COUNT + 0;
+  int INT_CONSTANT__VALUE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Attribute Value</em>' class.
+   * The number of structural features of the '<em>Int Constant</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ATTRIBUTE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int INT_CONSTANT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateValueImpl <em>Immediate Value</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.StringConstantImpl <em>String Constant</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateValueImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getImmediateValue()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.StringConstantImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getStringConstant()
    * @generated
    */
-  int IMMEDIATE_VALUE = 34;
+  int STRING_CONSTANT = 30;
 
   /**
-   * The feature id for the '<em><b>Imm</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMMEDIATE_VALUE__IMM = VALUE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Immediate Value</em>' class.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int IMMEDIATE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+  int STRING_CONSTANT__VALUE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.GoStringFunctionImpl <em>Go String Function</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoStringFunctionImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getGoStringFunction()
-   * @generated
-   */
-  int GO_STRING_FUNCTION = 35;
-
-  /**
-   * The feature id for the '<em><b>Funcname</b></em>' reference.
+   * The number of structural features of the '<em>String Constant</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GO_STRING_FUNCTION__FUNCNAME = VALUE_FEATURE_COUNT + 0;
+  int STRING_CONSTANT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.BoolConstantImpl <em>Bool Constant</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.BoolConstantImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getBoolConstant()
+   * @generated
+   */
+  int BOOL_CONSTANT = 31;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GO_STRING_FUNCTION__PARAMS = VALUE_FEATURE_COUNT + 1;
+  int BOOL_CONSTANT__VALUE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Go String Function</em>' class.
+   * The number of structural features of the '<em>Bool Constant</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GO_STRING_FUNCTION_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
+  int BOOL_CONSTANT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PredicateImpl <em>Predicate</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl <em>Or</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PredicateImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPredicate()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOr()
    * @generated
    */
-  int PREDICATE = 36;
+  int OR = 32;
 
   /**
-   * The feature id for the '<em><b>Or</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PREDICATE__OR = PRED_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Predicate</em>' class.
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PREDICATE_FEATURE_COUNT = PRED_FEATURE_COUNT + 1;
+  int OR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Or</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AndImpl <em>And</em>}' class.
@@ -1884,16 +1781,25 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAnd()
    * @generated
    */
-  int AND = 37;
+  int AND = 33;
 
   /**
-   * The feature id for the '<em><b>And</b></em>' containment reference list.
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int AND__AND = PRED_FEATURE_COUNT + 0;
+  int AND__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>And</em>' class.
@@ -1902,7 +1808,256 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int AND_FEATURE_COUNT = PRED_FEATURE_COUNT + 1;
+  int AND_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityImpl <em>Equality</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEquality()
+   * @generated
+   */
+  int EQUALITY = 34;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Equality</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComparisonImpl <em>Comparison</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComparisonImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComparison()
+   * @generated
+   */
+  int COMPARISON = 35;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Comparison</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PlusImpl <em>Plus</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PlusImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPlus()
+   * @generated
+   */
+  int PLUS = 36;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Plus</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.MinusImpl <em>Minus</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.MinusImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMinus()
+   * @generated
+   */
+  int MINUS = 37;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Minus</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ConcatenateImpl <em>Concatenate</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ConcatenateImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getConcatenate()
+   * @generated
+   */
+  int CONCATENATE = 38;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCATENATE__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCATENATE__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Concatenate</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCATENATE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.MulOrDivImpl <em>Mul Or Div</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.MulOrDivImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMulOrDiv()
+   * @generated
+   */
+  int MUL_OR_DIV = 39;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_OR_DIV__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_OR_DIV__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_OR_DIV__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Mul Or Div</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MUL_OR_DIV_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NotImpl <em>Not</em>}' class.
@@ -1912,25 +2067,16 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNot()
    * @generated
    */
-  int NOT = 38;
+  int NOT = 40;
 
   /**
-   * The feature id for the '<em><b>Neg</b></em>' attribute.
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NOT__NEG = PRED_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Term</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NOT__TERM = PRED_FEATURE_COUNT + 1;
+  int NOT__EXPRESSION = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Not</em>' class.
@@ -1939,119 +2085,17 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NOT_FEATURE_COUNT = PRED_FEATURE_COUNT + 2;
+  int NOT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateImpl <em>Immediate</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl <em>Local Var Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getImmediate()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalVarRef()
    * @generated
    */
-  int IMMEDIATE = 39;
-
-  /**
-   * The feature id for the '<em><b>Is True</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMMEDIATE__IS_TRUE = PRED_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Immediate</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int IMMEDIATE_FEATURE_COUNT = PRED_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityTestImpl <em>Equality Test</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityTestImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEqualityTest()
-   * @generated
-   */
-  int EQUALITY_TEST = 40;
-
-  /**
-   * The feature id for the '<em><b>Op1</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_TEST__OP1 = PRED_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Operand</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_TEST__OPERAND = PRED_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Op2</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_TEST__OP2 = PRED_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Equality Test</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_TEST_FEATURE_COUNT = PRED_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncStringImpl <em>Func String</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncStringImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncString()
-   * @generated
-   */
-  int FUNC_STRING = 41;
-
-  /**
-   * The feature id for the '<em><b>Imm</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_STRING__IMM = FUNC_VAL_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Func String</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_STRING_FEATURE_COUNT = FUNC_VAL_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncMemoryRefImpl <em>Func Memory Ref</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncMemoryRefImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncMemoryRef()
-   * @generated
-   */
-  int FUNC_MEMORY_REF = 42;
+  int LOCAL_VAR_REF = 41;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -2060,183 +2104,193 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_MEMORY_REF__REF = FUNC_VAL_FEATURE_COUNT + 0;
+  int LOCAL_VAR_REF__REF = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Func Memory Ref</em>' class.
+   * The number of structural features of the '<em>Local Var Ref</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_MEMORY_REF_FEATURE_COUNT = FUNC_VAL_FEATURE_COUNT + 1;
+  int LOCAL_VAR_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredicateImpl <em>Func Predicate</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl <em>Local Attribute Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredicateImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncPredicate()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeRef()
    * @generated
    */
-  int FUNC_PREDICATE = 43;
+  int LOCAL_ATTRIBUTE_REF = 42;
 
   /**
-   * The feature id for the '<em><b>Or</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNC_PREDICATE__OR = FUNC_PRED_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Func Predicate</em>' class.
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_PREDICATE_FEATURE_COUNT = FUNC_PRED_FEATURE_COUNT + 1;
+  int LOCAL_ATTRIBUTE_REF__ATTRIBUTE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncAndImpl <em>Func And</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncAndImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncAnd()
-   * @generated
-   */
-  int FUNC_AND = 44;
-
-  /**
-   * The feature id for the '<em><b>And</b></em>' containment reference list.
+   * The number of structural features of the '<em>Local Attribute Ref</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_AND__AND = FUNC_PRED_FEATURE_COUNT + 0;
+  int LOCAL_ATTRIBUTE_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Func And</em>' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FunctionCallImpl <em>Function Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FunctionCallImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFunctionCall()
+   * @generated
+   */
+  int FUNCTION_CALL = 43;
+
+  /**
+   * The feature id for the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_AND_FEATURE_COUNT = FUNC_PRED_FEATURE_COUNT + 1;
+  int FUNCTION_CALL__FUNCTION = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncNotImpl <em>Func Not</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncNotImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncNot()
-   * @generated
-   */
-  int FUNC_NOT = 45;
-
-  /**
-   * The feature id for the '<em><b>Neg</b></em>' attribute.
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_NOT__NEG = FUNC_PRED_FEATURE_COUNT + 0;
+  int FUNCTION_CALL__PARAMS = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Term</b></em>' containment reference.
+   * The number of structural features of the '<em>Function Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_NOT__TERM = FUNC_PRED_FEATURE_COUNT + 1;
+  int FUNCTION_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Func Not</em>' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeRefImpl <em>Component Attribute Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeRefImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeRef()
+   * @generated
+   */
+  int COMPONENT_ATTRIBUTE_REF = 44;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_NOT_FEATURE_COUNT = FUNC_PRED_FEATURE_COUNT + 2;
+  int COMPONENT_ATTRIBUTE_REF__ATTRIBUTE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncImmediateImpl <em>Func Immediate</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncImmediateImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncImmediate()
-   * @generated
-   */
-  int FUNC_IMMEDIATE = 46;
-
-  /**
-   * The feature id for the '<em><b>Is True</b></em>' attribute.
+   * The number of structural features of the '<em>Component Attribute Ref</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_IMMEDIATE__IS_TRUE = FUNC_PRED_FEATURE_COUNT + 0;
+  int COMPONENT_ATTRIBUTE_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Func Immediate</em>' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl <em>Rec Attribute Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
+   * @generated
+   */
+  int REC_ATTRIBUTE_REF = 45;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_IMMEDIATE_FEATURE_COUNT = FUNC_PRED_FEATURE_COUNT + 1;
+  int REC_ATTRIBUTE_REF__ATTRIBUTE = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncEqualityTestImpl <em>Func Equality Test</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncEqualityTestImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncEqualityTest()
-   * @generated
-   */
-  int FUNC_EQUALITY_TEST = 47;
-
-  /**
-   * The feature id for the '<em><b>Op1</b></em>' containment reference.
+   * The number of structural features of the '<em>Rec Attribute Ref</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_EQUALITY_TEST__OP1 = FUNC_PRED_FEATURE_COUNT + 0;
+  int REC_ATTRIBUTE_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Operand</b></em>' attribute.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeToSetImpl <em>Component Attribute To Set</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeToSetImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeToSet()
+   * @generated
+   */
+  int COMPONENT_ATTRIBUTE_TO_SET = 46;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_EQUALITY_TEST__OPERAND = FUNC_PRED_FEATURE_COUNT + 1;
+  int COMPONENT_ATTRIBUTE_TO_SET__ATTRIBUTE = ATTRIBUTE_TO_SET__ATTRIBUTE;
 
   /**
-   * The feature id for the '<em><b>Op2</b></em>' containment reference.
+   * The number of structural features of the '<em>Component Attribute To Set</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_EQUALITY_TEST__OP2 = FUNC_PRED_FEATURE_COUNT + 2;
+  int COMPONENT_ATTRIBUTE_TO_SET_FEATURE_COUNT = ATTRIBUTE_TO_SET_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Func Equality Test</em>' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeToSetImpl <em>Local Attribute To Set</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeToSetImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeToSet()
+   * @generated
+   */
+  int LOCAL_ATTRIBUTE_TO_SET = 47;
+
+  /**
+   * The feature id for the '<em><b>Attribute</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_EQUALITY_TEST_FEATURE_COUNT = FUNC_PRED_FEATURE_COUNT + 3;
+  int LOCAL_ATTRIBUTE_TO_SET__ATTRIBUTE = ATTRIBUTE_TO_SET__ATTRIBUTE;
+
+  /**
+   * The number of structural features of the '<em>Local Attribute To Set</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_ATTRIBUTE_TO_SET_FEATURE_COUNT = ATTRIBUTE_TO_SET_FEATURE_COUNT + 0;
 
 
   /**
@@ -2485,17 +2539,6 @@ public interface GoatComponentsPackage extends EPackage
   EAttribute getProcessDefinition_Name();
 
   /**
-   * Returns the meta object for the attribute list '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getParams()
-   * @see #getProcessDefinition()
-   * @generated
-   */
-  EAttribute getProcessDefinition_Params();
-
-  /**
    * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getProc <em>Proc</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2505,6 +2548,16 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getProcessDefinition_Proc();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Expression
+   * @generated
+   */
+  EClass getExpression();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Environment <em>Environment</em>}'.
@@ -2528,15 +2581,15 @@ public interface GoatComponentsPackage extends EPackage
   EAttribute getEnvironment_Attrs();
 
   /**
-   * Returns the meta object for the attribute list '{@link com.sysma.goat.eclipse_plugin.goatComponents.Environment#getVals <em>Vals</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.Environment#getVals <em>Vals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Vals</em>'.
+   * @return the meta object for the containment reference list '<em>Vals</em>'.
    * @see com.sysma.goat.eclipse_plugin.goatComponents.Environment#getVals()
    * @see #getEnvironment()
    * @generated
    */
-  EAttribute getEnvironment_Vals();
+  EReference getEnvironment_Vals();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition <em>Component Definition</em>}'.
@@ -2571,17 +2624,6 @@ public interface GoatComponentsPackage extends EPackage
   EReference getComponentDefinition_Proc();
 
   /**
-   * Returns the meta object for the attribute list '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getParams()
-   * @see #getComponentDefinition()
-   * @generated
-   */
-  EAttribute getComponentDefinition_Params();
-
-  /**
    * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress <em>Address</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2593,77 +2635,46 @@ public interface GoatComponentsPackage extends EPackage
   EAttribute getComponentDefinition_Address();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute <em>Attribute</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LRef <em>LRef</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Attribute</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Attribute
+   * @return the meta object for class '<em>LRef</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LRef
    * @generated
    */
-  EClass getAttribute();
+  EClass getLRef();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute#isComp <em>Comp</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.LRef#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Comp</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Attribute#isComp()
-   * @see #getAttribute()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LRef#getName()
+   * @see #getLRef()
    * @generated
    */
-  EAttribute getAttribute_Comp();
+  EAttribute getLRef_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Attribute#getIdent <em>Ident</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet <em>Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ident</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Attribute#getIdent()
-   * @see #getAttribute()
+   * @return the meta object for class '<em>Attribute To Set</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
    * @generated
    */
-  EAttribute getAttribute_Ident();
+  EClass getAttributeToSet();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute <em>Rec Attribute</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rec Attribute</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute
+   * @return the meta object for the attribute '<em>Attribute</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet#getAttribute()
+   * @see #getAttributeToSet()
    * @generated
    */
-  EClass getRecAttribute();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute#getIdent <em>Ident</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ident</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttribute#getIdent()
-   * @see #getRecAttribute()
-   * @generated
-   */
-  EAttribute getRecAttribute_Ident();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Value <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Value</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Value
-   * @generated
-   */
-  EClass getValue();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Pred <em>Pred</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Pred</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Pred
-   * @generated
-   */
-  EClass getPred();
+  EAttribute getAttributeToSet_Attribute();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncParam <em>Func Param</em>}'.
@@ -2676,6 +2687,17 @@ public interface GoatComponentsPackage extends EPackage
   EClass getFuncParam();
 
   /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncParam#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncParam#getType()
+   * @see #getFuncParam()
+   * @generated
+   */
+  EAttribute getFuncParam_Type();
+
+  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition <em>Func Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2684,6 +2706,17 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EClass getFuncDefinition();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getType()
+   * @see #getFuncDefinition()
+   * @generated
+   */
+  EAttribute getFuncDefinition_Type();
 
   /**
    * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getName <em>Name</em>}'.
@@ -2801,47 +2834,6 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getFuncVarAssign_Val();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam <em>Func Var Param</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Var Param</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam
-   * @generated
-   */
-  EClass getFuncVarParam();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam#getName()
-   * @see #getFuncVarParam()
-   * @generated
-   */
-  EAttribute getFuncVarParam_Name();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVal <em>Func Val</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Val</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVal
-   * @generated
-   */
-  EClass getFuncVal();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPred <em>Func Pred</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Pred</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncPred
-   * @generated
-   */
-  EClass getFuncPred();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse <em>Func If Else</em>}'.
@@ -3066,17 +3058,6 @@ public interface GoatComponentsPackage extends EPackage
   EReference getCallProcess_Procname();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.CallProcess#getParams <em>Params</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.CallProcess#getParams()
-   * @see #getCallProcess()
-   * @generated
-   */
-  EReference getCallProcess_Params();
-
-  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess <em>Zero Process</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3087,99 +3068,99 @@ public interface GoatComponentsPackage extends EPackage
   EClass getZeroProcess();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue <em>Attribute Value</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.IntConstant <em>Int Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Attribute Value</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue
+   * @return the meta object for class '<em>Int Constant</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.IntConstant
    * @generated
    */
-  EClass getAttributeValue();
+  EClass getIntConstant();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue#getAttr <em>Attr</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.IntConstant#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Attr</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeValue#getAttr()
-   * @see #getAttributeValue()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.IntConstant#getValue()
+   * @see #getIntConstant()
    * @generated
    */
-  EReference getAttributeValue_Attr();
+  EAttribute getIntConstant_Value();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue <em>Immediate Value</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.StringConstant <em>String Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Immediate Value</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue
+   * @return the meta object for class '<em>String Constant</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.StringConstant
    * @generated
    */
-  EClass getImmediateValue();
+  EClass getStringConstant();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue#getImm <em>Imm</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.StringConstant#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imm</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ImmediateValue#getImm()
-   * @see #getImmediateValue()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.StringConstant#getValue()
+   * @see #getStringConstant()
    * @generated
    */
-  EAttribute getImmediateValue_Imm();
+  EAttribute getStringConstant_Value();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction <em>Go String Function</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant <em>Bool Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Go String Function</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction
+   * @return the meta object for class '<em>Bool Constant</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant
    * @generated
    */
-  EClass getGoStringFunction();
+  EClass getBoolConstant();
 
   /**
-   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction#getFuncname <em>Funcname</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Funcname</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction#getFuncname()
-   * @see #getGoStringFunction()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant#getValue()
+   * @see #getBoolConstant()
    * @generated
    */
-  EReference getGoStringFunction_Funcname();
+  EAttribute getBoolConstant_Value();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction#getParams <em>Params</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or <em>Or</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoStringFunction#getParams()
-   * @see #getGoStringFunction()
+   * @return the meta object for class '<em>Or</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Or
    * @generated
    */
-  EReference getGoStringFunction_Params();
+  EClass getOr();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Predicate <em>Predicate</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Predicate</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Predicate
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Or#getLeft()
+   * @see #getOr()
    * @generated
    */
-  EClass getPredicate();
+  EReference getOr_Left();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.Predicate#getOr <em>Or</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Or</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Predicate#getOr()
-   * @see #getPredicate()
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Or#getRight()
+   * @see #getOr()
    * @generated
    */
-  EReference getPredicate_Or();
+  EReference getOr_Right();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.And <em>And</em>}'.
@@ -3192,15 +3173,251 @@ public interface GoatComponentsPackage extends EPackage
   EClass getAnd();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getAnd <em>And</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>And</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.And#getAnd()
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.And#getLeft()
    * @see #getAnd()
    * @generated
    */
-  EReference getAnd_And();
+  EReference getAnd_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.And#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.And#getRight()
+   * @see #getAnd()
+   * @generated
+   */
+  EReference getAnd_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Equality <em>Equality</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Equality</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Equality
+   * @generated
+   */
+  EClass getEquality();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Equality#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Equality#getLeft()
+   * @see #getEquality()
+   * @generated
+   */
+  EReference getEquality_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Equality#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Equality#getOp()
+   * @see #getEquality()
+   * @generated
+   */
+  EAttribute getEquality_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Equality#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Equality#getRight()
+   * @see #getEquality()
+   * @generated
+   */
+  EReference getEquality_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Comparison <em>Comparison</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comparison</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Comparison
+   * @generated
+   */
+  EClass getComparison();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getLeft()
+   * @see #getComparison()
+   * @generated
+   */
+  EReference getComparison_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getOp()
+   * @see #getComparison()
+   * @generated
+   */
+  EAttribute getComparison_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Comparison#getRight()
+   * @see #getComparison()
+   * @generated
+   */
+  EReference getComparison_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Plus <em>Plus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Plus</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Plus
+   * @generated
+   */
+  EClass getPlus();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Plus#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Plus#getLeft()
+   * @see #getPlus()
+   * @generated
+   */
+  EReference getPlus_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Plus#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Plus#getRight()
+   * @see #getPlus()
+   * @generated
+   */
+  EReference getPlus_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Minus <em>Minus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Minus</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Minus
+   * @generated
+   */
+  EClass getMinus();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Minus#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Minus#getLeft()
+   * @see #getMinus()
+   * @generated
+   */
+  EReference getMinus_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Minus#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Minus#getRight()
+   * @see #getMinus()
+   * @generated
+   */
+  EReference getMinus_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Concatenate <em>Concatenate</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Concatenate</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Concatenate
+   * @generated
+   */
+  EClass getConcatenate();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Concatenate#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Concatenate#getLeft()
+   * @see #getConcatenate()
+   * @generated
+   */
+  EReference getConcatenate_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Concatenate#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Concatenate#getRight()
+   * @see #getConcatenate()
+   * @generated
+   */
+  EReference getConcatenate_Right();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv <em>Mul Or Div</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Mul Or Div</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv
+   * @generated
+   */
+  EClass getMulOrDiv();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getLeft()
+   * @see #getMulOrDiv()
+   * @generated
+   */
+  EReference getMulOrDiv_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getOp()
+   * @see #getMulOrDiv()
+   * @generated
+   */
+  EAttribute getMulOrDiv_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv#getRight()
+   * @see #getMulOrDiv()
+   * @generated
+   */
+  EReference getMulOrDiv_Right();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not <em>Not</em>}'.
@@ -3213,270 +3430,151 @@ public interface GoatComponentsPackage extends EPackage
   EClass getNot();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#isNeg <em>Neg</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getExpression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Neg</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Not#isNeg()
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Not#getExpression()
    * @see #getNot()
    * @generated
    */
-  EAttribute getNot_Neg();
+  EReference getNot_Expression();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not#getTerm <em>Term</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef <em>Local Var Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Term</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Not#getTerm()
-   * @see #getNot()
+   * @return the meta object for class '<em>Local Var Ref</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef
    * @generated
    */
-  EReference getNot_Term();
+  EClass getLocalVarRef();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Immediate <em>Immediate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Immediate</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Immediate
-   * @generated
-   */
-  EClass getImmediate();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.Immediate#isIsTrue <em>Is True</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is True</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Immediate#isIsTrue()
-   * @see #getImmediate()
-   * @generated
-   */
-  EAttribute getImmediate_IsTrue();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest <em>Equality Test</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Equality Test</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest
-   * @generated
-   */
-  EClass getEqualityTest();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOp1 <em>Op1</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Op1</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOp1()
-   * @see #getEqualityTest()
-   * @generated
-   */
-  EReference getEqualityTest_Op1();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOperand <em>Operand</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operand</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOperand()
-   * @see #getEqualityTest()
-   * @generated
-   */
-  EAttribute getEqualityTest_Operand();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOp2 <em>Op2</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Op2</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.EqualityTest#getOp2()
-   * @see #getEqualityTest()
-   * @generated
-   */
-  EReference getEqualityTest_Op2();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncString <em>Func String</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func String</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncString
-   * @generated
-   */
-  EClass getFuncString();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncString#getImm <em>Imm</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imm</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncString#getImm()
-   * @see #getFuncString()
-   * @generated
-   */
-  EAttribute getFuncString_Imm();
-
-  /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef <em>Func Memory Ref</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Memory Ref</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef
-   * @generated
-   */
-  EClass getFuncMemoryRef();
-
-  /**
-   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef#getRef <em>Ref</em>}'.
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef#getRef <em>Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Ref</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncMemoryRef#getRef()
-   * @see #getFuncMemoryRef()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef#getRef()
+   * @see #getLocalVarRef()
    * @generated
    */
-  EReference getFuncMemoryRef_Ref();
+  EReference getLocalVarRef_Ref();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate <em>Func Predicate</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef <em>Local Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Predicate</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate
+   * @return the meta object for class '<em>Local Attribute Ref</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef
    * @generated
    */
-  EClass getFuncPredicate();
+  EClass getLocalAttributeRef();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate#getOr <em>Or</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Or</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncPredicate#getOr()
-   * @see #getFuncPredicate()
+   * @return the meta object for the attribute '<em>Attribute</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef#getAttribute()
+   * @see #getLocalAttributeRef()
    * @generated
    */
-  EReference getFuncPredicate_Or();
+  EAttribute getLocalAttributeRef_Attribute();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd <em>Func And</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall <em>Function Call</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func And</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd
+   * @return the meta object for class '<em>Function Call</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall
    * @generated
    */
-  EClass getFuncAnd();
+  EClass getFunctionCall();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd#getAnd <em>And</em>}'.
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>And</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncAnd#getAnd()
-   * @see #getFuncAnd()
+   * @return the meta object for the reference '<em>Function</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall#getFunction()
+   * @see #getFunctionCall()
    * @generated
    */
-  EReference getFuncAnd_And();
+  EReference getFunctionCall_Function();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncNot <em>Func Not</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Not</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncNot
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall#getParams()
+   * @see #getFunctionCall()
    * @generated
    */
-  EClass getFuncNot();
+  EReference getFunctionCall_Params();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncNot#isNeg <em>Neg</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef <em>Component Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Neg</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncNot#isNeg()
-   * @see #getFuncNot()
+   * @return the meta object for class '<em>Component Attribute Ref</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef
    * @generated
    */
-  EAttribute getFuncNot_Neg();
+  EClass getComponentAttributeRef();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncNot#getTerm <em>Term</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Term</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncNot#getTerm()
-   * @see #getFuncNot()
+   * @return the meta object for the attribute '<em>Attribute</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef#getAttribute()
+   * @see #getComponentAttributeRef()
    * @generated
    */
-  EReference getFuncNot_Term();
+  EAttribute getComponentAttributeRef_Attribute();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate <em>Func Immediate</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef <em>Rec Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Immediate</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate
+   * @return the meta object for class '<em>Rec Attribute Ref</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef
    * @generated
    */
-  EClass getFuncImmediate();
+  EClass getRecAttributeRef();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate#isIsTrue <em>Is True</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef#getAttribute <em>Attribute</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is True</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncImmediate#isIsTrue()
-   * @see #getFuncImmediate()
+   * @return the meta object for the attribute '<em>Attribute</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef#getAttribute()
+   * @see #getRecAttributeRef()
    * @generated
    */
-  EAttribute getFuncImmediate_IsTrue();
+  EAttribute getRecAttributeRef_Attribute();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest <em>Func Equality Test</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet <em>Component Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Func Equality Test</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest
+   * @return the meta object for class '<em>Component Attribute To Set</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
    * @generated
    */
-  EClass getFuncEqualityTest();
+  EClass getComponentAttributeToSet();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOp1 <em>Op1</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet <em>Local Attribute To Set</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Op1</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOp1()
-   * @see #getFuncEqualityTest()
+   * @return the meta object for class '<em>Local Attribute To Set</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
    * @generated
    */
-  EReference getFuncEqualityTest_Op1();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOperand <em>Operand</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Operand</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOperand()
-   * @see #getFuncEqualityTest()
-   * @generated
-   */
-  EAttribute getFuncEqualityTest_Operand();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOp2 <em>Op2</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Op2</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncEqualityTest#getOp2()
-   * @see #getFuncEqualityTest()
-   * @generated
-   */
-  EReference getFuncEqualityTest_Op2();
+  EClass getLocalAttributeToSet();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -3702,20 +3800,22 @@ public interface GoatComponentsPackage extends EPackage
     EAttribute PROCESS_DEFINITION__NAME = eINSTANCE.getProcessDefinition_Name();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PROCESS_DEFINITION__PARAMS = eINSTANCE.getProcessDefinition_Params();
-
-    /**
      * The meta object literal for the '<em><b>Proc</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference PROCESS_DEFINITION__PROC = eINSTANCE.getProcessDefinition_Proc();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ExpressionImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentImpl <em>Environment</em>}' class.
@@ -3736,12 +3836,12 @@ public interface GoatComponentsPackage extends EPackage
     EAttribute ENVIRONMENT__ATTRS = eINSTANCE.getEnvironment_Attrs();
 
     /**
-     * The meta object literal for the '<em><b>Vals</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Vals</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENVIRONMENT__VALS = eINSTANCE.getEnvironment_Vals();
+    EReference ENVIRONMENT__VALS = eINSTANCE.getEnvironment_Vals();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl <em>Component Definition</em>}' class.
@@ -3770,14 +3870,6 @@ public interface GoatComponentsPackage extends EPackage
     EReference COMPONENT_DEFINITION__PROC = eINSTANCE.getComponentDefinition_Proc();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPONENT_DEFINITION__PARAMS = eINSTANCE.getComponentDefinition_Params();
-
-    /**
      * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3786,68 +3878,40 @@ public interface GoatComponentsPackage extends EPackage
     EAttribute COMPONENT_DEFINITION__ADDRESS = eINSTANCE.getComponentDefinition_Address();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeImpl <em>Attribute</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttribute()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLRef()
      * @generated
      */
-    EClass ATTRIBUTE = eINSTANCE.getAttribute();
+    EClass LREF = eINSTANCE.getLRef();
 
     /**
-     * The meta object literal for the '<em><b>Comp</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ATTRIBUTE__COMP = eINSTANCE.getAttribute_Comp();
+    EAttribute LREF__NAME = eINSTANCE.getLRef_Name();
 
     /**
-     * The meta object literal for the '<em><b>Ident</b></em>' attribute feature.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeToSetImpl <em>Attribute To Set</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeToSetImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttributeToSet()
      * @generated
      */
-    EAttribute ATTRIBUTE__IDENT = eINSTANCE.getAttribute_Ident();
+    EClass ATTRIBUTE_TO_SET = eINSTANCE.getAttributeToSet();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeImpl <em>Rec Attribute</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttribute()
-     * @generated
-     */
-    EClass REC_ATTRIBUTE = eINSTANCE.getRecAttribute();
-
-    /**
-     * The meta object literal for the '<em><b>Ident</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REC_ATTRIBUTE__IDENT = eINSTANCE.getRecAttribute_Ident();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ValueImpl <em>Value</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ValueImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getValue()
-     * @generated
-     */
-    EClass VALUE = eINSTANCE.getValue();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PredImpl <em>Pred</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PredImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPred()
-     * @generated
-     */
-    EClass PRED = eINSTANCE.getPred();
+    EAttribute ATTRIBUTE_TO_SET__ATTRIBUTE = eINSTANCE.getAttributeToSet_Attribute();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncParamImpl <em>Func Param</em>}' class.
@@ -3860,6 +3924,14 @@ public interface GoatComponentsPackage extends EPackage
     EClass FUNC_PARAM = eINSTANCE.getFuncParam();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNC_PARAM__TYPE = eINSTANCE.getFuncParam_Type();
+
+    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncDefinitionImpl <em>Func Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3868,6 +3940,14 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EClass FUNC_DEFINITION = eINSTANCE.getFuncDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNC_DEFINITION__TYPE = eINSTANCE.getFuncDefinition_Type();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -3964,44 +4044,6 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EReference FUNC_VAR_ASSIGN__VAL = eINSTANCE.getFuncVarAssign_Val();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarParamImpl <em>Func Var Param</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarParamImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarParam()
-     * @generated
-     */
-    EClass FUNC_VAR_PARAM = eINSTANCE.getFuncVarParam();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNC_VAR_PARAM__NAME = eINSTANCE.getFuncVarParam_Name();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncValImpl <em>Func Val</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncValImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVal()
-     * @generated
-     */
-    EClass FUNC_VAL = eINSTANCE.getFuncVal();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredImpl <em>Func Pred</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncPred()
-     * @generated
-     */
-    EClass FUNC_PRED = eINSTANCE.getFuncPred();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncIfElseImpl <em>Func If Else</em>}' class.
@@ -4190,14 +4232,6 @@ public interface GoatComponentsPackage extends EPackage
     EReference CALL_PROCESS__PROCNAME = eINSTANCE.getCallProcess_Procname();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CALL_PROCESS__PARAMS = eINSTANCE.getCallProcess_Params();
-
-    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ZeroProcessImpl <em>Zero Process</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4208,84 +4242,84 @@ public interface GoatComponentsPackage extends EPackage
     EClass ZERO_PROCESS = eINSTANCE.getZeroProcess();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeValueImpl <em>Attribute Value</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.IntConstantImpl <em>Int Constant</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.AttributeValueImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAttributeValue()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.IntConstantImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIntConstant()
      * @generated
      */
-    EClass ATTRIBUTE_VALUE = eINSTANCE.getAttributeValue();
+    EClass INT_CONSTANT = eINSTANCE.getIntConstant();
 
     /**
-     * The meta object literal for the '<em><b>Attr</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ATTRIBUTE_VALUE__ATTR = eINSTANCE.getAttributeValue_Attr();
+    EAttribute INT_CONSTANT__VALUE = eINSTANCE.getIntConstant_Value();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateValueImpl <em>Immediate Value</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.StringConstantImpl <em>String Constant</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateValueImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getImmediateValue()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.StringConstantImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getStringConstant()
      * @generated
      */
-    EClass IMMEDIATE_VALUE = eINSTANCE.getImmediateValue();
+    EClass STRING_CONSTANT = eINSTANCE.getStringConstant();
 
     /**
-     * The meta object literal for the '<em><b>Imm</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMMEDIATE_VALUE__IMM = eINSTANCE.getImmediateValue_Imm();
+    EAttribute STRING_CONSTANT__VALUE = eINSTANCE.getStringConstant_Value();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.GoStringFunctionImpl <em>Go String Function</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.BoolConstantImpl <em>Bool Constant</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoStringFunctionImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getGoStringFunction()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.BoolConstantImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getBoolConstant()
      * @generated
      */
-    EClass GO_STRING_FUNCTION = eINSTANCE.getGoStringFunction();
+    EClass BOOL_CONSTANT = eINSTANCE.getBoolConstant();
 
     /**
-     * The meta object literal for the '<em><b>Funcname</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GO_STRING_FUNCTION__FUNCNAME = eINSTANCE.getGoStringFunction_Funcname();
+    EAttribute BOOL_CONSTANT__VALUE = eINSTANCE.getBoolConstant_Value();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl <em>Or</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOr()
      * @generated
      */
-    EReference GO_STRING_FUNCTION__PARAMS = eINSTANCE.getGoStringFunction_Params();
+    EClass OR = eINSTANCE.getOr();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PredicateImpl <em>Predicate</em>}' class.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PredicateImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPredicate()
      * @generated
      */
-    EClass PREDICATE = eINSTANCE.getPredicate();
+    EReference OR__LEFT = eINSTANCE.getOr_Left();
 
     /**
-     * The meta object literal for the '<em><b>Or</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PREDICATE__OR = eINSTANCE.getPredicate_Or();
+    EReference OR__RIGHT = eINSTANCE.getOr_Right();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AndImpl <em>And</em>}' class.
@@ -4298,12 +4332,200 @@ public interface GoatComponentsPackage extends EPackage
     EClass AND = eINSTANCE.getAnd();
 
     /**
-     * The meta object literal for the '<em><b>And</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference AND__AND = eINSTANCE.getAnd_And();
+    EReference AND__LEFT = eINSTANCE.getAnd_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND__RIGHT = eINSTANCE.getAnd_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityImpl <em>Equality</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEquality()
+     * @generated
+     */
+    EClass EQUALITY = eINSTANCE.getEquality();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY__LEFT = eINSTANCE.getEquality_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EQUALITY__OP = eINSTANCE.getEquality_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY__RIGHT = eINSTANCE.getEquality_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComparisonImpl <em>Comparison</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComparisonImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComparison()
+     * @generated
+     */
+    EClass COMPARISON = eINSTANCE.getComparison();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPARISON__LEFT = eINSTANCE.getComparison_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARISON__OP = eINSTANCE.getComparison_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPARISON__RIGHT = eINSTANCE.getComparison_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.PlusImpl <em>Plus</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.PlusImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPlus()
+     * @generated
+     */
+    EClass PLUS = eINSTANCE.getPlus();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUS__LEFT = eINSTANCE.getPlus_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PLUS__RIGHT = eINSTANCE.getPlus_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.MinusImpl <em>Minus</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.MinusImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMinus()
+     * @generated
+     */
+    EClass MINUS = eINSTANCE.getMinus();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MINUS__LEFT = eINSTANCE.getMinus_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MINUS__RIGHT = eINSTANCE.getMinus_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ConcatenateImpl <em>Concatenate</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ConcatenateImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getConcatenate()
+     * @generated
+     */
+    EClass CONCATENATE = eINSTANCE.getConcatenate();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONCATENATE__LEFT = eINSTANCE.getConcatenate_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONCATENATE__RIGHT = eINSTANCE.getConcatenate_Right();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.MulOrDivImpl <em>Mul Or Div</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.MulOrDivImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMulOrDiv()
+     * @generated
+     */
+    EClass MUL_OR_DIV = eINSTANCE.getMulOrDiv();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MUL_OR_DIV__LEFT = eINSTANCE.getMulOrDiv_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MUL_OR_DIV__OP = eINSTANCE.getMulOrDiv_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MUL_OR_DIV__RIGHT = eINSTANCE.getMulOrDiv_Right();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NotImpl <em>Not</em>}' class.
@@ -4316,100 +4538,22 @@ public interface GoatComponentsPackage extends EPackage
     EClass NOT = eINSTANCE.getNot();
 
     /**
-     * The meta object literal for the '<em><b>Neg</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NOT__NEG = eINSTANCE.getNot_Neg();
+    EReference NOT__EXPRESSION = eINSTANCE.getNot_Expression();
 
     /**
-     * The meta object literal for the '<em><b>Term</b></em>' containment reference feature.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl <em>Local Var Ref</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalVarRef()
      * @generated
      */
-    EReference NOT__TERM = eINSTANCE.getNot_Term();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateImpl <em>Immediate</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ImmediateImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getImmediate()
-     * @generated
-     */
-    EClass IMMEDIATE = eINSTANCE.getImmediate();
-
-    /**
-     * The meta object literal for the '<em><b>Is True</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute IMMEDIATE__IS_TRUE = eINSTANCE.getImmediate_IsTrue();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityTestImpl <em>Equality Test</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EqualityTestImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEqualityTest()
-     * @generated
-     */
-    EClass EQUALITY_TEST = eINSTANCE.getEqualityTest();
-
-    /**
-     * The meta object literal for the '<em><b>Op1</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EQUALITY_TEST__OP1 = eINSTANCE.getEqualityTest_Op1();
-
-    /**
-     * The meta object literal for the '<em><b>Operand</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EQUALITY_TEST__OPERAND = eINSTANCE.getEqualityTest_Operand();
-
-    /**
-     * The meta object literal for the '<em><b>Op2</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EQUALITY_TEST__OP2 = eINSTANCE.getEqualityTest_Op2();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncStringImpl <em>Func String</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncStringImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncString()
-     * @generated
-     */
-    EClass FUNC_STRING = eINSTANCE.getFuncString();
-
-    /**
-     * The meta object literal for the '<em><b>Imm</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNC_STRING__IMM = eINSTANCE.getFuncString_Imm();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncMemoryRefImpl <em>Func Memory Ref</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncMemoryRefImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncMemoryRef()
-     * @generated
-     */
-    EClass FUNC_MEMORY_REF = eINSTANCE.getFuncMemoryRef();
+    EClass LOCAL_VAR_REF = eINSTANCE.getLocalVarRef();
 
     /**
      * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
@@ -4417,121 +4561,107 @@ public interface GoatComponentsPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNC_MEMORY_REF__REF = eINSTANCE.getFuncMemoryRef_Ref();
+    EReference LOCAL_VAR_REF__REF = eINSTANCE.getLocalVarRef_Ref();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredicateImpl <em>Func Predicate</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl <em>Local Attribute Ref</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncPredicateImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncPredicate()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeRef()
      * @generated
      */
-    EClass FUNC_PREDICATE = eINSTANCE.getFuncPredicate();
+    EClass LOCAL_ATTRIBUTE_REF = eINSTANCE.getLocalAttributeRef();
 
     /**
-     * The meta object literal for the '<em><b>Or</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNC_PREDICATE__OR = eINSTANCE.getFuncPredicate_Or();
-
-    /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncAndImpl <em>Func And</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncAndImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncAnd()
-     * @generated
-     */
-    EClass FUNC_AND = eINSTANCE.getFuncAnd();
-
-    /**
-     * The meta object literal for the '<em><b>And</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNC_AND__AND = eINSTANCE.getFuncAnd_And();
+    EAttribute LOCAL_ATTRIBUTE_REF__ATTRIBUTE = eINSTANCE.getLocalAttributeRef_Attribute();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncNotImpl <em>Func Not</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FunctionCallImpl <em>Function Call</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncNotImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncNot()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FunctionCallImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFunctionCall()
      * @generated
      */
-    EClass FUNC_NOT = eINSTANCE.getFuncNot();
+    EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
 
     /**
-     * The meta object literal for the '<em><b>Neg</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNC_NOT__NEG = eINSTANCE.getFuncNot_Neg();
-
-    /**
-     * The meta object literal for the '<em><b>Term</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Function</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNC_NOT__TERM = eINSTANCE.getFuncNot_Term();
+    EReference FUNCTION_CALL__FUNCTION = eINSTANCE.getFunctionCall_Function();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncImmediateImpl <em>Func Immediate</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncImmediateImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncImmediate()
-     * @generated
-     */
-    EClass FUNC_IMMEDIATE = eINSTANCE.getFuncImmediate();
-
-    /**
-     * The meta object literal for the '<em><b>Is True</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNC_IMMEDIATE__IS_TRUE = eINSTANCE.getFuncImmediate_IsTrue();
+    EReference FUNCTION_CALL__PARAMS = eINSTANCE.getFunctionCall_Params();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncEqualityTestImpl <em>Func Equality Test</em>}' class.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeRefImpl <em>Component Attribute Ref</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncEqualityTestImpl
-     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncEqualityTest()
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeRefImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeRef()
      * @generated
      */
-    EClass FUNC_EQUALITY_TEST = eINSTANCE.getFuncEqualityTest();
+    EClass COMPONENT_ATTRIBUTE_REF = eINSTANCE.getComponentAttributeRef();
 
     /**
-     * The meta object literal for the '<em><b>Op1</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNC_EQUALITY_TEST__OP1 = eINSTANCE.getFuncEqualityTest_Op1();
-
-    /**
-     * The meta object literal for the '<em><b>Operand</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNC_EQUALITY_TEST__OPERAND = eINSTANCE.getFuncEqualityTest_Operand();
+    EAttribute COMPONENT_ATTRIBUTE_REF__ATTRIBUTE = eINSTANCE.getComponentAttributeRef_Attribute();
 
     /**
-     * The meta object literal for the '<em><b>Op2</b></em>' containment reference feature.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl <em>Rec Attribute Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
+     * @generated
+     */
+    EClass REC_ATTRIBUTE_REF = eINSTANCE.getRecAttributeRef();
+
+    /**
+     * The meta object literal for the '<em><b>Attribute</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNC_EQUALITY_TEST__OP2 = eINSTANCE.getFuncEqualityTest_Op2();
+    EAttribute REC_ATTRIBUTE_REF__ATTRIBUTE = eINSTANCE.getRecAttributeRef_Attribute();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeToSetImpl <em>Component Attribute To Set</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentAttributeToSetImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeToSet()
+     * @generated
+     */
+    EClass COMPONENT_ATTRIBUTE_TO_SET = eINSTANCE.getComponentAttributeToSet();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeToSetImpl <em>Local Attribute To Set</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeToSetImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeToSet()
+     * @generated
+     */
+    EClass LOCAL_ATTRIBUTE_TO_SET = eINSTANCE.getLocalAttributeToSet();
 
   }
 

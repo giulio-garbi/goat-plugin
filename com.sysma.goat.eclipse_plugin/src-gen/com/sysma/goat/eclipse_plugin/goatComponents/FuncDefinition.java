@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getType <em>Type</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getName <em>Name</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getParams <em>Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getBlk <em>Blk</em>}</li>
@@ -27,6 +28,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface FuncDefinition extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getFuncDefinition_Type()
+   * @model
+   * @generated
+   */
+  String getType();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see #getType()
+   * @generated
+   */
+  void setType(String value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

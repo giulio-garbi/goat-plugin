@@ -3,9 +3,8 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVal;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarParam;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,34 +23,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarDeclarationImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVarDeclaration
+public class FuncVarDeclarationImpl extends LRefImpl implements FuncVarDeclaration
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -60,7 +38,7 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
    * @generated
    * @ordered
    */
-  protected FuncVal val;
+  protected Expression val;
 
   /**
    * <!-- begin-user-doc -->
@@ -88,30 +66,7 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FuncVal getVal()
+  public Expression getVal()
   {
     return val;
   }
@@ -121,9 +76,9 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(FuncVal newVal, NotificationChain msgs)
+  public NotificationChain basicSetVal(Expression newVal, NotificationChain msgs)
   {
-    FuncVal oldVal = val;
+    Expression oldVal = val;
     val = newVal;
     if (eNotificationRequired())
     {
@@ -138,7 +93,7 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVal(FuncVal newVal)
+  public void setVal(Expression newVal)
   {
     if (newVal != val)
     {
@@ -180,8 +135,6 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME:
-        return getName();
       case GoatComponentsPackage.FUNC_VAR_DECLARATION__VAL:
         return getVal();
     }
@@ -198,11 +151,8 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME:
-        setName((String)newValue);
-        return;
       case GoatComponentsPackage.FUNC_VAR_DECLARATION__VAL:
-        setVal((FuncVal)newValue);
+        setVal((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -218,11 +168,8 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GoatComponentsPackage.FUNC_VAR_DECLARATION__VAL:
-        setVal((FuncVal)null);
+        setVal((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -238,67 +185,10 @@ public class FuncVarDeclarationImpl extends FuncStatementImpl implements FuncVar
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GoatComponentsPackage.FUNC_VAR_DECLARATION__VAL:
         return val != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == FuncVarParam.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME: return GoatComponentsPackage.FUNC_VAR_PARAM__NAME;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-  {
-    if (baseClass == FuncVarParam.class)
-    {
-      switch (baseFeatureID)
-      {
-        case GoatComponentsPackage.FUNC_VAR_PARAM__NAME: return GoatComponentsPackage.FUNC_VAR_DECLARATION__NAME;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //FuncVarDeclarationImpl

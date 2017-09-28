@@ -3,10 +3,10 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.Attribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.Pred;
 
 import java.util.Collection;
 
@@ -47,7 +47,7 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * @generated
    * @ordered
    */
-  protected Pred rec_pred;
+  protected Expression rec_pred;
 
   /**
    * The cached value of the '{@link #getMsgInParts() <em>Msg In Parts</em>}' containment reference list.
@@ -57,7 +57,7 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * @generated
    * @ordered
    */
-  protected EList<Attribute> msgInParts;
+  protected EList<AttributeToSet> msgInParts;
 
   /**
    * <!-- begin-user-doc -->
@@ -85,7 +85,7 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pred getRec_pred()
+  public Expression getRec_pred()
   {
     return rec_pred;
   }
@@ -95,9 +95,9 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRec_pred(Pred newRec_pred, NotificationChain msgs)
+  public NotificationChain basicSetRec_pred(Expression newRec_pred, NotificationChain msgs)
   {
-    Pred oldRec_pred = rec_pred;
+    Expression oldRec_pred = rec_pred;
     rec_pred = newRec_pred;
     if (eNotificationRequired())
     {
@@ -112,7 +112,7 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRec_pred(Pred newRec_pred)
+  public void setRec_pred(Expression newRec_pred)
   {
     if (newRec_pred != rec_pred)
     {
@@ -133,11 +133,11 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Attribute> getMsgInParts()
+  public EList<AttributeToSet> getMsgInParts()
   {
     if (msgInParts == null)
     {
-      msgInParts = new EObjectContainmentEList<Attribute>(Attribute.class, this, GoatComponentsPackage.INPUT_PROCESS__MSG_IN_PARTS);
+      msgInParts = new EObjectContainmentEList<AttributeToSet>(AttributeToSet.class, this, GoatComponentsPackage.INPUT_PROCESS__MSG_IN_PARTS);
     }
     return msgInParts;
   }
@@ -190,11 +190,11 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
     switch (featureID)
     {
       case GoatComponentsPackage.INPUT_PROCESS__REC_PRED:
-        setRec_pred((Pred)newValue);
+        setRec_pred((Expression)newValue);
         return;
       case GoatComponentsPackage.INPUT_PROCESS__MSG_IN_PARTS:
         getMsgInParts().clear();
-        getMsgInParts().addAll((Collection<? extends Attribute>)newValue);
+        getMsgInParts().addAll((Collection<? extends AttributeToSet>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -211,7 +211,7 @@ public class InputProcessImpl extends ProcessImpl implements InputProcess
     switch (featureID)
     {
       case GoatComponentsPackage.INPUT_PROCESS__REC_PRED:
-        setRec_pred((Pred)null);
+        setRec_pred((Expression)null);
         return;
       case GoatComponentsPackage.INPUT_PROCESS__MSG_IN_PARTS:
         getMsgInParts().clear();

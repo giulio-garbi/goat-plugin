@@ -31,7 +31,7 @@ public interface OutputProcessPart extends EObject
 {
   /**
    * Returns the value of the '<em><b>Msg Out Parts</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Value}.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Msg Out Parts</em>' containment reference list isn't clear,
@@ -43,7 +43,7 @@ public interface OutputProcessPart extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Value> getMsgOutParts();
+  EList<Expression> getMsgOutParts();
 
   /**
    * Returns the value of the '<em><b>Send pred</b></em>' containment reference.
@@ -54,12 +54,12 @@ public interface OutputProcessPart extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Send pred</em>' containment reference.
-   * @see #setSend_pred(Pred)
+   * @see #setSend_pred(Expression)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getOutputProcessPart_Send_pred()
    * @model containment="true"
    * @generated
    */
-  Pred getSend_pred();
+  Expression getSend_pred();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart#getSend_pred <em>Send pred</em>}' containment reference.
@@ -69,7 +69,7 @@ public interface OutputProcessPart extends EObject
    * @see #getSend_pred()
    * @generated
    */
-  void setSend_pred(Pred value);
+  void setSend_pred(Expression value);
 
   /**
    * Returns the value of the '<em><b>Output</b></em>' attribute.

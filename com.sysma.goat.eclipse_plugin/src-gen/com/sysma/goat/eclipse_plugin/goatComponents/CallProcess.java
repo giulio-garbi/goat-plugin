@@ -3,7 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.CallProcess#getProcname <em>Procname</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.CallProcess#getParams <em>Params</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getCallProcess()
@@ -49,21 +47,5 @@ public interface CallProcess extends com.sysma.goat.eclipse_plugin.goatComponent
    * @generated
    */
   void setProcname(ProcessDefinition value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Value}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' containment reference list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getCallProcess_Params()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Value> getParams();
 
 } // CallProcess
