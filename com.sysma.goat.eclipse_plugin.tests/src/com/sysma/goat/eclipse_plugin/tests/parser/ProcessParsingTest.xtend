@@ -284,6 +284,41 @@ class ProcessParsingTest {
 		]
 	}
 	
+	@Test
+	def if_Else(){
+		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } ''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result instanceof IfProcesses)
+		val ifp = result as IfProcesses
+		Assert.assertTrue(ifp.branches.length == 2)
+		ifp.branches.forEach[br|
+			val branch = br as IfBranchProcess
+			val p = branch.then as OutputProcess
+			Assert.assertTrue(p.precond.precond.length == 0)
+			Assert.assertTrue(p.send_pred instanceof Expression)
+			Assert.assertTrue(p.msgOutParts.length == 3)
+			Assert.assertTrue(p.msgOutParts.forall[it instanceof Expression])
+			Assert.assertTrue(p.next instanceof ZeroProcess)
+			Assert.assertTrue(p.msec == 0)
+			Assert.assertNull(p.output)
+		]
+	}
+	
+	@Test
+	def if_Else_Else(){
+		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }''')
+		Assert.assertNotNull(result)
+		Assert.assertFalse(result.eResource.errors.isEmpty)
+	}
+	
+	@Test
+	def if_Else_ElseIf(){
+		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }''')
+		Assert.assertNotNull(result)
+		Assert.assertFalse(result.eResource.errors.isEmpty)
+	}
+	
 	// Preconditions
 	def private encapsulatePrecondition(CharSequence pre){
 		val result = parseHelper.parse('''

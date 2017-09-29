@@ -57,11 +57,15 @@ fragment OutputProcessPart:
 ;
 
 IfProcesses returns Process:
-	{IfProcesses} branches += IfBranchProcess ("else" branches += IfBranchProcess)*
+	{IfProcesses} branches += IfBranchProcess ("else" branches += IfBranchProcess)* ("else" branches += ElseBranchProcess)?
 ;
 
 IfBranchProcess returns Process:
 	{IfBranchProcess} "if" cond = Preconditions '{' then = (PredOutputProcessOrInputProcess) '}'
+;
+
+ElseBranchProcess returns Process:
+	{IfBranchProcess} '{' then = (PredOutputProcessOrInputProcess) '}'
 ;
 
 Update:

@@ -153,8 +153,15 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				sequence_Atomic(context, (FunctionCall) semanticObject); 
 				return; 
 			case GoatComponentsPackage.IF_BRANCH_PROCESS:
-				sequence_IfBranchProcess(context, (IfBranchProcess) semanticObject); 
-				return; 
+				if (rule == grammarAccess.getElseBranchProcessRule()) {
+					sequence_ElseBranchProcess(context, (IfBranchProcess) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getIfBranchProcessRule()) {
+					sequence_IfBranchProcess(context, (IfBranchProcess) semanticObject); 
+					return; 
+				}
+				else break;
 			case GoatComponentsPackage.IF_PROCESSES:
 				sequence_IfProcesses(context, (IfProcesses) semanticObject); 
 				return; 
@@ -714,6 +721,24 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     ElseBranchProcess returns IfBranchProcess
+	 *
+	 * Constraint:
+	 *     then=PredOutputProcessOrInputProcess
+	 */
+	protected void sequence_ElseBranchProcess(ISerializationContext context, IfBranchProcess semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getElseBranchProcessAccess().getThenPredOutputProcessOrInputProcessParserRuleCall_2_0(), semanticObject.getThen());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EnvInitValue returns BoolConstant
 	 *
 	 * Constraint:
@@ -952,7 +977,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     NProcess returns IfProcesses
 	 *
 	 * Constraint:
-	 *     (branches+=IfBranchProcess branches+=IfBranchProcess*)
+	 *     (branches+=IfBranchProcess branches+=IfBranchProcess* branches+=ElseBranchProcess?)
 	 */
 	protected void sequence_IfProcesses(ISerializationContext context, IfProcesses semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

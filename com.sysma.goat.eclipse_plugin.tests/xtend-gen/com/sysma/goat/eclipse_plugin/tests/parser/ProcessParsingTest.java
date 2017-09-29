@@ -449,6 +449,62 @@ public class ProcessParsingTest {
     ifp.getBranches().forEach(_function);
   }
   
+  @Test
+  public void if_Else() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } ");
+    final com.sysma.goat.eclipse_plugin.goatComponents.Process result = this.encapsulateProcess(_builder);
+    Assert.assertNotNull(result);
+    Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    Assert.assertTrue((result instanceof IfProcesses));
+    final IfProcesses ifp = ((IfProcesses) result);
+    int _length = ((Object[])Conversions.unwrapArray(ifp.getBranches(), Object.class)).length;
+    boolean _equals = (_length == 2);
+    Assert.assertTrue(_equals);
+    final Consumer<com.sysma.goat.eclipse_plugin.goatComponents.Process> _function = (com.sysma.goat.eclipse_plugin.goatComponents.Process br) -> {
+      final IfBranchProcess branch = ((IfBranchProcess) br);
+      com.sysma.goat.eclipse_plugin.goatComponents.Process _then = branch.getThen();
+      final OutputProcess p = ((OutputProcess) _then);
+      int _length_1 = ((Object[])Conversions.unwrapArray(p.getPrecond().getPrecond(), Object.class)).length;
+      boolean _equals_1 = (_length_1 == 0);
+      Assert.assertTrue(_equals_1);
+      Expression _send_pred = p.getSend_pred();
+      Assert.assertTrue((_send_pred instanceof Expression));
+      int _length_2 = ((Object[])Conversions.unwrapArray(p.getMsgOutParts(), Object.class)).length;
+      boolean _equals_2 = (_length_2 == 3);
+      Assert.assertTrue(_equals_2);
+      final Function1<Expression, Boolean> _function_1 = (Expression it) -> {
+        return Boolean.valueOf((it instanceof Expression));
+      };
+      Assert.assertTrue(IterableExtensions.<Expression>forall(p.getMsgOutParts(), _function_1));
+      com.sysma.goat.eclipse_plugin.goatComponents.Process _next = p.getNext();
+      Assert.assertTrue((_next instanceof ZeroProcess));
+      int _msec = p.getMsec();
+      boolean _equals_3 = (_msec == 0);
+      Assert.assertTrue(_equals_3);
+      Assert.assertNull(p.getOutput());
+    };
+    ifp.getBranches().forEach(_function);
+  }
+  
+  @Test
+  public void if_Else_Else() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }");
+    final com.sysma.goat.eclipse_plugin.goatComponents.Process result = this.encapsulateProcess(_builder);
+    Assert.assertNotNull(result);
+    Assert.assertFalse(result.eResource().getErrors().isEmpty());
+  }
+  
+  @Test
+  public void if_Else_ElseIf() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }");
+    final com.sysma.goat.eclipse_plugin.goatComponents.Process result = this.encapsulateProcess(_builder);
+    Assert.assertNotNull(result);
+    Assert.assertFalse(result.eResource().getErrors().isEmpty());
+  }
+  
   private Preconditions encapsulatePrecondition(final CharSequence pre) {
     try {
       Preconditions _xblockexpression = null;

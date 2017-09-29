@@ -989,6 +989,31 @@ ruleIfProcesses returns [EObject current=null]
 				)
 			)
 		)*
+		(
+			otherlv_4=Else
+			{
+				newLeafNode(otherlv_4, grammarAccess.getIfProcessesAccess().getElseKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getIfProcessesAccess().getBranchesElseBranchProcessParserRuleCall_3_1_0());
+					}
+					lv_branches_5_0=ruleElseBranchProcess
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getIfProcessesRule());
+						}
+						add(
+							$current,
+							"branches",
+							lv_branches_5_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.ElseBranchProcess");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -1064,6 +1089,59 @@ ruleIfBranchProcess returns [EObject current=null]
 		otherlv_5=RightCurlyBracket
 		{
 			newLeafNode(otherlv_5, grammarAccess.getIfBranchProcessAccess().getRightCurlyBracketKeyword_5());
+		}
+	)
+;
+
+// Entry rule entryRuleElseBranchProcess
+entryRuleElseBranchProcess returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getElseBranchProcessRule()); }
+	iv_ruleElseBranchProcess=ruleElseBranchProcess
+	{ $current=$iv_ruleElseBranchProcess.current; }
+	EOF;
+
+// Rule ElseBranchProcess
+ruleElseBranchProcess returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getElseBranchProcessAccess().getIfBranchProcessAction_0(),
+					$current);
+			}
+		)
+		otherlv_1=LeftCurlyBracket
+		{
+			newLeafNode(otherlv_1, grammarAccess.getElseBranchProcessAccess().getLeftCurlyBracketKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getElseBranchProcessAccess().getThenPredOutputProcessOrInputProcessParserRuleCall_2_0());
+				}
+				lv_then_2_0=rulePredOutputProcessOrInputProcess
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getElseBranchProcessRule());
+					}
+					set(
+						$current,
+						"then",
+						lv_then_2_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.PredOutputProcessOrInputProcess");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_3=RightCurlyBracket
+		{
+			newLeafNode(otherlv_3, grammarAccess.getElseBranchProcessAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;

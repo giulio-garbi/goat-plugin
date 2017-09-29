@@ -106,12 +106,17 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("proc Q = receive(true){proc.x}.(Q|Qrep)");
     _builder.newLine();
-    _builder.append("proc Qrep = if wait until (proc.x - 2*(proc.x / 2) == 0) {");
+    _builder.append("proc Qrep = if wait until(proc.x == 0){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{}@(false)print(\"$x$ is zero\").nil");
+    _builder.newLine();
+    _builder.append("} else if wait until (proc.x - 2*(proc.x / 2) == 0) {");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("send{}@(false)print(\"$x$ is even\").nil");
     _builder.newLine();
-    _builder.append("} else if wait until (true){");
+    _builder.append("} else {");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("send{}@(false)print(\"$x$ is odd\").nil");
@@ -124,6 +129,7 @@ public class ComponentGeneratorTest {
     _builder.append("component {} Q at \"127.0.0.1:17654\"");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
+      Assert.assertTrue(out.contains("0 is zero"));
       final Consumer<Integer> _function_1 = (Integer it) -> {
         String _plus = (it + " is ");
         String _xifexpression = null;
@@ -135,7 +141,7 @@ public class ComponentGeneratorTest {
         String _plus_1 = (_plus + _xifexpression);
         Assert.assertTrue(out.contains(_plus_1));
       };
-      new IntegerRange(0, 999).forEach(_function_1);
+      new IntegerRange(1, 999).forEach(_function_1);
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }

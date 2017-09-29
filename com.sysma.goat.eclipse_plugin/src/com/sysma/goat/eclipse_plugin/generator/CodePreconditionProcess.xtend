@@ -13,7 +13,11 @@ class CodePreconditionProcess {
 	
 	new(Preconditions p){
 		//process = p
-		preconds = p.precond
+		if (p === null){
+			preconds = #[]
+		} else {
+			preconds = p.precond
+		}
 	}
 	
 	new(Awareness awr){

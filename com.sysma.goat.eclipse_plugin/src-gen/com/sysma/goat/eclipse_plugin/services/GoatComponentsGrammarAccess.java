@@ -568,12 +568,16 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cElseKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cBranchesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cBranchesIfBranchProcessParserRuleCall_2_1_0 = (RuleCall)cBranchesAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cElseKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cBranchesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cBranchesElseBranchProcessParserRuleCall_3_1_0 = (RuleCall)cBranchesAssignment_3_1.eContents().get(0);
 		
 		//IfProcesses Process:
-		//	{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)*;
+		//	{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)* ("else" branches+=ElseBranchProcess)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)*
+		//{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)* ("else" branches+=ElseBranchProcess)?
 		public Group getGroup() { return cGroup; }
 		
 		//{IfProcesses}
@@ -596,6 +600,18 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//IfBranchProcess
 		public RuleCall getBranchesIfBranchProcessParserRuleCall_2_1_0() { return cBranchesIfBranchProcessParserRuleCall_2_1_0; }
+		
+		//("else" branches+=ElseBranchProcess)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//"else"
+		public Keyword getElseKeyword_3_0() { return cElseKeyword_3_0; }
+		
+		//branches+=ElseBranchProcess
+		public Assignment getBranchesAssignment_3_1() { return cBranchesAssignment_3_1; }
+		
+		//ElseBranchProcess
+		public RuleCall getBranchesElseBranchProcessParserRuleCall_3_1_0() { return cBranchesElseBranchProcessParserRuleCall_3_1_0; }
 	}
 	public class IfBranchProcessElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.IfBranchProcess");
@@ -639,6 +655,37 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class ElseBranchProcessElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.ElseBranchProcess");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIfBranchProcessAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cThenAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cThenPredOutputProcessOrInputProcessParserRuleCall_2_0 = (RuleCall)cThenAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//ElseBranchProcess Process:
+		//	{IfBranchProcess} '{' then=PredOutputProcessOrInputProcess '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{IfBranchProcess} '{' then=PredOutputProcessOrInputProcess '}'
+		public Group getGroup() { return cGroup; }
+		
+		//{IfBranchProcess}
+		public Action getIfBranchProcessAction_0() { return cIfBranchProcessAction_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//then=PredOutputProcessOrInputProcess
+		public Assignment getThenAssignment_2() { return cThenAssignment_2; }
+		
+		//PredOutputProcessOrInputProcess
+		public RuleCall getThenPredOutputProcessOrInputProcessParserRuleCall_2_0() { return cThenPredOutputProcessOrInputProcessParserRuleCall_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class UpdateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Update");
@@ -2113,6 +2160,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final OutputProcessPartElements pOutputProcessPart;
 	private final IfProcessesElements pIfProcesses;
 	private final IfBranchProcessElements pIfBranchProcess;
+	private final ElseBranchProcessElements pElseBranchProcess;
 	private final UpdateElements pUpdate;
 	private final AwarenessElements pAwareness;
 	private final NZCProcessElements pNZCProcess;
@@ -2165,6 +2213,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOutputProcessPart = new OutputProcessPartElements();
 		this.pIfProcesses = new IfProcessesElements();
 		this.pIfBranchProcess = new IfBranchProcessElements();
+		this.pElseBranchProcess = new ElseBranchProcessElements();
 		this.pUpdate = new UpdateElements();
 		this.pAwareness = new AwarenessElements();
 		this.pNZCProcess = new NZCProcessElements();
@@ -2331,7 +2380,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IfProcesses Process:
-	//	{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)*;
+	//	{IfProcesses} branches+=IfBranchProcess ("else" branches+=IfBranchProcess)* ("else" branches+=ElseBranchProcess)?;
 	public IfProcessesElements getIfProcessesAccess() {
 		return pIfProcesses;
 	}
@@ -2348,6 +2397,16 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getIfBranchProcessRule() {
 		return getIfBranchProcessAccess().getRule();
+	}
+	
+	//ElseBranchProcess Process:
+	//	{IfBranchProcess} '{' then=PredOutputProcessOrInputProcess '}';
+	public ElseBranchProcessElements getElseBranchProcessAccess() {
+		return pElseBranchProcess;
+	}
+	
+	public ParserRule getElseBranchProcessRule() {
+		return getElseBranchProcessAccess().getRule();
 	}
 	
 	//Update:

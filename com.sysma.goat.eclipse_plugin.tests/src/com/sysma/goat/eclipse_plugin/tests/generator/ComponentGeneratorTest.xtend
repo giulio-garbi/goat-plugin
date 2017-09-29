@@ -66,16 +66,19 @@ class ComponentGeneratorTest {
 		proc Pp = wait until(proc.x < 1000)[proc.x := proc.x + 1]send{proc.x}@(true).Pp
 		
 		proc Q = receive(true){proc.x}.(Q|Qrep)
-		proc Qrep = if wait until (proc.x - 2*(proc.x / 2) == 0) {
+		proc Qrep = if wait until(proc.x == 0){
+			send{}@(false)print("$x$ is zero").nil
+		} else if wait until (proc.x - 2*(proc.x / 2) == 0) {
 			send{}@(false)print("$x$ is even").nil
-		} else if wait until (true){
+		} else {
 			send{}@(false)print("$x$ is odd").nil
 		}
 		
 		component {} P at "127.0.0.1:17654"
 		component {} Q at "127.0.0.1:17654"
 		''',[out, err| 
-			(0..999).forEach[Assert.assertTrue(out.contains(it + " is " + (if(it % 2 == 0)"even" else "odd")))]
+			Assert.assertTrue(out.contains("0 is zero"))
+			(1..999).forEach[Assert.assertTrue(out.contains(it + " is " + (if(it % 2 == 0)"even" else "odd")))]
 		])
 	}
 	

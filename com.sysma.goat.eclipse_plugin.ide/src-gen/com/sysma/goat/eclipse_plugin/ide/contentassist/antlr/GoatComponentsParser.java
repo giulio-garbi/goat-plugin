@@ -74,7 +74,9 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOutputProcessPartAccess().getGroup_9(), "rule__OutputProcessPart__Group_9__0");
 					put(grammarAccess.getIfProcessesAccess().getGroup(), "rule__IfProcesses__Group__0");
 					put(grammarAccess.getIfProcessesAccess().getGroup_2(), "rule__IfProcesses__Group_2__0");
+					put(grammarAccess.getIfProcessesAccess().getGroup_3(), "rule__IfProcesses__Group_3__0");
 					put(grammarAccess.getIfBranchProcessAccess().getGroup(), "rule__IfBranchProcess__Group__0");
+					put(grammarAccess.getElseBranchProcessAccess().getGroup(), "rule__ElseBranchProcess__Group__0");
 					put(grammarAccess.getUpdateAccess().getGroup(), "rule__Update__Group__0");
 					put(grammarAccess.getUpdateAccess().getGroup_4(), "rule__Update__Group_4__0");
 					put(grammarAccess.getAwarenessAccess().getGroup(), "rule__Awareness__Group__0");
@@ -152,8 +154,10 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOutputProcessPartAccess().getNextAssignment_11(), "rule__OutputProcessPart__NextAssignment_11");
 					put(grammarAccess.getIfProcessesAccess().getBranchesAssignment_1(), "rule__IfProcesses__BranchesAssignment_1");
 					put(grammarAccess.getIfProcessesAccess().getBranchesAssignment_2_1(), "rule__IfProcesses__BranchesAssignment_2_1");
+					put(grammarAccess.getIfProcessesAccess().getBranchesAssignment_3_1(), "rule__IfProcesses__BranchesAssignment_3_1");
 					put(grammarAccess.getIfBranchProcessAccess().getCondAssignment_2(), "rule__IfBranchProcess__CondAssignment_2");
 					put(grammarAccess.getIfBranchProcessAccess().getThenAssignment_4(), "rule__IfBranchProcess__ThenAssignment_4");
+					put(grammarAccess.getElseBranchProcessAccess().getThenAssignment_2(), "rule__ElseBranchProcess__ThenAssignment_2");
 					put(grammarAccess.getUpdateAccess().getVarsAssignment_1(), "rule__Update__VarsAssignment_1");
 					put(grammarAccess.getUpdateAccess().getValsAssignment_3(), "rule__Update__ValsAssignment_3");
 					put(grammarAccess.getUpdateAccess().getVarsAssignment_4_1(), "rule__Update__VarsAssignment_4_1");

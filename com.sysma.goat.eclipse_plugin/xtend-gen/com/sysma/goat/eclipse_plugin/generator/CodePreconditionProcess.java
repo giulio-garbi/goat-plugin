@@ -28,7 +28,11 @@ public class CodePreconditionProcess {
   private final List<EObject> preconds;
   
   public CodePreconditionProcess(final Preconditions p) {
-    this.preconds = p.getPrecond();
+    if ((p == null)) {
+      this.preconds = Collections.<EObject>unmodifiableList(CollectionLiterals.<EObject>newArrayList());
+    } else {
+      this.preconds = p.getPrecond();
+    }
   }
   
   public CodePreconditionProcess(final Awareness awr) {
