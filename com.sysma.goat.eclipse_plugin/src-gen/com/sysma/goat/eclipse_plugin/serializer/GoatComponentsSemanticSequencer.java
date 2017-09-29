@@ -41,6 +41,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
@@ -254,6 +256,12 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				return; 
 			case GoatComponentsPackage.PRECONDITIONS:
 				sequence_Preconditions(context, (Preconditions) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PRINT_ALL_STATEMENT:
+				sequence_PrintAllStatement(context, (PrintAllStatement) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT:
+				sequence_PrintFormattedStatement(context, (PrintFormattedStatement) semanticObject); 
 				return; 
 			case GoatComponentsPackage.PROCESS_DEFINITION:
 				sequence_ProcessDefinition(context, (ProcessDefinition) semanticObject); 
@@ -989,7 +997,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     InputProcess returns InputProcess
 	 *
 	 * Constraint:
-	 *     (rec_pred=Expression (msgInParts+=AttributeToSet msgInParts+=AttributeToSet*)? output=STRING? next=NZCProcess)
+	 *     (rec_pred=Expression (msgInParts+=AttributeToSet msgInParts+=AttributeToSet*)? output=PrintStatement? next=NZCProcess)
 	 */
 	protected void sequence_InputProcess(ISerializationContext context, InputProcess semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1112,7 +1120,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *         precond=PredOutputProcessOrInputProcess_OutputProcess_1_0_0 
 	 *         (msgOutParts+=Expression msgOutParts+=Expression*)? 
 	 *         send_pred=Expression 
-	 *         output=STRING? 
+	 *         output=PrintStatement? 
 	 *         msec=INT? 
 	 *         next=Proc
 	 *     )
@@ -1135,7 +1143,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *         precond=PredOutputProcessOrInputProcesses_OutputProcess_1_0_0 
 	 *         (msgOutParts+=Expression msgOutParts+=Expression*)? 
 	 *         send_pred=Expression 
-	 *         output=STRING? 
+	 *         output=PrintStatement? 
 	 *         msec=INT? 
 	 *         next=Proc
 	 *     )
@@ -1310,6 +1318,37 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_1_3_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PrintAllStatement returns PrintAllStatement
+	 *
+	 * Constraint:
+	 *     {PrintAllStatement}
+	 */
+	protected void sequence_PrintAllStatement(ISerializationContext context, PrintAllStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PrintStatement returns PrintFormattedStatement
+	 *     PrintFormattedStatement returns PrintFormattedStatement
+	 *
+	 * Constraint:
+	 *     toPrint=STRING
+	 */
+	protected void sequence_PrintFormattedStatement(ISerializationContext context, PrintFormattedStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PRINT_FORMATTED_STATEMENT__TO_PRINT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PRINT_FORMATTED_STATEMENT__TO_PRINT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPrintFormattedStatementAccess().getToPrintSTRINGTerminalRuleCall_3_0(), semanticObject.getToPrint());
 		feeder.finish();
 	}
 	

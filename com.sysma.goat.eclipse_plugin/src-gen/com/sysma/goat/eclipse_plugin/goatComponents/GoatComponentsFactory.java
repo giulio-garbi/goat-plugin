@@ -69,6 +69,33 @@ public interface GoatComponentsFactory extends EFactory
   OutputProcessPart createOutputProcessPart();
 
   /**
+   * Returns a new object of class '<em>Print Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Print Statement</em>'.
+   * @generated
+   */
+  PrintStatement createPrintStatement();
+
+  /**
+   * Returns a new object of class '<em>Print All Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Print All Statement</em>'.
+   * @generated
+   */
+  PrintAllStatement createPrintAllStatement();
+
+  /**
+   * Returns a new object of class '<em>Print Formatted Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Print Formatted Statement</em>'.
+   * @generated
+   */
+  PrintFormattedStatement createPrintFormattedStatement();
+
+  /**
    * Returns a new object of class '<em>Update</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

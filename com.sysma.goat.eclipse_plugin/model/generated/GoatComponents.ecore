@@ -26,10 +26,16 @@
         eType="#//Expression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="send_pred" eType="#//Expression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//PrintStatement"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="msec" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//Process"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrintStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PrintAllStatement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PrintFormattedStatement" eSuperTypes="#//PrintStatement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toPrint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Update">
     <eStructuralFeatures xsi:type="ecore:EReference" name="vars" upperBound="-1" eType="#//AttributeToSet"

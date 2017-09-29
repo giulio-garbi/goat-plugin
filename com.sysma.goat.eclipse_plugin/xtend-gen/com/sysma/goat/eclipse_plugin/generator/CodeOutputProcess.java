@@ -4,15 +4,19 @@ import com.google.common.base.Objects;
 import com.sysma.goat.eclipse_plugin.generator.CodeInputOutputProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
+import com.sysma.goat.eclipse_plugin.generator.CodePrint;
 import com.sysma.goat.eclipse_plugin.generator.CodeSendPred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.generator.CodeValue;
-import com.sysma.goat.eclipse_plugin.generator.StdoutStringHelper;
+import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
+import java.util.Collections;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -99,14 +103,12 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       _builder.append(_setupMessageParts, "\t");
       _builder.newLineIfNotEmpty();
       {
-        String _output = this.proc.getOutput();
+        PrintStatement _output = this.proc.getOutput();
         boolean _tripleNotEquals = (_output != null);
         if (_tripleNotEquals) {
           _builder.append("\t");
-          _builder.append("fmt.Println(");
-          String _convertString = StdoutStringHelper.convertString(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap());
-          _builder.append(_convertString, "\t");
-          _builder.append(")");
+          CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+          _builder.append(_of, "\t");
           _builder.newLineIfNotEmpty();
         }
       }
@@ -152,7 +154,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
           _builder_1.append("()");
           _builder_1.newLineIfNotEmpty();
           {
-            String _output_1 = this.proc.getOutput();
+            PrintStatement _output_1 = this.proc.getOutput();
             boolean _tripleNotEquals_1 = (_output_1 != null);
             if (_tripleNotEquals_1) {
               _builder_1.append("\t");
@@ -160,10 +162,8 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
               _builder_1.newLine();
               _builder_1.append("\t");
               _builder_1.append("\t");
-              _builder_1.append("fmt.Println(");
-              String _convertString_1 = StdoutStringHelper.convertString(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap());
-              _builder_1.append(_convertString_1, "\t\t");
-              _builder_1.append(")");
+              CharSequence _of_1 = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+              _builder_1.append(_of_1, "\t\t");
               _builder_1.newLineIfNotEmpty();
               _builder_1.append("\t");
               _builder_1.append("}");
@@ -229,14 +229,12 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       }
     }
     {
-      String _output = this.proc.getOutput();
+      PrintStatement _output = this.proc.getOutput();
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t");
-        _builder.append("fmt.Println(");
-        String _convertString = StdoutStringHelper.convertString(this.proc.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap());
-        _builder.append(_convertString, "\t");
-        _builder.append(")");
+        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+        _builder.append(_of, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -305,14 +303,12 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       }
     }
     {
-      String _output = this.proc.getOutput();
+      PrintStatement _output = this.proc.getOutput();
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t");
-        _builder.append("fmt.Println(");
-        String _convertString = StdoutStringHelper.convertString(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap());
-        _builder.append(_convertString, "\t");
-        _builder.append(")");
+        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+        _builder.append(_of, "\t");
         _builder.newLineIfNotEmpty();
       }
     }

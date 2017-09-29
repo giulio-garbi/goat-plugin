@@ -47,13 +47,25 @@ fragment InputProcessesPart:
 ;
 
 InputProcess returns Process:
-	{InputProcess} "receive" "("rec_pred=Expression")" "{" (msgInParts+=AttributeToSet ("," msgInParts+=AttributeToSet)*)? "}" ("print" "(" output = STRING ")")? 
+	{InputProcess} "receive" "("rec_pred=Expression")" "{" (msgInParts+=AttributeToSet ("," msgInParts+=AttributeToSet)*)? "}" (output = PrintStatement)? 
 		"."next=NZCProcess
 ;
 
 fragment OutputProcessPart:
-	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "("send_pred=Expression ")" ("print" "(" output = STRING ")")? 
+	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "("send_pred=Expression ")" (output = PrintStatement)? 
 	("sleep""("msec = INT")")?"."next=Proc	
+;
+
+PrintStatement:
+	/*PrintAllStatement|*/PrintFormattedStatement
+;
+
+PrintAllStatement:
+	{PrintAllStatement} "print"
+;
+
+PrintFormattedStatement:
+	{PrintFormattedStatement} "print" "(" toPrint = STRING ")"
 ;
 
 IfProcesses returns Process:

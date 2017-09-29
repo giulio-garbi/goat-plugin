@@ -47,6 +47,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
@@ -102,6 +105,27 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass outputProcessPartEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printAllStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printFormattedStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -602,9 +626,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOutputProcessPart_Output()
+  public EReference getOutputProcessPart_Output()
   {
-    return (EAttribute)outputProcessPartEClass.getEStructuralFeatures().get(2);
+    return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -625,6 +649,46 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EReference getOutputProcessPart_Next()
   {
     return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPrintStatement()
+  {
+    return printStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPrintAllStatement()
+  {
+    return printAllStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPrintFormattedStatement()
+  {
+    return printFormattedStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPrintFormattedStatement_ToPrint()
+  {
+    return (EAttribute)printFormattedStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1724,9 +1788,16 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     outputProcessPartEClass = createEClass(OUTPUT_PROCESS_PART);
     createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__MSG_OUT_PARTS);
     createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__SEND_PRED);
-    createEAttribute(outputProcessPartEClass, OUTPUT_PROCESS_PART__OUTPUT);
+    createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__OUTPUT);
     createEAttribute(outputProcessPartEClass, OUTPUT_PROCESS_PART__MSEC);
     createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__NEXT);
+
+    printStatementEClass = createEClass(PRINT_STATEMENT);
+
+    printAllStatementEClass = createEClass(PRINT_ALL_STATEMENT);
+
+    printFormattedStatementEClass = createEClass(PRINT_FORMATTED_STATEMENT);
+    createEAttribute(printFormattedStatementEClass, PRINT_FORMATTED_STATEMENT__TO_PRINT);
 
     updateEClass = createEClass(UPDATE);
     createEReference(updateEClass, UPDATE__VARS);
@@ -1909,6 +1980,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     processEClass.getESuperTypes().add(this.getOutputProcessPart());
     processEClass.getESuperTypes().add(this.getInputProcessesPart());
     preconditionsEClass.getESuperTypes().add(this.getProcess());
+    printFormattedStatementEClass.getESuperTypes().add(this.getPrintStatement());
     funcParamEClass.getESuperTypes().add(this.getLRef());
     funcVarDeclarationEClass.getESuperTypes().add(this.getLRef());
     funcVarDeclarationEClass.getESuperTypes().add(this.getFuncStatement());
@@ -1961,9 +2033,16 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(outputProcessPartEClass, OutputProcessPart.class, "OutputProcessPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOutputProcessPart_MsgOutParts(), this.getExpression(), null, "msgOutParts", null, 0, -1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOutputProcessPart_Send_pred(), this.getExpression(), null, "send_pred", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOutputProcessPart_Output(), ecorePackage.getEString(), "output", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOutputProcessPart_Output(), this.getPrintStatement(), null, "output", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getOutputProcessPart_Msec(), ecorePackage.getEInt(), "msec", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOutputProcessPart_Next(), this.getProcess(), null, "next", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(printStatementEClass, PrintStatement.class, "PrintStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(printAllStatementEClass, PrintAllStatement.class, "PrintAllStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(printFormattedStatementEClass, PrintFormattedStatement.class, "PrintFormattedStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrintFormattedStatement_ToPrint(), ecorePackage.getEString(), "toPrint", null, 0, 1, PrintFormattedStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(updateEClass, Update.class, "Update", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUpdate_Vars(), this.getAttributeToSet(), null, "vars", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

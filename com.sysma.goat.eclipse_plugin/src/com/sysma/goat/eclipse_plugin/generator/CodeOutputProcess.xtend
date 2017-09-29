@@ -46,7 +46,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 				«ENDIF»
 				«getSetupMessageParts("attrs")»
 				«IF proc.output !== null»
-					fmt.Println(«StdoutStringHelper.convertString(proc.output, "attrs", CodeModel.localVariablesMap)»)
+					«CodePrint.of(proc.output, "attrs", CodeModel.localVariablesMap, #[])»
 				«ENDIF»
 				return «messageVar», «new CodeSendPred(proc.send_pred,CodeModel.localVariablesMap).code», true
 			})
@@ -61,7 +61,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 					ok :=  «precond.getPreconditionCode(localBackupMap, "attrs")»()
 					«IF proc.output !== null»
 						if (ok){
-							fmt.Println(«StdoutStringHelper.convertString(proc.output, "attrs", CodeModel.localVariablesMap)»)
+							«CodePrint.of(proc.output, "attrs", CodeModel.localVariablesMap, #[])»
 						}
 					«ENDIF»
 					return ok
@@ -87,7 +87,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 				}
 			«ENDIF»
 			«IF proc.output !== null»
-				fmt.Println(«StdoutStringHelper.convertString(proc.output, "attrsWrap", CodeModel.localVariablesMap)»)
+				«CodePrint.of(proc.output, "attrsWrap", CodeModel.localVariablesMap, #[])»
 			«ENDIF»
 			«IF isRealOutput»
 				«getSetupMessageParts("attrsWrap")»
@@ -111,7 +111,7 @@ class CodeOutputProcess extends CodeTree implements CodeInputOutputProcess {
 				}
 			«ENDIF»
 			«IF proc.output !== null»
-				fmt.Println(«StdoutStringHelper.convertString(proc.output, "attrs", CodeModel.localVariablesMap)»)
+				«CodePrint.of(proc.output, "attrs", CodeModel.localVariablesMap, #[])»
 			«ENDIF»
 			«IF isRealOutput»
 				«getSetupMessageParts("attrs")»

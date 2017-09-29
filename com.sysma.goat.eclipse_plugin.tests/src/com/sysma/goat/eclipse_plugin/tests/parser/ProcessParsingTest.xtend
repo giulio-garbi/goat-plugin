@@ -23,6 +23,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
 import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses
 import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement
 
 @RunWith(XtextRunner)
 @InjectWith(GoatComponentsInjectorProvider)
@@ -186,7 +187,8 @@ class ProcessParsingTest {
 		Assert.assertTrue(result instanceof OutputProcess)
 		val p = result as OutputProcess
 		Assert.assertTrue(p.msec == 10)
-		Assert.assertTrue(p.output == "Ciao ciao")
+		Assert.assertTrue(p.output instanceof PrintFormattedStatement)
+		Assert.assertTrue((p.output as PrintFormattedStatement).toPrint == "Ciao ciao")
 	}
 	
 	@Test

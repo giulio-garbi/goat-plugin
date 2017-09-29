@@ -47,6 +47,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
@@ -118,6 +121,9 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.PRECONDITIONS: return createPreconditions();
       case GoatComponentsPackage.INPUT_PROCESSES_PART: return createInputProcessesPart();
       case GoatComponentsPackage.OUTPUT_PROCESS_PART: return createOutputProcessPart();
+      case GoatComponentsPackage.PRINT_STATEMENT: return createPrintStatement();
+      case GoatComponentsPackage.PRINT_ALL_STATEMENT: return createPrintAllStatement();
+      case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT: return createPrintFormattedStatement();
       case GoatComponentsPackage.UPDATE: return createUpdate();
       case GoatComponentsPackage.AWARENESS: return createAwareness();
       case GoatComponentsPackage.PROCESS_DEFINITION: return createProcessDefinition();
@@ -219,6 +225,39 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     OutputProcessPartImpl outputProcessPart = new OutputProcessPartImpl();
     return outputProcessPart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrintStatement createPrintStatement()
+  {
+    PrintStatementImpl printStatement = new PrintStatementImpl();
+    return printStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrintAllStatement createPrintAllStatement()
+  {
+    PrintAllStatementImpl printAllStatement = new PrintAllStatementImpl();
+    return printAllStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrintFormattedStatement createPrintFormattedStatement()
+  {
+    PrintFormattedStatementImpl printFormattedStatement = new PrintFormattedStatementImpl();
+    return printFormattedStatement;
   }
 
   /**

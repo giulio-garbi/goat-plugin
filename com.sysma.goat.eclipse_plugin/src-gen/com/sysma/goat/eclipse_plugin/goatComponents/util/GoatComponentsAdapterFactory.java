@@ -46,6 +46,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
@@ -146,6 +149,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseOutputProcessPart(OutputProcessPart object)
       {
         return createOutputProcessPartAdapter();
+      }
+      @Override
+      public Adapter casePrintStatement(PrintStatement object)
+      {
+        return createPrintStatementAdapter();
+      }
+      @Override
+      public Adapter casePrintAllStatement(PrintAllStatement object)
+      {
+        return createPrintAllStatementAdapter();
+      }
+      @Override
+      public Adapter casePrintFormattedStatement(PrintFormattedStatement object)
+      {
+        return createPrintFormattedStatementAdapter();
       }
       @Override
       public Adapter caseUpdate(Update object)
@@ -455,6 +473,51 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOutputProcessPartAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement <em>Print Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement
+   * @generated
+   */
+  public Adapter createPrintStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement <em>Print All Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement
+   * @generated
+   */
+  public Adapter createPrintAllStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement <em>Print Formatted Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement
+   * @generated
+   */
+  public Adapter createPrintFormattedStatementAdapter()
   {
     return null;
   }

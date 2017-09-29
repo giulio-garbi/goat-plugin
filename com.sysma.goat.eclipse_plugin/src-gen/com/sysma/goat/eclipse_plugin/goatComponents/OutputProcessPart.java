@@ -72,30 +72,30 @@ public interface OutputProcessPart extends EObject
   void setSend_pred(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Output</b></em>' attribute.
+   * Returns the value of the '<em><b>Output</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Output</em>' attribute isn't clear,
+   * If the meaning of the '<em>Output</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Output</em>' attribute.
-   * @see #setOutput(String)
+   * @return the value of the '<em>Output</em>' containment reference.
+   * @see #setOutput(PrintStatement)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getOutputProcessPart_Output()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getOutput();
+  PrintStatement getOutput();
 
   /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart#getOutput <em>Output</em>}' attribute.
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart#getOutput <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Output</em>' attribute.
+   * @param value the new value of the '<em>Output</em>' containment reference.
    * @see #getOutput()
    * @generated
    */
-  void setOutput(String value);
+  void setOutput(PrintStatement value);
 
   /**
    * Returns the value of the '<em><b>Msec</b></em>' attribute.

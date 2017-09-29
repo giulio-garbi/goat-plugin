@@ -333,24 +333,20 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMsgInPartsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
 		private final RuleCall cMsgInPartsAttributeToSetParserRuleCall_6_1_1_0 = (RuleCall)cMsgInPartsAssignment_6_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cPrintKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cOutputAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cOutputSTRINGTerminalRuleCall_8_2_0 = (RuleCall)cOutputAssignment_8_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Assignment cOutputAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOutputPrintStatementParserRuleCall_8_0 = (RuleCall)cOutputAssignment_8.eContents().get(0);
 		private final Keyword cFullStopKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Assignment cNextAssignment_10 = (Assignment)cGroup.eContents().get(10);
 		private final RuleCall cNextNZCProcessParserRuleCall_10_0 = (RuleCall)cNextAssignment_10.eContents().get(0);
 		
 		//InputProcess Process:
 		//	{InputProcess} "receive" "(" rec_pred=Expression ")" "{" (msgInParts+=AttributeToSet (","
-		//	msgInParts+=AttributeToSet)*)? "}" ("print" "(" output=STRING ")")?
+		//	msgInParts+=AttributeToSet)*)? "}" output=PrintStatement?
 		//	"." next=NZCProcess;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{InputProcess} "receive" "(" rec_pred=Expression ")" "{" (msgInParts+=AttributeToSet ("," msgInParts+=AttributeToSet)*)?
-		//"}" ("print" "(" output=STRING ")")? "." next=NZCProcess
+		//"}" output=PrintStatement? "." next=NZCProcess
 		public Group getGroup() { return cGroup; }
 		
 		//{InputProcess}
@@ -398,23 +394,11 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 		
-		//("print" "(" output=STRING ")")?
-		public Group getGroup_8() { return cGroup_8; }
+		//output=PrintStatement?
+		public Assignment getOutputAssignment_8() { return cOutputAssignment_8; }
 		
-		//"print"
-		public Keyword getPrintKeyword_8_0() { return cPrintKeyword_8_0; }
-		
-		//"("
-		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
-		
-		//output=STRING
-		public Assignment getOutputAssignment_8_2() { return cOutputAssignment_8_2; }
-		
-		//STRING
-		public RuleCall getOutputSTRINGTerminalRuleCall_8_2_0() { return cOutputSTRINGTerminalRuleCall_8_2_0; }
-		
-		//")"
-		public Keyword getRightParenthesisKeyword_8_3() { return cRightParenthesisKeyword_8_3; }
+		//PrintStatement
+		public RuleCall getOutputPrintStatementParserRuleCall_8_0() { return cOutputPrintStatementParserRuleCall_8_0; }
 		
 		//"."
 		public Keyword getFullStopKeyword_9() { return cFullStopKeyword_9; }
@@ -443,12 +427,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSend_predAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cSend_predExpressionParserRuleCall_6_0 = (RuleCall)cSend_predAssignment_6.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cPrintKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cOutputAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cOutputSTRINGTerminalRuleCall_8_2_0 = (RuleCall)cOutputAssignment_8_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
+		private final Assignment cOutputAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cOutputPrintStatementParserRuleCall_8_0 = (RuleCall)cOutputAssignment_8.eContents().get(0);
 		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
 		private final Keyword cSleepKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_9_1 = (Keyword)cGroup_9.eContents().get(1);
@@ -460,12 +440,12 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNextProcParserRuleCall_11_0 = (RuleCall)cNextAssignment_11.eContents().get(0);
 		
 		//fragment OutputProcessPart:
-		//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")" ("print" "("
-		//	output=STRING ")")? ("sleep" "(" msec=INT ")")? "." next=Proc;
+		//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")"
+		//	output=PrintStatement? ("sleep" "(" msec=INT ")")? "." next=Proc;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")" ("print" "("
-		//output=STRING ")")? ("sleep" "(" msec=INT ")")? "." next=Proc
+		//"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")"
+		//output=PrintStatement? ("sleep" "(" msec=INT ")")? "." next=Proc
 		public Group getGroup() { return cGroup; }
 		
 		//"send"
@@ -513,23 +493,11 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 		
-		//("print" "(" output=STRING ")")?
-		public Group getGroup_8() { return cGroup_8; }
+		//output=PrintStatement?
+		public Assignment getOutputAssignment_8() { return cOutputAssignment_8; }
 		
-		//"print"
-		public Keyword getPrintKeyword_8_0() { return cPrintKeyword_8_0; }
-		
-		//"("
-		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
-		
-		//output=STRING
-		public Assignment getOutputAssignment_8_2() { return cOutputAssignment_8_2; }
-		
-		//STRING
-		public RuleCall getOutputSTRINGTerminalRuleCall_8_2_0() { return cOutputSTRINGTerminalRuleCall_8_2_0; }
-		
-		//")"
-		public Keyword getRightParenthesisKeyword_8_3() { return cRightParenthesisKeyword_8_3; }
+		//PrintStatement
+		public RuleCall getOutputPrintStatementParserRuleCall_8_0() { return cOutputPrintStatementParserRuleCall_8_0; }
 		
 		//("sleep" "(" msec=INT ")")?
 		public Group getGroup_9() { return cGroup_9; }
@@ -557,6 +525,71 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Proc
 		public RuleCall getNextProcParserRuleCall_11_0() { return cNextProcParserRuleCall_11_0; }
+	}
+	public class PrintStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.PrintStatement");
+		private final RuleCall cPrintFormattedStatementParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//PrintStatement:
+		//	PrintFormattedStatement;
+		@Override public ParserRule getRule() { return rule; }
+		
+		///*PrintAllStatement|*/ PrintFormattedStatement
+		public RuleCall getPrintFormattedStatementParserRuleCall() { return cPrintFormattedStatementParserRuleCall; }
+	}
+	public class PrintAllStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.PrintAllStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPrintAllStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cPrintKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//PrintAllStatement:
+		//	{PrintAllStatement} "print";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{PrintAllStatement} "print"
+		public Group getGroup() { return cGroup; }
+		
+		//{PrintAllStatement}
+		public Action getPrintAllStatementAction_0() { return cPrintAllStatementAction_0; }
+		
+		//"print"
+		public Keyword getPrintKeyword_1() { return cPrintKeyword_1; }
+	}
+	public class PrintFormattedStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.PrintFormattedStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cPrintFormattedStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cPrintKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cToPrintAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cToPrintSTRINGTerminalRuleCall_3_0 = (RuleCall)cToPrintAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//PrintFormattedStatement:
+		//	{PrintFormattedStatement} "print" "(" toPrint=STRING ")";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{PrintFormattedStatement} "print" "(" toPrint=STRING ")"
+		public Group getGroup() { return cGroup; }
+		
+		//{PrintFormattedStatement}
+		public Action getPrintFormattedStatementAction_0() { return cPrintFormattedStatementAction_0; }
+		
+		//"print"
+		public Keyword getPrintKeyword_1() { return cPrintKeyword_1; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//toPrint=STRING
+		public Assignment getToPrintAssignment_3() { return cToPrintAssignment_3; }
+		
+		//STRING
+		public RuleCall getToPrintSTRINGTerminalRuleCall_3_0() { return cToPrintSTRINGTerminalRuleCall_3_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	public class IfProcessesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.IfProcesses");
@@ -2142,6 +2175,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final InputProcessesPartElements pInputProcessesPart;
 	private final InputProcessElements pInputProcess;
 	private final OutputProcessPartElements pOutputProcessPart;
+	private final PrintStatementElements pPrintStatement;
+	private final PrintAllStatementElements pPrintAllStatement;
+	private final PrintFormattedStatementElements pPrintFormattedStatement;
 	private final IfProcessesElements pIfProcesses;
 	private final IfBranchProcessElements pIfBranchProcess;
 	private final ElseBranchProcessElements pElseBranchProcess;
@@ -2195,6 +2231,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pInputProcessesPart = new InputProcessesPartElements();
 		this.pInputProcess = new InputProcessElements();
 		this.pOutputProcessPart = new OutputProcessPartElements();
+		this.pPrintStatement = new PrintStatementElements();
+		this.pPrintAllStatement = new PrintAllStatementElements();
+		this.pPrintFormattedStatement = new PrintFormattedStatementElements();
 		this.pIfProcesses = new IfProcessesElements();
 		this.pIfBranchProcess = new IfBranchProcessElements();
 		this.pElseBranchProcess = new ElseBranchProcessElements();
@@ -2342,7 +2381,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//InputProcess Process:
 	//	{InputProcess} "receive" "(" rec_pred=Expression ")" "{" (msgInParts+=AttributeToSet (","
-	//	msgInParts+=AttributeToSet)*)? "}" ("print" "(" output=STRING ")")?
+	//	msgInParts+=AttributeToSet)*)? "}" output=PrintStatement?
 	//	"." next=NZCProcess;
 	public InputProcessElements getInputProcessAccess() {
 		return pInputProcess;
@@ -2353,14 +2392,44 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//fragment OutputProcessPart:
-	//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")" ("print" "("
-	//	output=STRING ")")? ("sleep" "(" msec=INT ")")? "." next=Proc;
+	//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")"
+	//	output=PrintStatement? ("sleep" "(" msec=INT ")")? "." next=Proc;
 	public OutputProcessPartElements getOutputProcessPartAccess() {
 		return pOutputProcessPart;
 	}
 	
 	public ParserRule getOutputProcessPartRule() {
 		return getOutputProcessPartAccess().getRule();
+	}
+	
+	//PrintStatement:
+	//	PrintFormattedStatement;
+	public PrintStatementElements getPrintStatementAccess() {
+		return pPrintStatement;
+	}
+	
+	public ParserRule getPrintStatementRule() {
+		return getPrintStatementAccess().getRule();
+	}
+	
+	//PrintAllStatement:
+	//	{PrintAllStatement} "print";
+	public PrintAllStatementElements getPrintAllStatementAccess() {
+		return pPrintAllStatement;
+	}
+	
+	public ParserRule getPrintAllStatementRule() {
+		return getPrintAllStatementAccess().getRule();
+	}
+	
+	//PrintFormattedStatement:
+	//	{PrintFormattedStatement} "print" "(" toPrint=STRING ")";
+	public PrintFormattedStatementElements getPrintFormattedStatementAccess() {
+		return pPrintFormattedStatement;
+	}
+	
+	public ParserRule getPrintFormattedStatementRule() {
+		return getPrintFormattedStatementAccess().getRule();
 	}
 	
 	//IfProcesses Process:

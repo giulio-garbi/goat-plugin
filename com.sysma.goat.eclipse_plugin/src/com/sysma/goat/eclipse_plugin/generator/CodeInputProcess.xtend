@@ -68,7 +68,7 @@ class CodeInputProcess implements CodeInputOutputProcess {
 					«getSetupMessageParts("attrsWrap")»
 					if («new CodeReceivePred(actualInput.rec_pred,"attrsWrap",CodeModel.localVariablesMap).code»){
 						«IF actualInput.output !== null»
-							fmt.Println(«StdoutStringHelper.convertString(actualInput.output, "attrsWrap", CodeModel.localVariablesMap)»)
+							«CodePrint.of(actualInput.output, "attrsWrap", CodeModel.localVariablesMap, actualInput.msgInParts)»
 						«ENDIF»
 						attrsWrap.Commit()
 						return true

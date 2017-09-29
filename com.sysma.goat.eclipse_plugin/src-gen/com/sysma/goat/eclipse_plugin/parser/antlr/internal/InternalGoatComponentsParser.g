@@ -676,47 +676,34 @@ ruleInputProcess returns [EObject current=null]
 			newLeafNode(otherlv_9, grammarAccess.getInputProcessAccess().getRightCurlyBracketKeyword_7());
 		}
 		(
-			otherlv_10=Print
-			{
-				newLeafNode(otherlv_10, grammarAccess.getInputProcessAccess().getPrintKeyword_8_0());
-			}
-			otherlv_11=LeftParenthesis
-			{
-				newLeafNode(otherlv_11, grammarAccess.getInputProcessAccess().getLeftParenthesisKeyword_8_1());
-			}
 			(
-				(
-					lv_output_12_0=RULE_STRING
-					{
-						newLeafNode(lv_output_12_0, grammarAccess.getInputProcessAccess().getOutputSTRINGTerminalRuleCall_8_2_0());
+				{
+					newCompositeNode(grammarAccess.getInputProcessAccess().getOutputPrintStatementParserRuleCall_8_0());
+				}
+				lv_output_10_0=rulePrintStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getInputProcessRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getInputProcessRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"output",
-							lv_output_12_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
+					set(
+						$current,
+						"output",
+						lv_output_10_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.PrintStatement");
+					afterParserOrEnumRuleCall();
+				}
 			)
-			otherlv_13=RightParenthesis
-			{
-				newLeafNode(otherlv_13, grammarAccess.getInputProcessAccess().getRightParenthesisKeyword_8_3());
-			}
 		)?
-		otherlv_14=FullStop
+		otherlv_11=FullStop
 		{
-			newLeafNode(otherlv_14, grammarAccess.getInputProcessAccess().getFullStopKeyword_9());
+			newLeafNode(otherlv_11, grammarAccess.getInputProcessAccess().getFullStopKeyword_9());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getInputProcessAccess().getNextNZCProcessParserRuleCall_10_0());
 				}
-				lv_next_15_0=ruleNZCProcess
+				lv_next_12_0=ruleNZCProcess
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getInputProcessRule());
@@ -724,7 +711,7 @@ ruleInputProcess returns [EObject current=null]
 					set(
 						$current,
 						"next",
-						lv_next_15_0,
+						lv_next_12_0,
 						"com.sysma.goat.eclipse_plugin.GoatComponents.NZCProcess");
 					afterParserOrEnumRuleCall();
 				}
@@ -833,51 +820,38 @@ ruleOutputProcessPart[EObject in_current]  returns [EObject current=in_current]
 			newLeafNode(otherlv_9, grammarAccess.getOutputProcessPartAccess().getRightParenthesisKeyword_7());
 		}
 		(
-			otherlv_10=Print
-			{
-				newLeafNode(otherlv_10, grammarAccess.getOutputProcessPartAccess().getPrintKeyword_8_0());
-			}
-			otherlv_11=LeftParenthesis
-			{
-				newLeafNode(otherlv_11, grammarAccess.getOutputProcessPartAccess().getLeftParenthesisKeyword_8_1());
-			}
 			(
-				(
-					lv_output_12_0=RULE_STRING
-					{
-						newLeafNode(lv_output_12_0, grammarAccess.getOutputProcessPartAccess().getOutputSTRINGTerminalRuleCall_8_2_0());
+				{
+					newCompositeNode(grammarAccess.getOutputProcessPartAccess().getOutputPrintStatementParserRuleCall_8_0());
+				}
+				lv_output_10_0=rulePrintStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getOutputProcessPartRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOutputProcessPartRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"output",
-							lv_output_12_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
+					set(
+						$current,
+						"output",
+						lv_output_10_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.PrintStatement");
+					afterParserOrEnumRuleCall();
+				}
 			)
-			otherlv_13=RightParenthesis
-			{
-				newLeafNode(otherlv_13, grammarAccess.getOutputProcessPartAccess().getRightParenthesisKeyword_8_3());
-			}
 		)?
 		(
-			otherlv_14=Sleep
+			otherlv_11=Sleep
 			{
-				newLeafNode(otherlv_14, grammarAccess.getOutputProcessPartAccess().getSleepKeyword_9_0());
+				newLeafNode(otherlv_11, grammarAccess.getOutputProcessPartAccess().getSleepKeyword_9_0());
 			}
-			otherlv_15=LeftParenthesis
+			otherlv_12=LeftParenthesis
 			{
-				newLeafNode(otherlv_15, grammarAccess.getOutputProcessPartAccess().getLeftParenthesisKeyword_9_1());
+				newLeafNode(otherlv_12, grammarAccess.getOutputProcessPartAccess().getLeftParenthesisKeyword_9_1());
 			}
 			(
 				(
-					lv_msec_16_0=RULE_INT
+					lv_msec_13_0=RULE_INT
 					{
-						newLeafNode(lv_msec_16_0, grammarAccess.getOutputProcessPartAccess().getMsecINTTerminalRuleCall_9_2_0());
+						newLeafNode(lv_msec_13_0, grammarAccess.getOutputProcessPartAccess().getMsecINTTerminalRuleCall_9_2_0());
 					}
 					{
 						if ($current==null) {
@@ -886,26 +860,26 @@ ruleOutputProcessPart[EObject in_current]  returns [EObject current=in_current]
 						setWithLastConsumed(
 							$current,
 							"msec",
-							lv_msec_16_0,
+							lv_msec_13_0,
 							"org.eclipse.xtext.common.Terminals.INT");
 					}
 				)
 			)
-			otherlv_17=RightParenthesis
+			otherlv_14=RightParenthesis
 			{
-				newLeafNode(otherlv_17, grammarAccess.getOutputProcessPartAccess().getRightParenthesisKeyword_9_3());
+				newLeafNode(otherlv_14, grammarAccess.getOutputProcessPartAccess().getRightParenthesisKeyword_9_3());
 			}
 		)?
-		otherlv_18=FullStop
+		otherlv_15=FullStop
 		{
-			newLeafNode(otherlv_18, grammarAccess.getOutputProcessPartAccess().getFullStopKeyword_10());
+			newLeafNode(otherlv_15, grammarAccess.getOutputProcessPartAccess().getFullStopKeyword_10());
 		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getOutputProcessPartAccess().getNextProcParserRuleCall_11_0());
 				}
-				lv_next_19_0=ruleProc
+				lv_next_16_0=ruleProc
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getOutputProcessPartRule());
@@ -913,12 +887,93 @@ ruleOutputProcessPart[EObject in_current]  returns [EObject current=in_current]
 					set(
 						$current,
 						"next",
-						lv_next_19_0,
+						lv_next_16_0,
 						"com.sysma.goat.eclipse_plugin.GoatComponents.Proc");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRulePrintStatement
+entryRulePrintStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPrintStatementRule()); }
+	iv_rulePrintStatement=rulePrintStatement
+	{ $current=$iv_rulePrintStatement.current; }
+	EOF;
+
+// Rule PrintStatement
+rulePrintStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getPrintStatementAccess().getPrintFormattedStatementParserRuleCall());
+	}
+	this_PrintFormattedStatement_0=rulePrintFormattedStatement
+	{
+		$current = $this_PrintFormattedStatement_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRulePrintFormattedStatement
+entryRulePrintFormattedStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPrintFormattedStatementRule()); }
+	iv_rulePrintFormattedStatement=rulePrintFormattedStatement
+	{ $current=$iv_rulePrintFormattedStatement.current; }
+	EOF;
+
+// Rule PrintFormattedStatement
+rulePrintFormattedStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getPrintFormattedStatementAccess().getPrintFormattedStatementAction_0(),
+					$current);
+			}
+		)
+		otherlv_1=Print
+		{
+			newLeafNode(otherlv_1, grammarAccess.getPrintFormattedStatementAccess().getPrintKeyword_1());
+		}
+		otherlv_2=LeftParenthesis
+		{
+			newLeafNode(otherlv_2, grammarAccess.getPrintFormattedStatementAccess().getLeftParenthesisKeyword_2());
+		}
+		(
+			(
+				lv_toPrint_3_0=RULE_STRING
+				{
+					newLeafNode(lv_toPrint_3_0, grammarAccess.getPrintFormattedStatementAccess().getToPrintSTRINGTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPrintFormattedStatementRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"toPrint",
+						lv_toPrint_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
+		otherlv_4=RightParenthesis
+		{
+			newLeafNode(otherlv_4, grammarAccess.getPrintFormattedStatementAccess().getRightParenthesisKeyword_4());
+		}
 	)
 ;
 

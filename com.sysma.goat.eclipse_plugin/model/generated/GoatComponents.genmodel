@@ -22,9 +22,14 @@
     <genClasses ecoreClass="GoatComponents.ecore#//OutputProcessPart">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/msgOutParts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/send_pred"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//OutputProcessPart/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/output"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//OutputProcessPart/msec"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/next"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//PrintStatement"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//PrintAllStatement"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//PrintFormattedStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//PrintFormattedStatement/toPrint"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Update">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Update/vars"/>

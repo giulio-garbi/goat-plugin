@@ -6,6 +6,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 
 import java.util.Collection;
 
@@ -63,24 +64,14 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
   protected Expression send_pred;
 
   /**
-   * The default value of the '{@link #getOutput() <em>Output</em>}' attribute.
+   * The cached value of the '{@link #getOutput() <em>Output</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOutput()
    * @generated
    * @ordered
    */
-  protected static final String OUTPUT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getOutput() <em>Output</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getOutput()
-   * @generated
-   * @ordered
-   */
-  protected String output = OUTPUT_EDEFAULT;
+  protected PrintStatement output;
 
   /**
    * The default value of the '{@link #getMsec() <em>Msec</em>}' attribute.
@@ -200,7 +191,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOutput()
+  public PrintStatement getOutput()
   {
     return output;
   }
@@ -210,12 +201,37 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOutput(String newOutput)
+  public NotificationChain basicSetOutput(PrintStatement newOutput, NotificationChain msgs)
   {
-    String oldOutput = output;
+    PrintStatement oldOutput = output;
     output = newOutput;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT, oldOutput, output));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT, oldOutput, newOutput);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOutput(PrintStatement newOutput)
+  {
+    if (newOutput != output)
+    {
+      NotificationChain msgs = null;
+      if (output != null)
+        msgs = ((InternalEObject)output).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT, null, msgs);
+      if (newOutput != null)
+        msgs = ((InternalEObject)newOutput).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT, null, msgs);
+      msgs = basicSetOutput(newOutput, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT, newOutput, newOutput));
   }
 
   /**
@@ -303,6 +319,8 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
         return ((InternalEList<?>)getMsgOutParts()).basicRemove(otherEnd, msgs);
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__SEND_PRED:
         return basicSetSend_pred(null, msgs);
+      case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
+        return basicSetOutput(null, msgs);
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__NEXT:
         return basicSetNext(null, msgs);
     }
@@ -352,7 +370,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
         setSend_pred((Expression)newValue);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
-        setOutput((String)newValue);
+        setOutput((PrintStatement)newValue);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__MSEC:
         setMsec((Integer)newValue);
@@ -381,7 +399,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
         setSend_pred((Expression)null);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
-        setOutput(OUTPUT_EDEFAULT);
+        setOutput((PrintStatement)null);
         return;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__MSEC:
         setMsec(MSEC_EDEFAULT);
@@ -408,7 +426,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__SEND_PRED:
         return send_pred != null;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__OUTPUT:
-        return OUTPUT_EDEFAULT == null ? output != null : !OUTPUT_EDEFAULT.equals(output);
+        return output != null;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__MSEC:
         return msec != MSEC_EDEFAULT;
       case GoatComponentsPackage.OUTPUT_PROCESS_PART__NEXT:
@@ -428,9 +446,7 @@ public class OutputProcessPartImpl extends MinimalEObjectImpl.Container implemen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (output: ");
-    result.append(output);
-    result.append(", msec: ");
+    result.append(" (msec: ");
     result.append(msec);
     result.append(')');
     return result.toString();

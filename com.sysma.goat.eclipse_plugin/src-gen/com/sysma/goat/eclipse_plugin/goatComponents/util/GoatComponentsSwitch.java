@@ -46,6 +46,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
@@ -157,6 +160,28 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         OutputProcessPart outputProcessPart = (OutputProcessPart)theEObject;
         T result = caseOutputProcessPart(outputProcessPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PRINT_STATEMENT:
+      {
+        PrintStatement printStatement = (PrintStatement)theEObject;
+        T result = casePrintStatement(printStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PRINT_ALL_STATEMENT:
+      {
+        PrintAllStatement printAllStatement = (PrintAllStatement)theEObject;
+        T result = casePrintAllStatement(printAllStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT:
+      {
+        PrintFormattedStatement printFormattedStatement = (PrintFormattedStatement)theEObject;
+        T result = casePrintFormattedStatement(printFormattedStatement);
+        if (result == null) result = casePrintStatement(printFormattedStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -590,6 +615,54 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOutputProcessPart(OutputProcessPart object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Print Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Print Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrintStatement(PrintStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Print All Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Print All Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrintAllStatement(PrintAllStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Print Formatted Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Print Formatted Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrintFormattedStatement(PrintFormattedStatement object)
   {
     return null;
   }

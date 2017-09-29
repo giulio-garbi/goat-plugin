@@ -17,6 +17,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 import com.sysma.goat.eclipse_plugin.tests.GoatComponentsInjectorProvider;
@@ -289,8 +291,11 @@ public class ProcessParsingTest {
     int _msec = p.getMsec();
     boolean _equals = (_msec == 10);
     Assert.assertTrue(_equals);
-    String _output = p.getOutput();
-    boolean _equals_1 = Objects.equal(_output, "Ciao ciao");
+    PrintStatement _output = p.getOutput();
+    Assert.assertTrue((_output instanceof PrintFormattedStatement));
+    PrintStatement _output_1 = p.getOutput();
+    String _toPrint = ((PrintFormattedStatement) _output_1).getToPrint();
+    boolean _equals_1 = Objects.equal(_toPrint, "Ciao ciao");
     Assert.assertTrue(_equals_1);
   }
   

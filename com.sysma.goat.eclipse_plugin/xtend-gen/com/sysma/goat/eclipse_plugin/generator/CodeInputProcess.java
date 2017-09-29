@@ -4,15 +4,16 @@ import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
 import com.sysma.goat.eclipse_plugin.generator.CodeInputOutputProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
+import com.sysma.goat.eclipse_plugin.generator.CodePrint;
 import com.sysma.goat.eclipse_plugin.generator.CodeReceivePred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.generator.LocalBackupAttributes;
-import com.sysma.goat.eclipse_plugin.generator.StdoutStringHelper;
 import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
+import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -186,14 +187,12 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append("){");
     _builder.newLineIfNotEmpty();
     {
-      String _output = this.actualInput.getOutput();
+      PrintStatement _output = this.actualInput.getOutput();
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t\t");
-        _builder.append("fmt.Println(");
-        String _convertString = StdoutStringHelper.convertString(this.actualInput.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap());
-        _builder.append(_convertString, "\t\t");
-        _builder.append(")");
+        CharSequence _of = CodePrint.of(this.actualInput.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap(), this.actualInput.getMsgInParts());
+        _builder.append(_of, "\t\t");
         _builder.newLineIfNotEmpty();
       }
     }
