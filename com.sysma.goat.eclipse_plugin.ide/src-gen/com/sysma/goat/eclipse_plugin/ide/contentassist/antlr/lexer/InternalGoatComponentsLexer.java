@@ -12,61 +12,60 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalGoatComponentsLexer extends Lexer {
-    public static final int Elif=13;
-    public static final int Var=21;
-    public static final int True=18;
+    public static final int Var=20;
+    public static final int True=17;
     public static final int False=9;
-    public static final int LessThanSign=41;
-    public static final int Send=16;
+    public static final int LessThanSign=40;
+    public static final int Send=15;
     public static final int Print=10;
-    public static final int LeftParenthesis=33;
-    public static final int This=17;
-    public static final int RightSquareBracket=46;
-    public static final int ExclamationMark=32;
-    public static final int GreaterThanSign=43;
-    public static final int RULE_ID=51;
-    public static final int RightParenthesis=34;
+    public static final int LeftParenthesis=32;
+    public static final int This=16;
+    public static final int RightSquareBracket=45;
+    public static final int ExclamationMark=31;
+    public static final int GreaterThanSign=42;
+    public static final int RULE_ID=50;
+    public static final int RightParenthesis=33;
     public static final int Receiver=6;
-    public static final int ColonEqualsSign=25;
-    public static final int GreaterThanSignEqualsSign=28;
-    public static final int EqualsSignEqualsSign=27;
-    public static final int RULE_TYPE=50;
-    public static final int VerticalLine=48;
-    public static final int PlusSign=36;
-    public static final int RULE_INT=52;
-    public static final int RULE_ML_COMMENT=54;
-    public static final int LeftSquareBracket=45;
-    public static final int Wait=19;
-    public static final int If=30;
-    public static final int VerticalLineVerticalLine=31;
-    public static final int RULE_STRING=53;
-    public static final int RULE_SL_COMMENT=55;
-    public static final int Proc=15;
+    public static final int ColonEqualsSign=24;
+    public static final int GreaterThanSignEqualsSign=27;
+    public static final int EqualsSignEqualsSign=26;
+    public static final int RULE_TYPE=49;
+    public static final int VerticalLine=47;
+    public static final int PlusSign=35;
+    public static final int RULE_INT=51;
+    public static final int RULE_ML_COMMENT=53;
+    public static final int LeftSquareBracket=44;
+    public static final int Wait=18;
+    public static final int If=29;
+    public static final int VerticalLineVerticalLine=30;
+    public static final int RULE_STRING=52;
+    public static final int RULE_SL_COMMENT=54;
+    public static final int Proc=14;
     public static final int Function=5;
-    public static final int Comma=37;
-    public static final int EqualsSign=42;
-    public static final int HyphenMinus=38;
-    public static final int At=29;
-    public static final int AmpersandAmpersand=23;
-    public static final int LessThanSignEqualsSign=26;
-    public static final int Solidus=40;
-    public static final int RightCurlyBracket=49;
+    public static final int Comma=36;
+    public static final int EqualsSign=41;
+    public static final int HyphenMinus=37;
+    public static final int At=28;
+    public static final int AmpersandAmpersand=22;
+    public static final int LessThanSignEqualsSign=25;
+    public static final int Solidus=39;
+    public static final int RightCurlyBracket=48;
     public static final int Component=4;
     public static final int EOF=-1;
-    public static final int Asterisk=35;
+    public static final int Asterisk=34;
     public static final int Until=12;
-    public static final int FullStop=39;
+    public static final int FullStop=38;
     public static final int Return=8;
-    public static final int RULE_WS=56;
-    public static final int LeftCurlyBracket=47;
-    public static final int RULE_ANY_OTHER=57;
-    public static final int CommercialAt=44;
-    public static final int Nil=20;
+    public static final int RULE_WS=55;
+    public static final int LeftCurlyBracket=46;
+    public static final int RULE_ANY_OTHER=56;
+    public static final int CommercialAt=43;
+    public static final int Nil=19;
     public static final int Sleep=11;
-    public static final int PlusSignPlusSign=24;
+    public static final int PlusSignPlusSign=23;
     public static final int Receive=7;
-    public static final int Else=14;
-    public static final int ExclamationMarkEqualsSign=22;
+    public static final int Else=13;
+    public static final int ExclamationMarkEqualsSign=21;
 
     // delegates
     // delegators
@@ -270,34 +269,13 @@ public class InternalGoatComponentsLexer extends Lexer {
     }
     // $ANTLR end "Until"
 
-    // $ANTLR start "Elif"
-    public final void mElif() throws RecognitionException {
-        try {
-            int _type = Elif;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:32:6: ( 'elif' )
-            // InternalGoatComponentsLexer.g:32:8: 'elif'
-            {
-            match("elif"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "Elif"
-
     // $ANTLR start "Else"
     public final void mElse() throws RecognitionException {
         try {
             int _type = Else;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:34:6: ( 'else' )
-            // InternalGoatComponentsLexer.g:34:8: 'else'
+            // InternalGoatComponentsLexer.g:32:6: ( 'else' )
+            // InternalGoatComponentsLexer.g:32:8: 'else'
             {
             match("else"); 
 
@@ -317,8 +295,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Proc;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:36:6: ( 'proc' )
-            // InternalGoatComponentsLexer.g:36:8: 'proc'
+            // InternalGoatComponentsLexer.g:34:6: ( 'proc' )
+            // InternalGoatComponentsLexer.g:34:8: 'proc'
             {
             match("proc"); 
 
@@ -338,8 +316,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Send;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:38:6: ( 'send' )
-            // InternalGoatComponentsLexer.g:38:8: 'send'
+            // InternalGoatComponentsLexer.g:36:6: ( 'send' )
+            // InternalGoatComponentsLexer.g:36:8: 'send'
             {
             match("send"); 
 
@@ -359,8 +337,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = This;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:40:6: ( 'this' )
-            // InternalGoatComponentsLexer.g:40:8: 'this'
+            // InternalGoatComponentsLexer.g:38:6: ( 'this' )
+            // InternalGoatComponentsLexer.g:38:8: 'this'
             {
             match("this"); 
 
@@ -380,8 +358,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = True;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:42:6: ( 'true' )
-            // InternalGoatComponentsLexer.g:42:8: 'true'
+            // InternalGoatComponentsLexer.g:40:6: ( 'true' )
+            // InternalGoatComponentsLexer.g:40:8: 'true'
             {
             match("true"); 
 
@@ -401,8 +379,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Wait;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:44:6: ( 'wait' )
-            // InternalGoatComponentsLexer.g:44:8: 'wait'
+            // InternalGoatComponentsLexer.g:42:6: ( 'wait' )
+            // InternalGoatComponentsLexer.g:42:8: 'wait'
             {
             match("wait"); 
 
@@ -422,8 +400,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Nil;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:46:5: ( 'nil' )
-            // InternalGoatComponentsLexer.g:46:7: 'nil'
+            // InternalGoatComponentsLexer.g:44:5: ( 'nil' )
+            // InternalGoatComponentsLexer.g:44:7: 'nil'
             {
             match("nil"); 
 
@@ -443,8 +421,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Var;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:48:5: ( 'var' )
-            // InternalGoatComponentsLexer.g:48:7: 'var'
+            // InternalGoatComponentsLexer.g:46:5: ( 'var' )
+            // InternalGoatComponentsLexer.g:46:7: 'var'
             {
             match("var"); 
 
@@ -464,8 +442,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = ExclamationMarkEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:50:27: ( '!=' )
-            // InternalGoatComponentsLexer.g:50:29: '!='
+            // InternalGoatComponentsLexer.g:48:27: ( '!=' )
+            // InternalGoatComponentsLexer.g:48:29: '!='
             {
             match("!="); 
 
@@ -485,8 +463,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = AmpersandAmpersand;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:52:20: ( '&&' )
-            // InternalGoatComponentsLexer.g:52:22: '&&'
+            // InternalGoatComponentsLexer.g:50:20: ( '&&' )
+            // InternalGoatComponentsLexer.g:50:22: '&&'
             {
             match("&&"); 
 
@@ -506,8 +484,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = PlusSignPlusSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:54:18: ( '++' )
-            // InternalGoatComponentsLexer.g:54:20: '++'
+            // InternalGoatComponentsLexer.g:52:18: ( '++' )
+            // InternalGoatComponentsLexer.g:52:20: '++'
             {
             match("++"); 
 
@@ -527,8 +505,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = ColonEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:56:17: ( ':=' )
-            // InternalGoatComponentsLexer.g:56:19: ':='
+            // InternalGoatComponentsLexer.g:54:17: ( ':=' )
+            // InternalGoatComponentsLexer.g:54:19: ':='
             {
             match(":="); 
 
@@ -548,8 +526,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = LessThanSignEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:58:24: ( '<=' )
-            // InternalGoatComponentsLexer.g:58:26: '<='
+            // InternalGoatComponentsLexer.g:56:24: ( '<=' )
+            // InternalGoatComponentsLexer.g:56:26: '<='
             {
             match("<="); 
 
@@ -569,8 +547,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = EqualsSignEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:60:22: ( '==' )
-            // InternalGoatComponentsLexer.g:60:24: '=='
+            // InternalGoatComponentsLexer.g:58:22: ( '==' )
+            // InternalGoatComponentsLexer.g:58:24: '=='
             {
             match("=="); 
 
@@ -590,8 +568,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = GreaterThanSignEqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:62:27: ( '>=' )
-            // InternalGoatComponentsLexer.g:62:29: '>='
+            // InternalGoatComponentsLexer.g:60:27: ( '>=' )
+            // InternalGoatComponentsLexer.g:60:29: '>='
             {
             match(">="); 
 
@@ -611,8 +589,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = At;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:64:4: ( 'at' )
-            // InternalGoatComponentsLexer.g:64:6: 'at'
+            // InternalGoatComponentsLexer.g:62:4: ( 'at' )
+            // InternalGoatComponentsLexer.g:62:6: 'at'
             {
             match("at"); 
 
@@ -632,8 +610,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = If;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:66:4: ( 'if' )
-            // InternalGoatComponentsLexer.g:66:6: 'if'
+            // InternalGoatComponentsLexer.g:64:4: ( 'if' )
+            // InternalGoatComponentsLexer.g:64:6: 'if'
             {
             match("if"); 
 
@@ -653,8 +631,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = VerticalLineVerticalLine;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:68:26: ( '||' )
-            // InternalGoatComponentsLexer.g:68:28: '||'
+            // InternalGoatComponentsLexer.g:66:26: ( '||' )
+            // InternalGoatComponentsLexer.g:66:28: '||'
             {
             match("||"); 
 
@@ -674,8 +652,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = ExclamationMark;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:70:17: ( '!' )
-            // InternalGoatComponentsLexer.g:70:19: '!'
+            // InternalGoatComponentsLexer.g:68:17: ( '!' )
+            // InternalGoatComponentsLexer.g:68:19: '!'
             {
             match('!'); 
 
@@ -694,8 +672,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = LeftParenthesis;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:72:17: ( '(' )
-            // InternalGoatComponentsLexer.g:72:19: '('
+            // InternalGoatComponentsLexer.g:70:17: ( '(' )
+            // InternalGoatComponentsLexer.g:70:19: '('
             {
             match('('); 
 
@@ -714,8 +692,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RightParenthesis;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:74:18: ( ')' )
-            // InternalGoatComponentsLexer.g:74:20: ')'
+            // InternalGoatComponentsLexer.g:72:18: ( ')' )
+            // InternalGoatComponentsLexer.g:72:20: ')'
             {
             match(')'); 
 
@@ -734,8 +712,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Asterisk;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:76:10: ( '*' )
-            // InternalGoatComponentsLexer.g:76:12: '*'
+            // InternalGoatComponentsLexer.g:74:10: ( '*' )
+            // InternalGoatComponentsLexer.g:74:12: '*'
             {
             match('*'); 
 
@@ -754,8 +732,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = PlusSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:78:10: ( '+' )
-            // InternalGoatComponentsLexer.g:78:12: '+'
+            // InternalGoatComponentsLexer.g:76:10: ( '+' )
+            // InternalGoatComponentsLexer.g:76:12: '+'
             {
             match('+'); 
 
@@ -774,8 +752,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Comma;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:80:7: ( ',' )
-            // InternalGoatComponentsLexer.g:80:9: ','
+            // InternalGoatComponentsLexer.g:78:7: ( ',' )
+            // InternalGoatComponentsLexer.g:78:9: ','
             {
             match(','); 
 
@@ -794,8 +772,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = HyphenMinus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:82:13: ( '-' )
-            // InternalGoatComponentsLexer.g:82:15: '-'
+            // InternalGoatComponentsLexer.g:80:13: ( '-' )
+            // InternalGoatComponentsLexer.g:80:15: '-'
             {
             match('-'); 
 
@@ -814,8 +792,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = FullStop;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:84:10: ( '.' )
-            // InternalGoatComponentsLexer.g:84:12: '.'
+            // InternalGoatComponentsLexer.g:82:10: ( '.' )
+            // InternalGoatComponentsLexer.g:82:12: '.'
             {
             match('.'); 
 
@@ -834,8 +812,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = Solidus;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:86:9: ( '/' )
-            // InternalGoatComponentsLexer.g:86:11: '/'
+            // InternalGoatComponentsLexer.g:84:9: ( '/' )
+            // InternalGoatComponentsLexer.g:84:11: '/'
             {
             match('/'); 
 
@@ -854,8 +832,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = LessThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:88:14: ( '<' )
-            // InternalGoatComponentsLexer.g:88:16: '<'
+            // InternalGoatComponentsLexer.g:86:14: ( '<' )
+            // InternalGoatComponentsLexer.g:86:16: '<'
             {
             match('<'); 
 
@@ -874,8 +852,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = EqualsSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:90:12: ( '=' )
-            // InternalGoatComponentsLexer.g:90:14: '='
+            // InternalGoatComponentsLexer.g:88:12: ( '=' )
+            // InternalGoatComponentsLexer.g:88:14: '='
             {
             match('='); 
 
@@ -894,8 +872,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = GreaterThanSign;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:92:17: ( '>' )
-            // InternalGoatComponentsLexer.g:92:19: '>'
+            // InternalGoatComponentsLexer.g:90:17: ( '>' )
+            // InternalGoatComponentsLexer.g:90:19: '>'
             {
             match('>'); 
 
@@ -914,8 +892,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = CommercialAt;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:94:14: ( '@' )
-            // InternalGoatComponentsLexer.g:94:16: '@'
+            // InternalGoatComponentsLexer.g:92:14: ( '@' )
+            // InternalGoatComponentsLexer.g:92:16: '@'
             {
             match('@'); 
 
@@ -934,8 +912,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = LeftSquareBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:96:19: ( '[' )
-            // InternalGoatComponentsLexer.g:96:21: '['
+            // InternalGoatComponentsLexer.g:94:19: ( '[' )
+            // InternalGoatComponentsLexer.g:94:21: '['
             {
             match('['); 
 
@@ -954,8 +932,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RightSquareBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:98:20: ( ']' )
-            // InternalGoatComponentsLexer.g:98:22: ']'
+            // InternalGoatComponentsLexer.g:96:20: ( ']' )
+            // InternalGoatComponentsLexer.g:96:22: ']'
             {
             match(']'); 
 
@@ -974,8 +952,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = LeftCurlyBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:100:18: ( '{' )
-            // InternalGoatComponentsLexer.g:100:20: '{'
+            // InternalGoatComponentsLexer.g:98:18: ( '{' )
+            // InternalGoatComponentsLexer.g:98:20: '{'
             {
             match('{'); 
 
@@ -994,8 +972,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = VerticalLine;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:102:14: ( '|' )
-            // InternalGoatComponentsLexer.g:102:16: '|'
+            // InternalGoatComponentsLexer.g:100:14: ( '|' )
+            // InternalGoatComponentsLexer.g:100:16: '|'
             {
             match('|'); 
 
@@ -1014,8 +992,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RightCurlyBracket;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:104:19: ( '}' )
-            // InternalGoatComponentsLexer.g:104:21: '}'
+            // InternalGoatComponentsLexer.g:102:19: ( '}' )
+            // InternalGoatComponentsLexer.g:102:21: '}'
             {
             match('}'); 
 
@@ -1034,10 +1012,10 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_TYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:106:11: ( ( 'int' | 'string' | 'bool' ) )
-            // InternalGoatComponentsLexer.g:106:13: ( 'int' | 'string' | 'bool' )
+            // InternalGoatComponentsLexer.g:104:11: ( ( 'int' | 'string' | 'bool' ) )
+            // InternalGoatComponentsLexer.g:104:13: ( 'int' | 'string' | 'bool' )
             {
-            // InternalGoatComponentsLexer.g:106:13: ( 'int' | 'string' | 'bool' )
+            // InternalGoatComponentsLexer.g:104:13: ( 'int' | 'string' | 'bool' )
             int alt1=3;
             switch ( input.LA(1) ) {
             case 'i':
@@ -1064,7 +1042,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
             switch (alt1) {
                 case 1 :
-                    // InternalGoatComponentsLexer.g:106:14: 'int'
+                    // InternalGoatComponentsLexer.g:104:14: 'int'
                     {
                     match("int"); 
 
@@ -1072,7 +1050,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsLexer.g:106:20: 'string'
+                    // InternalGoatComponentsLexer.g:104:20: 'string'
                     {
                     match("string"); 
 
@@ -1080,7 +1058,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsLexer.g:106:29: 'bool'
+                    // InternalGoatComponentsLexer.g:104:29: 'bool'
                     {
                     match("bool"); 
 
@@ -1106,10 +1084,10 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:108:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalGoatComponentsLexer.g:108:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGoatComponentsLexer.g:106:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalGoatComponentsLexer.g:106:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalGoatComponentsLexer.g:108:11: ( '^' )?
+            // InternalGoatComponentsLexer.g:106:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1118,7 +1096,7 @@ public class InternalGoatComponentsLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalGoatComponentsLexer.g:108:11: '^'
+                    // InternalGoatComponentsLexer.g:106:11: '^'
                     {
                     match('^'); 
 
@@ -1136,7 +1114,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalGoatComponentsLexer.g:108:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalGoatComponentsLexer.g:106:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1185,10 +1163,10 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:110:10: ( ( '0' .. '9' )+ )
-            // InternalGoatComponentsLexer.g:110:12: ( '0' .. '9' )+
+            // InternalGoatComponentsLexer.g:108:10: ( ( '0' .. '9' )+ )
+            // InternalGoatComponentsLexer.g:108:12: ( '0' .. '9' )+
             {
-            // InternalGoatComponentsLexer.g:110:12: ( '0' .. '9' )+
+            // InternalGoatComponentsLexer.g:108:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1202,7 +1180,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalGoatComponentsLexer.g:110:13: '0' .. '9'
+            	    // InternalGoatComponentsLexer.g:108:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1234,10 +1212,10 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:112:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalGoatComponentsLexer.g:112:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGoatComponentsLexer.g:110:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalGoatComponentsLexer.g:110:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalGoatComponentsLexer.g:112:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalGoatComponentsLexer.g:110:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1255,10 +1233,10 @@ public class InternalGoatComponentsLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalGoatComponentsLexer.g:112:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalGoatComponentsLexer.g:110:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalGoatComponentsLexer.g:112:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalGoatComponentsLexer.g:110:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1274,7 +1252,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalGoatComponentsLexer.g:112:21: '\\\\' .
+                    	    // InternalGoatComponentsLexer.g:110:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1282,7 +1260,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGoatComponentsLexer.g:112:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalGoatComponentsLexer.g:110:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1307,10 +1285,10 @@ public class InternalGoatComponentsLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsLexer.g:112:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalGoatComponentsLexer.g:110:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalGoatComponentsLexer.g:112:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalGoatComponentsLexer.g:110:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1326,7 +1304,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalGoatComponentsLexer.g:112:54: '\\\\' .
+                    	    // InternalGoatComponentsLexer.g:110:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1334,7 +1312,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalGoatComponentsLexer.g:112:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalGoatComponentsLexer.g:110:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1377,12 +1355,12 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:114:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalGoatComponentsLexer.g:114:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalGoatComponentsLexer.g:112:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalGoatComponentsLexer.g:112:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalGoatComponentsLexer.g:114:24: ( options {greedy=false; } : . )*
+            // InternalGoatComponentsLexer.g:112:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1407,7 +1385,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalGoatComponentsLexer.g:114:52: .
+            	    // InternalGoatComponentsLexer.g:112:52: .
             	    {
             	    matchAny(); 
 
@@ -1437,12 +1415,12 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:116:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalGoatComponentsLexer.g:116:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalGoatComponentsLexer.g:114:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalGoatComponentsLexer.g:114:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalGoatComponentsLexer.g:116:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalGoatComponentsLexer.g:114:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -1455,7 +1433,7 @@ public class InternalGoatComponentsLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalGoatComponentsLexer.g:116:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalGoatComponentsLexer.g:114:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1475,7 +1453,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalGoatComponentsLexer.g:116:40: ( ( '\\r' )? '\\n' )?
+            // InternalGoatComponentsLexer.g:114:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1484,9 +1462,9 @@ public class InternalGoatComponentsLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalGoatComponentsLexer.g:116:41: ( '\\r' )? '\\n'
+                    // InternalGoatComponentsLexer.g:114:41: ( '\\r' )? '\\n'
                     {
-                    // InternalGoatComponentsLexer.g:116:41: ( '\\r' )?
+                    // InternalGoatComponentsLexer.g:114:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1495,7 +1473,7 @@ public class InternalGoatComponentsLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // InternalGoatComponentsLexer.g:116:41: '\\r'
+                            // InternalGoatComponentsLexer.g:114:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1527,10 +1505,10 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:118:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalGoatComponentsLexer.g:118:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGoatComponentsLexer.g:116:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalGoatComponentsLexer.g:116:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalGoatComponentsLexer.g:118:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalGoatComponentsLexer.g:116:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -1584,8 +1562,8 @@ public class InternalGoatComponentsLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalGoatComponentsLexer.g:120:16: ( . )
-            // InternalGoatComponentsLexer.g:120:18: .
+            // InternalGoatComponentsLexer.g:118:16: ( . )
+            // InternalGoatComponentsLexer.g:118:18: .
             {
             matchAny(); 
 
@@ -1600,8 +1578,8 @@ public class InternalGoatComponentsLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalGoatComponentsLexer.g:1:8: ( Component | Function | Receiver | Receive | Return | False | Print | Sleep | Until | Elif | Else | Proc | Send | This | True | Wait | Nil | Var | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | ColonEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | CommercialAt | LeftSquareBracket | RightSquareBracket | LeftCurlyBracket | VerticalLine | RightCurlyBracket | RULE_TYPE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt13=54;
+        // InternalGoatComponentsLexer.g:1:8: ( Component | Function | Receiver | Receive | Return | False | Print | Sleep | Until | Else | Proc | Send | This | True | Wait | Nil | Var | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | ColonEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | CommercialAt | LeftSquareBracket | RightSquareBracket | LeftCurlyBracket | VerticalLine | RightCurlyBracket | RULE_TYPE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt13=53;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
@@ -1668,315 +1646,308 @@ public class InternalGoatComponentsLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // InternalGoatComponentsLexer.g:1:77: Elif
-                {
-                mElif(); 
-
-                }
-                break;
-            case 11 :
-                // InternalGoatComponentsLexer.g:1:82: Else
+                // InternalGoatComponentsLexer.g:1:77: Else
                 {
                 mElse(); 
 
                 }
                 break;
-            case 12 :
-                // InternalGoatComponentsLexer.g:1:87: Proc
+            case 11 :
+                // InternalGoatComponentsLexer.g:1:82: Proc
                 {
                 mProc(); 
 
                 }
                 break;
-            case 13 :
-                // InternalGoatComponentsLexer.g:1:92: Send
+            case 12 :
+                // InternalGoatComponentsLexer.g:1:87: Send
                 {
                 mSend(); 
 
                 }
                 break;
-            case 14 :
-                // InternalGoatComponentsLexer.g:1:97: This
+            case 13 :
+                // InternalGoatComponentsLexer.g:1:92: This
                 {
                 mThis(); 
 
                 }
                 break;
-            case 15 :
-                // InternalGoatComponentsLexer.g:1:102: True
+            case 14 :
+                // InternalGoatComponentsLexer.g:1:97: True
                 {
                 mTrue(); 
 
                 }
                 break;
-            case 16 :
-                // InternalGoatComponentsLexer.g:1:107: Wait
+            case 15 :
+                // InternalGoatComponentsLexer.g:1:102: Wait
                 {
                 mWait(); 
 
                 }
                 break;
-            case 17 :
-                // InternalGoatComponentsLexer.g:1:112: Nil
+            case 16 :
+                // InternalGoatComponentsLexer.g:1:107: Nil
                 {
                 mNil(); 
 
                 }
                 break;
-            case 18 :
-                // InternalGoatComponentsLexer.g:1:116: Var
+            case 17 :
+                // InternalGoatComponentsLexer.g:1:111: Var
                 {
                 mVar(); 
 
                 }
                 break;
-            case 19 :
-                // InternalGoatComponentsLexer.g:1:120: ExclamationMarkEqualsSign
+            case 18 :
+                // InternalGoatComponentsLexer.g:1:115: ExclamationMarkEqualsSign
                 {
                 mExclamationMarkEqualsSign(); 
 
                 }
                 break;
-            case 20 :
-                // InternalGoatComponentsLexer.g:1:146: AmpersandAmpersand
+            case 19 :
+                // InternalGoatComponentsLexer.g:1:141: AmpersandAmpersand
                 {
                 mAmpersandAmpersand(); 
 
                 }
                 break;
-            case 21 :
-                // InternalGoatComponentsLexer.g:1:165: PlusSignPlusSign
+            case 20 :
+                // InternalGoatComponentsLexer.g:1:160: PlusSignPlusSign
                 {
                 mPlusSignPlusSign(); 
 
                 }
                 break;
-            case 22 :
-                // InternalGoatComponentsLexer.g:1:182: ColonEqualsSign
+            case 21 :
+                // InternalGoatComponentsLexer.g:1:177: ColonEqualsSign
                 {
                 mColonEqualsSign(); 
 
                 }
                 break;
-            case 23 :
-                // InternalGoatComponentsLexer.g:1:198: LessThanSignEqualsSign
+            case 22 :
+                // InternalGoatComponentsLexer.g:1:193: LessThanSignEqualsSign
                 {
                 mLessThanSignEqualsSign(); 
 
                 }
                 break;
-            case 24 :
-                // InternalGoatComponentsLexer.g:1:221: EqualsSignEqualsSign
+            case 23 :
+                // InternalGoatComponentsLexer.g:1:216: EqualsSignEqualsSign
                 {
                 mEqualsSignEqualsSign(); 
 
                 }
                 break;
-            case 25 :
-                // InternalGoatComponentsLexer.g:1:242: GreaterThanSignEqualsSign
+            case 24 :
+                // InternalGoatComponentsLexer.g:1:237: GreaterThanSignEqualsSign
                 {
                 mGreaterThanSignEqualsSign(); 
 
                 }
                 break;
-            case 26 :
-                // InternalGoatComponentsLexer.g:1:268: At
+            case 25 :
+                // InternalGoatComponentsLexer.g:1:263: At
                 {
                 mAt(); 
 
                 }
                 break;
-            case 27 :
-                // InternalGoatComponentsLexer.g:1:271: If
+            case 26 :
+                // InternalGoatComponentsLexer.g:1:266: If
                 {
                 mIf(); 
 
                 }
                 break;
-            case 28 :
-                // InternalGoatComponentsLexer.g:1:274: VerticalLineVerticalLine
+            case 27 :
+                // InternalGoatComponentsLexer.g:1:269: VerticalLineVerticalLine
                 {
                 mVerticalLineVerticalLine(); 
 
                 }
                 break;
-            case 29 :
-                // InternalGoatComponentsLexer.g:1:299: ExclamationMark
+            case 28 :
+                // InternalGoatComponentsLexer.g:1:294: ExclamationMark
                 {
                 mExclamationMark(); 
 
                 }
                 break;
-            case 30 :
-                // InternalGoatComponentsLexer.g:1:315: LeftParenthesis
+            case 29 :
+                // InternalGoatComponentsLexer.g:1:310: LeftParenthesis
                 {
                 mLeftParenthesis(); 
 
                 }
                 break;
-            case 31 :
-                // InternalGoatComponentsLexer.g:1:331: RightParenthesis
+            case 30 :
+                // InternalGoatComponentsLexer.g:1:326: RightParenthesis
                 {
                 mRightParenthesis(); 
 
                 }
                 break;
-            case 32 :
-                // InternalGoatComponentsLexer.g:1:348: Asterisk
+            case 31 :
+                // InternalGoatComponentsLexer.g:1:343: Asterisk
                 {
                 mAsterisk(); 
 
                 }
                 break;
-            case 33 :
-                // InternalGoatComponentsLexer.g:1:357: PlusSign
+            case 32 :
+                // InternalGoatComponentsLexer.g:1:352: PlusSign
                 {
                 mPlusSign(); 
 
                 }
                 break;
-            case 34 :
-                // InternalGoatComponentsLexer.g:1:366: Comma
+            case 33 :
+                // InternalGoatComponentsLexer.g:1:361: Comma
                 {
                 mComma(); 
 
                 }
                 break;
-            case 35 :
-                // InternalGoatComponentsLexer.g:1:372: HyphenMinus
+            case 34 :
+                // InternalGoatComponentsLexer.g:1:367: HyphenMinus
                 {
                 mHyphenMinus(); 
 
                 }
                 break;
-            case 36 :
-                // InternalGoatComponentsLexer.g:1:384: FullStop
+            case 35 :
+                // InternalGoatComponentsLexer.g:1:379: FullStop
                 {
                 mFullStop(); 
 
                 }
                 break;
-            case 37 :
-                // InternalGoatComponentsLexer.g:1:393: Solidus
+            case 36 :
+                // InternalGoatComponentsLexer.g:1:388: Solidus
                 {
                 mSolidus(); 
 
                 }
                 break;
-            case 38 :
-                // InternalGoatComponentsLexer.g:1:401: LessThanSign
+            case 37 :
+                // InternalGoatComponentsLexer.g:1:396: LessThanSign
                 {
                 mLessThanSign(); 
 
                 }
                 break;
-            case 39 :
-                // InternalGoatComponentsLexer.g:1:414: EqualsSign
+            case 38 :
+                // InternalGoatComponentsLexer.g:1:409: EqualsSign
                 {
                 mEqualsSign(); 
 
                 }
                 break;
-            case 40 :
-                // InternalGoatComponentsLexer.g:1:425: GreaterThanSign
+            case 39 :
+                // InternalGoatComponentsLexer.g:1:420: GreaterThanSign
                 {
                 mGreaterThanSign(); 
 
                 }
                 break;
-            case 41 :
-                // InternalGoatComponentsLexer.g:1:441: CommercialAt
+            case 40 :
+                // InternalGoatComponentsLexer.g:1:436: CommercialAt
                 {
                 mCommercialAt(); 
 
                 }
                 break;
-            case 42 :
-                // InternalGoatComponentsLexer.g:1:454: LeftSquareBracket
+            case 41 :
+                // InternalGoatComponentsLexer.g:1:449: LeftSquareBracket
                 {
                 mLeftSquareBracket(); 
 
                 }
                 break;
-            case 43 :
-                // InternalGoatComponentsLexer.g:1:472: RightSquareBracket
+            case 42 :
+                // InternalGoatComponentsLexer.g:1:467: RightSquareBracket
                 {
                 mRightSquareBracket(); 
 
                 }
                 break;
-            case 44 :
-                // InternalGoatComponentsLexer.g:1:491: LeftCurlyBracket
+            case 43 :
+                // InternalGoatComponentsLexer.g:1:486: LeftCurlyBracket
                 {
                 mLeftCurlyBracket(); 
 
                 }
                 break;
-            case 45 :
-                // InternalGoatComponentsLexer.g:1:508: VerticalLine
+            case 44 :
+                // InternalGoatComponentsLexer.g:1:503: VerticalLine
                 {
                 mVerticalLine(); 
 
                 }
                 break;
-            case 46 :
-                // InternalGoatComponentsLexer.g:1:521: RightCurlyBracket
+            case 45 :
+                // InternalGoatComponentsLexer.g:1:516: RightCurlyBracket
                 {
                 mRightCurlyBracket(); 
 
                 }
                 break;
-            case 47 :
-                // InternalGoatComponentsLexer.g:1:539: RULE_TYPE
+            case 46 :
+                // InternalGoatComponentsLexer.g:1:534: RULE_TYPE
                 {
                 mRULE_TYPE(); 
 
                 }
                 break;
-            case 48 :
-                // InternalGoatComponentsLexer.g:1:549: RULE_ID
+            case 47 :
+                // InternalGoatComponentsLexer.g:1:544: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 49 :
-                // InternalGoatComponentsLexer.g:1:557: RULE_INT
+            case 48 :
+                // InternalGoatComponentsLexer.g:1:552: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 50 :
-                // InternalGoatComponentsLexer.g:1:566: RULE_STRING
+            case 49 :
+                // InternalGoatComponentsLexer.g:1:561: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 51 :
-                // InternalGoatComponentsLexer.g:1:578: RULE_ML_COMMENT
+            case 50 :
+                // InternalGoatComponentsLexer.g:1:573: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 52 :
-                // InternalGoatComponentsLexer.g:1:594: RULE_SL_COMMENT
+            case 51 :
+                // InternalGoatComponentsLexer.g:1:589: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 53 :
-                // InternalGoatComponentsLexer.g:1:610: RULE_WS
+            case 52 :
+                // InternalGoatComponentsLexer.g:1:605: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 54 :
-                // InternalGoatComponentsLexer.g:1:618: RULE_ANY_OTHER
+            case 53 :
+                // InternalGoatComponentsLexer.g:1:613: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1990,17 +1961,17 @@ public class InternalGoatComponentsLexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\13\53\1\73\1\51\1\76\1\51\1\101\1\103\1\105\2\53\1\112\6\uffff\1\123\5\uffff\1\53\1\51\2\uffff\2\51\2\uffff\1\53\1\uffff\16\53\14\uffff\1\157\1\160\1\53\20\uffff\1\53\3\uffff\20\53\1\u0083\1\u0084\2\uffff\1\u0085\7\53\1\u008d\1\53\1\u008f\2\53\1\u0092\1\u0093\1\u0094\1\u0095\1\u0096\3\uffff\1\u0085\2\53\1\u0099\2\53\1\u009c\1\uffff\1\u009d\1\uffff\1\53\1\u009f\5\uffff\2\53\1\uffff\1\53\1\u00a3\2\uffff\1\u0085\1\uffff\2\53\1\u00a7\1\uffff\1\53\1\u00a9\1\u00aa\1\uffff\1\u00ab\3\uffff";
+        "\1\uffff\13\53\1\73\1\51\1\76\1\51\1\101\1\103\1\105\2\53\1\112\6\uffff\1\123\5\uffff\1\53\1\51\2\uffff\2\51\2\uffff\1\53\1\uffff\16\53\14\uffff\1\156\1\157\1\53\20\uffff\1\53\3\uffff\17\53\1\u0081\1\u0082\2\uffff\1\u0083\7\53\1\u008b\1\53\1\u008d\2\53\1\u0090\1\u0091\1\u0092\1\u0093\3\uffff\1\u0083\2\53\1\u0096\2\53\1\u0099\1\uffff\1\u009a\1\uffff\1\53\1\u009c\4\uffff\2\53\1\uffff\1\53\1\u00a0\2\uffff\1\u0083\1\uffff\2\53\1\u00a4\1\uffff\1\53\1\u00a6\1\u00a7\1\uffff\1\u00a8\3\uffff";
     static final String DFA13_eofS =
-        "\u00ac\uffff";
+        "\u00a9\uffff";
     static final String DFA13_minS =
-        "\1\0\1\157\1\141\1\145\1\162\1\145\1\156\1\154\1\150\1\141\1\151\1\141\1\75\1\46\1\53\4\75\1\164\1\146\1\174\6\uffff\1\52\5\uffff\1\157\1\101\2\uffff\2\0\2\uffff\1\155\1\uffff\1\156\1\154\1\143\1\151\1\145\1\156\1\162\1\164\2\151\1\165\1\151\1\154\1\162\14\uffff\2\60\1\164\20\uffff\1\157\3\uffff\1\160\1\143\1\163\1\145\1\165\1\156\1\143\1\145\1\144\2\151\1\146\1\145\1\163\1\145\1\164\2\60\2\uffff\1\60\1\154\1\157\1\164\1\145\1\151\1\162\1\164\1\60\1\160\1\60\1\156\1\154\5\60\3\uffff\1\60\1\156\1\151\1\60\1\166\1\156\1\60\1\uffff\1\60\1\uffff\1\147\1\60\5\uffff\1\145\1\157\1\uffff\1\145\1\60\2\uffff\1\60\1\uffff\2\156\1\60\1\uffff\1\164\2\60\1\uffff\1\60\3\uffff";
+        "\1\0\1\157\1\141\1\145\1\162\1\145\1\156\1\154\1\150\1\141\1\151\1\141\1\75\1\46\1\53\4\75\1\164\1\146\1\174\6\uffff\1\52\5\uffff\1\157\1\101\2\uffff\2\0\2\uffff\1\155\1\uffff\1\156\1\154\1\143\1\151\1\145\1\156\1\162\1\164\1\163\1\151\1\165\1\151\1\154\1\162\14\uffff\2\60\1\164\20\uffff\1\157\3\uffff\1\160\1\143\1\163\1\145\1\165\1\156\1\143\1\145\1\144\2\151\1\145\1\163\1\145\1\164\2\60\2\uffff\1\60\1\154\1\157\1\164\1\145\1\151\1\162\1\164\1\60\1\160\1\60\1\156\1\154\4\60\3\uffff\1\60\1\156\1\151\1\60\1\166\1\156\1\60\1\uffff\1\60\1\uffff\1\147\1\60\4\uffff\1\145\1\157\1\uffff\1\145\1\60\2\uffff\1\60\1\uffff\2\156\1\60\1\uffff\1\164\2\60\1\uffff\1\60\3\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\157\1\165\1\145\1\162\1\164\1\156\1\154\1\162\1\141\1\151\1\141\1\75\1\46\1\53\4\75\1\164\1\156\1\174\6\uffff\1\57\5\uffff\1\157\1\172\2\uffff\2\uffff\2\uffff\1\155\1\uffff\1\156\1\154\1\164\1\157\1\145\1\156\1\162\1\164\1\163\1\151\1\165\1\151\1\154\1\162\14\uffff\2\172\1\164\20\uffff\1\157\3\uffff\1\160\1\143\1\163\1\145\1\165\1\156\1\143\1\145\1\144\2\151\1\146\1\145\1\163\1\145\1\164\2\172\2\uffff\1\172\1\154\1\157\1\164\1\145\1\151\1\162\1\164\1\172\1\160\1\172\1\156\1\154\5\172\3\uffff\1\172\1\156\1\151\1\172\1\166\1\156\1\172\1\uffff\1\172\1\uffff\1\147\1\172\5\uffff\1\145\1\157\1\uffff\1\145\1\172\2\uffff\1\172\1\uffff\2\156\1\172\1\uffff\1\164\2\172\1\uffff\1\172\3\uffff";
+        "\1\uffff\1\157\1\165\1\145\1\162\1\164\1\156\1\154\1\162\1\141\1\151\1\141\1\75\1\46\1\53\4\75\1\164\1\156\1\174\6\uffff\1\57\5\uffff\1\157\1\172\2\uffff\2\uffff\2\uffff\1\155\1\uffff\1\156\1\154\1\164\1\157\1\145\1\156\1\162\1\164\1\163\1\151\1\165\1\151\1\154\1\162\14\uffff\2\172\1\164\20\uffff\1\157\3\uffff\1\160\1\143\1\163\1\145\1\165\1\156\1\143\1\145\1\144\2\151\1\145\1\163\1\145\1\164\2\172\2\uffff\1\172\1\154\1\157\1\164\1\145\1\151\1\162\1\164\1\172\1\160\1\172\1\156\1\154\4\172\3\uffff\1\172\1\156\1\151\1\172\1\166\1\156\1\172\1\uffff\1\172\1\uffff\1\147\1\172\4\uffff\1\145\1\157\1\uffff\1\145\1\172\2\uffff\1\172\1\uffff\2\156\1\172\1\uffff\1\164\2\172\1\uffff\1\172\3\uffff";
     static final String DFA13_acceptS =
-        "\26\uffff\1\36\1\37\1\40\1\42\1\43\1\44\1\uffff\1\51\1\52\1\53\1\54\1\56\2\uffff\1\60\1\61\2\uffff\1\65\1\66\1\uffff\1\60\16\uffff\1\23\1\35\1\24\1\25\1\41\1\26\1\27\1\46\1\30\1\47\1\31\1\50\3\uffff\1\34\1\55\1\36\1\37\1\40\1\42\1\43\1\44\1\63\1\64\1\45\1\51\1\52\1\53\1\54\1\56\1\uffff\1\61\1\62\1\65\22\uffff\1\32\1\33\22\uffff\1\21\1\22\1\57\7\uffff\1\14\1\uffff\1\15\2\uffff\1\12\1\13\1\16\1\17\1\20\2\uffff\1\6\2\uffff\1\7\1\10\1\uffff\1\11\3\uffff\1\5\3\uffff\1\4\1\uffff\1\2\1\3\1\1";
+        "\26\uffff\1\35\1\36\1\37\1\41\1\42\1\43\1\uffff\1\50\1\51\1\52\1\53\1\55\2\uffff\1\57\1\60\2\uffff\1\64\1\65\1\uffff\1\57\16\uffff\1\22\1\34\1\23\1\24\1\40\1\25\1\26\1\45\1\27\1\46\1\30\1\47\3\uffff\1\33\1\54\1\35\1\36\1\37\1\41\1\42\1\43\1\62\1\63\1\44\1\50\1\51\1\52\1\53\1\55\1\uffff\1\60\1\61\1\64\21\uffff\1\31\1\32\21\uffff\1\20\1\21\1\56\7\uffff\1\13\1\uffff\1\14\2\uffff\1\12\1\15\1\16\1\17\2\uffff\1\6\2\uffff\1\7\1\10\1\uffff\1\11\3\uffff\1\5\3\uffff\1\4\1\uffff\1\2\1\3\1\1";
     static final String DFA13_specialS =
-        "\1\0\45\uffff\1\2\1\1\u0084\uffff}>";
+        "\1\0\45\uffff\1\1\1\2\u0081\uffff}>";
     static final String[] DFA13_transitionS = {
             "\11\51\2\50\2\51\1\50\22\51\1\50\1\14\1\46\3\51\1\15\1\47\1\26\1\27\1\30\1\16\1\31\1\32\1\33\1\34\12\45\1\17\1\51\1\20\1\21\1\22\1\51\1\35\32\44\1\36\1\51\1\37\1\43\1\44\1\51\1\23\1\42\1\1\1\44\1\7\1\2\2\44\1\24\4\44\1\12\1\44\1\4\1\44\1\3\1\5\1\10\1\6\1\13\1\11\3\44\1\40\1\25\1\41\uff82\51",
             "\1\52",
@@ -2054,12 +2025,12 @@ public class InternalGoatComponentsLexer extends Lexer {
             "\1\145",
             "\1\146",
             "\1\147",
-            "\1\150\11\uffff\1\151",
+            "\1\150",
+            "\1\151",
             "\1\152",
             "\1\153",
             "\1\154",
             "\1\155",
-            "\1\156",
             "",
             "",
             "",
@@ -2074,27 +2045,28 @@ public class InternalGoatComponentsLexer extends Lexer {
             "",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\160",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\161",
             "",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\162",
-            "",
-            "",
-            "",
             "\1\163",
             "\1\164",
             "\1\165",
@@ -2109,26 +2081,23 @@ public class InternalGoatComponentsLexer extends Lexer {
             "\1\176",
             "\1\177",
             "\1\u0080",
-            "\1\u0081",
-            "\1\u0082",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
             "",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0084",
+            "\1\u0085",
             "\1\u0086",
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
             "\1\u008a",
-            "\1\u008b",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u008c",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u008e",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u0090",
-            "\1\u0091",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u008f",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
@@ -2136,37 +2105,36 @@ public class InternalGoatComponentsLexer extends Lexer {
             "",
             "",
             "",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\1\u0094",
+            "\1\u0095",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\1\u0097",
             "\1\u0098",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "\1\u009a",
+            "",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "",
             "\1\u009b",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
+            "",
+            "",
+            "\1\u009d",
             "\1\u009e",
+            "",
+            "\1\u009f",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
             "",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
-            "",
-            "",
-            "\1\u00a0",
             "\1\u00a1",
-            "",
             "\1\u00a2",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
+            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\21\53\1\u00a3\10\53",
             "",
-            "",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
-            "",
-            "\1\u00a4",
             "\1\u00a5",
-            "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\21\53\1\u00a6\10\53",
-            "",
-            "\1\u00a8",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "\12\53\7\uffff\32\53\4\uffff\1\53\1\uffff\32\53",
             "",
@@ -2206,7 +2174,7 @@ public class InternalGoatComponentsLexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( Component | Function | Receiver | Receive | Return | False | Print | Sleep | Until | Elif | Else | Proc | Send | This | True | Wait | Nil | Var | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | ColonEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | CommercialAt | LeftSquareBracket | RightSquareBracket | LeftCurlyBracket | VerticalLine | RightCurlyBracket | RULE_TYPE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( Component | Function | Receiver | Receive | Return | False | Print | Sleep | Until | Else | Proc | Send | This | True | Wait | Nil | Var | ExclamationMarkEqualsSign | AmpersandAmpersand | PlusSignPlusSign | ColonEqualsSign | LessThanSignEqualsSign | EqualsSignEqualsSign | GreaterThanSignEqualsSign | At | If | VerticalLineVerticalLine | ExclamationMark | LeftParenthesis | RightParenthesis | Asterisk | PlusSign | Comma | HyphenMinus | FullStop | Solidus | LessThanSign | EqualsSign | GreaterThanSign | CommercialAt | LeftSquareBracket | RightSquareBracket | LeftCurlyBracket | VerticalLine | RightCurlyBracket | RULE_TYPE | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -2301,20 +2269,20 @@ public class InternalGoatComponentsLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA13_39 = input.LA(1);
+                        int LA13_38 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_39>='\u0000' && LA13_39<='\uFFFF')) ) {s = 91;}
+                        if ( ((LA13_38>='\u0000' && LA13_38<='\uFFFF')) ) {s = 91;}
 
                         else s = 41;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA13_38 = input.LA(1);
+                        int LA13_39 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_38>='\u0000' && LA13_38<='\uFFFF')) ) {s = 91;}
+                        if ( ((LA13_39>='\u0000' && LA13_39<='\uFFFF')) ) {s = 91;}
 
                         else s = 41;
 

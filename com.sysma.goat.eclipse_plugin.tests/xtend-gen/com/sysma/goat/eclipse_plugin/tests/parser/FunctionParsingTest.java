@@ -93,7 +93,7 @@ public class FunctionParsingTest {
       _builder.append("return 0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif (y < 5) {");
+      _builder.append("} else if (y < 5) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 1");
@@ -197,7 +197,7 @@ public class FunctionParsingTest {
       _builder.append("return 0");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif (y < 5) {");
+      _builder.append("} else if (y < 5) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 1");

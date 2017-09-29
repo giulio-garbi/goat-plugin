@@ -3341,20 +3341,24 @@ ruleFuncIfElse returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_5=Elif
+			otherlv_5=Else
 			{
-				newLeafNode(otherlv_5, grammarAccess.getFuncIfElseAccess().getElifKeyword_5_0());
+				newLeafNode(otherlv_5, grammarAccess.getFuncIfElseAccess().getElseKeyword_5_0());
 			}
-			otherlv_6=LeftParenthesis
+			otherlv_6=If
 			{
-				newLeafNode(otherlv_6, grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_1());
+				newLeafNode(otherlv_6, grammarAccess.getFuncIfElseAccess().getIfKeyword_5_1());
+			}
+			otherlv_7=LeftParenthesis
+			{
+				newLeafNode(otherlv_7, grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_2());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_3_0());
 					}
-					lv_test_7_0=ruleExpression
+					lv_test_8_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFuncIfElseRule());
@@ -3362,22 +3366,22 @@ ruleFuncIfElse returns [EObject current=null]
 						add(
 							$current,
 							"test",
-							lv_test_7_0,
+							lv_test_8_0,
 							"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_8=RightParenthesis
+			otherlv_9=RightParenthesis
 			{
-				newLeafNode(otherlv_8, grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_3());
+				newLeafNode(otherlv_9, grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_4());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_4_0());
+						newCompositeNode(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_5_0());
 					}
-					lv_then_9_0=ruleFuncBlock
+					lv_then_10_0=ruleFuncBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFuncIfElseRule());
@@ -3385,7 +3389,7 @@ ruleFuncIfElse returns [EObject current=null]
 						add(
 							$current,
 							"then",
-							lv_then_9_0,
+							lv_then_10_0,
 							"com.sysma.goat.eclipse_plugin.GoatComponents.FuncBlock");
 						afterParserOrEnumRuleCall();
 					}
@@ -3393,16 +3397,16 @@ ruleFuncIfElse returns [EObject current=null]
 			)
 		)*
 		(
-			otherlv_10=Else
+			otherlv_11=Else
 			{
-				newLeafNode(otherlv_10, grammarAccess.getFuncIfElseAccess().getElseKeyword_6_0());
+				newLeafNode(otherlv_11, grammarAccess.getFuncIfElseAccess().getElseKeyword_6_0());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getFuncIfElseAccess().getElseBranchFuncBlockParserRuleCall_6_1_0());
 					}
-					lv_elseBranch_11_0=ruleFuncBlock
+					lv_elseBranch_12_0=ruleFuncBlock
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getFuncIfElseRule());
@@ -3410,7 +3414,7 @@ ruleFuncIfElse returns [EObject current=null]
 						set(
 							$current,
 							"elseBranch",
-							lv_elseBranch_11_0,
+							lv_elseBranch_12_0,
 							"com.sysma.goat.eclipse_plugin.GoatComponents.FuncBlock");
 						afterParserOrEnumRuleCall();
 					}

@@ -112,27 +112,6 @@ ComponentDefinition:
 	"component" env = Environment proc = [ProcessDefinition] 'at' address=STRING
 ;
 
-/* 
-// Predicate
-Predicate returns Pred:
-	And ({Predicate.or += current} "||" or += And)*
-;
-And returns Pred:
-	Not ({And.and += current} "&&" and += Not)*
-;
-Not returns Pred:
-	Term | {Not} neg?="!" term = Term
-;
-Term returns Pred:
-	Immediate | EqualityTest | "(" Predicate ")" 
-;
-Immediate returns Pred:
-	{Immediate} (isTrue ?= "true" | "false")
-;
-EqualityTest returns Pred:
-	{EqualityTest} op1 = (Value|RecAttribute) operand=("<"|">"|"<="|">="|"="|"!=") op2 = Value
-;
-*/
 // Expression
 Expression: Or;
 
@@ -226,7 +205,7 @@ FuncVarAssign:
 
 FuncIfElse:
 	'if' '('test += Expression')' then += FuncBlock
-	('elif' '('test += Expression')' then += FuncBlock)*
+	('else' 'if' '('test += Expression')' then += FuncBlock)*
 	('else' elseBranch = FuncBlock)?
 ;
 FuncReturn:

@@ -61,7 +61,6 @@ import com.sysma.goat.eclipse_plugin.services.GoatComponentsGrammarAccess;
 		tokenNameToValue.put("VerticalLineVerticalLine", "'||'");
 		tokenNameToValue.put("Nil", "'nil'");
 		tokenNameToValue.put("Var", "'var'");
-		tokenNameToValue.put("Elif", "'elif'");
 		tokenNameToValue.put("Else", "'else'");
 		tokenNameToValue.put("Proc", "'proc'");
 		tokenNameToValue.put("Send", "'send'");
@@ -8369,9 +8368,9 @@ rule__FuncIfElse__Group_5__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncIfElseAccess().getElifKeyword_5_0()); }
-	Elif
-	{ after(grammarAccess.getFuncIfElseAccess().getElifKeyword_5_0()); }
+	{ before(grammarAccess.getFuncIfElseAccess().getElseKeyword_5_0()); }
+	Else
+	{ after(grammarAccess.getFuncIfElseAccess().getElseKeyword_5_0()); }
 )
 ;
 finally {
@@ -8396,9 +8395,9 @@ rule__FuncIfElse__Group_5__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_1()); }
-	LeftParenthesis
-	{ after(grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_1()); }
+	{ before(grammarAccess.getFuncIfElseAccess().getIfKeyword_5_1()); }
+	If
+	{ after(grammarAccess.getFuncIfElseAccess().getIfKeyword_5_1()); }
 )
 ;
 finally {
@@ -8423,9 +8422,9 @@ rule__FuncIfElse__Group_5__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_2()); }
-	(rule__FuncIfElse__TestAssignment_5_2)
-	{ after(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_2()); }
+	{ before(grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_2()); }
+	LeftParenthesis
+	{ after(grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_2()); }
 )
 ;
 finally {
@@ -8450,9 +8449,9 @@ rule__FuncIfElse__Group_5__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_3()); }
-	RightParenthesis
-	{ after(grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_3()); }
+	{ before(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_3()); }
+	(rule__FuncIfElse__TestAssignment_5_3)
+	{ after(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_3()); }
 )
 ;
 finally {
@@ -8465,6 +8464,7 @@ rule__FuncIfElse__Group_5__4
 	}
 :
 	rule__FuncIfElse__Group_5__4__Impl
+	rule__FuncIfElse__Group_5__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -8476,9 +8476,35 @@ rule__FuncIfElse__Group_5__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_4()); }
-	(rule__FuncIfElse__ThenAssignment_5_4)
-	{ after(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_4()); }
+	{ before(grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_4()); }
+	RightParenthesis
+	{ after(grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FuncIfElse__Group_5__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__FuncIfElse__Group_5__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FuncIfElse__Group_5__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_5()); }
+	(rule__FuncIfElse__ThenAssignment_5_5)
+	{ after(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_5()); }
 )
 ;
 finally {
@@ -9814,30 +9840,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FuncIfElse__TestAssignment_5_2
+rule__FuncIfElse__TestAssignment_5_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_2_0()); }
+		{ before(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_3_0()); }
 		ruleExpression
-		{ after(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_2_0()); }
+		{ after(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FuncIfElse__ThenAssignment_5_4
+rule__FuncIfElse__ThenAssignment_5_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_4_0()); }
+		{ before(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_5_0()); }
 		ruleFuncBlock
-		{ after(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_4_0()); }
+		{ after(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_5_0()); }
 	)
 ;
 finally {

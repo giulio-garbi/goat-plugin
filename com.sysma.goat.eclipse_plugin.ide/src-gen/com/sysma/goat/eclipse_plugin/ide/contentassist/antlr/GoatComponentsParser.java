@@ -212,8 +212,8 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFuncVarAssignAccess().getValAssignment_2(), "rule__FuncVarAssign__ValAssignment_2");
 					put(grammarAccess.getFuncIfElseAccess().getTestAssignment_2(), "rule__FuncIfElse__TestAssignment_2");
 					put(grammarAccess.getFuncIfElseAccess().getThenAssignment_4(), "rule__FuncIfElse__ThenAssignment_4");
-					put(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_2(), "rule__FuncIfElse__TestAssignment_5_2");
-					put(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_4(), "rule__FuncIfElse__ThenAssignment_5_4");
+					put(grammarAccess.getFuncIfElseAccess().getTestAssignment_5_3(), "rule__FuncIfElse__TestAssignment_5_3");
+					put(grammarAccess.getFuncIfElseAccess().getThenAssignment_5_5(), "rule__FuncIfElse__ThenAssignment_5_5");
 					put(grammarAccess.getFuncIfElseAccess().getElseBranchAssignment_6_1(), "rule__FuncIfElse__ElseBranchAssignment_6_1");
 					put(grammarAccess.getFuncReturnAccess().getValAssignment_1(), "rule__FuncReturn__ValAssignment_1");
 				}

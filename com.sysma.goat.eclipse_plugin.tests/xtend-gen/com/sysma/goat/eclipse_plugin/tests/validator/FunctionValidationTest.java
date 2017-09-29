@@ -440,7 +440,7 @@ public class FunctionValidationTest {
       _builder.append("return 3");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif(6 < 9){ ");
+      _builder.append("} else if (6 < 9){ ");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 8");
@@ -480,7 +480,7 @@ public class FunctionValidationTest {
       _builder.append("return 3");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif (9 < 0) {");
+      _builder.append("} else if (9 < 0) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 123");
@@ -517,7 +517,7 @@ public class FunctionValidationTest {
       _builder.append("return 3");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif (9 < 0) {");
+      _builder.append("} else if (9 < 0) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 123");
@@ -556,7 +556,7 @@ public class FunctionValidationTest {
       _builder.append("return \"3\"");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("} elif (9 < 0) {");
+      _builder.append("} else if (9 < 0) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("return 123");

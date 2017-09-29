@@ -236,7 +236,7 @@ class FunctionValidationTest {
 			function int fun (){
 				if (5 > 3){
 					return 3
-				} elif(6 < 9){ 
+				} else if (6 < 9){ 
 					return 8
 				} else {
 					return 5
@@ -254,7 +254,7 @@ class FunctionValidationTest {
 				var y = 8
 				if (5 > 3){
 					return 3
-				} elif (9 < 0) {
+				} else if (9 < 0) {
 					return 123
 				}
 				y = 9
@@ -273,7 +273,7 @@ class FunctionValidationTest {
 				var y = 8
 				if (5 > 3){
 					return 3
-				} elif (9 < 0) {
+				} else if (9 < 0) {
 					return 123
 				}
 				y = 9
@@ -290,7 +290,7 @@ class FunctionValidationTest {
 				var y = 8
 				if (5 > 3){
 					return "3"
-				} elif (9 < 0) {
+				} else if (9 < 0) {
 					return 123
 				}
 				y = 9

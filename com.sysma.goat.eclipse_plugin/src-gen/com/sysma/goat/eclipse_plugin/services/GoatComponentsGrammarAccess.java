@@ -1131,27 +1131,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
 		private final RuleCall cOrParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		///* 
-		//// Predicate
-		//Predicate returns Pred:
-		//	And ({Predicate.or += current} "||" or += And)*
-		//;
-		//And returns Pred:
-		//	Not ({And.and += current} "&&" and += Not)*
-		//;
-		//Not returns Pred:
-		//	Term | {Not} neg?="!" term = Term
-		//;
-		//Term returns Pred:
-		//	Immediate | EqualityTest | "(" Predicate ")" 
-		//;
-		//Immediate returns Pred:
-		//	{Immediate} (isTrue ?= "true" | "false")
-		//;
-		//EqualityTest returns Pred:
-		//	{EqualityTest} op1 = (Value|RecAttribute) operand=("<"|">"|"<="|">="|"="|"!=") op2 = Value
-		//;
-		//*/ // Expression
+		//// Expression
 		//Expression:
 		//	Or;
 		@Override public ParserRule getRule() { return rule; }
@@ -2045,24 +2025,25 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cThenAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cThenFuncBlockParserRuleCall_4_0 = (RuleCall)cThenAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cElifKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cTestAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cTestExpressionParserRuleCall_5_2_0 = (RuleCall)cTestAssignment_5_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
-		private final Assignment cThenAssignment_5_4 = (Assignment)cGroup_5.eContents().get(4);
-		private final RuleCall cThenFuncBlockParserRuleCall_5_4_0 = (RuleCall)cThenAssignment_5_4.eContents().get(0);
+		private final Keyword cElseKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cIfKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cTestAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
+		private final RuleCall cTestExpressionParserRuleCall_5_3_0 = (RuleCall)cTestAssignment_5_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Assignment cThenAssignment_5_5 = (Assignment)cGroup_5.eContents().get(5);
+		private final RuleCall cThenFuncBlockParserRuleCall_5_5_0 = (RuleCall)cThenAssignment_5_5.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Keyword cElseKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cElseBranchAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cElseBranchFuncBlockParserRuleCall_6_1_0 = (RuleCall)cElseBranchAssignment_6_1.eContents().get(0);
 		
 		//FuncIfElse:
-		//	'if' '(' test+=Expression ')' then+=FuncBlock ('elif' '(' test+=Expression ')' then+=FuncBlock)* ('else'
+		//	'if' '(' test+=Expression ')' then+=FuncBlock ('else' 'if' '(' test+=Expression ')' then+=FuncBlock)* ('else'
 		//	elseBranch=FuncBlock)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'if' '(' test+=Expression ')' then+=FuncBlock ('elif' '(' test+=Expression ')' then+=FuncBlock)* ('else'
+		//'if' '(' test+=Expression ')' then+=FuncBlock ('else' 'if' '(' test+=Expression ')' then+=FuncBlock)* ('else'
 		//elseBranch=FuncBlock)?
 		public Group getGroup() { return cGroup; }
 		
@@ -2087,29 +2068,32 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//FuncBlock
 		public RuleCall getThenFuncBlockParserRuleCall_4_0() { return cThenFuncBlockParserRuleCall_4_0; }
 		
-		//('elif' '(' test+=Expression ')' then+=FuncBlock)*
+		//('else' 'if' '(' test+=Expression ')' then+=FuncBlock)*
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'elif'
-		public Keyword getElifKeyword_5_0() { return cElifKeyword_5_0; }
+		//'else'
+		public Keyword getElseKeyword_5_0() { return cElseKeyword_5_0; }
+		
+		//'if'
+		public Keyword getIfKeyword_5_1() { return cIfKeyword_5_1; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
+		public Keyword getLeftParenthesisKeyword_5_2() { return cLeftParenthesisKeyword_5_2; }
 		
 		//test+=Expression
-		public Assignment getTestAssignment_5_2() { return cTestAssignment_5_2; }
+		public Assignment getTestAssignment_5_3() { return cTestAssignment_5_3; }
 		
 		//Expression
-		public RuleCall getTestExpressionParserRuleCall_5_2_0() { return cTestExpressionParserRuleCall_5_2_0; }
+		public RuleCall getTestExpressionParserRuleCall_5_3_0() { return cTestExpressionParserRuleCall_5_3_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_5_3() { return cRightParenthesisKeyword_5_3; }
+		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
 		
 		//then+=FuncBlock
-		public Assignment getThenAssignment_5_4() { return cThenAssignment_5_4; }
+		public Assignment getThenAssignment_5_5() { return cThenAssignment_5_5; }
 		
 		//FuncBlock
-		public RuleCall getThenFuncBlockParserRuleCall_5_4_0() { return cThenFuncBlockParserRuleCall_5_4_0; }
+		public RuleCall getThenFuncBlockParserRuleCall_5_5_0() { return cThenFuncBlockParserRuleCall_5_5_0; }
 		
 		//('else' elseBranch=FuncBlock)?
 		public Group getGroup_6() { return cGroup_6; }
@@ -2511,27 +2495,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		return getComponentDefinitionAccess().getRule();
 	}
 	
-	///* 
-	//// Predicate
-	//Predicate returns Pred:
-	//	And ({Predicate.or += current} "||" or += And)*
-	//;
-	//And returns Pred:
-	//	Not ({And.and += current} "&&" and += Not)*
-	//;
-	//Not returns Pred:
-	//	Term | {Not} neg?="!" term = Term
-	//;
-	//Term returns Pred:
-	//	Immediate | EqualityTest | "(" Predicate ")" 
-	//;
-	//Immediate returns Pred:
-	//	{Immediate} (isTrue ?= "true" | "false")
-	//;
-	//EqualityTest returns Pred:
-	//	{EqualityTest} op1 = (Value|RecAttribute) operand=("<"|">"|"<="|">="|"="|"!=") op2 = Value
-	//;
-	//*/ // Expression
+	//// Expression
 	//Expression:
 	//	Or;
 	public ExpressionElements getExpressionAccess() {
@@ -2713,7 +2677,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FuncIfElse:
-	//	'if' '(' test+=Expression ')' then+=FuncBlock ('elif' '(' test+=Expression ')' then+=FuncBlock)* ('else'
+	//	'if' '(' test+=Expression ')' then+=FuncBlock ('else' 'if' '(' test+=Expression ')' then+=FuncBlock)* ('else'
 	//	elseBranch=FuncBlock)?;
 	public FuncIfElseElements getFuncIfElseAccess() {
 		return pFuncIfElse;

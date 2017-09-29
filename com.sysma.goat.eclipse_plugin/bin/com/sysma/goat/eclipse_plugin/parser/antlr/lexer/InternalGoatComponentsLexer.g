@@ -29,8 +29,6 @@ Sleep : 'sleep';
 
 Until : 'until';
 
-Elif : 'elif';
-
 Else : 'else';
 
 Proc : 'proc';

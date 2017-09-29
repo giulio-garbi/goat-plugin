@@ -51,7 +51,7 @@ class FunctionParsingTest {
 				var y = i
 				if (y > 5) {
 					return 0
-				} elif (y < 5) {
+				} else if (y < 5) {
 					return 1
 				} else {
 					return 2
@@ -91,7 +91,7 @@ class FunctionParsingTest {
 				var y = i
 				if (y > 5) {
 					return 0
-				} elif (y < 5) {
+				} else if (y < 5) {
 					return 1
 				}
 			}
