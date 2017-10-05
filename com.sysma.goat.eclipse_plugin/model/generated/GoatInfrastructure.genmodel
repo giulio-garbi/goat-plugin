@@ -7,13 +7,17 @@
   <genPackages prefix="GoatInfrastructure" basePackage="com.sysma.goat.eclipse_plugin"
       disposableProviderFactory="true" fileExtensions="ginf" ecorePackage="GoatInfrastructure.ecore#/">
     <genClasses ecoreClass="GoatInfrastructure.ecore#//Infrastructure"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//SingleServer">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//SingleServer/external"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatInfrastructure.ecore#//SingleServer/params"/>
-    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//SingleServer"/>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Cluster"/>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Ring"/>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Tree"/>
     <genClasses ecoreClass="GoatInfrastructure.ecore#//Params">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Params/keys"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Params/values"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatInfrastructure.ecore#//Params/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Params/name"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Param">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Param/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Param/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

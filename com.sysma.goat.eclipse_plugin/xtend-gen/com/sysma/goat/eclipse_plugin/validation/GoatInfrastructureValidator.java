@@ -3,7 +3,13 @@
  */
 package com.sysma.goat.eclipse_plugin.validation;
 
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
 import com.sysma.goat.eclipse_plugin.validation.AbstractGoatInfrastructureValidator;
+import java.util.Map;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +18,46 @@ import com.sysma.goat.eclipse_plugin.validation.AbstractGoatInfrastructureValida
  */
 @SuppressWarnings("all")
 public class GoatInfrastructureValidator extends AbstractGoatInfrastructureValidator {
+  private void checkParam(final Map<String, Function1<? super Object, ? extends String>> test, final Param param) {
+    final Function1<? super Object, ? extends String> check = test.get(param.getName());
+    if ((check == null)) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Parameter ");
+      String _name = param.getName();
+      _builder.append(_name);
+      _builder.append(" unrecognised.");
+      this.error(_builder.toString(), GoatInfrastructurePackage.eINSTANCE.getParam_Name());
+      return;
+    }
+    final String err = check.apply(param.getValue());
+    if ((err != null)) {
+      this.error(err, GoatInfrastructurePackage.eINSTANCE.getParam_Value());
+    }
+  }
+  
+  /**
+   * private static val paramChecker = #{
+   * SingleServer -> #{
+   * "port" -> [
+   * if (it === null) {
+   * return "Parameter missing: port"
+   * } else {
+   * try{
+   * Integer.parseInt(it.toString())
+   * } catch(Exception){
+   * return "port must be an integer"
+   * }
+   * }
+   * return ""
+   * ],
+   * "timeout" -> [
+   * 
+   * ]
+   * }
+   * }
+   */
+  @Check
+  public Object checkParams(final Param param) {
+    return null;
+  }
 }

@@ -67,7 +67,11 @@ public class GoatInfrastructureFactoryImpl extends EFactoryImpl implements GoatI
     {
       case GoatInfrastructurePackage.INFRASTRUCTURE: return createInfrastructure();
       case GoatInfrastructurePackage.SINGLE_SERVER: return createSingleServer();
+      case GoatInfrastructurePackage.CLUSTER: return createCluster();
+      case GoatInfrastructurePackage.RING: return createRing();
+      case GoatInfrastructurePackage.TREE: return createTree();
       case GoatInfrastructurePackage.PARAMS: return createParams();
+      case GoatInfrastructurePackage.PARAM: return createParam();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -100,10 +104,54 @@ public class GoatInfrastructureFactoryImpl extends EFactoryImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
+  public Cluster createCluster()
+  {
+    ClusterImpl cluster = new ClusterImpl();
+    return cluster;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Ring createRing()
+  {
+    RingImpl ring = new RingImpl();
+    return ring;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Tree createTree()
+  {
+    TreeImpl tree = new TreeImpl();
+    return tree;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Params createParams()
   {
     ParamsImpl params = new ParamsImpl();
     return params;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Param createParam()
+  {
+    ParamImpl param = new ParamImpl();
+    return param;
   }
 
   /**

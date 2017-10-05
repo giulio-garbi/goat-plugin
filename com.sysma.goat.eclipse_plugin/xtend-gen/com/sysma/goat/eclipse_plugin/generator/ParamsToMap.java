@@ -1,23 +1,20 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
-import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
+import java.util.List;
 import java.util.Map;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public final class ParamsToMap {
-  public static Map<String, String> of(final Params p) {
-    int _length = ((Object[])Conversions.unwrapArray(p.getKeys(), Object.class)).length;
-    final ExclusiveRange idxs = new ExclusiveRange(0, _length, true);
-    final Function1<Integer, String> _function = (Integer it) -> {
-      return p.getKeys().get((it).intValue());
+  public static Map<String, String> of(final List<Param> p) {
+    final Function1<Param, String> _function = (Param it) -> {
+      return it.getName();
     };
-    final Function1<Integer, String> _function_1 = (Integer it) -> {
-      return p.getValues().get((it).intValue());
+    final Function1<Param, String> _function_1 = (Param it) -> {
+      return it.getValue();
     };
-    return IterableExtensions.<Integer, String, String>toMap(idxs, _function, _function_1);
+    return IterableExtensions.<Param, String, String>toMap(p, _function, _function_1);
   }
 }

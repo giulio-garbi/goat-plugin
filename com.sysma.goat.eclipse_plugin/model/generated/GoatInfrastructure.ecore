@@ -3,15 +3,17 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="goatInfrastructure" nsURI="http://www.sysma.com/goat/eclipse_plugin/GoatInfrastructure"
     nsPrefix="goatInfrastructure">
   <eClassifiers xsi:type="ecore:EClass" name="Infrastructure"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SingleServer" eSuperTypes="#//Infrastructure">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="external" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="params" eType="#//Params"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SingleServer" eSuperTypes="#//Infrastructure #//Params"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Cluster" eSuperTypes="#//Params"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ring" eSuperTypes="#//Params"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Tree" eSuperTypes="#//Params"/>
   <eClassifiers xsi:type="ecore:EClass" name="Params">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keys" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//Param" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Param">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

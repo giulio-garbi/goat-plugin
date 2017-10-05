@@ -4,9 +4,12 @@
 package com.sysma.goat.eclipse_plugin.serializer;
 
 import com.google.inject.Inject;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
-import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
 import com.sysma.goat.eclipse_plugin.services.GoatInfrastructureGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -15,7 +18,9 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
+import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
+import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
 public class GoatInfrastructureSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -31,11 +36,20 @@ public class GoatInfrastructureSemanticSequencer extends AbstractDelegatingSeman
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == GoatInfrastructurePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case GoatInfrastructurePackage.PARAMS:
-				sequence_Params(context, (Params) semanticObject); 
+			case GoatInfrastructurePackage.CLUSTER:
+				sequence_Cluster_Params(context, (Cluster) semanticObject); 
+				return; 
+			case GoatInfrastructurePackage.PARAM:
+				sequence_Param(context, (Param) semanticObject); 
+				return; 
+			case GoatInfrastructurePackage.RING:
+				sequence_Params_Ring(context, (Ring) semanticObject); 
 				return; 
 			case GoatInfrastructurePackage.SINGLE_SERVER:
-				sequence_SingleServer(context, (SingleServer) semanticObject); 
+				sequence_Params_SingleServer(context, (SingleServer) semanticObject); 
+				return; 
+			case GoatInfrastructurePackage.TREE:
+				sequence_Params_Tree(context, (Tree) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -44,12 +58,45 @@ public class GoatInfrastructureSemanticSequencer extends AbstractDelegatingSeman
 	
 	/**
 	 * Contexts:
-	 *     Params returns Params
+	 *     Cluster returns Cluster
 	 *
 	 * Constraint:
-	 *     ((keys+=ID values+=STRING)* keys+=ID values+=STRING)?
+	 *     (name=ID (params+=Param* params+=Param)?)
 	 */
-	protected void sequence_Params(ISerializationContext context, Params semanticObject) {
+	protected void sequence_Cluster_Params(ISerializationContext context, Cluster semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Param returns Param
+	 *
+	 * Constraint:
+	 *     (name=ID value=STRING)
+	 */
+	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatInfrastructurePackage.Literals.PARAM__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatInfrastructurePackage.Literals.PARAM__NAME));
+			if (transientValues.isValueTransient(semanticObject, GoatInfrastructurePackage.Literals.PARAM__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatInfrastructurePackage.Literals.PARAM__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParamAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Ring returns Ring
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=Param* params+=Param)?)
+	 */
+	protected void sequence_Params_Ring(ISerializationContext context, Ring semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -60,9 +107,21 @@ public class GoatInfrastructureSemanticSequencer extends AbstractDelegatingSeman
 	 *     SingleServer returns SingleServer
 	 *
 	 * Constraint:
-	 *     (external?='external'? params=Params)
+	 *     (name=ID (params+=Param* params+=Param)?)
 	 */
-	protected void sequence_SingleServer(ISerializationContext context, SingleServer semanticObject) {
+	protected void sequence_Params_SingleServer(ISerializationContext context, SingleServer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Tree returns Tree
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=Param* params+=Param)?)
+	 */
+	protected void sequence_Params_Tree(ISerializationContext context, Tree semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

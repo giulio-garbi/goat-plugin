@@ -94,55 +94,45 @@ ruleSingleServer returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0=Singleserver
+		{
+			newLeafNode(otherlv_0, grammarAccess.getSingleServerAccess().getSingleserverKeyword_0());
+		}
 		(
 			(
-				lv_external_0_0=External
+				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_external_0_0, grammarAccess.getSingleServerAccess().getExternalExternalKeyword_0_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getSingleServerAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getSingleServerRule());
 					}
-					setWithLastConsumed($current, "external", true, "external");
-				}
-			)
-		)?
-		otherlv_1=SingleServer
-		{
-			newLeafNode(otherlv_1, grammarAccess.getSingleServerAccess().getSingleServerKeyword_1());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getSingleServerAccess().getParamsParamsParserRuleCall_2_0());
-				}
-				lv_params_2_0=ruleParams
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSingleServerRule());
-					}
-					set(
+					setWithLastConsumed(
 						$current,
-						"params",
-						lv_params_2_0,
-						"com.sysma.goat.eclipse_plugin.GoatInfrastructure.Params");
-					afterParserOrEnumRuleCall();
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
+		{
+			if ($current==null) {
+				$current = createModelElement(grammarAccess.getSingleServerRule());
+			}
+			newCompositeNode(grammarAccess.getSingleServerAccess().getParamsParserRuleCall_2());
+		}
+		this_Params_2=ruleParams[$current]
+		{
+			$current = $this_Params_2.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
-// Entry rule entryRuleParams
-entryRuleParams returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getParamsRule()); }
-	iv_ruleParams=ruleParams
-	{ $current=$iv_ruleParams.current; }
-	EOF;
 
 // Rule Params
-ruleParams returns [EObject current=null]
+ruleParams[EObject in_current]  returns [EObject current=in_current]
 @init {
 	enterRule();
 }
@@ -155,103 +145,113 @@ ruleParams returns [EObject current=null]
 			newLeafNode(otherlv_0, grammarAccess.getParamsAccess().getLeftCurlyBracketKeyword_0());
 		}
 		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getParamsAccess().getParamsAction_1(),
-					$current);
-			}
-		)
-		(
 			(
 				(
 					(
-						lv_keys_2_0=RULE_ID
 						{
-							newLeafNode(lv_keys_2_0, grammarAccess.getParamsAccess().getKeysIDTerminalRuleCall_2_0_0_0());
+							newCompositeNode(grammarAccess.getParamsAccess().getParamsParamParserRuleCall_1_0_0_0());
 						}
+						lv_params_1_0=ruleParam
 						{
 							if ($current==null) {
-								$current = createModelElement(grammarAccess.getParamsRule());
+								$current = createModelElementForParent(grammarAccess.getParamsRule());
 							}
-							addWithLastConsumed(
+							add(
 								$current,
-								"keys",
-								lv_keys_2_0,
-								"org.eclipse.xtext.common.Terminals.ID");
+								"params",
+								lv_params_1_0,
+								"com.sysma.goat.eclipse_plugin.GoatInfrastructure.Param");
+							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-				otherlv_3=Colon
+				otherlv_2=Comma
 				{
-					newLeafNode(otherlv_3, grammarAccess.getParamsAccess().getColonKeyword_2_0_1());
-				}
-				(
-					(
-						lv_values_4_0=RULE_STRING
-						{
-							newLeafNode(lv_values_4_0, grammarAccess.getParamsAccess().getValuesSTRINGTerminalRuleCall_2_0_2_0());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getParamsRule());
-							}
-							addWithLastConsumed(
-								$current,
-								"values",
-								lv_values_4_0,
-								"org.eclipse.xtext.common.Terminals.STRING");
-						}
-					)
-				)
-				otherlv_5=Comma
-				{
-					newLeafNode(otherlv_5, grammarAccess.getParamsAccess().getCommaKeyword_2_0_3());
+					newLeafNode(otherlv_2, grammarAccess.getParamsAccess().getCommaKeyword_1_0_1());
 				}
 			)*
 			(
 				(
-					lv_keys_6_0=RULE_ID
 					{
-						newLeafNode(lv_keys_6_0, grammarAccess.getParamsAccess().getKeysIDTerminalRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getParamsAccess().getParamsParamParserRuleCall_1_1_0());
 					}
+					lv_params_3_0=ruleParam
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getParamsRule());
+							$current = createModelElementForParent(grammarAccess.getParamsRule());
 						}
-						addWithLastConsumed(
+						add(
 							$current,
-							"keys",
-							lv_keys_6_0,
-							"org.eclipse.xtext.common.Terminals.ID");
-					}
-				)
-			)
-			otherlv_7=Colon
-			{
-				newLeafNode(otherlv_7, grammarAccess.getParamsAccess().getColonKeyword_2_2());
-			}
-			(
-				(
-					lv_values_8_0=RULE_STRING
-					{
-						newLeafNode(lv_values_8_0, grammarAccess.getParamsAccess().getValuesSTRINGTerminalRuleCall_2_3_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getParamsRule());
-						}
-						addWithLastConsumed(
-							$current,
-							"values",
-							lv_values_8_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
+							"params",
+							lv_params_3_0,
+							"com.sysma.goat.eclipse_plugin.GoatInfrastructure.Param");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_9=RightCurlyBracket
+		otherlv_4=RightCurlyBracket
 		{
-			newLeafNode(otherlv_9, grammarAccess.getParamsAccess().getRightCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getParamsAccess().getRightCurlyBracketKeyword_2());
 		}
+	)
+;
+
+// Entry rule entryRuleParam
+entryRuleParam returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getParamRule()); }
+	iv_ruleParam=ruleParam
+	{ $current=$iv_ruleParam.current; }
+	EOF;
+
+// Rule Param
+ruleParam returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_name_0_0=RULE_ID
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getParamAccess().getNameIDTerminalRuleCall_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParamRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_1=Colon
+		{
+			newLeafNode(otherlv_1, grammarAccess.getParamAccess().getColonKeyword_1());
+		}
+		(
+			(
+				lv_value_2_0=RULE_STRING
+				{
+					newLeafNode(lv_value_2_0, grammarAccess.getParamAccess().getValueSTRINGTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParamRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_2_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
+			)
+		)
 	)
 ;

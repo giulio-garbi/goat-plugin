@@ -6,7 +6,6 @@ package com.sysma.goat.eclipse_plugin.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
-import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -27,7 +26,8 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 		private final RuleCall cSingleServerParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//Infrastructure:
-		//	SingleServer;
+		//	SingleServer //|Cluster|Ring|Tree
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//SingleServer
@@ -36,116 +36,200 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	public class SingleServerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.SingleServer");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cExternalAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cExternalExternalKeyword_0_0 = (Keyword)cExternalAssignment_0.eContents().get(0);
-		private final Keyword cSingleServerKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cParamsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cParamsParamsParserRuleCall_2_0 = (RuleCall)cParamsAssignment_2.eContents().get(0);
+		private final Keyword cSingleserverKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//SingleServer:
-		//	external?='external'? 'singleServer' params=Params;
+		//	'singleserver' name=ID Params;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//external?='external'? 'singleServer' params=Params
+		//'singleserver' name=ID Params
 		public Group getGroup() { return cGroup; }
 		
-		//external?='external'?
-		public Assignment getExternalAssignment_0() { return cExternalAssignment_0; }
+		//'singleserver'
+		public Keyword getSingleserverKeyword_0() { return cSingleserverKeyword_0; }
 		
-		//'external'
-		public Keyword getExternalExternalKeyword_0_0() { return cExternalExternalKeyword_0_0; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//'singleServer'
-		public Keyword getSingleServerKeyword_1() { return cSingleServerKeyword_1; }
-		
-		//params=Params
-		public Assignment getParamsAssignment_2() { return cParamsAssignment_2; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//Params
-		public RuleCall getParamsParamsParserRuleCall_2_0() { return cParamsParamsParserRuleCall_2_0; }
+		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
+	}
+	public class ClusterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Cluster");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cClusterKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Cluster:
+		//	'cluster' name=ID Params;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'cluster' name=ID Params
+		public Group getGroup() { return cGroup; }
+		
+		//'cluster'
+		public Keyword getClusterKeyword_0() { return cClusterKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//Params
+		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
+	}
+	public class RingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Ring");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRingKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Ring:
+		//	'ring' name=ID Params;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'ring' name=ID Params
+		public Group getGroup() { return cGroup; }
+		
+		//'ring'
+		public Keyword getRingKeyword_0() { return cRingKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//Params
+		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
+	}
+	public class TreeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Tree");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTreeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Tree:
+		//	'tree' name=ID Params;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'tree' name=ID Params
+		public Group getGroup() { return cGroup; }
+		
+		//'tree'
+		public Keyword getTreeKeyword_0() { return cTreeKeyword_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//Params
+		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
 	}
 	public class ParamsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Params");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Action cParamsAction_1 = (Action)cGroup.eContents().get(1);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
-		private final Assignment cKeysAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
-		private final RuleCall cKeysIDTerminalRuleCall_2_0_0_0 = (RuleCall)cKeysAssignment_2_0_0.eContents().get(0);
-		private final Keyword cColonKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
-		private final Assignment cValuesAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
-		private final RuleCall cValuesSTRINGTerminalRuleCall_2_0_2_0 = (RuleCall)cValuesAssignment_2_0_2.eContents().get(0);
-		private final Keyword cCommaKeyword_2_0_3 = (Keyword)cGroup_2_0.eContents().get(3);
-		private final Assignment cKeysAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cKeysIDTerminalRuleCall_2_1_0 = (RuleCall)cKeysAssignment_2_1.eContents().get(0);
-		private final Keyword cColonKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
-		private final Assignment cValuesAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final RuleCall cValuesSTRINGTerminalRuleCall_2_3_0 = (RuleCall)cValuesAssignment_2_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
+		private final Assignment cParamsAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final RuleCall cParamsParamParserRuleCall_1_0_0_0 = (RuleCall)cParamsAssignment_1_0_0.eContents().get(0);
+		private final Keyword cCommaKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cParamsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cParamsParamParserRuleCall_1_1_0 = (RuleCall)cParamsAssignment_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Params:
-		//	'{' {Params} ((keys+=ID ':' values+=STRING ',')*
-		//	keys+=ID ':' values+=STRING)?
+		//fragment Params:
+		//	'{' ((params+=Param ',')*
+		//	params+=Param)?
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' {Params} ((keys+=ID ':' values+=STRING ',')* keys+=ID ':' values+=STRING)? '}'
+		//'{' ((params+=Param ',')* params+=Param)? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 		
-		//{Params}
-		public Action getParamsAction_1() { return cParamsAction_1; }
+		//((params+=Param ',')* params+=Param)?
+		public Group getGroup_1() { return cGroup_1; }
 		
-		//((keys+=ID ':' values+=STRING ',')* keys+=ID ':' values+=STRING)?
-		public Group getGroup_2() { return cGroup_2; }
+		//(params+=Param ',')*
+		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//(keys+=ID ':' values+=STRING ',')*
-		public Group getGroup_2_0() { return cGroup_2_0; }
+		//params+=Param
+		public Assignment getParamsAssignment_1_0_0() { return cParamsAssignment_1_0_0; }
 		
-		//keys+=ID
-		public Assignment getKeysAssignment_2_0_0() { return cKeysAssignment_2_0_0; }
-		
-		//ID
-		public RuleCall getKeysIDTerminalRuleCall_2_0_0_0() { return cKeysIDTerminalRuleCall_2_0_0_0; }
-		
-		//':'
-		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
-		
-		//values+=STRING
-		public Assignment getValuesAssignment_2_0_2() { return cValuesAssignment_2_0_2; }
-		
-		//STRING
-		public RuleCall getValuesSTRINGTerminalRuleCall_2_0_2_0() { return cValuesSTRINGTerminalRuleCall_2_0_2_0; }
+		//Param
+		public RuleCall getParamsParamParserRuleCall_1_0_0_0() { return cParamsParamParserRuleCall_1_0_0_0; }
 		
 		//','
-		public Keyword getCommaKeyword_2_0_3() { return cCommaKeyword_2_0_3; }
+		public Keyword getCommaKeyword_1_0_1() { return cCommaKeyword_1_0_1; }
 		
-		//keys+=ID
-		public Assignment getKeysAssignment_2_1() { return cKeysAssignment_2_1; }
+		//params+=Param
+		public Assignment getParamsAssignment_1_1() { return cParamsAssignment_1_1; }
 		
-		//ID
-		public RuleCall getKeysIDTerminalRuleCall_2_1_0() { return cKeysIDTerminalRuleCall_2_1_0; }
-		
-		//':'
-		public Keyword getColonKeyword_2_2() { return cColonKeyword_2_2; }
-		
-		//values+=STRING
-		public Assignment getValuesAssignment_2_3() { return cValuesAssignment_2_3; }
-		
-		//STRING
-		public RuleCall getValuesSTRINGTerminalRuleCall_2_3_0() { return cValuesSTRINGTerminalRuleCall_2_3_0; }
+		//Param
+		public RuleCall getParamsParamParserRuleCall_1_1_0() { return cParamsParamParserRuleCall_1_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+	}
+	public class ParamElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Param");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//Param:
+		//	name=ID ":" value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID ":" value=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 	
 	
 	private final InfrastructureElements pInfrastructure;
 	private final SingleServerElements pSingleServer;
+	private final ClusterElements pCluster;
+	private final RingElements pRing;
+	private final TreeElements pTree;
 	private final ParamsElements pParams;
+	private final ParamElements pParam;
 	
 	private final Grammar grammar;
 	
@@ -158,7 +242,11 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 		this.gaTerminals = gaTerminals;
 		this.pInfrastructure = new InfrastructureElements();
 		this.pSingleServer = new SingleServerElements();
+		this.pCluster = new ClusterElements();
+		this.pRing = new RingElements();
+		this.pTree = new TreeElements();
 		this.pParams = new ParamsElements();
+		this.pParam = new ParamElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -189,7 +277,8 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 
 	
 	//Infrastructure:
-	//	SingleServer;
+	//	SingleServer //|Cluster|Ring|Tree
+	//;
 	public InfrastructureElements getInfrastructureAccess() {
 		return pInfrastructure;
 	}
@@ -199,7 +288,7 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//SingleServer:
-	//	external?='external'? 'singleServer' params=Params;
+	//	'singleserver' name=ID Params;
 	public SingleServerElements getSingleServerAccess() {
 		return pSingleServer;
 	}
@@ -208,9 +297,39 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 		return getSingleServerAccess().getRule();
 	}
 	
-	//Params:
-	//	'{' {Params} ((keys+=ID ':' values+=STRING ',')*
-	//	keys+=ID ':' values+=STRING)?
+	//Cluster:
+	//	'cluster' name=ID Params;
+	public ClusterElements getClusterAccess() {
+		return pCluster;
+	}
+	
+	public ParserRule getClusterRule() {
+		return getClusterAccess().getRule();
+	}
+	
+	//Ring:
+	//	'ring' name=ID Params;
+	public RingElements getRingAccess() {
+		return pRing;
+	}
+	
+	public ParserRule getRingRule() {
+		return getRingAccess().getRule();
+	}
+	
+	//Tree:
+	//	'tree' name=ID Params;
+	public TreeElements getTreeAccess() {
+		return pTree;
+	}
+	
+	public ParserRule getTreeRule() {
+		return getTreeAccess().getRule();
+	}
+	
+	//fragment Params:
+	//	'{' ((params+=Param ',')*
+	//	params+=Param)?
 	//	'}';
 	public ParamsElements getParamsAccess() {
 		return pParams;
@@ -218,6 +337,16 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	
 	public ParserRule getParamsRule() {
 		return getParamsAccess().getRule();
+	}
+	
+	//Param:
+	//	name=ID ":" value=STRING;
+	public ParamElements getParamAccess() {
+		return pParam;
+	}
+	
+	public ParserRule getParamRule() {
+		return getParamAccess().getRule();
 	}
 	
 	//terminal ID:

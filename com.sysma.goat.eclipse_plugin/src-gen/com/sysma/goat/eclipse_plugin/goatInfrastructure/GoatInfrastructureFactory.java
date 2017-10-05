@@ -42,6 +42,33 @@ public interface GoatInfrastructureFactory extends EFactory
   SingleServer createSingleServer();
 
   /**
+   * Returns a new object of class '<em>Cluster</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cluster</em>'.
+   * @generated
+   */
+  Cluster createCluster();
+
+  /**
+   * Returns a new object of class '<em>Ring</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Ring</em>'.
+   * @generated
+   */
+  Ring createRing();
+
+  /**
+   * Returns a new object of class '<em>Tree</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tree</em>'.
+   * @generated
+   */
+  Tree createTree();
+
+  /**
    * Returns a new object of class '<em>Params</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -49,6 +76,15 @@ public interface GoatInfrastructureFactory extends EFactory
    * @generated
    */
   Params createParams();
+
+  /**
+   * Returns a new object of class '<em>Param</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param</em>'.
+   * @generated
+   */
+  Param createParam();
 
   /**
    * Returns the package supported by this factory.

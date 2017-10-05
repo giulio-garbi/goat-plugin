@@ -3,18 +3,33 @@ grammar com.sysma.goat.eclipse_plugin.GoatInfrastructure with org.eclipse.xtext.
 generate goatInfrastructure "http://www.sysma.com/goat/eclipse_plugin/GoatInfrastructure"
 
 Infrastructure:
-	SingleServer
+	SingleServer//|Cluster|Ring|Tree
 ;
 
 SingleServer:
-	(external?='external')? 'singleServer' params = Params
+	'singleserver' name=ID Params
 ;
 
-Params: 
+Cluster:
+	'cluster' name=ID Params
+;
+
+Ring:
+	'ring' name=ID Params
+;
+
+Tree:
+	'tree' name=ID Params
+;
+
+fragment Params: 
 '{'
-	{Params}
 	(
-		(keys += ID ':' values += STRING ',')*
-		keys += ID ':' values += STRING
+		(params += Param ',')*
+		params += Param
 	)?
 '}';
+
+Param:
+	name = ID ":" value = STRING 
+;

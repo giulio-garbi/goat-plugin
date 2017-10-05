@@ -4,17 +4,24 @@
 package com.sysma.goat.eclipse_plugin.goatInfrastructure.impl;
 
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +31,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getKeys <em>Keys</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getValues <em>Values</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -33,24 +40,34 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
 {
   /**
-   * The cached value of the '{@link #getKeys() <em>Keys</em>}' attribute list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getKeys()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<String> keys;
+  protected EList<Param> params;
 
   /**
-   * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValues()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<String> values;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -78,13 +95,13 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getKeys()
+  public EList<Param> getParams()
   {
-    if (keys == null)
+    if (params == null)
     {
-      keys = new EDataTypeEList<String>(String.class, this, GoatInfrastructurePackage.PARAMS__KEYS);
+      params = new EObjectContainmentEList<Param>(Param.class, this, GoatInfrastructurePackage.PARAMS__PARAMS);
     }
-    return keys;
+    return params;
   }
 
   /**
@@ -92,13 +109,38 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getValues()
+  public String getName()
   {
-    if (values == null)
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.PARAMS__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
     {
-      values = new EDataTypeEList<String>(String.class, this, GoatInfrastructurePackage.PARAMS__VALUES);
+      case GoatInfrastructurePackage.PARAMS__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
-    return values;
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -111,10 +153,10 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__KEYS:
-        return getKeys();
-      case GoatInfrastructurePackage.PARAMS__VALUES:
-        return getValues();
+      case GoatInfrastructurePackage.PARAMS__PARAMS:
+        return getParams();
+      case GoatInfrastructurePackage.PARAMS__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,13 +172,12 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__KEYS:
-        getKeys().clear();
-        getKeys().addAll((Collection<? extends String>)newValue);
+      case GoatInfrastructurePackage.PARAMS__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends Param>)newValue);
         return;
-      case GoatInfrastructurePackage.PARAMS__VALUES:
-        getValues().clear();
-        getValues().addAll((Collection<? extends String>)newValue);
+      case GoatInfrastructurePackage.PARAMS__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -152,11 +193,11 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__KEYS:
-        getKeys().clear();
+      case GoatInfrastructurePackage.PARAMS__PARAMS:
+        getParams().clear();
         return;
-      case GoatInfrastructurePackage.PARAMS__VALUES:
-        getValues().clear();
+      case GoatInfrastructurePackage.PARAMS__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -172,10 +213,10 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__KEYS:
-        return keys != null && !keys.isEmpty();
-      case GoatInfrastructurePackage.PARAMS__VALUES:
-        return values != null && !values.isEmpty();
+      case GoatInfrastructurePackage.PARAMS__PARAMS:
+        return params != null && !params.isEmpty();
+      case GoatInfrastructurePackage.PARAMS__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -191,10 +232,8 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (keys: ");
-    result.append(keys);
-    result.append(", values: ");
-    result.append(values);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

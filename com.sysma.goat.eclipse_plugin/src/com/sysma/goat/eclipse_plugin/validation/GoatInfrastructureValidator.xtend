@@ -3,6 +3,12 @@
  */
 package com.sysma.goat.eclipse_plugin.validation
 
+import org.eclipse.xtext.validation.Check
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer
+import java.util.Map
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param
+import java.util.List
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +27,42 @@ class GoatInfrastructureValidator extends AbstractGoatInfrastructureValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+	private def checkParam(Map<String, (Object)=>String> test, Param param){
+		val check = test.get(param.name)
+		if (check === null) {
+			error('''Parameter «param.name» unrecognised.''', GoatInfrastructurePackage.eINSTANCE.param_Name)
+			return
+		}
+		val err = check.apply(param.value)
+		if (err !== null){
+			error(err, GoatInfrastructurePackage.eINSTANCE.param_Value)
+		}
+	}
+	/* 
+	private static val paramChecker = #{
+		SingleServer -> #{
+			"port" -> [
+				if (it === null) {
+					return "Parameter missing: port"
+				} else {
+					try{
+						Integer.parseInt(it.toString())
+					} catch(Exception){
+						return "port must be an integer"
+					}
+				}
+				return ""
+			],
+			"timeout" -> [
+				
+			]
+		}
+	}*/
+
+	@Check
+	def checkParams(Param param){
+		
+	}
 	
 }

@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getKeys <em>Keys</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getValues <em>Values</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getParams <em>Params</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getParams()
@@ -27,35 +27,45 @@ import org.eclipse.emf.ecore.EObject;
 public interface Params extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Keys</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Params</b></em>' containment reference list.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Param}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Keys</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Keys</em>' attribute list.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getParams_Keys()
-   * @model unique="false"
+   * @return the value of the '<em>Params</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getParams_Params()
+   * @model containment="true"
    * @generated
    */
-  EList<String> getKeys();
+  EList<Param> getParams();
 
   /**
-   * Returns the value of the '<em><b>Values</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Values</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Values</em>' attribute list.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getParams_Values()
-   * @model unique="false"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getParams_Name()
+   * @model
    * @generated
    */
-  EList<String> getValues();
+  String getName();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // Params

@@ -43,32 +43,30 @@ public class CodeSingleServer {
       _builder.newLine();
       _builder.append("func main(){");
       _builder.newLine();
-      {
-        boolean _isExternal = this.ssrv.isExternal();
-        boolean _not = (!_isExternal);
-        if (_not) {
-          _builder.append("\t");
-          _builder.append("term := make(chan struct{})");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("goat.RunCentralServer(");
-          String _get_1 = this.params.get("port");
-          _builder.append(_get_1, "\t");
-          _builder.append(", term, ");
-          _builder.append(((Object)timeout), "\t");
-          _builder.append(")");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t");
-          _builder.append("fmt.Println(\"Started\")");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("<- term");
-          _builder.newLine();
-          _builder.append("\t");
-          _builder.append("fmt.Println(\"Terminated\")");
-          _builder.newLine();
-        }
-      }
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("term := make(chan struct{})");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("goat.RunCentralServer(");
+      String _get_1 = this.params.get("port");
+      _builder.append(_get_1, "\t");
+      _builder.append(", term, ");
+      _builder.append(((Object)timeout), "\t");
+      _builder.append(")");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("fmt.Println(\"Started\")");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("<- term");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("fmt.Println(\"Terminated\")");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
       _builder.append("}");
       _builder.newLine();
       _xblockexpression = _builder;
@@ -77,14 +75,7 @@ public class CodeSingleServer {
   }
   
   public String getServerAddress() {
-    String _xifexpression = null;
-    boolean _isExternal = this.ssrv.isExternal();
-    if (_isExternal) {
-      String _get = this.params.get("port");
-      _xifexpression = ("127.0.0.1:" + _get);
-    } else {
-      _xifexpression = this.params.get("address");
-    }
-    return _xifexpression;
+    String _get = this.params.get("port");
+    return ("127.0.0.1:" + _get);
   }
 }

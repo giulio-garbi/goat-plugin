@@ -11,9 +11,13 @@ package com.sysma.goat.eclipse_plugin.parser.antlr.lexer;
 import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
-SingleServer : 'singleServer';
+Singleserver : 'singleserver';
 
-External : 'external';
+Cluster : 'cluster';
+
+Ring : 'ring';
+
+Tree : 'tree';
 
 Comma : ',';
 

@@ -22,22 +22,22 @@ class CodeSingleServer {
 			)
 			
 			func main(){
-				«IF !ssrv.external»
+				«/*IF !ssrv.external*/»
 				term := make(chan struct{})
 				goat.RunCentralServer(«params.get('port')», term, «timeout»)
 				fmt.Println("Started")
 				<- term
 				fmt.Println("Terminated")
-				«ENDIF»
+				«/*ENDIF*/»
 			}
 		'''
 	}
 	
 	def String getServerAddress(){
-		if (ssrv.external) {
+		//if (ssrv.external) {
+		//	params.get('address')
+		//} else {
 			"127.0.0.1:"+params.get('port')
-		} else {
-			params.get('address')
-		}
+		//}
 	}
 }

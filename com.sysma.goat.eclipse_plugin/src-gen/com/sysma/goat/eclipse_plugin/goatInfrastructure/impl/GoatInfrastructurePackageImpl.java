@@ -3,11 +3,15 @@
  */
 package com.sysma.goat.eclipse_plugin.goatInfrastructure.impl;
 
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructureFactory;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -43,7 +47,35 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass clusterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass treeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass paramsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass paramEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -133,9 +165,9 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSingleServer_External()
+  public EClass getCluster()
   {
-    return (EAttribute)singleServerEClass.getEStructuralFeatures().get(0);
+    return clusterEClass;
   }
 
   /**
@@ -143,9 +175,19 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSingleServer_Params()
+  public EClass getRing()
   {
-    return (EReference)singleServerEClass.getEStructuralFeatures().get(1);
+    return ringEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTree()
+  {
+    return treeEClass;
   }
 
   /**
@@ -163,9 +205,9 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParams_Keys()
+  public EReference getParams_Params()
   {
-    return (EAttribute)paramsEClass.getEStructuralFeatures().get(0);
+    return (EReference)paramsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -173,9 +215,39 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParams_Values()
+  public EAttribute getParams_Name()
   {
     return (EAttribute)paramsEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParam()
+  {
+    return paramEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParam_Name()
+  {
+    return (EAttribute)paramEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParam_Value()
+  {
+    return (EAttribute)paramEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -211,12 +283,20 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
     infrastructureEClass = createEClass(INFRASTRUCTURE);
 
     singleServerEClass = createEClass(SINGLE_SERVER);
-    createEAttribute(singleServerEClass, SINGLE_SERVER__EXTERNAL);
-    createEReference(singleServerEClass, SINGLE_SERVER__PARAMS);
+
+    clusterEClass = createEClass(CLUSTER);
+
+    ringEClass = createEClass(RING);
+
+    treeEClass = createEClass(TREE);
 
     paramsEClass = createEClass(PARAMS);
-    createEAttribute(paramsEClass, PARAMS__KEYS);
-    createEAttribute(paramsEClass, PARAMS__VALUES);
+    createEReference(paramsEClass, PARAMS__PARAMS);
+    createEAttribute(paramsEClass, PARAMS__NAME);
+
+    paramEClass = createEClass(PARAM);
+    createEAttribute(paramEClass, PARAM__NAME);
+    createEAttribute(paramEClass, PARAM__VALUE);
   }
 
   /**
@@ -249,17 +329,29 @@ public class GoatInfrastructurePackageImpl extends EPackageImpl implements GoatI
 
     // Add supertypes to classes
     singleServerEClass.getESuperTypes().add(this.getInfrastructure());
+    singleServerEClass.getESuperTypes().add(this.getParams());
+    clusterEClass.getESuperTypes().add(this.getParams());
+    ringEClass.getESuperTypes().add(this.getParams());
+    treeEClass.getESuperTypes().add(this.getParams());
 
     // Initialize classes and features; add operations and parameters
     initEClass(infrastructureEClass, Infrastructure.class, "Infrastructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(singleServerEClass, SingleServer.class, "SingleServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSingleServer_External(), ecorePackage.getEBoolean(), "external", null, 0, 1, SingleServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSingleServer_Params(), this.getParams(), null, "params", null, 0, 1, SingleServer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(clusterEClass, Cluster.class, "Cluster", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(ringEClass, Ring.class, "Ring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(treeEClass, Tree.class, "Tree", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(paramsEClass, Params.class, "Params", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getParams_Keys(), ecorePackage.getEString(), "keys", null, 0, -1, Params.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParams_Values(), ecorePackage.getEString(), "values", null, 0, -1, Params.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParams_Params(), this.getParam(), null, "params", null, 0, -1, Params.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParams_Name(), ecorePackage.getEString(), "name", null, 0, 1, Params.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParam_Value(), ecorePackage.getEString(), "value", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

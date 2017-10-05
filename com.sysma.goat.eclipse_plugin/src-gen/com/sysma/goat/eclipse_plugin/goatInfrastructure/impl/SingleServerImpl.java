@@ -4,16 +4,24 @@
 package com.sysma.goat.eclipse_plugin.goatInfrastructure.impl;
 
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +31,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.SingleServerImpl#isExternal <em>External</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.SingleServerImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.SingleServerImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,34 +40,34 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class SingleServerImpl extends InfrastructureImpl implements SingleServer
 {
   /**
-   * The default value of the '{@link #isExternal() <em>External</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isExternal()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean EXTERNAL_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isExternal() <em>External</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isExternal()
-   * @generated
-   * @ordered
-   */
-  protected boolean external = EXTERNAL_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParams()
    * @generated
    * @ordered
    */
-  protected Params params;
+  protected EList<Param> params;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -87,31 +95,12 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isExternal()
+  public EList<Param> getParams()
   {
-    return external;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setExternal(boolean newExternal)
-  {
-    boolean oldExternal = external;
-    external = newExternal;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.SINGLE_SERVER__EXTERNAL, oldExternal, external));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Params getParams()
-  {
+    if (params == null)
+    {
+      params = new EObjectContainmentEList<Param>(Param.class, this, GoatInfrastructurePackage.SINGLE_SERVER__PARAMS);
+    }
     return params;
   }
 
@@ -120,16 +109,9 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParams(Params newParams, NotificationChain msgs)
+  public String getName()
   {
-    Params oldParams = params;
-    params = newParams;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.SINGLE_SERVER__PARAMS, oldParams, newParams);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return name;
   }
 
   /**
@@ -137,20 +119,12 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParams(Params newParams)
+  public void setName(String newName)
   {
-    if (newParams != params)
-    {
-      NotificationChain msgs = null;
-      if (params != null)
-        msgs = ((InternalEObject)params).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatInfrastructurePackage.SINGLE_SERVER__PARAMS, null, msgs);
-      if (newParams != null)
-        msgs = ((InternalEObject)newParams).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatInfrastructurePackage.SINGLE_SERVER__PARAMS, null, msgs);
-      msgs = basicSetParams(newParams, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.SINGLE_SERVER__PARAMS, newParams, newParams));
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.SINGLE_SERVER__NAME, oldName, name));
   }
 
   /**
@@ -164,7 +138,7 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
     switch (featureID)
     {
       case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS:
-        return basicSetParams(null, msgs);
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -179,10 +153,10 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.SINGLE_SERVER__EXTERNAL:
-        return isExternal();
       case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS:
         return getParams();
+      case GoatInfrastructurePackage.SINGLE_SERVER__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -192,16 +166,18 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.SINGLE_SERVER__EXTERNAL:
-        setExternal((Boolean)newValue);
-        return;
       case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS:
-        setParams((Params)newValue);
+        getParams().clear();
+        getParams().addAll((Collection<? extends Param>)newValue);
+        return;
+      case GoatInfrastructurePackage.SINGLE_SERVER__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -217,11 +193,11 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.SINGLE_SERVER__EXTERNAL:
-        setExternal(EXTERNAL_EDEFAULT);
-        return;
       case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS:
-        setParams((Params)null);
+        getParams().clear();
+        return;
+      case GoatInfrastructurePackage.SINGLE_SERVER__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -237,12 +213,52 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.SINGLE_SERVER__EXTERNAL:
-        return external != EXTERNAL_EDEFAULT;
       case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS:
-        return params != null;
+        return params != null && !params.isEmpty();
+      case GoatInfrastructurePackage.SINGLE_SERVER__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Params.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case GoatInfrastructurePackage.SINGLE_SERVER__PARAMS: return GoatInfrastructurePackage.PARAMS__PARAMS;
+        case GoatInfrastructurePackage.SINGLE_SERVER__NAME: return GoatInfrastructurePackage.PARAMS__NAME;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Params.class)
+    {
+      switch (baseFeatureID)
+      {
+        case GoatInfrastructurePackage.PARAMS__PARAMS: return GoatInfrastructurePackage.SINGLE_SERVER__PARAMS;
+        case GoatInfrastructurePackage.PARAMS__NAME: return GoatInfrastructurePackage.SINGLE_SERVER__NAME;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**
@@ -256,8 +272,8 @@ public class SingleServerImpl extends InfrastructureImpl implements SingleServer
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (external: ");
-    result.append(external);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

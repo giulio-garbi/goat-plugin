@@ -9,70 +9,11 @@ package com.sysma.goat.eclipse_plugin.goatInfrastructure;
  * A representation of the model object '<em><b>Single Server</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#isExternal <em>External</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getParams <em>Params</em>}</li>
- * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getSingleServer()
  * @model
  * @generated
  */
-public interface SingleServer extends Infrastructure
+public interface SingleServer extends Infrastructure, Params
 {
-  /**
-   * Returns the value of the '<em><b>External</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>External</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>External</em>' attribute.
-   * @see #setExternal(boolean)
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getSingleServer_External()
-   * @model
-   * @generated
-   */
-  boolean isExternal();
-
-  /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#isExternal <em>External</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>External</em>' attribute.
-   * @see #isExternal()
-   * @generated
-   */
-  void setExternal(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Params</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Params</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Params</em>' containment reference.
-   * @see #setParams(Params)
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage#getSingleServer_Params()
-   * @model containment="true"
-   * @generated
-   */
-  Params getParams();
-
-  /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getParams <em>Params</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Params</em>' containment reference.
-   * @see #getParams()
-   * @generated
-   */
-  void setParams(Params value);
-
 } // SingleServer

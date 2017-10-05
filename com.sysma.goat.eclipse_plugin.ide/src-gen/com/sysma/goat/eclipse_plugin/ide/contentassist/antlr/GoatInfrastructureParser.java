@@ -32,15 +32,21 @@ public class GoatInfrastructureParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getSingleServerAccess().getGroup(), "rule__SingleServer__Group__0");
+					put(grammarAccess.getClusterAccess().getGroup(), "rule__Cluster__Group__0");
+					put(grammarAccess.getRingAccess().getGroup(), "rule__Ring__Group__0");
+					put(grammarAccess.getTreeAccess().getGroup(), "rule__Tree__Group__0");
 					put(grammarAccess.getParamsAccess().getGroup(), "rule__Params__Group__0");
-					put(grammarAccess.getParamsAccess().getGroup_2(), "rule__Params__Group_2__0");
-					put(grammarAccess.getParamsAccess().getGroup_2_0(), "rule__Params__Group_2_0__0");
-					put(grammarAccess.getSingleServerAccess().getExternalAssignment_0(), "rule__SingleServer__ExternalAssignment_0");
-					put(grammarAccess.getSingleServerAccess().getParamsAssignment_2(), "rule__SingleServer__ParamsAssignment_2");
-					put(grammarAccess.getParamsAccess().getKeysAssignment_2_0_0(), "rule__Params__KeysAssignment_2_0_0");
-					put(grammarAccess.getParamsAccess().getValuesAssignment_2_0_2(), "rule__Params__ValuesAssignment_2_0_2");
-					put(grammarAccess.getParamsAccess().getKeysAssignment_2_1(), "rule__Params__KeysAssignment_2_1");
-					put(grammarAccess.getParamsAccess().getValuesAssignment_2_3(), "rule__Params__ValuesAssignment_2_3");
+					put(grammarAccess.getParamsAccess().getGroup_1(), "rule__Params__Group_1__0");
+					put(grammarAccess.getParamsAccess().getGroup_1_0(), "rule__Params__Group_1_0__0");
+					put(grammarAccess.getParamAccess().getGroup(), "rule__Param__Group__0");
+					put(grammarAccess.getSingleServerAccess().getNameAssignment_1(), "rule__SingleServer__NameAssignment_1");
+					put(grammarAccess.getClusterAccess().getNameAssignment_1(), "rule__Cluster__NameAssignment_1");
+					put(grammarAccess.getRingAccess().getNameAssignment_1(), "rule__Ring__NameAssignment_1");
+					put(grammarAccess.getTreeAccess().getNameAssignment_1(), "rule__Tree__NameAssignment_1");
+					put(grammarAccess.getParamsAccess().getParamsAssignment_1_0_0(), "rule__Params__ParamsAssignment_1_0_0");
+					put(grammarAccess.getParamsAccess().getParamsAssignment_1_1(), "rule__Params__ParamsAssignment_1_1");
+					put(grammarAccess.getParamAccess().getNameAssignment_0(), "rule__Param__NameAssignment_0");
+					put(grammarAccess.getParamAccess().getValueAssignment_2(), "rule__Param__ValueAssignment_2");
 				}
 			};
 		}
