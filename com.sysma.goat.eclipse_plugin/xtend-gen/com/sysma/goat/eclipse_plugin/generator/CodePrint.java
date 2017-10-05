@@ -1,7 +1,7 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
-import com.sysma.goat.eclipse_plugin.generator.CodeModel;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
@@ -20,7 +20,7 @@ public class CodePrint {
       _matched=true;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("fmt.Println(");
-      String _convertString = CodePrint.convertString(((PrintFormattedStatement)pstat).getToPrint(), componentAttr, CodeModel.getLocalVariablesMap(), message);
+      String _convertString = CodePrint.convertString(((PrintFormattedStatement)pstat).getToPrint(), componentAttr, CodeProcessDefinition.getLocalVariablesMap(), message);
       _builder.append(_convertString);
       _builder.append(")");
       _switchResult = _builder;

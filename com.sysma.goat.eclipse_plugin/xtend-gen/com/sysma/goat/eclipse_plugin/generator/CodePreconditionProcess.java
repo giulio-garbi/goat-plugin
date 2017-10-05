@@ -1,7 +1,7 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
-import com.sysma.goat.eclipse_plugin.generator.CodeModel;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeReceivePred;
 import com.sysma.goat.eclipse_plugin.generator.CodeValue;
 import com.sysma.goat.eclipse_plugin.generator.LocalBackupAttributes;
@@ -94,9 +94,9 @@ public class CodePreconditionProcess {
                 for(final Integer i : _doubleDotLessThan) {
                   _builder.append("\t\t");
                   AttributeToSet _get = ((Update)prec).getVars().get((i).intValue());
-                  String _localVariablesMap = CodeModel.getLocalVariablesMap();
+                  String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
                   Expression _get_1 = ((Update)prec).getVals().get((i).intValue());
-                  String _localVariablesMap_1 = CodeModel.getLocalVariablesMap();
+                  String _localVariablesMap_1 = CodeProcessDefinition.getLocalVariablesMap();
                   CharSequence _assign_1 = new CodeAttribute(_get, componentMap, _localVariablesMap).assign(new CodeValue(_get_1, componentMap, _localVariablesMap_1).getCode());
                   _builder.append(_assign_1, "\t\t");
                   _builder.newLineIfNotEmpty();
@@ -107,7 +107,7 @@ public class CodePreconditionProcess {
                 _builder.append("\t\t");
                 _builder.append("if !(");
                 Expression _pred = ((Awareness) prec).getPred();
-                String _localVariablesMap_2 = CodeModel.getLocalVariablesMap();
+                String _localVariablesMap_2 = CodeProcessDefinition.getLocalVariablesMap();
                 CharSequence _code = new CodeReceivePred(_pred, componentMap, _localVariablesMap_2).getCode();
                 _builder.append(_code, "\t\t");
                 _builder.append("){");
@@ -138,7 +138,7 @@ public class CodePreconditionProcess {
       _builder.append(" {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
-      String _localVariablesMap_3 = CodeModel.getLocalVariablesMap();
+      String _localVariablesMap_3 = CodeProcessDefinition.getLocalVariablesMap();
       _builder.append(_localVariablesMap_3, "\t\t\t");
       _builder.append("[lv] = val");
       _builder.newLineIfNotEmpty();

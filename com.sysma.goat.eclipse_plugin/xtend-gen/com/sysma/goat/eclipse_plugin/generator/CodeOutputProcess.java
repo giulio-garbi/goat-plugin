@@ -5,6 +5,7 @@ import com.sysma.goat.eclipse_plugin.generator.CodeInputOutputProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodePrint;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeSendPred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.generator.CodeValue;
@@ -52,7 +53,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
     _builder.append(_messageVar);
     _builder.append(" := goat.NewTuple(");
     final Function1<Expression, CharSequence> _function = (Expression part) -> {
-      String _localVariablesMap = CodeModel.getLocalVariablesMap();
+      String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
       return new CodeValue(part, componentAttributesMap, _localVariablesMap).getCode();
     };
     String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(this.proc.getMsgOutParts(), _function), ",");
@@ -107,7 +108,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         boolean _tripleNotEquals = (_output != null);
         if (_tripleNotEquals) {
           _builder.append("\t");
-          CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+          CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeProcessDefinition.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
           _builder.append(_of, "\t");
           _builder.newLineIfNotEmpty();
         }
@@ -118,7 +119,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       _builder.append(_messageVar, "\t");
       _builder.append(", ");
       Expression _send_pred = this.proc.getSend_pred();
-      String _localVariablesMap = CodeModel.getLocalVariablesMap();
+      String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
       CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
       _builder.append(_code, "\t");
       _builder.append(", true");
@@ -162,7 +163,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
               _builder_1.newLine();
               _builder_1.append("\t");
               _builder_1.append("\t");
-              CharSequence _of_1 = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+              CharSequence _of_1 = CodePrint.of(this.proc.getOutput(), "attrs", CodeProcessDefinition.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
               _builder_1.append(_of_1, "\t\t");
               _builder_1.newLineIfNotEmpty();
               _builder_1.append("\t");
@@ -233,7 +234,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t");
-        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrsWrap", CodeProcessDefinition.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
         _builder.append(_of, "\t");
         _builder.newLineIfNotEmpty();
       }
@@ -253,7 +254,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         _builder.append(_messageVar, "\t");
         _builder.append(", ");
         Expression _send_pred = this.proc.getSend_pred();
-        String _localVariablesMap = CodeModel.getLocalVariablesMap();
+        String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
         CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
         _builder.append(_code, "\t");
         _builder.append(", true");
@@ -307,7 +308,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t");
-        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeModel.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
+        CharSequence _of = CodePrint.of(this.proc.getOutput(), "attrs", CodeProcessDefinition.getLocalVariablesMap(), Collections.<AttributeToSet>unmodifiableList(CollectionLiterals.<AttributeToSet>newArrayList()));
         _builder.append(_of, "\t");
         _builder.newLineIfNotEmpty();
       }
@@ -324,7 +325,7 @@ public class CodeOutputProcess extends CodeTree implements CodeInputOutputProces
         _builder.append(_messageVar, "\t");
         _builder.append(", ");
         Expression _send_pred = this.proc.getSend_pred();
-        String _localVariablesMap = CodeModel.getLocalVariablesMap();
+        String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
         CharSequence _code = new CodeSendPred(_send_pred, _localVariablesMap).getCode();
         _builder.append(_code, "\t");
         _builder.append(")");

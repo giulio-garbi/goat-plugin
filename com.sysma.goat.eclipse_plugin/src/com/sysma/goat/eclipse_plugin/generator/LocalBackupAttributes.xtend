@@ -9,7 +9,7 @@ class LocalBackupAttributes{
 	
 	new(LocalAttributeToSet attribute, String localBackupMap){
 		this.attribute = attribute
-		this.original = new CodeAttribute(attribute, "", CodeModel.localVariablesMap)
+		this.original = new CodeAttribute(attribute, "", CodeProcessDefinition.localVariablesMap)
 		this.backup = new CodeAttribute(attribute, "", localBackupMap)
 		/*if (attribute.comp){
 			throw new IllegalArgumentException("You need only to backup local attributes!")

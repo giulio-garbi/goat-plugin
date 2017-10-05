@@ -2,9 +2,11 @@ package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeCallProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodeModel;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -37,7 +39,7 @@ public class CodeInterleavingProcess extends CodeTree {
         _builder.newLine();
         _builder.append("\t");
         _builder.append("for k, v := range ");
-        String _localVariablesMap = CodeModel.getLocalVariablesMap();
+        String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
         _builder.append(_localVariablesMap, "\t");
         _builder.append("{");
         _builder.newLineIfNotEmpty();
@@ -50,11 +52,12 @@ public class CodeInterleavingProcess extends CodeTree {
         _builder.append("\t");
         _builder.newLine();
         _builder.append("\t");
-        _builder.append(CodeModel.systemFunction, "\t");
-        _builder.append("(\"");
-        String _name = proc.getProcname().getName();
-        _builder.append(_name, "\t");
-        _builder.append("\", lvars , pr)");
+        _builder.append(CodeModel.runFuncName, "\t");
+        _builder.append("(");
+        ProcessDefinition _procname = proc.getProcname();
+        String _process_func_name = new CodeProcessDefinition(_procname).getProcess_func_name();
+        _builder.append(_process_func_name, "\t");
+        _builder.append(", lvars)(pr)");
         _builder.newLineIfNotEmpty();
         _builder.append("})");
         _builder.newLine();

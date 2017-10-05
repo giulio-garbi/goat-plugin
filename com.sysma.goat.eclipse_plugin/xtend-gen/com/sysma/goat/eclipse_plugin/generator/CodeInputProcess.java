@@ -2,9 +2,9 @@ package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
 import com.sysma.goat.eclipse_plugin.generator.CodeInputOutputProcess;
-import com.sysma.goat.eclipse_plugin.generator.CodeModel;
 import com.sysma.goat.eclipse_plugin.generator.CodePreconditionProcess;
 import com.sysma.goat.eclipse_plugin.generator.CodePrint;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeReceivePred;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.generator.LocalBackupAttributes;
@@ -47,7 +47,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     {
       final int nbrParts = ((Object[])Conversions.unwrapArray(this.actualInput.getMsgInParts(), Object.class)).length;
       final Function1<AttributeToSet, CodeAttribute> _function = (AttributeToSet it) -> {
-        String _localVariablesMap = CodeModel.getLocalVariablesMap();
+        String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
         return new CodeAttribute(it, componentAttributesMap, _localVariablesMap);
       };
       final List<CodeAttribute> attributes = ListExtensions.<AttributeToSet, CodeAttribute>map(this.actualInput.getMsgInParts(), _function);
@@ -120,7 +120,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    String _localVariablesMap = CodeModel.getLocalVariablesMap();
+    String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
     _builder.append(_localVariablesMap, "\t");
     _builder.append("[lv] = val");
     _builder.newLineIfNotEmpty();
@@ -181,7 +181,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
     _builder.append("\t");
     _builder.append("if (");
     Expression _rec_pred = this.actualInput.getRec_pred();
-    String _localVariablesMap = CodeModel.getLocalVariablesMap();
+    String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
     CharSequence _code = new CodeReceivePred(_rec_pred, "attrsWrap", _localVariablesMap).getCode();
     _builder.append(_code, "\t");
     _builder.append("){");
@@ -191,7 +191,7 @@ public class CodeInputProcess implements CodeInputOutputProcess {
       boolean _tripleNotEquals = (_output != null);
       if (_tripleNotEquals) {
         _builder.append("\t\t");
-        CharSequence _of = CodePrint.of(this.actualInput.getOutput(), "attrsWrap", CodeModel.getLocalVariablesMap(), this.actualInput.getMsgInParts());
+        CharSequence _of = CodePrint.of(this.actualInput.getOutput(), "attrsWrap", CodeProcessDefinition.getLocalVariablesMap(), this.actualInput.getMsgInParts());
         _builder.append(_of, "\t\t");
         _builder.newLineIfNotEmpty();
       }

@@ -17,11 +17,11 @@ class CodeInterleavingProcess extends CodeTree {
 		«FOR proc: subprocesses.tail»
 			«CodeModel.goatProcessReference».Spawn(func(pr *goat.Process){
 				lvars := map[string]interface{}{}
-				for k, v := range «CodeModel.localVariablesMap»{
+				for k, v := range «CodeProcessDefinition.localVariablesMap»{
 					lvars[k] = v
 				}
 				
-				«CodeModel.systemFunction»("«proc.procname.name»", lvars , pr)
+				«CodeModel.runFuncName»(«new CodeProcessDefinition(proc.procname).process_func_name», lvars)(pr)
 			})
 		«ENDFOR»
 		

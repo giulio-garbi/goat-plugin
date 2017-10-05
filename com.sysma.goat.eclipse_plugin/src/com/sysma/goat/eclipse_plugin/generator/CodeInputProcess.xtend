@@ -23,7 +23,7 @@ class CodeInputProcess implements CodeInputOutputProcess {
 	
 	def private getSetupMessageParts(String componentAttributesMap){
 		val nbrParts = actualInput.msgInParts.length
-		val attributes = actualInput.msgInParts.map[new CodeAttribute(it, componentAttributesMap, CodeModel.localVariablesMap)]
+		val attributes = actualInput.msgInParts.map[new CodeAttribute(it, componentAttributesMap, CodeProcessDefinition.localVariablesMap)]
 		val attributesToBackup = actualInput.msgInParts.filter[it instanceof LocalAttributeToSet].map[new LocalBackupAttributes(it as LocalAttributeToSet, localBackupMap)]
 		//TODO remove string type assertion
 		'''
@@ -47,7 +47,7 @@ class CodeInputProcess implements CodeInputOutputProcess {
 	def private static getRollbackLocalVars(){
 		'''
 			for lv, val := range «localBackupMap» {
-				«CodeModel.localVariablesMap»[lv] = val
+				«CodeProcessDefinition.localVariablesMap»[lv] = val
 			}
 		'''
 	}
@@ -66,9 +66,9 @@ class CodeInputProcess implements CodeInputOutputProcess {
 						}
 					«ENDIF»
 					«getSetupMessageParts("attrsWrap")»
-					if («new CodeReceivePred(actualInput.rec_pred,"attrsWrap",CodeModel.localVariablesMap).code»){
+					if («new CodeReceivePred(actualInput.rec_pred,"attrsWrap",CodeProcessDefinition.localVariablesMap).code»){
 						«IF actualInput.output !== null»
-							«CodePrint.of(actualInput.output, "attrsWrap", CodeModel.localVariablesMap, actualInput.msgInParts)»
+							«CodePrint.of(actualInput.output, "attrsWrap", CodeProcessDefinition.localVariablesMap, actualInput.msgInParts)»
 						«ENDIF»
 						attrsWrap.Commit()
 						return true

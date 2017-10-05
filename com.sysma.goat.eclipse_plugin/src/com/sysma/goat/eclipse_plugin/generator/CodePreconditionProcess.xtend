@@ -42,11 +42,11 @@ class CodePreconditionProcess {
 				«FOR prec: preconds»
 					«IF prec instanceof Update»
 						«FOR i: 0..<prec.vals.length»
-							«new CodeAttribute(prec.vars.get(i), componentMap, CodeModel.localVariablesMap).
-								assign(new CodeValue(prec.vals.get(i),componentMap, CodeModel.localVariablesMap).code)»
+							«new CodeAttribute(prec.vars.get(i), componentMap, CodeProcessDefinition.localVariablesMap).
+								assign(new CodeValue(prec.vals.get(i),componentMap, CodeProcessDefinition.localVariablesMap).code)»
 						«ENDFOR»
 					«ELSEIF prec instanceof Awareness»
-						if !(«new CodeReceivePred((prec as Awareness).pred, componentMap, CodeModel.localVariablesMap).code»){
+						if !(«new CodeReceivePred((prec as Awareness).pred, componentMap, CodeProcessDefinition.localVariablesMap).code»){
 							return false
 						}
 					«ENDIF» 
@@ -55,7 +55,7 @@ class CodePreconditionProcess {
 				return true
 			}()){
 				for lv, val := range «localBackupMap» {
-					«CodeModel.localVariablesMap»[lv] = val
+					«CodeProcessDefinition.localVariablesMap»[lv] = val
 				}
 				return false
 			} else {

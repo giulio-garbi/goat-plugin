@@ -6,6 +6,6 @@ import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 public class CodeZeroProcess extends CodeTree {
   @Override
   public CharSequence getCode() {
-    return "return";
+    return "return nil";
   }
 }

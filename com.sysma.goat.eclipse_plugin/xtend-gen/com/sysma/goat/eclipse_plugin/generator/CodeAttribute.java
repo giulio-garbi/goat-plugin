@@ -1,6 +1,6 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
-import com.sysma.goat.eclipse_plugin.generator.CodeModel;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -67,7 +67,7 @@ public class CodeAttribute {
   
   public static CharSequence assignProcessParameter(final CharSequence param, final CharSequence value) {
     StringConcatenation _builder = new StringConcatenation();
-    String _localVariablesMap = CodeModel.getLocalVariablesMap();
+    String _localVariablesMap = CodeProcessDefinition.getLocalVariablesMap();
     _builder.append(_localVariablesMap);
     _builder.append("[\"");
     _builder.append(param);

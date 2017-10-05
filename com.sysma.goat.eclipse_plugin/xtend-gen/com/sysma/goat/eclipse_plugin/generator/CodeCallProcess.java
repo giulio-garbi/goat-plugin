@@ -17,9 +17,10 @@ public class CodeCallProcess extends CodeTree {
   @Override
   public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("goto ");
+    _builder.append("return ");
     ProcessDefinition _procname = this.call.getProcname();
-    _builder.append(new CodeProcessDefinition(_procname).process_goto_label);
+    String _process_func_name = new CodeProcessDefinition(_procname).getProcess_func_name();
+    _builder.append(_process_func_name);
     _builder.newLineIfNotEmpty();
     return _builder;
   }

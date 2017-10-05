@@ -8,9 +8,9 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 	val CharSequence mainFunc
 	val CharSequence compName
 	
-	new(ComponentDefinition cdef, CharSequence mainFunc, CharSequence compName){
+	new(ComponentDefinition cdef, CharSequence runFunc, CharSequence compName){
 		this.cdef = cdef
-		this.mainFunc = mainFunc
+		this.mainFunc = runFunc
 		this.compName = compName
 	}
 	
@@ -26,9 +26,7 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 	
 	override getCode() {
 		'''
-		goat.NewProcess(«compName»).Run(func(p *goat.Process){
-			«mainFunc»("«cdef.proc.name»", map[string]interface{}{}, p)
-		})'''
+		goat.NewProcess(«compName»).Run(«mainFunc»(«new CodeProcessDefinition(cdef.proc).process_func_name», map[string]interface{}{}))'''
 	}
 	
 }

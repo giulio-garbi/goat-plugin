@@ -12,7 +12,7 @@ class CodePrint {
 	def static of(PrintStatement pstat, String componentAttr, String localAttr, List<AttributeToSet> message){
 		switch pstat{
 			PrintFormattedStatement:
-				'''fmt.Println(«convertString(pstat.toPrint, componentAttr, CodeModel.localVariablesMap, message)»)'''
+				'''fmt.Println(«convertString(pstat.toPrint, componentAttr, CodeProcessDefinition.localVariablesMap, message)»)'''
 			default:
 				""
 		}

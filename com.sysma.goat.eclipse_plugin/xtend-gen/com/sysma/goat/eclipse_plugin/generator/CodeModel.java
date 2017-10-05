@@ -26,6 +26,8 @@ public class CodeModel {
   
   private final Iterable<CodeFunction> functions;
   
+  public final static String runFuncName = "run";
+  
   public CodeModel(final Model model) {
     this.packageName = "main";
     this.mainFuncName = "main";
@@ -39,7 +41,7 @@ public class CodeModel {
       _builder.append("comp_");
       Integer _key = pair.getKey();
       _builder.append(_key);
-      return new CodeComponentDefinition(_value, "model", _builder);
+      return new CodeComponentDefinition(_value, CodeModel.runFuncName, _builder);
     };
     this.components = IterableExtensions.<Pair<Integer, ComponentDefinition>, CodeComponentDefinition>map(IterableExtensions.<ComponentDefinition>indexed(model.getComponents()), _function_1);
     final Function1<FuncDefinition, CodeFunction> _function_2 = (FuncDefinition it) -> {
@@ -48,19 +50,9 @@ public class CodeModel {
     this.functions = ListExtensions.<FuncDefinition, CodeFunction>map(model.getFunctions(), _function_2);
   }
   
-  public static String getLocalVariablesMap() {
-    return "localVars";
-  }
-  
   public static String getGoatProcessReference() {
     return "p";
   }
-  
-  public static String getParamPassingMap() {
-    return "paramPassing";
-  }
-  
-  public final static String systemFunction = "model";
   
   public CharSequence getCode() {
     return this.getCode((-1));
@@ -93,6 +85,9 @@ public class CodeModel {
     _builder.append(")");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("type continuationProcess func(map[string]interface{}, *goat.Process) continuationProcess");
+    _builder.newLine();
+    _builder.newLine();
     {
       for(final CodeFunction func : this.functions) {
         CharSequence _code = func.getCode();
@@ -100,6 +95,30 @@ public class CodeModel {
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.newLine();
+    {
+      for(final CodeProcessDefinition c_pdef : this.processes) {
+        CharSequence _code_1 = c_pdef.getCode();
+        _builder.append(_code_1);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    _builder.append("func ");
+    _builder.append(CodeModel.runFuncName);
+    _builder.append("(proc continuationProcess, locAttr map[string]interface{}) (func(*goat.Process)){");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("return func(p *goat.Process){");
+    _builder.newLine();
+    _builder.append("\t    ");
+    _builder.append("for currp := proc; currp != nil; currp = currp(locAttr, p){}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
     _builder.newLine();
     _builder.append("func ");
     _builder.append(this.mainFuncName);
@@ -120,81 +139,6 @@ public class CodeModel {
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("var ");
-    _builder.append(CodeModel.systemFunction, "\t");
-    _builder.append(" func(string, map[string]interface{}, *goat.Process)");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append(CodeModel.systemFunction, "\t");
-    _builder.append(" = func(procname string, ");
-    String _localVariablesMap = CodeModel.getLocalVariablesMap();
-    _builder.append(_localVariablesMap, "\t");
-    _builder.append(" map[string]interface{}, ");
-    String _goatProcessReference = CodeModel.getGoatProcessReference();
-    _builder.append(_goatProcessReference, "\t");
-    _builder.append(" *goat.Process){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("var ");
-    String _paramPassingMap = CodeModel.getParamPassingMap();
-    _builder.append(_paramPassingMap, "\t\t");
-    _builder.append(" map[string]interface{}");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.append("_ = ");
-    String _paramPassingMap_1 = CodeModel.getParamPassingMap();
-    _builder.append(_paramPassingMap_1, "\t\t");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("switch(procname) {");
-    _builder.newLine();
-    {
-      for(final CodeProcessDefinition c_pdef : this.processes) {
-        _builder.append("\t\t\t");
-        _builder.append("case \"");
-        _builder.append(c_pdef.procname, "\t\t\t");
-        _builder.append("\":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t\t");
-        _builder.append("\t");
-        _builder.append("goto ");
-        _builder.append(c_pdef.process_goto_label, "\t\t\t\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t\t\t");
-    _builder.append("default:");
-    _builder.newLine();
-    _builder.append("\t\t\t\t");
-    _builder.append("panic(\"Undefined process name!\")");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.newLine();
-    {
-      for(final CodeProcessDefinition c_pdef_1 : this.processes) {
-        _builder.append("\t\t");
-        CharSequence _code_1 = c_pdef_1.getCode();
-        _builder.append(_code_1, "\t\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("_ = ");
-    _builder.append(CodeModel.systemFunction, "\t");
-    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");

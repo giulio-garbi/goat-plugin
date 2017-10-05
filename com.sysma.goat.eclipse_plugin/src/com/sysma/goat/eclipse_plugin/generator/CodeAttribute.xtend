@@ -40,7 +40,7 @@ class CodeAttribute {
 	}
 	
 	def static assignProcessParameter(CharSequence param, CharSequence value){
-		'''«CodeModel.localVariablesMap»["«param»"] = «value»'''
+		'''«CodeProcessDefinition.localVariablesMap»["«param»"] = «value»'''
 	}
 	
 	def read() {

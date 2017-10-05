@@ -10,7 +10,7 @@ class CodeCallProcess extends CodeTree {
 	
 	override getCode() {
 		'''
-			goto «new CodeProcessDefinition(call.procname).process_goto_label»
+			return «new CodeProcessDefinition(call.procname).process_func_name»
 		'''
 	}
 	
