@@ -9,8 +9,11 @@ import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
+
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -18,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -31,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getInfrastructure <em>Infrastructure</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getProcesses <em>Processes</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getFunctions <em>Functions</em>}</li>
@@ -40,6 +45,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
+  /**
+   * The cached value of the '{@link #getInfrastructure() <em>Infrastructure</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInfrastructure()
+   * @generated
+   * @ordered
+   */
+  protected Infrastructure infrastructure;
+
   /**
    * The cached value of the '{@link #getProcesses() <em>Processes</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -89,6 +104,49 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EClass eStaticClass()
   {
     return GoatComponentsPackage.Literals.MODEL;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Infrastructure getInfrastructure()
+  {
+    if (infrastructure != null && infrastructure.eIsProxy())
+    {
+      InternalEObject oldInfrastructure = (InternalEObject)infrastructure;
+      infrastructure = (Infrastructure)eResolveProxy(oldInfrastructure);
+      if (infrastructure != oldInfrastructure)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GoatComponentsPackage.MODEL__INFRASTRUCTURE, oldInfrastructure, infrastructure));
+      }
+    }
+    return infrastructure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Infrastructure basicGetInfrastructure()
+  {
+    return infrastructure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInfrastructure(Infrastructure newInfrastructure)
+  {
+    Infrastructure oldInfrastructure = infrastructure;
+    infrastructure = newInfrastructure;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.MODEL__INFRASTRUCTURE, oldInfrastructure, infrastructure));
   }
 
   /**
@@ -163,6 +221,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.MODEL__INFRASTRUCTURE:
+        if (resolve) return getInfrastructure();
+        return basicGetInfrastructure();
       case GoatComponentsPackage.MODEL__PROCESSES:
         return getProcesses();
       case GoatComponentsPackage.MODEL__COMPONENTS:
@@ -184,6 +245,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.MODEL__INFRASTRUCTURE:
+        setInfrastructure((Infrastructure)newValue);
+        return;
       case GoatComponentsPackage.MODEL__PROCESSES:
         getProcesses().clear();
         getProcesses().addAll((Collection<? extends ProcessDefinition>)newValue);
@@ -210,6 +274,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.MODEL__INFRASTRUCTURE:
+        setInfrastructure((Infrastructure)null);
+        return;
       case GoatComponentsPackage.MODEL__PROCESSES:
         getProcesses().clear();
         return;
@@ -233,6 +300,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.MODEL__INFRASTRUCTURE:
+        return infrastructure != null;
       case GoatComponentsPackage.MODEL__PROCESSES:
         return processes != null && !processes.isEmpty();
       case GoatComponentsPackage.MODEL__COMPONENTS:

@@ -34,6 +34,9 @@ public class FunctionParsingTest {
   public void functionDecl() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -81,6 +84,9 @@ public class FunctionParsingTest {
   public void functionMix() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -185,6 +191,9 @@ public class FunctionParsingTest {
   public void ifElifNoElse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -279,6 +288,9 @@ public class FunctionParsingTest {
   public void ifElse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -313,6 +325,9 @@ public class FunctionParsingTest {
   public void elseNoConds() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -347,6 +362,9 @@ public class FunctionParsingTest {
   public void maxOneElse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -387,6 +405,9 @@ public class FunctionParsingTest {
   public void elseAlone() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -412,6 +433,9 @@ public class FunctionParsingTest {
   public void assign() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");

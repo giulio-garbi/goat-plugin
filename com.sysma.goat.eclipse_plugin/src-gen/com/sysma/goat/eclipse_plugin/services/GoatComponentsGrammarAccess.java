@@ -28,44 +28,63 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Model");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cModelAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cProcessesAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cProcessesProcessDefinitionParserRuleCall_1_0_0 = (RuleCall)cProcessesAssignment_1_0.eContents().get(0);
-		private final Assignment cComponentsAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cComponentsComponentDefinitionParserRuleCall_1_1_0 = (RuleCall)cComponentsAssignment_1_1.eContents().get(0);
-		private final Assignment cFunctionsAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
-		private final RuleCall cFunctionsFuncDefinitionParserRuleCall_1_2_0 = (RuleCall)cFunctionsAssignment_1_2.eContents().get(0);
+		private final Keyword cInfrastructureKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cInfrastructureAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cInfrastructureInfrastructureCrossReference_2_0 = (CrossReference)cInfrastructureAssignment_2.eContents().get(0);
+		private final RuleCall cInfrastructureInfrastructureIDTerminalRuleCall_2_0_1 = (RuleCall)cInfrastructureInfrastructureCrossReference_2_0.eContents().get(1);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cProcessesAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cProcessesProcessDefinitionParserRuleCall_3_0_0 = (RuleCall)cProcessesAssignment_3_0.eContents().get(0);
+		private final Assignment cComponentsAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final RuleCall cComponentsComponentDefinitionParserRuleCall_3_1_0 = (RuleCall)cComponentsAssignment_3_1.eContents().get(0);
+		private final Assignment cFunctionsAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
+		private final RuleCall cFunctionsFuncDefinitionParserRuleCall_3_2_0 = (RuleCall)cFunctionsAssignment_3_2.eContents().get(0);
 		
 		//Model:
-		//	{Model} (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*;
+		//	{Model}
+		//	'infrastructure' infrastructure=[infr::Infrastructure] (processes+=ProcessDefinition | components+=ComponentDefinition
+		//	| functions+=FuncDefinition)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Model} (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*
+		//{Model} 'infrastructure' infrastructure=[infr::Infrastructure] (processes+=ProcessDefinition |
+		//components+=ComponentDefinition | functions+=FuncDefinition)*
 		public Group getGroup() { return cGroup; }
 		
 		//{Model}
 		public Action getModelAction_0() { return cModelAction_0; }
 		
+		//'infrastructure'
+		public Keyword getInfrastructureKeyword_1() { return cInfrastructureKeyword_1; }
+		
+		//infrastructure=[infr::Infrastructure]
+		public Assignment getInfrastructureAssignment_2() { return cInfrastructureAssignment_2; }
+		
+		//[infr::Infrastructure]
+		public CrossReference getInfrastructureInfrastructureCrossReference_2_0() { return cInfrastructureInfrastructureCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getInfrastructureInfrastructureIDTerminalRuleCall_2_0_1() { return cInfrastructureInfrastructureIDTerminalRuleCall_2_0_1; }
+		
 		//(processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
 		//processes+=ProcessDefinition
-		public Assignment getProcessesAssignment_1_0() { return cProcessesAssignment_1_0; }
+		public Assignment getProcessesAssignment_3_0() { return cProcessesAssignment_3_0; }
 		
 		//ProcessDefinition
-		public RuleCall getProcessesProcessDefinitionParserRuleCall_1_0_0() { return cProcessesProcessDefinitionParserRuleCall_1_0_0; }
+		public RuleCall getProcessesProcessDefinitionParserRuleCall_3_0_0() { return cProcessesProcessDefinitionParserRuleCall_3_0_0; }
 		
 		//components+=ComponentDefinition
-		public Assignment getComponentsAssignment_1_1() { return cComponentsAssignment_1_1; }
+		public Assignment getComponentsAssignment_3_1() { return cComponentsAssignment_3_1; }
 		
 		//ComponentDefinition
-		public RuleCall getComponentsComponentDefinitionParserRuleCall_1_1_0() { return cComponentsComponentDefinitionParserRuleCall_1_1_0; }
+		public RuleCall getComponentsComponentDefinitionParserRuleCall_3_1_0() { return cComponentsComponentDefinitionParserRuleCall_3_1_0; }
 		
 		//functions+=FuncDefinition
-		public Assignment getFunctionsAssignment_1_2() { return cFunctionsAssignment_1_2; }
+		public Assignment getFunctionsAssignment_3_2() { return cFunctionsAssignment_3_2; }
 		
 		//FuncDefinition
-		public RuleCall getFunctionsFuncDefinitionParserRuleCall_1_2_0() { return cFunctionsFuncDefinitionParserRuleCall_1_2_0; }
+		public RuleCall getFunctionsFuncDefinitionParserRuleCall_3_2_0() { return cFunctionsFuncDefinitionParserRuleCall_3_2_0; }
 	}
 	public class ProcElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Proc");
@@ -1122,15 +1141,12 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cProcAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cProcProcessDefinitionCrossReference_2_0 = (CrossReference)cProcAssignment_2.eContents().get(0);
 		private final RuleCall cProcProcessDefinitionIDTerminalRuleCall_2_0_1 = (RuleCall)cProcProcessDefinitionCrossReference_2_0.eContents().get(1);
-		private final Keyword cAtKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cAddressAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAddressSTRINGTerminalRuleCall_4_0 = (RuleCall)cAddressAssignment_4.eContents().get(0);
 		
 		//ComponentDefinition:
-		//	"component" env=Environment proc=[ProcessDefinition] 'at' address=STRING;
+		//	"component" env=Environment proc=[ProcessDefinition];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"component" env=Environment proc=[ProcessDefinition] 'at' address=STRING
+		//"component" env=Environment proc=[ProcessDefinition]
 		public Group getGroup() { return cGroup; }
 		
 		//"component"
@@ -1150,15 +1166,6 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getProcProcessDefinitionIDTerminalRuleCall_2_0_1() { return cProcProcessDefinitionIDTerminalRuleCall_2_0_1; }
-		
-		//'at'
-		public Keyword getAtKeyword_3() { return cAtKeyword_3; }
-		
-		//address=STRING
-		public Assignment getAddressAssignment_4() { return cAddressAssignment_4; }
-		
-		//STRING
-		public RuleCall getAddressSTRINGTerminalRuleCall_4_0() { return cAddressSTRINGTerminalRuleCall_4_0; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
@@ -2297,7 +2304,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	{Model} (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*;
+	//	{Model}
+	//	'infrastructure' infrastructure=[infr::Infrastructure] (processes+=ProcessDefinition | components+=ComponentDefinition
+	//	| functions+=FuncDefinition)*;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -2555,7 +2564,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComponentDefinition:
-	//	"component" env=Environment proc=[ProcessDefinition] 'at' address=STRING;
+	//	"component" env=Environment proc=[ProcessDefinition];
 	public ComponentDefinitionElements getComponentDefinitionAccess() {
 		return pComponentDefinition;
 	}

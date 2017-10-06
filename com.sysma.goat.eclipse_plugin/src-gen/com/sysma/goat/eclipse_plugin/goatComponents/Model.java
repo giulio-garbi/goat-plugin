@@ -3,6 +3,8 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getInfrastructure <em>Infrastructure</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getProcesses <em>Processes</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getComponents <em>Components</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getFunctions <em>Functions</em>}</li>
@@ -27,6 +30,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Model extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Infrastructure</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Infrastructure</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Infrastructure</em>' reference.
+   * @see #setInfrastructure(Infrastructure)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getModel_Infrastructure()
+   * @model
+   * @generated
+   */
+  Infrastructure getInfrastructure();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getInfrastructure <em>Infrastructure</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Infrastructure</em>' reference.
+   * @see #getInfrastructure()
+   * @generated
+   */
+  void setInfrastructure(Infrastructure value);
+
   /**
    * Returns the value of the '<em><b>Processes</b></em>' containment reference list.
    * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition}.

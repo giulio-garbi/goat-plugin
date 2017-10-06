@@ -41,6 +41,8 @@ class ExpressionParsingTest {
 	
 	def private encapsulateExpression(CharSequence expr){
 		val result = parseHelper.parse('''
+			infrastructure infr
+			
 			function int ciao(int i, string s, bool b, int ii, string ss, bool bb){
 				var j = 0
 				return «expr»

@@ -23,6 +23,9 @@ public class ExpressionGeneratorTest {
   @Test
   public void sumExpression() {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("infrastructure infr");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("proc P = [proc.x := 1+5] send{}@(false) print(\"EXPRESSION $x$\").nil");
     _builder.newLine();
     _builder.newLine();

@@ -56,6 +56,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
 import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
 
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -476,6 +478,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     isInited = true;
 
+    // Initialize simple dependencies
+    GoatInfrastructurePackage.eINSTANCE.eClass();
+
     // Create package meta-data objects
     theGoatComponentsPackage.createPackageContents();
 
@@ -506,7 +511,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Processes()
+  public EReference getModel_Infrastructure()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -516,7 +521,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Components()
+  public EReference getModel_Processes()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
   }
@@ -526,9 +531,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Functions()
+  public EReference getModel_Components()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Functions()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -839,16 +854,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EReference getComponentDefinition_Proc()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComponentDefinition_Address()
-  {
-    return (EAttribute)componentDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1772,6 +1777,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
+    createEReference(modelEClass, MODEL__INFRASTRUCTURE);
     createEReference(modelEClass, MODEL__PROCESSES);
     createEReference(modelEClass, MODEL__COMPONENTS);
     createEReference(modelEClass, MODEL__FUNCTIONS);
@@ -1819,7 +1825,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     componentDefinitionEClass = createEClass(COMPONENT_DEFINITION);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENV);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__PROC);
-    createEAttribute(componentDefinitionEClass, COMPONENT_DEFINITION__ADDRESS);
 
     lRefEClass = createEClass(LREF);
     createEAttribute(lRefEClass, LREF__NAME);
@@ -1972,6 +1977,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    GoatInfrastructurePackage theGoatInfrastructurePackage = (GoatInfrastructurePackage)EPackage.Registry.INSTANCE.getEPackage(GoatInfrastructurePackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
@@ -2017,6 +2025,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getModel_Infrastructure(), theGoatInfrastructurePackage.getInfrastructure(), null, "infrastructure", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Processes(), this.getProcessDefinition(), null, "processes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Components(), this.getComponentDefinition(), null, "components", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Functions(), this.getFuncDefinition(), null, "functions", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2064,7 +2073,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(componentDefinitionEClass, ComponentDefinition.class, "ComponentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Proc(), this.getProcessDefinition(), null, "proc", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComponentDefinition_Address(), ecorePackage.getEString(), "address", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lRefEClass, LRef.class, "LRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, LRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

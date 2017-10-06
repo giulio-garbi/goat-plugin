@@ -25,8 +25,8 @@ import org.osgi.framework.BundleContext;
  */
 public class Eclipse_pluginActivator extends AbstractUIPlugin {
 
-	public static final String COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS = "com.sysma.goat.eclipse_plugin.GoatComponents";
 	public static final String COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATINFRASTRUCTURE = "com.sysma.goat.eclipse_plugin.GoatInfrastructure";
+	public static final String COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS = "com.sysma.goat.eclipse_plugin.GoatComponents";
 	
 	private static final Logger logger = Logger.getLogger(Eclipse_pluginActivator.class);
 	
@@ -76,21 +76,21 @@ public class Eclipse_pluginActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS.equals(grammar)) {
-			return new GoatComponentsRuntimeModule();
-		}
 		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATINFRASTRUCTURE.equals(grammar)) {
 			return new GoatInfrastructureRuntimeModule();
+		}
+		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS.equals(grammar)) {
+			return new GoatComponentsRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS.equals(grammar)) {
-			return new GoatComponentsUiModule(this);
-		}
 		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATINFRASTRUCTURE.equals(grammar)) {
 			return new GoatInfrastructureUiModule(this);
+		}
+		if (COM_SYSMA_GOAT_ECLIPSE_PLUGIN_GOATCOMPONENTS.equals(grammar)) {
+			return new GoatComponentsUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);
 	}

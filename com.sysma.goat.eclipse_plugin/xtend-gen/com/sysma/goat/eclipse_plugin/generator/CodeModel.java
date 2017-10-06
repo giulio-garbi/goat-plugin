@@ -7,6 +7,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -25,6 +26,8 @@ public class CodeModel {
   private final Iterable<CodeComponentDefinition> components;
   
   private final Iterable<CodeFunction> functions;
+  
+  private final Infrastructure infr;
   
   public final static String runFuncName = "run";
   
@@ -48,6 +51,7 @@ public class CodeModel {
       return new CodeFunction(it);
     };
     this.functions = ListExtensions.<FuncDefinition, CodeFunction>map(model.getFunctions(), _function_2);
+    this.infr = model.getInfrastructure();
   }
   
   public static String getGoatProcessReference() {
@@ -145,18 +149,9 @@ public class CodeModel {
     _builder.append("term := make(chan struct{})");
     _builder.newLine();
     {
-      if ((timeout >= 0)) {
-        _builder.append("\t");
-        _builder.append("goat.RunCentralServer(17654, term, ");
-        _builder.append(timeout, "\t");
-        _builder.append(")");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    {
       for(final CodeComponentDefinition cdef : this.components) {
         _builder.append("\t");
-        CharSequence _componentDeclaration = cdef.getComponentDeclaration();
+        CharSequence _componentDeclaration = cdef.getComponentDeclaration(this.infr);
         _builder.append(_componentDeclaration, "\t");
         _builder.newLineIfNotEmpty();
       }

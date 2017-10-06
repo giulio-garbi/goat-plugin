@@ -6,7 +6,7 @@ package com.sysma.goat.eclipse_plugin.ide;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.GoatInfrastructureParser;
-import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.lexer.InternalGoatInfrastructureLexer;
+import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.internal.InternalGoatInfrastructureLexer;
 import org.eclipse.xtext.ide.DefaultIdeModule;
 import org.eclipse.xtext.ide.LexerIdeBindings;
 import org.eclipse.xtext.ide.editor.contentassist.FQNPrefixMatcher;

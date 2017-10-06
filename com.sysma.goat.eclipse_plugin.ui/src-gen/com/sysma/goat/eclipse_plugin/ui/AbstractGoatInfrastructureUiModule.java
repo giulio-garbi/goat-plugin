@@ -8,7 +8,7 @@ import com.google.inject.Provider;
 import com.google.inject.name.Names;
 import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.GoatInfrastructureParser;
 import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.PartialGoatInfrastructureContentAssistParser;
-import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.lexer.InternalGoatInfrastructureLexer;
+import com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.internal.InternalGoatInfrastructureLexer;
 import com.sysma.goat.eclipse_plugin.ui.contentassist.GoatInfrastructureProposalProvider;
 import com.sysma.goat.eclipse_plugin.ui.labeling.GoatInfrastructureDescriptionLabelProvider;
 import com.sysma.goat.eclipse_plugin.ui.labeling.GoatInfrastructureLabelProvider;
@@ -108,7 +108,7 @@ public abstract class AbstractGoatInfrastructureUiModule extends DefaultUiModule
 	public void configureHighlightingLexer(Binder binder) {
 		binder.bind(org.eclipse.xtext.parser.antlr.Lexer.class)
 			.annotatedWith(Names.named(LexerIdeBindings.HIGHLIGHTING))
-			.to(com.sysma.goat.eclipse_plugin.parser.antlr.lexer.InternalGoatInfrastructureLexer.class);
+			.to(com.sysma.goat.eclipse_plugin.parser.antlr.internal.InternalGoatInfrastructureLexer.class);
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2

@@ -2,6 +2,7 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import java.util.List
 import com.sysma.goat.eclipse_plugin.goatComponents.Model
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
 
 class CodeModel {
 	val String packageName
@@ -9,6 +10,7 @@ class CodeModel {
 	val List<CodeProcessDefinition> processes
 	val Iterable<CodeComponentDefinition> components
 	val Iterable<CodeFunction> functions
+	val Infrastructure infr
 	public static val runFuncName = "run"
 	
 	new(Model model){
@@ -17,6 +19,7 @@ class CodeModel {
 		processes = model.processes.map[new CodeProcessDefinition(it)]
 		components = model.components.indexed.map[pair | new CodeComponentDefinition(pair.value, runFuncName, '''comp_«pair.key»''')]
 		functions = model.functions.map[new CodeFunction(it)]
+		infr = model.infrastructure
 	}
 	
 	def static getGoatProcessReference(){
@@ -66,11 +69,8 @@ class CodeModel {
 			}
 			
 			term := make(chan struct{})
-			«IF timeout >= 0 »
-				goat.RunCentralServer(17654, term, «timeout»)
-			«ENDIF»
 			«FOR cdef: components»
-				«cdef.componentDeclaration»
+				«cdef.getComponentDeclaration(infr)»
 			«ENDFOR»
 			«FOR cdef: components»
 				«cdef.code»

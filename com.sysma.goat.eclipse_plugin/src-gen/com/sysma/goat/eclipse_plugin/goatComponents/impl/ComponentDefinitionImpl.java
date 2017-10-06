@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getProc <em>Proc</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getAddress <em>Address</em>}</li>
  * </ul>
  *
  * @generated
@@ -53,26 +52,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected ProcessDefinition proc;
-
-  /**
-   * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAddress()
-   * @generated
-   * @ordered
-   */
-  protected static final String ADDRESS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getAddress() <em>Address</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAddress()
-   * @generated
-   * @ordered
-   */
-  protected String address = ADDRESS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -191,29 +170,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAddress()
-  {
-    return address;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAddress(String newAddress)
-  {
-    String oldAddress = address;
-    address = newAddress;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS, oldAddress, address));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -240,8 +196,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         if (resolve) return getProc();
         return basicGetProc();
-      case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
-        return getAddress();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -261,9 +215,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
         return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         setProc((ProcessDefinition)newValue);
-        return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
-        setAddress((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -285,9 +236,6 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         setProc((ProcessDefinition)null);
         return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
-        setAddress(ADDRESS_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -306,27 +254,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
         return env != null;
       case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
         return proc != null;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__ADDRESS:
-        return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (address: ");
-    result.append(address);
-    result.append(')');
-    return result.toString();
   }
 
 } //ComponentDefinitionImpl

@@ -1,6 +1,7 @@
 package com.sysma.goat.eclipse_plugin.tests.generator;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Objects;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
 import com.google.inject.Inject;
@@ -11,13 +12,18 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.testing.validation.ValidationTestHelper;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.junit.Assert;
 
 @InjectWith(GoatComponentsInjectorProvider.class)
 @SuppressWarnings("all")
@@ -42,10 +48,20 @@ public class GeneratorTestHelper {
   @Extension
   private ValidationTestHelper _validationTestHelper;
   
+  public void checkNoErrorApartInfr(final EObject obj) {
+    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
+      String _message = it.getMessage();
+      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    };
+    int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
+    boolean _equals = (_length == 0);
+    Assert.assertTrue(_equals);
+  }
+  
   public void compileAndRun(final CharSequence goatCode, final Procedure2<? super String, ? super String> acceptor) {
     try {
       final Model model = this._parseHelper.parse(goatCode);
-      this._validationTestHelper.assertNoErrors(model);
+      this.checkNoErrorApartInfr(model);
       final CharSequence code = new CodeModel(model).getTestCode(100);
       final File dir = Files.createTempDir();
       final File gofile = new File(dir, "code.go");

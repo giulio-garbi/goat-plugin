@@ -16,6 +16,8 @@ class ExpressionGeneratorTest {
 	@Test
 	def sumExpression(){
 		compileAndRun('''
+		infrastructure infr
+		
 		proc P = [proc.x := 1+5] send{}@(false) print("EXPRESSION $x$").nil
 		
 		component {} P at "127.0.0.1:17654"

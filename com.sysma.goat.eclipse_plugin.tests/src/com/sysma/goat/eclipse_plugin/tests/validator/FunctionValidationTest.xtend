@@ -10,6 +10,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Model
 import org.junit.Test
 import static org.junit.Assert.*
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage
+import org.eclipse.emf.ecore.EObject
 
 @RunWith(XtextRunner)
 @InjectWith(GoatComponentsInjectorProvider)
@@ -17,9 +18,15 @@ class FunctionValidationTest {
 	@Inject extension ParseHelper<Model>
 	@Inject extension ValidationTestHelper2
 	
+	def checkNoErrorApartInfr(EObject obj){
+		assertTrue(obj.eResource.errors.filter[it.message != "Couldn't resolve reference to Infrastructure 'infr'."].length == 0)
+	}
+	
 	@Test
 	def useVarBeforeDefinition(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				var x = y
 				var y = 5
@@ -34,6 +41,8 @@ class FunctionValidationTest {
 	@Test
 	def twoDifferentNames(){
 		val result = parse('''
+			infrastructure infr
+
 			function int fun (int i, string s, bool b){
 				var x = 0
 				var y = 5
@@ -41,12 +50,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
 	def sameName(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int funS (int i, string s, bool b){
 				var x = 0
 				var x = 5
@@ -60,6 +71,8 @@ class FunctionValidationTest {
 	@Test
 	def sameNameTwoFunctions(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				var x = 0
 				return x+x
@@ -71,12 +84,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
 	def sameNameTwoBlocksNotAllowed(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				if (5 > 0){
 					var x = 0
@@ -94,6 +109,8 @@ class FunctionValidationTest {
 	@Test
 	def sameNameFunc(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				return 3
 			}
@@ -110,6 +127,8 @@ class FunctionValidationTest {
 	@Test
 	def twoFunctions(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun1 (){
 				return 3
 			}
@@ -119,24 +138,28 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}	
 	
 	// Parameter hiding
 	@Test
 	def twoParams(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun1 (int x, int y){
 				return 3
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}	
 	
 	@Test
 	def sameNameParams(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (int x, int y, string x){
 				return 3
 			}
@@ -148,6 +171,8 @@ class FunctionValidationTest {
 	@Test
 	def sameNameParams2(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (int x, int y, string z, bool y, string x){
 				return 3
 			}
@@ -160,6 +185,8 @@ class FunctionValidationTest {
 	@Test
 	def twoParamsTwoFunc(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun1 (int x, int y){
 				return 3
 			}
@@ -169,13 +196,15 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}
 	
 	// Always returning
 	@Test
 	def returningAtTheEnd(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var x = 4
 				var y = 5
@@ -183,12 +212,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}	
 	
 	@Test
 	def returningAtTheMiddle(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var x = 4
 				var y = 5
@@ -197,12 +228,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}	
 	
 	@Test
 	def returningIf(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var y = 8
 				if (5 > 3){
@@ -218,6 +251,8 @@ class FunctionValidationTest {
 	@Test
 	def returningIfElse(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				if (5 > 3){
 					return 3
@@ -227,12 +262,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
 	def returningIfElifElse(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				if (5 > 3){
 					return 3
@@ -244,12 +281,14 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
 	def returningIfElif(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var y = 8
 				if (5 > 3){
@@ -269,6 +308,8 @@ class FunctionValidationTest {
 	@Test
 	def returningTypeOk(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var y = 8
 				if (5 > 3){
@@ -281,11 +322,13 @@ class FunctionValidationTest {
 			}
 		''')
 		assertNotNull(result)
-		result.assertNoErrors
+		result.checkNoErrorApartInfr
 	}		
 	
 	def returningTypeWrong(){
 		val result = parse('''
+			infrastructure infr
+			
 			function int fun (){
 				var y = 8
 				if (5 > 3){

@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getProc <em>Proc</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress <em>Address</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getComponentDefinition()
@@ -76,31 +75,5 @@ public interface ComponentDefinition extends EObject
    * @generated
    */
   void setProc(ProcessDefinition value);
-
-  /**
-   * Returns the value of the '<em><b>Address</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Address</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Address</em>' attribute.
-   * @see #setAddress(String)
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getComponentDefinition_Address()
-   * @model
-   * @generated
-   */
-  String getAddress();
-
-  /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress <em>Address</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Address</em>' attribute.
-   * @see #getAddress()
-   * @generated
-   */
-  void setAddress(String value);
 
 } // ComponentDefinition

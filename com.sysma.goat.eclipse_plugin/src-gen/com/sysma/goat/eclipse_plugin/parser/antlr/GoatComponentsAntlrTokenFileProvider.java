@@ -11,6 +11,6 @@ public class GoatComponentsAntlrTokenFileProvider implements IAntlrTokenFileProv
 	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		return classLoader.getResourceAsStream("com/sysma/goat/eclipse_plugin/parser/antlr/internal/InternalGoatComponentsParser.tokens");
+		return classLoader.getResourceAsStream("com/sysma/goat/eclipse_plugin/parser/antlr/internal/InternalGoatComponents.tokens");
 	}
 }

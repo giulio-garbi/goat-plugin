@@ -13,6 +13,8 @@ import java.io.File
 import java.io.InputStreamReader
 import com.google.common.io.CharStreams
 import com.google.common.base.Charsets
+import org.eclipse.emf.ecore.EObject
+import org.junit.Assert
 
 @InjectWith(GoatComponentsInjectorProvider)
 class GeneratorTestHelper {
@@ -31,10 +33,14 @@ class GeneratorTestHelper {
 		}
 	}
 	
+	def checkNoErrorApartInfr(EObject obj){
+		Assert.assertTrue(obj.eResource.errors.filter[it.message != "Couldn't resolve reference to Infrastructure 'infr'."].length == 0)
+	}
+	
 	def void compileAndRun(CharSequence goatCode, (String,String)=>void acceptor){
 		// compile to Go
 		val model = goatCode.parse
-		model.assertNoErrors
+		model.checkNoErrorApartInfr
 		val code = new CodeModel(model).getTestCode(100)
 		val dir = Files.createTempDir
 		val gofile = new File(dir, "code.go")

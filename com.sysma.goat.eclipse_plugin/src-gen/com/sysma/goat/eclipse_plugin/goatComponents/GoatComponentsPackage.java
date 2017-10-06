@@ -68,13 +68,22 @@ public interface GoatComponentsPackage extends EPackage
   int MODEL = 0;
 
   /**
+   * The feature id for the '<em><b>Infrastructure</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__INFRASTRUCTURE = 0;
+
+  /**
    * The feature id for the '<em><b>Processes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__PROCESSES = 0;
+  int MODEL__PROCESSES = 1;
 
   /**
    * The feature id for the '<em><b>Components</b></em>' containment reference list.
@@ -83,7 +92,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__COMPONENTS = 1;
+  int MODEL__COMPONENTS = 2;
 
   /**
    * The feature id for the '<em><b>Functions</b></em>' containment reference list.
@@ -92,7 +101,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__FUNCTIONS = 2;
+  int MODEL__FUNCTIONS = 3;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -101,7 +110,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 3;
+  int MODEL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OutputProcessPartImpl <em>Output Process Part</em>}' class.
@@ -630,22 +639,13 @@ public interface GoatComponentsPackage extends EPackage
   int COMPONENT_DEFINITION__PROC = 1;
 
   /**
-   * The feature id for the '<em><b>Address</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPONENT_DEFINITION__ADDRESS = 2;
-
-  /**
    * The number of structural features of the '<em>Component Definition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION_FEATURE_COUNT = 3;
+  int COMPONENT_DEFINITION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.
@@ -2370,6 +2370,17 @@ public interface GoatComponentsPackage extends EPackage
   EClass getModel();
 
   /**
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getInfrastructure <em>Infrastructure</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Infrastructure</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Model#getInfrastructure()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Infrastructure();
+
+  /**
    * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getProcesses <em>Processes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2729,17 +2740,6 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getComponentDefinition_Proc();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress <em>Address</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Address</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getAddress()
-   * @see #getComponentDefinition()
-   * @generated
-   */
-  EAttribute getComponentDefinition_Address();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LRef <em>LRef</em>}'.
@@ -3717,6 +3717,14 @@ public interface GoatComponentsPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
+     * The meta object literal for the '<em><b>Infrastructure</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__INFRASTRUCTURE = eINSTANCE.getModel_Infrastructure();
+
+    /**
      * The meta object literal for the '<em><b>Processes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4013,14 +4021,6 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EReference COMPONENT_DEFINITION__PROC = eINSTANCE.getComponentDefinition_Proc();
-
-    /**
-     * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPONENT_DEFINITION__ADDRESS = eINSTANCE.getComponentDefinition_Address();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.

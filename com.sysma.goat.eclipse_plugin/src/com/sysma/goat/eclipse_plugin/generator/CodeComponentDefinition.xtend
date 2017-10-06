@@ -1,6 +1,7 @@
 package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
 
 class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.CodeTree {
 	
@@ -14,9 +15,10 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 		this.compName = compName
 	}
 	
-	def getComponentDeclaration(){
+	def getComponentDeclaration(Infrastructure infr){
+		val infrCode = new CodeInfrastructureAgent(infr).code
 		'''
-			«compName» := goat.NewComponentWithAttributes(goat.NewSingleServerAgent("«cdef.address»"),  map[string]interface{}{
+			«compName» := goat.NewComponentWithAttributes(«infrCode»,  map[string]interface{}{
 				«FOR i : 0..<cdef.env.attrs.length»
 					"«cdef.env.attrs.get(i)»" : «CodeExpression.getExpressionWithoutAttributes(cdef.env.vals.get(i))»,
 				«ENDFOR»

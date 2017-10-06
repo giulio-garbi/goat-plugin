@@ -25,6 +25,8 @@ class FunctionParsingTest {
 	@Test
 	def functionDecl(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				return 4
 			}
@@ -47,6 +49,8 @@ class FunctionParsingTest {
 	@Test
 	def functionMix(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				var y = i
 				if (y > 5) {
@@ -87,6 +91,8 @@ class FunctionParsingTest {
 	@Test
 	def ifElifNoElse(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				var y = i
 				if (y > 5) {
@@ -125,6 +131,8 @@ class FunctionParsingTest {
 	@Test
 	def ifElse(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			function int fun (int i, string s, bool b){
 				var y = i
 				if (y > 5) {
@@ -141,6 +149,8 @@ class FunctionParsingTest {
 	@Test
 	def elseNoConds(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+			
 			function int fun (int i, string s, bool b){
 				var y = i
 				if (y > 5) {
@@ -157,6 +167,8 @@ class FunctionParsingTest {
 	@Test
 	def maxOneElse(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			function int fun (int i, string s, bool b){
 				var y = i
 				if (y > 5) {
@@ -175,6 +187,8 @@ class FunctionParsingTest {
 	@Test
 	def elseAlone(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			function int fun (int i, string s, bool b){
 				else {
 					return 1
@@ -188,6 +202,8 @@ class FunctionParsingTest {
 	@Test
 	def assign(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			function int fun (int i, string s, bool b){
 				var y = i
 				var x = 9

@@ -52,6 +52,9 @@ public class ExpressionParsingTest {
       Expression _xblockexpression = null;
       {
         StringConcatenation _builder = new StringConcatenation();
+        _builder.append("infrastructure infr");
+        _builder.newLine();
+        _builder.newLine();
         _builder.append("function int ciao(int i, string s, bool b, int ii, string ss, bool bb){");
         _builder.newLine();
         _builder.append("\t");

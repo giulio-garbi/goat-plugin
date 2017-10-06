@@ -1,6 +1,4 @@
 package com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.internal;
-import java.util.Map;
-import java.util.HashMap;
 
 import java.io.InputStream;
 import org.eclipse.xtext.*;
@@ -24,23 +22,20 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGoatInfrastructureParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Singleserver", "Cluster", "Ring", "Tree", "Comma", "Colon", "LeftCurlyBracket", "RightCurlyBracket", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'singleserver'", "'{'", "'}'", "','", "':'"
     };
-    public static final int RULE_ID=12;
-    public static final int RULE_WS=17;
-    public static final int LeftCurlyBracket=10;
-    public static final int Cluster=5;
-    public static final int RULE_STRING=14;
-    public static final int RULE_ANY_OTHER=18;
-    public static final int RULE_SL_COMMENT=16;
-    public static final int Comma=8;
-    public static final int Ring=6;
-    public static final int RULE_INT=13;
-    public static final int Singleserver=4;
-    public static final int RULE_ML_COMMENT=15;
-    public static final int Tree=7;
-    public static final int Colon=9;
-    public static final int RightCurlyBracket=11;
+    public static final int RULE_ID=4;
+    public static final int RULE_WS=9;
+    public static final int RULE_STRING=5;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__15=15;
+    public static final int RULE_INT=6;
+    public static final int T__11=11;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__12=12;
+    public static final int T__13=13;
+    public static final int T__14=14;
     public static final int EOF=-1;
 
     // delegates
@@ -57,22 +52,10 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
         
 
     public String[] getTokenNames() { return InternalGoatInfrastructureParser.tokenNames; }
-    public String getGrammarFileName() { return "InternalGoatInfrastructureParser.g"; }
+    public String getGrammarFileName() { return "InternalGoatInfrastructure.g"; }
 
 
     	private GoatInfrastructureGrammarAccess grammarAccess;
-    	private final Map<String, String> tokenNameToValue = new HashMap<String, String>();
-    	
-    	{
-    		tokenNameToValue.put("Comma", "','");
-    		tokenNameToValue.put("Colon", "':'");
-    		tokenNameToValue.put("LeftCurlyBracket", "'{'");
-    		tokenNameToValue.put("RightCurlyBracket", "'}'");
-    		tokenNameToValue.put("Ring", "'ring'");
-    		tokenNameToValue.put("Tree", "'tree'");
-    		tokenNameToValue.put("Cluster", "'cluster'");
-    		tokenNameToValue.put("Singleserver", "'singleserver'");
-    	}
 
     	public void setGrammarAccess(GoatInfrastructureGrammarAccess grammarAccess) {
     		this.grammarAccess = grammarAccess;
@@ -85,20 +68,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
     	@Override
     	protected String getValueForTokenName(String tokenName) {
-    		String result = tokenNameToValue.get(tokenName);
-    		if (result == null)
-    			result = tokenName;
-    		return result;
+    		return tokenName;
     	}
 
 
 
     // $ANTLR start "entryRuleInfrastructure"
-    // InternalGoatInfrastructureParser.g:63:1: entryRuleInfrastructure : ruleInfrastructure EOF ;
+    // InternalGoatInfrastructure.g:53:1: entryRuleInfrastructure : ruleInfrastructure EOF ;
     public final void entryRuleInfrastructure() throws RecognitionException {
         try {
-            // InternalGoatInfrastructureParser.g:64:1: ( ruleInfrastructure EOF )
-            // InternalGoatInfrastructureParser.g:65:1: ruleInfrastructure EOF
+            // InternalGoatInfrastructure.g:54:1: ( ruleInfrastructure EOF )
+            // InternalGoatInfrastructure.g:55:1: ruleInfrastructure EOF
             {
              before(grammarAccess.getInfrastructureRule()); 
             pushFollow(FOLLOW_1);
@@ -124,17 +104,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "ruleInfrastructure"
-    // InternalGoatInfrastructureParser.g:72:1: ruleInfrastructure : ( ruleSingleServer ) ;
+    // InternalGoatInfrastructure.g:62:1: ruleInfrastructure : ( ruleSingleServer ) ;
     public final void ruleInfrastructure() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:76:2: ( ( ruleSingleServer ) )
-            // InternalGoatInfrastructureParser.g:77:2: ( ruleSingleServer )
+            // InternalGoatInfrastructure.g:66:2: ( ( ruleSingleServer ) )
+            // InternalGoatInfrastructure.g:67:2: ( ruleSingleServer )
             {
-            // InternalGoatInfrastructureParser.g:77:2: ( ruleSingleServer )
-            // InternalGoatInfrastructureParser.g:78:3: ruleSingleServer
+            // InternalGoatInfrastructure.g:67:2: ( ruleSingleServer )
+            // InternalGoatInfrastructure.g:68:3: ruleSingleServer
             {
              before(grammarAccess.getInfrastructureAccess().getSingleServerParserRuleCall()); 
             pushFollow(FOLLOW_2);
@@ -165,11 +145,11 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "entryRuleSingleServer"
-    // InternalGoatInfrastructureParser.g:88:1: entryRuleSingleServer : ruleSingleServer EOF ;
+    // InternalGoatInfrastructure.g:78:1: entryRuleSingleServer : ruleSingleServer EOF ;
     public final void entryRuleSingleServer() throws RecognitionException {
         try {
-            // InternalGoatInfrastructureParser.g:89:1: ( ruleSingleServer EOF )
-            // InternalGoatInfrastructureParser.g:90:1: ruleSingleServer EOF
+            // InternalGoatInfrastructure.g:79:1: ( ruleSingleServer EOF )
+            // InternalGoatInfrastructure.g:80:1: ruleSingleServer EOF
             {
              before(grammarAccess.getSingleServerRule()); 
             pushFollow(FOLLOW_1);
@@ -195,21 +175,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "ruleSingleServer"
-    // InternalGoatInfrastructureParser.g:97:1: ruleSingleServer : ( ( rule__SingleServer__Group__0 ) ) ;
+    // InternalGoatInfrastructure.g:87:1: ruleSingleServer : ( ( rule__SingleServer__Group__0 ) ) ;
     public final void ruleSingleServer() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:101:2: ( ( ( rule__SingleServer__Group__0 ) ) )
-            // InternalGoatInfrastructureParser.g:102:2: ( ( rule__SingleServer__Group__0 ) )
+            // InternalGoatInfrastructure.g:91:2: ( ( ( rule__SingleServer__Group__0 ) ) )
+            // InternalGoatInfrastructure.g:92:2: ( ( rule__SingleServer__Group__0 ) )
             {
-            // InternalGoatInfrastructureParser.g:102:2: ( ( rule__SingleServer__Group__0 ) )
-            // InternalGoatInfrastructureParser.g:103:3: ( rule__SingleServer__Group__0 )
+            // InternalGoatInfrastructure.g:92:2: ( ( rule__SingleServer__Group__0 ) )
+            // InternalGoatInfrastructure.g:93:3: ( rule__SingleServer__Group__0 )
             {
              before(grammarAccess.getSingleServerAccess().getGroup()); 
-            // InternalGoatInfrastructureParser.g:104:3: ( rule__SingleServer__Group__0 )
-            // InternalGoatInfrastructureParser.g:104:4: rule__SingleServer__Group__0
+            // InternalGoatInfrastructure.g:94:3: ( rule__SingleServer__Group__0 )
+            // InternalGoatInfrastructure.g:94:4: rule__SingleServer__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__SingleServer__Group__0();
@@ -242,21 +222,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "ruleParams"
-    // InternalGoatInfrastructureParser.g:114:1: ruleParams : ( ( rule__Params__Group__0 ) ) ;
+    // InternalGoatInfrastructure.g:104:1: ruleParams : ( ( rule__Params__Group__0 ) ) ;
     public final void ruleParams() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:118:2: ( ( ( rule__Params__Group__0 ) ) )
-            // InternalGoatInfrastructureParser.g:119:2: ( ( rule__Params__Group__0 ) )
+            // InternalGoatInfrastructure.g:108:2: ( ( ( rule__Params__Group__0 ) ) )
+            // InternalGoatInfrastructure.g:109:2: ( ( rule__Params__Group__0 ) )
             {
-            // InternalGoatInfrastructureParser.g:119:2: ( ( rule__Params__Group__0 ) )
-            // InternalGoatInfrastructureParser.g:120:3: ( rule__Params__Group__0 )
+            // InternalGoatInfrastructure.g:109:2: ( ( rule__Params__Group__0 ) )
+            // InternalGoatInfrastructure.g:110:3: ( rule__Params__Group__0 )
             {
              before(grammarAccess.getParamsAccess().getGroup()); 
-            // InternalGoatInfrastructureParser.g:121:3: ( rule__Params__Group__0 )
-            // InternalGoatInfrastructureParser.g:121:4: rule__Params__Group__0
+            // InternalGoatInfrastructure.g:111:3: ( rule__Params__Group__0 )
+            // InternalGoatInfrastructure.g:111:4: rule__Params__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Params__Group__0();
@@ -289,11 +269,11 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "entryRuleParam"
-    // InternalGoatInfrastructureParser.g:130:1: entryRuleParam : ruleParam EOF ;
+    // InternalGoatInfrastructure.g:120:1: entryRuleParam : ruleParam EOF ;
     public final void entryRuleParam() throws RecognitionException {
         try {
-            // InternalGoatInfrastructureParser.g:131:1: ( ruleParam EOF )
-            // InternalGoatInfrastructureParser.g:132:1: ruleParam EOF
+            // InternalGoatInfrastructure.g:121:1: ( ruleParam EOF )
+            // InternalGoatInfrastructure.g:122:1: ruleParam EOF
             {
              before(grammarAccess.getParamRule()); 
             pushFollow(FOLLOW_1);
@@ -319,21 +299,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "ruleParam"
-    // InternalGoatInfrastructureParser.g:139:1: ruleParam : ( ( rule__Param__Group__0 ) ) ;
+    // InternalGoatInfrastructure.g:129:1: ruleParam : ( ( rule__Param__Group__0 ) ) ;
     public final void ruleParam() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:143:2: ( ( ( rule__Param__Group__0 ) ) )
-            // InternalGoatInfrastructureParser.g:144:2: ( ( rule__Param__Group__0 ) )
+            // InternalGoatInfrastructure.g:133:2: ( ( ( rule__Param__Group__0 ) ) )
+            // InternalGoatInfrastructure.g:134:2: ( ( rule__Param__Group__0 ) )
             {
-            // InternalGoatInfrastructureParser.g:144:2: ( ( rule__Param__Group__0 ) )
-            // InternalGoatInfrastructureParser.g:145:3: ( rule__Param__Group__0 )
+            // InternalGoatInfrastructure.g:134:2: ( ( rule__Param__Group__0 ) )
+            // InternalGoatInfrastructure.g:135:3: ( rule__Param__Group__0 )
             {
              before(grammarAccess.getParamAccess().getGroup()); 
-            // InternalGoatInfrastructureParser.g:146:3: ( rule__Param__Group__0 )
-            // InternalGoatInfrastructureParser.g:146:4: rule__Param__Group__0
+            // InternalGoatInfrastructure.g:136:3: ( rule__Param__Group__0 )
+            // InternalGoatInfrastructure.g:136:4: rule__Param__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__Param__Group__0();
@@ -366,14 +346,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__0"
-    // InternalGoatInfrastructureParser.g:154:1: rule__SingleServer__Group__0 : rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1 ;
+    // InternalGoatInfrastructure.g:144:1: rule__SingleServer__Group__0 : rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1 ;
     public final void rule__SingleServer__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:158:1: ( rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1 )
-            // InternalGoatInfrastructureParser.g:159:2: rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1
+            // InternalGoatInfrastructure.g:148:1: ( rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1 )
+            // InternalGoatInfrastructure.g:149:2: rule__SingleServer__Group__0__Impl rule__SingleServer__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__SingleServer__Group__0__Impl();
@@ -404,20 +384,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__0__Impl"
-    // InternalGoatInfrastructureParser.g:166:1: rule__SingleServer__Group__0__Impl : ( Singleserver ) ;
+    // InternalGoatInfrastructure.g:156:1: rule__SingleServer__Group__0__Impl : ( 'singleserver' ) ;
     public final void rule__SingleServer__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:170:1: ( ( Singleserver ) )
-            // InternalGoatInfrastructureParser.g:171:1: ( Singleserver )
+            // InternalGoatInfrastructure.g:160:1: ( ( 'singleserver' ) )
+            // InternalGoatInfrastructure.g:161:1: ( 'singleserver' )
             {
-            // InternalGoatInfrastructureParser.g:171:1: ( Singleserver )
-            // InternalGoatInfrastructureParser.g:172:2: Singleserver
+            // InternalGoatInfrastructure.g:161:1: ( 'singleserver' )
+            // InternalGoatInfrastructure.g:162:2: 'singleserver'
             {
              before(grammarAccess.getSingleServerAccess().getSingleserverKeyword_0()); 
-            match(input,Singleserver,FOLLOW_2); 
+            match(input,11,FOLLOW_2); 
              after(grammarAccess.getSingleServerAccess().getSingleserverKeyword_0()); 
 
             }
@@ -441,14 +421,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__1"
-    // InternalGoatInfrastructureParser.g:181:1: rule__SingleServer__Group__1 : rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2 ;
+    // InternalGoatInfrastructure.g:171:1: rule__SingleServer__Group__1 : rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2 ;
     public final void rule__SingleServer__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:185:1: ( rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2 )
-            // InternalGoatInfrastructureParser.g:186:2: rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2
+            // InternalGoatInfrastructure.g:175:1: ( rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2 )
+            // InternalGoatInfrastructure.g:176:2: rule__SingleServer__Group__1__Impl rule__SingleServer__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__SingleServer__Group__1__Impl();
@@ -479,21 +459,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__1__Impl"
-    // InternalGoatInfrastructureParser.g:193:1: rule__SingleServer__Group__1__Impl : ( ( rule__SingleServer__NameAssignment_1 ) ) ;
+    // InternalGoatInfrastructure.g:183:1: rule__SingleServer__Group__1__Impl : ( ( rule__SingleServer__NameAssignment_1 ) ) ;
     public final void rule__SingleServer__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:197:1: ( ( ( rule__SingleServer__NameAssignment_1 ) ) )
-            // InternalGoatInfrastructureParser.g:198:1: ( ( rule__SingleServer__NameAssignment_1 ) )
+            // InternalGoatInfrastructure.g:187:1: ( ( ( rule__SingleServer__NameAssignment_1 ) ) )
+            // InternalGoatInfrastructure.g:188:1: ( ( rule__SingleServer__NameAssignment_1 ) )
             {
-            // InternalGoatInfrastructureParser.g:198:1: ( ( rule__SingleServer__NameAssignment_1 ) )
-            // InternalGoatInfrastructureParser.g:199:2: ( rule__SingleServer__NameAssignment_1 )
+            // InternalGoatInfrastructure.g:188:1: ( ( rule__SingleServer__NameAssignment_1 ) )
+            // InternalGoatInfrastructure.g:189:2: ( rule__SingleServer__NameAssignment_1 )
             {
              before(grammarAccess.getSingleServerAccess().getNameAssignment_1()); 
-            // InternalGoatInfrastructureParser.g:200:2: ( rule__SingleServer__NameAssignment_1 )
-            // InternalGoatInfrastructureParser.g:200:3: rule__SingleServer__NameAssignment_1
+            // InternalGoatInfrastructure.g:190:2: ( rule__SingleServer__NameAssignment_1 )
+            // InternalGoatInfrastructure.g:190:3: rule__SingleServer__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__SingleServer__NameAssignment_1();
@@ -526,14 +506,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__2"
-    // InternalGoatInfrastructureParser.g:208:1: rule__SingleServer__Group__2 : rule__SingleServer__Group__2__Impl ;
+    // InternalGoatInfrastructure.g:198:1: rule__SingleServer__Group__2 : rule__SingleServer__Group__2__Impl ;
     public final void rule__SingleServer__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:212:1: ( rule__SingleServer__Group__2__Impl )
-            // InternalGoatInfrastructureParser.g:213:2: rule__SingleServer__Group__2__Impl
+            // InternalGoatInfrastructure.g:202:1: ( rule__SingleServer__Group__2__Impl )
+            // InternalGoatInfrastructure.g:203:2: rule__SingleServer__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SingleServer__Group__2__Impl();
@@ -559,17 +539,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__Group__2__Impl"
-    // InternalGoatInfrastructureParser.g:219:1: rule__SingleServer__Group__2__Impl : ( ruleParams ) ;
+    // InternalGoatInfrastructure.g:209:1: rule__SingleServer__Group__2__Impl : ( ruleParams ) ;
     public final void rule__SingleServer__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:223:1: ( ( ruleParams ) )
-            // InternalGoatInfrastructureParser.g:224:1: ( ruleParams )
+            // InternalGoatInfrastructure.g:213:1: ( ( ruleParams ) )
+            // InternalGoatInfrastructure.g:214:1: ( ruleParams )
             {
-            // InternalGoatInfrastructureParser.g:224:1: ( ruleParams )
-            // InternalGoatInfrastructureParser.g:225:2: ruleParams
+            // InternalGoatInfrastructure.g:214:1: ( ruleParams )
+            // InternalGoatInfrastructure.g:215:2: ruleParams
             {
              before(grammarAccess.getSingleServerAccess().getParamsParserRuleCall_2()); 
             pushFollow(FOLLOW_2);
@@ -600,14 +580,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__0"
-    // InternalGoatInfrastructureParser.g:235:1: rule__Params__Group__0 : rule__Params__Group__0__Impl rule__Params__Group__1 ;
+    // InternalGoatInfrastructure.g:225:1: rule__Params__Group__0 : rule__Params__Group__0__Impl rule__Params__Group__1 ;
     public final void rule__Params__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:239:1: ( rule__Params__Group__0__Impl rule__Params__Group__1 )
-            // InternalGoatInfrastructureParser.g:240:2: rule__Params__Group__0__Impl rule__Params__Group__1
+            // InternalGoatInfrastructure.g:229:1: ( rule__Params__Group__0__Impl rule__Params__Group__1 )
+            // InternalGoatInfrastructure.g:230:2: rule__Params__Group__0__Impl rule__Params__Group__1
             {
             pushFollow(FOLLOW_5);
             rule__Params__Group__0__Impl();
@@ -638,20 +618,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__0__Impl"
-    // InternalGoatInfrastructureParser.g:247:1: rule__Params__Group__0__Impl : ( LeftCurlyBracket ) ;
+    // InternalGoatInfrastructure.g:237:1: rule__Params__Group__0__Impl : ( '{' ) ;
     public final void rule__Params__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:251:1: ( ( LeftCurlyBracket ) )
-            // InternalGoatInfrastructureParser.g:252:1: ( LeftCurlyBracket )
+            // InternalGoatInfrastructure.g:241:1: ( ( '{' ) )
+            // InternalGoatInfrastructure.g:242:1: ( '{' )
             {
-            // InternalGoatInfrastructureParser.g:252:1: ( LeftCurlyBracket )
-            // InternalGoatInfrastructureParser.g:253:2: LeftCurlyBracket
+            // InternalGoatInfrastructure.g:242:1: ( '{' )
+            // InternalGoatInfrastructure.g:243:2: '{'
             {
              before(grammarAccess.getParamsAccess().getLeftCurlyBracketKeyword_0()); 
-            match(input,LeftCurlyBracket,FOLLOW_2); 
+            match(input,12,FOLLOW_2); 
              after(grammarAccess.getParamsAccess().getLeftCurlyBracketKeyword_0()); 
 
             }
@@ -675,14 +655,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__1"
-    // InternalGoatInfrastructureParser.g:262:1: rule__Params__Group__1 : rule__Params__Group__1__Impl rule__Params__Group__2 ;
+    // InternalGoatInfrastructure.g:252:1: rule__Params__Group__1 : rule__Params__Group__1__Impl rule__Params__Group__2 ;
     public final void rule__Params__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:266:1: ( rule__Params__Group__1__Impl rule__Params__Group__2 )
-            // InternalGoatInfrastructureParser.g:267:2: rule__Params__Group__1__Impl rule__Params__Group__2
+            // InternalGoatInfrastructure.g:256:1: ( rule__Params__Group__1__Impl rule__Params__Group__2 )
+            // InternalGoatInfrastructure.g:257:2: rule__Params__Group__1__Impl rule__Params__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Params__Group__1__Impl();
@@ -713,20 +693,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__1__Impl"
-    // InternalGoatInfrastructureParser.g:274:1: rule__Params__Group__1__Impl : ( ( rule__Params__Group_1__0 )? ) ;
+    // InternalGoatInfrastructure.g:264:1: rule__Params__Group__1__Impl : ( ( rule__Params__Group_1__0 )? ) ;
     public final void rule__Params__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:278:1: ( ( ( rule__Params__Group_1__0 )? ) )
-            // InternalGoatInfrastructureParser.g:279:1: ( ( rule__Params__Group_1__0 )? )
+            // InternalGoatInfrastructure.g:268:1: ( ( ( rule__Params__Group_1__0 )? ) )
+            // InternalGoatInfrastructure.g:269:1: ( ( rule__Params__Group_1__0 )? )
             {
-            // InternalGoatInfrastructureParser.g:279:1: ( ( rule__Params__Group_1__0 )? )
-            // InternalGoatInfrastructureParser.g:280:2: ( rule__Params__Group_1__0 )?
+            // InternalGoatInfrastructure.g:269:1: ( ( rule__Params__Group_1__0 )? )
+            // InternalGoatInfrastructure.g:270:2: ( rule__Params__Group_1__0 )?
             {
              before(grammarAccess.getParamsAccess().getGroup_1()); 
-            // InternalGoatInfrastructureParser.g:281:2: ( rule__Params__Group_1__0 )?
+            // InternalGoatInfrastructure.g:271:2: ( rule__Params__Group_1__0 )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -735,7 +715,7 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
             }
             switch (alt1) {
                 case 1 :
-                    // InternalGoatInfrastructureParser.g:281:3: rule__Params__Group_1__0
+                    // InternalGoatInfrastructure.g:271:3: rule__Params__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Params__Group_1__0();
@@ -771,14 +751,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__2"
-    // InternalGoatInfrastructureParser.g:289:1: rule__Params__Group__2 : rule__Params__Group__2__Impl ;
+    // InternalGoatInfrastructure.g:279:1: rule__Params__Group__2 : rule__Params__Group__2__Impl ;
     public final void rule__Params__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:293:1: ( rule__Params__Group__2__Impl )
-            // InternalGoatInfrastructureParser.g:294:2: rule__Params__Group__2__Impl
+            // InternalGoatInfrastructure.g:283:1: ( rule__Params__Group__2__Impl )
+            // InternalGoatInfrastructure.g:284:2: rule__Params__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Params__Group__2__Impl();
@@ -804,20 +784,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group__2__Impl"
-    // InternalGoatInfrastructureParser.g:300:1: rule__Params__Group__2__Impl : ( RightCurlyBracket ) ;
+    // InternalGoatInfrastructure.g:290:1: rule__Params__Group__2__Impl : ( '}' ) ;
     public final void rule__Params__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:304:1: ( ( RightCurlyBracket ) )
-            // InternalGoatInfrastructureParser.g:305:1: ( RightCurlyBracket )
+            // InternalGoatInfrastructure.g:294:1: ( ( '}' ) )
+            // InternalGoatInfrastructure.g:295:1: ( '}' )
             {
-            // InternalGoatInfrastructureParser.g:305:1: ( RightCurlyBracket )
-            // InternalGoatInfrastructureParser.g:306:2: RightCurlyBracket
+            // InternalGoatInfrastructure.g:295:1: ( '}' )
+            // InternalGoatInfrastructure.g:296:2: '}'
             {
              before(grammarAccess.getParamsAccess().getRightCurlyBracketKeyword_2()); 
-            match(input,RightCurlyBracket,FOLLOW_2); 
+            match(input,13,FOLLOW_2); 
              after(grammarAccess.getParamsAccess().getRightCurlyBracketKeyword_2()); 
 
             }
@@ -841,14 +821,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1__0"
-    // InternalGoatInfrastructureParser.g:316:1: rule__Params__Group_1__0 : rule__Params__Group_1__0__Impl rule__Params__Group_1__1 ;
+    // InternalGoatInfrastructure.g:306:1: rule__Params__Group_1__0 : rule__Params__Group_1__0__Impl rule__Params__Group_1__1 ;
     public final void rule__Params__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:320:1: ( rule__Params__Group_1__0__Impl rule__Params__Group_1__1 )
-            // InternalGoatInfrastructureParser.g:321:2: rule__Params__Group_1__0__Impl rule__Params__Group_1__1
+            // InternalGoatInfrastructure.g:310:1: ( rule__Params__Group_1__0__Impl rule__Params__Group_1__1 )
+            // InternalGoatInfrastructure.g:311:2: rule__Params__Group_1__0__Impl rule__Params__Group_1__1
             {
             pushFollow(FOLLOW_3);
             rule__Params__Group_1__0__Impl();
@@ -879,20 +859,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1__0__Impl"
-    // InternalGoatInfrastructureParser.g:328:1: rule__Params__Group_1__0__Impl : ( ( rule__Params__Group_1_0__0 )* ) ;
+    // InternalGoatInfrastructure.g:318:1: rule__Params__Group_1__0__Impl : ( ( rule__Params__Group_1_0__0 )* ) ;
     public final void rule__Params__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:332:1: ( ( ( rule__Params__Group_1_0__0 )* ) )
-            // InternalGoatInfrastructureParser.g:333:1: ( ( rule__Params__Group_1_0__0 )* )
+            // InternalGoatInfrastructure.g:322:1: ( ( ( rule__Params__Group_1_0__0 )* ) )
+            // InternalGoatInfrastructure.g:323:1: ( ( rule__Params__Group_1_0__0 )* )
             {
-            // InternalGoatInfrastructureParser.g:333:1: ( ( rule__Params__Group_1_0__0 )* )
-            // InternalGoatInfrastructureParser.g:334:2: ( rule__Params__Group_1_0__0 )*
+            // InternalGoatInfrastructure.g:323:1: ( ( rule__Params__Group_1_0__0 )* )
+            // InternalGoatInfrastructure.g:324:2: ( rule__Params__Group_1_0__0 )*
             {
              before(grammarAccess.getParamsAccess().getGroup_1_0()); 
-            // InternalGoatInfrastructureParser.g:335:2: ( rule__Params__Group_1_0__0 )*
+            // InternalGoatInfrastructure.g:325:2: ( rule__Params__Group_1_0__0 )*
             loop2:
             do {
                 int alt2=2;
@@ -901,13 +881,13 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
                 if ( (LA2_0==RULE_ID) ) {
                     int LA2_1 = input.LA(2);
 
-                    if ( (LA2_1==Colon) ) {
+                    if ( (LA2_1==15) ) {
                         int LA2_2 = input.LA(3);
 
                         if ( (LA2_2==RULE_STRING) ) {
                             int LA2_3 = input.LA(4);
 
-                            if ( (LA2_3==Comma) ) {
+                            if ( (LA2_3==14) ) {
                                 alt2=1;
                             }
 
@@ -923,7 +903,7 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
                 switch (alt2) {
             	case 1 :
-            	    // InternalGoatInfrastructureParser.g:335:3: rule__Params__Group_1_0__0
+            	    // InternalGoatInfrastructure.g:325:3: rule__Params__Group_1_0__0
             	    {
             	    pushFollow(FOLLOW_6);
             	    rule__Params__Group_1_0__0();
@@ -962,14 +942,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1__1"
-    // InternalGoatInfrastructureParser.g:343:1: rule__Params__Group_1__1 : rule__Params__Group_1__1__Impl ;
+    // InternalGoatInfrastructure.g:333:1: rule__Params__Group_1__1 : rule__Params__Group_1__1__Impl ;
     public final void rule__Params__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:347:1: ( rule__Params__Group_1__1__Impl )
-            // InternalGoatInfrastructureParser.g:348:2: rule__Params__Group_1__1__Impl
+            // InternalGoatInfrastructure.g:337:1: ( rule__Params__Group_1__1__Impl )
+            // InternalGoatInfrastructure.g:338:2: rule__Params__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Params__Group_1__1__Impl();
@@ -995,21 +975,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1__1__Impl"
-    // InternalGoatInfrastructureParser.g:354:1: rule__Params__Group_1__1__Impl : ( ( rule__Params__ParamsAssignment_1_1 ) ) ;
+    // InternalGoatInfrastructure.g:344:1: rule__Params__Group_1__1__Impl : ( ( rule__Params__ParamsAssignment_1_1 ) ) ;
     public final void rule__Params__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:358:1: ( ( ( rule__Params__ParamsAssignment_1_1 ) ) )
-            // InternalGoatInfrastructureParser.g:359:1: ( ( rule__Params__ParamsAssignment_1_1 ) )
+            // InternalGoatInfrastructure.g:348:1: ( ( ( rule__Params__ParamsAssignment_1_1 ) ) )
+            // InternalGoatInfrastructure.g:349:1: ( ( rule__Params__ParamsAssignment_1_1 ) )
             {
-            // InternalGoatInfrastructureParser.g:359:1: ( ( rule__Params__ParamsAssignment_1_1 ) )
-            // InternalGoatInfrastructureParser.g:360:2: ( rule__Params__ParamsAssignment_1_1 )
+            // InternalGoatInfrastructure.g:349:1: ( ( rule__Params__ParamsAssignment_1_1 ) )
+            // InternalGoatInfrastructure.g:350:2: ( rule__Params__ParamsAssignment_1_1 )
             {
              before(grammarAccess.getParamsAccess().getParamsAssignment_1_1()); 
-            // InternalGoatInfrastructureParser.g:361:2: ( rule__Params__ParamsAssignment_1_1 )
-            // InternalGoatInfrastructureParser.g:361:3: rule__Params__ParamsAssignment_1_1
+            // InternalGoatInfrastructure.g:351:2: ( rule__Params__ParamsAssignment_1_1 )
+            // InternalGoatInfrastructure.g:351:3: rule__Params__ParamsAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__Params__ParamsAssignment_1_1();
@@ -1042,14 +1022,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1_0__0"
-    // InternalGoatInfrastructureParser.g:370:1: rule__Params__Group_1_0__0 : rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1 ;
+    // InternalGoatInfrastructure.g:360:1: rule__Params__Group_1_0__0 : rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1 ;
     public final void rule__Params__Group_1_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:374:1: ( rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1 )
-            // InternalGoatInfrastructureParser.g:375:2: rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1
+            // InternalGoatInfrastructure.g:364:1: ( rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1 )
+            // InternalGoatInfrastructure.g:365:2: rule__Params__Group_1_0__0__Impl rule__Params__Group_1_0__1
             {
             pushFollow(FOLLOW_7);
             rule__Params__Group_1_0__0__Impl();
@@ -1080,21 +1060,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1_0__0__Impl"
-    // InternalGoatInfrastructureParser.g:382:1: rule__Params__Group_1_0__0__Impl : ( ( rule__Params__ParamsAssignment_1_0_0 ) ) ;
+    // InternalGoatInfrastructure.g:372:1: rule__Params__Group_1_0__0__Impl : ( ( rule__Params__ParamsAssignment_1_0_0 ) ) ;
     public final void rule__Params__Group_1_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:386:1: ( ( ( rule__Params__ParamsAssignment_1_0_0 ) ) )
-            // InternalGoatInfrastructureParser.g:387:1: ( ( rule__Params__ParamsAssignment_1_0_0 ) )
+            // InternalGoatInfrastructure.g:376:1: ( ( ( rule__Params__ParamsAssignment_1_0_0 ) ) )
+            // InternalGoatInfrastructure.g:377:1: ( ( rule__Params__ParamsAssignment_1_0_0 ) )
             {
-            // InternalGoatInfrastructureParser.g:387:1: ( ( rule__Params__ParamsAssignment_1_0_0 ) )
-            // InternalGoatInfrastructureParser.g:388:2: ( rule__Params__ParamsAssignment_1_0_0 )
+            // InternalGoatInfrastructure.g:377:1: ( ( rule__Params__ParamsAssignment_1_0_0 ) )
+            // InternalGoatInfrastructure.g:378:2: ( rule__Params__ParamsAssignment_1_0_0 )
             {
              before(grammarAccess.getParamsAccess().getParamsAssignment_1_0_0()); 
-            // InternalGoatInfrastructureParser.g:389:2: ( rule__Params__ParamsAssignment_1_0_0 )
-            // InternalGoatInfrastructureParser.g:389:3: rule__Params__ParamsAssignment_1_0_0
+            // InternalGoatInfrastructure.g:379:2: ( rule__Params__ParamsAssignment_1_0_0 )
+            // InternalGoatInfrastructure.g:379:3: rule__Params__ParamsAssignment_1_0_0
             {
             pushFollow(FOLLOW_2);
             rule__Params__ParamsAssignment_1_0_0();
@@ -1127,14 +1107,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1_0__1"
-    // InternalGoatInfrastructureParser.g:397:1: rule__Params__Group_1_0__1 : rule__Params__Group_1_0__1__Impl ;
+    // InternalGoatInfrastructure.g:387:1: rule__Params__Group_1_0__1 : rule__Params__Group_1_0__1__Impl ;
     public final void rule__Params__Group_1_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:401:1: ( rule__Params__Group_1_0__1__Impl )
-            // InternalGoatInfrastructureParser.g:402:2: rule__Params__Group_1_0__1__Impl
+            // InternalGoatInfrastructure.g:391:1: ( rule__Params__Group_1_0__1__Impl )
+            // InternalGoatInfrastructure.g:392:2: rule__Params__Group_1_0__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Params__Group_1_0__1__Impl();
@@ -1160,20 +1140,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__Group_1_0__1__Impl"
-    // InternalGoatInfrastructureParser.g:408:1: rule__Params__Group_1_0__1__Impl : ( Comma ) ;
+    // InternalGoatInfrastructure.g:398:1: rule__Params__Group_1_0__1__Impl : ( ',' ) ;
     public final void rule__Params__Group_1_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:412:1: ( ( Comma ) )
-            // InternalGoatInfrastructureParser.g:413:1: ( Comma )
+            // InternalGoatInfrastructure.g:402:1: ( ( ',' ) )
+            // InternalGoatInfrastructure.g:403:1: ( ',' )
             {
-            // InternalGoatInfrastructureParser.g:413:1: ( Comma )
-            // InternalGoatInfrastructureParser.g:414:2: Comma
+            // InternalGoatInfrastructure.g:403:1: ( ',' )
+            // InternalGoatInfrastructure.g:404:2: ','
             {
              before(grammarAccess.getParamsAccess().getCommaKeyword_1_0_1()); 
-            match(input,Comma,FOLLOW_2); 
+            match(input,14,FOLLOW_2); 
              after(grammarAccess.getParamsAccess().getCommaKeyword_1_0_1()); 
 
             }
@@ -1197,14 +1177,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__0"
-    // InternalGoatInfrastructureParser.g:424:1: rule__Param__Group__0 : rule__Param__Group__0__Impl rule__Param__Group__1 ;
+    // InternalGoatInfrastructure.g:414:1: rule__Param__Group__0 : rule__Param__Group__0__Impl rule__Param__Group__1 ;
     public final void rule__Param__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:428:1: ( rule__Param__Group__0__Impl rule__Param__Group__1 )
-            // InternalGoatInfrastructureParser.g:429:2: rule__Param__Group__0__Impl rule__Param__Group__1
+            // InternalGoatInfrastructure.g:418:1: ( rule__Param__Group__0__Impl rule__Param__Group__1 )
+            // InternalGoatInfrastructure.g:419:2: rule__Param__Group__0__Impl rule__Param__Group__1
             {
             pushFollow(FOLLOW_8);
             rule__Param__Group__0__Impl();
@@ -1235,21 +1215,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__0__Impl"
-    // InternalGoatInfrastructureParser.g:436:1: rule__Param__Group__0__Impl : ( ( rule__Param__NameAssignment_0 ) ) ;
+    // InternalGoatInfrastructure.g:426:1: rule__Param__Group__0__Impl : ( ( rule__Param__NameAssignment_0 ) ) ;
     public final void rule__Param__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:440:1: ( ( ( rule__Param__NameAssignment_0 ) ) )
-            // InternalGoatInfrastructureParser.g:441:1: ( ( rule__Param__NameAssignment_0 ) )
+            // InternalGoatInfrastructure.g:430:1: ( ( ( rule__Param__NameAssignment_0 ) ) )
+            // InternalGoatInfrastructure.g:431:1: ( ( rule__Param__NameAssignment_0 ) )
             {
-            // InternalGoatInfrastructureParser.g:441:1: ( ( rule__Param__NameAssignment_0 ) )
-            // InternalGoatInfrastructureParser.g:442:2: ( rule__Param__NameAssignment_0 )
+            // InternalGoatInfrastructure.g:431:1: ( ( rule__Param__NameAssignment_0 ) )
+            // InternalGoatInfrastructure.g:432:2: ( rule__Param__NameAssignment_0 )
             {
              before(grammarAccess.getParamAccess().getNameAssignment_0()); 
-            // InternalGoatInfrastructureParser.g:443:2: ( rule__Param__NameAssignment_0 )
-            // InternalGoatInfrastructureParser.g:443:3: rule__Param__NameAssignment_0
+            // InternalGoatInfrastructure.g:433:2: ( rule__Param__NameAssignment_0 )
+            // InternalGoatInfrastructure.g:433:3: rule__Param__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__Param__NameAssignment_0();
@@ -1282,14 +1262,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__1"
-    // InternalGoatInfrastructureParser.g:451:1: rule__Param__Group__1 : rule__Param__Group__1__Impl rule__Param__Group__2 ;
+    // InternalGoatInfrastructure.g:441:1: rule__Param__Group__1 : rule__Param__Group__1__Impl rule__Param__Group__2 ;
     public final void rule__Param__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:455:1: ( rule__Param__Group__1__Impl rule__Param__Group__2 )
-            // InternalGoatInfrastructureParser.g:456:2: rule__Param__Group__1__Impl rule__Param__Group__2
+            // InternalGoatInfrastructure.g:445:1: ( rule__Param__Group__1__Impl rule__Param__Group__2 )
+            // InternalGoatInfrastructure.g:446:2: rule__Param__Group__1__Impl rule__Param__Group__2
             {
             pushFollow(FOLLOW_9);
             rule__Param__Group__1__Impl();
@@ -1320,20 +1300,20 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__1__Impl"
-    // InternalGoatInfrastructureParser.g:463:1: rule__Param__Group__1__Impl : ( Colon ) ;
+    // InternalGoatInfrastructure.g:453:1: rule__Param__Group__1__Impl : ( ':' ) ;
     public final void rule__Param__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:467:1: ( ( Colon ) )
-            // InternalGoatInfrastructureParser.g:468:1: ( Colon )
+            // InternalGoatInfrastructure.g:457:1: ( ( ':' ) )
+            // InternalGoatInfrastructure.g:458:1: ( ':' )
             {
-            // InternalGoatInfrastructureParser.g:468:1: ( Colon )
-            // InternalGoatInfrastructureParser.g:469:2: Colon
+            // InternalGoatInfrastructure.g:458:1: ( ':' )
+            // InternalGoatInfrastructure.g:459:2: ':'
             {
              before(grammarAccess.getParamAccess().getColonKeyword_1()); 
-            match(input,Colon,FOLLOW_2); 
+            match(input,15,FOLLOW_2); 
              after(grammarAccess.getParamAccess().getColonKeyword_1()); 
 
             }
@@ -1357,14 +1337,14 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__2"
-    // InternalGoatInfrastructureParser.g:478:1: rule__Param__Group__2 : rule__Param__Group__2__Impl ;
+    // InternalGoatInfrastructure.g:468:1: rule__Param__Group__2 : rule__Param__Group__2__Impl ;
     public final void rule__Param__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:482:1: ( rule__Param__Group__2__Impl )
-            // InternalGoatInfrastructureParser.g:483:2: rule__Param__Group__2__Impl
+            // InternalGoatInfrastructure.g:472:1: ( rule__Param__Group__2__Impl )
+            // InternalGoatInfrastructure.g:473:2: rule__Param__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Param__Group__2__Impl();
@@ -1390,21 +1370,21 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__Group__2__Impl"
-    // InternalGoatInfrastructureParser.g:489:1: rule__Param__Group__2__Impl : ( ( rule__Param__ValueAssignment_2 ) ) ;
+    // InternalGoatInfrastructure.g:479:1: rule__Param__Group__2__Impl : ( ( rule__Param__ValueAssignment_2 ) ) ;
     public final void rule__Param__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:493:1: ( ( ( rule__Param__ValueAssignment_2 ) ) )
-            // InternalGoatInfrastructureParser.g:494:1: ( ( rule__Param__ValueAssignment_2 ) )
+            // InternalGoatInfrastructure.g:483:1: ( ( ( rule__Param__ValueAssignment_2 ) ) )
+            // InternalGoatInfrastructure.g:484:1: ( ( rule__Param__ValueAssignment_2 ) )
             {
-            // InternalGoatInfrastructureParser.g:494:1: ( ( rule__Param__ValueAssignment_2 ) )
-            // InternalGoatInfrastructureParser.g:495:2: ( rule__Param__ValueAssignment_2 )
+            // InternalGoatInfrastructure.g:484:1: ( ( rule__Param__ValueAssignment_2 ) )
+            // InternalGoatInfrastructure.g:485:2: ( rule__Param__ValueAssignment_2 )
             {
              before(grammarAccess.getParamAccess().getValueAssignment_2()); 
-            // InternalGoatInfrastructureParser.g:496:2: ( rule__Param__ValueAssignment_2 )
-            // InternalGoatInfrastructureParser.g:496:3: rule__Param__ValueAssignment_2
+            // InternalGoatInfrastructure.g:486:2: ( rule__Param__ValueAssignment_2 )
+            // InternalGoatInfrastructure.g:486:3: rule__Param__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Param__ValueAssignment_2();
@@ -1437,17 +1417,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__SingleServer__NameAssignment_1"
-    // InternalGoatInfrastructureParser.g:505:1: rule__SingleServer__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalGoatInfrastructure.g:495:1: rule__SingleServer__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__SingleServer__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:509:1: ( ( RULE_ID ) )
-            // InternalGoatInfrastructureParser.g:510:2: ( RULE_ID )
+            // InternalGoatInfrastructure.g:499:1: ( ( RULE_ID ) )
+            // InternalGoatInfrastructure.g:500:2: ( RULE_ID )
             {
-            // InternalGoatInfrastructureParser.g:510:2: ( RULE_ID )
-            // InternalGoatInfrastructureParser.g:511:3: RULE_ID
+            // InternalGoatInfrastructure.g:500:2: ( RULE_ID )
+            // InternalGoatInfrastructure.g:501:3: RULE_ID
             {
              before(grammarAccess.getSingleServerAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -1474,17 +1454,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__ParamsAssignment_1_0_0"
-    // InternalGoatInfrastructureParser.g:520:1: rule__Params__ParamsAssignment_1_0_0 : ( ruleParam ) ;
+    // InternalGoatInfrastructure.g:510:1: rule__Params__ParamsAssignment_1_0_0 : ( ruleParam ) ;
     public final void rule__Params__ParamsAssignment_1_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:524:1: ( ( ruleParam ) )
-            // InternalGoatInfrastructureParser.g:525:2: ( ruleParam )
+            // InternalGoatInfrastructure.g:514:1: ( ( ruleParam ) )
+            // InternalGoatInfrastructure.g:515:2: ( ruleParam )
             {
-            // InternalGoatInfrastructureParser.g:525:2: ( ruleParam )
-            // InternalGoatInfrastructureParser.g:526:3: ruleParam
+            // InternalGoatInfrastructure.g:515:2: ( ruleParam )
+            // InternalGoatInfrastructure.g:516:3: ruleParam
             {
              before(grammarAccess.getParamsAccess().getParamsParamParserRuleCall_1_0_0_0()); 
             pushFollow(FOLLOW_2);
@@ -1515,17 +1495,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Params__ParamsAssignment_1_1"
-    // InternalGoatInfrastructureParser.g:535:1: rule__Params__ParamsAssignment_1_1 : ( ruleParam ) ;
+    // InternalGoatInfrastructure.g:525:1: rule__Params__ParamsAssignment_1_1 : ( ruleParam ) ;
     public final void rule__Params__ParamsAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:539:1: ( ( ruleParam ) )
-            // InternalGoatInfrastructureParser.g:540:2: ( ruleParam )
+            // InternalGoatInfrastructure.g:529:1: ( ( ruleParam ) )
+            // InternalGoatInfrastructure.g:530:2: ( ruleParam )
             {
-            // InternalGoatInfrastructureParser.g:540:2: ( ruleParam )
-            // InternalGoatInfrastructureParser.g:541:3: ruleParam
+            // InternalGoatInfrastructure.g:530:2: ( ruleParam )
+            // InternalGoatInfrastructure.g:531:3: ruleParam
             {
              before(grammarAccess.getParamsAccess().getParamsParamParserRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -1556,17 +1536,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__NameAssignment_0"
-    // InternalGoatInfrastructureParser.g:550:1: rule__Param__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalGoatInfrastructure.g:540:1: rule__Param__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Param__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:554:1: ( ( RULE_ID ) )
-            // InternalGoatInfrastructureParser.g:555:2: ( RULE_ID )
+            // InternalGoatInfrastructure.g:544:1: ( ( RULE_ID ) )
+            // InternalGoatInfrastructure.g:545:2: ( RULE_ID )
             {
-            // InternalGoatInfrastructureParser.g:555:2: ( RULE_ID )
-            // InternalGoatInfrastructureParser.g:556:3: RULE_ID
+            // InternalGoatInfrastructure.g:545:2: ( RULE_ID )
+            // InternalGoatInfrastructure.g:546:3: RULE_ID
             {
              before(grammarAccess.getParamAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -1593,17 +1573,17 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
 
     // $ANTLR start "rule__Param__ValueAssignment_2"
-    // InternalGoatInfrastructureParser.g:565:1: rule__Param__ValueAssignment_2 : ( RULE_STRING ) ;
+    // InternalGoatInfrastructure.g:555:1: rule__Param__ValueAssignment_2 : ( RULE_STRING ) ;
     public final void rule__Param__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalGoatInfrastructureParser.g:569:1: ( ( RULE_STRING ) )
-            // InternalGoatInfrastructureParser.g:570:2: ( RULE_STRING )
+            // InternalGoatInfrastructure.g:559:1: ( ( RULE_STRING ) )
+            // InternalGoatInfrastructure.g:560:2: ( RULE_STRING )
             {
-            // InternalGoatInfrastructureParser.g:570:2: ( RULE_STRING )
-            // InternalGoatInfrastructureParser.g:571:3: RULE_STRING
+            // InternalGoatInfrastructure.g:560:2: ( RULE_STRING )
+            // InternalGoatInfrastructure.g:561:3: RULE_STRING
             {
              before(grammarAccess.getParamAccess().getValueSTRINGTerminalRuleCall_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -1635,12 +1615,12 @@ public class InternalGoatInfrastructureParser extends AbstractInternalContentAss
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000001800L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000001002L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000002010L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
 
 }

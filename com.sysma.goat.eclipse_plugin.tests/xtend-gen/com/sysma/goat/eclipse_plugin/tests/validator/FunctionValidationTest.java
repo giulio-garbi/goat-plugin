@@ -1,17 +1,23 @@
 package com.sysma.goat.eclipse_plugin.tests.validator;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.tests.GoatComponentsInjectorProvider;
 import com.sysma.goat.eclipse_plugin.tests.validator.ValidationTestHelper2;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.diagnostics.Diagnostic;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,10 +34,23 @@ public class FunctionValidationTest {
   @Extension
   private ValidationTestHelper2 _validationTestHelper2;
   
+  public void checkNoErrorApartInfr(final EObject obj) {
+    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
+      String _message = it.getMessage();
+      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    };
+    int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
+    boolean _equals = (_length == 0);
+    Assert.assertTrue(_equals);
+  }
+  
   @Test
   public void useVarBeforeDefinition() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -57,6 +76,9 @@ public class FunctionValidationTest {
   public void twoDifferentNames() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -72,7 +94,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -82,6 +104,9 @@ public class FunctionValidationTest {
   public void sameName() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int funS (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -107,6 +132,9 @@ public class FunctionValidationTest {
   public void sameNameTwoFunctions() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -130,7 +158,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -140,6 +168,9 @@ public class FunctionValidationTest {
   public void sameNameTwoBlocksNotAllowed() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int i, string s, bool b){");
       _builder.newLine();
       _builder.append("\t");
@@ -177,6 +208,9 @@ public class FunctionValidationTest {
   public void sameNameFunc() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -204,6 +238,9 @@ public class FunctionValidationTest {
   public void twoFunctions() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun1 (){");
       _builder.newLine();
       _builder.append("\t");
@@ -221,7 +258,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -231,6 +268,9 @@ public class FunctionValidationTest {
   public void twoParams() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun1 (int x, int y){");
       _builder.newLine();
       _builder.append("\t");
@@ -240,7 +280,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -250,6 +290,9 @@ public class FunctionValidationTest {
   public void sameNameParams() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int x, int y, string x){");
       _builder.newLine();
       _builder.append("\t");
@@ -269,6 +312,9 @@ public class FunctionValidationTest {
   public void sameNameParams2() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (int x, int y, string z, bool y, string x){");
       _builder.newLine();
       _builder.append("\t");
@@ -289,6 +335,9 @@ public class FunctionValidationTest {
   public void twoParamsTwoFunc() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun1 (int x, int y){");
       _builder.newLine();
       _builder.append("\t");
@@ -306,7 +355,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -316,6 +365,9 @@ public class FunctionValidationTest {
   public void returningAtTheEnd() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -331,7 +383,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -341,6 +393,9 @@ public class FunctionValidationTest {
   public void returningAtTheMiddle() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -359,7 +414,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -369,6 +424,9 @@ public class FunctionValidationTest {
   public void returningIf() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -400,6 +458,9 @@ public class FunctionValidationTest {
   public void returningIfElse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -421,7 +482,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -431,6 +492,9 @@ public class FunctionValidationTest {
   public void returningIfElifElse() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -458,7 +522,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -468,6 +532,9 @@ public class FunctionValidationTest {
   public void returningIfElif() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -505,6 +572,9 @@ public class FunctionValidationTest {
   public void returningTypeOk() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");
@@ -535,7 +605,7 @@ public class FunctionValidationTest {
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper2.assertNoErrors(result);
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -544,6 +614,9 @@ public class FunctionValidationTest {
   public void returningTypeWrong() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("function int fun (){");
       _builder.newLine();
       _builder.append("\t");

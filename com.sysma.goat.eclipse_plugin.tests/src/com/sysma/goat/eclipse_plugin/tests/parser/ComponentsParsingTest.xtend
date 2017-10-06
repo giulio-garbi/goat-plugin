@@ -19,6 +19,8 @@ class ComponentsParsingTest {
 	@Test
 	def emptyComponent(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			proc P = nil
 			component {} P at "ip"
 		''')
@@ -30,6 +32,8 @@ class ComponentsParsingTest {
 	@Test
 	def filledComponent(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			proc P = nil
 			component {x := 4} P at "ip"
 		''')
@@ -41,6 +45,8 @@ class ComponentsParsingTest {
 	@Test
 	def numberedAttributeNotAllowed(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			proc P = nil
 			component {5 := 4} P at "ip"
 		''')
@@ -51,6 +57,8 @@ class ComponentsParsingTest {
 	@Test
 	def componentMustReferAProcess(){
 		val result = parseHelper.parse('''
+			infrastructure infr
+
 			proc P = nil
 			component {x := 4} at "ip"
 		''')

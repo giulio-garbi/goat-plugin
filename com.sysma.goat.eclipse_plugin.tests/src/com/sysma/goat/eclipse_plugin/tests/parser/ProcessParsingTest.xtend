@@ -33,7 +33,9 @@ class ProcessParsingTest {
 	
 	def private encapsulateProcess(CharSequence proc){
 		val result = parseHelper.parse('''
-			proc P = «proc»
+		infrastructure infr
+		
+		proc P = «proc»
 		''')
 		Assert.assertNotNull(result)
 		result.processes.get(0).proc

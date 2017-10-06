@@ -49,6 +49,9 @@ public class ProcessParsingTest {
       com.sysma.goat.eclipse_plugin.goatComponents.Process _xblockexpression = null;
       {
         StringConcatenation _builder = new StringConcatenation();
+        _builder.append("infrastructure infr");
+        _builder.newLine();
+        _builder.newLine();
         _builder.append("proc P = ");
         _builder.append(proc);
         _builder.newLineIfNotEmpty();

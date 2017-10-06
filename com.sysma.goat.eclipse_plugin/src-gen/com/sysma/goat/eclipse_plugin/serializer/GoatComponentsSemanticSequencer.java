@@ -708,7 +708,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentDefinition returns ComponentDefinition
 	 *
 	 * Constraint:
-	 *     (env=Environment proc=[ProcessDefinition|ID] address=STRING)
+	 *     (env=Environment proc=[ProcessDefinition|ID])
 	 */
 	protected void sequence_ComponentDefinition(ISerializationContext context, ComponentDefinition semanticObject) {
 		if (errorAcceptor != null) {
@@ -716,13 +716,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.COMPONENT_DEFINITION__ENV));
 			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.COMPONENT_DEFINITION__PROC) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.COMPONENT_DEFINITION__PROC));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.COMPONENT_DEFINITION__ADDRESS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.COMPONENT_DEFINITION__ADDRESS));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getComponentDefinitionAccess().getEnvEnvironmentParserRuleCall_1_0(), semanticObject.getEnv());
 		feeder.accept(grammarAccess.getComponentDefinitionAccess().getProcProcessDefinitionIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.COMPONENT_DEFINITION__PROC, false));
-		feeder.accept(grammarAccess.getComponentDefinitionAccess().getAddressSTRINGTerminalRuleCall_4_0(), semanticObject.getAddress());
 		feeder.finish();
 	}
 	
@@ -1041,7 +1038,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*
+	 *     (infrastructure=[Infrastructure|ID] (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*)
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

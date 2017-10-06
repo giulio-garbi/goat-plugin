@@ -24,6 +24,9 @@ public class ComponentsParsingTest {
   public void emptyComponent() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("proc P = nil");
       _builder.newLine();
       _builder.append("component {} P at \"ip\"");
@@ -43,6 +46,9 @@ public class ComponentsParsingTest {
   public void filledComponent() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("proc P = nil");
       _builder.newLine();
       _builder.append("component {x := 4} P at \"ip\"");
@@ -62,6 +68,9 @@ public class ComponentsParsingTest {
   public void numberedAttributeNotAllowed() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("proc P = nil");
       _builder.newLine();
       _builder.append("component {5 := 4} P at \"ip\"");
@@ -78,6 +87,9 @@ public class ComponentsParsingTest {
   public void componentMustReferAProcess() {
     try {
       StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
       _builder.append("proc P = nil");
       _builder.newLine();
       _builder.append("component {x := 4} at \"ip\"");

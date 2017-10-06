@@ -30,8 +30,29 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
+			name = "com.sysma.goat.eclipse_plugin.GoatInfrastructure"
+			fileExtensions = "ginf"
+			
+			generator = {
+				generateXtendMain = true
+			}
+
+			serializer = {
+				generateStub = false
+			}
+			validator = {
+				//composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+				//composedCheck = "org.xtext.example.abcTry.validation.AbcTryValidator"
+			}
+			
+			parserGenerator = {
+				combinedGrammar = true
+			}
+		}
+		language = StandardLanguage {
 			name = "com.sysma.goat.eclipse_plugin.GoatComponents"
 			fileExtensions = "goat"
+			referencedResource = "platform:/resource/com.sysma.goat.eclipse_plugin/model/generated/GoatInfrastructure.genmodel"
 
 			serializer = {
 				generateStub = false
@@ -49,47 +70,7 @@ Workflow {
 			}
 			
 			parserGenerator = {
-				combinedGrammar = false
-			}
-		}
-		/*language = StandardLanguage {
-			name = "org.example.expressions.Expressions"
-
-			serializer = {
-				generateStub = false
-			}
-			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-				composedCheck = "org.example.expressions.validation.ExpressionsValidator"
-			}
-			
-			newProjectWizardForEclipse = {
-				pluginProject = false
-				generate = true
-			}
-			
-			parserGenerator = {
-				combinedGrammar = false
-			}
-		}*/
-		language = StandardLanguage {
-			name = "com.sysma.goat.eclipse_plugin.GoatInfrastructure"
-			fileExtensions = "ginf"
-			
-			generator = {
-				generateXtendMain = true
-			}
-
-			serializer = {
-				generateStub = false
-			}
-			validator = {
-				//composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-				//composedCheck = "org.xtext.example.abcTry.validation.AbcTryValidator"
-			}
-			
-			parserGenerator = {
-				combinedGrammar = false
+				combinedGrammar = true
 			}
 		}
 	}
