@@ -1,22 +1,12 @@
 package com.sysma.goat.eclipse_plugin.generator
 
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
-
 class CodeAttribute {
 	val String attribute
 	val boolean comp
 	val String componentMap
-	val String localMap
+	val LocalVariableMap localMap
 	
-	new(AttributeToSet a, String componentMap, String localMap){
-		this.attribute = a.attribute
-		this.comp = a instanceof ComponentAttributeToSet
-		this.componentMap = componentMap
-		this.localMap = localMap
-	}
-	
-	new(String attrName, boolean comp, String componentMap, String localMap){
+	new(String attrName, boolean comp, String componentMap, LocalVariableMap localMap){
 		this.attribute = attrName
 		this.comp = comp
 		this.componentMap = componentMap
@@ -27,27 +17,23 @@ class CodeAttribute {
 		if (comp) {
 			'''«componentMap».Set("«attribute»", «value»)'''
 		} else {
-			'''«localMap»["«attribute»"] = «value»'''
+			localMap.assign(attribute, value)
 		}
 	}
 	
 	def getName(){
 		if (comp) {
-			'''this.«attribute»'''
+			'''comp.«attribute»'''
 		} else {
 			attribute
 		}
-	}
-	
-	def static assignProcessParameter(CharSequence param, CharSequence value){
-		'''«CodeProcessDefinition.localVariablesMap»["«param»"] = «value»'''
 	}
 	
 	def read() {
 		if (comp) {
 			'''«componentMap».GetValue("«attribute»")'''
 		} else {
-			'''«localMap»["«attribute»"]'''
+			localMap.readValue(attribute)
 		}
 	}
 	
@@ -55,7 +41,7 @@ class CodeAttribute {
 		if (comp) {
 			'''«componentMap».Has("«attribute»")'''
 		} else {
-			'''func()bool{_, has:= «localMap»["«attribute»"]; return has}()'''
+			localMap.has(attribute)
 		}
 	}
 }

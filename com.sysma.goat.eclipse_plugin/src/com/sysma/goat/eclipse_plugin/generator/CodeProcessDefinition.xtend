@@ -1,33 +1,27 @@
 package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition
-import com.sysma.goat.eclipse_plugin.goatComponents.Process
 
-class CodeProcessDefinition extends CodeTree {
-	public val String procname
-	//public val String process_goto_label
-	val Process proc
-	
-	def static getLocalVariablesMap(){
-		"localVars"
-	}
+class CodeProcessDefinition {
+	val ProcessDefinition pdef
 	
 	new(ProcessDefinition pdef){
-		procname = pdef.name
-		//process_goto_label = "proc_"+procname
-		proc = pdef.proc
+		this.pdef = pdef
 	}
 	
-	override getCode() {
+	def getCode() {
+		var localVariablesMap = new LocalVariableMap("locvar")
+		var CharSequence procReference = "p"
 		'''
-		func «process_func_name»(«localVariablesMap» map[string]interface{}, p *goat.Process) continuationProcess{
-			«CodeTree.convert(proc).code»
+		func «process_func_name»(wg *sync.WaitGroup, «localVariablesMap.name» *map[string]interface{}, «procReference» *goat.Process) continuationProcess{
+			«new CodeProcessBlock(pdef.block, localVariablesMap, procReference).code»
+			return nil
 		}
 		'''
 	}
 	
 	def getProcess_func_name() {
-		return '''pr_«procname»'''
+		return '''pr_«pdef.name»'''
 	}
 	
 }

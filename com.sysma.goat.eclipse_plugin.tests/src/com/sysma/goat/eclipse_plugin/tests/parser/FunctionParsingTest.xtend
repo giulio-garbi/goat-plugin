@@ -15,6 +15,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Comparison
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn
 import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration
+import static extension com.sysma.goat.eclipse_plugin.tests.parser.ParsingTestHelper.*
 
 @RunWith(XtextRunner)
 @InjectWith(GoatComponentsInjectorProvider)
@@ -32,7 +33,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		var func = result.functions.get(0)
 		Assert.assertTrue(func.type == "int")
 		Assert.assertTrue(func.name == "fun")
@@ -63,7 +64,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		var func = result.functions.get(0)
 		Assert.assertTrue(func.type == "int")
 		Assert.assertTrue(func.name == "fun")
@@ -103,7 +104,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		var func = result.functions.get(0)
 		Assert.assertTrue(func.type == "int")
 		Assert.assertTrue(func.name == "fun")
@@ -143,7 +144,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
@@ -161,7 +162,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.empty)
+		result.checkErrorApartInfr
 	}
 	
 	@Test
@@ -181,7 +182,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.empty)
+		result.checkErrorApartInfr
 	}
 	
 	@Test
@@ -196,7 +197,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.empty)
+		result.checkErrorApartInfr
 	}
 	
 	@Test
@@ -211,7 +212,7 @@ class FunctionParsingTest {
 			}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		Assert.assertTrue((result.functions.get(0).blk.statements.get(2) as FuncVarAssign).^var.name == "y")
 	}
 }

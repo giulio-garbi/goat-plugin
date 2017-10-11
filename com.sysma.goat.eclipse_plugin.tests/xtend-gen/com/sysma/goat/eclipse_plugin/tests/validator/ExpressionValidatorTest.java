@@ -171,7 +171,7 @@ public class ExpressionValidatorTest {
       _builder.append("var y = 5");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("return \"o\" ++ this.z");
+      _builder.append("return \"o\" ++ comp.z");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
@@ -218,7 +218,12 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = receive (proc.x > 10) {proc.w}.nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("receive (proc.x > 10) {w};");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -235,11 +240,16 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = receive (10) {proc.w}.nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("receive (10) {w};");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getInputProcess(), null, "Expected a bool expression");
+      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getReceiveCase(), null, "Expected a bool expression");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -252,7 +262,12 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = receive (this.l) {proc.w}.nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("receive (comp.l) {w};");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -269,7 +284,12 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = receive (receiver.l) {proc.w}.nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("receive (receiver.l) {w};");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -286,7 +306,12 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = send {proc.w} @ (proc.x > 10).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (proc.x > 10);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -303,45 +328,60 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = send {proc.w} @ (\"k\").nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (\"k\");");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getOutputProcess(), null, "Expected a bool expression");
+      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getProcessSend(), null, "Expected a bool expression");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
   @Test
-  public void noGlobalAttributeInSendMessage() {
+  public void globalAttributeInSendMessage() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = send {this.w} @ (true).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {comp.w} @ (true);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getComponentAttributeRef(), null, "Component attributes cannot be used in send messages and/or predicates. Use local attributes.");
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
   @Test
-  public void noGlobalAttributeInSendPred() {
+  public void globalAttributeInSendPred() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = send {proc.w} @ (receiver.s == this.d).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (receiver.s == comp.d);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getComponentAttributeRef(), null, "Component attributes cannot be used in send messages and/or predicates. Use local attributes.");
+      this.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -354,7 +394,15 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = wait until (this.x == 8) send {} @ (true).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("waitfor (comp.x == 8);");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {} @ (true);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -371,7 +419,15 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = wait until (receiver.x == 8) send {} @ (true).nil");
+      _builder.append("process P{");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("waitfor (receiver.x == 8);");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {} @ (true);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -388,7 +444,15 @@ public class ExpressionValidatorTest {
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P = wait until(true) send {proc.w} @ (true).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("waitfor(true);");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (true);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
@@ -399,17 +463,50 @@ public class ExpressionValidatorTest {
   }
   
   @Test
-  public void awarenessNonBoolExpression() {
+  public void sleep() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("infrastructure infr");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("proc P =  wait until(4) send {proc.w} @ (false).nil");
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("waitfor(4);");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (false);");
+      _builder.newLine();
+      _builder.append("}");
       _builder.newLine();
       final Model result = this._parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getAwareness(), null, "Expected a bool expression");
+      this.checkNoErrorApartInfr(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void awarenessNoStringExpression() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("process P {");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("waitfor(\"4\");");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("send {proc.w} @ (false);");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      final Model result = this._parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      this._validationTestHelper.assertError(result, GoatComponentsPackage.eINSTANCE.getProcessWaitFor(), null, "Expected a bool or int expression");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

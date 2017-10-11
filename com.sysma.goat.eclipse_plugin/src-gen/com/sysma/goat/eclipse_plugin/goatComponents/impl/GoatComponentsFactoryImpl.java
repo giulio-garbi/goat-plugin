@@ -3,58 +3,7 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
-import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
-import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
-import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Model;
-import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
-import com.sysma.goat.eclipse_plugin.goatComponents.Not;
-import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -117,21 +66,31 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
     switch (eClass.getClassifierID())
     {
       case GoatComponentsPackage.MODEL: return createModel();
-      case GoatComponentsPackage.PROCESS: return createProcess();
-      case GoatComponentsPackage.PRECONDITIONS: return createPreconditions();
-      case GoatComponentsPackage.INPUT_PROCESSES_PART: return createInputProcessesPart();
-      case GoatComponentsPackage.OUTPUT_PROCESS_PART: return createOutputProcessPart();
+      case GoatComponentsPackage.PROCESS_DEFINITION: return createProcessDefinition();
+      case GoatComponentsPackage.PROCESS_BLOCK: return createProcessBlock();
+      case GoatComponentsPackage.PROCESS_SPAWN: return createProcessSpawn();
+      case GoatComponentsPackage.PROCESS_CALL: return createProcessCall();
+      case GoatComponentsPackage.PROCESS_STATEMENT: return createProcessStatement();
+      case GoatComponentsPackage.PROCESS_SEND: return createProcessSend();
+      case GoatComponentsPackage.PROCESS_RECEIVE: return createProcessReceive();
+      case GoatComponentsPackage.PROCESS_RECEIVE_SINGLE: return createProcessReceiveSingle();
+      case GoatComponentsPackage.PROCESS_RECEIVE_MULTIPLE: return createProcessReceiveMultiple();
+      case GoatComponentsPackage.RECEIVE_CASE: return createReceiveCase();
+      case GoatComponentsPackage.PROCESS_IF: return createProcessIf();
+      case GoatComponentsPackage.PROCESS_THEN_BLOCK: return createProcessThenBlock();
+      case GoatComponentsPackage.PROCESS_SET: return createProcessSet();
+      case GoatComponentsPackage.PROCESS_WAIT_FOR: return createProcessWaitFor();
+      case GoatComponentsPackage.PROCESS_LOOP: return createProcessLoop();
+      case GoatComponentsPackage.UPDATE: return createUpdate();
+      case GoatComponentsPackage.UPDATE_COMPONENT_ATTRIBUTE: return createUpdateComponentAttribute();
+      case GoatComponentsPackage.UPDATE_LOCAL_ATTRIBUTE: return createUpdateLocalAttribute();
       case GoatComponentsPackage.PRINT_STATEMENT: return createPrintStatement();
       case GoatComponentsPackage.PRINT_ALL_STATEMENT: return createPrintAllStatement();
       case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT: return createPrintFormattedStatement();
-      case GoatComponentsPackage.UPDATE: return createUpdate();
-      case GoatComponentsPackage.AWARENESS: return createAwareness();
-      case GoatComponentsPackage.PROCESS_DEFINITION: return createProcessDefinition();
       case GoatComponentsPackage.EXPRESSION: return createExpression();
       case GoatComponentsPackage.ENVIRONMENT: return createEnvironment();
       case GoatComponentsPackage.COMPONENT_DEFINITION: return createComponentDefinition();
       case GoatComponentsPackage.LREF: return createLRef();
-      case GoatComponentsPackage.ATTRIBUTE_TO_SET: return createAttributeToSet();
       case GoatComponentsPackage.FUNC_PARAM: return createFuncParam();
       case GoatComponentsPackage.FUNC_DEFINITION: return createFuncDefinition();
       case GoatComponentsPackage.FUNC_BLOCK: return createFuncBlock();
@@ -140,14 +99,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.FUNC_VAR_ASSIGN: return createFuncVarAssign();
       case GoatComponentsPackage.FUNC_IF_ELSE: return createFuncIfElse();
       case GoatComponentsPackage.FUNC_RETURN: return createFuncReturn();
-      case GoatComponentsPackage.INTERLEAVING_PROCESS: return createInterleavingProcess();
-      case GoatComponentsPackage.OUTPUT_PROCESS: return createOutputProcess();
-      case GoatComponentsPackage.INPUT_PROCESSES: return createInputProcesses();
-      case GoatComponentsPackage.INPUT_PROCESS: return createInputProcess();
-      case GoatComponentsPackage.IF_PROCESSES: return createIfProcesses();
-      case GoatComponentsPackage.IF_BRANCH_PROCESS: return createIfBranchProcess();
-      case GoatComponentsPackage.CALL_PROCESS: return createCallProcess();
-      case GoatComponentsPackage.ZERO_PROCESS: return createZeroProcess();
+      case GoatComponentsPackage.NEGATIVE_INT_CONSTANT: return createNegativeIntConstant();
       case GoatComponentsPackage.INT_CONSTANT: return createIntConstant();
       case GoatComponentsPackage.STRING_CONSTANT: return createStringConstant();
       case GoatComponentsPackage.BOOL_CONSTANT: return createBoolConstant();
@@ -159,14 +111,13 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.MINUS: return createMinus();
       case GoatComponentsPackage.CONCATENATE: return createConcatenate();
       case GoatComponentsPackage.MUL_OR_DIV: return createMulOrDiv();
+      case GoatComponentsPackage.UNARY_MINUS: return createUnaryMinus();
       case GoatComponentsPackage.NOT: return createNot();
       case GoatComponentsPackage.LOCAL_VAR_REF: return createLocalVarRef();
       case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF: return createLocalAttributeRef();
       case GoatComponentsPackage.FUNCTION_CALL: return createFunctionCall();
       case GoatComponentsPackage.COMPONENT_ATTRIBUTE_REF: return createComponentAttributeRef();
       case GoatComponentsPackage.REC_ATTRIBUTE_REF: return createRecAttributeRef();
-      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_TO_SET: return createComponentAttributeToSet();
-      case GoatComponentsPackage.LOCAL_ATTRIBUTE_TO_SET: return createLocalAttributeToSet();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -188,10 +139,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public com.sysma.goat.eclipse_plugin.goatComponents.Process createProcess()
+  public ProcessDefinition createProcessDefinition()
   {
-    ProcessImpl process = new ProcessImpl();
-    return process;
+    ProcessDefinitionImpl processDefinition = new ProcessDefinitionImpl();
+    return processDefinition;
   }
 
   /**
@@ -199,10 +150,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Preconditions createPreconditions()
+  public ProcessBlock createProcessBlock()
   {
-    PreconditionsImpl preconditions = new PreconditionsImpl();
-    return preconditions;
+    ProcessBlockImpl processBlock = new ProcessBlockImpl();
+    return processBlock;
   }
 
   /**
@@ -210,10 +161,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public InputProcessesPart createInputProcessesPart()
+  public ProcessSpawn createProcessSpawn()
   {
-    InputProcessesPartImpl inputProcessesPart = new InputProcessesPartImpl();
-    return inputProcessesPart;
+    ProcessSpawnImpl processSpawn = new ProcessSpawnImpl();
+    return processSpawn;
   }
 
   /**
@@ -221,10 +172,164 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public OutputProcessPart createOutputProcessPart()
+  public ProcessCall createProcessCall()
   {
-    OutputProcessPartImpl outputProcessPart = new OutputProcessPartImpl();
-    return outputProcessPart;
+    ProcessCallImpl processCall = new ProcessCallImpl();
+    return processCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessStatement createProcessStatement()
+  {
+    ProcessStatementImpl processStatement = new ProcessStatementImpl();
+    return processStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessSend createProcessSend()
+  {
+    ProcessSendImpl processSend = new ProcessSendImpl();
+    return processSend;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessReceive createProcessReceive()
+  {
+    ProcessReceiveImpl processReceive = new ProcessReceiveImpl();
+    return processReceive;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessReceiveSingle createProcessReceiveSingle()
+  {
+    ProcessReceiveSingleImpl processReceiveSingle = new ProcessReceiveSingleImpl();
+    return processReceiveSingle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessReceiveMultiple createProcessReceiveMultiple()
+  {
+    ProcessReceiveMultipleImpl processReceiveMultiple = new ProcessReceiveMultipleImpl();
+    return processReceiveMultiple;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReceiveCase createReceiveCase()
+  {
+    ReceiveCaseImpl receiveCase = new ReceiveCaseImpl();
+    return receiveCase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessIf createProcessIf()
+  {
+    ProcessIfImpl processIf = new ProcessIfImpl();
+    return processIf;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessThenBlock createProcessThenBlock()
+  {
+    ProcessThenBlockImpl processThenBlock = new ProcessThenBlockImpl();
+    return processThenBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessSet createProcessSet()
+  {
+    ProcessSetImpl processSet = new ProcessSetImpl();
+    return processSet;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessWaitFor createProcessWaitFor()
+  {
+    ProcessWaitForImpl processWaitFor = new ProcessWaitForImpl();
+    return processWaitFor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessLoop createProcessLoop()
+  {
+    ProcessLoopImpl processLoop = new ProcessLoopImpl();
+    return processLoop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Update createUpdate()
+  {
+    UpdateImpl update = new UpdateImpl();
+    return update;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpdateComponentAttribute createUpdateComponentAttribute()
+  {
+    UpdateComponentAttributeImpl updateComponentAttribute = new UpdateComponentAttributeImpl();
+    return updateComponentAttribute;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public UpdateLocalAttribute createUpdateLocalAttribute()
+  {
+    UpdateLocalAttributeImpl updateLocalAttribute = new UpdateLocalAttributeImpl();
+    return updateLocalAttribute;
   }
 
   /**
@@ -258,39 +363,6 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     PrintFormattedStatementImpl printFormattedStatement = new PrintFormattedStatementImpl();
     return printFormattedStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Update createUpdate()
-  {
-    UpdateImpl update = new UpdateImpl();
-    return update;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Awareness createAwareness()
-  {
-    AwarenessImpl awareness = new AwarenessImpl();
-    return awareness;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessDefinition createProcessDefinition()
-  {
-    ProcessDefinitionImpl processDefinition = new ProcessDefinitionImpl();
-    return processDefinition;
   }
 
   /**
@@ -335,17 +407,6 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     LRefImpl lRef = new LRefImpl();
     return lRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AttributeToSet createAttributeToSet()
-  {
-    AttributeToSetImpl attributeToSet = new AttributeToSetImpl();
-    return attributeToSet;
   }
 
   /**
@@ -441,87 +502,10 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public InterleavingProcess createInterleavingProcess()
+  public NegativeIntConstant createNegativeIntConstant()
   {
-    InterleavingProcessImpl interleavingProcess = new InterleavingProcessImpl();
-    return interleavingProcess;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public OutputProcess createOutputProcess()
-  {
-    OutputProcessImpl outputProcess = new OutputProcessImpl();
-    return outputProcess;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InputProcesses createInputProcesses()
-  {
-    InputProcessesImpl inputProcesses = new InputProcessesImpl();
-    return inputProcesses;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InputProcess createInputProcess()
-  {
-    InputProcessImpl inputProcess = new InputProcessImpl();
-    return inputProcess;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IfProcesses createIfProcesses()
-  {
-    IfProcessesImpl ifProcesses = new IfProcessesImpl();
-    return ifProcesses;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IfBranchProcess createIfBranchProcess()
-  {
-    IfBranchProcessImpl ifBranchProcess = new IfBranchProcessImpl();
-    return ifBranchProcess;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CallProcess createCallProcess()
-  {
-    CallProcessImpl callProcess = new CallProcessImpl();
-    return callProcess;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ZeroProcess createZeroProcess()
-  {
-    ZeroProcessImpl zeroProcess = new ZeroProcessImpl();
-    return zeroProcess;
+    NegativeIntConstantImpl negativeIntConstant = new NegativeIntConstantImpl();
+    return negativeIntConstant;
   }
 
   /**
@@ -650,6 +634,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public UnaryMinus createUnaryMinus()
+  {
+    UnaryMinusImpl unaryMinus = new UnaryMinusImpl();
+    return unaryMinus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Not createNot()
   {
     NotImpl not = new NotImpl();
@@ -709,28 +704,6 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     RecAttributeRefImpl recAttributeRef = new RecAttributeRefImpl();
     return recAttributeRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ComponentAttributeToSet createComponentAttributeToSet()
-  {
-    ComponentAttributeToSetImpl componentAttributeToSet = new ComponentAttributeToSetImpl();
-    return componentAttributeToSet;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LocalAttributeToSet createLocalAttributeToSet()
-  {
-    LocalAttributeToSetImpl localAttributeToSet = new LocalAttributeToSetImpl();
-    return localAttributeToSet;
   }
 
   /**

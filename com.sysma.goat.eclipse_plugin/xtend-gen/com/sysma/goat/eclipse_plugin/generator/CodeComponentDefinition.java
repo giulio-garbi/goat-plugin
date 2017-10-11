@@ -3,7 +3,6 @@ package com.sysma.goat.eclipse_plugin.generator;
 import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
 import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructureAgent;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
-import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
@@ -12,7 +11,7 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 
 @SuppressWarnings("all")
-public class CodeComponentDefinition extends CodeTree {
+public class CodeComponentDefinition {
   private final ComponentDefinition cdef;
   
   private final CharSequence mainFunc;
@@ -57,18 +56,17 @@ public class CodeComponentDefinition extends CodeTree {
     return _xblockexpression;
   }
   
-  @Override
   public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("goat.NewProcess(");
     _builder.append(this.compName);
     _builder.append(").Run(");
     _builder.append(this.mainFunc);
-    _builder.append("(");
+    _builder.append("(&wg, ");
     ProcessDefinition _proc = this.cdef.getProc();
     String _process_func_name = new CodeProcessDefinition(_proc).getProcess_func_name();
     _builder.append(_process_func_name);
-    _builder.append(", map[string]interface{}{}))");
+    _builder.append(", &(map[string]interface{}{})))");
     return _builder;
   }
 }

@@ -24,7 +24,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement
 class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProvider {
 	override getScope(EObject context, EReference reference){
 		switch reference {
-			case GoatComponentsPackage.eINSTANCE.callProcess_Procname,
+			case GoatComponentsPackage.eINSTANCE.processCall_Proc,
+			case GoatComponentsPackage.eINSTANCE.processSpawn_Proc,
 			case GoatComponentsPackage.eINSTANCE.componentDefinition_Proc:
 				scopeForProcessDefinition(context)
 			case GoatComponentsPackage.eINSTANCE.localVarRef_Ref:

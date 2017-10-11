@@ -3,6 +3,7 @@ package com.sysma.goat.eclipse_plugin.generator;
 import com.sysma.goat.eclipse_plugin.generator.CodeComponentDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeFunction;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
+import com.sysma.goat.eclipse_plugin.generator.Utils;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
@@ -29,7 +30,7 @@ public class CodeModel {
   
   private final Infrastructure infr;
   
-  public final static String runFuncName = "run";
+  public final static String runFuncName = "runWith";
   
   public CodeModel(final Model model) {
     this.packageName = "main";
@@ -59,14 +60,6 @@ public class CodeModel {
   }
   
   public CharSequence getCode() {
-    return this.getCode((-1));
-  }
-  
-  public CharSequence getTestCode(final int timeout) {
-    return this.getCode(timeout);
-  }
-  
-  public CharSequence getCode(final int timeout) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     _builder.append(this.packageName);
@@ -86,11 +79,18 @@ public class CodeModel {
     _builder.append("\t");
     _builder.append("\"strconv\"");
     _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"sync\"");
+    _builder.newLine();
     _builder.append(")");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("type continuationProcess func(map[string]interface{}, *goat.Process) continuationProcess");
+    _builder.append("type continuationProcess func(*sync.WaitGroup, *map[string]interface{}, *goat.Process) continuationProcess");
     _builder.newLine();
+    _builder.newLine();
+    CharSequence _utilityFunctions = Utils.utilityFunctions();
+    _builder.append(_utilityFunctions);
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
       for(final CodeFunction func : this.functions) {
@@ -107,22 +107,6 @@ public class CodeModel {
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.newLine();
-    _builder.append("func ");
-    _builder.append(CodeModel.runFuncName);
-    _builder.append("(proc continuationProcess, locAttr map[string]interface{}) (func(*goat.Process)){");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append("return func(p *goat.Process){");
-    _builder.newLine();
-    _builder.append("\t    ");
-    _builder.append("for currp := proc; currp != nil; currp = currp(locAttr, p){}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("func ");
     _builder.append(this.mainFuncName);
@@ -146,7 +130,7 @@ public class CodeModel {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("term := make(chan struct{})");
+    _builder.append("var wg sync.WaitGroup");
     _builder.newLine();
     {
       for(final CodeComponentDefinition cdef : this.components) {
@@ -165,7 +149,7 @@ public class CodeModel {
       }
     }
     _builder.append("\t");
-    _builder.append("<- term");
+    _builder.append("wg.Wait()");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

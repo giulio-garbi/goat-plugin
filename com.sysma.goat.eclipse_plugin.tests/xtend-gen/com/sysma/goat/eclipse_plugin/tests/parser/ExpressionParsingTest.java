@@ -565,10 +565,10 @@ public class ExpressionParsingTest {
     Assert.assertTrue(result.eResource().getErrors().isEmpty());
     Assert.assertTrue((result instanceof And));
     final And cmp = ((And) result);
-    Expression _left = cmp.getLeft();
-    Assert.assertTrue((_left instanceof LocalVarRef));
-    Expression _right = cmp.getRight();
-    Assert.assertTrue((_right instanceof BoolConstant));
+    Expression _get = cmp.getSub().get(0);
+    Assert.assertTrue((_get instanceof LocalVarRef));
+    Expression _get_1 = cmp.getSub().get(1);
+    Assert.assertTrue((_get_1 instanceof BoolConstant));
   }
   
   @Test
@@ -580,10 +580,10 @@ public class ExpressionParsingTest {
     Assert.assertTrue(result.eResource().getErrors().isEmpty());
     Assert.assertTrue((result instanceof Or));
     final Or cmp = ((Or) result);
-    Expression _left = cmp.getLeft();
-    Assert.assertTrue((_left instanceof LocalVarRef));
-    Expression _right = cmp.getRight();
-    Assert.assertTrue((_right instanceof BoolConstant));
+    Expression _get = cmp.getSub().get(0);
+    Assert.assertTrue((_get instanceof LocalVarRef));
+    Expression _get_1 = cmp.getSub().get(1);
+    Assert.assertTrue((_get_1 instanceof BoolConstant));
   }
   
   @Test
@@ -595,9 +595,9 @@ public class ExpressionParsingTest {
     Assert.assertTrue(result.eResource().getErrors().isEmpty());
     Assert.assertTrue((result instanceof Or));
     final Or cmp = ((Or) result);
-    Expression _left = cmp.getLeft();
-    Assert.assertTrue((_left instanceof And));
-    Expression _right = cmp.getRight();
-    Assert.assertTrue((_right instanceof And));
+    Expression _get = cmp.getSub().get(0);
+    Assert.assertTrue((_get instanceof And));
+    Expression _get_1 = cmp.getSub().get(1);
+    Assert.assertTrue((_get_1 instanceof And));
   }
 }

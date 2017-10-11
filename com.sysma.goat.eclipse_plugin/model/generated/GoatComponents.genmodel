@@ -12,36 +12,71 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/components"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/functions"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//Process"/>
-    <genClasses ecoreClass="GoatComponents.ecore#//Preconditions">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Preconditions/precond"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//ProcessDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessDefinition/block"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//InputProcessesPart">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//InputProcessesPart/inputs"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//InputProcessesPart/preconds"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessBlock/statements"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//OutputProcessPart">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/msgOutParts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/send_pred"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/output"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//OutputProcessPart/msec"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcessPart/next"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessSpawn">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSpawn/proc"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessCall/proc"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessStatement"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessSend">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSend/msgOutParts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSend/send_pred"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSend/updates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSend/print"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessReceive">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessReceive/cases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessReceive/then"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessReceiveSingle"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessReceiveMultiple"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//ReceiveCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ReceiveCase/cond"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//ReceiveCase/msgInParts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ReceiveCase/updates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ReceiveCase/print"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessIf">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessIf/cond"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessThenBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessThenBlock/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessThenBlock/then"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSet/update"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessSet/print"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessWaitFor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessWaitFor/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessWaitFor/update"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessWaitFor/print"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ProcessLoop">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessLoop/block"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//Update">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Update/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Update/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//UpdateComponentAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//UpdateComponentAttribute/atname"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//UpdateLocalAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//UpdateLocalAttribute/atname"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//PrintStatement"/>
     <genClasses ecoreClass="GoatComponents.ecore#//PrintAllStatement"/>
     <genClasses ecoreClass="GoatComponents.ecore#//PrintFormattedStatement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//PrintFormattedStatement/toPrint"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//Update">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Update/vars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Update/vals"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//Awareness">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Awareness/pred"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//ProcessDefinition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//ProcessDefinition/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ProcessDefinition/proc"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Expression"/>
     <genClasses ecoreClass="GoatComponents.ecore#//Environment">
@@ -54,9 +89,6 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//LRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//LRef/name"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//AttributeToSet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//AttributeToSet/attribute"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//FuncParam">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//FuncParam/type"/>
@@ -86,28 +118,9 @@
     <genClasses ecoreClass="GoatComponents.ecore#//FuncReturn">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncReturn/val"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//InterleavingProcess">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//InterleavingProcess/subProcs"/>
+    <genClasses ecoreClass="GoatComponents.ecore#//NegativeIntConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//NegativeIntConstant/negvalue"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//OutputProcess">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutputProcess/precond"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//InputProcesses"/>
-    <genClasses ecoreClass="GoatComponents.ecore#//InputProcess">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//InputProcess/rec_pred"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//InputProcess/msgInParts"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//IfProcesses">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//IfProcesses/branches"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//IfBranchProcess">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//IfBranchProcess/cond"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//IfBranchProcess/then"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//CallProcess">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//CallProcess/procname"/>
-    </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//ZeroProcess"/>
     <genClasses ecoreClass="GoatComponents.ecore#//IntConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//IntConstant/value"/>
     </genClasses>
@@ -118,12 +131,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//BoolConstant/value"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Or">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Or/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Or/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Or/sub"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//And">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//And/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//And/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//And/sub"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Equality">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Equality/left"/>
@@ -152,6 +163,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//MulOrDiv/op"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//MulOrDiv/right"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//UnaryMinus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//UnaryMinus/expression"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Not">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Not/expression"/>
     </genClasses>
@@ -171,7 +185,5 @@
     <genClasses ecoreClass="GoatComponents.ecore#//RecAttributeRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//RecAttributeRef/attribute"/>
     </genClasses>
-    <genClasses ecoreClass="GoatComponents.ecore#//ComponentAttributeToSet"/>
-    <genClasses ecoreClass="GoatComponents.ecore#//LocalAttributeToSet"/>
   </genPackages>
 </genmodel:GenModel>

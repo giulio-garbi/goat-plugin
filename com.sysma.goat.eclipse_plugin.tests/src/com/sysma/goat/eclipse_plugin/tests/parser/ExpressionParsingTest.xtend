@@ -391,8 +391,8 @@ class ExpressionParsingTest {
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 		Assert.assertTrue(result instanceof And)
 		val cmp = result as And
-		Assert.assertTrue(cmp.left instanceof LocalVarRef)
-		Assert.assertTrue(cmp.right instanceof BoolConstant)
+		Assert.assertTrue(cmp.sub.get(0) instanceof LocalVarRef)
+		Assert.assertTrue(cmp.sub.get(1) instanceof BoolConstant)
 	}
 	
 	@Test
@@ -402,8 +402,8 @@ class ExpressionParsingTest {
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 		Assert.assertTrue(result instanceof Or)
 		val cmp = result as Or
-		Assert.assertTrue(cmp.left instanceof LocalVarRef)
-		Assert.assertTrue(cmp.right instanceof BoolConstant)
+		Assert.assertTrue(cmp.sub.get(0) instanceof LocalVarRef)
+		Assert.assertTrue(cmp.sub.get(1) instanceof BoolConstant)
 	}
 	
 	@Test
@@ -413,7 +413,7 @@ class ExpressionParsingTest {
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 		Assert.assertTrue(result instanceof Or)
 		val cmp = result as Or
-		Assert.assertTrue(cmp.left instanceof And)
-		Assert.assertTrue(cmp.right instanceof And)
+		Assert.assertTrue(cmp.sub.get(0) instanceof And)
+		Assert.assertTrue(cmp.sub.get(1) instanceof And)
 	}
 }

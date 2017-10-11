@@ -11,8 +11,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition
 import com.google.inject.Inject
 import org.eclipse.xtext.validation.EValidatorRegistrar
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend
 
 class ExpressionContextValidator extends AbstractGoatComponentsValidator {
 	@Inject
@@ -27,10 +26,7 @@ class ExpressionContextValidator extends AbstractGoatComponentsValidator {
 				var EObject eobj = expr
 				var eobjCont = eobj.eContainer
 				while(eobjCont !== null){
-					if (eobjCont instanceof Preconditions){
-						// RecAttributeRef forbidden in Preconditions, even Preconditions of OutputProcessPart
-						eobjCont = null
-					} else if (eobjCont instanceof OutputProcess){
+					if (eobjCont instanceof ProcessSend){
 						if(eobjCont.send_pred == eobj)
 							return
 					}
@@ -47,14 +43,6 @@ class ExpressionContextValidator extends AbstractGoatComponentsValidator {
 				while(eobjCont !== null){
 					if (eobjCont instanceof FuncDefinition){
 						error("Attributes cannot be used inside functions", GoatComponentsPackage.eINSTANCE.componentAttributeRef_Attribute)
-						eobjCont = null
-					}
-					else if (eobjCont instanceof OutputProcess){
-						error("Component attributes cannot be used in send messages and/or predicates. Use local attributes.", GoatComponentsPackage.eINSTANCE.componentAttributeRef_Attribute)
-						eobjCont = null
-					}
-					else if (eobjCont instanceof Preconditions){
-						// ComponentAttributeRef allowed in Preconditions
 						eobjCont = null
 					} else {
 						eobjCont = eobjCont.eContainer

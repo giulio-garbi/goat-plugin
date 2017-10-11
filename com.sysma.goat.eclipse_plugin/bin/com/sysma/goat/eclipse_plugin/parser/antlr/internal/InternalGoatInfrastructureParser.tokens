@@ -1,0 +1,15 @@
+','=8
+':'=9
+'cluster'=5
+'ring'=6
+'singleserver'=4
+'tree'=7
+'{'=10
+'}'=11
+RULE_ANY_OTHER=18
+RULE_ID=12
+RULE_INT=13
+RULE_ML_COMMENT=15
+RULE_SL_COMMENT=16
+RULE_STRING=14
+RULE_WS=17

@@ -5,12 +5,9 @@ package com.sysma.goat.eclipse_plugin.serializer;
 
 import com.google.inject.Inject;
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
 import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
@@ -24,30 +21,36 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
 import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
+import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
 import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessLoop;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveMultiple;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveSingle;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateLocalAttribute;
 import com.sysma.goat.eclipse_plugin.services.GoatComponentsGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -77,15 +80,12 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 			case GoatComponentsPackage.AND:
 				sequence_And(context, (And) semanticObject); 
 				return; 
-			case GoatComponentsPackage.AWARENESS:
-				sequence_Awareness(context, (Awareness) semanticObject); 
-				return; 
 			case GoatComponentsPackage.BOOL_CONSTANT:
 				if (rule == grammarAccess.getExpressionRule()
 						|| rule == grammarAccess.getOrRule()
-						|| action == grammarAccess.getOrAccess().getOrLeftAction_1_0()
+						|| action == grammarAccess.getOrAccess().getOrSubAction_1_0()
 						|| rule == grammarAccess.getAndRule()
-						|| action == grammarAccess.getAndAccess().getAndLeftAction_1_0()
+						|| action == grammarAccess.getAndAccess().getAndSubAction_1_0()
 						|| rule == grammarAccess.getEqualityRule()
 						|| action == grammarAccess.getEqualityAccess().getEqualityLeftAction_1_0()
 						|| rule == grammarAccess.getComparisonRule()
@@ -106,17 +106,11 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 					return; 
 				}
 				else break;
-			case GoatComponentsPackage.CALL_PROCESS:
-				sequence_CallProcess(context, (CallProcess) semanticObject); 
-				return; 
 			case GoatComponentsPackage.COMPARISON:
 				sequence_Comparison(context, (Comparison) semanticObject); 
 				return; 
 			case GoatComponentsPackage.COMPONENT_ATTRIBUTE_REF:
 				sequence_Atomic(context, (ComponentAttributeRef) semanticObject); 
-				return; 
-			case GoatComponentsPackage.COMPONENT_ATTRIBUTE_TO_SET:
-				sequence_AttributeToSet(context, (ComponentAttributeToSet) semanticObject); 
 				return; 
 			case GoatComponentsPackage.COMPONENT_DEFINITION:
 				sequence_ComponentDefinition(context, (ComponentDefinition) semanticObject); 
@@ -154,42 +148,12 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 			case GoatComponentsPackage.FUNCTION_CALL:
 				sequence_Atomic(context, (FunctionCall) semanticObject); 
 				return; 
-			case GoatComponentsPackage.IF_BRANCH_PROCESS:
-				if (rule == grammarAccess.getElseBranchProcessRule()) {
-					sequence_ElseBranchProcess(context, (IfBranchProcess) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getIfBranchProcessRule()) {
-					sequence_IfBranchProcess(context, (IfBranchProcess) semanticObject); 
-					return; 
-				}
-				else break;
-			case GoatComponentsPackage.IF_PROCESSES:
-				sequence_IfProcesses(context, (IfProcesses) semanticObject); 
-				return; 
-			case GoatComponentsPackage.INPUT_PROCESS:
-				sequence_InputProcess(context, (InputProcess) semanticObject); 
-				return; 
-			case GoatComponentsPackage.INPUT_PROCESSES:
-				if (rule == grammarAccess.getProcRule()
-						|| rule == grammarAccess.getNonDeterminismProcessRule()
-						|| rule == grammarAccess.getPredOutputProcessOrInputProcessesRule()
-						|| rule == grammarAccess.getNZCProcessRule()
-						|| rule == grammarAccess.getNProcessRule()) {
-					sequence_InputProcessesPart_PredOutputProcessOrInputProcesses(context, (InputProcesses) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getPredOutputProcessOrInputProcessRule()) {
-					sequence_PredOutputProcessOrInputProcess(context, (InputProcesses) semanticObject); 
-					return; 
-				}
-				else break;
 			case GoatComponentsPackage.INT_CONSTANT:
 				if (rule == grammarAccess.getExpressionRule()
 						|| rule == grammarAccess.getOrRule()
-						|| action == grammarAccess.getOrAccess().getOrLeftAction_1_0()
+						|| action == grammarAccess.getOrAccess().getOrSubAction_1_0()
 						|| rule == grammarAccess.getAndRule()
-						|| action == grammarAccess.getAndAccess().getAndLeftAction_1_0()
+						|| action == grammarAccess.getAndAccess().getAndSubAction_1_0()
 						|| rule == grammarAccess.getEqualityRule()
 						|| action == grammarAccess.getEqualityAccess().getEqualityLeftAction_1_0()
 						|| rule == grammarAccess.getComparisonRule()
@@ -210,14 +174,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 					return; 
 				}
 				else break;
-			case GoatComponentsPackage.INTERLEAVING_PROCESS:
-				sequence_InterleavingProcess(context, (InterleavingProcess) semanticObject); 
-				return; 
 			case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF:
 				sequence_Atomic(context, (LocalAttributeRef) semanticObject); 
-				return; 
-			case GoatComponentsPackage.LOCAL_ATTRIBUTE_TO_SET:
-				sequence_AttributeToSet(context, (LocalAttributeToSet) semanticObject); 
 				return; 
 			case GoatComponentsPackage.LOCAL_VAR_REF:
 				sequence_Atomic(context, (LocalVarRef) semanticObject); 
@@ -231,31 +189,17 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 			case GoatComponentsPackage.MUL_OR_DIV:
 				sequence_MulOrDiv(context, (MulOrDiv) semanticObject); 
 				return; 
+			case GoatComponentsPackage.NEGATIVE_INT_CONSTANT:
+				sequence_EnvInitValue(context, (NegativeIntConstant) semanticObject); 
+				return; 
 			case GoatComponentsPackage.NOT:
 				sequence_Primary(context, (Not) semanticObject); 
 				return; 
 			case GoatComponentsPackage.OR:
 				sequence_Or(context, (Or) semanticObject); 
 				return; 
-			case GoatComponentsPackage.OUTPUT_PROCESS:
-				if (rule == grammarAccess.getPredOutputProcessOrInputProcessRule()) {
-					sequence_OutputProcessPart_PredOutputProcessOrInputProcess(context, (OutputProcess) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getProcRule()
-						|| rule == grammarAccess.getNonDeterminismProcessRule()
-						|| rule == grammarAccess.getPredOutputProcessOrInputProcessesRule()
-						|| rule == grammarAccess.getNZCProcessRule()
-						|| rule == grammarAccess.getNProcessRule()) {
-					sequence_OutputProcessPart_PredOutputProcessOrInputProcesses(context, (OutputProcess) semanticObject); 
-					return; 
-				}
-				else break;
 			case GoatComponentsPackage.PLUS:
 				sequence_PlusOrMinus(context, (Plus) semanticObject); 
-				return; 
-			case GoatComponentsPackage.PRECONDITIONS:
-				sequence_Preconditions(context, (Preconditions) semanticObject); 
 				return; 
 			case GoatComponentsPackage.PRINT_ALL_STATEMENT:
 				sequence_PrintAllStatement(context, (PrintAllStatement) semanticObject); 
@@ -263,18 +207,93 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 			case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT:
 				sequence_PrintFormattedStatement(context, (PrintFormattedStatement) semanticObject); 
 				return; 
+			case GoatComponentsPackage.PROCESS_BLOCK:
+				if (rule == grammarAccess.getEmptyProcessBlockRule()) {
+					sequence_EmptyProcessBlock(context, (ProcessBlock) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getPDPBlockRule()) {
+					sequence_PDPBlock(context, (ProcessBlock) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getPTBThenRule()) {
+					sequence_PTBThen(context, (ProcessBlock) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getProcessBlockRule()) {
+					sequence_ProcessBlock(context, (ProcessBlock) semanticObject); 
+					return; 
+				}
+				else break;
+			case GoatComponentsPackage.PROCESS_CALL:
+				if (rule == grammarAccess.getPDPCallRule()) {
+					sequence_PDPCall(context, (ProcessCall) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getProcessStatementRule()
+						|| rule == grammarAccess.getProcessCallRule()) {
+					sequence_ProcessCall(context, (ProcessCall) semanticObject); 
+					return; 
+				}
+				else break;
 			case GoatComponentsPackage.PROCESS_DEFINITION:
-				sequence_ProcessDefinition(context, (ProcessDefinition) semanticObject); 
+				if (rule == grammarAccess.getProcessDefinitionBlockRule()) {
+					sequence_ProcessDefinitionBlock(context, (ProcessDefinition) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getProcessDefinitionRule()) {
+					sequence_ProcessDefinitionBlock_ProcessDefinitionParallel(context, (ProcessDefinition) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getProcessDefinitionParallelRule()) {
+					sequence_ProcessDefinitionParallel(context, (ProcessDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case GoatComponentsPackage.PROCESS_IF:
+				sequence_ProcessIf_ProcessThenBlock(context, (ProcessIf) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_LOOP:
+				sequence_ProcessLoop(context, (ProcessLoop) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_RECEIVE_MULTIPLE:
+				sequence_ProcessReceiveMultiple(context, (ProcessReceiveMultiple) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_RECEIVE_SINGLE:
+				sequence_ProcessReceiveSingle(context, (ProcessReceiveSingle) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_SEND:
+				sequence_ProcessSend(context, (ProcessSend) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_SET:
+				sequence_ProcessSet(context, (ProcessSet) semanticObject); 
+				return; 
+			case GoatComponentsPackage.PROCESS_SPAWN:
+				if (rule == grammarAccess.getPDPSpawnRule()) {
+					sequence_PDPSpawn(context, (ProcessSpawn) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getProcessStatementRule()
+						|| rule == grammarAccess.getProcessSpawnRule()) {
+					sequence_ProcessSpawn(context, (ProcessSpawn) semanticObject); 
+					return; 
+				}
+				else break;
+			case GoatComponentsPackage.PROCESS_WAIT_FOR:
+				sequence_ProcessWaitFor(context, (ProcessWaitFor) semanticObject); 
 				return; 
 			case GoatComponentsPackage.REC_ATTRIBUTE_REF:
 				sequence_Atomic(context, (RecAttributeRef) semanticObject); 
 				return; 
+			case GoatComponentsPackage.RECEIVE_CASE:
+				sequence_ReceiveCase(context, (ReceiveCase) semanticObject); 
+				return; 
 			case GoatComponentsPackage.STRING_CONSTANT:
 				if (rule == grammarAccess.getExpressionRule()
 						|| rule == grammarAccess.getOrRule()
-						|| action == grammarAccess.getOrAccess().getOrLeftAction_1_0()
+						|| action == grammarAccess.getOrAccess().getOrSubAction_1_0()
 						|| rule == grammarAccess.getAndRule()
-						|| action == grammarAccess.getAndAccess().getAndLeftAction_1_0()
+						|| action == grammarAccess.getAndAccess().getAndSubAction_1_0()
 						|| rule == grammarAccess.getEqualityRule()
 						|| action == grammarAccess.getEqualityAccess().getEqualityLeftAction_1_0()
 						|| rule == grammarAccess.getComparisonRule()
@@ -295,11 +314,17 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 					return; 
 				}
 				else break;
+			case GoatComponentsPackage.UNARY_MINUS:
+				sequence_Primary(context, (UnaryMinus) semanticObject); 
+				return; 
 			case GoatComponentsPackage.UPDATE:
 				sequence_Update(context, (Update) semanticObject); 
 				return; 
-			case GoatComponentsPackage.ZERO_PROCESS:
-				sequence_ZeroProcess(context, (ZeroProcess) semanticObject); 
+			case GoatComponentsPackage.UPDATE_COMPONENT_ATTRIBUTE:
+				sequence_UpdateComponentAttribute(context, (UpdateComponentAttribute) semanticObject); 
+				return; 
+			case GoatComponentsPackage.UPDATE_LOCAL_ATTRIBUTE:
+				sequence_UpdateLocalAttribute(context, (UpdateLocalAttribute) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -326,19 +351,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Primary returns And
 	 *
 	 * Constraint:
-	 *     (left=And_And_1_0 right=Equality)
+	 *     (sub+=And_And_1_0 sub+=Equality)
 	 */
 	protected void sequence_And(ISerializationContext context, And semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.AND__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.AND__LEFT));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.AND__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.AND__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAndAccess().getAndLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getAndAccess().getRightEqualityParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -604,80 +620,6 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
-	 *     AttributeToSet returns ComponentAttributeToSet
-	 *
-	 * Constraint:
-	 *     attribute=ID
-	 */
-	protected void sequence_AttributeToSet(ISerializationContext context, ComponentAttributeToSet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ATTRIBUTE_TO_SET__ATTRIBUTE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ATTRIBUTE_TO_SET__ATTRIBUTE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAttributeToSetAccess().getAttributeIDTerminalRuleCall_0_3_0(), semanticObject.getAttribute());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     AttributeToSet returns LocalAttributeToSet
-	 *
-	 * Constraint:
-	 *     attribute=ID
-	 */
-	protected void sequence_AttributeToSet(ISerializationContext context, LocalAttributeToSet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ATTRIBUTE_TO_SET__ATTRIBUTE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ATTRIBUTE_TO_SET__ATTRIBUTE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAttributeToSetAccess().getAttributeIDTerminalRuleCall_1_3_0(), semanticObject.getAttribute());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Awareness returns Awareness
-	 *
-	 * Constraint:
-	 *     pred=Expression
-	 */
-	protected void sequence_Awareness(ISerializationContext context, Awareness semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.AWARENESS__PRED) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.AWARENESS__PRED));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAwarenessAccess().getPredExpressionParserRuleCall_3_0(), semanticObject.getPred());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     InterleavingProcess.InterleavingProcess_1 returns CallProcess
-	 *     NZCProcess returns CallProcess
-	 *     CallProcess returns CallProcess
-	 *
-	 * Constraint:
-	 *     procname=[ProcessDefinition|ID]
-	 */
-	protected void sequence_CallProcess(ISerializationContext context, CallProcess semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CALL_PROCESS__PROCNAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CALL_PROCESS__PROCNAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getCallProcessAccess().getProcnameProcessDefinitionIDTerminalRuleCall_1_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.CALL_PROCESS__PROCNAME, false));
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Expression returns Comparison
 	 *     Or returns Comparison
 	 *     Or.Or_1_0 returns Comparison
@@ -726,19 +668,13 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
-	 *     ElseBranchProcess returns IfBranchProcess
+	 *     EmptyProcessBlock returns ProcessBlock
 	 *
 	 * Constraint:
-	 *     then=PredOutputProcessOrInputProcess
+	 *     {ProcessBlock}
 	 */
-	protected void sequence_ElseBranchProcess(ISerializationContext context, IfBranchProcess semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getElseBranchProcessAccess().getThenPredOutputProcessOrInputProcessParserRuleCall_2_0(), semanticObject.getThen());
-		feeder.finish();
+	protected void sequence_EmptyProcessBlock(ISerializationContext context, ProcessBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -767,7 +703,25 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.INT_CONSTANT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEnvInitValueAccess().getValueINTTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getEnvInitValueAccess().getValueINTTerminalRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EnvInitValue returns NegativeIntConstant
+	 *
+	 * Constraint:
+	 *     negvalue=INT
+	 */
+	protected void sequence_EnvInitValue(ISerializationContext context, NegativeIntConstant semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.NEGATIVE_INT_CONSTANT__NEGVALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.NEGATIVE_INT_CONSTANT__NEGVALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEnvInitValueAccess().getNegvalueINTTerminalRuleCall_0_2_0(), semanticObject.getNegvalue());
 		feeder.finish();
 	}
 	
@@ -785,7 +739,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.STRING_CONSTANT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEnvInitValueAccess().getValueSTRINGTerminalRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getEnvInitValueAccess().getValueSTRINGTerminalRuleCall_2_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -954,87 +908,6 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
-	 *     IfBranchProcess returns IfBranchProcess
-	 *
-	 * Constraint:
-	 *     (cond=Preconditions then=PredOutputProcessOrInputProcess)
-	 */
-	protected void sequence_IfBranchProcess(ISerializationContext context, IfBranchProcess semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__COND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__COND));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.IF_BRANCH_PROCESS__THEN));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getIfBranchProcessAccess().getCondPreconditionsParserRuleCall_2_0(), semanticObject.getCond());
-		feeder.accept(grammarAccess.getIfBranchProcessAccess().getThenPredOutputProcessOrInputProcessParserRuleCall_4_0(), semanticObject.getThen());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Proc returns IfProcesses
-	 *     NonDeterminismProcess returns IfProcesses
-	 *     IfProcesses returns IfProcesses
-	 *     NZCProcess returns IfProcesses
-	 *     NProcess returns IfProcesses
-	 *
-	 * Constraint:
-	 *     (branches+=IfBranchProcess branches+=IfBranchProcess* branches+=ElseBranchProcess?)
-	 */
-	protected void sequence_IfProcesses(ISerializationContext context, IfProcesses semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     InputProcess returns InputProcess
-	 *
-	 * Constraint:
-	 *     (rec_pred=Expression (msgInParts+=AttributeToSet msgInParts+=AttributeToSet*)? output=PrintStatement? next=NZCProcess)
-	 */
-	protected void sequence_InputProcess(ISerializationContext context, InputProcess semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Proc returns InputProcesses
-	 *     NonDeterminismProcess returns InputProcesses
-	 *     PredOutputProcessOrInputProcesses returns InputProcesses
-	 *     NZCProcess returns InputProcesses
-	 *     NProcess returns InputProcesses
-	 *
-	 * Constraint:
-	 *     (preconds+=PredOutputProcessOrInputProcesses_InputProcesses_1_1_0 inputs+=InputProcess (preconds+=Preconditions inputs+=InputProcess)*)
-	 */
-	protected void sequence_InputProcessesPart_PredOutputProcessOrInputProcesses(ISerializationContext context, InputProcesses semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Proc returns InterleavingProcess
-	 *     InterleavingProcess returns InterleavingProcess
-	 *     NonDeterminismProcess returns InterleavingProcess
-	 *     NZCProcess returns InterleavingProcess
-	 *     NProcess returns InterleavingProcess
-	 *
-	 * Constraint:
-	 *     (subProcs+=InterleavingProcess_InterleavingProcess_1 subProcs+=CallProcess*)
-	 */
-	protected void sequence_InterleavingProcess(ISerializationContext context, InterleavingProcess semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Model returns Model
 	 *
 	 * Constraint:
@@ -1065,7 +938,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Primary returns MulOrDiv
 	 *
 	 * Constraint:
-	 *     (left=MulOrDiv_MulOrDiv_1_0 (op='*' | op='/') right=Primary)
+	 *     (left=MulOrDiv_MulOrDiv_1_0 (op='*' | op='/' | op='%') right=Primary)
 	 */
 	protected void sequence_MulOrDiv(ISerializationContext context, MulOrDiv semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1092,60 +965,69 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Primary returns Or
 	 *
 	 * Constraint:
-	 *     (left=Or_Or_1_0 right=And)
+	 *     (sub+=Or_Or_1_0 sub+=And)
 	 */
 	protected void sequence_Or(ISerializationContext context, Or semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.OR__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.OR__LEFT));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.OR__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.OR__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOrAccess().getOrLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getOrAccess().getRightAndParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     PredOutputProcessOrInputProcess returns OutputProcess
-	 *
-	 * Constraint:
-	 *     (
-	 *         precond=PredOutputProcessOrInputProcess_OutputProcess_1_0_0 
-	 *         (msgOutParts+=Expression msgOutParts+=Expression*)? 
-	 *         send_pred=Expression 
-	 *         output=PrintStatement? 
-	 *         msec=INT? 
-	 *         next=Proc
-	 *     )
-	 */
-	protected void sequence_OutputProcessPart_PredOutputProcessOrInputProcess(ISerializationContext context, OutputProcess semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Proc returns OutputProcess
-	 *     NonDeterminismProcess returns OutputProcess
-	 *     PredOutputProcessOrInputProcesses returns OutputProcess
-	 *     NZCProcess returns OutputProcess
-	 *     NProcess returns OutputProcess
+	 *     PDPBlock returns ProcessBlock
 	 *
 	 * Constraint:
-	 *     (
-	 *         precond=PredOutputProcessOrInputProcesses_OutputProcess_1_0_0 
-	 *         (msgOutParts+=Expression msgOutParts+=Expression*)? 
-	 *         send_pred=Expression 
-	 *         output=PrintStatement? 
-	 *         msec=INT? 
-	 *         next=Proc
-	 *     )
+	 *     (statements+=PDPSpawn* statements+=PDPCall)
 	 */
-	protected void sequence_OutputProcessPart_PredOutputProcessOrInputProcesses(ISerializationContext context, OutputProcess semanticObject) {
+	protected void sequence_PDPBlock(ISerializationContext context, ProcessBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PDPCall returns ProcessCall
+	 *
+	 * Constraint:
+	 *     proc=[ProcessDefinition|ID]
+	 */
+	protected void sequence_PDPCall(ISerializationContext context, ProcessCall semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_CALL__PROC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_CALL__PROC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPDPCallAccess().getProcProcessDefinitionIDTerminalRuleCall_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.PROCESS_CALL__PROC, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PDPSpawn returns ProcessSpawn
+	 *
+	 * Constraint:
+	 *     proc=[ProcessDefinition|ID]
+	 */
+	protected void sequence_PDPSpawn(ISerializationContext context, ProcessSpawn semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPDPSpawnAccess().getProcProcessDefinitionIDTerminalRuleCall_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PTBThen returns ProcessBlock
+	 *
+	 * Constraint:
+	 *     statements+=ProcessStatement*
+	 */
+	protected void sequence_PTBThen(ISerializationContext context, ProcessBlock semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1260,34 +1142,6 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
-	 *     Preconditions returns Preconditions
-	 *     PredOutputProcessOrInputProcesses.OutputProcess_1_0_0 returns Preconditions
-	 *     PredOutputProcessOrInputProcesses.InputProcesses_1_1_0 returns Preconditions
-	 *     PredOutputProcessOrInputProcess.OutputProcess_1_0_0 returns Preconditions
-	 *     PredOutputProcessOrInputProcess.InputProcesses_1_1_0 returns Preconditions
-	 *
-	 * Constraint:
-	 *     (precond+=Update | precond+=Awareness)*
-	 */
-	protected void sequence_Preconditions(ISerializationContext context, Preconditions semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     PredOutputProcessOrInputProcess returns InputProcesses
-	 *
-	 * Constraint:
-	 *     (preconds+=PredOutputProcessOrInputProcess_InputProcesses_1_1_0 inputs+=InputProcess)
-	 */
-	protected void sequence_PredOutputProcessOrInputProcess(ISerializationContext context, InputProcesses semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Expression returns Not
 	 *     Or returns Not
 	 *     Or.Or_1_0 returns Not
@@ -1314,7 +1168,40 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.NOT__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_1_3_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_2_2_0(), semanticObject.getExpression());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns UnaryMinus
+	 *     Or returns UnaryMinus
+	 *     Or.Or_1_0 returns UnaryMinus
+	 *     And returns UnaryMinus
+	 *     And.And_1_0 returns UnaryMinus
+	 *     Equality returns UnaryMinus
+	 *     Equality.Equality_1_0 returns UnaryMinus
+	 *     Comparison returns UnaryMinus
+	 *     Comparison.Comparison_1_0 returns UnaryMinus
+	 *     PlusOrMinus returns UnaryMinus
+	 *     PlusOrMinus.Plus_1_0_0_0 returns UnaryMinus
+	 *     PlusOrMinus.Minus_1_0_1_0 returns UnaryMinus
+	 *     PlusOrMinus.Concatenate_1_0_2_0 returns UnaryMinus
+	 *     MulOrDiv returns UnaryMinus
+	 *     MulOrDiv.MulOrDiv_1_0 returns UnaryMinus
+	 *     Primary returns UnaryMinus
+	 *
+	 * Constraint:
+	 *     expression=Primary
+	 */
+	protected void sequence_Primary(ISerializationContext context, UnaryMinus semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.UNARY_MINUS__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.UNARY_MINUS__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_1_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -1345,7 +1232,59 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PRINT_FORMATTED_STATEMENT__TO_PRINT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrintFormattedStatementAccess().getToPrintSTRINGTerminalRuleCall_3_0(), semanticObject.getToPrint());
+		feeder.accept(grammarAccess.getPrintFormattedStatementAccess().getToPrintSTRINGTerminalRuleCall_2_0(), semanticObject.getToPrint());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessBlock returns ProcessBlock
+	 *
+	 * Constraint:
+	 *     statements+=ProcessStatement*
+	 */
+	protected void sequence_ProcessBlock(ISerializationContext context, ProcessBlock semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessCall
+	 *     ProcessCall returns ProcessCall
+	 *
+	 * Constraint:
+	 *     proc=[ProcessDefinition|ID]
+	 */
+	protected void sequence_ProcessCall(ISerializationContext context, ProcessCall semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_CALL__PROC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_CALL__PROC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProcessCallAccess().getProcProcessDefinitionIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.PROCESS_CALL__PROC, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessDefinitionBlock returns ProcessDefinition
+	 *
+	 * Constraint:
+	 *     (name=ID block=ProcessBlock)
+	 */
+	protected void sequence_ProcessDefinitionBlock(ISerializationContext context, ProcessDefinition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__NAME));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__BLOCK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__BLOCK));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProcessDefinitionBlockAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getProcessDefinitionBlockAccess().getBlockProcessBlockParserRuleCall_2_0(), semanticObject.getBlock());
 		feeder.finish();
 	}
 	
@@ -1355,18 +1294,201 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ProcessDefinition returns ProcessDefinition
 	 *
 	 * Constraint:
-	 *     (name=ID proc=Proc)
+	 *     ((name=ID block=PDPBlock) | (name=ID block=ProcessBlock))
 	 */
-	protected void sequence_ProcessDefinition(ISerializationContext context, ProcessDefinition semanticObject) {
+	protected void sequence_ProcessDefinitionBlock_ProcessDefinitionParallel(ISerializationContext context, ProcessDefinition semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessDefinitionParallel returns ProcessDefinition
+	 *
+	 * Constraint:
+	 *     (name=ID block=PDPBlock)
+	 */
+	protected void sequence_ProcessDefinitionParallel(ISerializationContext context, ProcessDefinition semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__NAME));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__PROC) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__PROC));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__BLOCK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_DEFINITION__BLOCK));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getProcessDefinitionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getProcessDefinitionAccess().getProcProcParserRuleCall_3_0(), semanticObject.getProc());
+		feeder.accept(grammarAccess.getProcessDefinitionParallelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getProcessDefinitionParallelAccess().getBlockPDPBlockParserRuleCall_3_0(), semanticObject.getBlock());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessIf
+	 *     ProcessIf returns ProcessIf
+	 *
+	 * Constraint:
+	 *     (
+	 *         cond+=Expression 
+	 *         (action+=ProcessSend | action+=ProcessReceive | action+=ProcessSet) 
+	 *         then+=PTBThen 
+	 *         (cond+=Expression? (action+=ProcessSend | action+=ProcessReceive | action+=ProcessSet) then+=PTBThen)*
+	 *     )
+	 */
+	protected void sequence_ProcessIf_ProcessThenBlock(ISerializationContext context, ProcessIf semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessLoop
+	 *     ProcessLoop returns ProcessLoop
+	 *
+	 * Constraint:
+	 *     block=ProcessBlock
+	 */
+	protected void sequence_ProcessLoop(ISerializationContext context, ProcessLoop semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_LOOP__BLOCK) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_LOOP__BLOCK));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProcessLoopAccess().getBlockProcessBlockParserRuleCall_1_0(), semanticObject.getBlock());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessReceiveMultiple
+	 *     ProcessReceive returns ProcessReceiveMultiple
+	 *     ProcessReceiveMultiple returns ProcessReceiveMultiple
+	 *
+	 * Constraint:
+	 *     (cases+=ReceiveCase then+=ProcessBlock)+
+	 */
+	protected void sequence_ProcessReceiveMultiple(ISerializationContext context, ProcessReceiveMultiple semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessReceiveSingle
+	 *     ProcessReceive returns ProcessReceiveSingle
+	 *     ProcessReceiveSingle returns ProcessReceiveSingle
+	 *
+	 * Constraint:
+	 *     (cases+=ReceiveCase then+=EmptyProcessBlock)
+	 */
+	protected void sequence_ProcessReceiveSingle(ISerializationContext context, ProcessReceiveSingle semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessSend
+	 *     ProcessSend returns ProcessSend
+	 *
+	 * Constraint:
+	 *     ((msgOutParts+=Expression msgOutParts+=Expression*)? send_pred=Expression updates=Update print=PrintStatement?)
+	 */
+	protected void sequence_ProcessSend(ISerializationContext context, ProcessSend semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessSet
+	 *     ProcessSet returns ProcessSet
+	 *
+	 * Constraint:
+	 *     (update=Update print=PrintStatement?)
+	 */
+	protected void sequence_ProcessSet(ISerializationContext context, ProcessSet semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessSpawn
+	 *     ProcessSpawn returns ProcessSpawn
+	 *
+	 * Constraint:
+	 *     proc=[ProcessDefinition|ID]
+	 */
+	protected void sequence_ProcessSpawn(ISerializationContext context, ProcessSpawn semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getProcessSpawnAccess().getProcProcessDefinitionIDTerminalRuleCall_2_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.PROCESS_SPAWN__PROC, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ProcessStatement returns ProcessWaitFor
+	 *     ProcessWaitFor returns ProcessWaitFor
+	 *
+	 * Constraint:
+	 *     (cond=Expression update=Update print=PrintStatement?)
+	 */
+	protected void sequence_ProcessWaitFor(ISerializationContext context, ProcessWaitFor semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ReceiveCase returns ReceiveCase
+	 *
+	 * Constraint:
+	 *     (cond=Expression (msgInParts+=ID msgInParts+=ID*)? updates=Update print=PrintStatement?)
+	 */
+	protected void sequence_ReceiveCase(ISerializationContext context, ReceiveCase semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     UpdateComponentAttribute returns UpdateComponentAttribute
+	 *
+	 * Constraint:
+	 *     atname=ID
+	 */
+	protected void sequence_UpdateComponentAttribute(ISerializationContext context, UpdateComponentAttribute semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.UPDATE_COMPONENT_ATTRIBUTE__ATNAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.UPDATE_COMPONENT_ATTRIBUTE__ATNAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUpdateComponentAttributeAccess().getAtnameIDTerminalRuleCall_2_0(), semanticObject.getAtname());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     UpdateLocalAttribute returns UpdateLocalAttribute
+	 *
+	 * Constraint:
+	 *     atname=ID
+	 */
+	protected void sequence_UpdateLocalAttribute(ISerializationContext context, UpdateLocalAttribute semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.UPDATE_LOCAL_ATTRIBUTE__ATNAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.UPDATE_LOCAL_ATTRIBUTE__ATNAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUpdateLocalAttributeAccess().getAtnameIDTerminalRuleCall_2_0(), semanticObject.getAtname());
 		feeder.finish();
 	}
 	
@@ -1376,25 +1498,13 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Update returns Update
 	 *
 	 * Constraint:
-	 *     (vars+=AttributeToSet vals+=Expression (vars+=AttributeToSet vals+=Expression)*)
+	 *     (
+	 *         (attribute+=UpdateComponentAttribute | attribute+=UpdateLocalAttribute) 
+	 *         value+=Expression 
+	 *         ((attribute+=UpdateComponentAttribute | attribute+=UpdateLocalAttribute) value+=Expression)*
+	 *     )?
 	 */
 	protected void sequence_Update(ISerializationContext context, Update semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Proc returns ZeroProcess
-	 *     NonDeterminismProcess returns ZeroProcess
-	 *     NZCProcess returns ZeroProcess
-	 *     NProcess returns ZeroProcess
-	 *     ZeroProcess returns ZeroProcess
-	 *
-	 * Constraint:
-	 *     {ZeroProcess}
-	 */
-	protected void sequence_ZeroProcess(ISerializationContext context, ZeroProcess semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

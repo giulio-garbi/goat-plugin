@@ -2,7 +2,6 @@ package com.sysma.goat.eclipse_plugin.validation;
 
 import com.google.inject.Inject;
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
@@ -10,13 +9,14 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
 import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
 import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor;
+import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping;
 import com.sysma.goat.eclipse_plugin.validation.AbstractGoatComponentsValidator;
 import org.eclipse.emf.ecore.EReference;
@@ -88,18 +88,18 @@ public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
   }
   
   @Check
-  public void checkTypeReceivePredicate(final InputProcess iproc) {
-    this.expectedType(iproc.getRec_pred(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getInputProcess_Rec_pred());
+  public void checkTypeReceivePredicate(final ReceiveCase iproc) {
+    this.expectedType(iproc.getCond(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getReceiveCase_Cond());
   }
   
   @Check
-  public void checkTypeSendPredicate(final OutputProcess oproc) {
-    this.expectedType(oproc.getSend_pred(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getOutputProcessPart_Send_pred());
+  public void checkTypeSendPredicate(final ProcessSend oproc) {
+    this.expectedType(oproc.getSend_pred(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getProcessSend_Send_pred());
   }
   
   @Check
-  public void checkTypeAwareness(final Awareness awr) {
-    this.expectedType(awr.getPred(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getAwareness_Pred());
+  public boolean checkTypeAwareness(final ProcessWaitFor awr) {
+    return this.expected2Types(awr.getCond(), ExpressionTyping.ExprType.BOOL, ExpressionTyping.ExprType.INT, GoatComponentsPackage.eINSTANCE.getProcessWaitFor_Cond());
   }
   
   @Check
@@ -108,14 +108,32 @@ public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
     boolean _matched = false;
     if (expr instanceof And) {
       _matched=true;
-      this.expectedType(((And)expr).getLeft(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getAnd_Left());
-      this.expectedType(((And)expr).getRight(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getAnd_Right());
+      final Function1<Expression, Boolean> _function = (Expression it) -> {
+        boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
+        return Boolean.valueOf((!_matchable));
+      };
+      int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Expression>filter(((And)expr).getSub(), _function), Object.class)).length;
+      boolean _greaterThan = (_length > 0);
+      if (_greaterThan) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("And requires boolean expressions");
+        this.error(_builder.toString(), GoatComponentsPackage.eINSTANCE.getAnd_Sub());
+      }
     }
     if (!_matched) {
       if (expr instanceof Or) {
         _matched=true;
-        this.expectedType(((Or)expr).getLeft(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getOr_Left());
-        this.expectedType(((Or)expr).getRight(), ExpressionTyping.ExprType.BOOL, GoatComponentsPackage.eINSTANCE.getOr_Right());
+        final Function1<Expression, Boolean> _function = (Expression it) -> {
+          boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
+          return Boolean.valueOf((!_matchable));
+        };
+        int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Expression>filter(((Or)expr).getSub(), _function), Object.class)).length;
+        boolean _greaterThan = (_length > 0);
+        if (_greaterThan) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("Or requires boolean expressions");
+          this.error(_builder.toString(), GoatComponentsPackage.eINSTANCE.getAnd_Sub());
+        }
       }
     }
     if (!_matched) {

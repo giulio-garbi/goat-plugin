@@ -9,21 +9,20 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import com.sysma.goat.eclipse_plugin.goatComponents.Model
 import org.junit.Assert
 import org.junit.Test
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness
-import com.sysma.goat.eclipse_plugin.goatComponents.Update
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.Comparison
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessCall
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive
+import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateLocalAttribute
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor
+import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute
 
 @RunWith(XtextRunner)
 @InjectWith(GoatComponentsInjectorProvider)
@@ -35,211 +34,166 @@ class ProcessParsingTest {
 		val result = parseHelper.parse('''
 		infrastructure infr
 		
-		proc P = «proc»
+		process P {
+			«proc»
+		}
 		''')
 		Assert.assertNotNull(result)
-		result.processes.get(0).proc
+		result.processes.get(0).block
 	}
 	
 	@Test
 	def zeroProcess(){
-		val result = encapsulateProcess('''nil''')
+		val result = encapsulateProcess('''''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof ZeroProcess)
-	}
-	
-	@Test
-	def brackets(){
-		val result = encapsulateProcess('''(((nil)))''')
-		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof ZeroProcess)
+		Assert.assertTrue(result.statements.empty)
 	}
 	
 	@Test
 	def call(){
-		val result = encapsulateProcess('''P''')
+		val result = encapsulateProcess('''call(P)''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof InterleavingProcess)
-		val p = result as InterleavingProcess
-		Assert.assertTrue(p.subProcs.length == 1)
-		Assert.assertTrue(p.subProcs.get(0) instanceof CallProcess)
-		val cp = p.subProcs.get(0) as CallProcess
-		Assert.assertTrue(cp.procname.name == "P")
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessCall)
+		val cp = result.statements.get(0) as ProcessCall
+		Assert.assertTrue(cp.proc.name == "P")
 	}
 	
 	@Test
 	def interleaving(){
-		val result = encapsulateProcess('''P|P|P|P''')
+		val result = encapsulateProcess('''spawn(P)''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof InterleavingProcess)
-		val p = result as InterleavingProcess
-		Assert.assertTrue(p.subProcs.length == 4)
-		Assert.assertTrue(p.subProcs.forall[it instanceof CallProcess])
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessSpawn)
+		val p = result.statements.get(0) as ProcessSpawn
+		Assert.assertTrue(p.proc.name == "P")
+	}
+	
+	@Test
+	def defineInterleaving(){
+		val defin = parseHelper.parse('''
+		infrastructure infr
+		
+		process P = P|P|P|P
+		''')
+		Assert.assertNotNull(defin)
+		val result = defin.processes.get(0).block
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result.statements.reverseView.tail.filter[!(it instanceof ProcessSpawn)].empty)
+		Assert.assertTrue(result.statements.last instanceof ProcessCall)
 	}
 	
 	// Input process
 	@Test
 	def inputProcessSimple(){
-		val result = encapsulateProcess('''receive (true) {proc.x,this.y,proc.z}''')
-		/*
-		 * InputProcesses
-		 * 		.preconds = [ []           ]
-		 * 		.inputs =   [ InputProcess ]
-		 */
+		val result = encapsulateProcess('''receive (true) {x,y,z};''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.isEmpty) //missing the next
-		Assert.assertTrue(result instanceof InputProcesses)
-		val iprocs = result as InputProcesses
-		Assert.assertTrue(iprocs.preconds.length == 1)
-		Assert.assertTrue(iprocs.preconds.get(0).precond.length == 0)
-		Assert.assertTrue(iprocs.inputs.length == 1)
-		Assert.assertTrue(iprocs.inputs.get(0) instanceof InputProcess)
-		val p = iprocs.inputs.get(0) as InputProcess
-		Assert.assertTrue(p.preconds.length == 0)
-		Assert.assertTrue(p.rec_pred instanceof Expression)
-		Assert.assertTrue(p.msgInParts.length == 3)
-		Assert.assertTrue(p.msgInParts.get(1) instanceof ComponentAttributeToSet)
-		Assert.assertTrue(p.msgInParts.get(0) instanceof LocalAttributeToSet)
-		Assert.assertTrue(p.msgInParts.get(2) instanceof LocalAttributeToSet)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessReceive)
+		val iprocs = result.statements.get(0) as ProcessReceive
+		Assert.assertTrue(iprocs.cases.length == 1)
+		val case0 = iprocs.cases.head
+		Assert.assertTrue(case0.cond instanceof BoolConstant)
+		Assert.assertTrue(case0.msgInParts.length == 3)
 	}
 	
 	@Test
-	def threeInputProcessesSimple(){
-		val result = encapsulateProcess('''receive (true) {proc.x,this.y,proc.z} + receive (true) {proc.x,this.y,proc.z} + receive (true) {proc.x,this.y,proc.z}''')
-		/*
-		 * InputProcesses
-		 * 		.preconds = [ []          , []          , []           ]
-		 * 		.inputs =   [ InputProcess, InputProcess, InputProcess ]
-		 */
-		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.isEmpty) // missing the next
-		Assert.assertTrue(result instanceof InputProcesses)
-		val iprocs = result as InputProcesses
-		Assert.assertTrue(iprocs.preconds.length == 3)
-		Assert.assertTrue(iprocs.inputs.length == 3)
-		(0..2).forEach[i|
-			Assert.assertTrue(iprocs.preconds.get(i).precond.length == 0)
-			Assert.assertTrue(iprocs.inputs.get(i) instanceof InputProcess)
-			val p = iprocs.inputs.get(i) as InputProcess
-			Assert.assertTrue(p.preconds.length == 0)
-			Assert.assertTrue(p.rec_pred instanceof Expression)
-			Assert.assertTrue(p.msgInParts.length == 3)
-			Assert.assertTrue(p.msgInParts.get(1) instanceof ComponentAttributeToSet)
-			Assert.assertTrue(p.msgInParts.get(0) instanceof LocalAttributeToSet)
-			Assert.assertTrue(p.msgInParts.get(2) instanceof LocalAttributeToSet)
-		]
-	}
-	@Test
-	def inputProcessesPrecond(){
-		val result = encapsulateProcess('''wait until(true) receive (true) {proc.x,this.y,proc.z}.nil + [proc.x := 2]wait until(true) receive (true) {proc.x,this.y,proc.z}.nil''')
-		/*
-		 * InputProcesses
-		 * 		.preconds = [ [Awareness] , [Awr., Upd.] ]
-		 * 		.inputs =   [ InputProcess, InputProcess ]
-		 */
+	def threeInputProcessSimple(){
+		val result = encapsulateProcess('''
+		receive {
+			case (true) {x,y,z} : {}
+			case (true) {x,y,z} : {}
+			case (true) {x,y,z} : {}
+		}''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof InputProcesses)
-		val iprocs = result as InputProcesses
-		Assert.assertTrue(iprocs.preconds.length == 2)
-		Assert.assertTrue(iprocs.inputs.length == 2)
-		(0..1).forEach[i|
-			Assert.assertTrue(iprocs.preconds.get(i).precond.length == i+1)
-			Assert.assertTrue(iprocs.inputs.get(i) instanceof InputProcess)
-			val p = iprocs.inputs.get(i) as InputProcess
-			Assert.assertTrue(p.preconds.length == 0)
-			Assert.assertTrue(p.rec_pred instanceof Expression)
-			Assert.assertTrue(p.msgInParts.length == 3)
-			Assert.assertTrue(p.msgInParts.get(1) instanceof ComponentAttributeToSet)
-			Assert.assertTrue(p.msgInParts.get(0) instanceof LocalAttributeToSet)
-			Assert.assertTrue(p.msgInParts.get(2) instanceof LocalAttributeToSet)
-			Assert.assertTrue(p.next instanceof ZeroProcess)
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessReceive)
+		val iprocs = result.statements.get(0) as ProcessReceive
+		Assert.assertTrue(iprocs.cases.length == 3)
+		iprocs.cases.forEach[
+			Assert.assertTrue(cond instanceof BoolConstant)
+			Assert.assertTrue(msgInParts.length == 3)
 		]
-		Assert.assertTrue(iprocs.preconds.get(0).precond.get(0) instanceof Awareness)
-		Assert.assertTrue(iprocs.preconds.get(1).precond.get(1) instanceof Awareness)
-		Assert.assertTrue(iprocs.preconds.get(1).precond.get(0) instanceof Update)
-		Assert.assertNull(iprocs.next)
+	}
+	
+	@Test
+	def threeInputProcessUpdate(){
+		val result = encapsulateProcess('''
+		receive {
+			case (true) {x,y,z} [proc.z := 5] : {}
+			case (true) {x,y,z} [proc.z := 5] : {}
+			case (true) {x,y,z} [proc.z := 5] : {}
+		}''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessReceive)
+		val iprocs = result.statements.get(0) as ProcessReceive
+		Assert.assertTrue(iprocs.cases.length == 3)
+		iprocs.cases.forEach[
+			Assert.assertTrue(cond instanceof BoolConstant)
+			Assert.assertTrue(msgInParts.length == 3)
+			Assert.assertTrue(updates.attribute.get(0) instanceof UpdateLocalAttribute)
+			Assert.assertTrue((updates.attribute.get(0) as UpdateLocalAttribute).atname == "z")
+		]
 	}
 	
 	@Test
 	def outputProcess(){
-		val result = encapsulateProcess('''wait until(true) send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil''')
+		val result = encapsulateProcess('''send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof OutputProcess)
-		val p = result as OutputProcess
-		Assert.assertTrue(p.precond.precond.length == 1)
+		Assert.assertTrue(result.statements.head instanceof ProcessSend)
+		val p = result.statements.head as ProcessSend
 		Assert.assertTrue(p.send_pred instanceof Expression)
 		Assert.assertTrue(p.msgOutParts.length == 3)
 		Assert.assertTrue(p.msgOutParts.forall[it instanceof Expression])
-		Assert.assertTrue(p.next instanceof ZeroProcess)
-		Assert.assertTrue(p.msec == 0)
-		Assert.assertNull(p.output)
+		Assert.assertTrue(p.updates.attribute.empty)
+		Assert.assertNull(p.print)
 	}
 	
 	@Test
-	def outputProcessSleepPrint(){
-		val result = encapsulateProcess('''send {proc.x,this.y,proc.z} @ (receiver.ciao == 1) print("Ciao ciao") sleep(10).nil''')
+	def outputProcessPrint(){
+		val result = encapsulateProcess('''send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1) print("Ciao ciao");''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof OutputProcess)
-		val p = result as OutputProcess
-		Assert.assertTrue(p.msec == 10)
-		Assert.assertTrue(p.output instanceof PrintFormattedStatement)
-		Assert.assertTrue((p.output as PrintFormattedStatement).toPrint == "Ciao ciao")
-	}
-	
-	@Test
-	def mixedChoiceForbidden(){
-		val result = encapsulateProcess('''send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil + send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil''')
-		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result.statements.head instanceof ProcessSend)
+		val p = result.statements.head as ProcessSend
+		Assert.assertTrue(p.print instanceof PrintFormattedStatement)
+		Assert.assertTrue((p.print as PrintFormattedStatement).toPrint == "Ciao ciao")
 	}
 	
 	@Test
 	def inputProcessEmpty(){
-		val result = encapsulateProcess('''receive (true) {}.nil''')
-		/*
-		 * InputProcesses
-		 * 		.preconds = [ []           ]
-		 * 		.inputs =   [ InputProcess ]
-		 */
+		val result = encapsulateProcess('''receive (true) {};''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof InputProcesses)
-		val iprocs = result as InputProcesses
-		Assert.assertTrue(iprocs.preconds.length == 1)
-		Assert.assertTrue(iprocs.preconds.get(0).precond.length == 0)
-		Assert.assertTrue(iprocs.inputs.length == 1)
-		Assert.assertTrue(iprocs.inputs.get(0) instanceof InputProcess)
-		val p = iprocs.inputs.get(0) as InputProcess
-		Assert.assertTrue(p.preconds.length == 0)
-		Assert.assertTrue(p.rec_pred instanceof Expression)
-		Assert.assertTrue(p.msgInParts.length == 0)
+		Assert.assertTrue(result.statements.get(0) instanceof ProcessReceive)
+		val iprocs = result.statements.get(0) as ProcessReceive
+		Assert.assertTrue(iprocs.cases.length == 1)
+		val case0 = iprocs.cases.head
+		Assert.assertTrue(case0.cond instanceof BoolConstant)
+		Assert.assertTrue(case0.msgInParts.empty)
 	}
 	
 	@Test
 	def outputProcessEmpty(){
-		val result = encapsulateProcess('''send {} @ (true).nil''')
+		val result = encapsulateProcess('''send {} @ (true);''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof OutputProcess)
-		val p = result as OutputProcess
-		Assert.assertTrue(p.precond.precond.length == 0)
+		Assert.assertTrue(result.statements.head instanceof ProcessSend)
+		val p = result.statements.head as ProcessSend
 		Assert.assertTrue(p.send_pred instanceof Expression)
-		Assert.assertTrue(p.msgOutParts.length == 0)
-		Assert.assertTrue(p.next instanceof ZeroProcess)
-		Assert.assertTrue(p.msec == 0)
-		Assert.assertNull(p.output)
+		Assert.assertTrue(p.msgOutParts.empty)
+		Assert.assertTrue(p.updates.attribute.empty)
+		Assert.assertNull(p.print)
 	}
+	
 	
 	@Test
 	def sequence(){
-		val result = encapsulateProcess('''send {} @ (true).receive (proc.x > 3) {proc.a}.([proc.s := 8] send {} @ (false).nil)''')
+		val result = encapsulateProcess('''send {} @ (true); receive (proc.x > 3) {a}; set [proc.s := 8];''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
@@ -248,120 +202,128 @@ class ProcessParsingTest {
 	
 	@Test
 	def if_(){
-		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }''')
+		val result = encapsulateProcess('''
+		if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		}''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof IfProcesses)
-		val ifp = result as IfProcesses
-		Assert.assertTrue(ifp.branches.length == 1)
-		val branch = ifp.branches.get(0) as IfBranchProcess
-		Assert.assertTrue(branch.cond.precond.length == 1)
-		val p = branch.then as OutputProcess
-		Assert.assertTrue(p.precond.precond.length == 0)
-		Assert.assertTrue(p.send_pred instanceof Expression)
-		Assert.assertTrue(p.msgOutParts.length == 3)
-		Assert.assertTrue(p.msgOutParts.forall[it instanceof Expression])
-		Assert.assertTrue(p.next instanceof ZeroProcess)
-		Assert.assertTrue(p.msec == 0)
-		Assert.assertNull(p.output)
+		Assert.assertTrue(result.statements.head instanceof ProcessIf)
+		val ifp = result.statements.head as ProcessIf
+		Assert.assertTrue(ifp.cond.length == 1)
+		Assert.assertTrue(ifp.action.length == 1)
+		Assert.assertTrue(ifp.then.length == 1)
+		Assert.assertTrue(ifp.action.head instanceof ProcessSend)
+		val p = ifp.then.head as ProcessBlock
+		Assert.assertTrue(p.statements.empty)
 	}
 	
 	@Test
 	def if_ElseIf(){
-		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } ''')
+		val result = encapsulateProcess('''
+		if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+			set;
+		} else if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+			set;
+		} ''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof IfProcesses)
-		val ifp = result as IfProcesses
-		Assert.assertTrue(ifp.branches.length == 2)
-		ifp.branches.forEach[br|
-			val branch = br as IfBranchProcess
-			Assert.assertTrue(branch.cond.precond.length == 1)
-			val p = branch.then as OutputProcess
-			Assert.assertTrue(p.precond.precond.length == 0)
-			Assert.assertTrue(p.send_pred instanceof Expression)
-			Assert.assertTrue(p.msgOutParts.length == 3)
-			Assert.assertTrue(p.msgOutParts.forall[it instanceof Expression])
-			Assert.assertTrue(p.next instanceof ZeroProcess)
-			Assert.assertTrue(p.msec == 0)
-			Assert.assertNull(p.output)
-		]
+		Assert.assertTrue(result.statements.head instanceof ProcessIf)
+		val ifp = result.statements.head as ProcessIf
+		Assert.assertTrue(ifp.cond.length == 2)
+		Assert.assertTrue(ifp.action.length == 2)
+		Assert.assertTrue(ifp.then.length == 2)
+		
+		Assert.assertTrue(ifp.action.filter[!(it instanceof ProcessSend)].empty)
+		Assert.assertTrue(ifp.then.filter[it.statements.length != 1].empty)
 	}
 	
 	@Test
 	def if_Else(){
-		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } ''')
+		val result = encapsulateProcess('''
+		if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+			set;
+		} else { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+			set;
+		} ''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result instanceof IfProcesses)
-		val ifp = result as IfProcesses
-		Assert.assertTrue(ifp.branches.length == 2)
-		ifp.branches.forEach[br|
-			val branch = br as IfBranchProcess
-			val p = branch.then as OutputProcess
-			Assert.assertTrue(p.precond.precond.length == 0)
-			Assert.assertTrue(p.send_pred instanceof Expression)
-			Assert.assertTrue(p.msgOutParts.length == 3)
-			Assert.assertTrue(p.msgOutParts.forall[it instanceof Expression])
-			Assert.assertTrue(p.next instanceof ZeroProcess)
-			Assert.assertTrue(p.msec == 0)
-			Assert.assertNull(p.output)
-		]
+		Assert.assertTrue(result.statements.head instanceof ProcessIf)
+		val ifp = result.statements.head as ProcessIf
+		Assert.assertTrue(ifp.cond.length == 1)
+		Assert.assertTrue(ifp.action.length == 2)
+		Assert.assertTrue(ifp.then.length == 2)
+		
+		Assert.assertTrue(ifp.action.filter[!(it instanceof ProcessSend)].empty)
+		Assert.assertTrue(ifp.then.filter[it.statements.length != 1].empty)
 	}
 	
 	@Test
 	def if_Else_Else(){
-		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }''')
+		val result = encapsulateProcess('''
+		if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		} else { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		} else { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		}''')
 		Assert.assertNotNull(result)
 		Assert.assertFalse(result.eResource.errors.isEmpty)
 	}
 	
 	@Test
 	def if_Else_ElseIf(){
-		val result = encapsulateProcess('''if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil } else if wait until(true) { send {proc.x,this.y,proc.z} @ (receiver.ciao == 1).nil }''')
+		val result = encapsulateProcess('''
+		if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		} else { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		} else if (true) { 
+			send {proc.x,comp.y,proc.z} @ (receiver.ciao == 1);
+		}''')
 		Assert.assertNotNull(result)
 		Assert.assertFalse(result.eResource.errors.isEmpty)
 	}
 	
-	// Preconditions
-	def private encapsulatePrecondition(CharSequence pre){
-		val result = parseHelper.parse('''
-			proc P = «pre» send {} @ (true).nil
-		''')
+	// Waitfor
+	@Test
+	def sleep(){
+		val result = encapsulateProcess('''waitfor(100);''')
 		Assert.assertNotNull(result)
-		(result.processes.get(0).proc as OutputProcess).precond
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+		Assert.assertTrue(result.statements.head instanceof ProcessWaitFor)
+		val p = result.statements.head as ProcessWaitFor
+		Assert.assertTrue(p.cond instanceof IntConstant)
 	}
 	
 	@Test
 	def awareness(){
-		val result = encapsulatePrecondition('''wait until(proc.x > 0)''')
+		val result = encapsulateProcess('''waitfor(proc.x > 0);''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result.precond.length == 1)
-		Assert.assertTrue(result.precond.get(0) instanceof Awareness)
-		Assert.assertTrue((result.precond.get(0) as Awareness).pred instanceof Comparison)
+		Assert.assertTrue(result.statements.head instanceof ProcessWaitFor)
+		val p = result.statements.head as ProcessWaitFor
+		Assert.assertTrue(p.cond instanceof Expression)
 	}
 	
+	// Set
 	@Test
-	def update(){
-		val result = encapsulatePrecondition('''[proc.x := 4]''')
+	def set_(){
+		val result = encapsulateProcess('''set [comp.d := 9, proc.f := comp.d];''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result.precond.length == 1)
-		Assert.assertTrue(result.precond.get(0) instanceof Update)
-	}
-	
-	@Test
-	def mixPreconds(){
-		val result = encapsulatePrecondition('''[proc.x := 4] wait until(proc.f > this.g && proc.h <= 8) [proc.h := 9, proc.z:= this.q]''')
-		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.isEmpty)
-		Assert.assertTrue(result.precond.length == 3)
-		Assert.assertTrue(result.precond.get(0) instanceof Update)
-		Assert.assertTrue(result.precond.get(1) instanceof Awareness)
-		Assert.assertTrue(result.precond.get(2) instanceof Update)
-		
-		Assert.assertTrue((result.precond.get(0) as Update).vars.length == 1)
-		Assert.assertTrue((result.precond.get(2) as Update).vars.length == 2)
+		Assert.assertTrue(result.statements.head instanceof ProcessSet)
+		val p = result.statements.head as ProcessSet
+		Assert.assertTrue(p.update.attribute.length == 2)
+		Assert.assertTrue(p.update.value.length == 2)
+		Assert.assertTrue(p.update.attribute.get(0) instanceof UpdateComponentAttribute)
+		Assert.assertTrue((p.update.attribute.get(0) as UpdateComponentAttribute).atname == "d")
+		Assert.assertTrue(p.update.attribute.get(1) instanceof UpdateLocalAttribute)
+		Assert.assertTrue((p.update.attribute.get(1) as UpdateLocalAttribute).atname == "f")
 	}
 }

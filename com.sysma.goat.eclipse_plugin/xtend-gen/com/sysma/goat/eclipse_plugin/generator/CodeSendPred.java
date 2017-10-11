@@ -1,22 +1,24 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
-import com.sysma.goat.eclipse_plugin.generator.CodeTree;
+import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 
 @SuppressWarnings("all")
-public class CodeSendPred extends CodeTree {
+public class CodeSendPred {
   private final Expression pred;
   
-  private final String localAttributes;
+  private final LocalVariableMap localAttributes;
   
-  public CodeSendPred(final Expression pred, final String localAttributes) {
+  private final CharSequence attrName;
+  
+  public CodeSendPred(final Expression pred, final LocalVariableMap localAttributes, final CharSequence attrName) {
     this.pred = pred;
     this.localAttributes = localAttributes;
+    this.attrName = attrName;
   }
   
-  @Override
   public CharSequence getCode() {
-    return CodeExpression.getOutputPredicate(this.pred, this.localAttributes);
+    return CodeExpression.getOutputPredicate(this.pred, this.localAttributes, this.attrName);
   }
 }

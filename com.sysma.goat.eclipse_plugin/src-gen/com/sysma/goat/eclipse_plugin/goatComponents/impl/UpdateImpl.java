@@ -3,7 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
@@ -15,6 +14,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.UpdateImpl#getVars <em>Vars</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.UpdateImpl#getVals <em>Vals</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.UpdateImpl#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.UpdateImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,24 +39,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
 {
   /**
-   * The cached value of the '{@link #getVars() <em>Vars</em>}' containment reference list.
+   * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVars()
+   * @see #getAttribute()
    * @generated
    * @ordered
    */
-  protected EList<AttributeToSet> vars;
+  protected EList<EObject> attribute;
 
   /**
-   * The cached value of the '{@link #getVals() <em>Vals</em>}' containment reference list.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVals()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected EList<Expression> vals;
+  protected EList<Expression> value;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,13 +84,13 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<AttributeToSet> getVars()
+  public EList<EObject> getAttribute()
   {
-    if (vars == null)
+    if (attribute == null)
     {
-      vars = new EObjectContainmentEList<AttributeToSet>(AttributeToSet.class, this, GoatComponentsPackage.UPDATE__VARS);
+      attribute = new EObjectContainmentEList<EObject>(EObject.class, this, GoatComponentsPackage.UPDATE__ATTRIBUTE);
     }
-    return vars;
+    return attribute;
   }
 
   /**
@@ -98,13 +98,13 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Expression> getVals()
+  public EList<Expression> getValue()
   {
-    if (vals == null)
+    if (value == null)
     {
-      vals = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.UPDATE__VALS);
+      value = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.UPDATE__VALUE);
     }
-    return vals;
+    return value;
   }
 
   /**
@@ -117,10 +117,10 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.UPDATE__VARS:
-        return ((InternalEList<?>)getVars()).basicRemove(otherEnd, msgs);
-      case GoatComponentsPackage.UPDATE__VALS:
-        return ((InternalEList<?>)getVals()).basicRemove(otherEnd, msgs);
+      case GoatComponentsPackage.UPDATE__ATTRIBUTE:
+        return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
+      case GoatComponentsPackage.UPDATE__VALUE:
+        return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,10 +135,10 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.UPDATE__VARS:
-        return getVars();
-      case GoatComponentsPackage.UPDATE__VALS:
-        return getVals();
+      case GoatComponentsPackage.UPDATE__ATTRIBUTE:
+        return getAttribute();
+      case GoatComponentsPackage.UPDATE__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -154,13 +154,13 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.UPDATE__VARS:
-        getVars().clear();
-        getVars().addAll((Collection<? extends AttributeToSet>)newValue);
+      case GoatComponentsPackage.UPDATE__ATTRIBUTE:
+        getAttribute().clear();
+        getAttribute().addAll((Collection<? extends EObject>)newValue);
         return;
-      case GoatComponentsPackage.UPDATE__VALS:
-        getVals().clear();
-        getVals().addAll((Collection<? extends Expression>)newValue);
+      case GoatComponentsPackage.UPDATE__VALUE:
+        getValue().clear();
+        getValue().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -176,11 +176,11 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.UPDATE__VARS:
-        getVars().clear();
+      case GoatComponentsPackage.UPDATE__ATTRIBUTE:
+        getAttribute().clear();
         return;
-      case GoatComponentsPackage.UPDATE__VALS:
-        getVals().clear();
+      case GoatComponentsPackage.UPDATE__VALUE:
+        getValue().clear();
         return;
     }
     super.eUnset(featureID);
@@ -196,10 +196,10 @@ public class UpdateImpl extends MinimalEObjectImpl.Container implements Update
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.UPDATE__VARS:
-        return vars != null && !vars.isEmpty();
-      case GoatComponentsPackage.UPDATE__VALS:
-        return vals != null && !vals.isEmpty();
+      case GoatComponentsPackage.UPDATE__ATTRIBUTE:
+        return attribute != null && !attribute.isEmpty();
+      case GoatComponentsPackage.UPDATE__VALUE:
+        return value != null && !value.isEmpty();
     }
     return super.eIsSet(featureID);
   }

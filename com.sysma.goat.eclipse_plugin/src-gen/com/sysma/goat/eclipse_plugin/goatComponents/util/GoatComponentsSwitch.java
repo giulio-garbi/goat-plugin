@@ -3,57 +3,7 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.util;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
-import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
-import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
-import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Model;
-import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
-import com.sysma.goat.eclipse_plugin.goatComponents.Not;
-import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -130,36 +80,142 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.PROCESS:
+      case GoatComponentsPackage.PROCESS_DEFINITION:
       {
-        com.sysma.goat.eclipse_plugin.goatComponents.Process process = (com.sysma.goat.eclipse_plugin.goatComponents.Process)theEObject;
-        T result = caseProcess(process);
-        if (result == null) result = caseOutputProcessPart(process);
-        if (result == null) result = caseInputProcessesPart(process);
+        ProcessDefinition processDefinition = (ProcessDefinition)theEObject;
+        T result = caseProcessDefinition(processDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.PRECONDITIONS:
+      case GoatComponentsPackage.PROCESS_BLOCK:
       {
-        Preconditions preconditions = (Preconditions)theEObject;
-        T result = casePreconditions(preconditions);
-        if (result == null) result = caseProcess(preconditions);
-        if (result == null) result = caseOutputProcessPart(preconditions);
-        if (result == null) result = caseInputProcessesPart(preconditions);
+        ProcessBlock processBlock = (ProcessBlock)theEObject;
+        T result = caseProcessBlock(processBlock);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.INPUT_PROCESSES_PART:
+      case GoatComponentsPackage.PROCESS_SPAWN:
       {
-        InputProcessesPart inputProcessesPart = (InputProcessesPart)theEObject;
-        T result = caseInputProcessesPart(inputProcessesPart);
+        ProcessSpawn processSpawn = (ProcessSpawn)theEObject;
+        T result = caseProcessSpawn(processSpawn);
+        if (result == null) result = caseProcessStatement(processSpawn);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.OUTPUT_PROCESS_PART:
+      case GoatComponentsPackage.PROCESS_CALL:
       {
-        OutputProcessPart outputProcessPart = (OutputProcessPart)theEObject;
-        T result = caseOutputProcessPart(outputProcessPart);
+        ProcessCall processCall = (ProcessCall)theEObject;
+        T result = caseProcessCall(processCall);
+        if (result == null) result = caseProcessStatement(processCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_STATEMENT:
+      {
+        ProcessStatement processStatement = (ProcessStatement)theEObject;
+        T result = caseProcessStatement(processStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_SEND:
+      {
+        ProcessSend processSend = (ProcessSend)theEObject;
+        T result = caseProcessSend(processSend);
+        if (result == null) result = caseProcessStatement(processSend);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_RECEIVE:
+      {
+        ProcessReceive processReceive = (ProcessReceive)theEObject;
+        T result = caseProcessReceive(processReceive);
+        if (result == null) result = caseProcessStatement(processReceive);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_RECEIVE_SINGLE:
+      {
+        ProcessReceiveSingle processReceiveSingle = (ProcessReceiveSingle)theEObject;
+        T result = caseProcessReceiveSingle(processReceiveSingle);
+        if (result == null) result = caseProcessReceive(processReceiveSingle);
+        if (result == null) result = caseProcessStatement(processReceiveSingle);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_RECEIVE_MULTIPLE:
+      {
+        ProcessReceiveMultiple processReceiveMultiple = (ProcessReceiveMultiple)theEObject;
+        T result = caseProcessReceiveMultiple(processReceiveMultiple);
+        if (result == null) result = caseProcessReceive(processReceiveMultiple);
+        if (result == null) result = caseProcessStatement(processReceiveMultiple);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.RECEIVE_CASE:
+      {
+        ReceiveCase receiveCase = (ReceiveCase)theEObject;
+        T result = caseReceiveCase(receiveCase);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_IF:
+      {
+        ProcessIf processIf = (ProcessIf)theEObject;
+        T result = caseProcessIf(processIf);
+        if (result == null) result = caseProcessStatement(processIf);
+        if (result == null) result = caseProcessThenBlock(processIf);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_THEN_BLOCK:
+      {
+        ProcessThenBlock processThenBlock = (ProcessThenBlock)theEObject;
+        T result = caseProcessThenBlock(processThenBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_SET:
+      {
+        ProcessSet processSet = (ProcessSet)theEObject;
+        T result = caseProcessSet(processSet);
+        if (result == null) result = caseProcessStatement(processSet);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_WAIT_FOR:
+      {
+        ProcessWaitFor processWaitFor = (ProcessWaitFor)theEObject;
+        T result = caseProcessWaitFor(processWaitFor);
+        if (result == null) result = caseProcessStatement(processWaitFor);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_LOOP:
+      {
+        ProcessLoop processLoop = (ProcessLoop)theEObject;
+        T result = caseProcessLoop(processLoop);
+        if (result == null) result = caseProcessStatement(processLoop);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.UPDATE:
+      {
+        Update update = (Update)theEObject;
+        T result = caseUpdate(update);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.UPDATE_COMPONENT_ATTRIBUTE:
+      {
+        UpdateComponentAttribute updateComponentAttribute = (UpdateComponentAttribute)theEObject;
+        T result = caseUpdateComponentAttribute(updateComponentAttribute);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.UPDATE_LOCAL_ATTRIBUTE:
+      {
+        UpdateLocalAttribute updateLocalAttribute = (UpdateLocalAttribute)theEObject;
+        T result = caseUpdateLocalAttribute(updateLocalAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -182,27 +238,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         PrintFormattedStatement printFormattedStatement = (PrintFormattedStatement)theEObject;
         T result = casePrintFormattedStatement(printFormattedStatement);
         if (result == null) result = casePrintStatement(printFormattedStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.UPDATE:
-      {
-        Update update = (Update)theEObject;
-        T result = caseUpdate(update);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.AWARENESS:
-      {
-        Awareness awareness = (Awareness)theEObject;
-        T result = caseAwareness(awareness);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.PROCESS_DEFINITION:
-      {
-        ProcessDefinition processDefinition = (ProcessDefinition)theEObject;
-        T result = caseProcessDefinition(processDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -231,13 +266,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
       {
         LRef lRef = (LRef)theEObject;
         T result = caseLRef(lRef);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.ATTRIBUTE_TO_SET:
-      {
-        AttributeToSet attributeToSet = (AttributeToSet)theEObject;
-        T result = caseAttributeToSet(attributeToSet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -303,83 +331,11 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.INTERLEAVING_PROCESS:
+      case GoatComponentsPackage.NEGATIVE_INT_CONSTANT:
       {
-        InterleavingProcess interleavingProcess = (InterleavingProcess)theEObject;
-        T result = caseInterleavingProcess(interleavingProcess);
-        if (result == null) result = caseProcess(interleavingProcess);
-        if (result == null) result = caseOutputProcessPart(interleavingProcess);
-        if (result == null) result = caseInputProcessesPart(interleavingProcess);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.OUTPUT_PROCESS:
-      {
-        OutputProcess outputProcess = (OutputProcess)theEObject;
-        T result = caseOutputProcess(outputProcess);
-        if (result == null) result = caseProcess(outputProcess);
-        if (result == null) result = caseOutputProcessPart(outputProcess);
-        if (result == null) result = caseInputProcessesPart(outputProcess);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.INPUT_PROCESSES:
-      {
-        InputProcesses inputProcesses = (InputProcesses)theEObject;
-        T result = caseInputProcesses(inputProcesses);
-        if (result == null) result = caseProcess(inputProcesses);
-        if (result == null) result = caseOutputProcessPart(inputProcesses);
-        if (result == null) result = caseInputProcessesPart(inputProcesses);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.INPUT_PROCESS:
-      {
-        InputProcess inputProcess = (InputProcess)theEObject;
-        T result = caseInputProcess(inputProcess);
-        if (result == null) result = caseProcess(inputProcess);
-        if (result == null) result = caseOutputProcessPart(inputProcess);
-        if (result == null) result = caseInputProcessesPart(inputProcess);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.IF_PROCESSES:
-      {
-        IfProcesses ifProcesses = (IfProcesses)theEObject;
-        T result = caseIfProcesses(ifProcesses);
-        if (result == null) result = caseProcess(ifProcesses);
-        if (result == null) result = caseOutputProcessPart(ifProcesses);
-        if (result == null) result = caseInputProcessesPart(ifProcesses);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.IF_BRANCH_PROCESS:
-      {
-        IfBranchProcess ifBranchProcess = (IfBranchProcess)theEObject;
-        T result = caseIfBranchProcess(ifBranchProcess);
-        if (result == null) result = caseProcess(ifBranchProcess);
-        if (result == null) result = caseOutputProcessPart(ifBranchProcess);
-        if (result == null) result = caseInputProcessesPart(ifBranchProcess);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.CALL_PROCESS:
-      {
-        CallProcess callProcess = (CallProcess)theEObject;
-        T result = caseCallProcess(callProcess);
-        if (result == null) result = caseProcess(callProcess);
-        if (result == null) result = caseOutputProcessPart(callProcess);
-        if (result == null) result = caseInputProcessesPart(callProcess);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.ZERO_PROCESS:
-      {
-        ZeroProcess zeroProcess = (ZeroProcess)theEObject;
-        T result = caseZeroProcess(zeroProcess);
-        if (result == null) result = caseProcess(zeroProcess);
-        if (result == null) result = caseOutputProcessPart(zeroProcess);
-        if (result == null) result = caseInputProcessesPart(zeroProcess);
+        NegativeIntConstant negativeIntConstant = (NegativeIntConstant)theEObject;
+        T result = caseNegativeIntConstant(negativeIntConstant);
+        if (result == null) result = caseExpression(negativeIntConstant);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -471,6 +427,14 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.UNARY_MINUS:
+      {
+        UnaryMinus unaryMinus = (UnaryMinus)theEObject;
+        T result = caseUnaryMinus(unaryMinus);
+        if (result == null) result = caseExpression(unaryMinus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.NOT:
       {
         Not not = (Not)theEObject;
@@ -519,22 +483,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatComponentsPackage.COMPONENT_ATTRIBUTE_TO_SET:
-      {
-        ComponentAttributeToSet componentAttributeToSet = (ComponentAttributeToSet)theEObject;
-        T result = caseComponentAttributeToSet(componentAttributeToSet);
-        if (result == null) result = caseAttributeToSet(componentAttributeToSet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.LOCAL_ATTRIBUTE_TO_SET:
-      {
-        LocalAttributeToSet localAttributeToSet = (LocalAttributeToSet)theEObject;
-        T result = caseLocalAttributeToSet(localAttributeToSet);
-        if (result == null) result = caseAttributeToSet(localAttributeToSet);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -556,65 +504,289 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Process</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Process Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Process Definition</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProcess(com.sysma.goat.eclipse_plugin.goatComponents.Process object)
+  public T caseProcessDefinition(ProcessDefinition object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Preconditions</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Process Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Preconditions</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Process Block</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePreconditions(Preconditions object)
+  public T caseProcessBlock(ProcessBlock object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Input Processes Part</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Process Spawn</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Input Processes Part</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Process Spawn</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseInputProcessesPart(InputProcessesPart object)
+  public T caseProcessSpawn(ProcessSpawn object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Output Process Part</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Process Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Output Process Part</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Process Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOutputProcessPart(OutputProcessPart object)
+  public T caseProcessCall(ProcessCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessStatement(ProcessStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Send</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Send</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessSend(ProcessSend object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Receive</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Receive</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessReceive(ProcessReceive object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Receive Single</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Receive Single</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessReceiveSingle(ProcessReceiveSingle object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Receive Multiple</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Receive Multiple</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessReceiveMultiple(ProcessReceiveMultiple object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Receive Case</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Receive Case</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReceiveCase(ReceiveCase object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process If</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process If</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessIf(ProcessIf object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Then Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Then Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessThenBlock(ProcessThenBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Set</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Set</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessSet(ProcessSet object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Wait For</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Wait For</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessWaitFor(ProcessWaitFor object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Loop</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Loop</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessLoop(ProcessLoop object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdate(Update object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update Component Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update Component Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdateComponentAttribute(UpdateComponentAttribute object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Update Local Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Update Local Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUpdateLocalAttribute(UpdateLocalAttribute object)
   {
     return null;
   }
@@ -663,54 +835,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePrintFormattedStatement(PrintFormattedStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Update</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Update</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseUpdate(Update object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Awareness</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Awareness</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAwareness(Awareness object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Definition</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Definition</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessDefinition(ProcessDefinition object)
   {
     return null;
   }
@@ -775,22 +899,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLRef(LRef object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attribute To Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAttributeToSet(AttributeToSet object)
   {
     return null;
   }
@@ -924,129 +1032,17 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Interleaving Process</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Negative Int Constant</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Interleaving Process</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Negative Int Constant</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseInterleavingProcess(InterleavingProcess object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Output Process</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Output Process</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOutputProcess(OutputProcess object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Input Processes</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Input Processes</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInputProcesses(InputProcesses object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Input Process</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Input Process</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInputProcess(InputProcess object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>If Processes</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>If Processes</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIfProcesses(IfProcesses object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>If Branch Process</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>If Branch Process</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIfBranchProcess(IfBranchProcess object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Call Process</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Call Process</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCallProcess(CallProcess object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Zero Process</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Zero Process</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseZeroProcess(ZeroProcess object)
+  public T caseNegativeIntConstant(NegativeIntConstant object)
   {
     return null;
   }
@@ -1228,6 +1224,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Unary Minus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unary Minus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUnaryMinus(UnaryMinus object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Not</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1319,38 +1331,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseRecAttributeRef(RecAttributeRef object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Component Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Component Attribute To Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseComponentAttributeToSet(ComponentAttributeToSet object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Local Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Local Attribute To Set</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLocalAttributeToSet(LocalAttributeToSet object)
   {
     return null;
   }

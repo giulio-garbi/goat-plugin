@@ -4,13 +4,9 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
 import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
@@ -27,34 +23,41 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
 import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
+import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
 import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessLoop;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveMultiple;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveSingle;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessThenBlock;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
+import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute;
+import com.sysma.goat.eclipse_plugin.goatComponents.UpdateLocalAttribute;
 
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
 
@@ -85,28 +88,126 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass processEClass = null;
+  private EClass processDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass preconditionsEClass = null;
+  private EClass processBlockEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass inputProcessesPartEClass = null;
+  private EClass processSpawnEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass outputProcessPartEClass = null;
+  private EClass processCallEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processSendEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processReceiveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processReceiveSingleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processReceiveMultipleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass receiveCaseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processIfEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processThenBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processSetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processWaitForEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass processLoopEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass updateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass updateComponentAttributeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass updateLocalAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,27 +229,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass printFormattedStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass updateEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass awarenessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -177,13 +257,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass lRefEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass attributeToSetEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -246,56 +319,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass interleavingProcessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass outputProcessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass inputProcessesEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass inputProcessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ifProcessesEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ifBranchProcessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass callProcessEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass zeroProcessEClass = null;
+  private EClass negativeIntConstantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -379,6 +403,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass unaryMinusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass notEClass = null;
 
   /**
@@ -415,20 +446,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass recAttributeRefEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass componentAttributeToSetEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass localAttributeToSetEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -551,9 +568,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProcess()
+  public EClass getProcessDefinition()
   {
-    return processEClass;
+    return processDefinitionEClass;
   }
 
   /**
@@ -561,9 +578,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPreconditions()
+  public EAttribute getProcessDefinition_Name()
   {
-    return preconditionsEClass;
+    return (EAttribute)processDefinitionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -571,9 +588,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPreconditions_Precond()
+  public EReference getProcessDefinition_Block()
   {
-    return (EReference)preconditionsEClass.getEStructuralFeatures().get(0);
+    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -581,9 +598,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getInputProcessesPart()
+  public EClass getProcessBlock()
   {
-    return inputProcessesPartEClass;
+    return processBlockEClass;
   }
 
   /**
@@ -591,9 +608,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInputProcessesPart_Inputs()
+  public EReference getProcessBlock_Statements()
   {
-    return (EReference)inputProcessesPartEClass.getEStructuralFeatures().get(0);
+    return (EReference)processBlockEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -601,9 +618,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInputProcessesPart_Preconds()
+  public EClass getProcessSpawn()
   {
-    return (EReference)inputProcessesPartEClass.getEStructuralFeatures().get(1);
+    return processSpawnEClass;
   }
 
   /**
@@ -611,9 +628,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getOutputProcessPart()
+  public EReference getProcessSpawn_Proc()
   {
-    return outputProcessPartEClass;
+    return (EReference)processSpawnEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -621,9 +638,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOutputProcessPart_MsgOutParts()
+  public EClass getProcessCall()
   {
-    return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(0);
+    return processCallEClass;
   }
 
   /**
@@ -631,9 +648,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOutputProcessPart_Send_pred()
+  public EReference getProcessCall_Proc()
   {
-    return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(1);
+    return (EReference)processCallEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -641,9 +658,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOutputProcessPart_Output()
+  public EClass getProcessStatement()
   {
-    return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(2);
+    return processStatementEClass;
   }
 
   /**
@@ -651,9 +668,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOutputProcessPart_Msec()
+  public EClass getProcessSend()
   {
-    return (EAttribute)outputProcessPartEClass.getEStructuralFeatures().get(3);
+    return processSendEClass;
   }
 
   /**
@@ -661,9 +678,349 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOutputProcessPart_Next()
+  public EReference getProcessSend_MsgOutParts()
   {
-    return (EReference)outputProcessPartEClass.getEStructuralFeatures().get(4);
+    return (EReference)processSendEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessSend_Send_pred()
+  {
+    return (EReference)processSendEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessSend_Updates()
+  {
+    return (EReference)processSendEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessSend_Print()
+  {
+    return (EReference)processSendEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessReceive()
+  {
+    return processReceiveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessReceive_Cases()
+  {
+    return (EReference)processReceiveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessReceive_Then()
+  {
+    return (EReference)processReceiveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessReceiveSingle()
+  {
+    return processReceiveSingleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessReceiveMultiple()
+  {
+    return processReceiveMultipleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getReceiveCase()
+  {
+    return receiveCaseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getReceiveCase_Cond()
+  {
+    return (EReference)receiveCaseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getReceiveCase_MsgInParts()
+  {
+    return (EAttribute)receiveCaseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getReceiveCase_Updates()
+  {
+    return (EReference)receiveCaseEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getReceiveCase_Print()
+  {
+    return (EReference)receiveCaseEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessIf()
+  {
+    return processIfEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessIf_Cond()
+  {
+    return (EReference)processIfEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessThenBlock()
+  {
+    return processThenBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessThenBlock_Action()
+  {
+    return (EReference)processThenBlockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessThenBlock_Then()
+  {
+    return (EReference)processThenBlockEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessSet()
+  {
+    return processSetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessSet_Update()
+  {
+    return (EReference)processSetEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessSet_Print()
+  {
+    return (EReference)processSetEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessWaitFor()
+  {
+    return processWaitForEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessWaitFor_Cond()
+  {
+    return (EReference)processWaitForEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessWaitFor_Update()
+  {
+    return (EReference)processWaitForEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessWaitFor_Print()
+  {
+    return (EReference)processWaitForEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcessLoop()
+  {
+    return processLoopEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProcessLoop_Block()
+  {
+    return (EReference)processLoopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUpdate()
+  {
+    return updateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUpdate_Attribute()
+  {
+    return (EReference)updateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUpdate_Value()
+  {
+    return (EReference)updateEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUpdateComponentAttribute()
+  {
+    return updateComponentAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpdateComponentAttribute_Atname()
+  {
+    return (EAttribute)updateComponentAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getUpdateLocalAttribute()
+  {
+    return updateLocalAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getUpdateLocalAttribute_Atname()
+  {
+    return (EAttribute)updateLocalAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -704,86 +1061,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EAttribute getPrintFormattedStatement_ToPrint()
   {
     return (EAttribute)printFormattedStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getUpdate()
-  {
-    return updateEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getUpdate_Vars()
-  {
-    return (EReference)updateEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getUpdate_Vals()
-  {
-    return (EReference)updateEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAwareness()
-  {
-    return awarenessEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAwareness_Pred()
-  {
-    return (EReference)awarenessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessDefinition()
-  {
-    return processDefinitionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getProcessDefinition_Name()
-  {
-    return (EAttribute)processDefinitionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessDefinition_Proc()
-  {
-    return (EReference)processDefinitionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -874,26 +1151,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EAttribute getLRef_Name()
   {
     return (EAttribute)lRefEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getAttributeToSet()
-  {
-    return attributeToSetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getAttributeToSet_Attribute()
-  {
-    return (EAttribute)attributeToSetEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1111,9 +1368,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getInterleavingProcess()
+  public EClass getNegativeIntConstant()
   {
-    return interleavingProcessEClass;
+    return negativeIntConstantEClass;
   }
 
   /**
@@ -1121,149 +1378,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInterleavingProcess_SubProcs()
+  public EAttribute getNegativeIntConstant_Negvalue()
   {
-    return (EReference)interleavingProcessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getOutputProcess()
-  {
-    return outputProcessEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOutputProcess_Precond()
-  {
-    return (EReference)outputProcessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getInputProcesses()
-  {
-    return inputProcessesEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getInputProcess()
-  {
-    return inputProcessEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getInputProcess_Rec_pred()
-  {
-    return (EReference)inputProcessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getInputProcess_MsgInParts()
-  {
-    return (EReference)inputProcessEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIfProcesses()
-  {
-    return ifProcessesEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIfProcesses_Branches()
-  {
-    return (EReference)ifProcessesEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIfBranchProcess()
-  {
-    return ifBranchProcessEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIfBranchProcess_Cond()
-  {
-    return (EReference)ifBranchProcessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIfBranchProcess_Then()
-  {
-    return (EReference)ifBranchProcessEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCallProcess()
-  {
-    return callProcessEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCallProcess_Procname()
-  {
-    return (EReference)callProcessEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getZeroProcess()
-  {
-    return zeroProcessEClass;
+    return (EAttribute)negativeIntConstantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1341,19 +1458,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOr_Left()
+  public EReference getOr_Sub()
   {
     return (EReference)orEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getOr_Right()
-  {
-    return (EReference)orEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1371,19 +1478,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAnd_Left()
+  public EReference getAnd_Sub()
   {
     return (EReference)andEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getAnd_Right()
-  {
-    return (EReference)andEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1601,6 +1698,26 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getUnaryMinus()
+  {
+    return unaryMinusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getUnaryMinus_Expression()
+  {
+    return (EReference)unaryMinusEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getNot()
   {
     return notEClass;
@@ -1731,26 +1848,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getComponentAttributeToSet()
-  {
-    return componentAttributeToSetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLocalAttributeToSet()
-  {
-    return localAttributeToSetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public GoatComponentsFactory getGoatComponentsFactory()
   {
     return (GoatComponentsFactory)getEFactoryInstance();
@@ -1782,21 +1879,69 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEReference(modelEClass, MODEL__COMPONENTS);
     createEReference(modelEClass, MODEL__FUNCTIONS);
 
-    processEClass = createEClass(PROCESS);
+    processDefinitionEClass = createEClass(PROCESS_DEFINITION);
+    createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
+    createEReference(processDefinitionEClass, PROCESS_DEFINITION__BLOCK);
 
-    preconditionsEClass = createEClass(PRECONDITIONS);
-    createEReference(preconditionsEClass, PRECONDITIONS__PRECOND);
+    processBlockEClass = createEClass(PROCESS_BLOCK);
+    createEReference(processBlockEClass, PROCESS_BLOCK__STATEMENTS);
 
-    inputProcessesPartEClass = createEClass(INPUT_PROCESSES_PART);
-    createEReference(inputProcessesPartEClass, INPUT_PROCESSES_PART__INPUTS);
-    createEReference(inputProcessesPartEClass, INPUT_PROCESSES_PART__PRECONDS);
+    processSpawnEClass = createEClass(PROCESS_SPAWN);
+    createEReference(processSpawnEClass, PROCESS_SPAWN__PROC);
 
-    outputProcessPartEClass = createEClass(OUTPUT_PROCESS_PART);
-    createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__MSG_OUT_PARTS);
-    createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__SEND_PRED);
-    createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__OUTPUT);
-    createEAttribute(outputProcessPartEClass, OUTPUT_PROCESS_PART__MSEC);
-    createEReference(outputProcessPartEClass, OUTPUT_PROCESS_PART__NEXT);
+    processCallEClass = createEClass(PROCESS_CALL);
+    createEReference(processCallEClass, PROCESS_CALL__PROC);
+
+    processStatementEClass = createEClass(PROCESS_STATEMENT);
+
+    processSendEClass = createEClass(PROCESS_SEND);
+    createEReference(processSendEClass, PROCESS_SEND__MSG_OUT_PARTS);
+    createEReference(processSendEClass, PROCESS_SEND__SEND_PRED);
+    createEReference(processSendEClass, PROCESS_SEND__UPDATES);
+    createEReference(processSendEClass, PROCESS_SEND__PRINT);
+
+    processReceiveEClass = createEClass(PROCESS_RECEIVE);
+    createEReference(processReceiveEClass, PROCESS_RECEIVE__CASES);
+    createEReference(processReceiveEClass, PROCESS_RECEIVE__THEN);
+
+    processReceiveSingleEClass = createEClass(PROCESS_RECEIVE_SINGLE);
+
+    processReceiveMultipleEClass = createEClass(PROCESS_RECEIVE_MULTIPLE);
+
+    receiveCaseEClass = createEClass(RECEIVE_CASE);
+    createEReference(receiveCaseEClass, RECEIVE_CASE__COND);
+    createEAttribute(receiveCaseEClass, RECEIVE_CASE__MSG_IN_PARTS);
+    createEReference(receiveCaseEClass, RECEIVE_CASE__UPDATES);
+    createEReference(receiveCaseEClass, RECEIVE_CASE__PRINT);
+
+    processIfEClass = createEClass(PROCESS_IF);
+    createEReference(processIfEClass, PROCESS_IF__COND);
+
+    processThenBlockEClass = createEClass(PROCESS_THEN_BLOCK);
+    createEReference(processThenBlockEClass, PROCESS_THEN_BLOCK__ACTION);
+    createEReference(processThenBlockEClass, PROCESS_THEN_BLOCK__THEN);
+
+    processSetEClass = createEClass(PROCESS_SET);
+    createEReference(processSetEClass, PROCESS_SET__UPDATE);
+    createEReference(processSetEClass, PROCESS_SET__PRINT);
+
+    processWaitForEClass = createEClass(PROCESS_WAIT_FOR);
+    createEReference(processWaitForEClass, PROCESS_WAIT_FOR__COND);
+    createEReference(processWaitForEClass, PROCESS_WAIT_FOR__UPDATE);
+    createEReference(processWaitForEClass, PROCESS_WAIT_FOR__PRINT);
+
+    processLoopEClass = createEClass(PROCESS_LOOP);
+    createEReference(processLoopEClass, PROCESS_LOOP__BLOCK);
+
+    updateEClass = createEClass(UPDATE);
+    createEReference(updateEClass, UPDATE__ATTRIBUTE);
+    createEReference(updateEClass, UPDATE__VALUE);
+
+    updateComponentAttributeEClass = createEClass(UPDATE_COMPONENT_ATTRIBUTE);
+    createEAttribute(updateComponentAttributeEClass, UPDATE_COMPONENT_ATTRIBUTE__ATNAME);
+
+    updateLocalAttributeEClass = createEClass(UPDATE_LOCAL_ATTRIBUTE);
+    createEAttribute(updateLocalAttributeEClass, UPDATE_LOCAL_ATTRIBUTE__ATNAME);
 
     printStatementEClass = createEClass(PRINT_STATEMENT);
 
@@ -1804,17 +1949,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     printFormattedStatementEClass = createEClass(PRINT_FORMATTED_STATEMENT);
     createEAttribute(printFormattedStatementEClass, PRINT_FORMATTED_STATEMENT__TO_PRINT);
-
-    updateEClass = createEClass(UPDATE);
-    createEReference(updateEClass, UPDATE__VARS);
-    createEReference(updateEClass, UPDATE__VALS);
-
-    awarenessEClass = createEClass(AWARENESS);
-    createEReference(awarenessEClass, AWARENESS__PRED);
-
-    processDefinitionEClass = createEClass(PROCESS_DEFINITION);
-    createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
-    createEReference(processDefinitionEClass, PROCESS_DEFINITION__PROC);
 
     expressionEClass = createEClass(EXPRESSION);
 
@@ -1828,9 +1962,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     lRefEClass = createEClass(LREF);
     createEAttribute(lRefEClass, LREF__NAME);
-
-    attributeToSetEClass = createEClass(ATTRIBUTE_TO_SET);
-    createEAttribute(attributeToSetEClass, ATTRIBUTE_TO_SET__ATTRIBUTE);
 
     funcParamEClass = createEClass(FUNC_PARAM);
     createEAttribute(funcParamEClass, FUNC_PARAM__TYPE);
@@ -1861,29 +1992,8 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcReturnEClass = createEClass(FUNC_RETURN);
     createEReference(funcReturnEClass, FUNC_RETURN__VAL);
 
-    interleavingProcessEClass = createEClass(INTERLEAVING_PROCESS);
-    createEReference(interleavingProcessEClass, INTERLEAVING_PROCESS__SUB_PROCS);
-
-    outputProcessEClass = createEClass(OUTPUT_PROCESS);
-    createEReference(outputProcessEClass, OUTPUT_PROCESS__PRECOND);
-
-    inputProcessesEClass = createEClass(INPUT_PROCESSES);
-
-    inputProcessEClass = createEClass(INPUT_PROCESS);
-    createEReference(inputProcessEClass, INPUT_PROCESS__REC_PRED);
-    createEReference(inputProcessEClass, INPUT_PROCESS__MSG_IN_PARTS);
-
-    ifProcessesEClass = createEClass(IF_PROCESSES);
-    createEReference(ifProcessesEClass, IF_PROCESSES__BRANCHES);
-
-    ifBranchProcessEClass = createEClass(IF_BRANCH_PROCESS);
-    createEReference(ifBranchProcessEClass, IF_BRANCH_PROCESS__COND);
-    createEReference(ifBranchProcessEClass, IF_BRANCH_PROCESS__THEN);
-
-    callProcessEClass = createEClass(CALL_PROCESS);
-    createEReference(callProcessEClass, CALL_PROCESS__PROCNAME);
-
-    zeroProcessEClass = createEClass(ZERO_PROCESS);
+    negativeIntConstantEClass = createEClass(NEGATIVE_INT_CONSTANT);
+    createEAttribute(negativeIntConstantEClass, NEGATIVE_INT_CONSTANT__NEGVALUE);
 
     intConstantEClass = createEClass(INT_CONSTANT);
     createEAttribute(intConstantEClass, INT_CONSTANT__VALUE);
@@ -1895,12 +2005,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEAttribute(boolConstantEClass, BOOL_CONSTANT__VALUE);
 
     orEClass = createEClass(OR);
-    createEReference(orEClass, OR__LEFT);
-    createEReference(orEClass, OR__RIGHT);
+    createEReference(orEClass, OR__SUB);
 
     andEClass = createEClass(AND);
-    createEReference(andEClass, AND__LEFT);
-    createEReference(andEClass, AND__RIGHT);
+    createEReference(andEClass, AND__SUB);
 
     equalityEClass = createEClass(EQUALITY);
     createEReference(equalityEClass, EQUALITY__LEFT);
@@ -1929,6 +2037,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEAttribute(mulOrDivEClass, MUL_OR_DIV__OP);
     createEReference(mulOrDivEClass, MUL_OR_DIV__RIGHT);
 
+    unaryMinusEClass = createEClass(UNARY_MINUS);
+    createEReference(unaryMinusEClass, UNARY_MINUS__EXPRESSION);
+
     notEClass = createEClass(NOT);
     createEReference(notEClass, NOT__EXPRESSION);
 
@@ -1947,10 +2058,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     recAttributeRefEClass = createEClass(REC_ATTRIBUTE_REF);
     createEAttribute(recAttributeRefEClass, REC_ATTRIBUTE_REF__ATTRIBUTE);
-
-    componentAttributeToSetEClass = createEClass(COMPONENT_ATTRIBUTE_TO_SET);
-
-    localAttributeToSetEClass = createEClass(LOCAL_ATTRIBUTE_TO_SET);
   }
 
   /**
@@ -1985,9 +2092,17 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    processEClass.getESuperTypes().add(this.getOutputProcessPart());
-    processEClass.getESuperTypes().add(this.getInputProcessesPart());
-    preconditionsEClass.getESuperTypes().add(this.getProcess());
+    processSpawnEClass.getESuperTypes().add(this.getProcessStatement());
+    processCallEClass.getESuperTypes().add(this.getProcessStatement());
+    processSendEClass.getESuperTypes().add(this.getProcessStatement());
+    processReceiveEClass.getESuperTypes().add(this.getProcessStatement());
+    processReceiveSingleEClass.getESuperTypes().add(this.getProcessReceive());
+    processReceiveMultipleEClass.getESuperTypes().add(this.getProcessReceive());
+    processIfEClass.getESuperTypes().add(this.getProcessStatement());
+    processIfEClass.getESuperTypes().add(this.getProcessThenBlock());
+    processSetEClass.getESuperTypes().add(this.getProcessStatement());
+    processWaitForEClass.getESuperTypes().add(this.getProcessStatement());
+    processLoopEClass.getESuperTypes().add(this.getProcessStatement());
     printFormattedStatementEClass.getESuperTypes().add(this.getPrintStatement());
     funcParamEClass.getESuperTypes().add(this.getLRef());
     funcVarDeclarationEClass.getESuperTypes().add(this.getLRef());
@@ -1995,14 +2110,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcVarAssignEClass.getESuperTypes().add(this.getFuncStatement());
     funcIfElseEClass.getESuperTypes().add(this.getFuncStatement());
     funcReturnEClass.getESuperTypes().add(this.getFuncStatement());
-    interleavingProcessEClass.getESuperTypes().add(this.getProcess());
-    outputProcessEClass.getESuperTypes().add(this.getProcess());
-    inputProcessesEClass.getESuperTypes().add(this.getProcess());
-    inputProcessEClass.getESuperTypes().add(this.getProcess());
-    ifProcessesEClass.getESuperTypes().add(this.getProcess());
-    ifBranchProcessEClass.getESuperTypes().add(this.getProcess());
-    callProcessEClass.getESuperTypes().add(this.getProcess());
-    zeroProcessEClass.getESuperTypes().add(this.getProcess());
+    negativeIntConstantEClass.getESuperTypes().add(this.getExpression());
     intConstantEClass.getESuperTypes().add(this.getExpression());
     stringConstantEClass.getESuperTypes().add(this.getExpression());
     boolConstantEClass.getESuperTypes().add(this.getExpression());
@@ -2014,14 +2122,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     minusEClass.getESuperTypes().add(this.getExpression());
     concatenateEClass.getESuperTypes().add(this.getExpression());
     mulOrDivEClass.getESuperTypes().add(this.getExpression());
+    unaryMinusEClass.getESuperTypes().add(this.getExpression());
     notEClass.getESuperTypes().add(this.getExpression());
     localVarRefEClass.getESuperTypes().add(this.getExpression());
     localAttributeRefEClass.getESuperTypes().add(this.getExpression());
     functionCallEClass.getESuperTypes().add(this.getExpression());
     componentAttributeRefEClass.getESuperTypes().add(this.getExpression());
     recAttributeRefEClass.getESuperTypes().add(this.getExpression());
-    componentAttributeToSetEClass.getESuperTypes().add(this.getAttributeToSet());
-    localAttributeToSetEClass.getESuperTypes().add(this.getAttributeToSet());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2030,21 +2137,69 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEReference(getModel_Components(), this.getComponentDefinition(), null, "components", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Functions(), this.getFuncDefinition(), null, "functions", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(processEClass, com.sysma.goat.eclipse_plugin.goatComponents.Process.class, "Process", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessDefinition_Block(), this.getProcessBlock(), null, "block", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(preconditionsEClass, Preconditions.class, "Preconditions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPreconditions_Precond(), ecorePackage.getEObject(), null, "precond", null, 0, -1, Preconditions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(processBlockEClass, ProcessBlock.class, "ProcessBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessBlock_Statements(), this.getProcessStatement(), null, "statements", null, 0, -1, ProcessBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(inputProcessesPartEClass, InputProcessesPart.class, "InputProcessesPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInputProcessesPart_Inputs(), this.getProcess(), null, "inputs", null, 0, -1, InputProcessesPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInputProcessesPart_Preconds(), this.getPreconditions(), null, "preconds", null, 0, -1, InputProcessesPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(processSpawnEClass, ProcessSpawn.class, "ProcessSpawn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessSpawn_Proc(), this.getProcessDefinition(), null, "proc", null, 0, 1, ProcessSpawn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(outputProcessPartEClass, OutputProcessPart.class, "OutputProcessPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOutputProcessPart_MsgOutParts(), this.getExpression(), null, "msgOutParts", null, 0, -1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOutputProcessPart_Send_pred(), this.getExpression(), null, "send_pred", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOutputProcessPart_Output(), this.getPrintStatement(), null, "output", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getOutputProcessPart_Msec(), ecorePackage.getEInt(), "msec", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOutputProcessPart_Next(), this.getProcess(), null, "next", null, 0, 1, OutputProcessPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(processCallEClass, ProcessCall.class, "ProcessCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessCall_Proc(), this.getProcessDefinition(), null, "proc", null, 0, 1, ProcessCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processStatementEClass, ProcessStatement.class, "ProcessStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(processSendEClass, ProcessSend.class, "ProcessSend", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessSend_MsgOutParts(), this.getExpression(), null, "msgOutParts", null, 0, -1, ProcessSend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessSend_Send_pred(), this.getExpression(), null, "send_pred", null, 0, 1, ProcessSend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessSend_Updates(), this.getUpdate(), null, "updates", null, 0, 1, ProcessSend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessSend_Print(), this.getPrintStatement(), null, "print", null, 0, 1, ProcessSend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processReceiveEClass, ProcessReceive.class, "ProcessReceive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessReceive_Cases(), this.getReceiveCase(), null, "cases", null, 0, -1, ProcessReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessReceive_Then(), this.getProcessBlock(), null, "then", null, 0, -1, ProcessReceive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processReceiveSingleEClass, ProcessReceiveSingle.class, "ProcessReceiveSingle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(processReceiveMultipleEClass, ProcessReceiveMultiple.class, "ProcessReceiveMultiple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(receiveCaseEClass, ReceiveCase.class, "ReceiveCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReceiveCase_Cond(), this.getExpression(), null, "cond", null, 0, 1, ReceiveCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReceiveCase_MsgInParts(), ecorePackage.getEString(), "msgInParts", null, 0, -1, ReceiveCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReceiveCase_Updates(), this.getUpdate(), null, "updates", null, 0, 1, ReceiveCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReceiveCase_Print(), this.getPrintStatement(), null, "print", null, 0, 1, ReceiveCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processIfEClass, ProcessIf.class, "ProcessIf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessIf_Cond(), this.getExpression(), null, "cond", null, 0, -1, ProcessIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processThenBlockEClass, ProcessThenBlock.class, "ProcessThenBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessThenBlock_Action(), this.getProcessStatement(), null, "action", null, 0, -1, ProcessThenBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessThenBlock_Then(), this.getProcessBlock(), null, "then", null, 0, -1, ProcessThenBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processSetEClass, ProcessSet.class, "ProcessSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessSet_Update(), this.getUpdate(), null, "update", null, 0, 1, ProcessSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessSet_Print(), this.getPrintStatement(), null, "print", null, 0, 1, ProcessSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processWaitForEClass, ProcessWaitFor.class, "ProcessWaitFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessWaitFor_Cond(), this.getExpression(), null, "cond", null, 0, 1, ProcessWaitFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessWaitFor_Update(), this.getUpdate(), null, "update", null, 0, 1, ProcessWaitFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProcessWaitFor_Print(), this.getPrintStatement(), null, "print", null, 0, 1, ProcessWaitFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(processLoopEClass, ProcessLoop.class, "ProcessLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProcessLoop_Block(), this.getProcessBlock(), null, "block", null, 0, 1, ProcessLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(updateEClass, Update.class, "Update", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUpdate_Attribute(), ecorePackage.getEObject(), null, "attribute", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUpdate_Value(), this.getExpression(), null, "value", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(updateComponentAttributeEClass, UpdateComponentAttribute.class, "UpdateComponentAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUpdateComponentAttribute_Atname(), ecorePackage.getEString(), "atname", null, 0, 1, UpdateComponentAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(updateLocalAttributeEClass, UpdateLocalAttribute.class, "UpdateLocalAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUpdateLocalAttribute_Atname(), ecorePackage.getEString(), "atname", null, 0, 1, UpdateLocalAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(printStatementEClass, PrintStatement.class, "PrintStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2052,17 +2207,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(printFormattedStatementEClass, PrintFormattedStatement.class, "PrintFormattedStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPrintFormattedStatement_ToPrint(), ecorePackage.getEString(), "toPrint", null, 0, 1, PrintFormattedStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(updateEClass, Update.class, "Update", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getUpdate_Vars(), this.getAttributeToSet(), null, "vars", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUpdate_Vals(), this.getExpression(), null, "vals", null, 0, -1, Update.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(awarenessEClass, Awareness.class, "Awareness", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAwareness_Pred(), this.getExpression(), null, "pred", null, 0, 1, Awareness.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessDefinition_Proc(), this.getProcess(), null, "proc", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2076,9 +2220,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(lRefEClass, LRef.class, "LRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, LRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(attributeToSetEClass, AttributeToSet.class, "AttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttributeToSet_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, AttributeToSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcParamEClass, FuncParam.class, "FuncParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFuncParam_Type(), ecorePackage.getEString(), "type", null, 0, 1, FuncParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2109,29 +2250,8 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(funcReturnEClass, FuncReturn.class, "FuncReturn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncReturn_Val(), this.getExpression(), null, "val", null, 0, 1, FuncReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(interleavingProcessEClass, InterleavingProcess.class, "InterleavingProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInterleavingProcess_SubProcs(), this.getProcess(), null, "subProcs", null, 0, -1, InterleavingProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(outputProcessEClass, OutputProcess.class, "OutputProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOutputProcess_Precond(), this.getPreconditions(), null, "precond", null, 0, 1, OutputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(inputProcessesEClass, InputProcesses.class, "InputProcesses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(inputProcessEClass, InputProcess.class, "InputProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInputProcess_Rec_pred(), this.getExpression(), null, "rec_pred", null, 0, 1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInputProcess_MsgInParts(), this.getAttributeToSet(), null, "msgInParts", null, 0, -1, InputProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(ifProcessesEClass, IfProcesses.class, "IfProcesses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIfProcesses_Branches(), this.getProcess(), null, "branches", null, 0, -1, IfProcesses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(ifBranchProcessEClass, IfBranchProcess.class, "IfBranchProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIfBranchProcess_Cond(), this.getPreconditions(), null, "cond", null, 0, 1, IfBranchProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIfBranchProcess_Then(), this.getProcess(), null, "then", null, 0, 1, IfBranchProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(callProcessEClass, CallProcess.class, "CallProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCallProcess_Procname(), this.getProcessDefinition(), null, "procname", null, 0, 1, CallProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(zeroProcessEClass, ZeroProcess.class, "ZeroProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(negativeIntConstantEClass, NegativeIntConstant.class, "NegativeIntConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNegativeIntConstant_Negvalue(), ecorePackage.getEInt(), "negvalue", null, 0, 1, NegativeIntConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intConstantEClass, IntConstant.class, "IntConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIntConstant_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2143,12 +2263,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEAttribute(getBoolConstant_Value(), ecorePackage.getEString(), "value", null, 0, 1, BoolConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOr_Left(), this.getExpression(), null, "left", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOr_Right(), this.getExpression(), null, "right", null, 0, 1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOr_Sub(), this.getExpression(), null, "sub", null, 0, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(andEClass, And.class, "And", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAnd_Left(), this.getExpression(), null, "left", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAnd_Right(), this.getExpression(), null, "right", null, 0, 1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnd_Sub(), this.getExpression(), null, "sub", null, 0, -1, And.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(equalityEClass, Equality.class, "Equality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEquality_Left(), this.getExpression(), null, "left", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2177,6 +2295,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEAttribute(getMulOrDiv_Op(), ecorePackage.getEString(), "op", null, 0, 1, MulOrDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMulOrDiv_Right(), this.getExpression(), null, "right", null, 0, 1, MulOrDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(unaryMinusEClass, UnaryMinus.class, "UnaryMinus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUnaryMinus_Expression(), this.getExpression(), null, "expression", null, 0, 1, UnaryMinus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNot_Expression(), this.getExpression(), null, "expression", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2195,10 +2316,6 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(recAttributeRefEClass, RecAttributeRef.class, "RecAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, RecAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(componentAttributeToSetEClass, ComponentAttributeToSet.class, "ComponentAttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(localAttributeToSetEClass, LocalAttributeToSet.class, "LocalAttributeToSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

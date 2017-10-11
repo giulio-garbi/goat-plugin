@@ -15,12 +15,12 @@ import org.eclipse.xtext.validation.Check
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage
 import org.eclipse.emf.ecore.EReference
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness
 import com.google.inject.Inject
 import org.eclipse.xtext.validation.EValidatorRegistrar
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate
+import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor
 
 class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
     @Inject
@@ -52,30 +52,32 @@ class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
 	}
 	
 	@Check
-	def checkTypeReceivePredicate(InputProcess iproc){
-		expectedType(iproc.rec_pred, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.inputProcess_Rec_pred)
+	def checkTypeReceivePredicate(ReceiveCase iproc){
+		expectedType(iproc.cond, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.receiveCase_Cond)
 	}
 	
 	@Check
-	def checkTypeSendPredicate(OutputProcess oproc){
-		expectedType(oproc.send_pred, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.outputProcessPart_Send_pred)
+	def checkTypeSendPredicate(ProcessSend oproc){
+		expectedType(oproc.send_pred, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.processSend_Send_pred)
 	}
 	
 	@Check
-	def checkTypeAwareness(Awareness awr){
-		expectedType(awr.pred, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.awareness_Pred)
+	def checkTypeAwareness(ProcessWaitFor awr){
+		expected2Types(awr.cond, ExprType.BOOL, ExprType.INT, GoatComponentsPackage.eINSTANCE.processWaitFor_Cond)
 	}
 	
 	@Check
 	def checkTypes(Expression expr){
 		switch(expr){
 			And: {
-				expectedType(expr.left, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.and_Left)
-				expectedType(expr.right, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.and_Right)
+				if (expr.sub.filter[!ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExprType.BOOL)].length > 0){
+					error('''And requires boolean expressions''', GoatComponentsPackage.eINSTANCE.and_Sub)
+				}
 			}
 			Or: {
-				expectedType(expr.left, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.or_Left)
-				expectedType(expr.right, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.or_Right)
+				if (expr.sub.filter[!ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExprType.BOOL)].length > 0){
+					error('''Or requires boolean expressions''', GoatComponentsPackage.eINSTANCE.and_Sub)
+				}
 			}
 			Not:
 				expectedType(expr.expression, ExprType.BOOL, GoatComponentsPackage.eINSTANCE.not_Expression)

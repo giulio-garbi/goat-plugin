@@ -26,10 +26,15 @@ public class ExpressionGeneratorTest {
     _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("proc P = [proc.x := 1+5] send{}@(false) print(\"EXPRESSION $x$\").nil");
+    _builder.append("process P {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{}@(false) [proc.x := 1+5] print(\"EXPRESSION $x$\");");
+    _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {} P at \"127.0.0.1:17654\"");
+    _builder.append("component {} P");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("EXPRESSION 6"));
@@ -40,10 +45,28 @@ public class ExpressionGeneratorTest {
   @Test
   public void expressionWithAttributes() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = [proc.g := 3, proc.f := ((this.seven+5)*proc.g)/7] send{}@(false) print(\"EXPRESSION $f$\").nil");
+    _builder.append("infrastructure infr");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("process P {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{}@(false) [");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.g := 3, ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.f := ((comp.seven+5)*proc.g)/7");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("] print(\"EXPRESSION $f$\");");
+    _builder.newLine();
+    _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {seven := 7} P at \"127.0.0.1:17654\"");
+    _builder.append("component {seven := 7} P");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("EXPRESSION 5"));
@@ -54,10 +77,18 @@ public class ExpressionGeneratorTest {
   @Test
   public void expressionWithComparisonInt() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = [proc.g := 3, proc.f := this.seven > 3] send{}@(false) print(\"EXPRESSION $f$\").nil");
+    _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {seven := 7} P at \"127.0.0.1:17654\"");
+    _builder.append("process P {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{}@(false) [proc.g := 3, proc.f := comp.seven > 3] print(\"EXPRESSION $f$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {seven := 7} P");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("EXPRESSION true"));
@@ -68,10 +99,18 @@ public class ExpressionGeneratorTest {
   @Test
   public void expressionWithComparisonIntBool() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = [proc.g := 3, proc.f := this.seven > 3 == 3 > 4] send{}@(false) print(\"EXPRESSION $f$\").nil");
+    _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {seven := 7} P at \"127.0.0.1:17654\"");
+    _builder.append("process P{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{}@(false) [proc.g := 3, proc.f := comp.seven > 3 == 3 > 4] print(\"EXPRESSION $f$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {seven := 7} P");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("EXPRESSION false"));
@@ -82,10 +121,27 @@ public class ExpressionGeneratorTest {
   @Test
   public void expressionFunctionRecursive() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = [proc.six := 6, proc.f := fact(proc.six)] send{}@(false) print(\"EXPRESSION $f$\").nil");
+    _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {} P at \"127.0.0.1:17654\"");
+    _builder.append("process P {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send {} @ (false) [");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.six := 6, ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.f := fact(proc.six)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("] print(\"EXPRESSION $f$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {} P");
     _builder.newLine();
     _builder.newLine();
     _builder.append("function int fact(int n){");
@@ -114,16 +170,75 @@ public class ExpressionGeneratorTest {
   }
   
   @Test
+  public void expressionWithNegativeConst() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("infrastructure infr");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("process P {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send {} @ (false) [");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.val := -1, ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("proc.f := fn(proc.val)");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("] print(\"EXPRESSION $f$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {} P");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function int fn(int n){");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("return -n");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final Procedure2<String, String> _function = (String out, String err) -> {
+      Assert.assertTrue(out.contains("EXPRESSION 1"));
+    };
+    this._generatorTestHelper.compileAndRun(_builder, _function);
+  }
+  
+  @Test
   public void expressionSendPredicate() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = send{1}@(receiver.pname == \"Q\").receive(true){proc.x}print(\"P got $x$\").nil");
-    _builder.newLine();
-    _builder.append("proc Q = receive(true){proc.x}print(\"Q got $x$\").(send{proc.x + 1}@(receiver.pname == \"P\").nil)");
+    _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {pname := \"P\"} P at \"127.0.0.1:17654\"");
+    _builder.append("process P {");
     _builder.newLine();
-    _builder.append("component {pname := \"Q\"} Q at \"127.0.0.1:17654\"");
+    _builder.append("\t");
+    _builder.append("send{1}@(receiver.pname == \"Q\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("receive(true){x} print(\"P got $x$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("process Q {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("receive(true){x}print(\"Q got $x$\");");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("send{proc.x + 1}@(receiver.pname == \"P\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {pname := \"P\"} P");
+    _builder.newLine();
+    _builder.append("component {pname := \"Q\"} Q");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("Q got 1"));
@@ -135,14 +250,28 @@ public class ExpressionGeneratorTest {
   @Test
   public void expressionSendPredicateStrings() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("proc P = send{\"ciao: come (va)\"}@(receiver.pname == \"Q\").nil");
-    _builder.newLine();
-    _builder.append("proc Q = receive(true){proc.x}print(\"$x$\").nil");
+    _builder.append("infrastructure infr");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {pname := \"P\"} P at \"127.0.0.1:17654\"");
+    _builder.append("process P {");
     _builder.newLine();
-    _builder.append("component {pname := \"Q\"} Q at \"127.0.0.1:17654\"");
+    _builder.append("\t");
+    _builder.append("send {\"ciao: come (va)\"} @ (receiver.pname == \"Q\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("process Q {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("receive (true) {x} print(\"$x$\");");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("component {pname := \"P\"} P");
+    _builder.newLine();
+    _builder.append("component {pname := \"Q\"} Q");
     _builder.newLine();
     final Procedure2<String, String> _function = (String out, String err) -> {
       Assert.assertTrue(out.contains("ciao: come (va)"));

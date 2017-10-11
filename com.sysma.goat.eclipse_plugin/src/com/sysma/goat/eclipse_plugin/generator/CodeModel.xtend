@@ -11,7 +11,7 @@ class CodeModel {
 	val Iterable<CodeComponentDefinition> components
 	val Iterable<CodeFunction> functions
 	val Infrastructure infr
-	public static val runFuncName = "run"
+	public static val runFuncName = "runWith"
 	
 	new(Model model){
 		packageName = "main"
@@ -26,15 +26,7 @@ class CodeModel {
 		"p"
 	}
 	
-	def getCode() {
-		getCode(-1)
-	}
-	
-	def getTestCode(int timeout) {
-		getCode(timeout)
-	}
-	
-	def getCode(int timeout){
+	def getCode(){
 		'''
 		package «packageName»
 		
@@ -43,9 +35,12 @@ class CodeModel {
 			"strings"
 			"fmt"
 			"strconv"
+			"sync"
 		)
 		
-		type continuationProcess func(map[string]interface{}, *goat.Process) continuationProcess
+		type continuationProcess func(*sync.WaitGroup, *map[string]interface{}, *goat.Process) continuationProcess
+		
+		«Utils.utilityFunctions»
 		
 		«FOR func: functions»
 			«func.code»
@@ -55,12 +50,6 @@ class CodeModel {
 			«c_pdef.code»
 		«ENDFOR»
 		
-		func «runFuncName»(proc continuationProcess, locAttr map[string]interface{}) (func(*goat.Process)){
-			return func(p *goat.Process){
-			    for currp := proc; currp != nil; currp = currp(locAttr, p){}
-			}
-		}
-		
 		func «mainFuncName»(){
 			//Needed to avoid golang errors "imported and not used"
 			_ = func(){
@@ -68,14 +57,14 @@ class CodeModel {
 				strconv.Atoi("")
 			}
 			
-			term := make(chan struct{})
+			var wg sync.WaitGroup
 			«FOR cdef: components»
 				«cdef.getComponentDeclaration(infr)»
 			«ENDFOR»
 			«FOR cdef: components»
 				«cdef.code»
 			«ENDFOR»
-			<- term
+			wg.Wait()
 		}
 		'''
 	}

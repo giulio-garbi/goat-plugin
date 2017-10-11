@@ -3,7 +3,7 @@ package com.sysma.goat.eclipse_plugin.generator
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
 
-class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.CodeTree {
+class CodeComponentDefinition {
 	
 	val ComponentDefinition cdef
 	val CharSequence mainFunc
@@ -26,9 +26,9 @@ class CodeComponentDefinition extends com.sysma.goat.eclipse_plugin.generator.Co
 		'''
 	}
 	
-	override getCode() {
+	def getCode() {
 		'''
-		goat.NewProcess(«compName»).Run(«mainFunc»(«new CodeProcessDefinition(cdef.proc).process_func_name», map[string]interface{}{}))'''
+		goat.NewProcess(«compName»).Run(«mainFunc»(&wg, «new CodeProcessDefinition(cdef.proc).process_func_name», &(map[string]interface{}{})))'''
 	}
 	
 }

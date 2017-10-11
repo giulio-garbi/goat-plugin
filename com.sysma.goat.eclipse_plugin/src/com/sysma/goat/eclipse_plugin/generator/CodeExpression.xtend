@@ -23,12 +23,15 @@ import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping.ExprType
+import java.util.List
+import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus
+import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant
 
 class CodeExpression {
-	def static cast(String typ, Expression expr, CharSequence localAttributesMap, CharSequence attributesMap){
+	def static cast(String typ, Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
 		cast(ExpressionTyping.typeOf(typ), expr, localAttributesMap, attributesMap)
 	}
-	def static cast(ExprType typ, Expression expr, CharSequence localAttributesMap, CharSequence attributesMap){
+	def static cast(ExprType typ, Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
 		val econv = getExpressionWithAttributes(expr, localAttributesMap, attributesMap)
 		switch(expr){
 			LocalAttributeRef, RecAttributeRef, ComponentAttributeRef:
@@ -38,12 +41,12 @@ class CodeExpression {
 		}
 	}
 	
-	def static CharSequence getExpressionWithAttributes(Expression expr, CharSequence localAttributesMap, CharSequence attributesMap){
+	def static CharSequence getExpressionWithAttributes(Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
 		switch(expr){
 			And:
-				'''(«cast(ExprType.BOOL, expr.left, localAttributesMap, attributesMap)» && «cast(ExprType.BOOL, expr.right, localAttributesMap, attributesMap)»)'''
+				'''(«expr.sub.map[cast(ExprType.BOOL, it, localAttributesMap, attributesMap)].join(" && ")»)'''
 			Or:
-				'''(«cast(ExprType.BOOL, expr.left, localAttributesMap, attributesMap)» || «cast(ExprType.BOOL, expr.right, localAttributesMap, attributesMap)»)'''
+				'''(«expr.sub.map[cast(ExprType.BOOL, it, localAttributesMap, attributesMap)].join(" || ")»)'''
 			Not:
 				'''(!(«cast(ExprType.BOOL, expr.expression, localAttributesMap, attributesMap)»))'''
 			Equality:
@@ -60,6 +63,10 @@ class CodeExpression {
 				'''(«cast(ExprType.INT, expr.left, localAttributesMap, attributesMap)» - «cast(ExprType.INT, expr.right, localAttributesMap, attributesMap)»)'''
 			MulOrDiv:
 				'''(«cast(ExprType.INT, expr.left, localAttributesMap, attributesMap)» «expr.op» «cast(ExprType.INT, expr.right, localAttributesMap, attributesMap)»)'''
+			UnaryMinus:
+				'''(-(«cast(ExprType.INT, expr.expression, localAttributesMap, attributesMap)»))'''	
+			NegativeIntConstant:
+				'''(-«expr.negvalue»)'''
 			IntConstant:
 				expr.value.toString
 			StringConstant:
@@ -77,7 +84,7 @@ class CodeExpression {
 				if (attributesMap === null)
 					throw new IllegalArgumentException("Unexpected local attribute")
 				else
-					'''«localAttributesMap»["«expr.attribute»"]'''
+					localAttributesMap.readValue(expr.attribute)
 			FunctionCall:
 			{
 				val args = ((0..<expr.params.length).map[i|cast(expr.function.params.get(i).type, expr.params.get(i), localAttributesMap, attributesMap)]).join(", ")
@@ -97,87 +104,64 @@ class CodeExpression {
 		getExpressionWithAttributes(expr, null, null)
 	}
 	
-	def private static boolean isOPImmediate(Expression expr) {
+	/*def private static boolean isOPImmediate(Expression expr) {
 		switch(expr){
 			LocalAttributeRef, ComponentAttributeRef, StringConstant, IntConstant, BoolConstant:
 				true
 			default:
 				false 
 		}
-	}
+	}*/
 	
 	def private static boolean isOPAttribute(Expression expr){
 		return expr instanceof RecAttributeRef
 	}
 	
-	def static CharSequence getOutputPredicate(Expression expr, CharSequence localAttributesMap){
+	def static CharSequence binaryOperatorExtensor(CharSequence operator, List<CharSequence> operands){
+		operands.tail.map[operator + "{"].join + operands.head + operands.tail.map[''', «it»}'''].join
+	}
+	
+	def static CharSequence getOutputPredicate(Expression expr, LocalVariableMap localAttributesMap, CharSequence attrName){
 		switch(expr){
 			And:
-				'''goat.And{«getOutputPredicate(expr.left, localAttributesMap)», «getOutputPredicate(expr.right, localAttributesMap)»}'''
+				binaryOperatorExtensor("goat.And", expr.sub.map[getOutputPredicate(it, localAttributesMap, attrName)])
 			Or:
-				'''goat.Or{«getOutputPredicate(expr.left, localAttributesMap)», «getOutputPredicate(expr.right, localAttributesMap)»}'''
+				binaryOperatorExtensor("goat.Or", expr.sub.map[getOutputPredicate(it, localAttributesMap, attrName)])
 			Not:
-				'''goat.Not{«getOutputPredicate(expr.expression, localAttributesMap)»}'''
+				'''goat.Not{«getOutputPredicate(expr.expression, localAttributesMap, attrName)»}'''
 			Equality:
 			{
-				val isOpLImm = 
-					if (isOPImmediate(expr.left)){
-						true
-					} else if (isOPAttribute(expr.left)) {
-						false
-					} else {
-						throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes")
-					}
-				
-				val isOpRImm = 
-					if (isOPImmediate(expr.right)){
-						true
-					} else if (isOPAttribute(expr.right)) {
-						false
-					} else {
-						throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes")
-					}
+				val isOpLImm = !isOPAttribute(expr.left)
+				val isOpRImm = !isOPAttribute(expr.right)
 					
-				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap)», «!isOpLImm», "«expr.op»", '''
-					+ '''«getOutputPredicate(expr.right, localAttributesMap)», «!isOpRImm»}'''
+				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
+					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»}'''
 			}
 			Comparison:
 			{
-				val isOpLImm = 
-					if (isOPImmediate(expr.left)){
-						true
-					} else if (isOPAttribute(expr.left)) {
-						false
-					} else {
-						throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes")
-					}
-				
-				val isOpRImm = 
-					if (isOPImmediate(expr.right)){
-						true
-					} else if (isOPAttribute(expr.right)) {
-						false
-					} else {
-						throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes")
-					}
+				val isOpLImm = !isOPAttribute(expr.left)
+				val isOpRImm = !isOPAttribute(expr.right)
 					
-				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap)», «!isOpLImm», "«expr.op»", '''
-					+ '''«getOutputPredicate(expr.right, localAttributesMap)», «!isOpRImm»}'''
+				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
+					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»}'''
 			}
 			BoolConstant:
 				'''goat.«StringExtensions.toFirstUpper(expr.value)»{}'''
-			Plus, Minus, MulOrDiv,FunctionCall:
+			RecAttributeRef:
+				'''"«expr.attribute»"'''
+			Expression:
+				CodeExpression.getExpressionWithAttributes(expr, localAttributesMap, attrName)
+			/*Plus, Minus, MulOrDiv,FunctionCall:
 				throw new IllegalArgumentException("Output predicate cannot contain expressions. Use updates.")
 			LocalAttributeRef:
-				'''«localAttributesMap»["«expr.attribute»"]'''
+				localAttributesMap.readValue(expr.attribute)
 			IntConstant:
 				'''«expr.value»'''
 			StringConstant:
 				'''"«StringEscapeUtils.escapeJava(expr.value)»"'''
-			RecAttributeRef:
-				'''"«expr.attribute»"'''
+			
 			ComponentAttributeRef:
-				throw new IllegalArgumentException("Output predicate cannot refer component attributes.")
+				throw new IllegalArgumentException("Output predicate cannot refer component attributes.")*/
 		}
 	}
 }

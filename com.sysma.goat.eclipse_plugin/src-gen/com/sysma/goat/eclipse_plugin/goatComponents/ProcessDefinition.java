@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getName <em>Name</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getProc <em>Proc</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getBlock <em>Block</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessDefinition()
@@ -51,29 +51,29 @@ public interface ProcessDefinition extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Proc</b></em>' containment reference.
+   * Returns the value of the '<em><b>Block</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Proc</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Block</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Proc</em>' containment reference.
-   * @see #setProc(com.sysma.goat.eclipse_plugin.goatComponents.Process)
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessDefinition_Proc()
+   * @return the value of the '<em>Block</em>' containment reference.
+   * @see #setBlock(ProcessBlock)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessDefinition_Block()
    * @model containment="true"
    * @generated
    */
-  com.sysma.goat.eclipse_plugin.goatComponents.Process getProc();
+  ProcessBlock getBlock();
 
   /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getProc <em>Proc</em>}' containment reference.
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getBlock <em>Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Proc</em>' containment reference.
-   * @see #getProc()
+   * @param value the new value of the '<em>Block</em>' containment reference.
+   * @see #getBlock()
    * @generated
    */
-  void setProc(com.sysma.goat.eclipse_plugin.goatComponents.Process value);
+  void setBlock(ProcessBlock value);
 
 } // ProcessDefinition

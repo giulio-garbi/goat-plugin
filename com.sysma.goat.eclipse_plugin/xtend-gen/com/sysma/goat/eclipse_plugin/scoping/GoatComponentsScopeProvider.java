@@ -34,9 +34,15 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
   public IScope getScope(final EObject context, final EReference reference) {
     IScope _switchResult = null;
     boolean _matched = false;
-    EReference _callProcess_Procname = GoatComponentsPackage.eINSTANCE.getCallProcess_Procname();
-    if (Objects.equal(reference, _callProcess_Procname)) {
+    EReference _processCall_Proc = GoatComponentsPackage.eINSTANCE.getProcessCall_Proc();
+    if (Objects.equal(reference, _processCall_Proc)) {
       _matched=true;
+    }
+    if (!_matched) {
+      EReference _processSpawn_Proc = GoatComponentsPackage.eINSTANCE.getProcessSpawn_Proc();
+      if (Objects.equal(reference, _processSpawn_Proc)) {
+        _matched=true;
+      }
     }
     if (!_matched) {
       EReference _componentDefinition_Proc = GoatComponentsPackage.eINSTANCE.getComponentDefinition_Proc();

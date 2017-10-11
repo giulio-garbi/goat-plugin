@@ -2,17 +2,19 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression
 
-class CodeSendPred extends CodeTree {
+class CodeSendPred {
 	
 	val Expression pred
-	val String localAttributes
+	val LocalVariableMap localAttributes
+	val CharSequence attrName
 	
-	new(Expression pred, String localAttributes) {
+	new(Expression pred, LocalVariableMap localAttributes, CharSequence attrName) {
 		this.pred = pred
 		this.localAttributes = localAttributes
+		this.attrName = attrName
 	}
 	
-	override getCode() {
-		CodeExpression.getOutputPredicate(pred, localAttributes)
+	def getCode() {
+		CodeExpression.getOutputPredicate(pred, localAttributes, attrName)
 	}
 }

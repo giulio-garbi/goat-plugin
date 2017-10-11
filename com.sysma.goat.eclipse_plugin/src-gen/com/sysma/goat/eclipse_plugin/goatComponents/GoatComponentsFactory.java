@@ -33,40 +33,166 @@ public interface GoatComponentsFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Process</em>'.
+   * Returns a new object of class '<em>Process Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process</em>'.
+   * @return a new object of class '<em>Process Definition</em>'.
    * @generated
    */
-  Process createProcess();
+  ProcessDefinition createProcessDefinition();
 
   /**
-   * Returns a new object of class '<em>Preconditions</em>'.
+   * Returns a new object of class '<em>Process Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Preconditions</em>'.
+   * @return a new object of class '<em>Process Block</em>'.
    * @generated
    */
-  Preconditions createPreconditions();
+  ProcessBlock createProcessBlock();
 
   /**
-   * Returns a new object of class '<em>Input Processes Part</em>'.
+   * Returns a new object of class '<em>Process Spawn</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Input Processes Part</em>'.
+   * @return a new object of class '<em>Process Spawn</em>'.
    * @generated
    */
-  InputProcessesPart createInputProcessesPart();
+  ProcessSpawn createProcessSpawn();
 
   /**
-   * Returns a new object of class '<em>Output Process Part</em>'.
+   * Returns a new object of class '<em>Process Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Output Process Part</em>'.
+   * @return a new object of class '<em>Process Call</em>'.
    * @generated
    */
-  OutputProcessPart createOutputProcessPart();
+  ProcessCall createProcessCall();
+
+  /**
+   * Returns a new object of class '<em>Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Statement</em>'.
+   * @generated
+   */
+  ProcessStatement createProcessStatement();
+
+  /**
+   * Returns a new object of class '<em>Process Send</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Send</em>'.
+   * @generated
+   */
+  ProcessSend createProcessSend();
+
+  /**
+   * Returns a new object of class '<em>Process Receive</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Receive</em>'.
+   * @generated
+   */
+  ProcessReceive createProcessReceive();
+
+  /**
+   * Returns a new object of class '<em>Process Receive Single</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Receive Single</em>'.
+   * @generated
+   */
+  ProcessReceiveSingle createProcessReceiveSingle();
+
+  /**
+   * Returns a new object of class '<em>Process Receive Multiple</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Receive Multiple</em>'.
+   * @generated
+   */
+  ProcessReceiveMultiple createProcessReceiveMultiple();
+
+  /**
+   * Returns a new object of class '<em>Receive Case</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Receive Case</em>'.
+   * @generated
+   */
+  ReceiveCase createReceiveCase();
+
+  /**
+   * Returns a new object of class '<em>Process If</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process If</em>'.
+   * @generated
+   */
+  ProcessIf createProcessIf();
+
+  /**
+   * Returns a new object of class '<em>Process Then Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Then Block</em>'.
+   * @generated
+   */
+  ProcessThenBlock createProcessThenBlock();
+
+  /**
+   * Returns a new object of class '<em>Process Set</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Set</em>'.
+   * @generated
+   */
+  ProcessSet createProcessSet();
+
+  /**
+   * Returns a new object of class '<em>Process Wait For</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Wait For</em>'.
+   * @generated
+   */
+  ProcessWaitFor createProcessWaitFor();
+
+  /**
+   * Returns a new object of class '<em>Process Loop</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Loop</em>'.
+   * @generated
+   */
+  ProcessLoop createProcessLoop();
+
+  /**
+   * Returns a new object of class '<em>Update</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update</em>'.
+   * @generated
+   */
+  Update createUpdate();
+
+  /**
+   * Returns a new object of class '<em>Update Component Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update Component Attribute</em>'.
+   * @generated
+   */
+  UpdateComponentAttribute createUpdateComponentAttribute();
+
+  /**
+   * Returns a new object of class '<em>Update Local Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Update Local Attribute</em>'.
+   * @generated
+   */
+  UpdateLocalAttribute createUpdateLocalAttribute();
 
   /**
    * Returns a new object of class '<em>Print Statement</em>'.
@@ -94,33 +220,6 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   PrintFormattedStatement createPrintFormattedStatement();
-
-  /**
-   * Returns a new object of class '<em>Update</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Update</em>'.
-   * @generated
-   */
-  Update createUpdate();
-
-  /**
-   * Returns a new object of class '<em>Awareness</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Awareness</em>'.
-   * @generated
-   */
-  Awareness createAwareness();
-
-  /**
-   * Returns a new object of class '<em>Process Definition</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Definition</em>'.
-   * @generated
-   */
-  ProcessDefinition createProcessDefinition();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -157,15 +256,6 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   LRef createLRef();
-
-  /**
-   * Returns a new object of class '<em>Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attribute To Set</em>'.
-   * @generated
-   */
-  AttributeToSet createAttributeToSet();
 
   /**
    * Returns a new object of class '<em>Func Param</em>'.
@@ -240,76 +330,13 @@ public interface GoatComponentsFactory extends EFactory
   FuncReturn createFuncReturn();
 
   /**
-   * Returns a new object of class '<em>Interleaving Process</em>'.
+   * Returns a new object of class '<em>Negative Int Constant</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Interleaving Process</em>'.
+   * @return a new object of class '<em>Negative Int Constant</em>'.
    * @generated
    */
-  InterleavingProcess createInterleavingProcess();
-
-  /**
-   * Returns a new object of class '<em>Output Process</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Output Process</em>'.
-   * @generated
-   */
-  OutputProcess createOutputProcess();
-
-  /**
-   * Returns a new object of class '<em>Input Processes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Input Processes</em>'.
-   * @generated
-   */
-  InputProcesses createInputProcesses();
-
-  /**
-   * Returns a new object of class '<em>Input Process</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Input Process</em>'.
-   * @generated
-   */
-  InputProcess createInputProcess();
-
-  /**
-   * Returns a new object of class '<em>If Processes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>If Processes</em>'.
-   * @generated
-   */
-  IfProcesses createIfProcesses();
-
-  /**
-   * Returns a new object of class '<em>If Branch Process</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>If Branch Process</em>'.
-   * @generated
-   */
-  IfBranchProcess createIfBranchProcess();
-
-  /**
-   * Returns a new object of class '<em>Call Process</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Call Process</em>'.
-   * @generated
-   */
-  CallProcess createCallProcess();
-
-  /**
-   * Returns a new object of class '<em>Zero Process</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Zero Process</em>'.
-   * @generated
-   */
-  ZeroProcess createZeroProcess();
+  NegativeIntConstant createNegativeIntConstant();
 
   /**
    * Returns a new object of class '<em>Int Constant</em>'.
@@ -411,6 +438,15 @@ public interface GoatComponentsFactory extends EFactory
   MulOrDiv createMulOrDiv();
 
   /**
+   * Returns a new object of class '<em>Unary Minus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unary Minus</em>'.
+   * @generated
+   */
+  UnaryMinus createUnaryMinus();
+
+  /**
    * Returns a new object of class '<em>Not</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -463,24 +499,6 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   RecAttributeRef createRecAttributeRef();
-
-  /**
-   * Returns a new object of class '<em>Component Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Component Attribute To Set</em>'.
-   * @generated
-   */
-  ComponentAttributeToSet createComponentAttributeToSet();
-
-  /**
-   * Returns a new object of class '<em>Local Attribute To Set</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Local Attribute To Set</em>'.
-   * @generated
-   */
-  LocalAttributeToSet createLocalAttributeToSet();
 
   /**
    * Returns the package supported by this factory.

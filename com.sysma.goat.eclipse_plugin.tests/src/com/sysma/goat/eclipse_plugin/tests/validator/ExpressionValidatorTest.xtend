@@ -92,7 +92,7 @@ class ExpressionValidatorTest {
 			function string fun (){
 				var x = 0
 				var y = 5
-				return "o" ++ this.z
+				return "o" ++ comp.z
 			}
 		''')
 		assertNotNull(result)
@@ -120,7 +120,9 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = receive (proc.x > 10) {proc.w}.nil
+			process P {
+				receive (proc.x > 10) {w};
+			}
 		''')
 		assertNotNull(result)
 		result.checkNoErrorApartInfr
@@ -131,10 +133,12 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = receive (10) {proc.w}.nil
+			process P {
+				receive (10) {w};
+			}
 		''')
 		assertNotNull(result)
-		result.assertError(GoatComponentsPackage.eINSTANCE.inputProcess, null, "Expected a bool expression")
+		result.assertError(GoatComponentsPackage.eINSTANCE.receiveCase, null, "Expected a bool expression")
 	}
 	
 		@Test
@@ -142,7 +146,9 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = receive (this.l) {proc.w}.nil
+			process P {
+				receive (comp.l) {w};
+			}
 		''')
 		assertNotNull(result)
 		result.checkNoErrorApartInfr
@@ -153,7 +159,9 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = receive (receiver.l) {proc.w}.nil
+			process P {
+				receive (receiver.l) {w};
+			}
 		''')
 		assertNotNull(result)
 		result.assertError(GoatComponentsPackage.eINSTANCE.recAttributeRef, null, "Receiver attributes can be used only in output predicates")
@@ -165,7 +173,9 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = send {proc.w} @ (proc.x > 10).nil
+			process P {
+				send {proc.w} @ (proc.x > 10);
+			}
 		''')
 		assertNotNull(result)
 		result.checkNoErrorApartInfr
@@ -176,32 +186,38 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = send {proc.w} @ ("k").nil
+			process P {
+				send {proc.w} @ ("k");
+			}
 		''')
 		assertNotNull(result)
-		result.assertError(GoatComponentsPackage.eINSTANCE.outputProcess, null, "Expected a bool expression")
+		result.assertError(GoatComponentsPackage.eINSTANCE.processSend, null, "Expected a bool expression")
 	}
 	
 	@Test
-	def noGlobalAttributeInSendMessage(){
+	def globalAttributeInSendMessage(){
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = send {this.w} @ (true).nil
+			process P {
+				send {comp.w} @ (true);
+			}
 		''')
 		assertNotNull(result)
-		result.assertError(GoatComponentsPackage.eINSTANCE.componentAttributeRef, null, "Component attributes cannot be used in send messages and/or predicates. Use local attributes.")
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
-	def noGlobalAttributeInSendPred(){
+	def globalAttributeInSendPred(){
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = send {proc.w} @ (receiver.s == this.d).nil
+			process P {
+				send {proc.w} @ (receiver.s == comp.d);
+			}
 		''')
 		assertNotNull(result)
-		result.assertError(GoatComponentsPackage.eINSTANCE.componentAttributeRef, null, "Component attributes cannot be used in send messages and/or predicates. Use local attributes.")
+		result.checkNoErrorApartInfr
 	}
 	
 	@Test
@@ -209,7 +225,10 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = wait until (this.x == 8) send {} @ (true).nil
+			process P {
+				waitfor (comp.x == 8);
+				send {} @ (true);
+			}
 		''')
 		assertNotNull(result)
 		result.checkNoErrorApartInfr
@@ -220,7 +239,10 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = wait until (receiver.x == 8) send {} @ (true).nil
+			process P{
+				waitfor (receiver.x == 8);
+				send {} @ (true);
+			}
 		''')
 		assertNotNull(result)
 		result.assertError(GoatComponentsPackage.eINSTANCE.recAttributeRef, null, "Receiver attributes can be used only in output predicates")
@@ -232,20 +254,40 @@ class ExpressionValidatorTest {
 		val result = parse('''
 			infrastructure infr
 			
-			proc P = wait until(true) send {proc.w} @ (true).nil
+			process P {
+				waitfor(true);
+				send {proc.w} @ (true);
+			}
 		''')
 		assertNotNull(result)
 		result.checkNoErrorApartInfr
 	}
 	
 	@Test
-	def awarenessNonBoolExpression(){
+	def sleep(){
 		val result = parse('''
 			infrastructure infr
 			
-			proc P =  wait until(4) send {proc.w} @ (false).nil
+			process P {
+				waitfor(4);
+				send {proc.w} @ (false);
+			}
 		''')
 		assertNotNull(result)
-		result.assertError(GoatComponentsPackage.eINSTANCE.awareness, null, "Expected a bool expression")
+		result.checkNoErrorApartInfr
+	}
+	
+	@Test
+	def awarenessNoStringExpression(){
+		val result = parse('''
+			infrastructure infr
+			
+			process P {
+				waitfor("4");
+				send {proc.w} @ (false);
+			}
+		''')
+		assertNotNull(result)
+		result.assertError(GoatComponentsPackage.eINSTANCE.processWaitFor, null, "Expected a bool or int expression")
 	}
 }

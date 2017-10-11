@@ -9,6 +9,7 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import static extension com.sysma.goat.eclipse_plugin.tests.parser.ParsingTestHelper.*
 
 @RunWith(XtextRunner)
 @InjectWith(GoatComponentsInjectorProvider)
@@ -21,11 +22,11 @@ class ComponentsParsingTest {
 		val result = parseHelper.parse('''
 			infrastructure infr
 
-			proc P = nil
-			component {} P at "ip"
+			process P {}
+			component {} P
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		Assert.assertTrue(result.components.get(0).env.attrs.length == 0)
 	}
 	
@@ -34,11 +35,11 @@ class ComponentsParsingTest {
 		val result = parseHelper.parse('''
 			infrastructure infr
 
-			proc P = nil
-			component {x := 4} P at "ip"
+			process P {}
+			component {x := 4} P
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.empty)
+		result.checkNoErrorApartInfr
 		Assert.assertTrue(result.components.get(0).env.attrs.length == 1)
 	}
 	
@@ -47,11 +48,11 @@ class ComponentsParsingTest {
 		val result = parseHelper.parse('''
 			infrastructure infr
 
-			proc P = nil
+			process P {}
 			component {5 := 4} P at "ip"
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.empty)
+		result.checkErrorApartInfr
 	}
 	
 	@Test
@@ -59,10 +60,10 @@ class ComponentsParsingTest {
 		val result = parseHelper.parse('''
 			infrastructure infr
 
-			proc P = nil
-			component {x := 4} at "ip"
+			process P {}
+			component {x := 4}
 		''')
 		Assert.assertNotNull(result)
-		Assert.assertFalse(result.eResource.errors.empty)
+		result.checkErrorApartInfr
 	}
 }

@@ -5,20 +5,33 @@ import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement
 import java.util.ArrayList
 import org.apache.commons.lang.math.NumberUtils
 import java.util.List
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression
+import com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl
 
 class CodePrint {
 	
-	def static of(PrintStatement pstat, String componentAttr, String localAttr, List<AttributeToSet> message){
+	private static class LocalAttributeRefImplConversion  extends LocalAttributeRefImpl{
+		new (String attrname){
+			super()
+			this.attribute = attrname
+		}
+	}
+	
+	def static of(PrintStatement pstat, String componentAttr, LocalVariableMap localAttr, List<Expression> message){
 		switch pstat{
 			PrintFormattedStatement:
-				'''fmt.Println(«convertString(pstat.toPrint, componentAttr, CodeProcessDefinition.localVariablesMap, message)»)'''
+				'''fmt.Println(«convertString(pstat.toPrint, componentAttr, localAttr, message)»)'''
 			default:
 				""
 		}
 	}
 	
-	def private static escape(String escapedSequence, String componentAttr, String localAttr, List<AttributeToSet> message){
+	def static ofProcAttrs(PrintStatement pstat, String componentAttr, LocalVariableMap localAttr, List<String> message){
+		val exprMessage = message.map[new LocalAttributeRefImplConversion(it) as Expression]
+		CodePrint.of(pstat, componentAttr, localAttr, exprMessage)
+	}
+	
+	def private static escape(String escapedSequence, String componentAttr, LocalVariableMap localAttr, List<Expression> message){
 		if(escapedSequence.length == 0){
 			return ('"$"')
 		} else if (NumberUtils.isDigits(escapedSequence)) {
@@ -26,13 +39,13 @@ class CodePrint {
 			if (tupleIdx >= message.length){
 				return '''"<invalid tuple index>"'''
 		    } else {
-		    	val attribCode = new CodeAttribute(message.get(tupleIdx), componentAttr, localAttr)
-				return ('''fmt.Sprintf("%s: %v","«attribCode.name»", «attribCode.read»''')
+		    	//val attribCode = new CodeAttribute(message.get(tupleIdx), componentAttr, localAttr)
+				return ('''fmt.Sprintf("%s: %v","«""»", «CodeExpression.getExpressionWithAttributes(message.get(tupleIdx),localAttr, componentAttr)»)''')
 			}
 		} else{
 			var attrName = ""
 			var compLevel = false
-			if(escapedSequence.startsWith("this.")){
+			if(escapedSequence.startsWith("comp.")){
 				compLevel = true
 				attrName = escapedSequence.substring(5)
 			} else {
@@ -45,7 +58,7 @@ class CodePrint {
 	}
 	
 	// TODO escaping actual strings for go
-	def private static convertString(String text, String componentAttr, String localAttr, List<AttributeToSet> message){
+	def private static convertString(String text, String componentAttr, LocalVariableMap localAttr, List<Expression> message){
 		var outTokens = new ArrayList<String>()
 		var String escapedSequence = null
 		var actualString = ""

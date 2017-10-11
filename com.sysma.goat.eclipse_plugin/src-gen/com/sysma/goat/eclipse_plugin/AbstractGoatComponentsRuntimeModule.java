@@ -9,7 +9,7 @@ import com.google.inject.name.Names;
 import com.sysma.goat.eclipse_plugin.generator.GoatComponentsGenerator;
 import com.sysma.goat.eclipse_plugin.parser.antlr.GoatComponentsAntlrTokenFileProvider;
 import com.sysma.goat.eclipse_plugin.parser.antlr.GoatComponentsParser;
-import com.sysma.goat.eclipse_plugin.parser.antlr.internal.InternalGoatComponentsLexer;
+import com.sysma.goat.eclipse_plugin.parser.antlr.lexer.InternalGoatComponentsLexer;
 import com.sysma.goat.eclipse_plugin.scoping.GoatComponentsScopeProvider;
 import com.sysma.goat.eclipse_plugin.serializer.GoatComponentsSemanticSequencer;
 import com.sysma.goat.eclipse_plugin.serializer.GoatComponentsSyntacticSequencer;

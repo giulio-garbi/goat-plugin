@@ -7,13 +7,17 @@ import com.sysma.goat.eclipse_plugin.goatComponents.And;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AndImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AndImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.AndImpl#getSub <em>Sub</em>}</li>
  * </ul>
  *
  * @generated
@@ -32,24 +35,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class AndImpl extends ExpressionImpl implements And
 {
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+   * The cached value of the '{@link #getSub() <em>Sub</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
+   * @see #getSub()
    * @generated
    * @ordered
    */
-  protected Expression left;
-
-  /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRight()
-   * @generated
-   * @ordered
-   */
-  protected Expression right;
+  protected EList<Expression> sub;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,95 +70,13 @@ public class AndImpl extends ExpressionImpl implements And
    * <!-- end-user-doc -->
    * @generated
    */
-  public Expression getLeft()
+  public EList<Expression> getSub()
   {
-    return left;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetLeft(Expression newLeft, NotificationChain msgs)
-  {
-    Expression oldLeft = left;
-    left = newLeft;
-    if (eNotificationRequired())
+    if (sub == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.AND__LEFT, oldLeft, newLeft);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      sub = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.AND__SUB);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setLeft(Expression newLeft)
-  {
-    if (newLeft != left)
-    {
-      NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.AND__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.AND__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.AND__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Expression getRight()
-  {
-    return right;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRight(Expression newRight, NotificationChain msgs)
-  {
-    Expression oldRight = right;
-    right = newRight;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.AND__RIGHT, oldRight, newRight);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRight(Expression newRight)
-  {
-    if (newRight != right)
-    {
-      NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.AND__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.AND__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.AND__RIGHT, newRight, newRight));
+    return sub;
   }
 
   /**
@@ -178,10 +89,8 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.AND__LEFT:
-        return basicSetLeft(null, msgs);
-      case GoatComponentsPackage.AND__RIGHT:
-        return basicSetRight(null, msgs);
+      case GoatComponentsPackage.AND__SUB:
+        return ((InternalEList<?>)getSub()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -196,10 +105,8 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.AND__LEFT:
-        return getLeft();
-      case GoatComponentsPackage.AND__RIGHT:
-        return getRight();
+      case GoatComponentsPackage.AND__SUB:
+        return getSub();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -209,16 +116,15 @@ public class AndImpl extends ExpressionImpl implements And
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.AND__LEFT:
-        setLeft((Expression)newValue);
-        return;
-      case GoatComponentsPackage.AND__RIGHT:
-        setRight((Expression)newValue);
+      case GoatComponentsPackage.AND__SUB:
+        getSub().clear();
+        getSub().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -234,11 +140,8 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.AND__LEFT:
-        setLeft((Expression)null);
-        return;
-      case GoatComponentsPackage.AND__RIGHT:
-        setRight((Expression)null);
+      case GoatComponentsPackage.AND__SUB:
+        getSub().clear();
         return;
     }
     super.eUnset(featureID);
@@ -254,10 +157,8 @@ public class AndImpl extends ExpressionImpl implements And
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.AND__LEFT:
-        return left != null;
-      case GoatComponentsPackage.AND__RIGHT:
-        return right != null;
+      case GoatComponentsPackage.AND__SUB:
+        return sub != null && !sub.isEmpty();
     }
     return super.eIsSet(featureID);
   }

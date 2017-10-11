@@ -4,6 +4,7 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,7 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getProc <em>Proc</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl#getBlock <em>Block</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,14 +53,14 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getProc() <em>Proc</em>}' containment reference.
+   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProc()
+   * @see #getBlock()
    * @generated
    * @ordered
    */
-  protected com.sysma.goat.eclipse_plugin.goatComponents.Process proc;
+  protected ProcessBlock block;
 
   /**
    * <!-- begin-user-doc -->
@@ -110,9 +111,9 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public com.sysma.goat.eclipse_plugin.goatComponents.Process getProc()
+  public ProcessBlock getBlock()
   {
-    return proc;
+    return block;
   }
 
   /**
@@ -120,13 +121,13 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProc(com.sysma.goat.eclipse_plugin.goatComponents.Process newProc, NotificationChain msgs)
+  public NotificationChain basicSetBlock(ProcessBlock newBlock, NotificationChain msgs)
   {
-    com.sysma.goat.eclipse_plugin.goatComponents.Process oldProc = proc;
-    proc = newProc;
+    ProcessBlock oldBlock = block;
+    block = newBlock;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_DEFINITION__PROC, oldProc, newProc);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_DEFINITION__BLOCK, oldBlock, newBlock);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -137,20 +138,20 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProc(com.sysma.goat.eclipse_plugin.goatComponents.Process newProc)
+  public void setBlock(ProcessBlock newBlock)
   {
-    if (newProc != proc)
+    if (newBlock != block)
     {
       NotificationChain msgs = null;
-      if (proc != null)
-        msgs = ((InternalEObject)proc).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_DEFINITION__PROC, null, msgs);
-      if (newProc != null)
-        msgs = ((InternalEObject)newProc).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_DEFINITION__PROC, null, msgs);
-      msgs = basicSetProc(newProc, msgs);
+      if (block != null)
+        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_DEFINITION__BLOCK, null, msgs);
+      if (newBlock != null)
+        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_DEFINITION__BLOCK, null, msgs);
+      msgs = basicSetBlock(newBlock, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_DEFINITION__PROC, newProc, newProc));
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_DEFINITION__BLOCK, newBlock, newBlock));
   }
 
   /**
@@ -163,8 +164,8 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
-        return basicSetProc(null, msgs);
+      case GoatComponentsPackage.PROCESS_DEFINITION__BLOCK:
+        return basicSetBlock(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -181,8 +182,8 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         return getName();
-      case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
-        return getProc();
+      case GoatComponentsPackage.PROCESS_DEFINITION__BLOCK:
+        return getBlock();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -200,8 +201,8 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         setName((String)newValue);
         return;
-      case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
-        setProc((com.sysma.goat.eclipse_plugin.goatComponents.Process)newValue);
+      case GoatComponentsPackage.PROCESS_DEFINITION__BLOCK:
+        setBlock((ProcessBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -220,8 +221,8 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
-        setProc((com.sysma.goat.eclipse_plugin.goatComponents.Process)null);
+      case GoatComponentsPackage.PROCESS_DEFINITION__BLOCK:
+        setBlock((ProcessBlock)null);
         return;
     }
     super.eUnset(featureID);
@@ -239,8 +240,8 @@ public class ProcessDefinitionImpl extends MinimalEObjectImpl.Container implemen
     {
       case GoatComponentsPackage.PROCESS_DEFINITION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case GoatComponentsPackage.PROCESS_DEFINITION__PROC:
-        return proc != null;
+      case GoatComponentsPackage.PROCESS_DEFINITION__BLOCK:
+        return block != null;
     }
     return super.eIsSet(featureID);
   }

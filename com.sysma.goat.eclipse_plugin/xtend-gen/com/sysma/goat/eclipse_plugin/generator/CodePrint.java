@@ -1,26 +1,37 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeAttribute;
-import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
+import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
+import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalAttributeRefImpl;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang.math.NumberUtils;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class CodePrint {
-  public static CharSequence of(final PrintStatement pstat, final String componentAttr, final String localAttr, final List<AttributeToSet> message) {
+  private static class LocalAttributeRefImplConversion extends LocalAttributeRefImpl {
+    public LocalAttributeRefImplConversion(final String attrname) {
+      super();
+      this.attribute = attrname;
+    }
+  }
+  
+  public static CharSequence of(final PrintStatement pstat, final String componentAttr, final LocalVariableMap localAttr, final List<Expression> message) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (pstat instanceof PrintFormattedStatement) {
       _matched=true;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("fmt.Println(");
-      String _convertString = CodePrint.convertString(((PrintFormattedStatement)pstat).getToPrint(), componentAttr, CodeProcessDefinition.getLocalVariablesMap(), message);
+      String _convertString = CodePrint.convertString(((PrintFormattedStatement)pstat).getToPrint(), componentAttr, localAttr, message);
       _builder.append(_convertString);
       _builder.append(")");
       _switchResult = _builder;
@@ -31,7 +42,20 @@ public class CodePrint {
     return _switchResult;
   }
   
-  private static String escape(final String escapedSequence, final String componentAttr, final String localAttr, final List<AttributeToSet> message) {
+  public static CharSequence ofProcAttrs(final PrintStatement pstat, final String componentAttr, final LocalVariableMap localAttr, final List<String> message) {
+    CharSequence _xblockexpression = null;
+    {
+      final Function1<String, Expression> _function = (String it) -> {
+        CodePrint.LocalAttributeRefImplConversion _localAttributeRefImplConversion = new CodePrint.LocalAttributeRefImplConversion(it);
+        return ((Expression) _localAttributeRefImplConversion);
+      };
+      final List<Expression> exprMessage = ListExtensions.<String, Expression>map(message, _function);
+      _xblockexpression = CodePrint.of(pstat, componentAttr, localAttr, exprMessage);
+    }
+    return _xblockexpression;
+  }
+  
+  private static String escape(final String escapedSequence, final String componentAttr, final LocalVariableMap localAttr, final List<Expression> message) {
     int _length = escapedSequence.length();
     boolean _equals = (_length == 0);
     if (_equals) {
@@ -47,21 +71,18 @@ public class CodePrint {
           _builder.append("\"<invalid tuple index>\"");
           return _builder.toString();
         } else {
-          AttributeToSet _get = message.get(tupleIdx);
-          final CodeAttribute attribCode = new CodeAttribute(_get, componentAttr, localAttr);
           StringConcatenation _builder_1 = new StringConcatenation();
           _builder_1.append("fmt.Sprintf(\"%s: %v\",\"");
-          CharSequence _name = attribCode.getName();
-          _builder_1.append(_name);
           _builder_1.append("\", ");
-          CharSequence _read = attribCode.read();
-          _builder_1.append(_read);
+          CharSequence _expressionWithAttributes = CodeExpression.getExpressionWithAttributes(message.get(tupleIdx), localAttr, componentAttr);
+          _builder_1.append(_expressionWithAttributes);
+          _builder_1.append(")");
           return _builder_1.toString();
         }
       } else {
         String attrName = "";
         boolean compLevel = false;
-        boolean _startsWith = escapedSequence.startsWith("this.");
+        boolean _startsWith = escapedSequence.startsWith("comp.");
         if (_startsWith) {
           compLevel = true;
           attrName = escapedSequence.substring(5);
@@ -69,18 +90,18 @@ public class CodePrint {
           compLevel = false;
           attrName = escapedSequence;
         }
-        final CodeAttribute attribCode_1 = new CodeAttribute(attrName, compLevel, componentAttr, localAttr);
+        final CodeAttribute attribCode = new CodeAttribute(attrName, compLevel, componentAttr, localAttr);
         StringConcatenation _builder_2 = new StringConcatenation();
         _builder_2.append("fmt.Sprintf(\"%v\",");
-        CharSequence _read_1 = attribCode_1.read();
-        _builder_2.append(_read_1);
+        CharSequence _read = attribCode.read();
+        _builder_2.append(_read);
         _builder_2.append(")");
         return _builder_2.toString();
       }
     }
   }
   
-  private static String convertString(final String text, final String componentAttr, final String localAttr, final List<AttributeToSet> message) {
+  private static String convertString(final String text, final String componentAttr, final LocalVariableMap localAttr, final List<Expression> message) {
     ArrayList<String> outTokens = new ArrayList<String>();
     String escapedSequence = null;
     String actualString = "";

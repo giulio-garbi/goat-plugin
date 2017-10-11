@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Update#getVars <em>Vars</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Update#getVals <em>Vals</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Update#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Update#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getUpdate()
@@ -27,35 +27,35 @@ import org.eclipse.emf.ecore.EObject;
 public interface Update extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Vars</b></em>' containment reference list.
-   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet}.
+   * Returns the value of the '<em><b>Attribute</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Vars</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Attribute</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Vars</em>' containment reference list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getUpdate_Vars()
+   * @return the value of the '<em>Attribute</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getUpdate_Attribute()
    * @model containment="true"
    * @generated
    */
-  EList<AttributeToSet> getVars();
+  EList<EObject> getAttribute();
 
   /**
-   * Returns the value of the '<em><b>Vals</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference list.
    * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Vals</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Vals</em>' containment reference list.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getUpdate_Vals()
+   * @return the value of the '<em>Value</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getUpdate_Value()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getVals();
+  EList<Expression> getValue();
 
 } // Update

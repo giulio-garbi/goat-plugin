@@ -13,6 +13,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
 import com.sysma.goat.eclipse_plugin.tests.GoatComponentsInjectorProvider;
+import com.sysma.goat.eclipse_plugin.tests.parser.ParsingTestHelper;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
@@ -46,7 +47,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkNoErrorApartInfr(result);
       FuncDefinition func = result.getFunctions().get(0);
       String _type = func.getType();
       boolean _equals = Objects.equal(_type, "int");
@@ -117,7 +118,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkNoErrorApartInfr(result);
       FuncDefinition func = result.getFunctions().get(0);
       String _type = func.getType();
       boolean _equals = Objects.equal(_type, "int");
@@ -218,7 +219,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkNoErrorApartInfr(result);
       FuncDefinition func = result.getFunctions().get(0);
       String _type = func.getType();
       boolean _equals = Objects.equal(_type, "int");
@@ -315,7 +316,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkNoErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -352,7 +353,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertFalse(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -395,7 +396,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertFalse(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -423,7 +424,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertFalse(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkErrorApartInfr(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -451,7 +452,7 @@ public class FunctionParsingTest {
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);
-      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+      ParsingTestHelper.checkNoErrorApartInfr(result);
       FuncStatement _get = result.getFunctions().get(0).getBlk().getStatements().get(2);
       String _name = ((FuncVarAssign) _get).getVar().getName();
       boolean _equals = Objects.equal(_name, "y");

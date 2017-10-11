@@ -1,5 +1,6 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
+import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.And;
 import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
@@ -16,27 +17,31 @@ import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
 import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
+import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
 import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus;
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping;
+import java.util.List;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class CodeExpression {
-  public static CharSequence cast(final String typ, final Expression expr, final CharSequence localAttributesMap, final CharSequence attributesMap) {
+  public static CharSequence cast(final String typ, final Expression expr, final LocalVariableMap localAttributesMap, final CharSequence attributesMap) {
     return CodeExpression.cast(ExpressionTyping.typeOf(typ), expr, localAttributesMap, attributesMap);
   }
   
-  public static CharSequence cast(final ExpressionTyping.ExprType typ, final Expression expr, final CharSequence localAttributesMap, final CharSequence attributesMap) {
+  public static CharSequence cast(final ExpressionTyping.ExprType typ, final Expression expr, final LocalVariableMap localAttributesMap, final CharSequence attributesMap) {
     CharSequence _xblockexpression = null;
     {
       final CharSequence econv = CodeExpression.getExpressionWithAttributes(expr, localAttributesMap, attributesMap);
@@ -73,18 +78,18 @@ public class CodeExpression {
     return _xblockexpression;
   }
   
-  public static CharSequence getExpressionWithAttributes(final Expression expr, final CharSequence localAttributesMap, final CharSequence attributesMap) {
+  public static CharSequence getExpressionWithAttributes(final Expression expr, final LocalVariableMap localAttributesMap, final CharSequence attributesMap) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (expr instanceof And) {
       _matched=true;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("(");
-      CharSequence _cast = CodeExpression.cast(ExpressionTyping.ExprType.BOOL, ((And)expr).getLeft(), localAttributesMap, attributesMap);
-      _builder.append(_cast);
-      _builder.append(" && ");
-      CharSequence _cast_1 = CodeExpression.cast(ExpressionTyping.ExprType.BOOL, ((And)expr).getRight(), localAttributesMap, attributesMap);
-      _builder.append(_cast_1);
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+      };
+      String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((And)expr).getSub(), _function), " && ");
+      _builder.append(_join);
       _builder.append(")");
       _switchResult = _builder;
     }
@@ -93,11 +98,11 @@ public class CodeExpression {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("(");
-        CharSequence _cast = CodeExpression.cast(ExpressionTyping.ExprType.BOOL, ((Or)expr).getLeft(), localAttributesMap, attributesMap);
-        _builder.append(_cast);
-        _builder.append(" || ");
-        CharSequence _cast_1 = CodeExpression.cast(ExpressionTyping.ExprType.BOOL, ((Or)expr).getRight(), localAttributesMap, attributesMap);
-        _builder.append(_cast_1);
+        final Function1<Expression, CharSequence> _function = (Expression it) -> {
+          return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+        };
+        String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((Or)expr).getSub(), _function), " || ");
+        _builder.append(_join);
         _builder.append(")");
         _switchResult = _builder;
       }
@@ -213,6 +218,28 @@ public class CodeExpression {
       }
     }
     if (!_matched) {
+      if (expr instanceof UnaryMinus) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(-(");
+        CharSequence _cast = CodeExpression.cast(ExpressionTyping.ExprType.INT, ((UnaryMinus)expr).getExpression(), localAttributesMap, attributesMap);
+        _builder.append(_cast);
+        _builder.append("))");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof NegativeIntConstant) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(-");
+        int _negvalue = ((NegativeIntConstant)expr).getNegvalue();
+        _builder.append(_negvalue);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
       if (expr instanceof IntConstant) {
         _matched=true;
         _switchResult = Integer.valueOf(((IntConstant)expr).getValue()).toString();
@@ -255,17 +282,11 @@ public class CodeExpression {
     if (!_matched) {
       if (expr instanceof LocalAttributeRef) {
         _matched=true;
-        CharSequence _xifexpression = null;
+        String _xifexpression = null;
         if ((attributesMap == null)) {
           throw new IllegalArgumentException("Unexpected local attribute");
         } else {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append(localAttributesMap);
-          _builder.append("[\"");
-          String _attribute = ((LocalAttributeRef)expr).getAttribute();
-          _builder.append(_attribute);
-          _builder.append("\"]");
-          _xifexpression = _builder;
+          _xifexpression = localAttributesMap.readValue(((LocalAttributeRef)expr).getAttribute());
         }
         _switchResult = _xifexpression;
       }
@@ -323,72 +344,55 @@ public class CodeExpression {
     return CodeExpression.getExpressionWithAttributes(expr, null, null);
   }
   
-  private static boolean isOPImmediate(final Expression expr) {
-    boolean _switchResult = false;
-    boolean _matched = false;
-    if (expr instanceof LocalAttributeRef) {
-      _matched=true;
-    }
-    if (!_matched) {
-      if (expr instanceof ComponentAttributeRef) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof StringConstant) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof IntConstant) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof BoolConstant) {
-        _matched=true;
-      }
-    }
-    if (_matched) {
-      _switchResult = true;
-    }
-    if (!_matched) {
-      _switchResult = false;
-    }
-    return _switchResult;
-  }
-  
+  /**
+   * def private static boolean isOPImmediate(Expression expr) {
+   * switch(expr){
+   * LocalAttributeRef, ComponentAttributeRef, StringConstant, IntConstant, BoolConstant:
+   * true
+   * default:
+   * false
+   * }
+   * }
+   */
   private static boolean isOPAttribute(final Expression expr) {
     return (expr instanceof RecAttributeRef);
   }
   
-  public static CharSequence getOutputPredicate(final Expression expr, final CharSequence localAttributesMap) {
+  public static CharSequence binaryOperatorExtensor(final CharSequence operator, final List<CharSequence> operands) {
+    final Function1<CharSequence, String> _function = (CharSequence it) -> {
+      return (operator + "{");
+    };
+    String _join = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function));
+    CharSequence _head = IterableExtensions.<CharSequence>head(operands);
+    String _plus = (_join + _head);
+    final Function1<CharSequence, String> _function_1 = (CharSequence it) -> {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(", ");
+      _builder.append(it);
+      _builder.append("}");
+      return _builder.toString();
+    };
+    String _join_1 = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function_1));
+    return (_plus + _join_1);
+  }
+  
+  public static CharSequence getOutputPredicate(final Expression expr, final LocalVariableMap localAttributesMap, final CharSequence attrName) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (expr instanceof And) {
       _matched=true;
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("goat.And{");
-      CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((And)expr).getLeft(), localAttributesMap);
-      _builder.append(_outputPredicate);
-      _builder.append(", ");
-      CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((And)expr).getRight(), localAttributesMap);
-      _builder.append(_outputPredicate_1);
-      _builder.append("}");
-      _switchResult = _builder;
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+      };
+      _switchResult = CodeExpression.binaryOperatorExtensor("goat.And", ListExtensions.<Expression, CharSequence>map(((And)expr).getSub(), _function));
     }
     if (!_matched) {
       if (expr instanceof Or) {
         _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("goat.Or{");
-        CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Or)expr).getLeft(), localAttributesMap);
-        _builder.append(_outputPredicate);
-        _builder.append(", ");
-        CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((Or)expr).getRight(), localAttributesMap);
-        _builder.append(_outputPredicate_1);
-        _builder.append("}");
-        _switchResult = _builder;
+        final Function1<Expression, CharSequence> _function = (Expression it) -> {
+          return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+        };
+        _switchResult = CodeExpression.binaryOperatorExtensor("goat.Or", ListExtensions.<Expression, CharSequence>map(((Or)expr).getSub(), _function));
       }
     }
     if (!_matched) {
@@ -396,7 +400,7 @@ public class CodeExpression {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("goat.Not{");
-        CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Not)expr).getExpression(), localAttributesMap);
+        CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Not)expr).getExpression(), localAttributesMap, attrName);
         _builder.append(_outputPredicate);
         _builder.append("}");
         _switchResult = _builder;
@@ -407,39 +411,13 @@ public class CodeExpression {
         _matched=true;
         String _xblockexpression = null;
         {
-          boolean _xifexpression = false;
-          boolean _isOPImmediate = CodeExpression.isOPImmediate(((Equality)expr).getLeft());
-          if (_isOPImmediate) {
-            _xifexpression = true;
-          } else {
-            boolean _xifexpression_1 = false;
-            boolean _isOPAttribute = CodeExpression.isOPAttribute(((Equality)expr).getLeft());
-            if (_isOPAttribute) {
-              _xifexpression_1 = false;
-            } else {
-              throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes");
-            }
-            _xifexpression = _xifexpression_1;
-          }
-          final boolean isOpLImm = _xifexpression;
-          boolean _xifexpression_2 = false;
-          boolean _isOPImmediate_1 = CodeExpression.isOPImmediate(((Equality)expr).getRight());
-          if (_isOPImmediate_1) {
-            _xifexpression_2 = true;
-          } else {
-            boolean _xifexpression_3 = false;
-            boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Equality)expr).getRight());
-            if (_isOPAttribute_1) {
-              _xifexpression_3 = false;
-            } else {
-              throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes");
-            }
-            _xifexpression_2 = _xifexpression_3;
-          }
-          final boolean isOpRImm = _xifexpression_2;
+          boolean _isOPAttribute = CodeExpression.isOPAttribute(((Equality)expr).getLeft());
+          final boolean isOpLImm = (!_isOPAttribute);
+          boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Equality)expr).getRight());
+          final boolean isOpRImm = (!_isOPAttribute_1);
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("goat.Comp{");
-          CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Equality)expr).getLeft(), localAttributesMap);
+          CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Equality)expr).getLeft(), localAttributesMap, attrName);
           _builder.append(_outputPredicate);
           _builder.append(", ");
           _builder.append((!isOpLImm));
@@ -448,7 +426,7 @@ public class CodeExpression {
           _builder.append(_op);
           _builder.append("\", ");
           StringConcatenation _builder_1 = new StringConcatenation();
-          CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((Equality)expr).getRight(), localAttributesMap);
+          CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((Equality)expr).getRight(), localAttributesMap, attrName);
           _builder_1.append(_outputPredicate_1);
           _builder_1.append(", ");
           _builder_1.append((!isOpRImm));
@@ -463,39 +441,13 @@ public class CodeExpression {
         _matched=true;
         String _xblockexpression = null;
         {
-          boolean _xifexpression = false;
-          boolean _isOPImmediate = CodeExpression.isOPImmediate(((Comparison)expr).getLeft());
-          if (_isOPImmediate) {
-            _xifexpression = true;
-          } else {
-            boolean _xifexpression_1 = false;
-            boolean _isOPAttribute = CodeExpression.isOPAttribute(((Comparison)expr).getLeft());
-            if (_isOPAttribute) {
-              _xifexpression_1 = false;
-            } else {
-              throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes");
-            }
-            _xifexpression = _xifexpression_1;
-          }
-          final boolean isOpLImm = _xifexpression;
-          boolean _xifexpression_2 = false;
-          boolean _isOPImmediate_1 = CodeExpression.isOPImmediate(((Comparison)expr).getRight());
-          if (_isOPImmediate_1) {
-            _xifexpression_2 = true;
-          } else {
-            boolean _xifexpression_3 = false;
-            boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Comparison)expr).getRight());
-            if (_isOPAttribute_1) {
-              _xifexpression_3 = false;
-            } else {
-              throw new IllegalArgumentException("Output predicate comparison expect immediate values or attributes");
-            }
-            _xifexpression_2 = _xifexpression_3;
-          }
-          final boolean isOpRImm = _xifexpression_2;
+          boolean _isOPAttribute = CodeExpression.isOPAttribute(((Comparison)expr).getLeft());
+          final boolean isOpLImm = (!_isOPAttribute);
+          boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Comparison)expr).getRight());
+          final boolean isOpRImm = (!_isOPAttribute_1);
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("goat.Comp{");
-          CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Comparison)expr).getLeft(), localAttributesMap);
+          CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Comparison)expr).getLeft(), localAttributesMap, attrName);
           _builder.append(_outputPredicate);
           _builder.append(", ");
           _builder.append((!isOpLImm));
@@ -504,7 +456,7 @@ public class CodeExpression {
           _builder.append(_op);
           _builder.append("\", ");
           StringConcatenation _builder_1 = new StringConcatenation();
-          CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((Comparison)expr).getRight(), localAttributesMap);
+          CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((Comparison)expr).getRight(), localAttributesMap, attrName);
           _builder_1.append(_outputPredicate_1);
           _builder_1.append(", ");
           _builder_1.append((!isOpRImm));
@@ -526,61 +478,6 @@ public class CodeExpression {
       }
     }
     if (!_matched) {
-      if (expr instanceof Plus) {
-        _matched=true;
-      }
-      if (!_matched) {
-        if (expr instanceof Minus) {
-          _matched=true;
-        }
-      }
-      if (!_matched) {
-        if (expr instanceof MulOrDiv) {
-          _matched=true;
-        }
-      }
-      if (!_matched) {
-        if (expr instanceof FunctionCall) {
-          _matched=true;
-        }
-      }
-      if (_matched) {
-        throw new IllegalArgumentException("Output predicate cannot contain expressions. Use updates.");
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof LocalAttributeRef) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append(localAttributesMap);
-        _builder.append("[\"");
-        String _attribute = ((LocalAttributeRef)expr).getAttribute();
-        _builder.append(_attribute);
-        _builder.append("\"]");
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof IntConstant) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        int _value = ((IntConstant)expr).getValue();
-        _builder.append(_value);
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
-      if (expr instanceof StringConstant) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("\"");
-        String _escapeJava = StringEscapeUtils.escapeJava(((StringConstant)expr).getValue());
-        _builder.append(_escapeJava);
-        _builder.append("\"");
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
       if (expr instanceof RecAttributeRef) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
@@ -592,9 +489,9 @@ public class CodeExpression {
       }
     }
     if (!_matched) {
-      if (expr instanceof ComponentAttributeRef) {
+      if (expr instanceof Expression) {
         _matched=true;
-        throw new IllegalArgumentException("Output predicate cannot refer component attributes.");
+        _switchResult = CodeExpression.getExpressionWithAttributes(expr, localAttributesMap, attrName);
       }
     }
     return _switchResult;

@@ -3,57 +3,7 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents.util;
 
-import com.sysma.goat.eclipse_plugin.goatComponents.And;
-import com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.Awareness;
-import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.CallProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
-import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
-import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
-import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
-import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
-import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
-import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses;
-import com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.IntConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.LRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet;
-import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.Minus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Model;
-import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
-import com.sysma.goat.eclipse_plugin.goatComponents.Not;
-import com.sysma.goat.eclipse_plugin.goatComponents.Or;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess;
-import com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart;
-import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
-import com.sysma.goat.eclipse_plugin.goatComponents.Preconditions;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
-import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
-import com.sysma.goat.eclipse_plugin.goatComponents.Update;
-import com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess;
+import com.sysma.goat.eclipse_plugin.goatComponents.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -131,24 +81,94 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseProcess(com.sysma.goat.eclipse_plugin.goatComponents.Process object)
+      public Adapter caseProcessDefinition(ProcessDefinition object)
       {
-        return createProcessAdapter();
+        return createProcessDefinitionAdapter();
       }
       @Override
-      public Adapter casePreconditions(Preconditions object)
+      public Adapter caseProcessBlock(ProcessBlock object)
       {
-        return createPreconditionsAdapter();
+        return createProcessBlockAdapter();
       }
       @Override
-      public Adapter caseInputProcessesPart(InputProcessesPart object)
+      public Adapter caseProcessSpawn(ProcessSpawn object)
       {
-        return createInputProcessesPartAdapter();
+        return createProcessSpawnAdapter();
       }
       @Override
-      public Adapter caseOutputProcessPart(OutputProcessPart object)
+      public Adapter caseProcessCall(ProcessCall object)
       {
-        return createOutputProcessPartAdapter();
+        return createProcessCallAdapter();
+      }
+      @Override
+      public Adapter caseProcessStatement(ProcessStatement object)
+      {
+        return createProcessStatementAdapter();
+      }
+      @Override
+      public Adapter caseProcessSend(ProcessSend object)
+      {
+        return createProcessSendAdapter();
+      }
+      @Override
+      public Adapter caseProcessReceive(ProcessReceive object)
+      {
+        return createProcessReceiveAdapter();
+      }
+      @Override
+      public Adapter caseProcessReceiveSingle(ProcessReceiveSingle object)
+      {
+        return createProcessReceiveSingleAdapter();
+      }
+      @Override
+      public Adapter caseProcessReceiveMultiple(ProcessReceiveMultiple object)
+      {
+        return createProcessReceiveMultipleAdapter();
+      }
+      @Override
+      public Adapter caseReceiveCase(ReceiveCase object)
+      {
+        return createReceiveCaseAdapter();
+      }
+      @Override
+      public Adapter caseProcessIf(ProcessIf object)
+      {
+        return createProcessIfAdapter();
+      }
+      @Override
+      public Adapter caseProcessThenBlock(ProcessThenBlock object)
+      {
+        return createProcessThenBlockAdapter();
+      }
+      @Override
+      public Adapter caseProcessSet(ProcessSet object)
+      {
+        return createProcessSetAdapter();
+      }
+      @Override
+      public Adapter caseProcessWaitFor(ProcessWaitFor object)
+      {
+        return createProcessWaitForAdapter();
+      }
+      @Override
+      public Adapter caseProcessLoop(ProcessLoop object)
+      {
+        return createProcessLoopAdapter();
+      }
+      @Override
+      public Adapter caseUpdate(Update object)
+      {
+        return createUpdateAdapter();
+      }
+      @Override
+      public Adapter caseUpdateComponentAttribute(UpdateComponentAttribute object)
+      {
+        return createUpdateComponentAttributeAdapter();
+      }
+      @Override
+      public Adapter caseUpdateLocalAttribute(UpdateLocalAttribute object)
+      {
+        return createUpdateLocalAttributeAdapter();
       }
       @Override
       public Adapter casePrintStatement(PrintStatement object)
@@ -164,21 +184,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter casePrintFormattedStatement(PrintFormattedStatement object)
       {
         return createPrintFormattedStatementAdapter();
-      }
-      @Override
-      public Adapter caseUpdate(Update object)
-      {
-        return createUpdateAdapter();
-      }
-      @Override
-      public Adapter caseAwareness(Awareness object)
-      {
-        return createAwarenessAdapter();
-      }
-      @Override
-      public Adapter caseProcessDefinition(ProcessDefinition object)
-      {
-        return createProcessDefinitionAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -199,11 +204,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLRef(LRef object)
       {
         return createLRefAdapter();
-      }
-      @Override
-      public Adapter caseAttributeToSet(AttributeToSet object)
-      {
-        return createAttributeToSetAdapter();
       }
       @Override
       public Adapter caseFuncParam(FuncParam object)
@@ -246,44 +246,9 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createFuncReturnAdapter();
       }
       @Override
-      public Adapter caseInterleavingProcess(InterleavingProcess object)
+      public Adapter caseNegativeIntConstant(NegativeIntConstant object)
       {
-        return createInterleavingProcessAdapter();
-      }
-      @Override
-      public Adapter caseOutputProcess(OutputProcess object)
-      {
-        return createOutputProcessAdapter();
-      }
-      @Override
-      public Adapter caseInputProcesses(InputProcesses object)
-      {
-        return createInputProcessesAdapter();
-      }
-      @Override
-      public Adapter caseInputProcess(InputProcess object)
-      {
-        return createInputProcessAdapter();
-      }
-      @Override
-      public Adapter caseIfProcesses(IfProcesses object)
-      {
-        return createIfProcessesAdapter();
-      }
-      @Override
-      public Adapter caseIfBranchProcess(IfBranchProcess object)
-      {
-        return createIfBranchProcessAdapter();
-      }
-      @Override
-      public Adapter caseCallProcess(CallProcess object)
-      {
-        return createCallProcessAdapter();
-      }
-      @Override
-      public Adapter caseZeroProcess(ZeroProcess object)
-      {
-        return createZeroProcessAdapter();
+        return createNegativeIntConstantAdapter();
       }
       @Override
       public Adapter caseIntConstant(IntConstant object)
@@ -341,6 +306,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createMulOrDivAdapter();
       }
       @Override
+      public Adapter caseUnaryMinus(UnaryMinus object)
+      {
+        return createUnaryMinusAdapter();
+      }
+      @Override
       public Adapter caseNot(Not object)
       {
         return createNotAdapter();
@@ -369,16 +339,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseRecAttributeRef(RecAttributeRef object)
       {
         return createRecAttributeRefAdapter();
-      }
-      @Override
-      public Adapter caseComponentAttributeToSet(ComponentAttributeToSet object)
-      {
-        return createComponentAttributeToSetAdapter();
-      }
-      @Override
-      public Adapter caseLocalAttributeToSet(LocalAttributeToSet object)
-      {
-        return createLocalAttributeToSetAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -418,61 +378,271 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Process <em>Process</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition <em>Process Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Process
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition
    * @generated
    */
-  public Adapter createProcessAdapter()
+  public Adapter createProcessDefinitionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Preconditions <em>Preconditions</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock <em>Process Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Preconditions
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock
    * @generated
    */
-  public Adapter createPreconditionsAdapter()
+  public Adapter createProcessBlockAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart <em>Input Processes Part</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn <em>Process Spawn</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.InputProcessesPart
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn
    * @generated
    */
-  public Adapter createInputProcessesPartAdapter()
+  public Adapter createProcessSpawnAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart <em>Output Process Part</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessCall <em>Process Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutputProcessPart
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessCall
    * @generated
    */
-  public Adapter createOutputProcessPartAdapter()
+  public Adapter createProcessCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement <em>Process Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement
+   * @generated
+   */
+  public Adapter createProcessStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend <em>Process Send</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessSend
+   * @generated
+   */
+  public Adapter createProcessSendAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive <em>Process Receive</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive
+   * @generated
+   */
+  public Adapter createProcessReceiveAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveSingle <em>Process Receive Single</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveSingle
+   * @generated
+   */
+  public Adapter createProcessReceiveSingleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveMultiple <em>Process Receive Multiple</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceiveMultiple
+   * @generated
+   */
+  public Adapter createProcessReceiveMultipleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase <em>Receive Case</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase
+   * @generated
+   */
+  public Adapter createReceiveCaseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf <em>Process If</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf
+   * @generated
+   */
+  public Adapter createProcessIfAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessThenBlock <em>Process Then Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessThenBlock
+   * @generated
+   */
+  public Adapter createProcessThenBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet <em>Process Set</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet
+   * @generated
+   */
+  public Adapter createProcessSetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor <em>Process Wait For</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor
+   * @generated
+   */
+  public Adapter createProcessWaitForAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessLoop <em>Process Loop</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessLoop
+   * @generated
+   */
+  public Adapter createProcessLoopAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Update <em>Update</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Update
+   * @generated
+   */
+  public Adapter createUpdateAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute <em>Update Component Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute
+   * @generated
+   */
+  public Adapter createUpdateComponentAttributeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.UpdateLocalAttribute <em>Update Local Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.UpdateLocalAttribute
+   * @generated
+   */
+  public Adapter createUpdateLocalAttributeAdapter()
   {
     return null;
   }
@@ -518,51 +688,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPrintFormattedStatementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Update <em>Update</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Update
-   * @generated
-   */
-  public Adapter createUpdateAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Awareness <em>Awareness</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.Awareness
-   * @generated
-   */
-  public Adapter createAwarenessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition <em>Process Definition</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition
-   * @generated
-   */
-  public Adapter createProcessDefinitionAdapter()
   {
     return null;
   }
@@ -623,21 +748,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLRefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet <em>Attribute To Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.AttributeToSet
-   * @generated
-   */
-  public Adapter createAttributeToSetAdapter()
   {
     return null;
   }
@@ -763,121 +873,16 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess <em>Interleaving Process</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant <em>Negative Int Constant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.InterleavingProcess
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant
    * @generated
    */
-  public Adapter createInterleavingProcessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess <em>Output Process</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutputProcess
-   * @generated
-   */
-  public Adapter createOutputProcessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses <em>Input Processes</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.InputProcesses
-   * @generated
-   */
-  public Adapter createInputProcessesAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.InputProcess <em>Input Process</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.InputProcess
-   * @generated
-   */
-  public Adapter createInputProcessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses <em>If Processes</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.IfProcesses
-   * @generated
-   */
-  public Adapter createIfProcessesAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess <em>If Branch Process</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.IfBranchProcess
-   * @generated
-   */
-  public Adapter createIfBranchProcessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.CallProcess <em>Call Process</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.CallProcess
-   * @generated
-   */
-  public Adapter createCallProcessAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess <em>Zero Process</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ZeroProcess
-   * @generated
-   */
-  public Adapter createZeroProcessAdapter()
+  public Adapter createNegativeIntConstantAdapter()
   {
     return null;
   }
@@ -1048,6 +1053,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus <em>Unary Minus</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus
+   * @generated
+   */
+  public Adapter createUnaryMinusAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Not <em>Not</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1133,36 +1153,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRecAttributeRefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet <em>Component Attribute To Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeToSet
-   * @generated
-   */
-  public Adapter createComponentAttributeToSetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet <em>Local Attribute To Set</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.LocalAttributeToSet
-   * @generated
-   */
-  public Adapter createLocalAttributeToSetAdapter()
   {
     return null;
   }
