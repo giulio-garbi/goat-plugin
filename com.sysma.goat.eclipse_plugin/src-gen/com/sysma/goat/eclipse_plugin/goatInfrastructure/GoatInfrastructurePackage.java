@@ -68,13 +68,22 @@ public interface GoatInfrastructurePackage extends EPackage
   int INFRASTRUCTURE = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INFRASTRUCTURE__NAME = 0;
+
+  /**
    * The number of structural features of the '<em>Infrastructure</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INFRASTRUCTURE_FEATURE_COUNT = 0;
+  int INFRASTRUCTURE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.SingleServerImpl <em>Single Server</em>}' class.
@@ -87,22 +96,31 @@ public interface GoatInfrastructurePackage extends EPackage
   int SINGLE_SERVER = 1;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SINGLE_SERVER__PARAMS = INFRASTRUCTURE_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINGLE_SERVER__NAME = INFRASTRUCTURE_FEATURE_COUNT + 1;
+  int SINGLE_SERVER__NAME = INFRASTRUCTURE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Server</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINGLE_SERVER__SERVER = INFRASTRUCTURE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Timeout</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINGLE_SERVER__TIMEOUT = INFRASTRUCTURE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Single Server</em>' class.
@@ -112,43 +130,6 @@ public interface GoatInfrastructurePackage extends EPackage
    * @ordered
    */
   int SINGLE_SERVER_FEATURE_COUNT = INFRASTRUCTURE_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl <em>Params</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getParams()
-   * @generated
-   */
-  int PARAMS = 5;
-
-  /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMS__PARAMS = 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMS__NAME = 1;
-
-  /**
-   * The number of structural features of the '<em>Params</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAMS_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ClusterImpl <em>Cluster</em>}' class.
@@ -161,22 +142,49 @@ public interface GoatInfrastructurePackage extends EPackage
   int CLUSTER = 2;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLUSTER__PARAMS = PARAMS__PARAMS;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLUSTER__NAME = PARAMS__NAME;
+  int CLUSTER__NAME = INFRASTRUCTURE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Message queue</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLUSTER__MESSAGE_QUEUE = INFRASTRUCTURE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Registration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLUSTER__REGISTRATION = INFRASTRUCTURE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Mid assigner</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLUSTER__MID_ASSIGNER = INFRASTRUCTURE_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Nodes</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLUSTER__NODES = INFRASTRUCTURE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Cluster</em>' class.
@@ -185,7 +193,7 @@ public interface GoatInfrastructurePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLUSTER_FEATURE_COUNT = PARAMS_FEATURE_COUNT + 0;
+  int CLUSTER_FEATURE_COUNT = INFRASTRUCTURE_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.RingImpl <em>Ring</em>}' class.
@@ -198,22 +206,40 @@ public interface GoatInfrastructurePackage extends EPackage
   int RING = 3;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RING__PARAMS = PARAMS__PARAMS;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RING__NAME = PARAMS__NAME;
+  int RING__NAME = INFRASTRUCTURE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Registration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RING__REGISTRATION = INFRASTRUCTURE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Mid assigner</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RING__MID_ASSIGNER = INFRASTRUCTURE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Nodes</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RING__NODES = INFRASTRUCTURE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Ring</em>' class.
@@ -222,7 +248,7 @@ public interface GoatInfrastructurePackage extends EPackage
    * @generated
    * @ordered
    */
-  int RING_FEATURE_COUNT = PARAMS_FEATURE_COUNT + 0;
+  int RING_FEATURE_COUNT = INFRASTRUCTURE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeImpl <em>Tree</em>}' class.
@@ -235,22 +261,31 @@ public interface GoatInfrastructurePackage extends EPackage
   int TREE = 4;
 
   /**
-   * The feature id for the '<em><b>Params</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TREE__PARAMS = PARAMS__PARAMS;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TREE__NAME = PARAMS__NAME;
+  int TREE__NAME = INFRASTRUCTURE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Registration</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TREE__REGISTRATION = INFRASTRUCTURE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Root</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TREE__ROOT = INFRASTRUCTURE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Tree</em>' class.
@@ -259,44 +294,44 @@ public interface GoatInfrastructurePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TREE_FEATURE_COUNT = PARAMS_FEATURE_COUNT + 0;
+  int TREE_FEATURE_COUNT = INFRASTRUCTURE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamImpl <em>Param</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl <em>Tree Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamImpl
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getParam()
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getTreeNode()
    * @generated
    */
-  int PARAM = 6;
+  int TREE_NODE = 5;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Address</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__VALUE = 1;
+  int TREE_NODE__ADDRESS = 0;
 
   /**
-   * The number of structural features of the '<em>Param</em>' class.
+   * The feature id for the '<em><b>Children</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM_FEATURE_COUNT = 2;
+  int TREE_NODE__CHILDREN = 1;
+
+  /**
+   * The number of structural features of the '<em>Tree Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TREE_NODE_FEATURE_COUNT = 2;
 
 
   /**
@@ -310,6 +345,17 @@ public interface GoatInfrastructurePackage extends EPackage
   EClass getInfrastructure();
 
   /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure#getName()
+   * @see #getInfrastructure()
+   * @generated
+   */
+  EAttribute getInfrastructure_Name();
+
+  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer <em>Single Server</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -318,6 +364,28 @@ public interface GoatInfrastructurePackage extends EPackage
    * @generated
    */
   EClass getSingleServer();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getServer <em>Server</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Server</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getServer()
+   * @see #getSingleServer()
+   * @generated
+   */
+  EAttribute getSingleServer_Server();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getTimeout <em>Timeout</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Timeout</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer#getTimeout()
+   * @see #getSingleServer()
+   * @generated
+   */
+  EAttribute getSingleServer_Timeout();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster <em>Cluster</em>}'.
@@ -330,6 +398,50 @@ public interface GoatInfrastructurePackage extends EPackage
   EClass getCluster();
 
   /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getMessage_queue <em>Message queue</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Message queue</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getMessage_queue()
+   * @see #getCluster()
+   * @generated
+   */
+  EAttribute getCluster_Message_queue();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getRegistration <em>Registration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Registration</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getRegistration()
+   * @see #getCluster()
+   * @generated
+   */
+  EAttribute getCluster_Registration();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getMid_assigner <em>Mid assigner</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mid assigner</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getMid_assigner()
+   * @see #getCluster()
+   * @generated
+   */
+  EAttribute getCluster_Mid_assigner();
+
+  /**
+   * Returns the meta object for the attribute list '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getNodes <em>Nodes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Nodes</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster#getNodes()
+   * @see #getCluster()
+   * @generated
+   */
+  EAttribute getCluster_Nodes();
+
+  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring <em>Ring</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -338,6 +450,39 @@ public interface GoatInfrastructurePackage extends EPackage
    * @generated
    */
   EClass getRing();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getRegistration <em>Registration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Registration</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getRegistration()
+   * @see #getRing()
+   * @generated
+   */
+  EAttribute getRing_Registration();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getMid_assigner <em>Mid assigner</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mid assigner</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getMid_assigner()
+   * @see #getRing()
+   * @generated
+   */
+  EAttribute getRing_Mid_assigner();
+
+  /**
+   * Returns the meta object for the attribute list '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getNodes <em>Nodes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Nodes</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring#getNodes()
+   * @see #getRing()
+   * @generated
+   */
+  EAttribute getRing_Nodes();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree <em>Tree</em>}'.
@@ -350,68 +495,58 @@ public interface GoatInfrastructurePackage extends EPackage
   EClass getTree();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params <em>Params</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree#getRegistration <em>Registration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Params
+   * @return the meta object for the attribute '<em>Registration</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree#getRegistration()
+   * @see #getTree()
    * @generated
    */
-  EClass getParams();
+  EAttribute getTree_Registration();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getParams <em>Params</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree#getRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Params</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getParams()
-   * @see #getParams()
+   * @return the meta object for the containment reference '<em>Root</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree#getRoot()
+   * @see #getTree()
    * @generated
    */
-  EReference getParams_Params();
+  EReference getTree_Root();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode <em>Tree Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Params#getName()
-   * @see #getParams()
+   * @return the meta object for class '<em>Tree Node</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode
    * @generated
    */
-  EAttribute getParams_Name();
+  EClass getTreeNode();
 
   /**
-   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Param <em>Param</em>}'.
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode#getAddress <em>Address</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Param</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Param
+   * @return the meta object for the attribute '<em>Address</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode#getAddress()
+   * @see #getTreeNode()
    * @generated
    */
-  EClass getParam();
+  EAttribute getTreeNode_Address();
 
   /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Param#getName <em>Name</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode#getChildren <em>Children</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Param#getName()
-   * @see #getParam()
+   * @return the meta object for the containment reference list '<em>Children</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode#getChildren()
+   * @see #getTreeNode()
    * @generated
    */
-  EAttribute getParam_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Param#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Param#getValue()
-   * @see #getParam()
-   * @generated
-   */
-  EAttribute getParam_Value();
+  EReference getTreeNode_Children();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -447,6 +582,14 @@ public interface GoatInfrastructurePackage extends EPackage
     EClass INFRASTRUCTURE = eINSTANCE.getInfrastructure();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INFRASTRUCTURE__NAME = eINSTANCE.getInfrastructure_Name();
+
+    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.SingleServerImpl <em>Single Server</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -455,6 +598,22 @@ public interface GoatInfrastructurePackage extends EPackage
      * @generated
      */
     EClass SINGLE_SERVER = eINSTANCE.getSingleServer();
+
+    /**
+     * The meta object literal for the '<em><b>Server</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SINGLE_SERVER__SERVER = eINSTANCE.getSingleServer_Server();
+
+    /**
+     * The meta object literal for the '<em><b>Timeout</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SINGLE_SERVER__TIMEOUT = eINSTANCE.getSingleServer_Timeout();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ClusterImpl <em>Cluster</em>}' class.
@@ -467,6 +626,38 @@ public interface GoatInfrastructurePackage extends EPackage
     EClass CLUSTER = eINSTANCE.getCluster();
 
     /**
+     * The meta object literal for the '<em><b>Message queue</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLUSTER__MESSAGE_QUEUE = eINSTANCE.getCluster_Message_queue();
+
+    /**
+     * The meta object literal for the '<em><b>Registration</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLUSTER__REGISTRATION = eINSTANCE.getCluster_Registration();
+
+    /**
+     * The meta object literal for the '<em><b>Mid assigner</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLUSTER__MID_ASSIGNER = eINSTANCE.getCluster_Mid_assigner();
+
+    /**
+     * The meta object literal for the '<em><b>Nodes</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLUSTER__NODES = eINSTANCE.getCluster_Nodes();
+
+    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.RingImpl <em>Ring</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -475,6 +666,30 @@ public interface GoatInfrastructurePackage extends EPackage
      * @generated
      */
     EClass RING = eINSTANCE.getRing();
+
+    /**
+     * The meta object literal for the '<em><b>Registration</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RING__REGISTRATION = eINSTANCE.getRing_Registration();
+
+    /**
+     * The meta object literal for the '<em><b>Mid assigner</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RING__MID_ASSIGNER = eINSTANCE.getRing_Mid_assigner();
+
+    /**
+     * The meta object literal for the '<em><b>Nodes</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RING__NODES = eINSTANCE.getRing_Nodes();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeImpl <em>Tree</em>}' class.
@@ -487,56 +702,46 @@ public interface GoatInfrastructurePackage extends EPackage
     EClass TREE = eINSTANCE.getTree();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl <em>Params</em>}' class.
+     * The meta object literal for the '<em><b>Registration</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl
-     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getParams()
      * @generated
      */
-    EClass PARAMS = eINSTANCE.getParams();
+    EAttribute TREE__REGISTRATION = eINSTANCE.getTree_Registration();
 
     /**
-     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAMS__PARAMS = eINSTANCE.getParams_Params();
+    EReference TREE__ROOT = eINSTANCE.getTree_Root();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl <em>Tree Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl
+     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getTreeNode()
      * @generated
      */
-    EAttribute PARAMS__NAME = eINSTANCE.getParams_Name();
+    EClass TREE_NODE = eINSTANCE.getTreeNode();
 
     /**
-     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamImpl <em>Param</em>}' class.
+     * The meta object literal for the '<em><b>Address</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamImpl
-     * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.GoatInfrastructurePackageImpl#getParam()
      * @generated
      */
-    EClass PARAM = eINSTANCE.getParam();
+    EAttribute TREE_NODE__ADDRESS = eINSTANCE.getTreeNode_Address();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PARAM__VALUE = eINSTANCE.getParam_Value();
+    EReference TREE_NODE__CHILDREN = eINSTANCE.getTreeNode_Children();
 
   }
 

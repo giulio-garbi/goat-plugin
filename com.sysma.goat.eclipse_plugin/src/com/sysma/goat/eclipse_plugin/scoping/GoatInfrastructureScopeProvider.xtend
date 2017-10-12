@@ -3,7 +3,6 @@
  */
 package com.sysma.goat.eclipse_plugin.scoping
 
-
 /**
  * This class contains custom scoping description.
  * 
@@ -11,5 +10,4 @@ package com.sysma.goat.eclipse_plugin.scoping
  * on how and when to use it.
  */
 class GoatInfrastructureScopeProvider extends AbstractGoatInfrastructureScopeProvider {
-
 }

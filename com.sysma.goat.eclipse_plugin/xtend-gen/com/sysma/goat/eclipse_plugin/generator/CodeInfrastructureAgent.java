@@ -1,9 +1,10 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
-import com.sysma.goat.eclipse_plugin.generator.ParamsToMap;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
-import java.util.Map;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -20,21 +21,48 @@ public class CodeInfrastructureAgent {
     boolean _matched = false;
     if (infr instanceof SingleServer) {
       _matched=true;
-      CharSequence _xblockexpression = null;
-      {
-        final Map<String, String> params = ParamsToMap.of(((SingleServer)this.infr).getParams());
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("goat.NewSingleServerAgent(\"");
+      String _server = ((SingleServer)this.infr).getServer();
+      _builder.append(_server);
+      _builder.append("\")");
+      _switchResult = _builder;
+    }
+    if (!_matched) {
+      if (infr instanceof Cluster) {
+        _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("127.0.0.1:");
-        String _get = params.get("port");
-        _builder.append(_get);
-        final String address = _builder.toString();
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("goat.NewSingleServerAgent(\"");
-        _builder_1.append(address);
-        _builder_1.append("\")");
-        _xblockexpression = _builder_1;
+        _builder.append("goat.NewClusterAgent(\"");
+        String _message_queue = ((Cluster)this.infr).getMessage_queue();
+        _builder.append(_message_queue);
+        _builder.append("\", \"");
+        String _registration = ((Cluster)this.infr).getRegistration();
+        _builder.append(_registration);
+        _builder.append("\")");
+        _switchResult = _builder;
       }
-      _switchResult = _xblockexpression;
+    }
+    if (!_matched) {
+      if (infr instanceof Ring) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("goat.NewRingAgent(\"");
+        String _registration = ((Ring)this.infr).getRegistration();
+        _builder.append(_registration);
+        _builder.append("\")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (infr instanceof Tree) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("goat.NewTreeAgent(\"");
+        String _registration = ((Tree)this.infr).getRegistration();
+        _builder.append(_registration);
+        _builder.append("\")");
+        _switchResult = _builder;
+      }
     }
     if (!_matched) {
       _switchResult = "";

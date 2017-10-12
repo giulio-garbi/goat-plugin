@@ -23,7 +23,7 @@ public class CodeProcessBlock {
     this.processRef = processRef;
   }
   
-  public Object getCode() {
+  public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
     {
       final Function1<ProcessStatement, Object> _function = (ProcessStatement it) -> {

@@ -26,7 +26,7 @@ public class CodeProcessLoop {
     _builder.newLine();
     _builder.append("\t");
     ProcessBlock _block = this.loop.getBlock();
-    Object _code = new CodeProcessBlock(_block, this.map, this.procRef).getCode();
+    CharSequence _code = new CodeProcessBlock(_block, this.map, this.procRef).getCode();
     _builder.append(_code, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");

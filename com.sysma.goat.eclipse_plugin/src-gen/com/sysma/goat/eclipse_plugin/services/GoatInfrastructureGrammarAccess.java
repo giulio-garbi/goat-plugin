@@ -6,6 +6,7 @@ package com.sysma.goat.eclipse_plugin.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -14,6 +15,7 @@ import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
+import org.eclipse.xtext.UnorderedGroup;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
@@ -23,203 +25,516 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	
 	public class InfrastructureElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Infrastructure");
-		private final RuleCall cSingleServerParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSingleServerParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cClusterParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cRingParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cTreeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Infrastructure:
-		//	SingleServer //|Cluster|Ring|Tree
-		//;
+		//	SingleServer | Cluster | Ring | Tree;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//SingleServer | Cluster | Ring | Tree
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
 		//SingleServer
-		public RuleCall getSingleServerParserRuleCall() { return cSingleServerParserRuleCall; }
+		public RuleCall getSingleServerParserRuleCall_0() { return cSingleServerParserRuleCall_0; }
+		
+		//Cluster
+		public RuleCall getClusterParserRuleCall_1() { return cClusterParserRuleCall_1; }
+		
+		//Ring
+		public RuleCall getRingParserRuleCall_2() { return cRingParserRuleCall_2; }
+		
+		//Tree
+		public RuleCall getTreeParserRuleCall_3() { return cTreeParserRuleCall_3; }
 	}
 	public class SingleServerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.SingleServer");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSingleserverKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cSingleserverKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cServerKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Keyword cColonKeyword_0_3_1 = (Keyword)cGroup_0_3.eContents().get(1);
+		private final Assignment cServerAssignment_0_3_2 = (Assignment)cGroup_0_3.eContents().get(2);
+		private final RuleCall cServerSTRINGTerminalRuleCall_0_3_2_0 = (RuleCall)cServerAssignment_0_3_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
+		private final Keyword cTimeoutKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cColonKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cTimeoutAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cTimeoutINTTerminalRuleCall_1_0_2_0 = (RuleCall)cTimeoutAssignment_1_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//SingleServer:
-		//	'singleserver' name=ID Params;
+		//	'singleserver' name=ID '{' ('server' ':' server=STRING) & ('timeout' ':' timeout=INT)? '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'singleserver' name=ID Params
-		public Group getGroup() { return cGroup; }
+		//'singleserver' name=ID '{' ('server' ':' server=STRING) & ('timeout' ':' timeout=INT)? '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
+		
+		//'singleserver' name=ID '{' ('server' ':' server=STRING)
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//'singleserver'
-		public Keyword getSingleserverKeyword_0() { return cSingleserverKeyword_0; }
+		public Keyword getSingleserverKeyword_0_0() { return cSingleserverKeyword_0_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 		
-		//Params
-		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
+		
+		//'server' ':' server=STRING
+		public Group getGroup_0_3() { return cGroup_0_3; }
+		
+		//'server'
+		public Keyword getServerKeyword_0_3_0() { return cServerKeyword_0_3_0; }
+		
+		//':'
+		public Keyword getColonKeyword_0_3_1() { return cColonKeyword_0_3_1; }
+		
+		//server=STRING
+		public Assignment getServerAssignment_0_3_2() { return cServerAssignment_0_3_2; }
+		
+		//STRING
+		public RuleCall getServerSTRINGTerminalRuleCall_0_3_2_0() { return cServerSTRINGTerminalRuleCall_0_3_2_0; }
+		
+		//('timeout' ':' timeout=INT)? '}'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//('timeout' ':' timeout=INT)?
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//'timeout'
+		public Keyword getTimeoutKeyword_1_0_0() { return cTimeoutKeyword_1_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_0_1() { return cColonKeyword_1_0_1; }
+		
+		//timeout=INT
+		public Assignment getTimeoutAssignment_1_0_2() { return cTimeoutAssignment_1_0_2; }
+		
+		//INT
+		public RuleCall getTimeoutINTTerminalRuleCall_1_0_2_0() { return cTimeoutINTTerminalRuleCall_1_0_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_1_1() { return cRightCurlyBracketKeyword_1_1; }
 	}
 	public class ClusterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Cluster");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cClusterKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cClusterKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cMessage_queueKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Keyword cColonKeyword_0_3_1 = (Keyword)cGroup_0_3.eContents().get(1);
+		private final Assignment cMessage_queueAssignment_0_3_2 = (Assignment)cGroup_0_3.eContents().get(2);
+		private final RuleCall cMessage_queueSTRINGTerminalRuleCall_0_3_2_0 = (RuleCall)cMessage_queueAssignment_0_3_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Keyword cRegistrationKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRegistrationAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRegistrationSTRINGTerminalRuleCall_1_2_0 = (RuleCall)cRegistrationAssignment_1_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
+		private final Keyword cMid_assignerKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cColonKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cMid_assignerAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final RuleCall cMid_assignerSTRINGTerminalRuleCall_2_2_0 = (RuleCall)cMid_assignerAssignment_2_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cUnorderedGroup.eContents().get(3);
+		private final Group cGroup_3_0 = (Group)cGroup_3.eContents().get(0);
+		private final Keyword cNodesKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
+		private final Keyword cColonKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_3_0_2 = (Keyword)cGroup_3_0.eContents().get(2);
+		private final Assignment cNodesAssignment_3_0_3 = (Assignment)cGroup_3_0.eContents().get(3);
+		private final RuleCall cNodesSTRINGTerminalRuleCall_3_0_3_0 = (RuleCall)cNodesAssignment_3_0_3.eContents().get(0);
+		private final Group cGroup_3_0_4 = (Group)cGroup_3_0.eContents().get(4);
+		private final Keyword cCommaKeyword_3_0_4_0 = (Keyword)cGroup_3_0_4.eContents().get(0);
+		private final Assignment cNodesAssignment_3_0_4_1 = (Assignment)cGroup_3_0_4.eContents().get(1);
+		private final RuleCall cNodesSTRINGTerminalRuleCall_3_0_4_1_0 = (RuleCall)cNodesAssignment_3_0_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3_0_5 = (Keyword)cGroup_3_0.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		
 		//Cluster:
-		//	'cluster' name=ID Params;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'cluster' name=ID Params
-		public Group getGroup() { return cGroup; }
-		
-		//'cluster'
-		public Keyword getClusterKeyword_0() { return cClusterKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//Params
-		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
-	}
-	public class RingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Ring");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRingKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		
-		//Ring:
-		//	'ring' name=ID Params;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'ring' name=ID Params
-		public Group getGroup() { return cGroup; }
-		
-		//'ring'
-		public Keyword getRingKeyword_0() { return cRingKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//Params
-		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
-	}
-	public class TreeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Tree");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTreeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final RuleCall cParamsParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		
-		//Tree:
-		//	'tree' name=ID Params;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'tree' name=ID Params
-		public Group getGroup() { return cGroup; }
-		
-		//'tree'
-		public Keyword getTreeKeyword_0() { return cTreeKeyword_0; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//Params
-		public RuleCall getParamsParserRuleCall_2() { return cParamsParserRuleCall_2; }
-	}
-	public class ParamsElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Params");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
-		private final Assignment cParamsAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
-		private final RuleCall cParamsParamParserRuleCall_1_0_0_0 = (RuleCall)cParamsAssignment_1_0_0.eContents().get(0);
-		private final Keyword cCommaKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
-		private final Assignment cParamsAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cParamsParamParserRuleCall_1_1_0 = (RuleCall)cParamsAssignment_1_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//fragment Params:
-		//	'{' ((params+=Param ',')*
-		//	params+=Param)?
+		//	'cluster' name=ID '{' ('message_queue' ':' message_queue=STRING) & 'registration' ':' registration=STRING &
+		//	'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']')
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' ((params+=Param ',')* params+=Param)? '}'
-		public Group getGroup() { return cGroup; }
+		//'cluster' name=ID '{' ('message_queue' ':' message_queue=STRING) & 'registration' ':' registration=STRING &
+		//'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']') '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		//'cluster' name=ID '{' ('message_queue' ':' message_queue=STRING)
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//((params+=Param ',')* params+=Param)?
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//(params+=Param ',')*
-		public Group getGroup_1_0() { return cGroup_1_0; }
-		
-		//params+=Param
-		public Assignment getParamsAssignment_1_0_0() { return cParamsAssignment_1_0_0; }
-		
-		//Param
-		public RuleCall getParamsParamParserRuleCall_1_0_0_0() { return cParamsParamParserRuleCall_1_0_0_0; }
-		
-		//','
-		public Keyword getCommaKeyword_1_0_1() { return cCommaKeyword_1_0_1; }
-		
-		//params+=Param
-		public Assignment getParamsAssignment_1_1() { return cParamsAssignment_1_1; }
-		
-		//Param
-		public RuleCall getParamsParamParserRuleCall_1_1_0() { return cParamsParamParserRuleCall_1_1_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
-	}
-	public class ParamElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Param");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
-		
-		//Param:
-		//	name=ID ":" value=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name=ID ":" value=STRING
-		public Group getGroup() { return cGroup; }
+		//'cluster'
+		public Keyword getClusterKeyword_0_0() { return cClusterKeyword_0_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 		
-		//":"
-		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
 		
-		//value=STRING
-		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		//'message_queue' ':' message_queue=STRING
+		public Group getGroup_0_3() { return cGroup_0_3; }
+		
+		//'message_queue'
+		public Keyword getMessage_queueKeyword_0_3_0() { return cMessage_queueKeyword_0_3_0; }
+		
+		//':'
+		public Keyword getColonKeyword_0_3_1() { return cColonKeyword_0_3_1; }
+		
+		//message_queue=STRING
+		public Assignment getMessage_queueAssignment_0_3_2() { return cMessage_queueAssignment_0_3_2; }
 		
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getMessage_queueSTRINGTerminalRuleCall_0_3_2_0() { return cMessage_queueSTRINGTerminalRuleCall_0_3_2_0; }
+		
+		//'registration' ':' registration=STRING
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'registration'
+		public Keyword getRegistrationKeyword_1_0() { return cRegistrationKeyword_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
+		
+		//registration=STRING
+		public Assignment getRegistrationAssignment_1_2() { return cRegistrationAssignment_1_2; }
+		
+		//STRING
+		public RuleCall getRegistrationSTRINGTerminalRuleCall_1_2_0() { return cRegistrationSTRINGTerminalRuleCall_1_2_0; }
+		
+		//'mid_assigner' ':' mid_assigner=STRING
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'mid_assigner'
+		public Keyword getMid_assignerKeyword_2_0() { return cMid_assignerKeyword_2_0; }
+		
+		//':'
+		public Keyword getColonKeyword_2_1() { return cColonKeyword_2_1; }
+		
+		//mid_assigner=STRING
+		public Assignment getMid_assignerAssignment_2_2() { return cMid_assignerAssignment_2_2; }
+		
+		//STRING
+		public RuleCall getMid_assignerSTRINGTerminalRuleCall_2_2_0() { return cMid_assignerSTRINGTerminalRuleCall_2_2_0; }
+		
+		//('nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']') '}'
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']'
+		public Group getGroup_3_0() { return cGroup_3_0; }
+		
+		//'nodes'
+		public Keyword getNodesKeyword_3_0_0() { return cNodesKeyword_3_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_3_0_1() { return cColonKeyword_3_0_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_3_0_2() { return cLeftSquareBracketKeyword_3_0_2; }
+		
+		//nodes+=STRING
+		public Assignment getNodesAssignment_3_0_3() { return cNodesAssignment_3_0_3; }
+		
+		//STRING
+		public RuleCall getNodesSTRINGTerminalRuleCall_3_0_3_0() { return cNodesSTRINGTerminalRuleCall_3_0_3_0; }
+		
+		//(',' nodes+=STRING)*
+		public Group getGroup_3_0_4() { return cGroup_3_0_4; }
+		
+		//','
+		public Keyword getCommaKeyword_3_0_4_0() { return cCommaKeyword_3_0_4_0; }
+		
+		//nodes+=STRING
+		public Assignment getNodesAssignment_3_0_4_1() { return cNodesAssignment_3_0_4_1; }
+		
+		//STRING
+		public RuleCall getNodesSTRINGTerminalRuleCall_3_0_4_1_0() { return cNodesSTRINGTerminalRuleCall_3_0_4_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_3_0_5() { return cRightSquareBracketKeyword_3_0_5; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3_1() { return cRightCurlyBracketKeyword_3_1; }
+	}
+	public class RingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Ring");
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cRingKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cRegistrationKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Keyword cColonKeyword_0_3_1 = (Keyword)cGroup_0_3.eContents().get(1);
+		private final Assignment cRegistrationAssignment_0_3_2 = (Assignment)cGroup_0_3.eContents().get(2);
+		private final RuleCall cRegistrationSTRINGTerminalRuleCall_0_3_2_0 = (RuleCall)cRegistrationAssignment_0_3_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Keyword cMid_assignerKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Keyword cColonKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cMid_assignerAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cMid_assignerSTRINGTerminalRuleCall_1_2_0 = (RuleCall)cMid_assignerAssignment_1_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
+		private final Keyword cNodesKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cColonKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cNodesAssignment_2_0_3 = (Assignment)cGroup_2_0.eContents().get(3);
+		private final RuleCall cNodesSTRINGTerminalRuleCall_2_0_3_0 = (RuleCall)cNodesAssignment_2_0_3.eContents().get(0);
+		private final Group cGroup_2_0_4 = (Group)cGroup_2_0.eContents().get(4);
+		private final Keyword cCommaKeyword_2_0_4_0 = (Keyword)cGroup_2_0_4.eContents().get(0);
+		private final Assignment cNodesAssignment_2_0_4_1 = (Assignment)cGroup_2_0_4.eContents().get(1);
+		private final RuleCall cNodesSTRINGTerminalRuleCall_2_0_4_1_0 = (RuleCall)cNodesAssignment_2_0_4_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2_0_5 = (Keyword)cGroup_2_0.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		
+		//Ring:
+		//	'ring' name=ID '{' ('registration' ':' registration=STRING) & 'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':'
+		//	'[' nodes+=STRING (',' nodes+=STRING)* ']')
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'ring' name=ID '{' ('registration' ':' registration=STRING) & 'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':' '['
+		//nodes+=STRING (',' nodes+=STRING)* ']') '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
+		
+		//'ring' name=ID '{' ('registration' ':' registration=STRING)
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'ring'
+		public Keyword getRingKeyword_0_0() { return cRingKeyword_0_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
+		
+		//'registration' ':' registration=STRING
+		public Group getGroup_0_3() { return cGroup_0_3; }
+		
+		//'registration'
+		public Keyword getRegistrationKeyword_0_3_0() { return cRegistrationKeyword_0_3_0; }
+		
+		//':'
+		public Keyword getColonKeyword_0_3_1() { return cColonKeyword_0_3_1; }
+		
+		//registration=STRING
+		public Assignment getRegistrationAssignment_0_3_2() { return cRegistrationAssignment_0_3_2; }
+		
+		//STRING
+		public RuleCall getRegistrationSTRINGTerminalRuleCall_0_3_2_0() { return cRegistrationSTRINGTerminalRuleCall_0_3_2_0; }
+		
+		//'mid_assigner' ':' mid_assigner=STRING
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'mid_assigner'
+		public Keyword getMid_assignerKeyword_1_0() { return cMid_assignerKeyword_1_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_1() { return cColonKeyword_1_1; }
+		
+		//mid_assigner=STRING
+		public Assignment getMid_assignerAssignment_1_2() { return cMid_assignerAssignment_1_2; }
+		
+		//STRING
+		public RuleCall getMid_assignerSTRINGTerminalRuleCall_1_2_0() { return cMid_assignerSTRINGTerminalRuleCall_1_2_0; }
+		
+		//('nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']') '}'
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']'
+		public Group getGroup_2_0() { return cGroup_2_0; }
+		
+		//'nodes'
+		public Keyword getNodesKeyword_2_0_0() { return cNodesKeyword_2_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_2_0_2() { return cLeftSquareBracketKeyword_2_0_2; }
+		
+		//nodes+=STRING
+		public Assignment getNodesAssignment_2_0_3() { return cNodesAssignment_2_0_3; }
+		
+		//STRING
+		public RuleCall getNodesSTRINGTerminalRuleCall_2_0_3_0() { return cNodesSTRINGTerminalRuleCall_2_0_3_0; }
+		
+		//(',' nodes+=STRING)*
+		public Group getGroup_2_0_4() { return cGroup_2_0_4; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0_4_0() { return cCommaKeyword_2_0_4_0; }
+		
+		//nodes+=STRING
+		public Assignment getNodesAssignment_2_0_4_1() { return cNodesAssignment_2_0_4_1; }
+		
+		//STRING
+		public RuleCall getNodesSTRINGTerminalRuleCall_2_0_4_1_0() { return cNodesSTRINGTerminalRuleCall_2_0_4_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2_0_5() { return cRightSquareBracketKeyword_2_0_5; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_2_1() { return cRightCurlyBracketKeyword_2_1; }
+	}
+	public class TreeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.Tree");
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cTreeKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cRegistrationKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Keyword cColonKeyword_0_3_1 = (Keyword)cGroup_0_3.eContents().get(1);
+		private final Assignment cRegistrationAssignment_0_3_2 = (Assignment)cGroup_0_3.eContents().get(2);
+		private final RuleCall cRegistrationSTRINGTerminalRuleCall_0_3_2_0 = (RuleCall)cRegistrationAssignment_0_3_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
+		private final Keyword cNodesKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Keyword cColonKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Assignment cRootAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
+		private final RuleCall cRootTreeNodeParserRuleCall_1_0_2_0 = (RuleCall)cRootAssignment_1_0_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		
+		//Tree:
+		//	'tree' name=ID '{' ('registration' ':' registration=STRING) & ('nodes' ':' root=TreeNode)
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'tree' name=ID '{' ('registration' ':' registration=STRING) & ('nodes' ':' root=TreeNode) '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
+		
+		//'tree' name=ID '{' ('registration' ':' registration=STRING)
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'tree'
+		public Keyword getTreeKeyword_0_0() { return cTreeKeyword_0_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
+		
+		//'registration' ':' registration=STRING
+		public Group getGroup_0_3() { return cGroup_0_3; }
+		
+		//'registration'
+		public Keyword getRegistrationKeyword_0_3_0() { return cRegistrationKeyword_0_3_0; }
+		
+		//':'
+		public Keyword getColonKeyword_0_3_1() { return cColonKeyword_0_3_1; }
+		
+		//registration=STRING
+		public Assignment getRegistrationAssignment_0_3_2() { return cRegistrationAssignment_0_3_2; }
+		
+		//STRING
+		public RuleCall getRegistrationSTRINGTerminalRuleCall_0_3_2_0() { return cRegistrationSTRINGTerminalRuleCall_0_3_2_0; }
+		
+		//('nodes' ':' root=TreeNode) '}'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'nodes' ':' root=TreeNode
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//'nodes'
+		public Keyword getNodesKeyword_1_0_0() { return cNodesKeyword_1_0_0; }
+		
+		//':'
+		public Keyword getColonKeyword_1_0_1() { return cColonKeyword_1_0_1; }
+		
+		//root=TreeNode
+		public Assignment getRootAssignment_1_0_2() { return cRootAssignment_1_0_2; }
+		
+		//TreeNode
+		public RuleCall getRootTreeNodeParserRuleCall_1_0_2_0() { return cRootTreeNodeParserRuleCall_1_0_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_1_1() { return cRightCurlyBracketKeyword_1_1; }
+	}
+	public class TreeNodeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatInfrastructure.TreeNode");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAddressAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAddressSTRINGTerminalRuleCall_0_0 = (RuleCall)cAddressAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cChildrenAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cChildrenTreeNodeParserRuleCall_1_1_0 = (RuleCall)cChildrenAssignment_1_1.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cGroup_1.eContents().get(2);
+		private final Keyword cCommaKeyword_1_2_0 = (Keyword)cGroup_1_2.eContents().get(0);
+		private final Assignment cChildrenAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cChildrenTreeNodeParserRuleCall_1_2_1_0 = (RuleCall)cChildrenAssignment_1_2_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		
+		//TreeNode:
+		//	address=STRING ('[' children+=TreeNode (',' children+=TreeNode)* ']')?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//address=STRING ('[' children+=TreeNode (',' children+=TreeNode)* ']')?
+		public Group getGroup() { return cGroup; }
+		
+		//address=STRING
+		public Assignment getAddressAssignment_0() { return cAddressAssignment_0; }
+		
+		//STRING
+		public RuleCall getAddressSTRINGTerminalRuleCall_0_0() { return cAddressSTRINGTerminalRuleCall_0_0; }
+		
+		//('[' children+=TreeNode (',' children+=TreeNode)* ']')?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1_0() { return cLeftSquareBracketKeyword_1_0; }
+		
+		//children+=TreeNode
+		public Assignment getChildrenAssignment_1_1() { return cChildrenAssignment_1_1; }
+		
+		//TreeNode
+		public RuleCall getChildrenTreeNodeParserRuleCall_1_1_0() { return cChildrenTreeNodeParserRuleCall_1_1_0; }
+		
+		//(',' children+=TreeNode)*
+		public Group getGroup_1_2() { return cGroup_1_2; }
+		
+		//','
+		public Keyword getCommaKeyword_1_2_0() { return cCommaKeyword_1_2_0; }
+		
+		//children+=TreeNode
+		public Assignment getChildrenAssignment_1_2_1() { return cChildrenAssignment_1_2_1; }
+		
+		//TreeNode
+		public RuleCall getChildrenTreeNodeParserRuleCall_1_2_1_0() { return cChildrenTreeNodeParserRuleCall_1_2_1_0; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_1_3() { return cRightSquareBracketKeyword_1_3; }
 	}
 	
 	
@@ -228,8 +543,7 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	private final ClusterElements pCluster;
 	private final RingElements pRing;
 	private final TreeElements pTree;
-	private final ParamsElements pParams;
-	private final ParamElements pParam;
+	private final TreeNodeElements pTreeNode;
 	
 	private final Grammar grammar;
 	
@@ -245,8 +559,7 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 		this.pCluster = new ClusterElements();
 		this.pRing = new RingElements();
 		this.pTree = new TreeElements();
-		this.pParams = new ParamsElements();
-		this.pParam = new ParamElements();
+		this.pTreeNode = new TreeNodeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -277,8 +590,7 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 
 	
 	//Infrastructure:
-	//	SingleServer //|Cluster|Ring|Tree
-	//;
+	//	SingleServer | Cluster | Ring | Tree;
 	public InfrastructureElements getInfrastructureAccess() {
 		return pInfrastructure;
 	}
@@ -288,7 +600,7 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//SingleServer:
-	//	'singleserver' name=ID Params;
+	//	'singleserver' name=ID '{' ('server' ':' server=STRING) & ('timeout' ':' timeout=INT)? '}';
 	public SingleServerElements getSingleServerAccess() {
 		return pSingleServer;
 	}
@@ -298,7 +610,9 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//Cluster:
-	//	'cluster' name=ID Params;
+	//	'cluster' name=ID '{' ('message_queue' ':' message_queue=STRING) & 'registration' ':' registration=STRING &
+	//	'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':' '[' nodes+=STRING (',' nodes+=STRING)* ']')
+	//	'}';
 	public ClusterElements getClusterAccess() {
 		return pCluster;
 	}
@@ -308,7 +622,9 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//Ring:
-	//	'ring' name=ID Params;
+	//	'ring' name=ID '{' ('registration' ':' registration=STRING) & 'mid_assigner' ':' mid_assigner=STRING & ('nodes' ':'
+	//	'[' nodes+=STRING (',' nodes+=STRING)* ']')
+	//	'}';
 	public RingElements getRingAccess() {
 		return pRing;
 	}
@@ -318,7 +634,8 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 	}
 	
 	//Tree:
-	//	'tree' name=ID Params;
+	//	'tree' name=ID '{' ('registration' ':' registration=STRING) & ('nodes' ':' root=TreeNode)
+	//	'}';
 	public TreeElements getTreeAccess() {
 		return pTree;
 	}
@@ -327,26 +644,14 @@ public class GoatInfrastructureGrammarAccess extends AbstractGrammarElementFinde
 		return getTreeAccess().getRule();
 	}
 	
-	//fragment Params:
-	//	'{' ((params+=Param ',')*
-	//	params+=Param)?
-	//	'}';
-	public ParamsElements getParamsAccess() {
-		return pParams;
+	//TreeNode:
+	//	address=STRING ('[' children+=TreeNode (',' children+=TreeNode)* ']')?;
+	public TreeNodeElements getTreeNodeAccess() {
+		return pTreeNode;
 	}
 	
-	public ParserRule getParamsRule() {
-		return getParamsAccess().getRule();
-	}
-	
-	//Param:
-	//	name=ID ":" value=STRING;
-	public ParamElements getParamAccess() {
-		return pParam;
-	}
-	
-	public ParserRule getParamRule() {
-		return getParamAccess().getRule();
+	public ParserRule getTreeNodeRule() {
+		return getTreeNodeAccess().getRule();
 	}
 	
 	//terminal ID:

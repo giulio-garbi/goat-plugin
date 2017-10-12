@@ -3,33 +3,40 @@ grammar com.sysma.goat.eclipse_plugin.GoatInfrastructure with org.eclipse.xtext.
 generate goatInfrastructure "http://www.sysma.com/goat/eclipse_plugin/GoatInfrastructure"
 
 Infrastructure:
-	SingleServer//|Cluster|Ring|Tree
+	SingleServer|Cluster|Ring|Tree
 ;
 
 SingleServer:
-	'singleserver' name=ID Params
+	'singleserver' name=ID '{'
+		('server' ':' server = STRING) & 
+		(('timeout' ':' timeout = INT)?)
+	'}'
 ;
 
 Cluster:
-	'cluster' name=ID Params
+	'cluster' name=ID '{'
+		('message_queue' ':' message_queue = STRING) & 
+		('registration' ':' registration = STRING) & 
+		('mid_assigner' ':' mid_assigner = STRING) & 
+		('nodes' ':' '[' nodes += STRING (',' nodes += STRING)* ']') 
+	'}'
 ;
 
 Ring:
-	'ring' name=ID Params
+	'ring' name=ID '{'
+		('registration' ':' registration = STRING) & 
+		('mid_assigner' ':' mid_assigner = STRING) & 
+		('nodes' ':' '[' nodes += STRING (',' nodes += STRING)* ']') 
+	'}'
 ;
 
 Tree:
-	'tree' name=ID Params
+	'tree' name=ID '{'
+		('registration' ':' registration = STRING) & 
+		('nodes' ':' root = TreeNode) 
+	'}'
 ;
 
-fragment Params: 
-'{'
-	(
-		(params += Param ',')*
-		params += Param
-	)?
-'}';
-
-Param:
-	name = ID ":" value = STRING 
+TreeNode:
+	address = STRING ('[' children += TreeNode (',' children += TreeNode)* ']')?
 ;

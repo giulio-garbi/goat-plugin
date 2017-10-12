@@ -3,9 +3,15 @@
  */
 package com.sysma.goat.eclipse_plugin.generator;
 
-import com.google.common.collect.Iterables;
+import com.sysma.goat.eclipse_plugin.generator.CodeCluster;
+import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructure;
+import com.sysma.goat.eclipse_plugin.generator.CodeRing;
 import com.sysma.goat.eclipse_plugin.generator.CodeSingleServer;
+import com.sysma.goat.eclipse_plugin.generator.CodeTree;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,14 +29,41 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class GoatInfrastructureGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<SingleServer> _filter = Iterables.<SingleServer>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), SingleServer.class);
-    for (final SingleServer server : _filter) {
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(resource.getAllContents());
+    for (final EObject infr : _iterable) {
       {
-        final CodeSingleServer c_ssrv = new CodeSingleServer(server);
+        CodeInfrastructure _switchResult = null;
+        boolean _matched = false;
+        if (infr instanceof SingleServer) {
+          _matched=true;
+          _switchResult = new CodeSingleServer(((SingleServer)infr));
+        }
+        if (!_matched) {
+          if (infr instanceof Cluster) {
+            _matched=true;
+            _switchResult = new CodeCluster(((Cluster)infr));
+          }
+        }
+        if (!_matched) {
+          if (infr instanceof Ring) {
+            _matched=true;
+            _switchResult = new CodeRing(((Ring)infr));
+          }
+        }
+        if (!_matched) {
+          if (infr instanceof Tree) {
+            _matched=true;
+            _switchResult = new CodeTree(((Tree)infr));
+          }
+        }
+        if (!_matched) {
+          _switchResult = ((CodeInfrastructure) null);
+        }
+        final CodeInfrastructure code = _switchResult;
         String _platformString = resource.getURI().toPlatformString(true);
         final String goFileName = new Path("infrastructure").append(
           new Path(_platformString).removeFirstSegments(2).removeFileExtension().addFileExtension("go")).toString();
-        fsa.generateFile(goFileName, c_ssrv.getCode());
+        fsa.generateFile(goFileName, code.getCode());
       }
     }
   }

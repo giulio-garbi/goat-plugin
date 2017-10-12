@@ -2,6 +2,9 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree
 
 class CodeInfrastructureAgent {
 	val Infrastructure infr
@@ -13,10 +16,19 @@ class CodeInfrastructureAgent {
 	def getCode(){
 		switch(infr){
 			SingleServer:{
-				val params = ParamsToMap.of(infr.params)
-				//TODO support external infrastructures
-				val address = '''127.0.0.1:«params.get("port")»'''
-				'''goat.NewSingleServerAgent("«address»")'''
+				'''goat.NewSingleServerAgent("«infr.server»")'''
+			}
+			Cluster:
+			{
+				'''goat.NewClusterAgent("«infr.message_queue»", "«infr.registration»")'''
+			}
+			Ring:
+			{
+				'''goat.NewRingAgent("«infr.registration»")'''
+			}
+			Tree:
+			{
+				'''goat.NewTreeAgent("«infr.registration»")'''
 			}
 			default:
 				""

@@ -9,6 +9,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer
 import org.eclipse.core.runtime.Path
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree
 
 /**
  * Generates code from your model files on save.
@@ -18,8 +21,20 @@ import org.eclipse.core.runtime.Path
 class GoatInfrastructureGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		for(server:(resource.allContents.toIterable.filter(SingleServer))){
-			val c_ssrv = new CodeSingleServer(server)
+		for(infr: resource.allContents.toIterable){
+			val code = switch(infr){
+				SingleServer:
+					new CodeSingleServer(infr)
+				Cluster:
+					new CodeCluster(infr)
+				Ring:
+					new CodeRing(infr)
+				Tree:
+					new CodeTree(infr)
+				default:
+					null as CodeInfrastructure
+			}
+				
 			val goFileName = new Path("infrastructure").append(
 					new Path(resource.URI.toPlatformString(true))
 					.removeFirstSegments(2)
@@ -27,7 +42,7 @@ class GoatInfrastructureGenerator extends AbstractGenerator {
 					.addFileExtension("go")
 				).toString
 			// EcorePlatformUtil.getFile(resource)
-			fsa.generateFile(goFileName, c_ssrv.code)
+			fsa.generateFile(goFileName, code.code)
 		}
 	}
 }

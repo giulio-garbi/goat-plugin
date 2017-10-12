@@ -1,5 +1,6 @@
 package com.sysma.goat.eclipse_plugin.generator;
 
+import com.google.common.net.HostAndPort;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessCall;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessIf;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessLoop;
@@ -18,7 +19,13 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor;
+import java.net.InetAddress;
+import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class Utils {
@@ -140,6 +147,39 @@ public class Utils {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
+    return _builder;
+  }
+  
+  public static boolean isLocalAddress(final String address) {
+    try {
+      boolean _xblockexpression = false;
+      {
+        final InetAddress ad = InetAddress.getByName(HostAndPort.fromString(address).getHost());
+        _xblockexpression = ad.isLoopbackAddress();
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public static int getPortNumber(final String address) {
+    return HostAndPort.fromString(address).getPort();
+  }
+  
+  public static CharSequence goList(final List<String> strings) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("[]string{");
+    final Function1<String, String> _function = (String it) -> {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"");
+      _builder_1.append(it);
+      _builder_1.append("\"");
+      return _builder_1.toString();
+    };
+    String _join = IterableExtensions.join(ListExtensions.<String, String>map(strings, _function), ", ");
+    _builder.append(_join);
+    _builder.append("}");
     return _builder;
   }
 }

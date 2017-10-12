@@ -69,22 +69,13 @@ public interface GoatInfrastructureFactory extends EFactory
   Tree createTree();
 
   /**
-   * Returns a new object of class '<em>Params</em>'.
+   * Returns a new object of class '<em>Tree Node</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Params</em>'.
+   * @return a new object of class '<em>Tree Node</em>'.
    * @generated
    */
-  Params createParams();
-
-  /**
-   * Returns a new object of class '<em>Param</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param</em>'.
-   * @generated
-   */
-  Param createParam();
+  TreeNode createTreeNode();
 
   /**
    * Returns the package supported by this factory.

@@ -239,7 +239,7 @@ public class CodeProcessReceive {
         _builder.append("\t");
         _builder.append("\t");
         ProcessBlock _get = this.receive.getThen().get((input.getKey()).intValue());
-        Object _code = new CodeProcessBlock(_get, this.map, this.procRef).getCode();
+        CharSequence _code = new CodeProcessBlock(_get, this.map, this.procRef).getCode();
         _builder.append(_code, "\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");

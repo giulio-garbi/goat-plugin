@@ -85,7 +85,6 @@ public class GoatInfrastructureSwitch<T> extends Switch<T>
         SingleServer singleServer = (SingleServer)theEObject;
         T result = caseSingleServer(singleServer);
         if (result == null) result = caseInfrastructure(singleServer);
-        if (result == null) result = caseParams(singleServer);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -93,7 +92,7 @@ public class GoatInfrastructureSwitch<T> extends Switch<T>
       {
         Cluster cluster = (Cluster)theEObject;
         T result = caseCluster(cluster);
-        if (result == null) result = caseParams(cluster);
+        if (result == null) result = caseInfrastructure(cluster);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -101,7 +100,7 @@ public class GoatInfrastructureSwitch<T> extends Switch<T>
       {
         Ring ring = (Ring)theEObject;
         T result = caseRing(ring);
-        if (result == null) result = caseParams(ring);
+        if (result == null) result = caseInfrastructure(ring);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -109,21 +108,14 @@ public class GoatInfrastructureSwitch<T> extends Switch<T>
       {
         Tree tree = (Tree)theEObject;
         T result = caseTree(tree);
-        if (result == null) result = caseParams(tree);
+        if (result == null) result = caseInfrastructure(tree);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GoatInfrastructurePackage.PARAMS:
+      case GoatInfrastructurePackage.TREE_NODE:
       {
-        Params params = (Params)theEObject;
-        T result = caseParams(params);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatInfrastructurePackage.PARAM:
-      {
-        Param param = (Param)theEObject;
-        T result = caseParam(param);
+        TreeNode treeNode = (TreeNode)theEObject;
+        T result = caseTreeNode(treeNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -212,33 +204,17 @@ public class GoatInfrastructureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Params</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Tree Node</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Params</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Tree Node</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseParams(Params object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Param</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Param</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParam(Param object)
+  public T caseTreeNode(TreeNode object)
   {
     return null;
   }

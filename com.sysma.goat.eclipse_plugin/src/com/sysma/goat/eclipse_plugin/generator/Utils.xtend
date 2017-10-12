@@ -9,6 +9,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessIf
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSet
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor
+import java.net.InetAddress
+import com.google.common.net.HostAndPort
+import java.util.List
 
 class Utils{
 	def static getCode(ProcessStatement stmt, LocalVariableMap locvars, CharSequence processRef){
@@ -62,5 +65,18 @@ class Utils{
 			return h
 		}
 		'''
+	}
+	
+	def static isLocalAddress(String address){
+		val ad = InetAddress.getByName(HostAndPort.fromString(address).host)
+		ad.isLoopbackAddress
+	}
+	
+	def static getPortNumber(String address){
+		HostAndPort.fromString(address).port
+	}
+	
+	def static goList(List<String> strings){
+		'''[]string{«strings.map['''"«it»"'''].join(", ")»}'''
 	}
 }

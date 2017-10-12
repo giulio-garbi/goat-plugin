@@ -11,9 +11,21 @@ package com.sysma.goat.eclipse_plugin.ide.contentassist.antlr.lexer;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 }
 
+Message_queue : 'message_queue';
+
+Mid_assigner : 'mid_assigner';
+
+Registration : 'registration';
+
 Singleserver : 'singleserver';
 
 Cluster : 'cluster';
+
+Timeout : 'timeout';
+
+Server : 'server';
+
+Nodes : 'nodes';
 
 Ring : 'ring';
 
@@ -22,6 +34,10 @@ Tree : 'tree';
 Comma : ',';
 
 Colon : ':';
+
+LeftSquareBracket : '[';
+
+RightSquareBracket : ']';
 
 LeftCurlyBracket : '{';
 

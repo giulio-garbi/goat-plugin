@@ -1,19 +1,16 @@
 package com.sysma.goat.eclipse_plugin.generator
 
-import java.util.Map
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer
+import static extension com.sysma.goat.eclipse_plugin.generator.Utils.*
 
-class CodeSingleServer {
+class CodeSingleServer implements CodeInfrastructure {
 	val SingleServer ssrv;
-	val Map<String, String> params;
 	
 	new(SingleServer ssrv){
 		this.ssrv = ssrv
-		this.params = ParamsToMap.of(ssrv.params)
 	}
 	
-	def getCode(){
-		val timeout = params.get('timeout')?:0;
+	override getCode(){
 		'''
 			package main
 			import (
@@ -22,22 +19,21 @@ class CodeSingleServer {
 			)
 			
 			func main(){
-				«/*IF !ssrv.external*/»
+				«IF ssrv.server.isLocalAddress»
 				term := make(chan struct{})
-				goat.RunCentralServer(«params.get('port')», term, «timeout»)
+				goat.RunCentralServer(«ssrv.server.portNumber», term, «ssrv.timeout»)
 				fmt.Println("Started")
 				<- term
 				fmt.Println("Terminated")
-				«/*ENDIF*/»
+				«ELSE»
+				fmt.Println("Started")
+				_ = goat.RunCentralServer
+				«ENDIF»
 			}
 		'''
 	}
 	
 	def String getServerAddress(){
-		//if (ssrv.external) {
-		//	params.get('address')
-		//} else {
-			"127.0.0.1:"+params.get('port')
-		//}
+		ssrv.server
 	}
 }

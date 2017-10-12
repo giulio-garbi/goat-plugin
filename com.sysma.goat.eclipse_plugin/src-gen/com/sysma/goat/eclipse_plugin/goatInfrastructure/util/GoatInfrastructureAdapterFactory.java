@@ -101,14 +101,9 @@ public class GoatInfrastructureAdapterFactory extends AdapterFactoryImpl
         return createTreeAdapter();
       }
       @Override
-      public Adapter caseParams(Params object)
+      public Adapter caseTreeNode(TreeNode object)
       {
-        return createParamsAdapter();
-      }
-      @Override
-      public Adapter caseParam(Param object)
-      {
-        return createParamAdapter();
+        return createTreeNodeAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -208,31 +203,16 @@ public class GoatInfrastructureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Params <em>Params</em>}'.
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode <em>Tree Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Params
+   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode
    * @generated
    */
-  public Adapter createParamsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.Param <em>Param</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatInfrastructure.Param
-   * @generated
-   */
-  public Adapter createParamAdapter()
+  public Adapter createTreeNodeAdapter()
   {
     return null;
   }

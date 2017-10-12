@@ -6,18 +6,31 @@
     complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.13">
   <genPackages prefix="GoatInfrastructure" basePackage="com.sysma.goat.eclipse_plugin"
       disposableProviderFactory="true" fileExtensions="ginf" ecorePackage="GoatInfrastructure.ecore#/">
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Infrastructure"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//SingleServer"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Cluster"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Ring"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Tree"/>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Params">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatInfrastructure.ecore#//Params/params"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Params/name"/>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Infrastructure">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Infrastructure/name"/>
     </genClasses>
-    <genClasses ecoreClass="GoatInfrastructure.ecore#//Param">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Param/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Param/value"/>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//SingleServer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//SingleServer/server"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//SingleServer/timeout"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Cluster">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Cluster/message_queue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Cluster/registration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Cluster/mid_assigner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Cluster/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Ring">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Ring/registration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Ring/mid_assigner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Ring/nodes"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//Tree">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//Tree/registration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatInfrastructure.ecore#//Tree/root"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatInfrastructure.ecore#//TreeNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatInfrastructure.ecore#//TreeNode/address"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatInfrastructure.ecore#//TreeNode/children"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -31,7 +31,7 @@ public class CodeProcessDefinition {
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       ProcessBlock _block = this.pdef.getBlock();
-      Object _code = new CodeProcessBlock(_block, localVariablesMap, procReference).getCode();
+      CharSequence _code = new CodeProcessBlock(_block, localVariablesMap, procReference).getCode();
       _builder.append(_code, "\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");

@@ -70,8 +70,7 @@ public class GoatInfrastructureFactoryImpl extends EFactoryImpl implements GoatI
       case GoatInfrastructurePackage.CLUSTER: return createCluster();
       case GoatInfrastructurePackage.RING: return createRing();
       case GoatInfrastructurePackage.TREE: return createTree();
-      case GoatInfrastructurePackage.PARAMS: return createParams();
-      case GoatInfrastructurePackage.PARAM: return createParam();
+      case GoatInfrastructurePackage.TREE_NODE: return createTreeNode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -137,21 +136,10 @@ public class GoatInfrastructureFactoryImpl extends EFactoryImpl implements GoatI
    * <!-- end-user-doc -->
    * @generated
    */
-  public Params createParams()
+  public TreeNode createTreeNode()
   {
-    ParamsImpl params = new ParamsImpl();
-    return params;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Param createParam()
-  {
-    ParamImpl param = new ParamImpl();
-    return param;
+    TreeNodeImpl treeNode = new TreeNodeImpl();
+    return treeNode;
   }
 
   /**

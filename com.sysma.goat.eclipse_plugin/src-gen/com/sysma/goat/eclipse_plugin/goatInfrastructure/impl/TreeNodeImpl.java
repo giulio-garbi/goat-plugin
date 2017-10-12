@@ -4,8 +4,7 @@
 package com.sysma.goat.eclipse_plugin.goatInfrastructure.impl;
 
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.GoatInfrastructurePackage;
-import com.sysma.goat.eclipse_plugin.goatInfrastructure.Param;
-import com.sysma.goat.eclipse_plugin.goatInfrastructure.Params;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.TreeNode;
 
 import java.util.Collection;
 
@@ -25,56 +24,56 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Params</b></em>'.
+ * An implementation of the model object '<em><b>Tree Node</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getParams <em>Params</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.ParamsImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl#getAddress <em>Address</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatInfrastructure.impl.TreeNodeImpl#getChildren <em>Children</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
+public class TreeNodeImpl extends MinimalEObjectImpl.Container implements TreeNode
 {
   /**
-   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
+   * The default value of the '{@link #getAddress() <em>Address</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParams()
+   * @see #getAddress()
    * @generated
    * @ordered
    */
-  protected EList<Param> params;
+  protected static final String ADDRESS_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getAddress() <em>Address</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getAddress()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected String address = ADDRESS_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getChildren()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected EList<TreeNode> children;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParamsImpl()
+  protected TreeNodeImpl()
   {
     super();
   }
@@ -87,7 +86,7 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   @Override
   protected EClass eStaticClass()
   {
-    return GoatInfrastructurePackage.Literals.PARAMS;
+    return GoatInfrastructurePackage.Literals.TREE_NODE;
   }
 
   /**
@@ -95,13 +94,9 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Param> getParams()
+  public String getAddress()
   {
-    if (params == null)
-    {
-      params = new EObjectContainmentEList<Param>(Param.class, this, GoatInfrastructurePackage.PARAMS__PARAMS);
-    }
-    return params;
+    return address;
   }
 
   /**
@@ -109,22 +104,26 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public void setAddress(String newAddress)
   {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
+    String oldAddress = address;
+    address = newAddress;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.PARAMS__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatInfrastructurePackage.TREE_NODE__ADDRESS, oldAddress, address));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<TreeNode> getChildren()
+  {
+    if (children == null)
+    {
+      children = new EObjectContainmentEList<TreeNode>(TreeNode.class, this, GoatInfrastructurePackage.TREE_NODE__CHILDREN);
+    }
+    return children;
   }
 
   /**
@@ -137,8 +136,8 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__PARAMS:
-        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
+      case GoatInfrastructurePackage.TREE_NODE__CHILDREN:
+        return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -153,10 +152,10 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__PARAMS:
-        return getParams();
-      case GoatInfrastructurePackage.PARAMS__NAME:
-        return getName();
+      case GoatInfrastructurePackage.TREE_NODE__ADDRESS:
+        return getAddress();
+      case GoatInfrastructurePackage.TREE_NODE__CHILDREN:
+        return getChildren();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,12 +171,12 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__PARAMS:
-        getParams().clear();
-        getParams().addAll((Collection<? extends Param>)newValue);
+      case GoatInfrastructurePackage.TREE_NODE__ADDRESS:
+        setAddress((String)newValue);
         return;
-      case GoatInfrastructurePackage.PARAMS__NAME:
-        setName((String)newValue);
+      case GoatInfrastructurePackage.TREE_NODE__CHILDREN:
+        getChildren().clear();
+        getChildren().addAll((Collection<? extends TreeNode>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,11 +192,11 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__PARAMS:
-        getParams().clear();
+      case GoatInfrastructurePackage.TREE_NODE__ADDRESS:
+        setAddress(ADDRESS_EDEFAULT);
         return;
-      case GoatInfrastructurePackage.PARAMS__NAME:
-        setName(NAME_EDEFAULT);
+      case GoatInfrastructurePackage.TREE_NODE__CHILDREN:
+        getChildren().clear();
         return;
     }
     super.eUnset(featureID);
@@ -213,10 +212,10 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
   {
     switch (featureID)
     {
-      case GoatInfrastructurePackage.PARAMS__PARAMS:
-        return params != null && !params.isEmpty();
-      case GoatInfrastructurePackage.PARAMS__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GoatInfrastructurePackage.TREE_NODE__ADDRESS:
+        return ADDRESS_EDEFAULT == null ? address != null : !ADDRESS_EDEFAULT.equals(address);
+      case GoatInfrastructurePackage.TREE_NODE__CHILDREN:
+        return children != null && !children.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -232,10 +231,10 @@ public class ParamsImpl extends MinimalEObjectImpl.Container implements Params
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (address: ");
+    result.append(address);
     result.append(')');
     return result.toString();
   }
 
-} //ParamsImpl
+} //TreeNodeImpl
