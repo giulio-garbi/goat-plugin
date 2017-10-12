@@ -4,6 +4,9 @@ import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.SWT
 import org.eclipse.core.runtime.IPath
 import com.sysma.goat.eclipse_plugin.ui.Console
+import org.eclipse.ui.PlatformUI
+import org.eclipse.ui.IWorkbenchListener
+import org.eclipse.ui.IWorkbench
 
 class RunComponent {
 	val IPath filePath
@@ -35,6 +38,17 @@ class RunComponent {
 					
 					val proc = pb.start()
 					console.process = proc
+					PlatformUI.workbench.addWorkbenchListener(new IWorkbenchListener(){
+						override postShutdown(IWorkbench workbench) {}
+						
+						override preShutdown(IWorkbench workbench, boolean forced) {
+							if(proc !== null && proc.alive){
+								proc.descendants.forEach[destroy]
+								proc.destroy()
+							}
+							true
+						}
+					})
 					new Thread(new StreamCopier(stdin, proc.outputStream)).start()
 					new Thread(new StreamCopier(proc.inputStream, stdout)).start()
 					new Thread(new StreamCopier(proc.errorStream, stderr)).start()

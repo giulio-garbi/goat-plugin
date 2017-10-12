@@ -2,13 +2,16 @@ package com.sysma.goat.eclipse_plugin.ui;
 
 import com.sysma.goat.eclipse_plugin.ui.Console;
 import com.sysma.goat.eclipse_plugin.ui.StreamCopier;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.Semaphore;
+import java.util.function.Consumer;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchListener;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -46,42 +49,54 @@ public class RunServer {
           if (_exists) {
             final String srvGoFname = srvGo.toString();
             pb.command("go", "run", srvGoFname);
-            try {
-              final Process proc = pb.start();
-              RunServer.this.console.setProcess(proc);
-              OutputStream _outputStream = proc.getOutputStream();
-              StreamCopier _streamCopier = new StreamCopier(stdin, _outputStream);
-              new Thread(_streamCopier).start();
-              InputStream _inputStream = proc.getInputStream();
-              final Procedure0 _function = new Procedure0() {
-                public void apply() {
-                  ok.release();
-                }
-              };
-              StreamCopier _addListener = new StreamCopier(_inputStream, stdout).addListener("Started", _function);
-              new Thread(_addListener).start();
-              InputStream _errorStream = proc.getErrorStream();
-              StreamCopier _streamCopier_1 = new StreamCopier(_errorStream, stderr);
-              new Thread(_streamCopier_1).start();
-              new Thread(new Runnable() {
-                public void run() {
-                  try {
-                    proc.waitFor();
-                    ok.release();
-                  } catch (Throwable _e) {
-                    throw Exceptions.sneakyThrow(_e);
-                  }
-                }
-              });
-            } catch (final Throwable _t) {
-              if (_t instanceof IOException) {
-                final IOException ex = (IOException)_t;
-                ok.release();
-                ex.printStackTrace();
-              } else {
-                throw Exceptions.sneakyThrow(_t);
+            final Process proc = pb.start();
+            RunServer.this.console.setProcess(proc);
+            IWorkbench _workbench = PlatformUI.getWorkbench();
+            _workbench.addWorkbenchListener(new IWorkbenchListener() {
+              public void postShutdown(final IWorkbench workbench) {
               }
-            }
+              
+              public boolean preShutdown(final IWorkbench workbench, final boolean forced) {
+                boolean _xblockexpression = false;
+                {
+                  if (((proc != null) && proc.isAlive())) {
+                    final Consumer<ProcessHandle> _function = new Consumer<ProcessHandle>() {
+                      public void accept(final ProcessHandle it) {
+                        it.destroy();
+                      }
+                    };
+                    proc.descendants().forEach(_function);
+                    proc.destroy();
+                  }
+                  _xblockexpression = true;
+                }
+                return _xblockexpression;
+              }
+            });
+            OutputStream _outputStream = proc.getOutputStream();
+            StreamCopier _streamCopier = new StreamCopier(stdin, _outputStream);
+            new Thread(_streamCopier).start();
+            InputStream _inputStream = proc.getInputStream();
+            final Procedure0 _function = new Procedure0() {
+              public void apply() {
+                ok.release();
+              }
+            };
+            StreamCopier _addListener = new StreamCopier(_inputStream, stdout).addListener("Started", _function);
+            new Thread(_addListener).start();
+            InputStream _errorStream = proc.getErrorStream();
+            StreamCopier _streamCopier_1 = new StreamCopier(_errorStream, stderr);
+            new Thread(_streamCopier_1).start();
+            new Thread(new Runnable() {
+              public void run() {
+                try {
+                  proc.waitFor();
+                  ok.release();
+                } catch (Throwable _e) {
+                  throw Exceptions.sneakyThrow(_e);
+                }
+              }
+            });
           } else {
             String _string = RunServer.this.filePath.toString();
             String _plus = (_string + " was not generated. Please save the file and retry.");

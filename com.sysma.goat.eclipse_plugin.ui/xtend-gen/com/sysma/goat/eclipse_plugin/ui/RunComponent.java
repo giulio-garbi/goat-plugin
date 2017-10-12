@@ -4,9 +4,13 @@ import com.sysma.goat.eclipse_plugin.ui.Console;
 import com.sysma.goat.eclipse_plugin.ui.StreamCopier;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.function.Consumer;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchListener;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -44,6 +48,28 @@ public class RunComponent {
             pb.command("go", "run", srvGoFname);
             final Process proc = pb.start();
             RunComponent.this.console.setProcess(proc);
+            IWorkbench _workbench = PlatformUI.getWorkbench();
+            _workbench.addWorkbenchListener(new IWorkbenchListener() {
+              public void postShutdown(final IWorkbench workbench) {
+              }
+              
+              public boolean preShutdown(final IWorkbench workbench, final boolean forced) {
+                boolean _xblockexpression = false;
+                {
+                  if (((proc != null) && proc.isAlive())) {
+                    final Consumer<ProcessHandle> _function = new Consumer<ProcessHandle>() {
+                      public void accept(final ProcessHandle it) {
+                        it.destroy();
+                      }
+                    };
+                    proc.descendants().forEach(_function);
+                    proc.destroy();
+                  }
+                  _xblockexpression = true;
+                }
+                return _xblockexpression;
+              }
+            });
             OutputStream _outputStream = proc.getOutputStream();
             StreamCopier _streamCopier = new StreamCopier(stdin, _outputStream);
             new Thread(_streamCopier).start();
