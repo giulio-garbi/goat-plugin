@@ -37,7 +37,6 @@ public class StreamCopier implements Runnable {
     return _xblockexpression;
   }
   
-  @Override
   public void run() {
     try {
       String line = "";
@@ -68,8 +67,10 @@ public class StreamCopier implements Runnable {
     {
       ArrayList<Procedure0> _get = this.listeners.get(line);
       if (_get!=null) {
-        final Consumer<Procedure0> _function = (Procedure0 it) -> {
-          it.apply();
+        final Consumer<Procedure0> _function = new Consumer<Procedure0>() {
+          public void accept(final Procedure0 it) {
+            it.apply();
+          }
         };
         _get.forEach(_function);
       }

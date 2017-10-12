@@ -13,7 +13,7 @@ public class CodeProcessCall {
     this.call = call;
   }
   
-  public Object getCode() {
+  public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("return ");
     ProcessDefinition _proc = this.call.getProc();

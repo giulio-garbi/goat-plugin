@@ -45,7 +45,6 @@ public class Main {
       final Path projectPath = new Path(_string);
       java.nio.file.Path _path = projectPath.append("src").toFile().toPath();
       Files.walkFileTree(_path, new SimpleFileVisitor<java.nio.file.Path>() {
-        @Override
         public FileVisitResult visitFile(final java.nio.file.Path file, final BasicFileAttributes attrs) throws IOException {
           if (((!attrs.isDirectory()) && file.toString().endsWith(".goat"))) {
             main.runGenerator(file.toString(), projectPath);
@@ -77,8 +76,10 @@ public class Main {
     boolean _isEmpty = issues.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      final Consumer<Issue> _function = (Issue it) -> {
-        System.err.println(it);
+      final Consumer<Issue> _function = new Consumer<Issue>() {
+        public void accept(final Issue it) {
+          System.err.println(it);
+        }
       };
       issues.forEach(_function);
       return;

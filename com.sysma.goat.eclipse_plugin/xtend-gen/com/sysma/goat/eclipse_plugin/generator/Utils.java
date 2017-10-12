@@ -30,7 +30,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 @SuppressWarnings("all")
 public class Utils {
   public static Object getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
-    Object _switchResult = null;
+    CharSequence _switchResult = null;
     boolean _matched = false;
     if (stmt instanceof ProcessSpawn) {
       _matched=true;
@@ -170,12 +170,14 @@ public class Utils {
   public static CharSequence goList(final List<String> strings) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[]string{");
-    final Function1<String, String> _function = (String it) -> {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("\"");
-      _builder_1.append(it);
-      _builder_1.append("\"");
-      return _builder_1.toString();
+    final Function1<String, String> _function = new Function1<String, String>() {
+      public String apply(final String it) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("\"");
+        _builder.append(it);
+        _builder.append("\"");
+        return _builder.toString();
+      }
     };
     String _join = IterableExtensions.join(ListExtensions.<String, String>map(strings, _function), ", ");
     _builder.append(_join);

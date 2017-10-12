@@ -1,16 +1,16 @@
 package com.sysma.goat.eclipse_plugin.ui
 
-import org.eclipse.ui.console.IOConsole
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.SWT
 import org.eclipse.core.runtime.IPath
+import com.sysma.goat.eclipse_plugin.ui.Console
 
 class RunComponent {
 	val IPath filePath
 	val IPath projectPath
-	val IOConsole console
+	val Console console
 	
-	new(IPath projectPath, IPath filePath, IOConsole console){
+	new(IPath projectPath, IPath filePath, Console console){
 		this.filePath = filePath
 		this.projectPath = projectPath
 		this.console = console
@@ -34,6 +34,7 @@ class RunComponent {
 					pb.command("go","run", srvGoFname);
 					
 					val proc = pb.start()
+					console.process = proc
 					new Thread(new StreamCopier(stdin, proc.outputStream)).start()
 					new Thread(new StreamCopier(proc.inputStream, stdout)).start()
 					new Thread(new StreamCopier(proc.errorStream, stderr)).start()

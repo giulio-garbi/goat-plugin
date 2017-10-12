@@ -11,9 +11,11 @@ import org.junit.Assert;
 @SuppressWarnings("all")
 public class ParsingTestHelper {
   public static void checkNoErrorApartInfr(final EObject obj) {
-    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
-      String _message = it.getMessage();
-      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    final Function1<Resource.Diagnostic, Boolean> _function = new Function1<Resource.Diagnostic, Boolean>() {
+      public Boolean apply(final Resource.Diagnostic it) {
+        String _message = it.getMessage();
+        return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+      }
     };
     int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
     boolean _equals = (_length == 0);
@@ -21,9 +23,11 @@ public class ParsingTestHelper {
   }
   
   public static void checkErrorApartInfr(final EObject obj) {
-    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
-      String _message = it.getMessage();
-      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    final Function1<Resource.Diagnostic, Boolean> _function = new Function1<Resource.Diagnostic, Boolean>() {
+      public Boolean apply(final Resource.Diagnostic it) {
+        String _message = it.getMessage();
+        return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+      }
     };
     int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
     boolean _equals = (_length == 0);

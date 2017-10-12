@@ -1,5 +1,6 @@
 package com.sysma.goat.eclipse_plugin.ui;
 
+import com.sysma.goat.eclipse_plugin.ui.Console;
 import com.sysma.goat.eclipse_plugin.ui.StreamCopier;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +9,6 @@ import java.util.concurrent.Semaphore;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.console.IOConsole;
 import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -20,9 +20,9 @@ public class RunServer {
   
   private final IPath projectPath;
   
-  private final IOConsole console;
+  private final Console console;
   
-  public RunServer(final IPath projectPath, final IPath filePath, final IOConsole console) {
+  public RunServer(final IPath projectPath, final IPath filePath, final Console console) {
     this.filePath = filePath;
     this.projectPath = projectPath;
     this.console = console;
@@ -36,7 +36,6 @@ public class RunServer {
     stderr.setColor(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
     stdin.setColor(Display.getCurrent().getSystemColor(SWT.COLOR_GREEN));
     new Thread(new Runnable() {
-      @Override
       public void run() {
         try {
           final ProcessBuilder pb = new ProcessBuilder();
@@ -49,18 +48,31 @@ public class RunServer {
             pb.command("go", "run", srvGoFname);
             try {
               final Process proc = pb.start();
+              RunServer.this.console.setProcess(proc);
               OutputStream _outputStream = proc.getOutputStream();
               StreamCopier _streamCopier = new StreamCopier(stdin, _outputStream);
               new Thread(_streamCopier).start();
               InputStream _inputStream = proc.getInputStream();
-              final Procedure0 _function = () -> {
-                ok.release();
+              final Procedure0 _function = new Procedure0() {
+                public void apply() {
+                  ok.release();
+                }
               };
               StreamCopier _addListener = new StreamCopier(_inputStream, stdout).addListener("Started", _function);
               new Thread(_addListener).start();
               InputStream _errorStream = proc.getErrorStream();
               StreamCopier _streamCopier_1 = new StreamCopier(_errorStream, stderr);
               new Thread(_streamCopier_1).start();
+              new Thread(new Runnable() {
+                public void run() {
+                  try {
+                    proc.waitFor();
+                    ok.release();
+                  } catch (Throwable _e) {
+                    throw Exceptions.sneakyThrow(_e);
+                  }
+                }
+              });
             } catch (final Throwable _t) {
               if (_t instanceof IOException) {
                 final IOException ex = (IOException)_t;

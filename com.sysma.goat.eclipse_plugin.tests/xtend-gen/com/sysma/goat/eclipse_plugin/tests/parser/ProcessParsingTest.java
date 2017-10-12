@@ -123,8 +123,10 @@ public class ProcessParsingTest {
       final ProcessBlock result = defin.getProcesses().get(0).getBlock();
       Assert.assertNotNull(result);
       Assert.assertTrue(result.eResource().getErrors().isEmpty());
-      final Function1<ProcessStatement, Boolean> _function = (ProcessStatement it) -> {
-        return Boolean.valueOf((!(it instanceof ProcessSpawn)));
+      final Function1<ProcessStatement, Boolean> _function = new Function1<ProcessStatement, Boolean>() {
+        public Boolean apply(final ProcessStatement it) {
+          return Boolean.valueOf((!(it instanceof ProcessSpawn)));
+        }
       };
       Assert.assertTrue(IterableExtensions.isEmpty(IterableExtensions.<ProcessStatement>filter(IterableExtensions.<ProcessStatement>tail(ListExtensions.<ProcessStatement>reverseView(result.getStatements())), _function)));
       ProcessStatement _last = IterableExtensions.<ProcessStatement>last(result.getStatements());
@@ -181,12 +183,14 @@ public class ProcessParsingTest {
     int _length = ((Object[])Conversions.unwrapArray(iprocs.getCases(), Object.class)).length;
     boolean _equals = (_length == 3);
     Assert.assertTrue(_equals);
-    final Consumer<ReceiveCase> _function = (ReceiveCase it) -> {
-      Expression _cond = it.getCond();
-      Assert.assertTrue((_cond instanceof BoolConstant));
-      int _length_1 = ((Object[])Conversions.unwrapArray(it.getMsgInParts(), Object.class)).length;
-      boolean _equals_1 = (_length_1 == 3);
-      Assert.assertTrue(_equals_1);
+    final Consumer<ReceiveCase> _function = new Consumer<ReceiveCase>() {
+      public void accept(final ReceiveCase it) {
+        Expression _cond = it.getCond();
+        Assert.assertTrue((_cond instanceof BoolConstant));
+        int _length = ((Object[])Conversions.unwrapArray(it.getMsgInParts(), Object.class)).length;
+        boolean _equals = (_length == 3);
+        Assert.assertTrue(_equals);
+      }
     };
     iprocs.getCases().forEach(_function);
   }
@@ -216,18 +220,20 @@ public class ProcessParsingTest {
     int _length = ((Object[])Conversions.unwrapArray(iprocs.getCases(), Object.class)).length;
     boolean _equals = (_length == 3);
     Assert.assertTrue(_equals);
-    final Consumer<ReceiveCase> _function = (ReceiveCase it) -> {
-      Expression _cond = it.getCond();
-      Assert.assertTrue((_cond instanceof BoolConstant));
-      int _length_1 = ((Object[])Conversions.unwrapArray(it.getMsgInParts(), Object.class)).length;
-      boolean _equals_1 = (_length_1 == 3);
-      Assert.assertTrue(_equals_1);
-      EObject _get_2 = it.getUpdates().getAttribute().get(0);
-      Assert.assertTrue((_get_2 instanceof UpdateLocalAttribute));
-      EObject _get_3 = it.getUpdates().getAttribute().get(0);
-      String _atname = ((UpdateLocalAttribute) _get_3).getAtname();
-      boolean _equals_2 = Objects.equal(_atname, "z");
-      Assert.assertTrue(_equals_2);
+    final Consumer<ReceiveCase> _function = new Consumer<ReceiveCase>() {
+      public void accept(final ReceiveCase it) {
+        Expression _cond = it.getCond();
+        Assert.assertTrue((_cond instanceof BoolConstant));
+        int _length = ((Object[])Conversions.unwrapArray(it.getMsgInParts(), Object.class)).length;
+        boolean _equals = (_length == 3);
+        Assert.assertTrue(_equals);
+        EObject _get = it.getUpdates().getAttribute().get(0);
+        Assert.assertTrue((_get instanceof UpdateLocalAttribute));
+        EObject _get_1 = it.getUpdates().getAttribute().get(0);
+        String _atname = ((UpdateLocalAttribute) _get_1).getAtname();
+        boolean _equals_1 = Objects.equal(_atname, "z");
+        Assert.assertTrue(_equals_1);
+      }
     };
     iprocs.getCases().forEach(_function);
   }
@@ -248,8 +254,10 @@ public class ProcessParsingTest {
     int _length = ((Object[])Conversions.unwrapArray(p.getMsgOutParts(), Object.class)).length;
     boolean _equals = (_length == 3);
     Assert.assertTrue(_equals);
-    final Function1<Expression, Boolean> _function = (Expression it) -> {
-      return Boolean.valueOf((it instanceof Expression));
+    final Function1<Expression, Boolean> _function = new Function1<Expression, Boolean>() {
+      public Boolean apply(final Expression it) {
+        return Boolean.valueOf((it instanceof Expression));
+      }
     };
     Assert.assertTrue(IterableExtensions.<Expression>forall(p.getMsgOutParts(), _function));
     Assert.assertTrue(p.getUpdates().getAttribute().isEmpty());
@@ -390,13 +398,17 @@ public class ProcessParsingTest {
     int _length_2 = ((Object[])Conversions.unwrapArray(ifp.getThen(), Object.class)).length;
     boolean _equals_2 = (_length_2 == 2);
     Assert.assertTrue(_equals_2);
-    final Function1<ProcessStatement, Boolean> _function = (ProcessStatement it) -> {
-      return Boolean.valueOf((!(it instanceof ProcessSend)));
+    final Function1<ProcessStatement, Boolean> _function = new Function1<ProcessStatement, Boolean>() {
+      public Boolean apply(final ProcessStatement it) {
+        return Boolean.valueOf((!(it instanceof ProcessSend)));
+      }
     };
     Assert.assertTrue(IterableExtensions.isEmpty(IterableExtensions.<ProcessStatement>filter(ifp.getAction(), _function)));
-    final Function1<ProcessBlock, Boolean> _function_1 = (ProcessBlock it) -> {
-      int _length_3 = ((Object[])Conversions.unwrapArray(it.getStatements(), Object.class)).length;
-      return Boolean.valueOf((_length_3 != 1));
+    final Function1<ProcessBlock, Boolean> _function_1 = new Function1<ProcessBlock, Boolean>() {
+      public Boolean apply(final ProcessBlock it) {
+        int _length = ((Object[])Conversions.unwrapArray(it.getStatements(), Object.class)).length;
+        return Boolean.valueOf((_length != 1));
+      }
     };
     Assert.assertTrue(IterableExtensions.isEmpty(IterableExtensions.<ProcessBlock>filter(ifp.getThen(), _function_1)));
   }
@@ -437,13 +449,17 @@ public class ProcessParsingTest {
     int _length_2 = ((Object[])Conversions.unwrapArray(ifp.getThen(), Object.class)).length;
     boolean _equals_2 = (_length_2 == 2);
     Assert.assertTrue(_equals_2);
-    final Function1<ProcessStatement, Boolean> _function = (ProcessStatement it) -> {
-      return Boolean.valueOf((!(it instanceof ProcessSend)));
+    final Function1<ProcessStatement, Boolean> _function = new Function1<ProcessStatement, Boolean>() {
+      public Boolean apply(final ProcessStatement it) {
+        return Boolean.valueOf((!(it instanceof ProcessSend)));
+      }
     };
     Assert.assertTrue(IterableExtensions.isEmpty(IterableExtensions.<ProcessStatement>filter(ifp.getAction(), _function)));
-    final Function1<ProcessBlock, Boolean> _function_1 = (ProcessBlock it) -> {
-      int _length_3 = ((Object[])Conversions.unwrapArray(it.getStatements(), Object.class)).length;
-      return Boolean.valueOf((_length_3 != 1));
+    final Function1<ProcessBlock, Boolean> _function_1 = new Function1<ProcessBlock, Boolean>() {
+      public Boolean apply(final ProcessBlock it) {
+        int _length = ((Object[])Conversions.unwrapArray(it.getStatements(), Object.class)).length;
+        return Boolean.valueOf((_length != 1));
+      }
     };
     Assert.assertTrue(IterableExtensions.isEmpty(IterableExtensions.<ProcessBlock>filter(ifp.getThen(), _function_1)));
   }

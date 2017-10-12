@@ -32,14 +32,16 @@ public class CodeFunction {
     String _name = this.definition.getName();
     _builder.append(_name);
     _builder.append("(");
-    final Function1<FuncParam, String> _function = (FuncParam it) -> {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      String _name_1 = it.getName();
-      _builder_1.append(_name_1);
-      _builder_1.append(" ");
-      String _goType = ExpressionTyping.goType(it.getType());
-      _builder_1.append(_goType);
-      return _builder_1.toString();
+    final Function1<FuncParam, String> _function = new Function1<FuncParam, String>() {
+      public String apply(final FuncParam it) {
+        StringConcatenation _builder = new StringConcatenation();
+        String _name = it.getName();
+        _builder.append(_name);
+        _builder.append(" ");
+        String _goType = ExpressionTyping.goType(it.getType());
+        _builder.append(_goType);
+        return _builder.toString();
+      }
     };
     String _join = IterableExtensions.join(ListExtensions.<FuncParam, String>map(this.definition.getParams(), _function), ",");
     _builder.append(_join);
@@ -62,8 +64,10 @@ public class CodeFunction {
       _builder.append("{");
       _builder.newLine();
       _builder.append("\t");
-      final Function1<FuncStatement, CharSequence> _function = (FuncStatement it) -> {
-        return this.makeCode(it);
+      final Function1<FuncStatement, CharSequence> _function = new Function1<FuncStatement, CharSequence>() {
+        public CharSequence apply(final FuncStatement it) {
+          return CodeFunction.this.makeCode(it);
+        }
       };
       String _join = IterableExtensions.join(ListExtensions.<FuncStatement, CharSequence>map(((FuncBlock)item).getStatements(), _function), "\n");
       _builder.append(_join, "\t");
@@ -87,15 +91,17 @@ public class CodeFunction {
       if (item instanceof FuncIfElse) {
         _matched=true;
         int _length = ((Object[])Conversions.unwrapArray(((FuncIfElse)item).getThen(), Object.class)).length;
-        final Function1<Integer, String> _function = (Integer i) -> {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("if (");
-          CharSequence _makeCode = this.makeCode(((FuncIfElse)item).getTest().get((i).intValue()));
-          _builder.append(_makeCode);
-          _builder.append(") ");
-          CharSequence _makeCode_1 = this.makeCode(((FuncIfElse)item).getThen().get((i).intValue()));
-          _builder.append(_makeCode_1);
-          return _builder.toString();
+        final Function1<Integer, String> _function = new Function1<Integer, String>() {
+          public String apply(final Integer i) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("if (");
+            CharSequence _makeCode = CodeFunction.this.makeCode(((FuncIfElse)item).getTest().get((i).intValue()));
+            _builder.append(_makeCode);
+            _builder.append(") ");
+            CharSequence _makeCode_1 = CodeFunction.this.makeCode(((FuncIfElse)item).getThen().get((i).intValue()));
+            _builder.append(_makeCode_1);
+            return _builder.toString();
+          }
         };
         String _join = IterableExtensions.join(IterableExtensions.<Integer, String>map(new ExclusiveRange(0, _length, true), _function), "else ");
         CharSequence _xifexpression = null;

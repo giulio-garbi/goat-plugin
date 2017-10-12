@@ -24,7 +24,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class FunctionValidator extends AbstractGoatComponentsValidator {
   @Inject
-  @Override
   public void register(final EValidatorRegistrar registrar) {
   }
   
@@ -48,8 +47,10 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     if (!_matched) {
       if (x instanceof FuncBlock) {
         _matched=true;
-        final Function1<FuncStatement, Boolean> _function = (FuncStatement it) -> {
-          return Boolean.valueOf(this.isAlwaysReturning(it));
+        final Function1<FuncStatement, Boolean> _function = new Function1<FuncStatement, Boolean>() {
+          public Boolean apply(final FuncStatement it) {
+            return Boolean.valueOf(FunctionValidator.this.isAlwaysReturning(it));
+          }
         };
         _switchResult = IterableExtensions.<FuncStatement>exists(((FuncBlock)x).getStatements(), _function);
       }
@@ -70,9 +71,11 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     if (!_matched) {
       if (x instanceof FuncIfElse) {
         _matched=true;
-        _switchResult = (IterableExtensions.<FuncBlock>forall(((FuncIfElse)x).getThen(), ((Function1<FuncBlock, Boolean>) (FuncBlock it) -> {
-          return Boolean.valueOf(this.isAlwaysReturning(it));
-        })) && ((((FuncIfElse)x).getElseBranch() != null) && 
+        _switchResult = (IterableExtensions.<FuncBlock>forall(((FuncIfElse)x).getThen(), new Function1<FuncBlock, Boolean>() {
+          public Boolean apply(final FuncBlock it) {
+            return Boolean.valueOf(FunctionValidator.this.isAlwaysReturning(it));
+          }
+        }) && ((((FuncIfElse)x).getElseBranch() != null) && 
           this.isAlwaysReturning(((FuncIfElse)x).getElseBranch())));
       }
     }
@@ -115,8 +118,10 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     }
     if ((eobj != null)) {
       FuncDefinition fdef = ((FuncDefinition) eobj);
-      final Function1<FuncVarDeclaration, Boolean> _function = (FuncVarDeclaration it) -> {
-        return Boolean.valueOf(((!Objects.equal(vdecl, it)) && Objects.equal(vdecl.getName(), it.getName())));
+      final Function1<FuncVarDeclaration, Boolean> _function = new Function1<FuncVarDeclaration, Boolean>() {
+        public Boolean apply(final FuncVarDeclaration it) {
+          return Boolean.valueOf(((!Objects.equal(vdecl, it)) && Objects.equal(vdecl.getName(), it.getName())));
+        }
       };
       FuncVarDeclaration _findFirst = IterableExtensions.<FuncVarDeclaration>findFirst(EcoreUtil2.<FuncVarDeclaration>getAllContentsOfType(fdef.getBlk(), FuncVarDeclaration.class), _function);
       boolean _tripleNotEquals = (_findFirst != null);
@@ -137,8 +142,10 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     }
     if ((eobj != null)) {
       Model model = ((Model) eobj);
-      final Function1<FuncDefinition, Boolean> _function = (FuncDefinition it) -> {
-        return Boolean.valueOf(((!Objects.equal(func, it)) && Objects.equal(func.getName(), it.getName())));
+      final Function1<FuncDefinition, Boolean> _function = new Function1<FuncDefinition, Boolean>() {
+        public Boolean apply(final FuncDefinition it) {
+          return Boolean.valueOf(((!Objects.equal(func, it)) && Objects.equal(func.getName(), it.getName())));
+        }
       };
       FuncDefinition _findFirst = IterableExtensions.<FuncDefinition>findFirst(EcoreUtil2.<FuncDefinition>getAllContentsOfType(model, FuncDefinition.class), _function);
       boolean _tripleNotEquals = (_findFirst != null);
@@ -159,10 +166,12 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     }
     if ((eobj != null)) {
       FuncDefinition fdef = ((FuncDefinition) eobj);
-      final Function1<FuncParam, Boolean> _function = (FuncParam param) -> {
-        String _name = param.getName();
-        String _name_1 = vdecl.getName();
-        return Boolean.valueOf(Objects.equal(_name, _name_1));
+      final Function1<FuncParam, Boolean> _function = new Function1<FuncParam, Boolean>() {
+        public Boolean apply(final FuncParam param) {
+          String _name = param.getName();
+          String _name_1 = vdecl.getName();
+          return Boolean.valueOf(Objects.equal(_name, _name_1));
+        }
       };
       boolean _exists = IterableExtensions.<FuncParam>exists(fdef.getParams(), _function);
       if (_exists) {
@@ -180,8 +189,10 @@ public class FunctionValidator extends AbstractGoatComponentsValidator {
     if ((_eContainer instanceof FuncDefinition)) {
       EObject _eContainer_1 = pdecl.eContainer();
       FuncDefinition fdef = ((FuncDefinition) _eContainer_1);
-      final Function1<FuncParam, Boolean> _function = (FuncParam param) -> {
-        return Boolean.valueOf((Objects.equal(param.getName(), pdecl.getName()) && (pdecl != param)));
+      final Function1<FuncParam, Boolean> _function = new Function1<FuncParam, Boolean>() {
+        public Boolean apply(final FuncParam param) {
+          return Boolean.valueOf((Objects.equal(param.getName(), pdecl.getName()) && (pdecl != param)));
+        }
       };
       boolean _exists = IterableExtensions.<FuncParam>exists(fdef.getParams(), _function);
       if (_exists) {

@@ -37,15 +37,15 @@ class RunProject implements ILaunchShortcut {
 	/*
 		See https://wiki.eclipse.org/FAQ_How_do_I_write_to_the_console_from_a_plug-in%3F
 	 */
-   def private IOConsole findConsole(String name) {
+   def private Console findConsole(String name) {
       val plugin = ConsolePlugin.getDefault()
       val conMan = plugin.getConsoleManager()
       val existing = conMan.getConsoles()
       val existConsole = existing.filter[it.name.equals(name)]
       if(existConsole.length > 0)
-      	 existConsole.head as IOConsole
+      	 existConsole.head as Console
   	  else {
-  	  	val myConsole = new IOConsole(name, null)
+  	  	val myConsole = new Console(name, null)
       	conMan.addConsoles(#{myConsole})
       	myConsole
   	  }

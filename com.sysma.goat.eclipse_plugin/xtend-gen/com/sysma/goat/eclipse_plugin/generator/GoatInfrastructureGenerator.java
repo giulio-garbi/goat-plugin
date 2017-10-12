@@ -9,6 +9,7 @@ import com.sysma.goat.eclipse_plugin.generator.CodeRing;
 import com.sysma.goat.eclipse_plugin.generator.CodeSingleServer;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
@@ -18,6 +19,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
@@ -27,10 +30,14 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class GoatInfrastructureGenerator extends AbstractGenerator {
-  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(resource.getAllContents());
-    for (final EObject infr : _iterable) {
+    final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
+      public Boolean apply(final EObject it) {
+        return Boolean.valueOf((it instanceof Infrastructure));
+      }
+    };
+    Iterable<EObject> _filter = IterableExtensions.<EObject>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), _function);
+    for (final EObject infr : _filter) {
       {
         CodeInfrastructure _switchResult = null;
         boolean _matched = false;

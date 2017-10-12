@@ -36,8 +36,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {} P");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION 6"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION 6"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -68,8 +70,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {seven := 7} P");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION 5"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION 5"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -90,8 +94,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {seven := 7} P");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION true"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION true"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -112,8 +118,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {seven := 7} P");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION false"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION false"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -163,8 +171,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION 720"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION 720"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -202,8 +212,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("EXPRESSION 1"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("EXPRESSION 1"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -240,9 +252,11 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {pname := \"Q\"} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("Q got 1"));
-      Assert.assertTrue(out.contains("P got 2"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("Q got 1"));
+        Assert.assertTrue(out.contains("P got 2"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -273,8 +287,10 @@ public class ExpressionGeneratorTest {
     _builder.newLine();
     _builder.append("component {pname := \"Q\"} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("ciao: come (va)"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("ciao: come (va)"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }

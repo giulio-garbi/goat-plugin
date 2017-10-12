@@ -2,6 +2,7 @@ package com.sysma.goat.eclipse_plugin.ui;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import com.sysma.goat.eclipse_plugin.ui.Console;
 import com.sysma.goat.eclipse_plugin.ui.RunComponent;
 import com.sysma.goat.eclipse_plugin.ui.RunServer;
 import java.util.Collections;
@@ -61,27 +62,29 @@ public class RunProject implements ILaunchShortcut {
   /**
    * See https://wiki.eclipse.org/FAQ_How_do_I_write_to_the_console_from_a_plug-in%3F
    */
-  private IOConsole findConsole(final String name) {
-    IOConsole _xblockexpression = null;
+  private Console findConsole(final String name) {
+    Console _xblockexpression = null;
     {
       final ConsolePlugin plugin = ConsolePlugin.getDefault();
       final IConsoleManager conMan = plugin.getConsoleManager();
       final IConsole[] existing = conMan.getConsoles();
-      final Function1<IConsole, Boolean> _function = (IConsole it) -> {
-        return Boolean.valueOf(it.getName().equals(name));
+      final Function1<IConsole, Boolean> _function = new Function1<IConsole, Boolean>() {
+        public Boolean apply(final IConsole it) {
+          return Boolean.valueOf(it.getName().equals(name));
+        }
       };
       final Iterable<IConsole> existConsole = IterableExtensions.<IConsole>filter(((Iterable<IConsole>)Conversions.doWrapArray(existing)), _function);
-      IOConsole _xifexpression = null;
+      Console _xifexpression = null;
       int _length = ((Object[])Conversions.unwrapArray(existConsole, Object.class)).length;
       boolean _greaterThan = (_length > 0);
       if (_greaterThan) {
         IConsole _head = IterableExtensions.<IConsole>head(existConsole);
-        _xifexpression = ((IOConsole) _head);
+        _xifexpression = ((Console) _head);
       } else {
-        IOConsole _xblockexpression_1 = null;
+        Console _xblockexpression_1 = null;
         {
-          final IOConsole myConsole = new IOConsole(name, null);
-          conMan.addConsoles(((IConsole[])Conversions.unwrapArray(Collections.<IOConsole>unmodifiableSet(CollectionLiterals.<IOConsole>newHashSet(myConsole)), IConsole.class)));
+          final Console myConsole = new Console(name, null);
+          conMan.addConsoles(((IConsole[])Conversions.unwrapArray(Collections.<Console>unmodifiableSet(CollectionLiterals.<Console>newHashSet(myConsole)), IConsole.class)));
           _xblockexpression_1 = myConsole;
         }
         _xifexpression = _xblockexpression_1;
@@ -91,7 +94,6 @@ public class RunProject implements ILaunchShortcut {
     return _xblockexpression;
   }
   
-  @Override
   public void launch(final ISelection selection, final String mode) {
     IProject project_ = null;
     try {
@@ -115,36 +117,48 @@ public class RunProject implements ILaunchShortcut {
     final IProject project = project_;
     final IPath projectPath = project.getLocation();
     final IPath srcDir = project.getProjectRelativePath().append("src");
-    final Consumer<IFile> _function = (IFile it) -> {
-      final IPath fPath = it.getProjectRelativePath().makeRelativeTo(srcDir);
-      final IOConsole console = this.findConsole(fPath.toString());
-      new RunServer(projectPath, fPath, console).launch();
-      this.showConsoleView(console);
+    final Consumer<IFile> _function = new Consumer<IFile>() {
+      public void accept(final IFile it) {
+        final IPath fPath = it.getProjectRelativePath().makeRelativeTo(srcDir);
+        final Console console = RunProject.this.findConsole(fPath.toString());
+        new RunServer(projectPath, fPath, console).launch();
+        RunProject.this.showConsoleView(console);
+      }
     };
     RunProject.getServers(project.getFolder(srcDir)).forEach(_function);
-    final Consumer<IFile> _function_1 = (IFile it) -> {
-      final IPath fPath = it.getProjectRelativePath().makeRelativeTo(srcDir);
-      final IOConsole console = this.findConsole(fPath.toString());
-      new RunComponent(projectPath, fPath, console).launch();
-      this.showConsoleView(console);
+    final Consumer<IFile> _function_1 = new Consumer<IFile>() {
+      public void accept(final IFile it) {
+        final IPath fPath = it.getProjectRelativePath().makeRelativeTo(srcDir);
+        final Console console = RunProject.this.findConsole(fPath.toString());
+        new RunComponent(projectPath, fPath, console).launch();
+        RunProject.this.showConsoleView(console);
+      }
     };
     RunProject.getComponents(project.getFolder(srcDir)).forEach(_function_1);
   }
   
   private static Iterable<IFile> getServers(final IFolder srcDir) {
     try {
-      final Function1<IResource, Boolean> _function = (IResource it) -> {
-        return Boolean.valueOf(((it instanceof IFile) && Objects.equal(((IFile) it).getFileExtension(), "ginf")));
+      final Function1<IResource, Boolean> _function = new Function1<IResource, Boolean>() {
+        public Boolean apply(final IResource it) {
+          return Boolean.valueOf(((it instanceof IFile) && Objects.equal(((IFile) it).getFileExtension(), "ginf")));
+        }
       };
-      final Function1<IResource, IFile> _function_1 = (IResource it) -> {
-        return ((IFile) it);
+      final Function1<IResource, IFile> _function_1 = new Function1<IResource, IFile>() {
+        public IFile apply(final IResource it) {
+          return ((IFile) it);
+        }
       };
       Iterable<IFile> _map = IterableExtensions.<IResource, IFile>map(IterableExtensions.<IResource>filter(((Iterable<IResource>)Conversions.doWrapArray(srcDir.members())), _function), _function_1);
-      final Function1<IResource, Boolean> _function_2 = (IResource it) -> {
-        return Boolean.valueOf((it instanceof IFolder));
+      final Function1<IResource, Boolean> _function_2 = new Function1<IResource, Boolean>() {
+        public Boolean apply(final IResource it) {
+          return Boolean.valueOf((it instanceof IFolder));
+        }
       };
-      final Function1<IResource, Iterable<IFile>> _function_3 = (IResource it) -> {
-        return RunProject.getServers(((IFolder) it));
+      final Function1<IResource, Iterable<IFile>> _function_3 = new Function1<IResource, Iterable<IFile>>() {
+        public Iterable<IFile> apply(final IResource it) {
+          return RunProject.getServers(((IFolder) it));
+        }
       };
       Iterable<IFile> _flatten = Iterables.<IFile>concat(IterableExtensions.<IResource, Iterable<IFile>>map(IterableExtensions.<IResource>filter(((Iterable<IResource>)Conversions.doWrapArray(srcDir.members())), _function_2), _function_3));
       return Iterables.<IFile>concat(_map, _flatten);
@@ -155,18 +169,26 @@ public class RunProject implements ILaunchShortcut {
   
   private static Iterable<IFile> getComponents(final IFolder srcDir) {
     try {
-      final Function1<IResource, Boolean> _function = (IResource it) -> {
-        return Boolean.valueOf(((it instanceof IFile) && Objects.equal(((IFile) it).getFileExtension(), "goat")));
+      final Function1<IResource, Boolean> _function = new Function1<IResource, Boolean>() {
+        public Boolean apply(final IResource it) {
+          return Boolean.valueOf(((it instanceof IFile) && Objects.equal(((IFile) it).getFileExtension(), "goat")));
+        }
       };
-      final Function1<IResource, IFile> _function_1 = (IResource it) -> {
-        return ((IFile) it);
+      final Function1<IResource, IFile> _function_1 = new Function1<IResource, IFile>() {
+        public IFile apply(final IResource it) {
+          return ((IFile) it);
+        }
       };
       Iterable<IFile> _map = IterableExtensions.<IResource, IFile>map(IterableExtensions.<IResource>filter(((Iterable<IResource>)Conversions.doWrapArray(srcDir.members())), _function), _function_1);
-      final Function1<IResource, Boolean> _function_2 = (IResource it) -> {
-        return Boolean.valueOf((it instanceof IFolder));
+      final Function1<IResource, Boolean> _function_2 = new Function1<IResource, Boolean>() {
+        public Boolean apply(final IResource it) {
+          return Boolean.valueOf((it instanceof IFolder));
+        }
       };
-      final Function1<IResource, Iterable<IFile>> _function_3 = (IResource it) -> {
-        return RunProject.getComponents(((IFolder) it));
+      final Function1<IResource, Iterable<IFile>> _function_3 = new Function1<IResource, Iterable<IFile>>() {
+        public Iterable<IFile> apply(final IResource it) {
+          return RunProject.getComponents(((IFolder) it));
+        }
       };
       Iterable<IFile> _flatten = Iterables.<IFile>concat(IterableExtensions.<IResource, Iterable<IFile>>map(IterableExtensions.<IResource>filter(((Iterable<IResource>)Conversions.doWrapArray(srcDir.members())), _function_2), _function_3));
       return Iterables.<IFile>concat(_map, _flatten);
@@ -175,7 +197,6 @@ public class RunProject implements ILaunchShortcut {
     }
   }
   
-  @Override
   public void launch(final IEditorPart editor, final String mode) {
     throw new UnsupportedOperationException();
   }

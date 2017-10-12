@@ -26,8 +26,10 @@ public class CodeProcessBlock {
   public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
     {
-      final Function1<ProcessStatement, Object> _function = (ProcessStatement it) -> {
-        return Utils.getCode(it, this.localVariableMap, this.processRef);
+      final Function1<ProcessStatement, Object> _function = new Function1<ProcessStatement, Object>() {
+        public Object apply(final ProcessStatement it) {
+          return Utils.getCode(it, CodeProcessBlock.this.localVariableMap, CodeProcessBlock.this.processRef);
+        }
       };
       List<Object> _map = ListExtensions.<ProcessStatement, Object>map(this.blk.getStatements(), _function);
       for(final Object x : _map) {

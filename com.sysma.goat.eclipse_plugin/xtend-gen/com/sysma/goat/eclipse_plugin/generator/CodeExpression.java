@@ -85,8 +85,10 @@ public class CodeExpression {
       _matched=true;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("(");
-      final Function1<Expression, CharSequence> _function = (Expression it) -> {
-        return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+      final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
+        public CharSequence apply(final Expression it) {
+          return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+        }
       };
       String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((And)expr).getSub(), _function), " && ");
       _builder.append(_join);
@@ -98,8 +100,10 @@ public class CodeExpression {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("(");
-        final Function1<Expression, CharSequence> _function = (Expression it) -> {
-          return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+        final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
+          public CharSequence apply(final Expression it) {
+            return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, localAttributesMap, attributesMap);
+          }
         };
         String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((Or)expr).getSub(), _function), " || ");
         _builder.append(_join);
@@ -297,8 +301,10 @@ public class CodeExpression {
         CharSequence _xblockexpression = null;
         {
           int _length = ((Object[])Conversions.unwrapArray(((FunctionCall)expr).getParams(), Object.class)).length;
-          final Function1<Integer, CharSequence> _function = (Integer i) -> {
-            return CodeExpression.cast(((FunctionCall)expr).getFunction().getParams().get((i).intValue()).getType(), ((FunctionCall)expr).getParams().get((i).intValue()), localAttributesMap, attributesMap);
+          final Function1<Integer, CharSequence> _function = new Function1<Integer, CharSequence>() {
+            public CharSequence apply(final Integer i) {
+              return CodeExpression.cast(((FunctionCall)expr).getFunction().getParams().get((i).intValue()).getType(), ((FunctionCall)expr).getParams().get((i).intValue()), localAttributesMap, attributesMap);
+            }
           };
           final String args = IterableExtensions.join(IterableExtensions.<Integer, CharSequence>map(new ExclusiveRange(0, _length, true), _function), ", ");
           StringConcatenation _builder = new StringConcatenation();
@@ -359,18 +365,22 @@ public class CodeExpression {
   }
   
   public static CharSequence binaryOperatorExtensor(final CharSequence operator, final List<CharSequence> operands) {
-    final Function1<CharSequence, String> _function = (CharSequence it) -> {
-      return (operator + "{");
+    final Function1<CharSequence, String> _function = new Function1<CharSequence, String>() {
+      public String apply(final CharSequence it) {
+        return (operator + "{");
+      }
     };
     String _join = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function));
     CharSequence _head = IterableExtensions.<CharSequence>head(operands);
     String _plus = (_join + _head);
-    final Function1<CharSequence, String> _function_1 = (CharSequence it) -> {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(", ");
-      _builder.append(it);
-      _builder.append("}");
-      return _builder.toString();
+    final Function1<CharSequence, String> _function_1 = new Function1<CharSequence, String>() {
+      public String apply(final CharSequence it) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append(", ");
+        _builder.append(it);
+        _builder.append("}");
+        return _builder.toString();
+      }
     };
     String _join_1 = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function_1));
     return (_plus + _join_1);
@@ -381,16 +391,20 @@ public class CodeExpression {
     boolean _matched = false;
     if (expr instanceof And) {
       _matched=true;
-      final Function1<Expression, CharSequence> _function = (Expression it) -> {
-        return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+      final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
+        public CharSequence apply(final Expression it) {
+          return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+        }
       };
       _switchResult = CodeExpression.binaryOperatorExtensor("goat.And", ListExtensions.<Expression, CharSequence>map(((And)expr).getSub(), _function));
     }
     if (!_matched) {
       if (expr instanceof Or) {
         _matched=true;
-        final Function1<Expression, CharSequence> _function = (Expression it) -> {
-          return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+        final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
+          public CharSequence apply(final Expression it) {
+            return CodeExpression.getOutputPredicate(it, localAttributesMap, attrName);
+          }
         };
         _switchResult = CodeExpression.binaryOperatorExtensor("goat.Or", ListExtensions.<Expression, CharSequence>map(((Or)expr).getSub(), _function));
       }

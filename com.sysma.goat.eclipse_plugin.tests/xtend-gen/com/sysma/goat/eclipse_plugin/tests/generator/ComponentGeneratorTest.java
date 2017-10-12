@@ -48,8 +48,10 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("component {} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("hello world"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("hello world"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -94,8 +96,10 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("component {} R");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertFalse(out.contains("hello world"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertFalse(out.contains("hello world"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -181,11 +185,13 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("component {remaining := 4} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("0 is little"));
-      Assert.assertTrue(out.contains("1 is little"));
-      Assert.assertTrue(out.contains("2 is big"));
-      Assert.assertTrue(out.contains("3 is big"));
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("0 is little"));
+        Assert.assertTrue(out.contains("1 is little"));
+        Assert.assertTrue(out.contains("2 is big"));
+        Assert.assertTrue(out.contains("3 is big"));
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function);
   }
@@ -283,20 +289,24 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("component {remaining := 1000} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      Assert.assertTrue(out.contains("0 is zero"));
-      final Consumer<Integer> _function_1 = (Integer it) -> {
-        String _plus = (it + " is ");
-        String _xifexpression = null;
-        if ((((it).intValue() % 2) == 0)) {
-          _xifexpression = "even";
-        } else {
-          _xifexpression = "odd";
-        }
-        String _plus_1 = (_plus + _xifexpression);
-        Assert.assertTrue(out.contains(_plus_1));
-      };
-      new IntegerRange(1, 999).forEach(_function_1);
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        Assert.assertTrue(out.contains("0 is zero"));
+        final Consumer<Integer> _function = new Consumer<Integer>() {
+          public void accept(final Integer it) {
+            String _plus = (it + " is ");
+            String _xifexpression = null;
+            if ((((it).intValue() % 2) == 0)) {
+              _xifexpression = "even";
+            } else {
+              _xifexpression = "odd";
+            }
+            String _plus_1 = (_plus + _xifexpression);
+            Assert.assertTrue(out.contains(_plus_1));
+          }
+        };
+        new IntegerRange(1, 999).forEach(_function);
+      }
     };
     this._generatorTestHelper.compileAndRun(_builder, _function, 2000);
   }
@@ -382,23 +392,25 @@ public class ComponentGeneratorTest {
     _builder.newLine();
     _builder.append("component {} Q");
     _builder.newLine();
-    final Procedure2<String, String> _function = (String out, String err) -> {
-      int init = 0;
-      IntegerRange _upTo = new IntegerRange(0, 999);
-      for (final Integer i : _upTo) {
-        {
-          String _substring = out.substring(init);
-          String _plus = (i + " is ");
-          String _xifexpression = null;
-          if ((((i).intValue() % 2) == 0)) {
-            _xifexpression = "even";
-          } else {
-            _xifexpression = "odd";
+    final Procedure2<String, String> _function = new Procedure2<String, String>() {
+      public void apply(final String out, final String err) {
+        int init = 0;
+        IntegerRange _upTo = new IntegerRange(0, 999);
+        for (final Integer i : _upTo) {
+          {
+            String _substring = out.substring(init);
+            String _plus = (i + " is ");
+            String _xifexpression = null;
+            if ((((i).intValue() % 2) == 0)) {
+              _xifexpression = "even";
+            } else {
+              _xifexpression = "odd";
+            }
+            String _plus_1 = (_plus + _xifexpression);
+            final int pl = _substring.indexOf(_plus_1);
+            Assert.assertTrue((pl >= 0));
+            init = (init + pl);
           }
-          String _plus_1 = (_plus + _xifexpression);
-          final int pl = _substring.indexOf(_plus_1);
-          Assert.assertTrue((pl >= 0));
-          init = (init + pl);
         }
       }
     };

@@ -32,7 +32,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 @SuppressWarnings("all")
 public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
   @Inject
-  @Override
   public void register(final EValidatorRegistrar registrar) {
   }
   
@@ -108,9 +107,11 @@ public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
     boolean _matched = false;
     if (expr instanceof And) {
       _matched=true;
-      final Function1<Expression, Boolean> _function = (Expression it) -> {
-        boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
-        return Boolean.valueOf((!_matchable));
+      final Function1<Expression, Boolean> _function = new Function1<Expression, Boolean>() {
+        public Boolean apply(final Expression it) {
+          boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
+          return Boolean.valueOf((!_matchable));
+        }
       };
       int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Expression>filter(((And)expr).getSub(), _function), Object.class)).length;
       boolean _greaterThan = (_length > 0);
@@ -123,9 +124,11 @@ public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
     if (!_matched) {
       if (expr instanceof Or) {
         _matched=true;
-        final Function1<Expression, Boolean> _function = (Expression it) -> {
-          boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
-          return Boolean.valueOf((!_matchable));
+        final Function1<Expression, Boolean> _function = new Function1<Expression, Boolean>() {
+          public Boolean apply(final Expression it) {
+            boolean _matchable = ExpressionTyping.matchable(ExpressionTyping.typeOf(it), ExpressionTyping.ExprType.BOOL);
+            return Boolean.valueOf((!_matchable));
+          }
         };
         int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Expression>filter(((Or)expr).getSub(), _function), Object.class)).length;
         boolean _greaterThan = (_length > 0);
@@ -201,12 +204,16 @@ public class ExpressionTypingValidator extends AbstractGoatComponentsValidator {
           }
         }
         if ((!okTypes)) {
-          final Function1<FuncParam, String> _function = (FuncParam it) -> {
-            return ExpressionTyping.goType(ExpressionTyping.typeOf(it.getType()));
+          final Function1<FuncParam, String> _function = new Function1<FuncParam, String>() {
+            public String apply(final FuncParam it) {
+              return ExpressionTyping.goType(ExpressionTyping.typeOf(it.getType()));
+            }
           };
           final String exp = IterableExtensions.join(ListExtensions.<FuncParam, String>map(((FunctionCall)expr).getFunction().getParams(), _function), ", ");
-          final Function1<Expression, String> _function_1 = (Expression it) -> {
-            return ExpressionTyping.goType(ExpressionTyping.typeOf(it));
+          final Function1<Expression, String> _function_1 = new Function1<Expression, String>() {
+            public String apply(final Expression it) {
+              return ExpressionTyping.goType(ExpressionTyping.typeOf(it));
+            }
           };
           final String got = IterableExtensions.join(ListExtensions.<Expression, String>map(((FunctionCall)expr).getParams(), _function_1), ", ");
           StringConcatenation _builder = new StringConcatenation();

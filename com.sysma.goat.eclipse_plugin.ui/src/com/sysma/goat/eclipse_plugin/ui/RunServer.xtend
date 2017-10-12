@@ -1,18 +1,19 @@
 package com.sysma.goat.eclipse_plugin.ui
 
 import java.util.concurrent.Semaphore
-import org.eclipse.ui.console.IOConsole
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.SWT
 import org.eclipse.core.runtime.IPath
 import java.io.IOException
+import com.sysma.goat.eclipse_plugin.ui.Console
+import org.eclipse.emf.mwe.internal.core.debug.processing.ProcessHandler
 
 class RunServer {
 	val IPath filePath
 	val IPath projectPath
-	val IOConsole console
+	val Console console
 	
-	new(IPath projectPath, IPath filePath, IOConsole console){
+	new(IPath projectPath, IPath filePath, Console console){
 		this.filePath = filePath
 		this.projectPath = projectPath
 		this.console = console
@@ -39,9 +40,17 @@ class RunServer {
 					pb.command("go","run", srvGoFname);
 				    try{
 						val proc = pb.start()
+						console.process = proc
+						
 						new Thread(new StreamCopier(stdin, proc.outputStream)).start()
 						new Thread(new StreamCopier(proc.inputStream, stdout).addListener("Started",[ok.release()])).start()
 						new Thread(new StreamCopier(proc.errorStream, stderr)).start()
+						new Thread(new Runnable(){
+							override run() {
+								proc.waitFor
+								ok.release
+							}
+						})
 					} catch (IOException ex){
 						ok.release()
 						ex.printStackTrace()
@@ -49,8 +58,6 @@ class RunServer {
 				} else {
 					stderr.write(filePath.toString + " was not generated. Please save the file and retry.")
 				}
-				
-				
 			}
 		}).start()
 		var started = false;

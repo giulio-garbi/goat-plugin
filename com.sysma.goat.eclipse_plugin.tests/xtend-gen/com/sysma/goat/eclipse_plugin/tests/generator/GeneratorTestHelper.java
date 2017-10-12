@@ -48,9 +48,11 @@ public class GeneratorTestHelper {
   private ParseHelper<Model> _parseHelper;
   
   public void checkNoErrorApartInfr(final EObject obj) {
-    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
-      String _message = it.getMessage();
-      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    final Function1<Resource.Diagnostic, Boolean> _function = new Function1<Resource.Diagnostic, Boolean>() {
+      public Boolean apply(final Resource.Diagnostic it) {
+        String _message = it.getMessage();
+        return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+      }
     };
     int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
     boolean _equals = (_length == 0);
@@ -160,7 +162,6 @@ public class GeneratorTestHelper {
       }
       exefile.setExecutable(true);
       new Thread(new Runnable() {
-        @Override
         public void run() {
           try {
             String _path = exeInfrfile.getPath();
@@ -181,7 +182,6 @@ public class GeneratorTestHelper {
       final Timer t = new Timer();
       if ((timeout > 0)) {
         t.schedule(new TimerTask() {
-          @Override
           public void run() {
             timedOut.set(true);
             goRunProcess.destroy();

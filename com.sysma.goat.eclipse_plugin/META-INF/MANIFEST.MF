@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
  org.apache.commons.lang
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-9
 Export-Package: com.sysma.goat.eclipse_plugin,
  com.sysma.goat.eclipse_plugin.generator,
  com.sysma.goat.eclipse_plugin.goatComponents,

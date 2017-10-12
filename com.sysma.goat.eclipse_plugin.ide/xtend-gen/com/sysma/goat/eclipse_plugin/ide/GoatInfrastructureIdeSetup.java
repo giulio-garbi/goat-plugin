@@ -15,7 +15,6 @@ import org.eclipse.xtext.util.Modules2;
  */
 @SuppressWarnings("all")
 public class GoatInfrastructureIdeSetup extends GoatInfrastructureStandaloneSetup {
-  @Override
   public Injector createInjector() {
     GoatInfrastructureRuntimeModule _goatInfrastructureRuntimeModule = new GoatInfrastructureRuntimeModule();
     GoatInfrastructureIdeModule _goatInfrastructureIdeModule = new GoatInfrastructureIdeModule();

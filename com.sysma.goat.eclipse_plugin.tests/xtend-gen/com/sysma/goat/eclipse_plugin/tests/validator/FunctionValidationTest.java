@@ -35,9 +35,11 @@ public class FunctionValidationTest {
   private ValidationTestHelper2 _validationTestHelper2;
   
   public void checkNoErrorApartInfr(final EObject obj) {
-    final Function1<Resource.Diagnostic, Boolean> _function = (Resource.Diagnostic it) -> {
-      String _message = it.getMessage();
-      return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+    final Function1<Resource.Diagnostic, Boolean> _function = new Function1<Resource.Diagnostic, Boolean>() {
+      public Boolean apply(final Resource.Diagnostic it) {
+        String _message = it.getMessage();
+        return Boolean.valueOf((!Objects.equal(_message, "Couldn\'t resolve reference to Infrastructure \'infr\'.")));
+      }
     };
     int _length = ((Object[])Conversions.unwrapArray(IterableExtensions.<Resource.Diagnostic>filter(obj.eResource().getErrors(), _function), Object.class)).length;
     boolean _equals = (_length == 0);

@@ -1,12 +1,12 @@
 package com.sysma.goat.eclipse_plugin.ui;
 
+import com.sysma.goat.eclipse_plugin.ui.Console;
 import com.sysma.goat.eclipse_plugin.ui.StreamCopier;
 import java.io.InputStream;
 import java.io.OutputStream;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.console.IOConsole;
 import org.eclipse.ui.console.IOConsoleInputStream;
 import org.eclipse.ui.console.IOConsoleOutputStream;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -17,9 +17,9 @@ public class RunComponent {
   
   private final IPath projectPath;
   
-  private final IOConsole console;
+  private final Console console;
   
-  public RunComponent(final IPath projectPath, final IPath filePath, final IOConsole console) {
+  public RunComponent(final IPath projectPath, final IPath filePath, final Console console) {
     this.filePath = filePath;
     this.projectPath = projectPath;
     this.console = console;
@@ -32,7 +32,6 @@ public class RunComponent {
     stderr.setColor(Display.getCurrent().getSystemColor(SWT.COLOR_RED));
     stdin.setColor(Display.getCurrent().getSystemColor(SWT.COLOR_GREEN));
     new Thread(new Runnable() {
-      @Override
       public void run() {
         try {
           final ProcessBuilder pb = new ProcessBuilder();
@@ -44,6 +43,7 @@ public class RunComponent {
             final String srvGoFname = srvGo.toString();
             pb.command("go", "run", srvGoFname);
             final Process proc = pb.start();
+            RunComponent.this.console.setProcess(proc);
             OutputStream _outputStream = proc.getOutputStream();
             StreamCopier _streamCopier = new StreamCopier(stdin, _outputStream);
             new Thread(_streamCopier).start();

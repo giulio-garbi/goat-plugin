@@ -35,21 +35,27 @@ public class CodeModel {
   public CodeModel(final Model model) {
     this.packageName = "main";
     this.mainFuncName = "main";
-    final Function1<ProcessDefinition, CodeProcessDefinition> _function = (ProcessDefinition it) -> {
-      return new CodeProcessDefinition(it);
+    final Function1<ProcessDefinition, CodeProcessDefinition> _function = new Function1<ProcessDefinition, CodeProcessDefinition>() {
+      public CodeProcessDefinition apply(final ProcessDefinition it) {
+        return new CodeProcessDefinition(it);
+      }
     };
     this.processes = ListExtensions.<ProcessDefinition, CodeProcessDefinition>map(model.getProcesses(), _function);
-    final Function1<Pair<Integer, ComponentDefinition>, CodeComponentDefinition> _function_1 = (Pair<Integer, ComponentDefinition> pair) -> {
-      ComponentDefinition _value = pair.getValue();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("comp_");
-      Integer _key = pair.getKey();
-      _builder.append(_key);
-      return new CodeComponentDefinition(_value, CodeModel.runFuncName, _builder);
+    final Function1<Pair<Integer, ComponentDefinition>, CodeComponentDefinition> _function_1 = new Function1<Pair<Integer, ComponentDefinition>, CodeComponentDefinition>() {
+      public CodeComponentDefinition apply(final Pair<Integer, ComponentDefinition> pair) {
+        ComponentDefinition _value = pair.getValue();
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("comp_");
+        Integer _key = pair.getKey();
+        _builder.append(_key);
+        return new CodeComponentDefinition(_value, CodeModel.runFuncName, _builder);
+      }
     };
     this.components = IterableExtensions.<Pair<Integer, ComponentDefinition>, CodeComponentDefinition>map(IterableExtensions.<ComponentDefinition>indexed(model.getComponents()), _function_1);
-    final Function1<FuncDefinition, CodeFunction> _function_2 = (FuncDefinition it) -> {
-      return new CodeFunction(it);
+    final Function1<FuncDefinition, CodeFunction> _function_2 = new Function1<FuncDefinition, CodeFunction>() {
+      public CodeFunction apply(final FuncDefinition it) {
+        return new CodeFunction(it);
+      }
     };
     this.functions = ListExtensions.<FuncDefinition, CodeFunction>map(model.getFunctions(), _function_2);
     this.infr = model.getInfrastructure();

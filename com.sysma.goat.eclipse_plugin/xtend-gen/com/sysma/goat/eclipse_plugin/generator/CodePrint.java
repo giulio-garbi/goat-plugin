@@ -45,9 +45,11 @@ public class CodePrint {
   public static CharSequence ofProcAttrs(final PrintStatement pstat, final String componentAttr, final LocalVariableMap localAttr, final List<String> message) {
     CharSequence _xblockexpression = null;
     {
-      final Function1<String, Expression> _function = (String it) -> {
-        CodePrint.LocalAttributeRefImplConversion _localAttributeRefImplConversion = new CodePrint.LocalAttributeRefImplConversion(it);
-        return ((Expression) _localAttributeRefImplConversion);
+      final Function1<String, Expression> _function = new Function1<String, Expression>() {
+        public Expression apply(final String it) {
+          CodePrint.LocalAttributeRefImplConversion _localAttributeRefImplConversion = new CodePrint.LocalAttributeRefImplConversion(it);
+          return ((Expression) _localAttributeRefImplConversion);
+        }
       };
       final List<Expression> exprMessage = ListExtensions.<String, Expression>map(message, _function);
       _xblockexpression = CodePrint.of(pstat, componentAttr, localAttr, exprMessage);

@@ -15,9 +15,11 @@ public class ValidationTestHelper2 extends ValidationTestHelper {
     Iterable<Issue> _xblockexpression = null;
     {
       final List<Issue> validate = this.validate(resource);
-      final Function1<Issue, Boolean> _function = (Issue it) -> {
-        Severity _severity = it.getSeverity();
-        return Boolean.valueOf(Objects.equal(_severity, Severity.ERROR));
+      final Function1<Issue, Boolean> _function = new Function1<Issue, Boolean>() {
+        public Boolean apply(final Issue it) {
+          Severity _severity = it.getSeverity();
+          return Boolean.valueOf(Objects.equal(_severity, Severity.ERROR));
+        }
       };
       _xblockexpression = IterableExtensions.<Issue>filter(validate, _function);
     }
