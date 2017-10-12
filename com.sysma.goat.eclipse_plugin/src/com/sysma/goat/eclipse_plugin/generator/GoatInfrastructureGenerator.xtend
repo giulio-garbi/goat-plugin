@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.Path
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree
+import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
 
 /**
  * Generates code from your model files on save.
@@ -21,7 +22,7 @@ import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree
 class GoatInfrastructureGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		for(infr: resource.allContents.toIterable){
+		for(infr: resource.allContents.toIterable.filter[it instanceof Infrastructure]){
 			val code = switch(infr){
 				SingleServer:
 					new CodeSingleServer(infr)
