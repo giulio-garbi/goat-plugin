@@ -17,6 +17,7 @@ import org.eclipse.xtext.validation.EValidatorRegistrar;
 @SuppressWarnings("all")
 public class ExpressionContextValidator extends AbstractGoatComponentsValidator {
   @Inject
+  @Override
   public void register(final EValidatorRegistrar registrar) {
   }
   

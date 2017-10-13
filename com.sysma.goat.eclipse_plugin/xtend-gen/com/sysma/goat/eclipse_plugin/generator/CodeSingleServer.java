@@ -13,6 +13,7 @@ public class CodeSingleServer implements CodeInfrastructure {
     this.ssrv = ssrv;
   }
   
+  @Override
   public String getCode() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package main");

@@ -30,6 +30,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  */
 @SuppressWarnings("all")
 public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProvider {
+  @Override
   public IScope getScope(final EObject context, final EReference reference) {
     IScope _switchResult = null;
     boolean _matched = false;
@@ -40,12 +41,6 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
     if (!_matched) {
       EReference _processSpawn_Proc = GoatComponentsPackage.eINSTANCE.getProcessSpawn_Proc();
       if (Objects.equal(reference, _processSpawn_Proc)) {
-        _matched=true;
-      }
-    }
-    if (!_matched) {
-      EReference _componentDefinition_Proc = GoatComponentsPackage.eINSTANCE.getComponentDefinition_Proc();
-      if (Objects.equal(reference, _componentDefinition_Proc)) {
         _matched=true;
       }
     }
@@ -96,10 +91,8 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
       if (!_matched) {
         if (container instanceof FuncBlock) {
           _matched=true;
-          final Function1<FuncStatement, Boolean> _function = new Function1<FuncStatement, Boolean>() {
-            public Boolean apply(final FuncStatement it) {
-              return Boolean.valueOf((!Objects.equal(it, context)));
-            }
+          final Function1<FuncStatement, Boolean> _function = (FuncStatement it) -> {
+            return Boolean.valueOf((!Objects.equal(it, context)));
           };
           _switchResult = Scopes.scopeFor(Iterables.<FuncVarDeclaration>filter(IterableExtensions.<FuncStatement>takeWhile(((FuncBlock)container).getStatements(), _function), FuncVarDeclaration.class), this.scopeForFuncVarParam(container));
         }

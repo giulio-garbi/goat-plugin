@@ -23,11 +23,12 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class GoatComponentsGenerator extends AbstractGenerator {
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    this.doGenerate(resource, fsa, context);
+    this.doGenerateInt(resource, fsa, context);
   }
   
-  public void doGenerate(final Resource resource, final IFileSystemAccess fsa, final IGeneratorContext context) {
+  public void doGenerateInt(final Resource resource, final IFileSystemAccess fsa, final IGeneratorContext context) {
     Iterable<Model> _filter = Iterables.<Model>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Model.class);
     for (final Model model : _filter) {
       {

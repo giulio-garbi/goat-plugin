@@ -15,13 +15,9 @@ Model:
 //Process
 
 ProcessDefinition:
-	ProcessDefinitionParallel|ProcessDefinitionBlock
+	'process' name=ID ('=' block = PDPBlock | block = ProcessBlock)
 ;
 
-ProcessDefinitionParallel returns ProcessDefinition:
-	'process' name=ID '=' block = PDPBlock
-	
-;
 PDPBlock returns ProcessBlock:
 	(statements += PDPSpawn "|")* statements += PDPCall
 ;
@@ -32,10 +28,6 @@ PDPSpawn returns ProcessSpawn :
 
 PDPCall returns ProcessCall :
 	proc = [ProcessDefinition]
-;
-
-ProcessDefinitionBlock returns ProcessDefinition:
-	'process' name=ID block = ProcessBlock
 ;
 
 ProcessBlock:
@@ -143,7 +135,7 @@ Environment:
 ;
 
 ComponentDefinition:
-	"component" env = Environment proc = [ProcessDefinition]
+	"component" env = Environment block = (PDPBlock|ProcessBlock)
 ;
 
 // Expression

@@ -110,7 +110,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ComponentDefinition">
     <eStructuralFeatures xsi:type="ecore:EReference" name="env" eType="#//Environment"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="proc" eType="#//ProcessDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="block" eType="#//ProcessBlock"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LRef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

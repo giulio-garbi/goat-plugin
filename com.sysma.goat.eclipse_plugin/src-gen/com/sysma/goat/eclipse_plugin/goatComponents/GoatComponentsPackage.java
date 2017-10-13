@@ -902,13 +902,13 @@ public interface GoatComponentsPackage extends EPackage
   int COMPONENT_DEFINITION__ENV = 0;
 
   /**
-   * The feature id for the '<em><b>Proc</b></em>' reference.
+   * The feature id for the '<em><b>Block</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION__PROC = 1;
+  int COMPONENT_DEFINITION__BLOCK = 1;
 
   /**
    * The number of structural features of the '<em>Component Definition</em>' class.
@@ -2504,15 +2504,15 @@ public interface GoatComponentsPackage extends EPackage
   EReference getComponentDefinition_Env();
 
   /**
-   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getProc <em>Proc</em>}'.
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getBlock <em>Block</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Proc</em>'.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getProc()
+   * @return the meta object for the containment reference '<em>Block</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getBlock()
    * @see #getComponentDefinition()
    * @generated
    */
-  EReference getComponentDefinition_Proc();
+  EReference getComponentDefinition_Block();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LRef <em>LRef</em>}'.
@@ -3829,12 +3829,12 @@ public interface GoatComponentsPackage extends EPackage
     EReference COMPONENT_DEFINITION__ENV = eINSTANCE.getComponentDefinition_Env();
 
     /**
-     * The meta object literal for the '<em><b>Proc</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Block</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COMPONENT_DEFINITION__PROC = eINSTANCE.getComponentDefinition_Proc();
+    EReference COMPONENT_DEFINITION__BLOCK = eINSTANCE.getComponentDefinition_Block();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.

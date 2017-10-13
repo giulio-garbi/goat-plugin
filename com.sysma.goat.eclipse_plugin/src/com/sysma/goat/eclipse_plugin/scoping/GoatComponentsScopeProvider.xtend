@@ -25,8 +25,7 @@ class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProvider {
 	override getScope(EObject context, EReference reference){
 		switch reference {
 			case GoatComponentsPackage.eINSTANCE.processCall_Proc,
-			case GoatComponentsPackage.eINSTANCE.processSpawn_Proc,
-			case GoatComponentsPackage.eINSTANCE.componentDefinition_Proc:
+			case GoatComponentsPackage.eINSTANCE.processSpawn_Proc:
 				scopeForProcessDefinition(context)
 			case GoatComponentsPackage.eINSTANCE.localVarRef_Ref:
 				scopeForFuncVarParam(context)

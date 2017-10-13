@@ -27,8 +27,9 @@ class CodeComponentDefinition {
 	}
 	
 	def getCode() {
+		val fncCode = new CodeProcessBlock(cdef.block, new LocalVariableMap("locvar"), "p").codeAsFunction
 		'''
-		goat.NewProcess(«compName»).Run(«mainFunc»(&wg, «new CodeProcessDefinition(cdef.proc).process_func_name», &(map[string]interface{}{})))'''
+		goat.NewProcess(«compName»).Run(«mainFunc»(&wg, «fncCode», &(map[string]interface{}{})))'''
 	}
 	
 }

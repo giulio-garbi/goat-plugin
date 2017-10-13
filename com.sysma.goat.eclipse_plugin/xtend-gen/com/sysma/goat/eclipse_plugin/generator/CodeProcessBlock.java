@@ -26,10 +26,8 @@ public class CodeProcessBlock {
   public CharSequence getCode() {
     StringConcatenation _builder = new StringConcatenation();
     {
-      final Function1<ProcessStatement, Object> _function = new Function1<ProcessStatement, Object>() {
-        public Object apply(final ProcessStatement it) {
-          return Utils.getCode(it, CodeProcessBlock.this.localVariableMap, CodeProcessBlock.this.processRef);
-        }
+      final Function1<ProcessStatement, Object> _function = (ProcessStatement it) -> {
+        return Utils.getCode(it, this.localVariableMap, this.processRef);
       };
       List<Object> _map = ListExtensions.<ProcessStatement, Object>map(this.blk.getStatements(), _function);
       for(final Object x : _map) {
@@ -37,6 +35,25 @@ public class CodeProcessBlock {
         _builder.newLineIfNotEmpty();
       }
     }
+    return _builder;
+  }
+  
+  public CharSequence getCodeAsFunction() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("func (wg *sync.WaitGroup, ");
+    _builder.append(this.localVariableMap.name);
+    _builder.append(" *map[string]interface{}, ");
+    _builder.append(this.processRef);
+    _builder.append(" *goat.Process) continuationProcess{");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    CharSequence _code = this.getCode();
+    _builder.append(_code, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("return nil");
+    _builder.newLine();
+    _builder.append("}");
     return _builder;
   }
 }

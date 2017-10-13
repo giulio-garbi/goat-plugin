@@ -15,15 +15,14 @@ public class CodeCluster implements CodeInfrastructure {
     this.cluster = cluster;
   }
   
+  @Override
   public String getCode() {
     String _xblockexpression = null;
     {
       final boolean mustWait = (((Utils.isLocalAddress(this.cluster.getMid_assigner()) || Utils.isLocalAddress(this.cluster.getRegistration())) || 
-        Utils.isLocalAddress(this.cluster.getMessage_queue())) || (!IterableExtensions.isEmpty(IterableExtensions.<String>filter(this.cluster.getNodes(), new Function1<String, Boolean>() {
-        public Boolean apply(final String it) {
-          return Boolean.valueOf(Utils.isLocalAddress(it));
-        }
-      }))));
+        Utils.isLocalAddress(this.cluster.getMessage_queue())) || (!IterableExtensions.isEmpty(IterableExtensions.<String>filter(this.cluster.getNodes(), ((Function1<String, Boolean>) (String it) -> {
+        return Boolean.valueOf(Utils.isLocalAddress(it));
+      })))));
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package main");
       _builder.newLine();
@@ -80,10 +79,8 @@ public class CodeCluster implements CodeInfrastructure {
         }
       }
       {
-        final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-          public Boolean apply(final String it) {
-            return Boolean.valueOf(Utils.isLocalAddress(it));
-          }
+        final Function1<String, Boolean> _function = (String it) -> {
+          return Boolean.valueOf(Utils.isLocalAddress(it));
         };
         Iterable<String> _filter = IterableExtensions.<String>filter(this.cluster.getNodes(), _function);
         for(final String node : _filter) {

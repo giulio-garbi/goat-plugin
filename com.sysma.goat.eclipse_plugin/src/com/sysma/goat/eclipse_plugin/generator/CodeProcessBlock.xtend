@@ -20,4 +20,12 @@ class CodeProcessBlock {
 		«ENDFOR»
 		'''
 	}
+	
+	def getCodeAsFunction(){
+		'''
+		func (wg *sync.WaitGroup, «localVariableMap.name» *map[string]interface{}, «processRef» *goat.Process) continuationProcess{
+			«code»
+			return nil
+		}'''
+	}
 }

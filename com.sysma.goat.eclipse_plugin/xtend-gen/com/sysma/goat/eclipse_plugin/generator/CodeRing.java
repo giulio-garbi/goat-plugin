@@ -18,15 +18,14 @@ public class CodeRing implements CodeInfrastructure {
     this.ring = ring;
   }
   
+  @Override
   public String getCode() {
     String _xblockexpression = null;
     {
       final boolean mustWait = ((Utils.isLocalAddress(this.ring.getMid_assigner()) || Utils.isLocalAddress(this.ring.getRegistration())) || 
-        (!IterableExtensions.isEmpty(IterableExtensions.<String>filter(this.ring.getNodes(), new Function1<String, Boolean>() {
-          public Boolean apply(final String it) {
-            return Boolean.valueOf(Utils.isLocalAddress(it));
-          }
-        }))));
+        (!IterableExtensions.isEmpty(IterableExtensions.<String>filter(this.ring.getNodes(), ((Function1<String, Boolean>) (String it) -> {
+          return Boolean.valueOf(Utils.isLocalAddress(it));
+        })))));
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package main");
       _builder.newLine();
@@ -69,10 +68,8 @@ public class CodeRing implements CodeInfrastructure {
         }
       }
       {
-        final Function1<Pair<Integer, String>, Boolean> _function = new Function1<Pair<Integer, String>, Boolean>() {
-          public Boolean apply(final Pair<Integer, String> it) {
-            return Boolean.valueOf(Utils.isLocalAddress(it.getValue()));
-          }
+        final Function1<Pair<Integer, String>, Boolean> _function = (Pair<Integer, String> it) -> {
+          return Boolean.valueOf(Utils.isLocalAddress(it.getValue()));
         };
         Iterable<Pair<Integer, String>> _filter = IterableExtensions.<Pair<Integer, String>>filter(IterableExtensions.<String>indexed(this.ring.getNodes()), _function);
         for(final Pair<Integer, String> node : _filter) {

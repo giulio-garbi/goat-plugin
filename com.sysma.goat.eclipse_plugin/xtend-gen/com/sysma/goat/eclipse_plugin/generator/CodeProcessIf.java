@@ -45,10 +45,8 @@ public class CodeProcessIf {
       final String attrVar = "attr";
       final String branchChoiceVar = "branchIf";
       final String branchReceiveVar = "branchReceive";
-      final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
-        public CharSequence apply(final Expression it) {
-          return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, CodeProcessIf.this.map, attrVar);
-        }
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return CodeExpression.cast(ExpressionTyping.ExprType.BOOL, it, this.map, attrVar);
       };
       List<CharSequence> _map = ListExtensions.<Expression, CharSequence>map(this.ifProcess.getCond(), _function);
       List<? extends CharSequence> _xifexpression = null;

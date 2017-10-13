@@ -49,10 +49,8 @@ public class CodeProcessSend {
       } else {
         _elvis = Collections.<Expression>unmodifiableList(CollectionLiterals.<Expression>newArrayList());
       }
-      final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
-        public CharSequence apply(final Expression it) {
-          return CodeExpression.getExpressionWithAttributes(it, CodeProcessSend.this.map, attrVar);
-        }
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return CodeExpression.getExpressionWithAttributes(it, this.map, attrVar);
       };
       final List<CharSequence> messageParts = ListExtensions.<Expression, CharSequence>map(_elvis, _function);
       StringConcatenation _builder = new StringConcatenation();
@@ -136,10 +134,8 @@ public class CodeProcessSend {
       } else {
         _elvis = Collections.<Expression>unmodifiableList(CollectionLiterals.<Expression>newArrayList());
       }
-      final Function1<Expression, CharSequence> _function = new Function1<Expression, CharSequence>() {
-        public CharSequence apply(final Expression it) {
-          return CodeExpression.getExpressionWithAttributes(it, CodeProcessSend.this.map, attrVar);
-        }
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return CodeExpression.getExpressionWithAttributes(it, this.map, attrVar);
       };
       final List<CharSequence> messageParts = ListExtensions.<Expression, CharSequence>map(_elvis, _function);
       final String messageVar = "msg";

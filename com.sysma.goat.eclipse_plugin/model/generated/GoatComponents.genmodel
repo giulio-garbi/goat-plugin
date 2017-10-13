@@ -85,7 +85,7 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//ComponentDefinition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/env"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/proc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/block"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//LRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//LRef/name"/>

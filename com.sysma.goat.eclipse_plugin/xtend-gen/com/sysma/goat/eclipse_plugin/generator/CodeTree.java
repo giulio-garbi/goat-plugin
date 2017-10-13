@@ -23,10 +23,8 @@ public class CodeTree implements CodeInfrastructure {
   }
   
   private static List<String> makePlainList(final TreeNode node) {
-    final Function1<TreeNode, String> _function = new Function1<TreeNode, String>() {
-      public String apply(final TreeNode it) {
-        return it.getAddress();
-      }
+    final Function1<TreeNode, String> _function = (TreeNode it) -> {
+      return it.getAddress();
     };
     return ListExtensions.<TreeNode, String>map(CodeTree.nodesList(node), _function);
   }
@@ -47,15 +45,11 @@ public class CodeTree implements CodeInfrastructure {
     ArrayList<TreeNode> _xblockexpression = null;
     {
       final ArrayList<TreeNode> out = CollectionLiterals.<TreeNode>newArrayList(node);
-      final Function1<TreeNode, List<TreeNode>> _function = new Function1<TreeNode, List<TreeNode>>() {
-        public List<TreeNode> apply(final TreeNode it) {
-          return CodeTree.nodesList(it);
-        }
+      final Function1<TreeNode, List<TreeNode>> _function = (TreeNode it) -> {
+        return CodeTree.nodesList(it);
       };
-      final Consumer<List<TreeNode>> _function_1 = new Consumer<List<TreeNode>>() {
-        public void accept(final List<TreeNode> it) {
-          out.addAll(it);
-        }
+      final Consumer<List<TreeNode>> _function_1 = (List<TreeNode> it) -> {
+        out.addAll(it);
       };
       ListExtensions.<TreeNode, List<TreeNode>>map(node.getChildren(), _function).forEach(_function_1);
       _xblockexpression = out;
@@ -63,15 +57,14 @@ public class CodeTree implements CodeInfrastructure {
     return _xblockexpression;
   }
   
+  @Override
   public String getCode() {
     String _xblockexpression = null;
     {
       final boolean mustWait = (Utils.isLocalAddress(this.tree.getRegistration()) || 
-        (!IterableExtensions.isEmpty(IterableExtensions.<TreeNode>filter(CodeTree.nodesList(this.tree.getRoot()), new Function1<TreeNode, Boolean>() {
-          public Boolean apply(final TreeNode it) {
-            return Boolean.valueOf(Utils.isLocalAddress(it.getAddress()));
-          }
-        }))));
+        (!IterableExtensions.isEmpty(IterableExtensions.<TreeNode>filter(CodeTree.nodesList(this.tree.getRoot()), ((Function1<TreeNode, Boolean>) (TreeNode it) -> {
+          return Boolean.valueOf(Utils.isLocalAddress(it.getAddress()));
+        })))));
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package main");
       _builder.newLine();
@@ -103,10 +96,8 @@ public class CodeTree implements CodeInfrastructure {
         }
       }
       {
-        final Function1<TreeNode, Boolean> _function = new Function1<TreeNode, Boolean>() {
-          public Boolean apply(final TreeNode it) {
-            return Boolean.valueOf(Utils.isLocalAddress(it.getAddress()));
-          }
+        final Function1<TreeNode, Boolean> _function = (TreeNode it) -> {
+          return Boolean.valueOf(Utils.isLocalAddress(it.getAddress()));
         };
         Iterable<TreeNode> _filter = IterableExtensions.<TreeNode>filter(CodeTree.nodesList(this.tree.getRoot()), _function);
         for(final TreeNode node : _filter) {
@@ -128,10 +119,8 @@ public class CodeTree implements CodeInfrastructure {
           }
           _builder.append(_elvis, "\t");
           _builder.append("\", ");
-          final Function1<TreeNode, String> _function_1 = new Function1<TreeNode, String>() {
-            public String apply(final TreeNode it) {
-              return it.getAddress();
-            }
+          final Function1<TreeNode, String> _function_1 = (TreeNode it) -> {
+            return it.getAddress();
           };
           CharSequence _goList_1 = Utils.goList(ListExtensions.<TreeNode, String>map(node.getChildren(), _function_1));
           _builder.append(_goList_1, "\t");

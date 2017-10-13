@@ -1128,7 +1128,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentDefinition_Proc()
+  public EReference getComponentDefinition_Block()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(1);
   }
@@ -1958,7 +1958,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     componentDefinitionEClass = createEClass(COMPONENT_DEFINITION);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENV);
-    createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__PROC);
+    createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__BLOCK);
 
     lRefEClass = createEClass(LREF);
     createEAttribute(lRefEClass, LREF__NAME);
@@ -2216,7 +2216,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(componentDefinitionEClass, ComponentDefinition.class, "ComponentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getComponentDefinition_Proc(), this.getProcessDefinition(), null, "proc", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComponentDefinition_Block(), this.getProcessBlock(), null, "block", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(lRefEClass, LRef.class, "LRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, LRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

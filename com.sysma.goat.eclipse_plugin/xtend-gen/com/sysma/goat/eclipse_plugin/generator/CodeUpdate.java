@@ -29,39 +29,37 @@ public class CodeUpdate {
   }
   
   public CharSequence getCode() {
-    final Function1<Pair<Integer, EObject>, CharSequence> _function = new Function1<Pair<Integer, EObject>, CharSequence>() {
-      public CharSequence apply(final Pair<Integer, EObject> vidx) {
-        CharSequence _xblockexpression = null;
-        {
-          final EObject varUpd = vidx.getValue();
-          final CharSequence valUpd = CodeExpression.getExpressionWithAttributes(CodeUpdate.this.update.getValue().get((vidx.getKey()).intValue()), CodeUpdate.this.map, CodeUpdate.this.attrName);
-          CharSequence _switchResult = null;
-          boolean _matched = false;
-          if (varUpd instanceof UpdateComponentAttribute) {
-            _matched=true;
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append(CodeUpdate.this.attrName);
-            _builder.append(".Set(\"");
-            String _atname = ((UpdateComponentAttribute)varUpd).getAtname();
-            _builder.append(_atname);
-            _builder.append("\", ");
-            _builder.append(valUpd);
-            _builder.append(")");
-            _switchResult = _builder.toString();
-          }
-          if (!_matched) {
-            if (varUpd instanceof UpdateLocalAttribute) {
-              _matched=true;
-              _switchResult = CodeUpdate.this.map.assign(((UpdateLocalAttribute)varUpd).getAtname(), valUpd);
-            }
-          }
-          if (!_matched) {
-            _switchResult = "";
-          }
-          _xblockexpression = _switchResult;
+    final Function1<Pair<Integer, EObject>, CharSequence> _function = (Pair<Integer, EObject> vidx) -> {
+      CharSequence _xblockexpression = null;
+      {
+        final EObject varUpd = vidx.getValue();
+        final CharSequence valUpd = CodeExpression.getExpressionWithAttributes(this.update.getValue().get((vidx.getKey()).intValue()), this.map, this.attrName);
+        CharSequence _switchResult = null;
+        boolean _matched = false;
+        if (varUpd instanceof UpdateComponentAttribute) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append(this.attrName);
+          _builder.append(".Set(\"");
+          String _atname = ((UpdateComponentAttribute)varUpd).getAtname();
+          _builder.append(_atname);
+          _builder.append("\", ");
+          _builder.append(valUpd);
+          _builder.append(")");
+          _switchResult = _builder.toString();
         }
-        return _xblockexpression;
+        if (!_matched) {
+          if (varUpd instanceof UpdateLocalAttribute) {
+            _matched=true;
+            _switchResult = this.map.assign(((UpdateLocalAttribute)varUpd).getAtname(), valUpd);
+          }
+        }
+        if (!_matched) {
+          _switchResult = "";
+        }
+        _xblockexpression = _switchResult;
       }
+      return _xblockexpression;
     };
     return IterableExtensions.join(IterableExtensions.<Pair<Integer, EObject>, CharSequence>map(IterableExtensions.<EObject>indexed(this.update.getAttribute()), _function), "\n");
   }

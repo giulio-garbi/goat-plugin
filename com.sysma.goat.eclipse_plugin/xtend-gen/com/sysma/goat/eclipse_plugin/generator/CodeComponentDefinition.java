@@ -2,9 +2,10 @@ package com.sysma.goat.eclipse_plugin.generator;
 
 import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
 import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructureAgent;
-import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessBlock;
+import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -57,16 +58,21 @@ public class CodeComponentDefinition {
   }
   
   public CharSequence getCode() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("goat.NewProcess(");
-    _builder.append(this.compName);
-    _builder.append(").Run(");
-    _builder.append(this.mainFunc);
-    _builder.append("(&wg, ");
-    ProcessDefinition _proc = this.cdef.getProc();
-    String _process_func_name = new CodeProcessDefinition(_proc).getProcess_func_name();
-    _builder.append(_process_func_name);
-    _builder.append(", &(map[string]interface{}{})))");
-    return _builder;
+    CharSequence _xblockexpression = null;
+    {
+      ProcessBlock _block = this.cdef.getBlock();
+      LocalVariableMap _localVariableMap = new LocalVariableMap("locvar");
+      final CharSequence fncCode = new CodeProcessBlock(_block, _localVariableMap, "p").getCodeAsFunction();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("goat.NewProcess(");
+      _builder.append(this.compName);
+      _builder.append(").Run(");
+      _builder.append(this.mainFunc);
+      _builder.append("(&wg, ");
+      _builder.append(fncCode);
+      _builder.append(", &(map[string]interface{}{})))");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
 }

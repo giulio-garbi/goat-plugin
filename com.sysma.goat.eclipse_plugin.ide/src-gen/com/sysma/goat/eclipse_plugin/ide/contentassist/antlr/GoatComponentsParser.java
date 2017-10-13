@@ -32,7 +32,7 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getModelAccess().getAlternatives_3(), "rule__Model__Alternatives_3");
-					put(grammarAccess.getProcessDefinitionAccess().getAlternatives(), "rule__ProcessDefinition__Alternatives");
+					put(grammarAccess.getProcessDefinitionAccess().getAlternatives_2(), "rule__ProcessDefinition__Alternatives_2");
 					put(grammarAccess.getProcessStatementAccess().getAlternatives(), "rule__ProcessStatement__Alternatives");
 					put(grammarAccess.getProcessReceiveAccess().getAlternatives(), "rule__ProcessReceive__Alternatives");
 					put(grammarAccess.getProcessThenBlockAccess().getActionAlternatives_1_0(), "rule__ProcessThenBlock__ActionAlternatives_1_0");
@@ -40,6 +40,7 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUpdateAccess().getAttributeAlternatives_1_4_1_0(), "rule__Update__AttributeAlternatives_1_4_1_0");
 					put(grammarAccess.getEnvInitValueAccess().getAlternatives(), "rule__EnvInitValue__Alternatives");
 					put(grammarAccess.getEnvInitValueAccess().getValueAlternatives_3_1_0(), "rule__EnvInitValue__ValueAlternatives_3_1_0");
+					put(grammarAccess.getComponentDefinitionAccess().getBlockAlternatives_2_0(), "rule__ComponentDefinition__BlockAlternatives_2_0");
 					put(grammarAccess.getEqualityAccess().getOpAlternatives_1_1_0(), "rule__Equality__OpAlternatives_1_1_0");
 					put(grammarAccess.getComparisonAccess().getOpAlternatives_1_1_0(), "rule__Comparison__OpAlternatives_1_1_0");
 					put(grammarAccess.getPlusOrMinusAccess().getAlternatives_1_0(), "rule__PlusOrMinus__Alternatives_1_0");
@@ -50,10 +51,10 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAtomicAccess().getValueAlternatives_2_1_0(), "rule__Atomic__ValueAlternatives_2_1_0");
 					put(grammarAccess.getFuncStatementAccess().getAlternatives(), "rule__FuncStatement__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
-					put(grammarAccess.getProcessDefinitionParallelAccess().getGroup(), "rule__ProcessDefinitionParallel__Group__0");
+					put(grammarAccess.getProcessDefinitionAccess().getGroup(), "rule__ProcessDefinition__Group__0");
+					put(grammarAccess.getProcessDefinitionAccess().getGroup_2_0(), "rule__ProcessDefinition__Group_2_0__0");
 					put(grammarAccess.getPDPBlockAccess().getGroup(), "rule__PDPBlock__Group__0");
 					put(grammarAccess.getPDPBlockAccess().getGroup_0(), "rule__PDPBlock__Group_0__0");
-					put(grammarAccess.getProcessDefinitionBlockAccess().getGroup(), "rule__ProcessDefinitionBlock__Group__0");
 					put(grammarAccess.getProcessBlockAccess().getGroup(), "rule__ProcessBlock__Group__0");
 					put(grammarAccess.getProcessSpawnAccess().getGroup(), "rule__ProcessSpawn__Group__0");
 					put(grammarAccess.getProcessCallAccess().getGroup(), "rule__ProcessCall__Group__0");
@@ -132,14 +133,13 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getProcessesAssignment_3_0(), "rule__Model__ProcessesAssignment_3_0");
 					put(grammarAccess.getModelAccess().getComponentsAssignment_3_1(), "rule__Model__ComponentsAssignment_3_1");
 					put(grammarAccess.getModelAccess().getFunctionsAssignment_3_2(), "rule__Model__FunctionsAssignment_3_2");
-					put(grammarAccess.getProcessDefinitionParallelAccess().getNameAssignment_1(), "rule__ProcessDefinitionParallel__NameAssignment_1");
-					put(grammarAccess.getProcessDefinitionParallelAccess().getBlockAssignment_3(), "rule__ProcessDefinitionParallel__BlockAssignment_3");
+					put(grammarAccess.getProcessDefinitionAccess().getNameAssignment_1(), "rule__ProcessDefinition__NameAssignment_1");
+					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_0_1(), "rule__ProcessDefinition__BlockAssignment_2_0_1");
+					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_1(), "rule__ProcessDefinition__BlockAssignment_2_1");
 					put(grammarAccess.getPDPBlockAccess().getStatementsAssignment_0_0(), "rule__PDPBlock__StatementsAssignment_0_0");
 					put(grammarAccess.getPDPBlockAccess().getStatementsAssignment_1(), "rule__PDPBlock__StatementsAssignment_1");
 					put(grammarAccess.getPDPSpawnAccess().getProcAssignment(), "rule__PDPSpawn__ProcAssignment");
 					put(grammarAccess.getPDPCallAccess().getProcAssignment(), "rule__PDPCall__ProcAssignment");
-					put(grammarAccess.getProcessDefinitionBlockAccess().getNameAssignment_1(), "rule__ProcessDefinitionBlock__NameAssignment_1");
-					put(grammarAccess.getProcessDefinitionBlockAccess().getBlockAssignment_2(), "rule__ProcessDefinitionBlock__BlockAssignment_2");
 					put(grammarAccess.getProcessBlockAccess().getStatementsAssignment_2(), "rule__ProcessBlock__StatementsAssignment_2");
 					put(grammarAccess.getProcessSpawnAccess().getProcAssignment_2(), "rule__ProcessSpawn__ProcAssignment_2");
 					put(grammarAccess.getProcessCallAccess().getProcAssignment_2(), "rule__ProcessCall__ProcAssignment_2");
@@ -184,7 +184,7 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnvironmentAccess().getAttrsAssignment_2_3_1(), "rule__Environment__AttrsAssignment_2_3_1");
 					put(grammarAccess.getEnvironmentAccess().getValsAssignment_2_3_3(), "rule__Environment__ValsAssignment_2_3_3");
 					put(grammarAccess.getComponentDefinitionAccess().getEnvAssignment_1(), "rule__ComponentDefinition__EnvAssignment_1");
-					put(grammarAccess.getComponentDefinitionAccess().getProcAssignment_2(), "rule__ComponentDefinition__ProcAssignment_2");
+					put(grammarAccess.getComponentDefinitionAccess().getBlockAssignment_2(), "rule__ComponentDefinition__BlockAssignment_2");
 					put(grammarAccess.getOrAccess().getSubAssignment_1_2(), "rule__Or__SubAssignment_1_2");
 					put(grammarAccess.getAndAccess().getSubAssignment_1_2(), "rule__And__SubAssignment_1_2");
 					put(grammarAccess.getEqualityAccess().getOpAssignment_1_1(), "rule__Equality__OpAssignment_1_1");

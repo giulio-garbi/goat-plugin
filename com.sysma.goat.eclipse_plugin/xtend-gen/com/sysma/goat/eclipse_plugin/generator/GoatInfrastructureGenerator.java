@@ -35,15 +35,14 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class GoatInfrastructureGenerator extends AbstractGenerator implements IGeneratorMulti {
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     this.doGenerateInt(resource, fsa, context);
   }
   
   public void doGenerateInt(final Resource resource, final IFileSystemAccess fsa, final IGeneratorContext context) {
-    final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
-      public Boolean apply(final EObject it) {
-        return Boolean.valueOf((it instanceof Infrastructure));
-      }
+    final Function1<EObject, Boolean> _function = (EObject it) -> {
+      return Boolean.valueOf((it instanceof Infrastructure));
     };
     Iterable<EObject> _filter = IterableExtensions.<EObject>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), _function);
     for (final EObject infr : _filter) {
@@ -84,17 +83,17 @@ public class GoatInfrastructureGenerator extends AbstractGenerator implements IG
     }
   }
   
+  @Override
   public void doGenerate(final ResourceSet input, final IFileSystemAccess fsa) {
     final GoatComponentsGenerator goatGen = new GoatComponentsGenerator();
-    final Consumer<Resource> _function = new Consumer<Resource>() {
-      public void accept(final Resource it) {
-        GoatInfrastructureGenerator.this.doGenerate(it, fsa);
-        goatGen.doGenerate(it, fsa, null);
-      }
+    final Consumer<Resource> _function = (Resource it) -> {
+      this.doGenerate(it, fsa);
+      goatGen.doGenerateInt(it, fsa, null);
     };
     input.getResources().forEach(_function);
   }
   
+  @Override
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
     this.doGenerateInt(input, fsa, null);
   }

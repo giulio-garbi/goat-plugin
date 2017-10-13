@@ -52,24 +52,22 @@ public class ExpressionTyping {
   
   public static ExpressionTyping.ExprType typeOf(final String t) {
     ExpressionTyping.ExprType _switchResult = null;
-    boolean _matched = false;
-    if (Objects.equal(t, "int")) {
-      _matched=true;
-      _switchResult = ExpressionTyping.ExprType.INT;
-    }
-    if (!_matched) {
-      if (Objects.equal(t, "string")) {
-        _matched=true;
-        _switchResult = ExpressionTyping.ExprType.STRING;
+    if (t != null) {
+      switch (t) {
+        case "int":
+          _switchResult = ExpressionTyping.ExprType.INT;
+          break;
+        case "string":
+          _switchResult = ExpressionTyping.ExprType.STRING;
+          break;
+        case "bool":
+          _switchResult = ExpressionTyping.ExprType.BOOL;
+          break;
+        default:
+          _switchResult = ExpressionTyping.ExprType.UNKNOWN;
+          break;
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(t, "bool")) {
-        _matched=true;
-        _switchResult = ExpressionTyping.ExprType.BOOL;
-      }
-    }
-    if (!_matched) {
+    } else {
       _switchResult = ExpressionTyping.ExprType.UNKNOWN;
     }
     return _switchResult;

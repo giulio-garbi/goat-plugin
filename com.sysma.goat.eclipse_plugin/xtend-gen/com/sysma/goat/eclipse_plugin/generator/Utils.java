@@ -170,14 +170,12 @@ public class Utils {
   public static CharSequence goList(final List<String> strings) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("[]string{");
-    final Function1<String, String> _function = new Function1<String, String>() {
-      public String apply(final String it) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("\"");
-        _builder.append(it);
-        _builder.append("\"");
-        return _builder.toString();
-      }
+    final Function1<String, String> _function = (String it) -> {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("\"");
+      _builder_1.append(it);
+      _builder_1.append("\"");
+      return _builder_1.toString();
     };
     String _join = IterableExtensions.join(ListExtensions.<String, String>map(strings, _function), ", ");
     _builder.append(_join);

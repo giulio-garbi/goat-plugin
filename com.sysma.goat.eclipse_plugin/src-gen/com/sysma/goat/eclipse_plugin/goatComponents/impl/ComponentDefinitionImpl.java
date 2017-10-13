@@ -6,7 +6,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnv <em>Env</em>}</li>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getProc <em>Proc</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getBlock <em>Block</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,14 +44,14 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   protected Environment env;
 
   /**
-   * The cached value of the '{@link #getProc() <em>Proc</em>}' reference.
+   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProc()
+   * @see #getBlock()
    * @generated
    * @ordered
    */
-  protected ProcessDefinition proc;
+  protected ProcessBlock block;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,19 +127,9 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDefinition getProc()
+  public ProcessBlock getBlock()
   {
-    if (proc != null && proc.eIsProxy())
-    {
-      InternalEObject oldProc = (InternalEObject)proc;
-      proc = (ProcessDefinition)eResolveProxy(oldProc);
-      if (proc != oldProc)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GoatComponentsPackage.COMPONENT_DEFINITION__PROC, oldProc, proc));
-      }
-    }
-    return proc;
+    return block;
   }
 
   /**
@@ -147,22 +137,37 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDefinition basicGetProc()
+  public NotificationChain basicSetBlock(ProcessBlock newBlock, NotificationChain msgs)
   {
-    return proc;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setProc(ProcessDefinition newProc)
-  {
-    ProcessDefinition oldProc = proc;
-    proc = newProc;
+    ProcessBlock oldBlock = block;
+    block = newBlock;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__PROC, oldProc, proc));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK, oldBlock, newBlock);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBlock(ProcessBlock newBlock)
+  {
+    if (newBlock != block)
+    {
+      NotificationChain msgs = null;
+      if (block != null)
+        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK, null, msgs);
+      if (newBlock != null)
+        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK, null, msgs);
+      msgs = basicSetBlock(newBlock, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK, newBlock, newBlock));
   }
 
   /**
@@ -177,6 +182,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     {
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return basicSetEnv(null, msgs);
+      case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
+        return basicSetBlock(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -193,9 +200,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     {
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return getEnv();
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
-        if (resolve) return getProc();
-        return basicGetProc();
+      case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
+        return getBlock();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,8 +219,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)newValue);
         return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
-        setProc((ProcessDefinition)newValue);
+      case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
+        setBlock((ProcessBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,8 +239,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)null);
         return;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
-        setProc((ProcessDefinition)null);
+      case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
+        setBlock((ProcessBlock)null);
         return;
     }
     super.eUnset(featureID);
@@ -252,8 +258,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     {
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return env != null;
-      case GoatComponentsPackage.COMPONENT_DEFINITION__PROC:
-        return proc != null;
+      case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
+        return block != null;
     }
     return super.eIsSet(featureID);
   }
