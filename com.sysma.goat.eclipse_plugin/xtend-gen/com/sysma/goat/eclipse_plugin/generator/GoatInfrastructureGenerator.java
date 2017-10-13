@@ -8,15 +8,20 @@ import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructure;
 import com.sysma.goat.eclipse_plugin.generator.CodeRing;
 import com.sysma.goat.eclipse_plugin.generator.CodeSingleServer;
 import com.sysma.goat.eclipse_plugin.generator.CodeTree;
+import com.sysma.goat.eclipse_plugin.generator.GoatComponentsGenerator;
+import com.sysma.goat.eclipse_plugin.generator.IGeneratorMulti;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.SingleServer;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree;
+import java.util.function.Consumer;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.generator.AbstractGenerator;
+import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -29,8 +34,12 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 @SuppressWarnings("all")
-public class GoatInfrastructureGenerator extends AbstractGenerator {
+public class GoatInfrastructureGenerator extends AbstractGenerator implements IGeneratorMulti {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.doGenerateInt(resource, fsa, context);
+  }
+  
+  public void doGenerateInt(final Resource resource, final IFileSystemAccess fsa, final IGeneratorContext context) {
     final Function1<EObject, Boolean> _function = new Function1<EObject, Boolean>() {
       public Boolean apply(final EObject it) {
         return Boolean.valueOf((it instanceof Infrastructure));
@@ -73,5 +82,20 @@ public class GoatInfrastructureGenerator extends AbstractGenerator {
         fsa.generateFile(goFileName, code.getCode());
       }
     }
+  }
+  
+  public void doGenerate(final ResourceSet input, final IFileSystemAccess fsa) {
+    final GoatComponentsGenerator goatGen = new GoatComponentsGenerator();
+    final Consumer<Resource> _function = new Consumer<Resource>() {
+      public void accept(final Resource it) {
+        GoatInfrastructureGenerator.this.doGenerate(it, fsa);
+        goatGen.doGenerate(it, fsa, null);
+      }
+    };
+    input.getResources().forEach(_function);
+  }
+  
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+    this.doGenerateInt(input, fsa, null);
   }
 }

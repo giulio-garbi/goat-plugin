@@ -9,6 +9,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import com.sysma.goat.eclipse_plugin.goatComponents.Model
 import org.eclipse.core.runtime.Path
+import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**
  * Generates code from your model files on save.
@@ -18,6 +19,10 @@ import org.eclipse.core.runtime.Path
 class GoatComponentsGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		doGenerate(resource, fsa, context)
+	}
+	
+	def void doGenerate(Resource resource, IFileSystemAccess fsa, IGeneratorContext context) {
 		for(model:(resource.allContents.toIterable.filter(Model))){
 			val c_model = new CodeModel(model)
 			val goFileName =

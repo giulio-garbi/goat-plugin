@@ -4,8 +4,10 @@
 package com.sysma.goat.eclipse_plugin.ui;
 
 import com.sysma.goat.eclipse_plugin.ui.AbstractGoatInfrastructureUiModule;
+import com.sysma.goat.eclipse_plugin.ui.JavaProjectBasedBuilderParticipant2;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
+import org.eclipse.xtext.builder.IXtextBuilderParticipant;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -13,6 +15,10 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class GoatInfrastructureUiModule extends AbstractGoatInfrastructureUiModule {
+  public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+    return JavaProjectBasedBuilderParticipant2.class;
+  }
+  
   public GoatInfrastructureUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }

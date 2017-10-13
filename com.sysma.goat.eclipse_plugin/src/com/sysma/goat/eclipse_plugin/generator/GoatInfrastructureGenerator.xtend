@@ -13,15 +13,20 @@ import com.sysma.goat.eclipse_plugin.goatInfrastructure.Cluster
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Ring
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Tree
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class GoatInfrastructureGenerator extends AbstractGenerator {
+class GoatInfrastructureGenerator extends AbstractGenerator implements IGeneratorMulti {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		doGenerateInt(resource, fsa, context)
+	}
+	def void doGenerateInt(Resource resource, IFileSystemAccess fsa, IGeneratorContext context) {
 		for(infr: resource.allContents.toIterable.filter[it instanceof Infrastructure]){
 			val code = switch(infr){
 				SingleServer:
@@ -46,4 +51,17 @@ class GoatInfrastructureGenerator extends AbstractGenerator {
 			fsa.generateFile(goFileName, code.code)
 		}
 	}
+	
+	override doGenerate(ResourceSet input, IFileSystemAccess fsa) {
+		val goatGen = new GoatComponentsGenerator()
+		input.resources.forEach[
+			doGenerate(it, fsa)
+			goatGen.doGenerate(it, fsa, null)
+		]
+	}
+	
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		doGenerateInt(input, fsa, null)
+	}
+	
 }

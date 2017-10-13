@@ -4,10 +4,15 @@
 package com.sysma.goat.eclipse_plugin;
 
 import com.sysma.goat.eclipse_plugin.AbstractGoatInfrastructureRuntimeModule;
+import com.sysma.goat.eclipse_plugin.generator.GoatInfrastructureGenerator;
+import com.sysma.goat.eclipse_plugin.generator.IGeneratorMulti;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
 public class GoatInfrastructureRuntimeModule extends AbstractGoatInfrastructureRuntimeModule {
+  public Class<? extends IGeneratorMulti> bindIGeneratorMulti() {
+    return GoatInfrastructureGenerator.class;
+  }
 }
