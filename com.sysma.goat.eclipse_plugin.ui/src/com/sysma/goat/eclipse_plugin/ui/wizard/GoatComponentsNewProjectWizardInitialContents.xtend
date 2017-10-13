@@ -16,21 +16,24 @@ class GoatComponentsNewProjectWizardInitialContents {
 		fsa.generateFile(
 			"src/system." + fileExtensionProvider.primaryFileExtension,
 			'''
+			infrastructure infr
+			
 			/*
 			 * This is an example system
 			 */
 			
-			proc P = 0
+			process P {
+				
+			}
 			
-			component {} P at "127.0.0.1:17654"
+			component {} P
 			'''
 			)
 		
 		fsa.generateFile("src/infrastructure.ginf",
 			'''
-			singleServer {
-				timeout : "200",
-				port : "17654"
+			singleserver infr {
+				server : "127.0.0.1:17654"
 			}
 			'''
 		)
