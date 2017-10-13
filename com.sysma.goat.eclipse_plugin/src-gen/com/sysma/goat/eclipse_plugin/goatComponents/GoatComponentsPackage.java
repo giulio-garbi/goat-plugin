@@ -104,13 +104,22 @@ public interface GoatComponentsPackage extends EPackage
   int MODEL__FUNCTIONS = 3;
 
   /**
+   * The feature id for the '<em><b>Environments</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__ENVIRONMENTS = 4;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 4;
+  int MODEL_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl <em>Process Definition</em>}' class.
@@ -883,14 +892,23 @@ public interface GoatComponentsPackage extends EPackage
   int ENVIRONMENT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl <em>Component Definition</em>}' class.
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentDefinitionImpl <em>Environment Definition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentDefinition()
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentDefinitionImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEnvironmentDefinition()
    * @generated
    */
-  int COMPONENT_DEFINITION = 24;
+  int ENVIRONMENT_DEFINITION = 24;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT_DEFINITION__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Env</b></em>' containment reference.
@@ -899,7 +917,44 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION__ENV = 0;
+  int ENVIRONMENT_DEFINITION__ENV = 1;
+
+  /**
+   * The number of structural features of the '<em>Environment Definition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENVIRONMENT_DEFINITION_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl <em>Component Definition</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentDefinition()
+   * @generated
+   */
+  int COMPONENT_DEFINITION = 25;
+
+  /**
+   * The feature id for the '<em><b>Envref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT_DEFINITION__ENVREF = 0;
+
+  /**
+   * The feature id for the '<em><b>Env</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT_DEFINITION__ENV = 1;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -908,7 +963,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION__BLOCK = 1;
+  int COMPONENT_DEFINITION__BLOCK = 2;
 
   /**
    * The number of structural features of the '<em>Component Definition</em>' class.
@@ -917,7 +972,7 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_DEFINITION_FEATURE_COUNT = 2;
+  int COMPONENT_DEFINITION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LRefImpl <em>LRef</em>}' class.
@@ -927,7 +982,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLRef()
    * @generated
    */
-  int LREF = 25;
+  int LREF = 26;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -955,7 +1010,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncParam()
    * @generated
    */
-  int FUNC_PARAM = 26;
+  int FUNC_PARAM = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -992,7 +1047,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncDefinition()
    * @generated
    */
-  int FUNC_DEFINITION = 27;
+  int FUNC_DEFINITION = 28;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1047,7 +1102,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncBlock()
    * @generated
    */
-  int FUNC_BLOCK = 28;
+  int FUNC_BLOCK = 29;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -1075,7 +1130,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncStatement()
    * @generated
    */
-  int FUNC_STATEMENT = 29;
+  int FUNC_STATEMENT = 30;
 
   /**
    * The number of structural features of the '<em>Func Statement</em>' class.
@@ -1094,7 +1149,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarDeclaration()
    * @generated
    */
-  int FUNC_VAR_DECLARATION = 30;
+  int FUNC_VAR_DECLARATION = 31;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1131,7 +1186,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarAssign()
    * @generated
    */
-  int FUNC_VAR_ASSIGN = 31;
+  int FUNC_VAR_ASSIGN = 32;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' reference.
@@ -1168,7 +1223,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncIfElse()
    * @generated
    */
-  int FUNC_IF_ELSE = 32;
+  int FUNC_IF_ELSE = 33;
 
   /**
    * The feature id for the '<em><b>Test</b></em>' containment reference list.
@@ -1214,7 +1269,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncReturn()
    * @generated
    */
-  int FUNC_RETURN = 33;
+  int FUNC_RETURN = 34;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1242,7 +1297,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNegativeIntConstant()
    * @generated
    */
-  int NEGATIVE_INT_CONSTANT = 34;
+  int NEGATIVE_INT_CONSTANT = 35;
 
   /**
    * The feature id for the '<em><b>Negvalue</b></em>' attribute.
@@ -1270,7 +1325,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIntConstant()
    * @generated
    */
-  int INT_CONSTANT = 35;
+  int INT_CONSTANT = 36;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1298,7 +1353,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getStringConstant()
    * @generated
    */
-  int STRING_CONSTANT = 36;
+  int STRING_CONSTANT = 37;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1326,7 +1381,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getBoolConstant()
    * @generated
    */
-  int BOOL_CONSTANT = 37;
+  int BOOL_CONSTANT = 38;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1354,7 +1409,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOr()
    * @generated
    */
-  int OR = 38;
+  int OR = 39;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1382,7 +1437,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAnd()
    * @generated
    */
-  int AND = 39;
+  int AND = 40;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1410,7 +1465,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 40;
+  int EQUALITY = 41;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1456,7 +1511,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComparison()
    * @generated
    */
-  int COMPARISON = 41;
+  int COMPARISON = 42;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1502,7 +1557,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 42;
+  int PLUS = 43;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1539,7 +1594,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 43;
+  int MINUS = 44;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1576,7 +1631,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getConcatenate()
    * @generated
    */
-  int CONCATENATE = 44;
+  int CONCATENATE = 45;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1613,7 +1668,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMulOrDiv()
    * @generated
    */
-  int MUL_OR_DIV = 45;
+  int MUL_OR_DIV = 46;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1659,7 +1714,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getUnaryMinus()
    * @generated
    */
-  int UNARY_MINUS = 46;
+  int UNARY_MINUS = 47;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1687,7 +1742,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNot()
    * @generated
    */
-  int NOT = 47;
+  int NOT = 48;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1715,7 +1770,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalVarRef()
    * @generated
    */
-  int LOCAL_VAR_REF = 48;
+  int LOCAL_VAR_REF = 49;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1743,7 +1798,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeRef()
    * @generated
    */
-  int LOCAL_ATTRIBUTE_REF = 49;
+  int LOCAL_ATTRIBUTE_REF = 50;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1771,7 +1826,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 50;
+  int FUNCTION_CALL = 51;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -1808,7 +1863,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeRef()
    * @generated
    */
-  int COMPONENT_ATTRIBUTE_REF = 51;
+  int COMPONENT_ATTRIBUTE_REF = 52;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1836,7 +1891,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
    * @generated
    */
-  int REC_ATTRIBUTE_REF = 52;
+  int REC_ATTRIBUTE_REF = 53;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1910,6 +1965,17 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getModel_Functions();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getEnvironments <em>Environments</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Environments</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.Model#getEnvironments()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Environments();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition <em>Process Definition</em>}'.
@@ -2483,6 +2549,38 @@ public interface GoatComponentsPackage extends EPackage
   EReference getEnvironment_Vals();
 
   /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition <em>Environment Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Environment Definition</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition
+   * @generated
+   */
+  EClass getEnvironmentDefinition();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getName()
+   * @see #getEnvironmentDefinition()
+   * @generated
+   */
+  EAttribute getEnvironmentDefinition_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getEnv <em>Env</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Env</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getEnv()
+   * @see #getEnvironmentDefinition()
+   * @generated
+   */
+  EReference getEnvironmentDefinition_Env();
+
+  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition <em>Component Definition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2491,6 +2589,17 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EClass getComponentDefinition();
+
+  /**
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvref <em>Envref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Envref</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvref()
+   * @see #getComponentDefinition()
+   * @generated
+   */
+  EReference getComponentDefinition_Envref();
 
   /**
    * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnv <em>Env</em>}'.
@@ -3333,6 +3442,14 @@ public interface GoatComponentsPackage extends EPackage
     EReference MODEL__FUNCTIONS = eINSTANCE.getModel_Functions();
 
     /**
+     * The meta object literal for the '<em><b>Environments</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__ENVIRONMENTS = eINSTANCE.getModel_Environments();
+
+    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessDefinitionImpl <em>Process Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3811,6 +3928,32 @@ public interface GoatComponentsPackage extends EPackage
     EReference ENVIRONMENT__VALS = eINSTANCE.getEnvironment_Vals();
 
     /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentDefinitionImpl <em>Environment Definition</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.EnvironmentDefinitionImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEnvironmentDefinition()
+     * @generated
+     */
+    EClass ENVIRONMENT_DEFINITION = eINSTANCE.getEnvironmentDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENVIRONMENT_DEFINITION__NAME = eINSTANCE.getEnvironmentDefinition_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Env</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENVIRONMENT_DEFINITION__ENV = eINSTANCE.getEnvironmentDefinition_Env();
+
+    /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl <em>Component Definition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3819,6 +3962,14 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EClass COMPONENT_DEFINITION = eINSTANCE.getComponentDefinition();
+
+    /**
+     * The meta object literal for the '<em><b>Envref</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT_DEFINITION__ENVREF = eINSTANCE.getComponentDefinition_Envref();
 
     /**
      * The meta object literal for the '<em><b>Env</b></em>' containment reference feature.

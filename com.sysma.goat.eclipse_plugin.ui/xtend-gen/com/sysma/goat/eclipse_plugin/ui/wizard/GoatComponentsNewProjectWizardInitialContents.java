@@ -36,7 +36,7 @@ public class GoatComponentsNewProjectWizardInitialContents {
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("component {} P");
+    _builder.append("component {} : P");
     _builder.newLine();
     fsa.generateFile(_plus, _builder);
     StringConcatenation _builder_1 = new StringConcatenation();

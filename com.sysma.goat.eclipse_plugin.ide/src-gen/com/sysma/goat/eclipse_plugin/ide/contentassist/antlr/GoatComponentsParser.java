@@ -40,7 +40,8 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUpdateAccess().getAttributeAlternatives_1_4_1_0(), "rule__Update__AttributeAlternatives_1_4_1_0");
 					put(grammarAccess.getEnvInitValueAccess().getAlternatives(), "rule__EnvInitValue__Alternatives");
 					put(grammarAccess.getEnvInitValueAccess().getValueAlternatives_3_1_0(), "rule__EnvInitValue__ValueAlternatives_3_1_0");
-					put(grammarAccess.getComponentDefinitionAccess().getBlockAlternatives_2_0(), "rule__ComponentDefinition__BlockAlternatives_2_0");
+					put(grammarAccess.getComponentDefinitionAccess().getAlternatives_1(), "rule__ComponentDefinition__Alternatives_1");
+					put(grammarAccess.getComponentDefinitionAccess().getBlockAlternatives_3_0(), "rule__ComponentDefinition__BlockAlternatives_3_0");
 					put(grammarAccess.getEqualityAccess().getOpAlternatives_1_1_0(), "rule__Equality__OpAlternatives_1_1_0");
 					put(grammarAccess.getComparisonAccess().getOpAlternatives_1_1_0(), "rule__Comparison__OpAlternatives_1_1_0");
 					put(grammarAccess.getPlusOrMinusAccess().getAlternatives_1_0(), "rule__PlusOrMinus__Alternatives_1_0");
@@ -89,6 +90,7 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnvironmentAccess().getGroup(), "rule__Environment__Group__0");
 					put(grammarAccess.getEnvironmentAccess().getGroup_2(), "rule__Environment__Group_2__0");
 					put(grammarAccess.getEnvironmentAccess().getGroup_2_3(), "rule__Environment__Group_2_3__0");
+					put(grammarAccess.getEnvironmentDefinitionAccess().getGroup(), "rule__EnvironmentDefinition__Group__0");
 					put(grammarAccess.getComponentDefinitionAccess().getGroup(), "rule__ComponentDefinition__Group__0");
 					put(grammarAccess.getOrAccess().getGroup(), "rule__Or__Group__0");
 					put(grammarAccess.getOrAccess().getGroup_1(), "rule__Or__Group_1__0");
@@ -133,6 +135,7 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getProcessesAssignment_3_0(), "rule__Model__ProcessesAssignment_3_0");
 					put(grammarAccess.getModelAccess().getComponentsAssignment_3_1(), "rule__Model__ComponentsAssignment_3_1");
 					put(grammarAccess.getModelAccess().getFunctionsAssignment_3_2(), "rule__Model__FunctionsAssignment_3_2");
+					put(grammarAccess.getModelAccess().getEnvironmentsAssignment_3_3(), "rule__Model__EnvironmentsAssignment_3_3");
 					put(grammarAccess.getProcessDefinitionAccess().getNameAssignment_1(), "rule__ProcessDefinition__NameAssignment_1");
 					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_0_1(), "rule__ProcessDefinition__BlockAssignment_2_0_1");
 					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_1(), "rule__ProcessDefinition__BlockAssignment_2_1");
@@ -183,8 +186,11 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEnvironmentAccess().getValsAssignment_2_2(), "rule__Environment__ValsAssignment_2_2");
 					put(grammarAccess.getEnvironmentAccess().getAttrsAssignment_2_3_1(), "rule__Environment__AttrsAssignment_2_3_1");
 					put(grammarAccess.getEnvironmentAccess().getValsAssignment_2_3_3(), "rule__Environment__ValsAssignment_2_3_3");
-					put(grammarAccess.getComponentDefinitionAccess().getEnvAssignment_1(), "rule__ComponentDefinition__EnvAssignment_1");
-					put(grammarAccess.getComponentDefinitionAccess().getBlockAssignment_2(), "rule__ComponentDefinition__BlockAssignment_2");
+					put(grammarAccess.getEnvironmentDefinitionAccess().getNameAssignment_1(), "rule__EnvironmentDefinition__NameAssignment_1");
+					put(grammarAccess.getEnvironmentDefinitionAccess().getEnvAssignment_2(), "rule__EnvironmentDefinition__EnvAssignment_2");
+					put(grammarAccess.getComponentDefinitionAccess().getEnvrefAssignment_1_0(), "rule__ComponentDefinition__EnvrefAssignment_1_0");
+					put(grammarAccess.getComponentDefinitionAccess().getEnvAssignment_1_1(), "rule__ComponentDefinition__EnvAssignment_1_1");
+					put(grammarAccess.getComponentDefinitionAccess().getBlockAssignment_3(), "rule__ComponentDefinition__BlockAssignment_3");
 					put(grammarAccess.getOrAccess().getSubAssignment_1_2(), "rule__Or__SubAssignment_1_2");
 					put(grammarAccess.getAndAccess().getSubAssignment_1_2(), "rule__And__SubAssignment_1_2");
 					put(grammarAccess.getEqualityAccess().getOpAssignment_1_1(), "rule__Equality__OpAssignment_1_1");

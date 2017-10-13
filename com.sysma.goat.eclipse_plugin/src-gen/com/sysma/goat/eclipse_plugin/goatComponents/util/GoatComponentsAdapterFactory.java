@@ -196,6 +196,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createEnvironmentAdapter();
       }
       @Override
+      public Adapter caseEnvironmentDefinition(EnvironmentDefinition object)
+      {
+        return createEnvironmentDefinitionAdapter();
+      }
+      @Override
       public Adapter caseComponentDefinition(ComponentDefinition object)
       {
         return createComponentDefinitionAdapter();
@@ -718,6 +723,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createEnvironmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition <em>Environment Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition
+   * @generated
+   */
+  public Adapter createEnvironmentDefinitionAdapter()
   {
     return null;
   }

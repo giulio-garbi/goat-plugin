@@ -26,7 +26,7 @@ class GoatComponentsNewProjectWizardInitialContents {
 				
 			}
 			
-			component {} P
+			component {} : P
 			'''
 			)
 		

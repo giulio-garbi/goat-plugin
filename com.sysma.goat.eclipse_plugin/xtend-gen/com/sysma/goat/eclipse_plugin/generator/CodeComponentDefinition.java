@@ -5,11 +5,12 @@ import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructureAgent;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessBlock;
 import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.ExclusiveRange;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class CodeComponentDefinition {
@@ -29,32 +30,48 @@ public class CodeComponentDefinition {
     CharSequence _xblockexpression = null;
     {
       final CharSequence infrCode = new CodeInfrastructureAgent(infr).getCode();
+      CharSequence _xifexpression = null;
+      Environment _env = this.cdef.getEnv();
+      boolean _tripleNotEquals = (_env != null);
+      if (_tripleNotEquals) {
+        _xifexpression = this.getCode(this.cdef.getEnv());
+      } else {
+        _xifexpression = this.getCode(this.cdef.getEnvref().getEnv());
+      }
+      final CharSequence envCode = _xifexpression;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(this.compName);
       _builder.append(" := goat.NewComponentWithAttributes(");
       _builder.append(infrCode);
-      _builder.append(",  map[string]interface{}{");
+      _builder.append(",  ");
+      _builder.append(envCode);
+      _builder.append(")");
       _builder.newLineIfNotEmpty();
-      {
-        int _length = ((Object[])Conversions.unwrapArray(this.cdef.getEnv().getAttrs(), Object.class)).length;
-        ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _length, true);
-        for(final Integer i : _doubleDotLessThan) {
-          _builder.append("\t");
-          _builder.append("\"");
-          String _get = this.cdef.getEnv().getAttrs().get((i).intValue());
-          _builder.append(_get, "\t");
-          _builder.append("\" : ");
-          CharSequence _expressionWithoutAttributes = CodeExpression.getExpressionWithoutAttributes(this.cdef.getEnv().getVals().get((i).intValue()));
-          _builder.append(_expressionWithoutAttributes, "\t");
-          _builder.append(",");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      _builder.append("})");
-      _builder.newLine();
       _xblockexpression = _builder;
     }
     return _xblockexpression;
+  }
+  
+  private CharSequence getCode(final Environment env) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("map[string]interface{}{");
+    _builder.newLine();
+    {
+      Iterable<Pair<Integer, String>> _indexed = IterableExtensions.<String>indexed(env.getAttrs());
+      for(final Pair<Integer, String> v : _indexed) {
+        _builder.append("\t");
+        _builder.append("\"");
+        String _value = v.getValue();
+        _builder.append(_value, "\t");
+        _builder.append("\" : ");
+        CharSequence _expressionWithoutAttributes = CodeExpression.getExpressionWithoutAttributes(env.getVals().get((v.getKey()).intValue()));
+        _builder.append(_expressionWithoutAttributes, "\t");
+        _builder.append(",");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    return _builder;
   }
   
   public CharSequence getCode() {

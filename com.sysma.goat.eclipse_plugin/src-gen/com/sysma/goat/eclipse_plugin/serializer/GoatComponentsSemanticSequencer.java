@@ -11,6 +11,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
@@ -120,6 +121,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				return; 
 			case GoatComponentsPackage.ENVIRONMENT:
 				sequence_Environment(context, (Environment) semanticObject); 
+				return; 
+			case GoatComponentsPackage.ENVIRONMENT_DEFINITION:
+				sequence_EnvironmentDefinition(context, (EnvironmentDefinition) semanticObject); 
 				return; 
 			case GoatComponentsPackage.EQUALITY:
 				sequence_Equality(context, (Equality) semanticObject); 
@@ -639,7 +643,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentDefinition returns ComponentDefinition
 	 *
 	 * Constraint:
-	 *     (env=Environment (block=PDPBlock | block=ProcessBlock))
+	 *     ((envref=[EnvironmentDefinition|ID] | env=Environment) (block=PDPBlock | block=ProcessBlock))
 	 */
 	protected void sequence_ComponentDefinition(ISerializationContext context, ComponentDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -720,6 +724,27 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getEnvInitValueAccess().getValueSTRINGTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     EnvironmentDefinition returns EnvironmentDefinition
+	 *
+	 * Constraint:
+	 *     (name=ID env=Environment)
+	 */
+	protected void sequence_EnvironmentDefinition(ISerializationContext context, EnvironmentDefinition semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__NAME));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__ENV) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__ENV));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEnvironmentDefinitionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getEnvironmentDefinitionAccess().getEnvEnvironmentParserRuleCall_2_0(), semanticObject.getEnv());
 		feeder.finish();
 	}
 	
@@ -891,7 +916,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (infrastructure=[Infrastructure|ID] (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition)*)
+	 *     (
+	 *         infrastructure=[Infrastructure|ID] 
+	 *         (processes+=ProcessDefinition | components+=ComponentDefinition | functions+=FuncDefinition | environments+=EnvironmentDefinition)*
+	 *     )
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

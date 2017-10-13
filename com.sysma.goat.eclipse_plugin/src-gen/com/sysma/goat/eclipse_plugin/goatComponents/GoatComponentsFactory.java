@@ -240,6 +240,15 @@ public interface GoatComponentsFactory extends EFactory
   Environment createEnvironment();
 
   /**
+   * Returns a new object of class '<em>Environment Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Environment Definition</em>'.
+   * @generated
+   */
+  EnvironmentDefinition createEnvironmentDefinition();
+
+  /**
    * Returns a new object of class '<em>Component Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

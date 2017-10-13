@@ -4,6 +4,7 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.Model;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getProcesses <em>Processes</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getFunctions <em>Functions</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ModelImpl#getEnvironments <em>Environments</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,6 +86,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<FuncDefinition> functions;
+
+  /**
+   * The cached value of the '{@link #getEnvironments() <em>Environments</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnvironments()
+   * @generated
+   * @ordered
+   */
+  protected EList<EnvironmentDefinition> environments;
 
   /**
    * <!-- begin-user-doc -->
@@ -196,6 +208,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<EnvironmentDefinition> getEnvironments()
+  {
+    if (environments == null)
+    {
+      environments = new EObjectContainmentEList<EnvironmentDefinition>(EnvironmentDefinition.class, this, GoatComponentsPackage.MODEL__ENVIRONMENTS);
+    }
+    return environments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -207,6 +233,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getComponents()).basicRemove(otherEnd, msgs);
       case GoatComponentsPackage.MODEL__FUNCTIONS:
         return ((InternalEList<?>)getFunctions()).basicRemove(otherEnd, msgs);
+      case GoatComponentsPackage.MODEL__ENVIRONMENTS:
+        return ((InternalEList<?>)getEnvironments()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -230,6 +258,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getComponents();
       case GoatComponentsPackage.MODEL__FUNCTIONS:
         return getFunctions();
+      case GoatComponentsPackage.MODEL__ENVIRONMENTS:
+        return getEnvironments();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -260,6 +290,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getFunctions().clear();
         getFunctions().addAll((Collection<? extends FuncDefinition>)newValue);
         return;
+      case GoatComponentsPackage.MODEL__ENVIRONMENTS:
+        getEnvironments().clear();
+        getEnvironments().addAll((Collection<? extends EnvironmentDefinition>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -286,6 +320,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case GoatComponentsPackage.MODEL__FUNCTIONS:
         getFunctions().clear();
         return;
+      case GoatComponentsPackage.MODEL__ENVIRONMENTS:
+        getEnvironments().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -308,6 +345,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return components != null && !components.isEmpty();
       case GoatComponentsPackage.MODEL__FUNCTIONS:
         return functions != null && !functions.isEmpty();
+      case GoatComponentsPackage.MODEL__ENVIRONMENTS:
+        return environments != null && !environments.isEmpty();
     }
     return super.eIsSet(featureID);
   }

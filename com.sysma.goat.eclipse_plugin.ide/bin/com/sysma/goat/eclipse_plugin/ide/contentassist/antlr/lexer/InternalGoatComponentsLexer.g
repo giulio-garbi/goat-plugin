@@ -13,6 +13,8 @@ import org.eclipse.xtext.ide.editor.contentassist.antlr.internal.Lexer;
 
 Infrastructure : 'infrastructure';
 
+Environment : 'environment';
+
 Component : 'component';
 
 Function : 'function';

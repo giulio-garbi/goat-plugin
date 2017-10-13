@@ -2,6 +2,8 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure
+import com.sysma.goat.eclipse_plugin.goatComponents.Environment
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition
 
 class CodeComponentDefinition {
 	
@@ -17,13 +19,19 @@ class CodeComponentDefinition {
 	
 	def getComponentDeclaration(Infrastructure infr){
 		val infrCode = new CodeInfrastructureAgent(infr).code
+		val envCode = if(cdef.env !== null) {getCode(cdef.env)} else {getCode(cdef.envref.env)}
 		'''
-			«compName» := goat.NewComponentWithAttributes(«infrCode»,  map[string]interface{}{
-				«FOR i : 0..<cdef.env.attrs.length»
-					"«cdef.env.attrs.get(i)»" : «CodeExpression.getExpressionWithoutAttributes(cdef.env.vals.get(i))»,
-				«ENDFOR»
-			})
+			«compName» := goat.NewComponentWithAttributes(«infrCode»,  «envCode»)
 		'''
+	}
+	
+	private def getCode(Environment env){
+		'''
+		map[string]interface{}{
+			«FOR v : env.attrs.indexed»
+				"«v.value»" : «CodeExpression.getExpressionWithoutAttributes(env.vals.get(v.key))»,
+			«ENDFOR»
+		}'''
 	}
 	
 	def getCode() {

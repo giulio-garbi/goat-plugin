@@ -10,6 +10,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
@@ -243,6 +244,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass environmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass environmentDefinitionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -561,6 +569,16 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EReference getModel_Functions()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Environments()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1108,6 +1126,36 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEnvironmentDefinition()
+  {
+    return environmentDefinitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEnvironmentDefinition_Name()
+  {
+    return (EAttribute)environmentDefinitionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnvironmentDefinition_Env()
+  {
+    return (EReference)environmentDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getComponentDefinition()
   {
     return componentDefinitionEClass;
@@ -1118,7 +1166,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentDefinition_Env()
+  public EReference getComponentDefinition_Envref()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(0);
   }
@@ -1128,9 +1176,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentDefinition_Block()
+  public EReference getComponentDefinition_Env()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComponentDefinition_Block()
+  {
+    return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1878,6 +1936,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEReference(modelEClass, MODEL__PROCESSES);
     createEReference(modelEClass, MODEL__COMPONENTS);
     createEReference(modelEClass, MODEL__FUNCTIONS);
+    createEReference(modelEClass, MODEL__ENVIRONMENTS);
 
     processDefinitionEClass = createEClass(PROCESS_DEFINITION);
     createEAttribute(processDefinitionEClass, PROCESS_DEFINITION__NAME);
@@ -1956,7 +2015,12 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEAttribute(environmentEClass, ENVIRONMENT__ATTRS);
     createEReference(environmentEClass, ENVIRONMENT__VALS);
 
+    environmentDefinitionEClass = createEClass(ENVIRONMENT_DEFINITION);
+    createEAttribute(environmentDefinitionEClass, ENVIRONMENT_DEFINITION__NAME);
+    createEReference(environmentDefinitionEClass, ENVIRONMENT_DEFINITION__ENV);
+
     componentDefinitionEClass = createEClass(COMPONENT_DEFINITION);
+    createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENVREF);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENV);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__BLOCK);
 
@@ -2136,6 +2200,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEReference(getModel_Processes(), this.getProcessDefinition(), null, "processes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Components(), this.getComponentDefinition(), null, "components", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Functions(), this.getFuncDefinition(), null, "functions", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Environments(), this.getEnvironmentDefinition(), null, "environments", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(processDefinitionEClass, ProcessDefinition.class, "ProcessDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProcessDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, ProcessDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2214,7 +2279,12 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEAttribute(getEnvironment_Attrs(), ecorePackage.getEString(), "attrs", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnvironment_Vals(), this.getExpression(), null, "vals", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(environmentDefinitionEClass, EnvironmentDefinition.class, "EnvironmentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnvironmentDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnvironmentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironmentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, EnvironmentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(componentDefinitionEClass, ComponentDefinition.class, "ComponentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComponentDefinition_Envref(), this.getEnvironmentDefinition(), null, "envref", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Block(), this.getProcessBlock(), null, "block", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

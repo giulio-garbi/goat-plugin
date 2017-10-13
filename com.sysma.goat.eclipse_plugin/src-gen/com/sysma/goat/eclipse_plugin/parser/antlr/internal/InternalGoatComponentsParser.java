@@ -21,68 +21,69 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Infrastructure", "Component", "Function", "Receiver", "Process", "Receive", "Waitfor", "Return", "False", "Print", "Spawn", "Call", "Case", "Comp", "Else", "Loop", "Proc", "Send", "True", "Set", "Var", "ExclamationMarkEqualsSign", "AmpersandAmpersand", "PlusSignPlusSign", "ColonEqualsSign", "LessThanSignEqualsSign", "EqualsSignEqualsSign", "GreaterThanSignEqualsSign", "If", "VerticalLineVerticalLine", "ExclamationMark", "PercentSign", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "Colon", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "CommercialAt", "LeftSquareBracket", "RightSquareBracket", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_TYPE", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "Infrastructure", "Environment", "Component", "Function", "Receiver", "Process", "Receive", "Waitfor", "Return", "False", "Print", "Spawn", "Call", "Case", "Comp", "Else", "Loop", "Proc", "Send", "True", "Set", "Var", "ExclamationMarkEqualsSign", "AmpersandAmpersand", "PlusSignPlusSign", "ColonEqualsSign", "LessThanSignEqualsSign", "EqualsSignEqualsSign", "GreaterThanSignEqualsSign", "If", "VerticalLineVerticalLine", "ExclamationMark", "PercentSign", "LeftParenthesis", "RightParenthesis", "Asterisk", "PlusSign", "Comma", "HyphenMinus", "FullStop", "Solidus", "Colon", "Semicolon", "LessThanSign", "EqualsSign", "GreaterThanSign", "CommercialAt", "LeftSquareBracket", "RightSquareBracket", "LeftCurlyBracket", "VerticalLine", "RightCurlyBracket", "RULE_TYPE", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER"
     };
-    public static final int Var=24;
-    public static final int True=22;
-    public static final int Process=8;
-    public static final int False=12;
-    public static final int LessThanSign=46;
-    public static final int Comp=17;
-    public static final int Send=21;
-    public static final int Print=13;
-    public static final int PercentSign=35;
-    public static final int LeftParenthesis=36;
-    public static final int Spawn=14;
-    public static final int RightSquareBracket=51;
-    public static final int ExclamationMark=34;
-    public static final int GreaterThanSign=48;
-    public static final int RULE_ID=56;
-    public static final int RightParenthesis=37;
-    public static final int Receiver=7;
-    public static final int ColonEqualsSign=28;
-    public static final int GreaterThanSignEqualsSign=31;
-    public static final int EqualsSignEqualsSign=30;
-    public static final int RULE_TYPE=55;
-    public static final int VerticalLine=53;
-    public static final int PlusSign=39;
-    public static final int RULE_INT=57;
-    public static final int RULE_ML_COMMENT=59;
-    public static final int LeftSquareBracket=50;
-    public static final int If=32;
-    public static final int Set=23;
-    public static final int VerticalLineVerticalLine=33;
-    public static final int RULE_STRING=58;
-    public static final int Case=16;
-    public static final int RULE_SL_COMMENT=60;
-    public static final int Proc=20;
-    public static final int Function=6;
-    public static final int Comma=40;
-    public static final int EqualsSign=47;
-    public static final int HyphenMinus=41;
-    public static final int AmpersandAmpersand=26;
-    public static final int Waitfor=10;
+    public static final int Var=25;
+    public static final int True=23;
+    public static final int Process=9;
+    public static final int False=13;
+    public static final int LessThanSign=47;
+    public static final int Comp=18;
+    public static final int Send=22;
+    public static final int Print=14;
+    public static final int PercentSign=36;
+    public static final int LeftParenthesis=37;
+    public static final int Spawn=15;
+    public static final int RightSquareBracket=52;
+    public static final int ExclamationMark=35;
+    public static final int GreaterThanSign=49;
+    public static final int RULE_ID=57;
+    public static final int RightParenthesis=38;
+    public static final int Receiver=8;
+    public static final int ColonEqualsSign=29;
+    public static final int GreaterThanSignEqualsSign=32;
+    public static final int EqualsSignEqualsSign=31;
+    public static final int RULE_TYPE=56;
+    public static final int VerticalLine=54;
+    public static final int PlusSign=40;
+    public static final int RULE_INT=58;
+    public static final int RULE_ML_COMMENT=60;
+    public static final int Environment=5;
+    public static final int LeftSquareBracket=51;
+    public static final int If=33;
+    public static final int Set=24;
+    public static final int VerticalLineVerticalLine=34;
+    public static final int RULE_STRING=59;
+    public static final int Case=17;
+    public static final int RULE_SL_COMMENT=61;
+    public static final int Proc=21;
+    public static final int Function=7;
+    public static final int Comma=41;
+    public static final int EqualsSign=48;
+    public static final int HyphenMinus=42;
+    public static final int AmpersandAmpersand=27;
+    public static final int Waitfor=11;
     public static final int Infrastructure=4;
-    public static final int LessThanSignEqualsSign=29;
-    public static final int Solidus=43;
-    public static final int Colon=44;
-    public static final int RightCurlyBracket=54;
-    public static final int Component=5;
+    public static final int LessThanSignEqualsSign=30;
+    public static final int Solidus=44;
+    public static final int Colon=45;
+    public static final int RightCurlyBracket=55;
+    public static final int Component=6;
     public static final int EOF=-1;
-    public static final int Asterisk=38;
-    public static final int Loop=19;
-    public static final int Call=15;
-    public static final int FullStop=42;
-    public static final int Return=11;
-    public static final int RULE_WS=61;
-    public static final int LeftCurlyBracket=52;
-    public static final int RULE_ANY_OTHER=62;
-    public static final int CommercialAt=49;
-    public static final int Semicolon=45;
-    public static final int PlusSignPlusSign=27;
-    public static final int Receive=9;
-    public static final int Else=18;
-    public static final int ExclamationMarkEqualsSign=25;
+    public static final int Asterisk=39;
+    public static final int Loop=20;
+    public static final int Call=16;
+    public static final int FullStop=43;
+    public static final int Return=12;
+    public static final int RULE_WS=62;
+    public static final int LeftCurlyBracket=53;
+    public static final int RULE_ANY_OTHER=63;
+    public static final int CommercialAt=50;
+    public static final int Semicolon=46;
+    public static final int PlusSignPlusSign=28;
+    public static final int Receive=10;
+    public static final int Else=19;
+    public static final int ExclamationMarkEqualsSign=26;
 
     // delegates
     // delegators
@@ -160,7 +161,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModel"
-    // InternalGoatComponentsParser.g:64:1: ruleModel returns [EObject current=null] : ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )* ) ;
+    // InternalGoatComponentsParser.g:64:1: ruleModel returns [EObject current=null] : ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )* ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
@@ -172,16 +173,18 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
         EObject lv_functions_5_0 = null;
 
+        EObject lv_environments_6_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:70:2: ( ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )* ) )
-            // InternalGoatComponentsParser.g:71:2: ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )* )
+            // InternalGoatComponentsParser.g:70:2: ( ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )* ) )
+            // InternalGoatComponentsParser.g:71:2: ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )* )
             {
-            // InternalGoatComponentsParser.g:71:2: ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )* )
-            // InternalGoatComponentsParser.g:72:3: () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )*
+            // InternalGoatComponentsParser.g:71:2: ( () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )* )
+            // InternalGoatComponentsParser.g:72:3: () otherlv_1= Infrastructure ( (otherlv_2= RULE_ID ) ) ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )*
             {
             // InternalGoatComponentsParser.g:72:3: ()
             // InternalGoatComponentsParser.g:73:4: 
@@ -219,10 +222,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:96:3: ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) )*
+            // InternalGoatComponentsParser.g:96:3: ( ( (lv_processes_3_0= ruleProcessDefinition ) ) | ( (lv_components_4_0= ruleComponentDefinition ) ) | ( (lv_functions_5_0= ruleFuncDefinition ) ) | ( (lv_environments_6_0= ruleEnvironmentDefinition ) ) )*
             loop1:
             do {
-                int alt1=4;
+                int alt1=5;
                 switch ( input.LA(1) ) {
                 case Process:
                     {
@@ -237,6 +240,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                 case Function:
                     {
                     alt1=3;
+                    }
+                    break;
+                case Environment:
+                    {
+                    alt1=4;
                     }
                     break;
 
@@ -354,6 +362,43 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    }
             	    break;
+            	case 4 :
+            	    // InternalGoatComponentsParser.g:157:4: ( (lv_environments_6_0= ruleEnvironmentDefinition ) )
+            	    {
+            	    // InternalGoatComponentsParser.g:157:4: ( (lv_environments_6_0= ruleEnvironmentDefinition ) )
+            	    // InternalGoatComponentsParser.g:158:5: (lv_environments_6_0= ruleEnvironmentDefinition )
+            	    {
+            	    // InternalGoatComponentsParser.g:158:5: (lv_environments_6_0= ruleEnvironmentDefinition )
+            	    // InternalGoatComponentsParser.g:159:6: lv_environments_6_0= ruleEnvironmentDefinition
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getModelAccess().getEnvironmentsEnvironmentDefinitionParserRuleCall_3_3_0());
+            	    					
+            	    pushFollow(FOLLOW_4);
+            	    lv_environments_6_0=ruleEnvironmentDefinition();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getModelRule());
+            	    						}
+            	    						add(
+            	    							current,
+            	    							"environments",
+            	    							lv_environments_6_0,
+            	    							"com.sysma.goat.eclipse_plugin.GoatComponents.EnvironmentDefinition");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
 
             	default :
             	    break loop1;
@@ -383,7 +428,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessDefinition"
-    // InternalGoatComponentsParser.g:161:1: entryRuleProcessDefinition returns [EObject current=null] : iv_ruleProcessDefinition= ruleProcessDefinition EOF ;
+    // InternalGoatComponentsParser.g:181:1: entryRuleProcessDefinition returns [EObject current=null] : iv_ruleProcessDefinition= ruleProcessDefinition EOF ;
     public final EObject entryRuleProcessDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -391,8 +436,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:161:58: (iv_ruleProcessDefinition= ruleProcessDefinition EOF )
-            // InternalGoatComponentsParser.g:162:2: iv_ruleProcessDefinition= ruleProcessDefinition EOF
+            // InternalGoatComponentsParser.g:181:58: (iv_ruleProcessDefinition= ruleProcessDefinition EOF )
+            // InternalGoatComponentsParser.g:182:2: iv_ruleProcessDefinition= ruleProcessDefinition EOF
             {
              newCompositeNode(grammarAccess.getProcessDefinitionRule()); 
             pushFollow(FOLLOW_1);
@@ -419,7 +464,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessDefinition"
-    // InternalGoatComponentsParser.g:168:1: ruleProcessDefinition returns [EObject current=null] : (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) ) ;
+    // InternalGoatComponentsParser.g:188:1: ruleProcessDefinition returns [EObject current=null] : (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) ) ;
     public final EObject ruleProcessDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -435,21 +480,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:174:2: ( (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) ) )
-            // InternalGoatComponentsParser.g:175:2: (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:194:2: ( (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) ) )
+            // InternalGoatComponentsParser.g:195:2: (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) )
             {
-            // InternalGoatComponentsParser.g:175:2: (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) )
-            // InternalGoatComponentsParser.g:176:3: otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:195:2: (otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:196:3: otherlv_0= Process ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) )
             {
             otherlv_0=(Token)match(input,Process,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessDefinitionAccess().getProcessKeyword_0());
             		
-            // InternalGoatComponentsParser.g:180:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:181:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:200:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:201:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:181:4: (lv_name_1_0= RULE_ID )
-            // InternalGoatComponentsParser.g:182:5: lv_name_1_0= RULE_ID
+            // InternalGoatComponentsParser.g:201:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:202:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_5); 
 
@@ -471,7 +516,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:198:3: ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:218:3: ( (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) ) | ( (lv_block_4_0= ruleProcessBlock ) ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -489,20 +534,20 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:199:4: (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) )
+                    // InternalGoatComponentsParser.g:219:4: (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) )
                     {
-                    // InternalGoatComponentsParser.g:199:4: (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) )
-                    // InternalGoatComponentsParser.g:200:5: otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) )
+                    // InternalGoatComponentsParser.g:219:4: (otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) ) )
+                    // InternalGoatComponentsParser.g:220:5: otherlv_2= EqualsSign ( (lv_block_3_0= rulePDPBlock ) )
                     {
                     otherlv_2=(Token)match(input,EqualsSign,FOLLOW_3); 
 
                     					newLeafNode(otherlv_2, grammarAccess.getProcessDefinitionAccess().getEqualsSignKeyword_2_0_0());
                     				
-                    // InternalGoatComponentsParser.g:204:5: ( (lv_block_3_0= rulePDPBlock ) )
-                    // InternalGoatComponentsParser.g:205:6: (lv_block_3_0= rulePDPBlock )
+                    // InternalGoatComponentsParser.g:224:5: ( (lv_block_3_0= rulePDPBlock ) )
+                    // InternalGoatComponentsParser.g:225:6: (lv_block_3_0= rulePDPBlock )
                     {
-                    // InternalGoatComponentsParser.g:205:6: (lv_block_3_0= rulePDPBlock )
-                    // InternalGoatComponentsParser.g:206:7: lv_block_3_0= rulePDPBlock
+                    // InternalGoatComponentsParser.g:225:6: (lv_block_3_0= rulePDPBlock )
+                    // InternalGoatComponentsParser.g:226:7: lv_block_3_0= rulePDPBlock
                     {
 
                     							newCompositeNode(grammarAccess.getProcessDefinitionAccess().getBlockPDPBlockParserRuleCall_2_0_1_0());
@@ -536,13 +581,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:225:4: ( (lv_block_4_0= ruleProcessBlock ) )
+                    // InternalGoatComponentsParser.g:245:4: ( (lv_block_4_0= ruleProcessBlock ) )
                     {
-                    // InternalGoatComponentsParser.g:225:4: ( (lv_block_4_0= ruleProcessBlock ) )
-                    // InternalGoatComponentsParser.g:226:5: (lv_block_4_0= ruleProcessBlock )
+                    // InternalGoatComponentsParser.g:245:4: ( (lv_block_4_0= ruleProcessBlock ) )
+                    // InternalGoatComponentsParser.g:246:5: (lv_block_4_0= ruleProcessBlock )
                     {
-                    // InternalGoatComponentsParser.g:226:5: (lv_block_4_0= ruleProcessBlock )
-                    // InternalGoatComponentsParser.g:227:6: lv_block_4_0= ruleProcessBlock
+                    // InternalGoatComponentsParser.g:246:5: (lv_block_4_0= ruleProcessBlock )
+                    // InternalGoatComponentsParser.g:247:6: lv_block_4_0= ruleProcessBlock
                     {
 
                     						newCompositeNode(grammarAccess.getProcessDefinitionAccess().getBlockProcessBlockParserRuleCall_2_1_0());
@@ -598,7 +643,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePDPBlock"
-    // InternalGoatComponentsParser.g:249:1: entryRulePDPBlock returns [EObject current=null] : iv_rulePDPBlock= rulePDPBlock EOF ;
+    // InternalGoatComponentsParser.g:269:1: entryRulePDPBlock returns [EObject current=null] : iv_rulePDPBlock= rulePDPBlock EOF ;
     public final EObject entryRulePDPBlock() throws RecognitionException {
         EObject current = null;
 
@@ -606,8 +651,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:249:49: (iv_rulePDPBlock= rulePDPBlock EOF )
-            // InternalGoatComponentsParser.g:250:2: iv_rulePDPBlock= rulePDPBlock EOF
+            // InternalGoatComponentsParser.g:269:49: (iv_rulePDPBlock= rulePDPBlock EOF )
+            // InternalGoatComponentsParser.g:270:2: iv_rulePDPBlock= rulePDPBlock EOF
             {
              newCompositeNode(grammarAccess.getPDPBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -634,7 +679,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePDPBlock"
-    // InternalGoatComponentsParser.g:256:1: rulePDPBlock returns [EObject current=null] : ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) ) ;
+    // InternalGoatComponentsParser.g:276:1: rulePDPBlock returns [EObject current=null] : ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) ) ;
     public final EObject rulePDPBlock() throws RecognitionException {
         EObject current = null;
 
@@ -648,13 +693,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:262:2: ( ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) ) )
-            // InternalGoatComponentsParser.g:263:2: ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) )
+            // InternalGoatComponentsParser.g:282:2: ( ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) ) )
+            // InternalGoatComponentsParser.g:283:2: ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) )
             {
-            // InternalGoatComponentsParser.g:263:2: ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) )
-            // InternalGoatComponentsParser.g:264:3: ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) )
+            // InternalGoatComponentsParser.g:283:2: ( ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) ) )
+            // InternalGoatComponentsParser.g:284:3: ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )* ( (lv_statements_2_0= rulePDPCall ) )
             {
-            // InternalGoatComponentsParser.g:264:3: ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )*
+            // InternalGoatComponentsParser.g:284:3: ( ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine )*
             loop3:
             do {
                 int alt3=2;
@@ -673,13 +718,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:265:4: ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine
+            	    // InternalGoatComponentsParser.g:285:4: ( (lv_statements_0_0= rulePDPSpawn ) ) otherlv_1= VerticalLine
             	    {
-            	    // InternalGoatComponentsParser.g:265:4: ( (lv_statements_0_0= rulePDPSpawn ) )
-            	    // InternalGoatComponentsParser.g:266:5: (lv_statements_0_0= rulePDPSpawn )
+            	    // InternalGoatComponentsParser.g:285:4: ( (lv_statements_0_0= rulePDPSpawn ) )
+            	    // InternalGoatComponentsParser.g:286:5: (lv_statements_0_0= rulePDPSpawn )
             	    {
-            	    // InternalGoatComponentsParser.g:266:5: (lv_statements_0_0= rulePDPSpawn )
-            	    // InternalGoatComponentsParser.g:267:6: lv_statements_0_0= rulePDPSpawn
+            	    // InternalGoatComponentsParser.g:286:5: (lv_statements_0_0= rulePDPSpawn )
+            	    // InternalGoatComponentsParser.g:287:6: lv_statements_0_0= rulePDPSpawn
             	    {
 
             	    						newCompositeNode(grammarAccess.getPDPBlockAccess().getStatementsPDPSpawnParserRuleCall_0_0_0());
@@ -719,11 +764,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalGoatComponentsParser.g:289:3: ( (lv_statements_2_0= rulePDPCall ) )
-            // InternalGoatComponentsParser.g:290:4: (lv_statements_2_0= rulePDPCall )
+            // InternalGoatComponentsParser.g:309:3: ( (lv_statements_2_0= rulePDPCall ) )
+            // InternalGoatComponentsParser.g:310:4: (lv_statements_2_0= rulePDPCall )
             {
-            // InternalGoatComponentsParser.g:290:4: (lv_statements_2_0= rulePDPCall )
-            // InternalGoatComponentsParser.g:291:5: lv_statements_2_0= rulePDPCall
+            // InternalGoatComponentsParser.g:310:4: (lv_statements_2_0= rulePDPCall )
+            // InternalGoatComponentsParser.g:311:5: lv_statements_2_0= rulePDPCall
             {
 
             					newCompositeNode(grammarAccess.getPDPBlockAccess().getStatementsPDPCallParserRuleCall_1_0());
@@ -773,7 +818,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePDPSpawn"
-    // InternalGoatComponentsParser.g:312:1: entryRulePDPSpawn returns [EObject current=null] : iv_rulePDPSpawn= rulePDPSpawn EOF ;
+    // InternalGoatComponentsParser.g:332:1: entryRulePDPSpawn returns [EObject current=null] : iv_rulePDPSpawn= rulePDPSpawn EOF ;
     public final EObject entryRulePDPSpawn() throws RecognitionException {
         EObject current = null;
 
@@ -781,8 +826,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:312:49: (iv_rulePDPSpawn= rulePDPSpawn EOF )
-            // InternalGoatComponentsParser.g:313:2: iv_rulePDPSpawn= rulePDPSpawn EOF
+            // InternalGoatComponentsParser.g:332:49: (iv_rulePDPSpawn= rulePDPSpawn EOF )
+            // InternalGoatComponentsParser.g:333:2: iv_rulePDPSpawn= rulePDPSpawn EOF
             {
              newCompositeNode(grammarAccess.getPDPSpawnRule()); 
             pushFollow(FOLLOW_1);
@@ -809,7 +854,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePDPSpawn"
-    // InternalGoatComponentsParser.g:319:1: rulePDPSpawn returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // InternalGoatComponentsParser.g:339:1: rulePDPSpawn returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject rulePDPSpawn() throws RecognitionException {
         EObject current = null;
 
@@ -819,14 +864,14 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:325:2: ( ( (otherlv_0= RULE_ID ) ) )
-            // InternalGoatComponentsParser.g:326:2: ( (otherlv_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:345:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:346:2: ( (otherlv_0= RULE_ID ) )
             {
-            // InternalGoatComponentsParser.g:326:2: ( (otherlv_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:327:3: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:346:2: ( (otherlv_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:347:3: (otherlv_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:327:3: (otherlv_0= RULE_ID )
-            // InternalGoatComponentsParser.g:328:4: otherlv_0= RULE_ID
+            // InternalGoatComponentsParser.g:347:3: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:348:4: otherlv_0= RULE_ID
             {
 
             				if (current==null) {
@@ -863,7 +908,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePDPCall"
-    // InternalGoatComponentsParser.g:342:1: entryRulePDPCall returns [EObject current=null] : iv_rulePDPCall= rulePDPCall EOF ;
+    // InternalGoatComponentsParser.g:362:1: entryRulePDPCall returns [EObject current=null] : iv_rulePDPCall= rulePDPCall EOF ;
     public final EObject entryRulePDPCall() throws RecognitionException {
         EObject current = null;
 
@@ -871,8 +916,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:342:48: (iv_rulePDPCall= rulePDPCall EOF )
-            // InternalGoatComponentsParser.g:343:2: iv_rulePDPCall= rulePDPCall EOF
+            // InternalGoatComponentsParser.g:362:48: (iv_rulePDPCall= rulePDPCall EOF )
+            // InternalGoatComponentsParser.g:363:2: iv_rulePDPCall= rulePDPCall EOF
             {
              newCompositeNode(grammarAccess.getPDPCallRule()); 
             pushFollow(FOLLOW_1);
@@ -899,7 +944,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePDPCall"
-    // InternalGoatComponentsParser.g:349:1: rulePDPCall returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // InternalGoatComponentsParser.g:369:1: rulePDPCall returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject rulePDPCall() throws RecognitionException {
         EObject current = null;
 
@@ -909,14 +954,14 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:355:2: ( ( (otherlv_0= RULE_ID ) ) )
-            // InternalGoatComponentsParser.g:356:2: ( (otherlv_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:375:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:376:2: ( (otherlv_0= RULE_ID ) )
             {
-            // InternalGoatComponentsParser.g:356:2: ( (otherlv_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:357:3: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:376:2: ( (otherlv_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:377:3: (otherlv_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:357:3: (otherlv_0= RULE_ID )
-            // InternalGoatComponentsParser.g:358:4: otherlv_0= RULE_ID
+            // InternalGoatComponentsParser.g:377:3: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:378:4: otherlv_0= RULE_ID
             {
 
             				if (current==null) {
@@ -953,7 +998,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessBlock"
-    // InternalGoatComponentsParser.g:372:1: entryRuleProcessBlock returns [EObject current=null] : iv_ruleProcessBlock= ruleProcessBlock EOF ;
+    // InternalGoatComponentsParser.g:392:1: entryRuleProcessBlock returns [EObject current=null] : iv_ruleProcessBlock= ruleProcessBlock EOF ;
     public final EObject entryRuleProcessBlock() throws RecognitionException {
         EObject current = null;
 
@@ -961,8 +1006,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:372:53: (iv_ruleProcessBlock= ruleProcessBlock EOF )
-            // InternalGoatComponentsParser.g:373:2: iv_ruleProcessBlock= ruleProcessBlock EOF
+            // InternalGoatComponentsParser.g:392:53: (iv_ruleProcessBlock= ruleProcessBlock EOF )
+            // InternalGoatComponentsParser.g:393:2: iv_ruleProcessBlock= ruleProcessBlock EOF
             {
              newCompositeNode(grammarAccess.getProcessBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -989,7 +1034,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessBlock"
-    // InternalGoatComponentsParser.g:379:1: ruleProcessBlock returns [EObject current=null] : (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket ) ;
+    // InternalGoatComponentsParser.g:399:1: ruleProcessBlock returns [EObject current=null] : (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket ) ;
     public final EObject ruleProcessBlock() throws RecognitionException {
         EObject current = null;
 
@@ -1002,18 +1047,18 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:385:2: ( (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket ) )
-            // InternalGoatComponentsParser.g:386:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:405:2: ( (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket ) )
+            // InternalGoatComponentsParser.g:406:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket )
             {
-            // InternalGoatComponentsParser.g:386:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket )
-            // InternalGoatComponentsParser.g:387:3: otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket
+            // InternalGoatComponentsParser.g:406:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:407:3: otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleProcessStatement ) )* otherlv_3= RightCurlyBracket
             {
             otherlv_0=(Token)match(input,LeftCurlyBracket,FOLLOW_7); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessBlockAccess().getLeftCurlyBracketKeyword_0());
             		
-            // InternalGoatComponentsParser.g:391:3: ()
-            // InternalGoatComponentsParser.g:392:4: 
+            // InternalGoatComponentsParser.g:411:3: ()
+            // InternalGoatComponentsParser.g:412:4: 
             {
 
             				current = forceCreateModelElement(
@@ -1023,7 +1068,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:398:3: ( (lv_statements_2_0= ruleProcessStatement ) )*
+            // InternalGoatComponentsParser.g:418:3: ( (lv_statements_2_0= ruleProcessStatement ) )*
             loop4:
             do {
                 int alt4=2;
@@ -1036,10 +1081,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:399:4: (lv_statements_2_0= ruleProcessStatement )
+            	    // InternalGoatComponentsParser.g:419:4: (lv_statements_2_0= ruleProcessStatement )
             	    {
-            	    // InternalGoatComponentsParser.g:399:4: (lv_statements_2_0= ruleProcessStatement )
-            	    // InternalGoatComponentsParser.g:400:5: lv_statements_2_0= ruleProcessStatement
+            	    // InternalGoatComponentsParser.g:419:4: (lv_statements_2_0= ruleProcessStatement )
+            	    // InternalGoatComponentsParser.g:420:5: lv_statements_2_0= ruleProcessStatement
             	    {
 
             	    					newCompositeNode(grammarAccess.getProcessBlockAccess().getStatementsProcessStatementParserRuleCall_2_0());
@@ -1099,7 +1144,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessStatement"
-    // InternalGoatComponentsParser.g:425:1: entryRuleProcessStatement returns [EObject current=null] : iv_ruleProcessStatement= ruleProcessStatement EOF ;
+    // InternalGoatComponentsParser.g:445:1: entryRuleProcessStatement returns [EObject current=null] : iv_ruleProcessStatement= ruleProcessStatement EOF ;
     public final EObject entryRuleProcessStatement() throws RecognitionException {
         EObject current = null;
 
@@ -1107,8 +1152,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:425:57: (iv_ruleProcessStatement= ruleProcessStatement EOF )
-            // InternalGoatComponentsParser.g:426:2: iv_ruleProcessStatement= ruleProcessStatement EOF
+            // InternalGoatComponentsParser.g:445:57: (iv_ruleProcessStatement= ruleProcessStatement EOF )
+            // InternalGoatComponentsParser.g:446:2: iv_ruleProcessStatement= ruleProcessStatement EOF
             {
              newCompositeNode(grammarAccess.getProcessStatementRule()); 
             pushFollow(FOLLOW_1);
@@ -1135,7 +1180,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessStatement"
-    // InternalGoatComponentsParser.g:432:1: ruleProcessStatement returns [EObject current=null] : (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop ) ;
+    // InternalGoatComponentsParser.g:452:1: ruleProcessStatement returns [EObject current=null] : (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop ) ;
     public final EObject ruleProcessStatement() throws RecognitionException {
         EObject current = null;
 
@@ -1160,10 +1205,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:438:2: ( (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop ) )
-            // InternalGoatComponentsParser.g:439:2: (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop )
+            // InternalGoatComponentsParser.g:458:2: ( (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop ) )
+            // InternalGoatComponentsParser.g:459:2: (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop )
             {
-            // InternalGoatComponentsParser.g:439:2: (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop )
+            // InternalGoatComponentsParser.g:459:2: (this_ProcessSpawn_0= ruleProcessSpawn | this_ProcessCall_1= ruleProcessCall | this_ProcessSend_2= ruleProcessSend | this_ProcessReceive_3= ruleProcessReceive | this_ProcessIf_4= ruleProcessIf | this_ProcessSet_5= ruleProcessSet | this_ProcessWaitFor_6= ruleProcessWaitFor | this_ProcessLoop_7= ruleProcessLoop )
             int alt5=8;
             switch ( input.LA(1) ) {
             case Spawn:
@@ -1215,7 +1260,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:440:3: this_ProcessSpawn_0= ruleProcessSpawn
+                    // InternalGoatComponentsParser.g:460:3: this_ProcessSpawn_0= ruleProcessSpawn
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessSpawnParserRuleCall_0());
@@ -1233,7 +1278,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:449:3: this_ProcessCall_1= ruleProcessCall
+                    // InternalGoatComponentsParser.g:469:3: this_ProcessCall_1= ruleProcessCall
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessCallParserRuleCall_1());
@@ -1251,7 +1296,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:458:3: this_ProcessSend_2= ruleProcessSend
+                    // InternalGoatComponentsParser.g:478:3: this_ProcessSend_2= ruleProcessSend
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessSendParserRuleCall_2());
@@ -1269,7 +1314,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGoatComponentsParser.g:467:3: this_ProcessReceive_3= ruleProcessReceive
+                    // InternalGoatComponentsParser.g:487:3: this_ProcessReceive_3= ruleProcessReceive
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessReceiveParserRuleCall_3());
@@ -1287,7 +1332,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalGoatComponentsParser.g:476:3: this_ProcessIf_4= ruleProcessIf
+                    // InternalGoatComponentsParser.g:496:3: this_ProcessIf_4= ruleProcessIf
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessIfParserRuleCall_4());
@@ -1305,7 +1350,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalGoatComponentsParser.g:485:3: this_ProcessSet_5= ruleProcessSet
+                    // InternalGoatComponentsParser.g:505:3: this_ProcessSet_5= ruleProcessSet
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessSetParserRuleCall_5());
@@ -1323,7 +1368,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalGoatComponentsParser.g:494:3: this_ProcessWaitFor_6= ruleProcessWaitFor
+                    // InternalGoatComponentsParser.g:514:3: this_ProcessWaitFor_6= ruleProcessWaitFor
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessWaitForParserRuleCall_6());
@@ -1341,7 +1386,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalGoatComponentsParser.g:503:3: this_ProcessLoop_7= ruleProcessLoop
+                    // InternalGoatComponentsParser.g:523:3: this_ProcessLoop_7= ruleProcessLoop
                     {
 
                     			newCompositeNode(grammarAccess.getProcessStatementAccess().getProcessLoopParserRuleCall_7());
@@ -1381,7 +1426,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessSpawn"
-    // InternalGoatComponentsParser.g:515:1: entryRuleProcessSpawn returns [EObject current=null] : iv_ruleProcessSpawn= ruleProcessSpawn EOF ;
+    // InternalGoatComponentsParser.g:535:1: entryRuleProcessSpawn returns [EObject current=null] : iv_ruleProcessSpawn= ruleProcessSpawn EOF ;
     public final EObject entryRuleProcessSpawn() throws RecognitionException {
         EObject current = null;
 
@@ -1389,8 +1434,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:515:53: (iv_ruleProcessSpawn= ruleProcessSpawn EOF )
-            // InternalGoatComponentsParser.g:516:2: iv_ruleProcessSpawn= ruleProcessSpawn EOF
+            // InternalGoatComponentsParser.g:535:53: (iv_ruleProcessSpawn= ruleProcessSpawn EOF )
+            // InternalGoatComponentsParser.g:536:2: iv_ruleProcessSpawn= ruleProcessSpawn EOF
             {
              newCompositeNode(grammarAccess.getProcessSpawnRule()); 
             pushFollow(FOLLOW_1);
@@ -1417,7 +1462,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessSpawn"
-    // InternalGoatComponentsParser.g:522:1: ruleProcessSpawn returns [EObject current=null] : (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) ;
+    // InternalGoatComponentsParser.g:542:1: ruleProcessSpawn returns [EObject current=null] : (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) ;
     public final EObject ruleProcessSpawn() throws RecognitionException {
         EObject current = null;
 
@@ -1430,11 +1475,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:528:2: ( (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) )
-            // InternalGoatComponentsParser.g:529:2: (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:548:2: ( (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) )
+            // InternalGoatComponentsParser.g:549:2: (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
             {
-            // InternalGoatComponentsParser.g:529:2: (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
-            // InternalGoatComponentsParser.g:530:3: otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis
+            // InternalGoatComponentsParser.g:549:2: (otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:550:3: otherlv_0= Spawn otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis
             {
             otherlv_0=(Token)match(input,Spawn,FOLLOW_8); 
 
@@ -1444,11 +1489,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessSpawnAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:538:3: ( (otherlv_2= RULE_ID ) )
-            // InternalGoatComponentsParser.g:539:4: (otherlv_2= RULE_ID )
+            // InternalGoatComponentsParser.g:558:3: ( (otherlv_2= RULE_ID ) )
+            // InternalGoatComponentsParser.g:559:4: (otherlv_2= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:539:4: (otherlv_2= RULE_ID )
-            // InternalGoatComponentsParser.g:540:5: otherlv_2= RULE_ID
+            // InternalGoatComponentsParser.g:559:4: (otherlv_2= RULE_ID )
+            // InternalGoatComponentsParser.g:560:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -1492,7 +1537,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessCall"
-    // InternalGoatComponentsParser.g:559:1: entryRuleProcessCall returns [EObject current=null] : iv_ruleProcessCall= ruleProcessCall EOF ;
+    // InternalGoatComponentsParser.g:579:1: entryRuleProcessCall returns [EObject current=null] : iv_ruleProcessCall= ruleProcessCall EOF ;
     public final EObject entryRuleProcessCall() throws RecognitionException {
         EObject current = null;
 
@@ -1500,8 +1545,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:559:52: (iv_ruleProcessCall= ruleProcessCall EOF )
-            // InternalGoatComponentsParser.g:560:2: iv_ruleProcessCall= ruleProcessCall EOF
+            // InternalGoatComponentsParser.g:579:52: (iv_ruleProcessCall= ruleProcessCall EOF )
+            // InternalGoatComponentsParser.g:580:2: iv_ruleProcessCall= ruleProcessCall EOF
             {
              newCompositeNode(grammarAccess.getProcessCallRule()); 
             pushFollow(FOLLOW_1);
@@ -1528,7 +1573,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessCall"
-    // InternalGoatComponentsParser.g:566:1: ruleProcessCall returns [EObject current=null] : (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) ;
+    // InternalGoatComponentsParser.g:586:1: ruleProcessCall returns [EObject current=null] : (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) ;
     public final EObject ruleProcessCall() throws RecognitionException {
         EObject current = null;
 
@@ -1541,11 +1586,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:572:2: ( (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) )
-            // InternalGoatComponentsParser.g:573:2: (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:592:2: ( (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis ) )
+            // InternalGoatComponentsParser.g:593:2: (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
             {
-            // InternalGoatComponentsParser.g:573:2: (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
-            // InternalGoatComponentsParser.g:574:3: otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis
+            // InternalGoatComponentsParser.g:593:2: (otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:594:3: otherlv_0= Call otherlv_1= LeftParenthesis ( (otherlv_2= RULE_ID ) ) otherlv_3= RightParenthesis
             {
             otherlv_0=(Token)match(input,Call,FOLLOW_8); 
 
@@ -1555,11 +1600,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessCallAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:582:3: ( (otherlv_2= RULE_ID ) )
-            // InternalGoatComponentsParser.g:583:4: (otherlv_2= RULE_ID )
+            // InternalGoatComponentsParser.g:602:3: ( (otherlv_2= RULE_ID ) )
+            // InternalGoatComponentsParser.g:603:4: (otherlv_2= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:583:4: (otherlv_2= RULE_ID )
-            // InternalGoatComponentsParser.g:584:5: otherlv_2= RULE_ID
+            // InternalGoatComponentsParser.g:603:4: (otherlv_2= RULE_ID )
+            // InternalGoatComponentsParser.g:604:5: otherlv_2= RULE_ID
             {
 
             					if (current==null) {
@@ -1603,7 +1648,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessSend"
-    // InternalGoatComponentsParser.g:603:1: entryRuleProcessSend returns [EObject current=null] : iv_ruleProcessSend= ruleProcessSend EOF ;
+    // InternalGoatComponentsParser.g:623:1: entryRuleProcessSend returns [EObject current=null] : iv_ruleProcessSend= ruleProcessSend EOF ;
     public final EObject entryRuleProcessSend() throws RecognitionException {
         EObject current = null;
 
@@ -1611,8 +1656,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:603:52: (iv_ruleProcessSend= ruleProcessSend EOF )
-            // InternalGoatComponentsParser.g:604:2: iv_ruleProcessSend= ruleProcessSend EOF
+            // InternalGoatComponentsParser.g:623:52: (iv_ruleProcessSend= ruleProcessSend EOF )
+            // InternalGoatComponentsParser.g:624:2: iv_ruleProcessSend= ruleProcessSend EOF
             {
              newCompositeNode(grammarAccess.getProcessSendRule()); 
             pushFollow(FOLLOW_1);
@@ -1639,7 +1684,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessSend"
-    // InternalGoatComponentsParser.g:610:1: ruleProcessSend returns [EObject current=null] : (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon ) ;
+    // InternalGoatComponentsParser.g:630:1: ruleProcessSend returns [EObject current=null] : (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon ) ;
     public final EObject ruleProcessSend() throws RecognitionException {
         EObject current = null;
 
@@ -1666,11 +1711,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:616:2: ( (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon ) )
-            // InternalGoatComponentsParser.g:617:2: (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon )
+            // InternalGoatComponentsParser.g:636:2: ( (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon ) )
+            // InternalGoatComponentsParser.g:637:2: (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon )
             {
-            // InternalGoatComponentsParser.g:617:2: (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon )
-            // InternalGoatComponentsParser.g:618:3: otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon
+            // InternalGoatComponentsParser.g:637:2: (otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon )
+            // InternalGoatComponentsParser.g:638:3: otherlv_0= Send otherlv_1= LeftCurlyBracket ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )? otherlv_5= RightCurlyBracket otherlv_6= CommercialAt otherlv_7= LeftParenthesis ( (lv_send_pred_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_updates_10_0= ruleUpdate ) ) ( (lv_print_11_0= rulePrintStatement ) )? otherlv_12= Semicolon
             {
             otherlv_0=(Token)match(input,Send,FOLLOW_10); 
 
@@ -1680,7 +1725,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessSendAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalGoatComponentsParser.g:626:3: ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )?
+            // InternalGoatComponentsParser.g:646:3: ( ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )* )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1689,13 +1734,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:627:4: ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )*
+                    // InternalGoatComponentsParser.g:647:4: ( (lv_msgOutParts_2_0= ruleExpression ) ) (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )*
                     {
-                    // InternalGoatComponentsParser.g:627:4: ( (lv_msgOutParts_2_0= ruleExpression ) )
-                    // InternalGoatComponentsParser.g:628:5: (lv_msgOutParts_2_0= ruleExpression )
+                    // InternalGoatComponentsParser.g:647:4: ( (lv_msgOutParts_2_0= ruleExpression ) )
+                    // InternalGoatComponentsParser.g:648:5: (lv_msgOutParts_2_0= ruleExpression )
                     {
-                    // InternalGoatComponentsParser.g:628:5: (lv_msgOutParts_2_0= ruleExpression )
-                    // InternalGoatComponentsParser.g:629:6: lv_msgOutParts_2_0= ruleExpression
+                    // InternalGoatComponentsParser.g:648:5: (lv_msgOutParts_2_0= ruleExpression )
+                    // InternalGoatComponentsParser.g:649:6: lv_msgOutParts_2_0= ruleExpression
                     {
 
                     						newCompositeNode(grammarAccess.getProcessSendAccess().getMsgOutPartsExpressionParserRuleCall_2_0_0());
@@ -1722,7 +1767,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:646:4: (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )*
+                    // InternalGoatComponentsParser.g:666:4: (otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) ) )*
                     loop6:
                     do {
                         int alt6=2;
@@ -1735,17 +1780,17 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // InternalGoatComponentsParser.g:647:5: otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) )
+                    	    // InternalGoatComponentsParser.g:667:5: otherlv_3= Comma ( (lv_msgOutParts_4_0= ruleExpression ) )
                     	    {
                     	    otherlv_3=(Token)match(input,Comma,FOLLOW_13); 
 
                     	    					newLeafNode(otherlv_3, grammarAccess.getProcessSendAccess().getCommaKeyword_2_1_0());
                     	    				
-                    	    // InternalGoatComponentsParser.g:651:5: ( (lv_msgOutParts_4_0= ruleExpression ) )
-                    	    // InternalGoatComponentsParser.g:652:6: (lv_msgOutParts_4_0= ruleExpression )
+                    	    // InternalGoatComponentsParser.g:671:5: ( (lv_msgOutParts_4_0= ruleExpression ) )
+                    	    // InternalGoatComponentsParser.g:672:6: (lv_msgOutParts_4_0= ruleExpression )
                     	    {
-                    	    // InternalGoatComponentsParser.g:652:6: (lv_msgOutParts_4_0= ruleExpression )
-                    	    // InternalGoatComponentsParser.g:653:7: lv_msgOutParts_4_0= ruleExpression
+                    	    // InternalGoatComponentsParser.g:672:6: (lv_msgOutParts_4_0= ruleExpression )
+                    	    // InternalGoatComponentsParser.g:673:7: lv_msgOutParts_4_0= ruleExpression
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getProcessSendAccess().getMsgOutPartsExpressionParserRuleCall_2_1_1_0());
@@ -1799,11 +1844,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_7, grammarAccess.getProcessSendAccess().getLeftParenthesisKeyword_5());
             		
-            // InternalGoatComponentsParser.g:684:3: ( (lv_send_pred_8_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:685:4: (lv_send_pred_8_0= ruleExpression )
+            // InternalGoatComponentsParser.g:704:3: ( (lv_send_pred_8_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:705:4: (lv_send_pred_8_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:685:4: (lv_send_pred_8_0= ruleExpression )
-            // InternalGoatComponentsParser.g:686:5: lv_send_pred_8_0= ruleExpression
+            // InternalGoatComponentsParser.g:705:4: (lv_send_pred_8_0= ruleExpression )
+            // InternalGoatComponentsParser.g:706:5: lv_send_pred_8_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getProcessSendAccess().getSend_predExpressionParserRuleCall_6_0());
@@ -1834,11 +1879,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_9, grammarAccess.getProcessSendAccess().getRightParenthesisKeyword_7());
             		
-            // InternalGoatComponentsParser.g:707:3: ( (lv_updates_10_0= ruleUpdate ) )
-            // InternalGoatComponentsParser.g:708:4: (lv_updates_10_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:727:3: ( (lv_updates_10_0= ruleUpdate ) )
+            // InternalGoatComponentsParser.g:728:4: (lv_updates_10_0= ruleUpdate )
             {
-            // InternalGoatComponentsParser.g:708:4: (lv_updates_10_0= ruleUpdate )
-            // InternalGoatComponentsParser.g:709:5: lv_updates_10_0= ruleUpdate
+            // InternalGoatComponentsParser.g:728:4: (lv_updates_10_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:729:5: lv_updates_10_0= ruleUpdate
             {
 
             					newCompositeNode(grammarAccess.getProcessSendAccess().getUpdatesUpdateParserRuleCall_8_0());
@@ -1865,7 +1910,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:726:3: ( (lv_print_11_0= rulePrintStatement ) )?
+            // InternalGoatComponentsParser.g:746:3: ( (lv_print_11_0= rulePrintStatement ) )?
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1874,10 +1919,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt8) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:727:4: (lv_print_11_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:747:4: (lv_print_11_0= rulePrintStatement )
                     {
-                    // InternalGoatComponentsParser.g:727:4: (lv_print_11_0= rulePrintStatement )
-                    // InternalGoatComponentsParser.g:728:5: lv_print_11_0= rulePrintStatement
+                    // InternalGoatComponentsParser.g:747:4: (lv_print_11_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:748:5: lv_print_11_0= rulePrintStatement
                     {
 
                     					newCompositeNode(grammarAccess.getProcessSendAccess().getPrintPrintStatementParserRuleCall_9_0());
@@ -1934,7 +1979,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessReceive"
-    // InternalGoatComponentsParser.g:753:1: entryRuleProcessReceive returns [EObject current=null] : iv_ruleProcessReceive= ruleProcessReceive EOF ;
+    // InternalGoatComponentsParser.g:773:1: entryRuleProcessReceive returns [EObject current=null] : iv_ruleProcessReceive= ruleProcessReceive EOF ;
     public final EObject entryRuleProcessReceive() throws RecognitionException {
         EObject current = null;
 
@@ -1942,8 +1987,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:753:55: (iv_ruleProcessReceive= ruleProcessReceive EOF )
-            // InternalGoatComponentsParser.g:754:2: iv_ruleProcessReceive= ruleProcessReceive EOF
+            // InternalGoatComponentsParser.g:773:55: (iv_ruleProcessReceive= ruleProcessReceive EOF )
+            // InternalGoatComponentsParser.g:774:2: iv_ruleProcessReceive= ruleProcessReceive EOF
             {
              newCompositeNode(grammarAccess.getProcessReceiveRule()); 
             pushFollow(FOLLOW_1);
@@ -1970,7 +2015,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessReceive"
-    // InternalGoatComponentsParser.g:760:1: ruleProcessReceive returns [EObject current=null] : (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple ) ;
+    // InternalGoatComponentsParser.g:780:1: ruleProcessReceive returns [EObject current=null] : (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple ) ;
     public final EObject ruleProcessReceive() throws RecognitionException {
         EObject current = null;
 
@@ -1983,10 +2028,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:766:2: ( (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple ) )
-            // InternalGoatComponentsParser.g:767:2: (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple )
+            // InternalGoatComponentsParser.g:786:2: ( (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple ) )
+            // InternalGoatComponentsParser.g:787:2: (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple )
             {
-            // InternalGoatComponentsParser.g:767:2: (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple )
+            // InternalGoatComponentsParser.g:787:2: (this_ProcessReceiveSingle_0= ruleProcessReceiveSingle | this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2014,7 +2059,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:768:3: this_ProcessReceiveSingle_0= ruleProcessReceiveSingle
+                    // InternalGoatComponentsParser.g:788:3: this_ProcessReceiveSingle_0= ruleProcessReceiveSingle
                     {
 
                     			newCompositeNode(grammarAccess.getProcessReceiveAccess().getProcessReceiveSingleParserRuleCall_0());
@@ -2032,7 +2077,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:777:3: this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple
+                    // InternalGoatComponentsParser.g:797:3: this_ProcessReceiveMultiple_1= ruleProcessReceiveMultiple
                     {
 
                     			newCompositeNode(grammarAccess.getProcessReceiveAccess().getProcessReceiveMultipleParserRuleCall_1());
@@ -2072,7 +2117,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessReceiveSingle"
-    // InternalGoatComponentsParser.g:789:1: entryRuleProcessReceiveSingle returns [EObject current=null] : iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF ;
+    // InternalGoatComponentsParser.g:809:1: entryRuleProcessReceiveSingle returns [EObject current=null] : iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF ;
     public final EObject entryRuleProcessReceiveSingle() throws RecognitionException {
         EObject current = null;
 
@@ -2080,8 +2125,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:789:61: (iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF )
-            // InternalGoatComponentsParser.g:790:2: iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF
+            // InternalGoatComponentsParser.g:809:61: (iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF )
+            // InternalGoatComponentsParser.g:810:2: iv_ruleProcessReceiveSingle= ruleProcessReceiveSingle EOF
             {
              newCompositeNode(grammarAccess.getProcessReceiveSingleRule()); 
             pushFollow(FOLLOW_1);
@@ -2108,7 +2153,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessReceiveSingle"
-    // InternalGoatComponentsParser.g:796:1: ruleProcessReceiveSingle returns [EObject current=null] : (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) ) ;
+    // InternalGoatComponentsParser.g:816:1: ruleProcessReceiveSingle returns [EObject current=null] : (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) ) ;
     public final EObject ruleProcessReceiveSingle() throws RecognitionException {
         EObject current = null;
 
@@ -2123,21 +2168,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:802:2: ( (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) ) )
-            // InternalGoatComponentsParser.g:803:2: (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:822:2: ( (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:823:2: (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) )
             {
-            // InternalGoatComponentsParser.g:803:2: (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) )
-            // InternalGoatComponentsParser.g:804:3: otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) )
+            // InternalGoatComponentsParser.g:823:2: (otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:824:3: otherlv_0= Receive ( (lv_cases_1_0= ruleReceiveCase ) ) otherlv_2= Semicolon ( (lv_then_3_0= ruleEmptyProcessBlock ) )
             {
             otherlv_0=(Token)match(input,Receive,FOLLOW_8); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessReceiveSingleAccess().getReceiveKeyword_0());
             		
-            // InternalGoatComponentsParser.g:808:3: ( (lv_cases_1_0= ruleReceiveCase ) )
-            // InternalGoatComponentsParser.g:809:4: (lv_cases_1_0= ruleReceiveCase )
+            // InternalGoatComponentsParser.g:828:3: ( (lv_cases_1_0= ruleReceiveCase ) )
+            // InternalGoatComponentsParser.g:829:4: (lv_cases_1_0= ruleReceiveCase )
             {
-            // InternalGoatComponentsParser.g:809:4: (lv_cases_1_0= ruleReceiveCase )
-            // InternalGoatComponentsParser.g:810:5: lv_cases_1_0= ruleReceiveCase
+            // InternalGoatComponentsParser.g:829:4: (lv_cases_1_0= ruleReceiveCase )
+            // InternalGoatComponentsParser.g:830:5: lv_cases_1_0= ruleReceiveCase
             {
 
             					newCompositeNode(grammarAccess.getProcessReceiveSingleAccess().getCasesReceiveCaseParserRuleCall_1_0());
@@ -2168,11 +2213,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getProcessReceiveSingleAccess().getSemicolonKeyword_2());
             		
-            // InternalGoatComponentsParser.g:831:3: ( (lv_then_3_0= ruleEmptyProcessBlock ) )
-            // InternalGoatComponentsParser.g:832:4: (lv_then_3_0= ruleEmptyProcessBlock )
+            // InternalGoatComponentsParser.g:851:3: ( (lv_then_3_0= ruleEmptyProcessBlock ) )
+            // InternalGoatComponentsParser.g:852:4: (lv_then_3_0= ruleEmptyProcessBlock )
             {
-            // InternalGoatComponentsParser.g:832:4: (lv_then_3_0= ruleEmptyProcessBlock )
-            // InternalGoatComponentsParser.g:833:5: lv_then_3_0= ruleEmptyProcessBlock
+            // InternalGoatComponentsParser.g:852:4: (lv_then_3_0= ruleEmptyProcessBlock )
+            // InternalGoatComponentsParser.g:853:5: lv_then_3_0= ruleEmptyProcessBlock
             {
 
             					newCompositeNode(grammarAccess.getProcessReceiveSingleAccess().getThenEmptyProcessBlockParserRuleCall_3_0());
@@ -2222,7 +2267,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEmptyProcessBlock"
-    // InternalGoatComponentsParser.g:854:1: entryRuleEmptyProcessBlock returns [EObject current=null] : iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF ;
+    // InternalGoatComponentsParser.g:874:1: entryRuleEmptyProcessBlock returns [EObject current=null] : iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF ;
     public final EObject entryRuleEmptyProcessBlock() throws RecognitionException {
         EObject current = null;
 
@@ -2230,8 +2275,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:854:58: (iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF )
-            // InternalGoatComponentsParser.g:855:2: iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF
+            // InternalGoatComponentsParser.g:874:58: (iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF )
+            // InternalGoatComponentsParser.g:875:2: iv_ruleEmptyProcessBlock= ruleEmptyProcessBlock EOF
             {
              newCompositeNode(grammarAccess.getEmptyProcessBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -2258,7 +2303,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEmptyProcessBlock"
-    // InternalGoatComponentsParser.g:861:1: ruleEmptyProcessBlock returns [EObject current=null] : () ;
+    // InternalGoatComponentsParser.g:881:1: ruleEmptyProcessBlock returns [EObject current=null] : () ;
     public final EObject ruleEmptyProcessBlock() throws RecognitionException {
         EObject current = null;
 
@@ -2266,11 +2311,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:867:2: ( () )
-            // InternalGoatComponentsParser.g:868:2: ()
+            // InternalGoatComponentsParser.g:887:2: ( () )
+            // InternalGoatComponentsParser.g:888:2: ()
             {
-            // InternalGoatComponentsParser.g:868:2: ()
-            // InternalGoatComponentsParser.g:869:3: 
+            // InternalGoatComponentsParser.g:888:2: ()
+            // InternalGoatComponentsParser.g:889:3: 
             {
 
             			current = forceCreateModelElement(
@@ -2295,7 +2340,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessReceiveMultiple"
-    // InternalGoatComponentsParser.g:878:1: entryRuleProcessReceiveMultiple returns [EObject current=null] : iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF ;
+    // InternalGoatComponentsParser.g:898:1: entryRuleProcessReceiveMultiple returns [EObject current=null] : iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF ;
     public final EObject entryRuleProcessReceiveMultiple() throws RecognitionException {
         EObject current = null;
 
@@ -2303,8 +2348,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:878:63: (iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF )
-            // InternalGoatComponentsParser.g:879:2: iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF
+            // InternalGoatComponentsParser.g:898:63: (iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF )
+            // InternalGoatComponentsParser.g:899:2: iv_ruleProcessReceiveMultiple= ruleProcessReceiveMultiple EOF
             {
              newCompositeNode(grammarAccess.getProcessReceiveMultipleRule()); 
             pushFollow(FOLLOW_1);
@@ -2331,7 +2376,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessReceiveMultiple"
-    // InternalGoatComponentsParser.g:885:1: ruleProcessReceiveMultiple returns [EObject current=null] : (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket ) ;
+    // InternalGoatComponentsParser.g:905:1: ruleProcessReceiveMultiple returns [EObject current=null] : (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket ) ;
     public final EObject ruleProcessReceiveMultiple() throws RecognitionException {
         EObject current = null;
 
@@ -2349,11 +2394,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:891:2: ( (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket ) )
-            // InternalGoatComponentsParser.g:892:2: (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:911:2: ( (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket ) )
+            // InternalGoatComponentsParser.g:912:2: (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket )
             {
-            // InternalGoatComponentsParser.g:892:2: (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket )
-            // InternalGoatComponentsParser.g:893:3: otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket
+            // InternalGoatComponentsParser.g:912:2: (otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:913:3: otherlv_0= Receive otherlv_1= LeftCurlyBracket (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+ otherlv_6= RightCurlyBracket
             {
             otherlv_0=(Token)match(input,Receive,FOLLOW_10); 
 
@@ -2363,7 +2408,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessReceiveMultipleAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalGoatComponentsParser.g:901:3: (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+
+            // InternalGoatComponentsParser.g:921:3: (otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) ) )+
             int cnt10=0;
             loop10:
             do {
@@ -2377,17 +2422,17 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:902:4: otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) )
+            	    // InternalGoatComponentsParser.g:922:4: otherlv_2= Case ( (lv_cases_3_0= ruleReceiveCase ) ) otherlv_4= Colon ( (lv_then_5_0= ruleProcessBlock ) )
             	    {
             	    otherlv_2=(Token)match(input,Case,FOLLOW_8); 
 
             	    				newLeafNode(otherlv_2, grammarAccess.getProcessReceiveMultipleAccess().getCaseKeyword_2_0());
             	    			
-            	    // InternalGoatComponentsParser.g:906:4: ( (lv_cases_3_0= ruleReceiveCase ) )
-            	    // InternalGoatComponentsParser.g:907:5: (lv_cases_3_0= ruleReceiveCase )
+            	    // InternalGoatComponentsParser.g:926:4: ( (lv_cases_3_0= ruleReceiveCase ) )
+            	    // InternalGoatComponentsParser.g:927:5: (lv_cases_3_0= ruleReceiveCase )
             	    {
-            	    // InternalGoatComponentsParser.g:907:5: (lv_cases_3_0= ruleReceiveCase )
-            	    // InternalGoatComponentsParser.g:908:6: lv_cases_3_0= ruleReceiveCase
+            	    // InternalGoatComponentsParser.g:927:5: (lv_cases_3_0= ruleReceiveCase )
+            	    // InternalGoatComponentsParser.g:928:6: lv_cases_3_0= ruleReceiveCase
             	    {
 
             	    						newCompositeNode(grammarAccess.getProcessReceiveMultipleAccess().getCasesReceiveCaseParserRuleCall_2_1_0());
@@ -2418,11 +2463,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    				newLeafNode(otherlv_4, grammarAccess.getProcessReceiveMultipleAccess().getColonKeyword_2_2());
             	    			
-            	    // InternalGoatComponentsParser.g:929:4: ( (lv_then_5_0= ruleProcessBlock ) )
-            	    // InternalGoatComponentsParser.g:930:5: (lv_then_5_0= ruleProcessBlock )
+            	    // InternalGoatComponentsParser.g:949:4: ( (lv_then_5_0= ruleProcessBlock ) )
+            	    // InternalGoatComponentsParser.g:950:5: (lv_then_5_0= ruleProcessBlock )
             	    {
-            	    // InternalGoatComponentsParser.g:930:5: (lv_then_5_0= ruleProcessBlock )
-            	    // InternalGoatComponentsParser.g:931:6: lv_then_5_0= ruleProcessBlock
+            	    // InternalGoatComponentsParser.g:950:5: (lv_then_5_0= ruleProcessBlock )
+            	    // InternalGoatComponentsParser.g:951:6: lv_then_5_0= ruleProcessBlock
             	    {
 
             	    						newCompositeNode(grammarAccess.getProcessReceiveMultipleAccess().getThenProcessBlockParserRuleCall_2_3_0());
@@ -2489,7 +2534,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleReceiveCase"
-    // InternalGoatComponentsParser.g:957:1: entryRuleReceiveCase returns [EObject current=null] : iv_ruleReceiveCase= ruleReceiveCase EOF ;
+    // InternalGoatComponentsParser.g:977:1: entryRuleReceiveCase returns [EObject current=null] : iv_ruleReceiveCase= ruleReceiveCase EOF ;
     public final EObject entryRuleReceiveCase() throws RecognitionException {
         EObject current = null;
 
@@ -2497,8 +2542,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:957:52: (iv_ruleReceiveCase= ruleReceiveCase EOF )
-            // InternalGoatComponentsParser.g:958:2: iv_ruleReceiveCase= ruleReceiveCase EOF
+            // InternalGoatComponentsParser.g:977:52: (iv_ruleReceiveCase= ruleReceiveCase EOF )
+            // InternalGoatComponentsParser.g:978:2: iv_ruleReceiveCase= ruleReceiveCase EOF
             {
              newCompositeNode(grammarAccess.getReceiveCaseRule()); 
             pushFollow(FOLLOW_1);
@@ -2525,7 +2570,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReceiveCase"
-    // InternalGoatComponentsParser.g:964:1: ruleReceiveCase returns [EObject current=null] : (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? ) ;
+    // InternalGoatComponentsParser.g:984:1: ruleReceiveCase returns [EObject current=null] : (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? ) ;
     public final EObject ruleReceiveCase() throws RecognitionException {
         EObject current = null;
 
@@ -2547,21 +2592,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:970:2: ( (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? ) )
-            // InternalGoatComponentsParser.g:971:2: (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? )
+            // InternalGoatComponentsParser.g:990:2: ( (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? ) )
+            // InternalGoatComponentsParser.g:991:2: (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? )
             {
-            // InternalGoatComponentsParser.g:971:2: (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? )
-            // InternalGoatComponentsParser.g:972:3: otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )?
+            // InternalGoatComponentsParser.g:991:2: (otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )? )
+            // InternalGoatComponentsParser.g:992:3: otherlv_0= LeftParenthesis ( (lv_cond_1_0= ruleExpression ) ) otherlv_2= RightParenthesis otherlv_3= LeftCurlyBracket ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )? otherlv_7= RightCurlyBracket ( (lv_updates_8_0= ruleUpdate ) ) ( (lv_print_9_0= rulePrintStatement ) )?
             {
             otherlv_0=(Token)match(input,LeftParenthesis,FOLLOW_13); 
 
             			newLeafNode(otherlv_0, grammarAccess.getReceiveCaseAccess().getLeftParenthesisKeyword_0());
             		
-            // InternalGoatComponentsParser.g:976:3: ( (lv_cond_1_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:977:4: (lv_cond_1_0= ruleExpression )
+            // InternalGoatComponentsParser.g:996:3: ( (lv_cond_1_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:997:4: (lv_cond_1_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:977:4: (lv_cond_1_0= ruleExpression )
-            // InternalGoatComponentsParser.g:978:5: lv_cond_1_0= ruleExpression
+            // InternalGoatComponentsParser.g:997:4: (lv_cond_1_0= ruleExpression )
+            // InternalGoatComponentsParser.g:998:5: lv_cond_1_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getReceiveCaseAccess().getCondExpressionParserRuleCall_1_0());
@@ -2596,7 +2641,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getReceiveCaseAccess().getLeftCurlyBracketKeyword_3());
             		
-            // InternalGoatComponentsParser.g:1003:3: ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )?
+            // InternalGoatComponentsParser.g:1023:3: ( ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )* )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2605,13 +2650,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1004:4: ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )*
+                    // InternalGoatComponentsParser.g:1024:4: ( (lv_msgInParts_4_0= RULE_ID ) ) (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )*
                     {
-                    // InternalGoatComponentsParser.g:1004:4: ( (lv_msgInParts_4_0= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:1005:5: (lv_msgInParts_4_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:1024:4: ( (lv_msgInParts_4_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:1025:5: (lv_msgInParts_4_0= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:1005:5: (lv_msgInParts_4_0= RULE_ID )
-                    // InternalGoatComponentsParser.g:1006:6: lv_msgInParts_4_0= RULE_ID
+                    // InternalGoatComponentsParser.g:1025:5: (lv_msgInParts_4_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:1026:6: lv_msgInParts_4_0= RULE_ID
                     {
                     lv_msgInParts_4_0=(Token)match(input,RULE_ID,FOLLOW_12); 
 
@@ -2633,7 +2678,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:1022:4: (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )*
+                    // InternalGoatComponentsParser.g:1042:4: (otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) ) )*
                     loop11:
                     do {
                         int alt11=2;
@@ -2646,17 +2691,17 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // InternalGoatComponentsParser.g:1023:5: otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) )
+                    	    // InternalGoatComponentsParser.g:1043:5: otherlv_5= Comma ( (lv_msgInParts_6_0= RULE_ID ) )
                     	    {
                     	    otherlv_5=(Token)match(input,Comma,FOLLOW_3); 
 
                     	    					newLeafNode(otherlv_5, grammarAccess.getReceiveCaseAccess().getCommaKeyword_4_1_0());
                     	    				
-                    	    // InternalGoatComponentsParser.g:1027:5: ( (lv_msgInParts_6_0= RULE_ID ) )
-                    	    // InternalGoatComponentsParser.g:1028:6: (lv_msgInParts_6_0= RULE_ID )
+                    	    // InternalGoatComponentsParser.g:1047:5: ( (lv_msgInParts_6_0= RULE_ID ) )
+                    	    // InternalGoatComponentsParser.g:1048:6: (lv_msgInParts_6_0= RULE_ID )
                     	    {
-                    	    // InternalGoatComponentsParser.g:1028:6: (lv_msgInParts_6_0= RULE_ID )
-                    	    // InternalGoatComponentsParser.g:1029:7: lv_msgInParts_6_0= RULE_ID
+                    	    // InternalGoatComponentsParser.g:1048:6: (lv_msgInParts_6_0= RULE_ID )
+                    	    // InternalGoatComponentsParser.g:1049:7: lv_msgInParts_6_0= RULE_ID
                     	    {
                     	    lv_msgInParts_6_0=(Token)match(input,RULE_ID,FOLLOW_12); 
 
@@ -2697,11 +2742,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_7, grammarAccess.getReceiveCaseAccess().getRightCurlyBracketKeyword_5());
             		
-            // InternalGoatComponentsParser.g:1051:3: ( (lv_updates_8_0= ruleUpdate ) )
-            // InternalGoatComponentsParser.g:1052:4: (lv_updates_8_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1071:3: ( (lv_updates_8_0= ruleUpdate ) )
+            // InternalGoatComponentsParser.g:1072:4: (lv_updates_8_0= ruleUpdate )
             {
-            // InternalGoatComponentsParser.g:1052:4: (lv_updates_8_0= ruleUpdate )
-            // InternalGoatComponentsParser.g:1053:5: lv_updates_8_0= ruleUpdate
+            // InternalGoatComponentsParser.g:1072:4: (lv_updates_8_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1073:5: lv_updates_8_0= ruleUpdate
             {
 
             					newCompositeNode(grammarAccess.getReceiveCaseAccess().getUpdatesUpdateParserRuleCall_6_0());
@@ -2728,7 +2773,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1070:3: ( (lv_print_9_0= rulePrintStatement ) )?
+            // InternalGoatComponentsParser.g:1090:3: ( (lv_print_9_0= rulePrintStatement ) )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2737,10 +2782,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1071:4: (lv_print_9_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1091:4: (lv_print_9_0= rulePrintStatement )
                     {
-                    // InternalGoatComponentsParser.g:1071:4: (lv_print_9_0= rulePrintStatement )
-                    // InternalGoatComponentsParser.g:1072:5: lv_print_9_0= rulePrintStatement
+                    // InternalGoatComponentsParser.g:1091:4: (lv_print_9_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1092:5: lv_print_9_0= rulePrintStatement
                     {
 
                     					newCompositeNode(grammarAccess.getReceiveCaseAccess().getPrintPrintStatementParserRuleCall_7_0());
@@ -2793,7 +2838,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessIf"
-    // InternalGoatComponentsParser.g:1093:1: entryRuleProcessIf returns [EObject current=null] : iv_ruleProcessIf= ruleProcessIf EOF ;
+    // InternalGoatComponentsParser.g:1113:1: entryRuleProcessIf returns [EObject current=null] : iv_ruleProcessIf= ruleProcessIf EOF ;
     public final EObject entryRuleProcessIf() throws RecognitionException {
         EObject current = null;
 
@@ -2801,8 +2846,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1093:50: (iv_ruleProcessIf= ruleProcessIf EOF )
-            // InternalGoatComponentsParser.g:1094:2: iv_ruleProcessIf= ruleProcessIf EOF
+            // InternalGoatComponentsParser.g:1113:50: (iv_ruleProcessIf= ruleProcessIf EOF )
+            // InternalGoatComponentsParser.g:1114:2: iv_ruleProcessIf= ruleProcessIf EOF
             {
              newCompositeNode(grammarAccess.getProcessIfRule()); 
             pushFollow(FOLLOW_1);
@@ -2829,7 +2874,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessIf"
-    // InternalGoatComponentsParser.g:1100:1: ruleProcessIf returns [EObject current=null] : (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? ) ;
+    // InternalGoatComponentsParser.g:1120:1: ruleProcessIf returns [EObject current=null] : (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? ) ;
     public final EObject ruleProcessIf() throws RecognitionException {
         EObject current = null;
 
@@ -2856,11 +2901,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1106:2: ( (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? ) )
-            // InternalGoatComponentsParser.g:1107:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? )
+            // InternalGoatComponentsParser.g:1126:2: ( (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? ) )
+            // InternalGoatComponentsParser.g:1127:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? )
             {
-            // InternalGoatComponentsParser.g:1107:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? )
-            // InternalGoatComponentsParser.g:1108:3: otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )?
+            // InternalGoatComponentsParser.g:1127:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )? )
+            // InternalGoatComponentsParser.g:1128:3: otherlv_0= If otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis this_ProcessThenBlock_4= ruleProcessThenBlock[$current] (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )* (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )?
             {
             otherlv_0=(Token)match(input,If,FOLLOW_8); 
 
@@ -2870,11 +2915,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessIfAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:1116:3: ( (lv_cond_2_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:1117:4: (lv_cond_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:1136:3: ( (lv_cond_2_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:1137:4: (lv_cond_2_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:1117:4: (lv_cond_2_0= ruleExpression )
-            // InternalGoatComponentsParser.g:1118:5: lv_cond_2_0= ruleExpression
+            // InternalGoatComponentsParser.g:1137:4: (lv_cond_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:1138:5: lv_cond_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getProcessIfAccess().getCondExpressionParserRuleCall_2_0());
@@ -2920,7 +2965,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_ProcessThenBlock_4;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:1150:3: (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )*
+            // InternalGoatComponentsParser.g:1170:3: (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current] )*
             loop14:
             do {
                 int alt14=2;
@@ -2939,7 +2984,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                 switch (alt14) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:1151:4: otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current]
+            	    // InternalGoatComponentsParser.g:1171:4: otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_cond_8_0= ruleExpression ) ) otherlv_9= RightParenthesis this_ProcessThenBlock_10= ruleProcessThenBlock[$current]
             	    {
             	    otherlv_5=(Token)match(input,Else,FOLLOW_25); 
 
@@ -2953,11 +2998,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    				newLeafNode(otherlv_7, grammarAccess.getProcessIfAccess().getLeftParenthesisKeyword_5_2());
             	    			
-            	    // InternalGoatComponentsParser.g:1163:4: ( (lv_cond_8_0= ruleExpression ) )
-            	    // InternalGoatComponentsParser.g:1164:5: (lv_cond_8_0= ruleExpression )
+            	    // InternalGoatComponentsParser.g:1183:4: ( (lv_cond_8_0= ruleExpression ) )
+            	    // InternalGoatComponentsParser.g:1184:5: (lv_cond_8_0= ruleExpression )
             	    {
-            	    // InternalGoatComponentsParser.g:1164:5: (lv_cond_8_0= ruleExpression )
-            	    // InternalGoatComponentsParser.g:1165:6: lv_cond_8_0= ruleExpression
+            	    // InternalGoatComponentsParser.g:1184:5: (lv_cond_8_0= ruleExpression )
+            	    // InternalGoatComponentsParser.g:1185:6: lv_cond_8_0= ruleExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getProcessIfAccess().getCondExpressionParserRuleCall_5_3_0());
@@ -3012,7 +3057,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalGoatComponentsParser.g:1198:3: (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )?
+            // InternalGoatComponentsParser.g:1218:3: (otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current] )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -3021,7 +3066,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1199:4: otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current]
+                    // InternalGoatComponentsParser.g:1219:4: otherlv_11= Else this_ProcessThenBlock_12= ruleProcessThenBlock[$current]
                     {
                     otherlv_11=(Token)match(input,Else,FOLLOW_10); 
 
@@ -3071,7 +3116,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessThenBlock"
-    // InternalGoatComponentsParser.g:1220:1: ruleProcessThenBlock[EObject in_current] returns [EObject current=in_current] : (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket ) ;
+    // InternalGoatComponentsParser.g:1240:1: ruleProcessThenBlock[EObject in_current] returns [EObject current=in_current] : (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket ) ;
     public final EObject ruleProcessThenBlock(EObject in_current) throws RecognitionException {
         EObject current = in_current;
 
@@ -3090,23 +3135,23 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1226:2: ( (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket ) )
-            // InternalGoatComponentsParser.g:1227:2: (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:1246:2: ( (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket ) )
+            // InternalGoatComponentsParser.g:1247:2: (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket )
             {
-            // InternalGoatComponentsParser.g:1227:2: (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket )
-            // InternalGoatComponentsParser.g:1228:3: otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket
+            // InternalGoatComponentsParser.g:1247:2: (otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:1248:3: otherlv_0= LeftCurlyBracket ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) ) ( (lv_then_2_0= rulePTBThen ) ) otherlv_3= RightCurlyBracket
             {
             otherlv_0=(Token)match(input,LeftCurlyBracket,FOLLOW_26); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessThenBlockAccess().getLeftCurlyBracketKeyword_0());
             		
-            // InternalGoatComponentsParser.g:1232:3: ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) )
-            // InternalGoatComponentsParser.g:1233:4: ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) )
+            // InternalGoatComponentsParser.g:1252:3: ( ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) ) )
+            // InternalGoatComponentsParser.g:1253:4: ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) )
             {
-            // InternalGoatComponentsParser.g:1233:4: ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) )
-            // InternalGoatComponentsParser.g:1234:5: (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet )
+            // InternalGoatComponentsParser.g:1253:4: ( (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet ) )
+            // InternalGoatComponentsParser.g:1254:5: (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet )
             {
-            // InternalGoatComponentsParser.g:1234:5: (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet )
+            // InternalGoatComponentsParser.g:1254:5: (lv_action_1_1= ruleProcessSend | lv_action_1_2= ruleProcessReceive | lv_action_1_3= ruleProcessSet )
             int alt16=3;
             switch ( input.LA(1) ) {
             case Send:
@@ -3133,7 +3178,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             switch (alt16) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1235:6: lv_action_1_1= ruleProcessSend
+                    // InternalGoatComponentsParser.g:1255:6: lv_action_1_1= ruleProcessSend
                     {
 
                     						newCompositeNode(grammarAccess.getProcessThenBlockAccess().getActionProcessSendParserRuleCall_1_0_0());
@@ -3158,7 +3203,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:1251:6: lv_action_1_2= ruleProcessReceive
+                    // InternalGoatComponentsParser.g:1271:6: lv_action_1_2= ruleProcessReceive
                     {
 
                     						newCompositeNode(grammarAccess.getProcessThenBlockAccess().getActionProcessReceiveParserRuleCall_1_0_1());
@@ -3183,7 +3228,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:1267:6: lv_action_1_3= ruleProcessSet
+                    // InternalGoatComponentsParser.g:1287:6: lv_action_1_3= ruleProcessSet
                     {
 
                     						newCompositeNode(grammarAccess.getProcessThenBlockAccess().getActionProcessSetParserRuleCall_1_0_2());
@@ -3216,11 +3261,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1285:3: ( (lv_then_2_0= rulePTBThen ) )
-            // InternalGoatComponentsParser.g:1286:4: (lv_then_2_0= rulePTBThen )
+            // InternalGoatComponentsParser.g:1305:3: ( (lv_then_2_0= rulePTBThen ) )
+            // InternalGoatComponentsParser.g:1306:4: (lv_then_2_0= rulePTBThen )
             {
-            // InternalGoatComponentsParser.g:1286:4: (lv_then_2_0= rulePTBThen )
-            // InternalGoatComponentsParser.g:1287:5: lv_then_2_0= rulePTBThen
+            // InternalGoatComponentsParser.g:1306:4: (lv_then_2_0= rulePTBThen )
+            // InternalGoatComponentsParser.g:1307:5: lv_then_2_0= rulePTBThen
             {
 
             					newCompositeNode(grammarAccess.getProcessThenBlockAccess().getThenPTBThenParserRuleCall_2_0());
@@ -3274,7 +3319,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePTBThen"
-    // InternalGoatComponentsParser.g:1312:1: entryRulePTBThen returns [EObject current=null] : iv_rulePTBThen= rulePTBThen EOF ;
+    // InternalGoatComponentsParser.g:1332:1: entryRulePTBThen returns [EObject current=null] : iv_rulePTBThen= rulePTBThen EOF ;
     public final EObject entryRulePTBThen() throws RecognitionException {
         EObject current = null;
 
@@ -3282,8 +3327,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1312:48: (iv_rulePTBThen= rulePTBThen EOF )
-            // InternalGoatComponentsParser.g:1313:2: iv_rulePTBThen= rulePTBThen EOF
+            // InternalGoatComponentsParser.g:1332:48: (iv_rulePTBThen= rulePTBThen EOF )
+            // InternalGoatComponentsParser.g:1333:2: iv_rulePTBThen= rulePTBThen EOF
             {
              newCompositeNode(grammarAccess.getPTBThenRule()); 
             pushFollow(FOLLOW_1);
@@ -3310,7 +3355,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePTBThen"
-    // InternalGoatComponentsParser.g:1319:1: rulePTBThen returns [EObject current=null] : ( () ( (lv_statements_1_0= ruleProcessStatement ) )* ) ;
+    // InternalGoatComponentsParser.g:1339:1: rulePTBThen returns [EObject current=null] : ( () ( (lv_statements_1_0= ruleProcessStatement ) )* ) ;
     public final EObject rulePTBThen() throws RecognitionException {
         EObject current = null;
 
@@ -3321,14 +3366,14 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1325:2: ( ( () ( (lv_statements_1_0= ruleProcessStatement ) )* ) )
-            // InternalGoatComponentsParser.g:1326:2: ( () ( (lv_statements_1_0= ruleProcessStatement ) )* )
+            // InternalGoatComponentsParser.g:1345:2: ( ( () ( (lv_statements_1_0= ruleProcessStatement ) )* ) )
+            // InternalGoatComponentsParser.g:1346:2: ( () ( (lv_statements_1_0= ruleProcessStatement ) )* )
             {
-            // InternalGoatComponentsParser.g:1326:2: ( () ( (lv_statements_1_0= ruleProcessStatement ) )* )
-            // InternalGoatComponentsParser.g:1327:3: () ( (lv_statements_1_0= ruleProcessStatement ) )*
+            // InternalGoatComponentsParser.g:1346:2: ( () ( (lv_statements_1_0= ruleProcessStatement ) )* )
+            // InternalGoatComponentsParser.g:1347:3: () ( (lv_statements_1_0= ruleProcessStatement ) )*
             {
-            // InternalGoatComponentsParser.g:1327:3: ()
-            // InternalGoatComponentsParser.g:1328:4: 
+            // InternalGoatComponentsParser.g:1347:3: ()
+            // InternalGoatComponentsParser.g:1348:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3338,7 +3383,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1334:3: ( (lv_statements_1_0= ruleProcessStatement ) )*
+            // InternalGoatComponentsParser.g:1354:3: ( (lv_statements_1_0= ruleProcessStatement ) )*
             loop17:
             do {
                 int alt17=2;
@@ -3351,10 +3396,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                 switch (alt17) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:1335:4: (lv_statements_1_0= ruleProcessStatement )
+            	    // InternalGoatComponentsParser.g:1355:4: (lv_statements_1_0= ruleProcessStatement )
             	    {
-            	    // InternalGoatComponentsParser.g:1335:4: (lv_statements_1_0= ruleProcessStatement )
-            	    // InternalGoatComponentsParser.g:1336:5: lv_statements_1_0= ruleProcessStatement
+            	    // InternalGoatComponentsParser.g:1355:4: (lv_statements_1_0= ruleProcessStatement )
+            	    // InternalGoatComponentsParser.g:1356:5: lv_statements_1_0= ruleProcessStatement
             	    {
 
             	    					newCompositeNode(grammarAccess.getPTBThenAccess().getStatementsProcessStatementParserRuleCall_1_0());
@@ -3410,7 +3455,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessSet"
-    // InternalGoatComponentsParser.g:1357:1: entryRuleProcessSet returns [EObject current=null] : iv_ruleProcessSet= ruleProcessSet EOF ;
+    // InternalGoatComponentsParser.g:1377:1: entryRuleProcessSet returns [EObject current=null] : iv_ruleProcessSet= ruleProcessSet EOF ;
     public final EObject entryRuleProcessSet() throws RecognitionException {
         EObject current = null;
 
@@ -3418,8 +3463,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1357:51: (iv_ruleProcessSet= ruleProcessSet EOF )
-            // InternalGoatComponentsParser.g:1358:2: iv_ruleProcessSet= ruleProcessSet EOF
+            // InternalGoatComponentsParser.g:1377:51: (iv_ruleProcessSet= ruleProcessSet EOF )
+            // InternalGoatComponentsParser.g:1378:2: iv_ruleProcessSet= ruleProcessSet EOF
             {
              newCompositeNode(grammarAccess.getProcessSetRule()); 
             pushFollow(FOLLOW_1);
@@ -3446,7 +3491,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessSet"
-    // InternalGoatComponentsParser.g:1364:1: ruleProcessSet returns [EObject current=null] : (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon ) ;
+    // InternalGoatComponentsParser.g:1384:1: ruleProcessSet returns [EObject current=null] : (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon ) ;
     public final EObject ruleProcessSet() throws RecognitionException {
         EObject current = null;
 
@@ -3461,21 +3506,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1370:2: ( (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon ) )
-            // InternalGoatComponentsParser.g:1371:2: (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon )
+            // InternalGoatComponentsParser.g:1390:2: ( (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon ) )
+            // InternalGoatComponentsParser.g:1391:2: (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon )
             {
-            // InternalGoatComponentsParser.g:1371:2: (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon )
-            // InternalGoatComponentsParser.g:1372:3: otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon
+            // InternalGoatComponentsParser.g:1391:2: (otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon )
+            // InternalGoatComponentsParser.g:1392:3: otherlv_0= Set ( (lv_update_1_0= ruleUpdate ) ) ( (lv_print_2_0= rulePrintStatement ) )? otherlv_3= Semicolon
             {
             otherlv_0=(Token)match(input,Set,FOLLOW_15); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessSetAccess().getSetKeyword_0());
             		
-            // InternalGoatComponentsParser.g:1376:3: ( (lv_update_1_0= ruleUpdate ) )
-            // InternalGoatComponentsParser.g:1377:4: (lv_update_1_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1396:3: ( (lv_update_1_0= ruleUpdate ) )
+            // InternalGoatComponentsParser.g:1397:4: (lv_update_1_0= ruleUpdate )
             {
-            // InternalGoatComponentsParser.g:1377:4: (lv_update_1_0= ruleUpdate )
-            // InternalGoatComponentsParser.g:1378:5: lv_update_1_0= ruleUpdate
+            // InternalGoatComponentsParser.g:1397:4: (lv_update_1_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1398:5: lv_update_1_0= ruleUpdate
             {
 
             					newCompositeNode(grammarAccess.getProcessSetAccess().getUpdateUpdateParserRuleCall_1_0());
@@ -3502,7 +3547,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1395:3: ( (lv_print_2_0= rulePrintStatement ) )?
+            // InternalGoatComponentsParser.g:1415:3: ( (lv_print_2_0= rulePrintStatement ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -3511,10 +3556,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1396:4: (lv_print_2_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1416:4: (lv_print_2_0= rulePrintStatement )
                     {
-                    // InternalGoatComponentsParser.g:1396:4: (lv_print_2_0= rulePrintStatement )
-                    // InternalGoatComponentsParser.g:1397:5: lv_print_2_0= rulePrintStatement
+                    // InternalGoatComponentsParser.g:1416:4: (lv_print_2_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1417:5: lv_print_2_0= rulePrintStatement
                     {
 
                     					newCompositeNode(grammarAccess.getProcessSetAccess().getPrintPrintStatementParserRuleCall_2_0());
@@ -3571,7 +3616,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessWaitFor"
-    // InternalGoatComponentsParser.g:1422:1: entryRuleProcessWaitFor returns [EObject current=null] : iv_ruleProcessWaitFor= ruleProcessWaitFor EOF ;
+    // InternalGoatComponentsParser.g:1442:1: entryRuleProcessWaitFor returns [EObject current=null] : iv_ruleProcessWaitFor= ruleProcessWaitFor EOF ;
     public final EObject entryRuleProcessWaitFor() throws RecognitionException {
         EObject current = null;
 
@@ -3579,8 +3624,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1422:55: (iv_ruleProcessWaitFor= ruleProcessWaitFor EOF )
-            // InternalGoatComponentsParser.g:1423:2: iv_ruleProcessWaitFor= ruleProcessWaitFor EOF
+            // InternalGoatComponentsParser.g:1442:55: (iv_ruleProcessWaitFor= ruleProcessWaitFor EOF )
+            // InternalGoatComponentsParser.g:1443:2: iv_ruleProcessWaitFor= ruleProcessWaitFor EOF
             {
              newCompositeNode(grammarAccess.getProcessWaitForRule()); 
             pushFollow(FOLLOW_1);
@@ -3607,7 +3652,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessWaitFor"
-    // InternalGoatComponentsParser.g:1429:1: ruleProcessWaitFor returns [EObject current=null] : (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon ) ;
+    // InternalGoatComponentsParser.g:1449:1: ruleProcessWaitFor returns [EObject current=null] : (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon ) ;
     public final EObject ruleProcessWaitFor() throws RecognitionException {
         EObject current = null;
 
@@ -3626,11 +3671,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1435:2: ( (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon ) )
-            // InternalGoatComponentsParser.g:1436:2: (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon )
+            // InternalGoatComponentsParser.g:1455:2: ( (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon ) )
+            // InternalGoatComponentsParser.g:1456:2: (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon )
             {
-            // InternalGoatComponentsParser.g:1436:2: (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon )
-            // InternalGoatComponentsParser.g:1437:3: otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon
+            // InternalGoatComponentsParser.g:1456:2: (otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon )
+            // InternalGoatComponentsParser.g:1457:3: otherlv_0= Waitfor otherlv_1= LeftParenthesis ( (lv_cond_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_update_4_0= ruleUpdate ) ) ( (lv_print_5_0= rulePrintStatement ) )? otherlv_6= Semicolon
             {
             otherlv_0=(Token)match(input,Waitfor,FOLLOW_8); 
 
@@ -3640,11 +3685,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getProcessWaitForAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:1445:3: ( (lv_cond_2_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:1446:4: (lv_cond_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:1465:3: ( (lv_cond_2_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:1466:4: (lv_cond_2_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:1446:4: (lv_cond_2_0= ruleExpression )
-            // InternalGoatComponentsParser.g:1447:5: lv_cond_2_0= ruleExpression
+            // InternalGoatComponentsParser.g:1466:4: (lv_cond_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:1467:5: lv_cond_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getProcessWaitForAccess().getCondExpressionParserRuleCall_2_0());
@@ -3675,11 +3720,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getProcessWaitForAccess().getRightParenthesisKeyword_3());
             		
-            // InternalGoatComponentsParser.g:1468:3: ( (lv_update_4_0= ruleUpdate ) )
-            // InternalGoatComponentsParser.g:1469:4: (lv_update_4_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1488:3: ( (lv_update_4_0= ruleUpdate ) )
+            // InternalGoatComponentsParser.g:1489:4: (lv_update_4_0= ruleUpdate )
             {
-            // InternalGoatComponentsParser.g:1469:4: (lv_update_4_0= ruleUpdate )
-            // InternalGoatComponentsParser.g:1470:5: lv_update_4_0= ruleUpdate
+            // InternalGoatComponentsParser.g:1489:4: (lv_update_4_0= ruleUpdate )
+            // InternalGoatComponentsParser.g:1490:5: lv_update_4_0= ruleUpdate
             {
 
             					newCompositeNode(grammarAccess.getProcessWaitForAccess().getUpdateUpdateParserRuleCall_4_0());
@@ -3706,7 +3751,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1487:3: ( (lv_print_5_0= rulePrintStatement ) )?
+            // InternalGoatComponentsParser.g:1507:3: ( (lv_print_5_0= rulePrintStatement ) )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -3715,10 +3760,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1488:4: (lv_print_5_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1508:4: (lv_print_5_0= rulePrintStatement )
                     {
-                    // InternalGoatComponentsParser.g:1488:4: (lv_print_5_0= rulePrintStatement )
-                    // InternalGoatComponentsParser.g:1489:5: lv_print_5_0= rulePrintStatement
+                    // InternalGoatComponentsParser.g:1508:4: (lv_print_5_0= rulePrintStatement )
+                    // InternalGoatComponentsParser.g:1509:5: lv_print_5_0= rulePrintStatement
                     {
 
                     					newCompositeNode(grammarAccess.getProcessWaitForAccess().getPrintPrintStatementParserRuleCall_5_0());
@@ -3775,7 +3820,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleProcessLoop"
-    // InternalGoatComponentsParser.g:1514:1: entryRuleProcessLoop returns [EObject current=null] : iv_ruleProcessLoop= ruleProcessLoop EOF ;
+    // InternalGoatComponentsParser.g:1534:1: entryRuleProcessLoop returns [EObject current=null] : iv_ruleProcessLoop= ruleProcessLoop EOF ;
     public final EObject entryRuleProcessLoop() throws RecognitionException {
         EObject current = null;
 
@@ -3783,8 +3828,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1514:52: (iv_ruleProcessLoop= ruleProcessLoop EOF )
-            // InternalGoatComponentsParser.g:1515:2: iv_ruleProcessLoop= ruleProcessLoop EOF
+            // InternalGoatComponentsParser.g:1534:52: (iv_ruleProcessLoop= ruleProcessLoop EOF )
+            // InternalGoatComponentsParser.g:1535:2: iv_ruleProcessLoop= ruleProcessLoop EOF
             {
              newCompositeNode(grammarAccess.getProcessLoopRule()); 
             pushFollow(FOLLOW_1);
@@ -3811,7 +3856,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleProcessLoop"
-    // InternalGoatComponentsParser.g:1521:1: ruleProcessLoop returns [EObject current=null] : (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) ) ;
+    // InternalGoatComponentsParser.g:1541:1: ruleProcessLoop returns [EObject current=null] : (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) ) ;
     public final EObject ruleProcessLoop() throws RecognitionException {
         EObject current = null;
 
@@ -3823,21 +3868,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1527:2: ( (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) ) )
-            // InternalGoatComponentsParser.g:1528:2: (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:1547:2: ( (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:1548:2: (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) )
             {
-            // InternalGoatComponentsParser.g:1528:2: (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) )
-            // InternalGoatComponentsParser.g:1529:3: otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) )
+            // InternalGoatComponentsParser.g:1548:2: (otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:1549:3: otherlv_0= Loop ( (lv_block_1_0= ruleProcessBlock ) )
             {
             otherlv_0=(Token)match(input,Loop,FOLLOW_5); 
 
             			newLeafNode(otherlv_0, grammarAccess.getProcessLoopAccess().getLoopKeyword_0());
             		
-            // InternalGoatComponentsParser.g:1533:3: ( (lv_block_1_0= ruleProcessBlock ) )
-            // InternalGoatComponentsParser.g:1534:4: (lv_block_1_0= ruleProcessBlock )
+            // InternalGoatComponentsParser.g:1553:3: ( (lv_block_1_0= ruleProcessBlock ) )
+            // InternalGoatComponentsParser.g:1554:4: (lv_block_1_0= ruleProcessBlock )
             {
-            // InternalGoatComponentsParser.g:1534:4: (lv_block_1_0= ruleProcessBlock )
-            // InternalGoatComponentsParser.g:1535:5: lv_block_1_0= ruleProcessBlock
+            // InternalGoatComponentsParser.g:1554:4: (lv_block_1_0= ruleProcessBlock )
+            // InternalGoatComponentsParser.g:1555:5: lv_block_1_0= ruleProcessBlock
             {
 
             					newCompositeNode(grammarAccess.getProcessLoopAccess().getBlockProcessBlockParserRuleCall_1_0());
@@ -3887,7 +3932,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUpdate"
-    // InternalGoatComponentsParser.g:1556:1: entryRuleUpdate returns [EObject current=null] : iv_ruleUpdate= ruleUpdate EOF ;
+    // InternalGoatComponentsParser.g:1576:1: entryRuleUpdate returns [EObject current=null] : iv_ruleUpdate= ruleUpdate EOF ;
     public final EObject entryRuleUpdate() throws RecognitionException {
         EObject current = null;
 
@@ -3895,8 +3940,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1556:47: (iv_ruleUpdate= ruleUpdate EOF )
-            // InternalGoatComponentsParser.g:1557:2: iv_ruleUpdate= ruleUpdate EOF
+            // InternalGoatComponentsParser.g:1576:47: (iv_ruleUpdate= ruleUpdate EOF )
+            // InternalGoatComponentsParser.g:1577:2: iv_ruleUpdate= ruleUpdate EOF
             {
              newCompositeNode(grammarAccess.getUpdateRule()); 
             pushFollow(FOLLOW_1);
@@ -3923,7 +3968,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUpdate"
-    // InternalGoatComponentsParser.g:1563:1: ruleUpdate returns [EObject current=null] : ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? ) ;
+    // InternalGoatComponentsParser.g:1583:1: ruleUpdate returns [EObject current=null] : ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? ) ;
     public final EObject ruleUpdate() throws RecognitionException {
         EObject current = null;
 
@@ -3949,14 +3994,14 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1569:2: ( ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? ) )
-            // InternalGoatComponentsParser.g:1570:2: ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? )
+            // InternalGoatComponentsParser.g:1589:2: ( ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? ) )
+            // InternalGoatComponentsParser.g:1590:2: ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? )
             {
-            // InternalGoatComponentsParser.g:1570:2: ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? )
-            // InternalGoatComponentsParser.g:1571:3: () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )?
+            // InternalGoatComponentsParser.g:1590:2: ( () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )? )
+            // InternalGoatComponentsParser.g:1591:3: () (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )?
             {
-            // InternalGoatComponentsParser.g:1571:3: ()
-            // InternalGoatComponentsParser.g:1572:4: 
+            // InternalGoatComponentsParser.g:1591:3: ()
+            // InternalGoatComponentsParser.g:1592:4: 
             {
 
             				current = forceCreateModelElement(
@@ -3966,7 +4011,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:1578:3: (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )?
+            // InternalGoatComponentsParser.g:1598:3: (otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -3975,19 +4020,19 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt23) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1579:4: otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket
+                    // InternalGoatComponentsParser.g:1599:4: otherlv_1= LeftSquareBracket ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) ) otherlv_3= ColonEqualsSign ( (lv_value_4_0= ruleExpression ) ) (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )* otherlv_9= RightSquareBracket
                     {
                     otherlv_1=(Token)match(input,LeftSquareBracket,FOLLOW_29); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getUpdateAccess().getLeftSquareBracketKeyword_1_0());
                     			
-                    // InternalGoatComponentsParser.g:1583:4: ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) )
-                    // InternalGoatComponentsParser.g:1584:5: ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) )
+                    // InternalGoatComponentsParser.g:1603:4: ( ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) ) )
+                    // InternalGoatComponentsParser.g:1604:5: ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) )
                     {
-                    // InternalGoatComponentsParser.g:1584:5: ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) )
-                    // InternalGoatComponentsParser.g:1585:6: (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute )
+                    // InternalGoatComponentsParser.g:1604:5: ( (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute ) )
+                    // InternalGoatComponentsParser.g:1605:6: (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute )
                     {
-                    // InternalGoatComponentsParser.g:1585:6: (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute )
+                    // InternalGoatComponentsParser.g:1605:6: (lv_attribute_2_1= ruleUpdateComponentAttribute | lv_attribute_2_2= ruleUpdateLocalAttribute )
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -4005,7 +4050,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt20) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:1586:7: lv_attribute_2_1= ruleUpdateComponentAttribute
+                            // InternalGoatComponentsParser.g:1606:7: lv_attribute_2_1= ruleUpdateComponentAttribute
                             {
 
                             							newCompositeNode(grammarAccess.getUpdateAccess().getAttributeUpdateComponentAttributeParserRuleCall_1_1_0_0());
@@ -4030,7 +4075,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:1602:7: lv_attribute_2_2= ruleUpdateLocalAttribute
+                            // InternalGoatComponentsParser.g:1622:7: lv_attribute_2_2= ruleUpdateLocalAttribute
                             {
 
                             							newCompositeNode(grammarAccess.getUpdateAccess().getAttributeUpdateLocalAttributeParserRuleCall_1_1_0_1());
@@ -4067,11 +4112,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_3, grammarAccess.getUpdateAccess().getColonEqualsSignKeyword_1_2());
                     			
-                    // InternalGoatComponentsParser.g:1624:4: ( (lv_value_4_0= ruleExpression ) )
-                    // InternalGoatComponentsParser.g:1625:5: (lv_value_4_0= ruleExpression )
+                    // InternalGoatComponentsParser.g:1644:4: ( (lv_value_4_0= ruleExpression ) )
+                    // InternalGoatComponentsParser.g:1645:5: (lv_value_4_0= ruleExpression )
                     {
-                    // InternalGoatComponentsParser.g:1625:5: (lv_value_4_0= ruleExpression )
-                    // InternalGoatComponentsParser.g:1626:6: lv_value_4_0= ruleExpression
+                    // InternalGoatComponentsParser.g:1645:5: (lv_value_4_0= ruleExpression )
+                    // InternalGoatComponentsParser.g:1646:6: lv_value_4_0= ruleExpression
                     {
 
                     						newCompositeNode(grammarAccess.getUpdateAccess().getValueExpressionParserRuleCall_1_3_0());
@@ -4098,7 +4143,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:1643:4: (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )*
+                    // InternalGoatComponentsParser.g:1663:4: (otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) ) )*
                     loop22:
                     do {
                         int alt22=2;
@@ -4111,19 +4156,19 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                         switch (alt22) {
                     	case 1 :
-                    	    // InternalGoatComponentsParser.g:1644:5: otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) )
+                    	    // InternalGoatComponentsParser.g:1664:5: otherlv_5= Comma ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) ) otherlv_7= ColonEqualsSign ( (lv_value_8_0= ruleExpression ) )
                     	    {
                     	    otherlv_5=(Token)match(input,Comma,FOLLOW_29); 
 
                     	    					newLeafNode(otherlv_5, grammarAccess.getUpdateAccess().getCommaKeyword_1_4_0());
                     	    				
-                    	    // InternalGoatComponentsParser.g:1648:5: ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) )
-                    	    // InternalGoatComponentsParser.g:1649:6: ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) )
+                    	    // InternalGoatComponentsParser.g:1668:5: ( ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) ) )
+                    	    // InternalGoatComponentsParser.g:1669:6: ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) )
                     	    {
-                    	    // InternalGoatComponentsParser.g:1649:6: ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) )
-                    	    // InternalGoatComponentsParser.g:1650:7: (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute )
+                    	    // InternalGoatComponentsParser.g:1669:6: ( (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute ) )
+                    	    // InternalGoatComponentsParser.g:1670:7: (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute )
                     	    {
-                    	    // InternalGoatComponentsParser.g:1650:7: (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute )
+                    	    // InternalGoatComponentsParser.g:1670:7: (lv_attribute_6_1= ruleUpdateComponentAttribute | lv_attribute_6_2= ruleUpdateLocalAttribute )
                     	    int alt21=2;
                     	    int LA21_0 = input.LA(1);
 
@@ -4141,7 +4186,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     	    }
                     	    switch (alt21) {
                     	        case 1 :
-                    	            // InternalGoatComponentsParser.g:1651:8: lv_attribute_6_1= ruleUpdateComponentAttribute
+                    	            // InternalGoatComponentsParser.g:1671:8: lv_attribute_6_1= ruleUpdateComponentAttribute
                     	            {
 
                     	            								newCompositeNode(grammarAccess.getUpdateAccess().getAttributeUpdateComponentAttributeParserRuleCall_1_4_1_0_0());
@@ -4166,7 +4211,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     	            }
                     	            break;
                     	        case 2 :
-                    	            // InternalGoatComponentsParser.g:1667:8: lv_attribute_6_2= ruleUpdateLocalAttribute
+                    	            // InternalGoatComponentsParser.g:1687:8: lv_attribute_6_2= ruleUpdateLocalAttribute
                     	            {
 
                     	            								newCompositeNode(grammarAccess.getUpdateAccess().getAttributeUpdateLocalAttributeParserRuleCall_1_4_1_0_1());
@@ -4203,11 +4248,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     	    					newLeafNode(otherlv_7, grammarAccess.getUpdateAccess().getColonEqualsSignKeyword_1_4_2());
                     	    				
-                    	    // InternalGoatComponentsParser.g:1689:5: ( (lv_value_8_0= ruleExpression ) )
-                    	    // InternalGoatComponentsParser.g:1690:6: (lv_value_8_0= ruleExpression )
+                    	    // InternalGoatComponentsParser.g:1709:5: ( (lv_value_8_0= ruleExpression ) )
+                    	    // InternalGoatComponentsParser.g:1710:6: (lv_value_8_0= ruleExpression )
                     	    {
-                    	    // InternalGoatComponentsParser.g:1690:6: (lv_value_8_0= ruleExpression )
-                    	    // InternalGoatComponentsParser.g:1691:7: lv_value_8_0= ruleExpression
+                    	    // InternalGoatComponentsParser.g:1710:6: (lv_value_8_0= ruleExpression )
+                    	    // InternalGoatComponentsParser.g:1711:7: lv_value_8_0= ruleExpression
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getUpdateAccess().getValueExpressionParserRuleCall_1_4_3_0());
@@ -4276,7 +4321,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUpdateComponentAttribute"
-    // InternalGoatComponentsParser.g:1718:1: entryRuleUpdateComponentAttribute returns [EObject current=null] : iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF ;
+    // InternalGoatComponentsParser.g:1738:1: entryRuleUpdateComponentAttribute returns [EObject current=null] : iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF ;
     public final EObject entryRuleUpdateComponentAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4284,8 +4329,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1718:65: (iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF )
-            // InternalGoatComponentsParser.g:1719:2: iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF
+            // InternalGoatComponentsParser.g:1738:65: (iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF )
+            // InternalGoatComponentsParser.g:1739:2: iv_ruleUpdateComponentAttribute= ruleUpdateComponentAttribute EOF
             {
              newCompositeNode(grammarAccess.getUpdateComponentAttributeRule()); 
             pushFollow(FOLLOW_1);
@@ -4312,7 +4357,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUpdateComponentAttribute"
-    // InternalGoatComponentsParser.g:1725:1: ruleUpdateComponentAttribute returns [EObject current=null] : (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) ;
+    // InternalGoatComponentsParser.g:1745:1: ruleUpdateComponentAttribute returns [EObject current=null] : (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) ;
     public final EObject ruleUpdateComponentAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4324,11 +4369,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1731:2: ( (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) )
-            // InternalGoatComponentsParser.g:1732:2: (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:1751:2: ( (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) )
+            // InternalGoatComponentsParser.g:1752:2: (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
             {
-            // InternalGoatComponentsParser.g:1732:2: (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
-            // InternalGoatComponentsParser.g:1733:3: otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:1752:2: (otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:1753:3: otherlv_0= Comp otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) )
             {
             otherlv_0=(Token)match(input,Comp,FOLLOW_32); 
 
@@ -4338,11 +4383,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getUpdateComponentAttributeAccess().getFullStopKeyword_1());
             		
-            // InternalGoatComponentsParser.g:1741:3: ( (lv_atname_2_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:1742:4: (lv_atname_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:1761:3: ( (lv_atname_2_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:1762:4: (lv_atname_2_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:1742:4: (lv_atname_2_0= RULE_ID )
-            // InternalGoatComponentsParser.g:1743:5: lv_atname_2_0= RULE_ID
+            // InternalGoatComponentsParser.g:1762:4: (lv_atname_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:1763:5: lv_atname_2_0= RULE_ID
             {
             lv_atname_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -4387,7 +4432,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUpdateLocalAttribute"
-    // InternalGoatComponentsParser.g:1763:1: entryRuleUpdateLocalAttribute returns [EObject current=null] : iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF ;
+    // InternalGoatComponentsParser.g:1783:1: entryRuleUpdateLocalAttribute returns [EObject current=null] : iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF ;
     public final EObject entryRuleUpdateLocalAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4395,8 +4440,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1763:61: (iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF )
-            // InternalGoatComponentsParser.g:1764:2: iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF
+            // InternalGoatComponentsParser.g:1783:61: (iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF )
+            // InternalGoatComponentsParser.g:1784:2: iv_ruleUpdateLocalAttribute= ruleUpdateLocalAttribute EOF
             {
              newCompositeNode(grammarAccess.getUpdateLocalAttributeRule()); 
             pushFollow(FOLLOW_1);
@@ -4423,7 +4468,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUpdateLocalAttribute"
-    // InternalGoatComponentsParser.g:1770:1: ruleUpdateLocalAttribute returns [EObject current=null] : (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) ;
+    // InternalGoatComponentsParser.g:1790:1: ruleUpdateLocalAttribute returns [EObject current=null] : (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) ;
     public final EObject ruleUpdateLocalAttribute() throws RecognitionException {
         EObject current = null;
 
@@ -4435,11 +4480,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1776:2: ( (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) )
-            // InternalGoatComponentsParser.g:1777:2: (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:1796:2: ( (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) ) )
+            // InternalGoatComponentsParser.g:1797:2: (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
             {
-            // InternalGoatComponentsParser.g:1777:2: (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
-            // InternalGoatComponentsParser.g:1778:3: otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:1797:2: (otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:1798:3: otherlv_0= Proc otherlv_1= FullStop ( (lv_atname_2_0= RULE_ID ) )
             {
             otherlv_0=(Token)match(input,Proc,FOLLOW_32); 
 
@@ -4449,11 +4494,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getUpdateLocalAttributeAccess().getFullStopKeyword_1());
             		
-            // InternalGoatComponentsParser.g:1786:3: ( (lv_atname_2_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:1787:4: (lv_atname_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:1806:3: ( (lv_atname_2_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:1807:4: (lv_atname_2_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:1787:4: (lv_atname_2_0= RULE_ID )
-            // InternalGoatComponentsParser.g:1788:5: lv_atname_2_0= RULE_ID
+            // InternalGoatComponentsParser.g:1807:4: (lv_atname_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:1808:5: lv_atname_2_0= RULE_ID
             {
             lv_atname_2_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -4498,7 +4543,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrintStatement"
-    // InternalGoatComponentsParser.g:1808:1: entryRulePrintStatement returns [EObject current=null] : iv_rulePrintStatement= rulePrintStatement EOF ;
+    // InternalGoatComponentsParser.g:1828:1: entryRulePrintStatement returns [EObject current=null] : iv_rulePrintStatement= rulePrintStatement EOF ;
     public final EObject entryRulePrintStatement() throws RecognitionException {
         EObject current = null;
 
@@ -4506,8 +4551,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1808:55: (iv_rulePrintStatement= rulePrintStatement EOF )
-            // InternalGoatComponentsParser.g:1809:2: iv_rulePrintStatement= rulePrintStatement EOF
+            // InternalGoatComponentsParser.g:1828:55: (iv_rulePrintStatement= rulePrintStatement EOF )
+            // InternalGoatComponentsParser.g:1829:2: iv_rulePrintStatement= rulePrintStatement EOF
             {
              newCompositeNode(grammarAccess.getPrintStatementRule()); 
             pushFollow(FOLLOW_1);
@@ -4534,7 +4579,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrintStatement"
-    // InternalGoatComponentsParser.g:1815:1: rulePrintStatement returns [EObject current=null] : this_PrintFormattedStatement_0= rulePrintFormattedStatement ;
+    // InternalGoatComponentsParser.g:1835:1: rulePrintStatement returns [EObject current=null] : this_PrintFormattedStatement_0= rulePrintFormattedStatement ;
     public final EObject rulePrintStatement() throws RecognitionException {
         EObject current = null;
 
@@ -4545,8 +4590,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1821:2: (this_PrintFormattedStatement_0= rulePrintFormattedStatement )
-            // InternalGoatComponentsParser.g:1822:2: this_PrintFormattedStatement_0= rulePrintFormattedStatement
+            // InternalGoatComponentsParser.g:1841:2: (this_PrintFormattedStatement_0= rulePrintFormattedStatement )
+            // InternalGoatComponentsParser.g:1842:2: this_PrintFormattedStatement_0= rulePrintFormattedStatement
             {
 
             		newCompositeNode(grammarAccess.getPrintStatementAccess().getPrintFormattedStatementParserRuleCall());
@@ -4580,7 +4625,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrintFormattedStatement"
-    // InternalGoatComponentsParser.g:1833:1: entryRulePrintFormattedStatement returns [EObject current=null] : iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF ;
+    // InternalGoatComponentsParser.g:1853:1: entryRulePrintFormattedStatement returns [EObject current=null] : iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF ;
     public final EObject entryRulePrintFormattedStatement() throws RecognitionException {
         EObject current = null;
 
@@ -4588,8 +4633,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1833:64: (iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF )
-            // InternalGoatComponentsParser.g:1834:2: iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF
+            // InternalGoatComponentsParser.g:1853:64: (iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF )
+            // InternalGoatComponentsParser.g:1854:2: iv_rulePrintFormattedStatement= rulePrintFormattedStatement EOF
             {
              newCompositeNode(grammarAccess.getPrintFormattedStatementRule()); 
             pushFollow(FOLLOW_1);
@@ -4616,7 +4661,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrintFormattedStatement"
-    // InternalGoatComponentsParser.g:1840:1: rulePrintFormattedStatement returns [EObject current=null] : (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis ) ;
+    // InternalGoatComponentsParser.g:1860:1: rulePrintFormattedStatement returns [EObject current=null] : (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis ) ;
     public final EObject rulePrintFormattedStatement() throws RecognitionException {
         EObject current = null;
 
@@ -4629,11 +4674,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1846:2: ( (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis ) )
-            // InternalGoatComponentsParser.g:1847:2: (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:1866:2: ( (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis ) )
+            // InternalGoatComponentsParser.g:1867:2: (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis )
             {
-            // InternalGoatComponentsParser.g:1847:2: (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis )
-            // InternalGoatComponentsParser.g:1848:3: otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis
+            // InternalGoatComponentsParser.g:1867:2: (otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis )
+            // InternalGoatComponentsParser.g:1868:3: otherlv_0= Print otherlv_1= LeftParenthesis ( (lv_toPrint_2_0= RULE_STRING ) ) otherlv_3= RightParenthesis
             {
             otherlv_0=(Token)match(input,Print,FOLLOW_8); 
 
@@ -4643,11 +4688,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getPrintFormattedStatementAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:1856:3: ( (lv_toPrint_2_0= RULE_STRING ) )
-            // InternalGoatComponentsParser.g:1857:4: (lv_toPrint_2_0= RULE_STRING )
+            // InternalGoatComponentsParser.g:1876:3: ( (lv_toPrint_2_0= RULE_STRING ) )
+            // InternalGoatComponentsParser.g:1877:4: (lv_toPrint_2_0= RULE_STRING )
             {
-            // InternalGoatComponentsParser.g:1857:4: (lv_toPrint_2_0= RULE_STRING )
-            // InternalGoatComponentsParser.g:1858:5: lv_toPrint_2_0= RULE_STRING
+            // InternalGoatComponentsParser.g:1877:4: (lv_toPrint_2_0= RULE_STRING )
+            // InternalGoatComponentsParser.g:1878:5: lv_toPrint_2_0= RULE_STRING
             {
             lv_toPrint_2_0=(Token)match(input,RULE_STRING,FOLLOW_9); 
 
@@ -4696,7 +4741,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnvInitValue"
-    // InternalGoatComponentsParser.g:1882:1: entryRuleEnvInitValue returns [EObject current=null] : iv_ruleEnvInitValue= ruleEnvInitValue EOF ;
+    // InternalGoatComponentsParser.g:1902:1: entryRuleEnvInitValue returns [EObject current=null] : iv_ruleEnvInitValue= ruleEnvInitValue EOF ;
     public final EObject entryRuleEnvInitValue() throws RecognitionException {
         EObject current = null;
 
@@ -4704,8 +4749,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:1882:53: (iv_ruleEnvInitValue= ruleEnvInitValue EOF )
-            // InternalGoatComponentsParser.g:1883:2: iv_ruleEnvInitValue= ruleEnvInitValue EOF
+            // InternalGoatComponentsParser.g:1902:53: (iv_ruleEnvInitValue= ruleEnvInitValue EOF )
+            // InternalGoatComponentsParser.g:1903:2: iv_ruleEnvInitValue= ruleEnvInitValue EOF
             {
              newCompositeNode(grammarAccess.getEnvInitValueRule()); 
             pushFollow(FOLLOW_1);
@@ -4732,7 +4777,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnvInitValue"
-    // InternalGoatComponentsParser.g:1889:1: ruleEnvInitValue returns [EObject current=null] : ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) ) ;
+    // InternalGoatComponentsParser.g:1909:1: ruleEnvInitValue returns [EObject current=null] : ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) ) ;
     public final EObject ruleEnvInitValue() throws RecognitionException {
         EObject current = null;
 
@@ -4747,10 +4792,10 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:1895:2: ( ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) ) )
-            // InternalGoatComponentsParser.g:1896:2: ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) )
+            // InternalGoatComponentsParser.g:1915:2: ( ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) ) )
+            // InternalGoatComponentsParser.g:1916:2: ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) )
             {
-            // InternalGoatComponentsParser.g:1896:2: ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) )
+            // InternalGoatComponentsParser.g:1916:2: ( ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) ) | ( () ( (lv_value_4_0= RULE_INT ) ) ) | ( () ( (lv_value_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) ) )
             int alt25=4;
             switch ( input.LA(1) ) {
             case HyphenMinus:
@@ -4783,13 +4828,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             switch (alt25) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:1897:3: ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:1917:3: ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) )
                     {
-                    // InternalGoatComponentsParser.g:1897:3: ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) )
-                    // InternalGoatComponentsParser.g:1898:4: () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:1917:3: ( () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:1918:4: () otherlv_1= HyphenMinus ( (lv_negvalue_2_0= RULE_INT ) )
                     {
-                    // InternalGoatComponentsParser.g:1898:4: ()
-                    // InternalGoatComponentsParser.g:1899:5: 
+                    // InternalGoatComponentsParser.g:1918:4: ()
+                    // InternalGoatComponentsParser.g:1919:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4803,11 +4848,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_1, grammarAccess.getEnvInitValueAccess().getHyphenMinusKeyword_0_1());
                     			
-                    // InternalGoatComponentsParser.g:1909:4: ( (lv_negvalue_2_0= RULE_INT ) )
-                    // InternalGoatComponentsParser.g:1910:5: (lv_negvalue_2_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:1929:4: ( (lv_negvalue_2_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:1930:5: (lv_negvalue_2_0= RULE_INT )
                     {
-                    // InternalGoatComponentsParser.g:1910:5: (lv_negvalue_2_0= RULE_INT )
-                    // InternalGoatComponentsParser.g:1911:6: lv_negvalue_2_0= RULE_INT
+                    // InternalGoatComponentsParser.g:1930:5: (lv_negvalue_2_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:1931:6: lv_negvalue_2_0= RULE_INT
                     {
                     lv_negvalue_2_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -4836,13 +4881,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:1929:3: ( () ( (lv_value_4_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:1949:3: ( () ( (lv_value_4_0= RULE_INT ) ) )
                     {
-                    // InternalGoatComponentsParser.g:1929:3: ( () ( (lv_value_4_0= RULE_INT ) ) )
-                    // InternalGoatComponentsParser.g:1930:4: () ( (lv_value_4_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:1949:3: ( () ( (lv_value_4_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:1950:4: () ( (lv_value_4_0= RULE_INT ) )
                     {
-                    // InternalGoatComponentsParser.g:1930:4: ()
-                    // InternalGoatComponentsParser.g:1931:5: 
+                    // InternalGoatComponentsParser.g:1950:4: ()
+                    // InternalGoatComponentsParser.g:1951:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4852,11 +4897,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:1937:4: ( (lv_value_4_0= RULE_INT ) )
-                    // InternalGoatComponentsParser.g:1938:5: (lv_value_4_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:1957:4: ( (lv_value_4_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:1958:5: (lv_value_4_0= RULE_INT )
                     {
-                    // InternalGoatComponentsParser.g:1938:5: (lv_value_4_0= RULE_INT )
-                    // InternalGoatComponentsParser.g:1939:6: lv_value_4_0= RULE_INT
+                    // InternalGoatComponentsParser.g:1958:5: (lv_value_4_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:1959:6: lv_value_4_0= RULE_INT
                     {
                     lv_value_4_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -4885,13 +4930,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:1957:3: ( () ( (lv_value_6_0= RULE_STRING ) ) )
+                    // InternalGoatComponentsParser.g:1977:3: ( () ( (lv_value_6_0= RULE_STRING ) ) )
                     {
-                    // InternalGoatComponentsParser.g:1957:3: ( () ( (lv_value_6_0= RULE_STRING ) ) )
-                    // InternalGoatComponentsParser.g:1958:4: () ( (lv_value_6_0= RULE_STRING ) )
+                    // InternalGoatComponentsParser.g:1977:3: ( () ( (lv_value_6_0= RULE_STRING ) ) )
+                    // InternalGoatComponentsParser.g:1978:4: () ( (lv_value_6_0= RULE_STRING ) )
                     {
-                    // InternalGoatComponentsParser.g:1958:4: ()
-                    // InternalGoatComponentsParser.g:1959:5: 
+                    // InternalGoatComponentsParser.g:1978:4: ()
+                    // InternalGoatComponentsParser.g:1979:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4901,11 +4946,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:1965:4: ( (lv_value_6_0= RULE_STRING ) )
-                    // InternalGoatComponentsParser.g:1966:5: (lv_value_6_0= RULE_STRING )
+                    // InternalGoatComponentsParser.g:1985:4: ( (lv_value_6_0= RULE_STRING ) )
+                    // InternalGoatComponentsParser.g:1986:5: (lv_value_6_0= RULE_STRING )
                     {
-                    // InternalGoatComponentsParser.g:1966:5: (lv_value_6_0= RULE_STRING )
-                    // InternalGoatComponentsParser.g:1967:6: lv_value_6_0= RULE_STRING
+                    // InternalGoatComponentsParser.g:1986:5: (lv_value_6_0= RULE_STRING )
+                    // InternalGoatComponentsParser.g:1987:6: lv_value_6_0= RULE_STRING
                     {
                     lv_value_6_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -4934,13 +4979,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGoatComponentsParser.g:1985:3: ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) )
+                    // InternalGoatComponentsParser.g:2005:3: ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) )
                     {
-                    // InternalGoatComponentsParser.g:1985:3: ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) )
-                    // InternalGoatComponentsParser.g:1986:4: () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) )
+                    // InternalGoatComponentsParser.g:2005:3: ( () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) ) )
+                    // InternalGoatComponentsParser.g:2006:4: () ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) )
                     {
-                    // InternalGoatComponentsParser.g:1986:4: ()
-                    // InternalGoatComponentsParser.g:1987:5: 
+                    // InternalGoatComponentsParser.g:2006:4: ()
+                    // InternalGoatComponentsParser.g:2007:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4950,13 +4995,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:1993:4: ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) )
-                    // InternalGoatComponentsParser.g:1994:5: ( (lv_value_8_1= True | lv_value_8_2= False ) )
+                    // InternalGoatComponentsParser.g:2013:4: ( ( (lv_value_8_1= True | lv_value_8_2= False ) ) )
+                    // InternalGoatComponentsParser.g:2014:5: ( (lv_value_8_1= True | lv_value_8_2= False ) )
                     {
-                    // InternalGoatComponentsParser.g:1994:5: ( (lv_value_8_1= True | lv_value_8_2= False ) )
-                    // InternalGoatComponentsParser.g:1995:6: (lv_value_8_1= True | lv_value_8_2= False )
+                    // InternalGoatComponentsParser.g:2014:5: ( (lv_value_8_1= True | lv_value_8_2= False ) )
+                    // InternalGoatComponentsParser.g:2015:6: (lv_value_8_1= True | lv_value_8_2= False )
                     {
-                    // InternalGoatComponentsParser.g:1995:6: (lv_value_8_1= True | lv_value_8_2= False )
+                    // InternalGoatComponentsParser.g:2015:6: (lv_value_8_1= True | lv_value_8_2= False )
                     int alt24=2;
                     int LA24_0 = input.LA(1);
 
@@ -4974,7 +5019,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt24) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:1996:7: lv_value_8_1= True
+                            // InternalGoatComponentsParser.g:2016:7: lv_value_8_1= True
                             {
                             lv_value_8_1=(Token)match(input,True,FOLLOW_2); 
 
@@ -4990,7 +5035,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2007:7: lv_value_8_2= False
+                            // InternalGoatComponentsParser.g:2027:7: lv_value_8_2= False
                             {
                             lv_value_8_2=(Token)match(input,False,FOLLOW_2); 
 
@@ -5043,7 +5088,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEnvironment"
-    // InternalGoatComponentsParser.g:2025:1: entryRuleEnvironment returns [EObject current=null] : iv_ruleEnvironment= ruleEnvironment EOF ;
+    // InternalGoatComponentsParser.g:2045:1: entryRuleEnvironment returns [EObject current=null] : iv_ruleEnvironment= ruleEnvironment EOF ;
     public final EObject entryRuleEnvironment() throws RecognitionException {
         EObject current = null;
 
@@ -5051,8 +5096,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2025:52: (iv_ruleEnvironment= ruleEnvironment EOF )
-            // InternalGoatComponentsParser.g:2026:2: iv_ruleEnvironment= ruleEnvironment EOF
+            // InternalGoatComponentsParser.g:2045:52: (iv_ruleEnvironment= ruleEnvironment EOF )
+            // InternalGoatComponentsParser.g:2046:2: iv_ruleEnvironment= ruleEnvironment EOF
             {
              newCompositeNode(grammarAccess.getEnvironmentRule()); 
             pushFollow(FOLLOW_1);
@@ -5079,7 +5124,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEnvironment"
-    // InternalGoatComponentsParser.g:2032:1: ruleEnvironment returns [EObject current=null] : ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket ) ;
+    // InternalGoatComponentsParser.g:2052:1: ruleEnvironment returns [EObject current=null] : ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket ) ;
     public final EObject ruleEnvironment() throws RecognitionException {
         EObject current = null;
 
@@ -5099,14 +5144,14 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2038:2: ( ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket ) )
-            // InternalGoatComponentsParser.g:2039:2: ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:2058:2: ( ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket ) )
+            // InternalGoatComponentsParser.g:2059:2: ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket )
             {
-            // InternalGoatComponentsParser.g:2039:2: ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket )
-            // InternalGoatComponentsParser.g:2040:3: () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket
+            // InternalGoatComponentsParser.g:2059:2: ( () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:2060:3: () otherlv_1= LeftCurlyBracket ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )? otherlv_9= RightCurlyBracket
             {
-            // InternalGoatComponentsParser.g:2040:3: ()
-            // InternalGoatComponentsParser.g:2041:4: 
+            // InternalGoatComponentsParser.g:2060:3: ()
+            // InternalGoatComponentsParser.g:2061:4: 
             {
 
             				current = forceCreateModelElement(
@@ -5120,7 +5165,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getEnvironmentAccess().getLeftCurlyBracketKeyword_1());
             		
-            // InternalGoatComponentsParser.g:2051:3: ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )?
+            // InternalGoatComponentsParser.g:2071:3: ( ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )* )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -5129,13 +5174,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt27) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2052:4: ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )*
+                    // InternalGoatComponentsParser.g:2072:4: ( (lv_attrs_2_0= RULE_ID ) ) otherlv_3= ColonEqualsSign ( (lv_vals_4_0= ruleEnvInitValue ) ) (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )*
                     {
-                    // InternalGoatComponentsParser.g:2052:4: ( (lv_attrs_2_0= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:2053:5: (lv_attrs_2_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:2072:4: ( (lv_attrs_2_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:2073:5: (lv_attrs_2_0= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:2053:5: (lv_attrs_2_0= RULE_ID )
-                    // InternalGoatComponentsParser.g:2054:6: lv_attrs_2_0= RULE_ID
+                    // InternalGoatComponentsParser.g:2073:5: (lv_attrs_2_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:2074:6: lv_attrs_2_0= RULE_ID
                     {
                     lv_attrs_2_0=(Token)match(input,RULE_ID,FOLLOW_30); 
 
@@ -5161,11 +5206,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_3, grammarAccess.getEnvironmentAccess().getColonEqualsSignKeyword_2_1());
                     			
-                    // InternalGoatComponentsParser.g:2074:4: ( (lv_vals_4_0= ruleEnvInitValue ) )
-                    // InternalGoatComponentsParser.g:2075:5: (lv_vals_4_0= ruleEnvInitValue )
+                    // InternalGoatComponentsParser.g:2094:4: ( (lv_vals_4_0= ruleEnvInitValue ) )
+                    // InternalGoatComponentsParser.g:2095:5: (lv_vals_4_0= ruleEnvInitValue )
                     {
-                    // InternalGoatComponentsParser.g:2075:5: (lv_vals_4_0= ruleEnvInitValue )
-                    // InternalGoatComponentsParser.g:2076:6: lv_vals_4_0= ruleEnvInitValue
+                    // InternalGoatComponentsParser.g:2095:5: (lv_vals_4_0= ruleEnvInitValue )
+                    // InternalGoatComponentsParser.g:2096:6: lv_vals_4_0= ruleEnvInitValue
                     {
 
                     						newCompositeNode(grammarAccess.getEnvironmentAccess().getValsEnvInitValueParserRuleCall_2_2_0());
@@ -5192,7 +5237,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2093:4: (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )*
+                    // InternalGoatComponentsParser.g:2113:4: (otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) ) )*
                     loop26:
                     do {
                         int alt26=2;
@@ -5205,17 +5250,17 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                         switch (alt26) {
                     	case 1 :
-                    	    // InternalGoatComponentsParser.g:2094:5: otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) )
+                    	    // InternalGoatComponentsParser.g:2114:5: otherlv_5= Comma ( (lv_attrs_6_0= RULE_ID ) ) otherlv_7= ColonEqualsSign ( (lv_vals_8_0= ruleEnvInitValue ) )
                     	    {
                     	    otherlv_5=(Token)match(input,Comma,FOLLOW_3); 
 
                     	    					newLeafNode(otherlv_5, grammarAccess.getEnvironmentAccess().getCommaKeyword_2_3_0());
                     	    				
-                    	    // InternalGoatComponentsParser.g:2098:5: ( (lv_attrs_6_0= RULE_ID ) )
-                    	    // InternalGoatComponentsParser.g:2099:6: (lv_attrs_6_0= RULE_ID )
+                    	    // InternalGoatComponentsParser.g:2118:5: ( (lv_attrs_6_0= RULE_ID ) )
+                    	    // InternalGoatComponentsParser.g:2119:6: (lv_attrs_6_0= RULE_ID )
                     	    {
-                    	    // InternalGoatComponentsParser.g:2099:6: (lv_attrs_6_0= RULE_ID )
-                    	    // InternalGoatComponentsParser.g:2100:7: lv_attrs_6_0= RULE_ID
+                    	    // InternalGoatComponentsParser.g:2119:6: (lv_attrs_6_0= RULE_ID )
+                    	    // InternalGoatComponentsParser.g:2120:7: lv_attrs_6_0= RULE_ID
                     	    {
                     	    lv_attrs_6_0=(Token)match(input,RULE_ID,FOLLOW_30); 
 
@@ -5241,11 +5286,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     	    					newLeafNode(otherlv_7, grammarAccess.getEnvironmentAccess().getColonEqualsSignKeyword_2_3_2());
                     	    				
-                    	    // InternalGoatComponentsParser.g:2120:5: ( (lv_vals_8_0= ruleEnvInitValue ) )
-                    	    // InternalGoatComponentsParser.g:2121:6: (lv_vals_8_0= ruleEnvInitValue )
+                    	    // InternalGoatComponentsParser.g:2140:5: ( (lv_vals_8_0= ruleEnvInitValue ) )
+                    	    // InternalGoatComponentsParser.g:2141:6: (lv_vals_8_0= ruleEnvInitValue )
                     	    {
-                    	    // InternalGoatComponentsParser.g:2121:6: (lv_vals_8_0= ruleEnvInitValue )
-                    	    // InternalGoatComponentsParser.g:2122:7: lv_vals_8_0= ruleEnvInitValue
+                    	    // InternalGoatComponentsParser.g:2141:6: (lv_vals_8_0= ruleEnvInitValue )
+                    	    // InternalGoatComponentsParser.g:2142:7: lv_vals_8_0= ruleEnvInitValue
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getEnvironmentAccess().getValsEnvInitValueParserRuleCall_2_3_3_0());
@@ -5313,8 +5358,147 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleEnvironment"
 
 
+    // $ANTLR start "entryRuleEnvironmentDefinition"
+    // InternalGoatComponentsParser.g:2169:1: entryRuleEnvironmentDefinition returns [EObject current=null] : iv_ruleEnvironmentDefinition= ruleEnvironmentDefinition EOF ;
+    public final EObject entryRuleEnvironmentDefinition() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleEnvironmentDefinition = null;
+
+
+        try {
+            // InternalGoatComponentsParser.g:2169:62: (iv_ruleEnvironmentDefinition= ruleEnvironmentDefinition EOF )
+            // InternalGoatComponentsParser.g:2170:2: iv_ruleEnvironmentDefinition= ruleEnvironmentDefinition EOF
+            {
+             newCompositeNode(grammarAccess.getEnvironmentDefinitionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleEnvironmentDefinition=ruleEnvironmentDefinition();
+
+            state._fsp--;
+
+             current =iv_ruleEnvironmentDefinition; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEnvironmentDefinition"
+
+
+    // $ANTLR start "ruleEnvironmentDefinition"
+    // InternalGoatComponentsParser.g:2176:1: ruleEnvironmentDefinition returns [EObject current=null] : (otherlv_0= Environment ( (lv_name_1_0= RULE_ID ) ) ( (lv_env_2_0= ruleEnvironment ) ) ) ;
+    public final EObject ruleEnvironmentDefinition() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_name_1_0=null;
+        EObject lv_env_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalGoatComponentsParser.g:2182:2: ( (otherlv_0= Environment ( (lv_name_1_0= RULE_ID ) ) ( (lv_env_2_0= ruleEnvironment ) ) ) )
+            // InternalGoatComponentsParser.g:2183:2: (otherlv_0= Environment ( (lv_name_1_0= RULE_ID ) ) ( (lv_env_2_0= ruleEnvironment ) ) )
+            {
+            // InternalGoatComponentsParser.g:2183:2: (otherlv_0= Environment ( (lv_name_1_0= RULE_ID ) ) ( (lv_env_2_0= ruleEnvironment ) ) )
+            // InternalGoatComponentsParser.g:2184:3: otherlv_0= Environment ( (lv_name_1_0= RULE_ID ) ) ( (lv_env_2_0= ruleEnvironment ) )
+            {
+            otherlv_0=(Token)match(input,Environment,FOLLOW_3); 
+
+            			newLeafNode(otherlv_0, grammarAccess.getEnvironmentDefinitionAccess().getEnvironmentKeyword_0());
+            		
+            // InternalGoatComponentsParser.g:2188:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:2189:4: (lv_name_1_0= RULE_ID )
+            {
+            // InternalGoatComponentsParser.g:2189:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:2190:5: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_10); 
+
+            					newLeafNode(lv_name_1_0, grammarAccess.getEnvironmentDefinitionAccess().getNameIDTerminalRuleCall_1_0());
+            				
+
+            					if (current==null) {
+            						current = createModelElement(grammarAccess.getEnvironmentDefinitionRule());
+            					}
+            					setWithLastConsumed(
+            						current,
+            						"name",
+            						lv_name_1_0,
+            						"org.eclipse.xtext.common.Terminals.ID");
+            				
+
+            }
+
+
+            }
+
+            // InternalGoatComponentsParser.g:2206:3: ( (lv_env_2_0= ruleEnvironment ) )
+            // InternalGoatComponentsParser.g:2207:4: (lv_env_2_0= ruleEnvironment )
+            {
+            // InternalGoatComponentsParser.g:2207:4: (lv_env_2_0= ruleEnvironment )
+            // InternalGoatComponentsParser.g:2208:5: lv_env_2_0= ruleEnvironment
+            {
+
+            					newCompositeNode(grammarAccess.getEnvironmentDefinitionAccess().getEnvEnvironmentParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_2);
+            lv_env_2_0=ruleEnvironment();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getEnvironmentDefinitionRule());
+            					}
+            					set(
+            						current,
+            						"env",
+            						lv_env_2_0,
+            						"com.sysma.goat.eclipse_plugin.GoatComponents.Environment");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEnvironmentDefinition"
+
+
     // $ANTLR start "entryRuleComponentDefinition"
-    // InternalGoatComponentsParser.g:2149:1: entryRuleComponentDefinition returns [EObject current=null] : iv_ruleComponentDefinition= ruleComponentDefinition EOF ;
+    // InternalGoatComponentsParser.g:2229:1: entryRuleComponentDefinition returns [EObject current=null] : iv_ruleComponentDefinition= ruleComponentDefinition EOF ;
     public final EObject entryRuleComponentDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -5322,8 +5506,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2149:60: (iv_ruleComponentDefinition= ruleComponentDefinition EOF )
-            // InternalGoatComponentsParser.g:2150:2: iv_ruleComponentDefinition= ruleComponentDefinition EOF
+            // InternalGoatComponentsParser.g:2229:60: (iv_ruleComponentDefinition= ruleComponentDefinition EOF )
+            // InternalGoatComponentsParser.g:2230:2: iv_ruleComponentDefinition= ruleComponentDefinition EOF
             {
              newCompositeNode(grammarAccess.getComponentDefinitionRule()); 
             pushFollow(FOLLOW_1);
@@ -5350,70 +5534,35 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComponentDefinition"
-    // InternalGoatComponentsParser.g:2156:1: ruleComponentDefinition returns [EObject current=null] : (otherlv_0= Component ( (lv_env_1_0= ruleEnvironment ) ) ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) ) ) ;
+    // InternalGoatComponentsParser.g:2236:1: ruleComponentDefinition returns [EObject current=null] : (otherlv_0= Component ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) ) otherlv_3= Colon ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) ) ) ;
     public final EObject ruleComponentDefinition() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        EObject lv_env_1_0 = null;
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        EObject lv_env_2_0 = null;
 
-        EObject lv_block_2_1 = null;
+        EObject lv_block_4_1 = null;
 
-        EObject lv_block_2_2 = null;
+        EObject lv_block_4_2 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2162:2: ( (otherlv_0= Component ( (lv_env_1_0= ruleEnvironment ) ) ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) ) ) )
-            // InternalGoatComponentsParser.g:2163:2: (otherlv_0= Component ( (lv_env_1_0= ruleEnvironment ) ) ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:2242:2: ( (otherlv_0= Component ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) ) otherlv_3= Colon ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) ) ) )
+            // InternalGoatComponentsParser.g:2243:2: (otherlv_0= Component ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) ) otherlv_3= Colon ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) ) )
             {
-            // InternalGoatComponentsParser.g:2163:2: (otherlv_0= Component ( (lv_env_1_0= ruleEnvironment ) ) ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) ) )
-            // InternalGoatComponentsParser.g:2164:3: otherlv_0= Component ( (lv_env_1_0= ruleEnvironment ) ) ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:2243:2: (otherlv_0= Component ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) ) otherlv_3= Colon ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) ) )
+            // InternalGoatComponentsParser.g:2244:3: otherlv_0= Component ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) ) otherlv_3= Colon ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) )
             {
-            otherlv_0=(Token)match(input,Component,FOLLOW_10); 
+            otherlv_0=(Token)match(input,Component,FOLLOW_36); 
 
             			newLeafNode(otherlv_0, grammarAccess.getComponentDefinitionAccess().getComponentKeyword_0());
             		
-            // InternalGoatComponentsParser.g:2168:3: ( (lv_env_1_0= ruleEnvironment ) )
-            // InternalGoatComponentsParser.g:2169:4: (lv_env_1_0= ruleEnvironment )
-            {
-            // InternalGoatComponentsParser.g:2169:4: (lv_env_1_0= ruleEnvironment )
-            // InternalGoatComponentsParser.g:2170:5: lv_env_1_0= ruleEnvironment
-            {
-
-            					newCompositeNode(grammarAccess.getComponentDefinitionAccess().getEnvEnvironmentParserRuleCall_1_0());
-            				
-            pushFollow(FOLLOW_36);
-            lv_env_1_0=ruleEnvironment();
-
-            state._fsp--;
-
-
-            					if (current==null) {
-            						current = createModelElementForParent(grammarAccess.getComponentDefinitionRule());
-            					}
-            					set(
-            						current,
-            						"env",
-            						lv_env_1_0,
-            						"com.sysma.goat.eclipse_plugin.GoatComponents.Environment");
-            					afterParserOrEnumRuleCall();
-            				
-
-            }
-
-
-            }
-
-            // InternalGoatComponentsParser.g:2187:3: ( ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) ) )
-            // InternalGoatComponentsParser.g:2188:4: ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) )
-            {
-            // InternalGoatComponentsParser.g:2188:4: ( (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock ) )
-            // InternalGoatComponentsParser.g:2189:5: (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock )
-            {
-            // InternalGoatComponentsParser.g:2189:5: (lv_block_2_1= rulePDPBlock | lv_block_2_2= ruleProcessBlock )
+            // InternalGoatComponentsParser.g:2248:3: ( ( (otherlv_1= RULE_ID ) ) | ( (lv_env_2_0= ruleEnvironment ) ) )
             int alt28=2;
             int LA28_0 = input.LA(1);
 
@@ -5431,13 +5580,107 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             }
             switch (alt28) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2190:6: lv_block_2_1= rulePDPBlock
+                    // InternalGoatComponentsParser.g:2249:4: ( (otherlv_1= RULE_ID ) )
+                    {
+                    // InternalGoatComponentsParser.g:2249:4: ( (otherlv_1= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:2250:5: (otherlv_1= RULE_ID )
+                    {
+                    // InternalGoatComponentsParser.g:2250:5: (otherlv_1= RULE_ID )
+                    // InternalGoatComponentsParser.g:2251:6: otherlv_1= RULE_ID
                     {
 
-                    						newCompositeNode(grammarAccess.getComponentDefinitionAccess().getBlockPDPBlockParserRuleCall_2_0_0());
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getComponentDefinitionRule());
+                    						}
+                    					
+                    otherlv_1=(Token)match(input,RULE_ID,FOLLOW_19); 
+
+                    						newLeafNode(otherlv_1, grammarAccess.getComponentDefinitionAccess().getEnvrefEnvironmentDefinitionCrossReference_1_0_0());
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalGoatComponentsParser.g:2263:4: ( (lv_env_2_0= ruleEnvironment ) )
+                    {
+                    // InternalGoatComponentsParser.g:2263:4: ( (lv_env_2_0= ruleEnvironment ) )
+                    // InternalGoatComponentsParser.g:2264:5: (lv_env_2_0= ruleEnvironment )
+                    {
+                    // InternalGoatComponentsParser.g:2264:5: (lv_env_2_0= ruleEnvironment )
+                    // InternalGoatComponentsParser.g:2265:6: lv_env_2_0= ruleEnvironment
+                    {
+
+                    						newCompositeNode(grammarAccess.getComponentDefinitionAccess().getEnvEnvironmentParserRuleCall_1_1_0());
+                    					
+                    pushFollow(FOLLOW_19);
+                    lv_env_2_0=ruleEnvironment();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getComponentDefinitionRule());
+                    						}
+                    						set(
+                    							current,
+                    							"env",
+                    							lv_env_2_0,
+                    							"com.sysma.goat.eclipse_plugin.GoatComponents.Environment");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_3=(Token)match(input,Colon,FOLLOW_37); 
+
+            			newLeafNode(otherlv_3, grammarAccess.getComponentDefinitionAccess().getColonKeyword_2());
+            		
+            // InternalGoatComponentsParser.g:2287:3: ( ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) ) )
+            // InternalGoatComponentsParser.g:2288:4: ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) )
+            {
+            // InternalGoatComponentsParser.g:2288:4: ( (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock ) )
+            // InternalGoatComponentsParser.g:2289:5: (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock )
+            {
+            // InternalGoatComponentsParser.g:2289:5: (lv_block_4_1= rulePDPBlock | lv_block_4_2= ruleProcessBlock )
+            int alt29=2;
+            int LA29_0 = input.LA(1);
+
+            if ( (LA29_0==RULE_ID) ) {
+                alt29=1;
+            }
+            else if ( (LA29_0==LeftCurlyBracket) ) {
+                alt29=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 29, 0, input);
+
+                throw nvae;
+            }
+            switch (alt29) {
+                case 1 :
+                    // InternalGoatComponentsParser.g:2290:6: lv_block_4_1= rulePDPBlock
+                    {
+
+                    						newCompositeNode(grammarAccess.getComponentDefinitionAccess().getBlockPDPBlockParserRuleCall_3_0_0());
                     					
                     pushFollow(FOLLOW_2);
-                    lv_block_2_1=rulePDPBlock();
+                    lv_block_4_1=rulePDPBlock();
 
                     state._fsp--;
 
@@ -5448,7 +5691,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     						set(
                     							current,
                     							"block",
-                    							lv_block_2_1,
+                    							lv_block_4_1,
                     							"com.sysma.goat.eclipse_plugin.GoatComponents.PDPBlock");
                     						afterParserOrEnumRuleCall();
                     					
@@ -5456,13 +5699,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:2206:6: lv_block_2_2= ruleProcessBlock
+                    // InternalGoatComponentsParser.g:2306:6: lv_block_4_2= ruleProcessBlock
                     {
 
-                    						newCompositeNode(grammarAccess.getComponentDefinitionAccess().getBlockProcessBlockParserRuleCall_2_0_1());
+                    						newCompositeNode(grammarAccess.getComponentDefinitionAccess().getBlockProcessBlockParserRuleCall_3_0_1());
                     					
                     pushFollow(FOLLOW_2);
-                    lv_block_2_2=ruleProcessBlock();
+                    lv_block_4_2=ruleProcessBlock();
 
                     state._fsp--;
 
@@ -5473,7 +5716,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     						set(
                     							current,
                     							"block",
-                    							lv_block_2_2,
+                    							lv_block_4_2,
                     							"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessBlock");
                     						afterParserOrEnumRuleCall();
                     					
@@ -5512,7 +5755,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpression"
-    // InternalGoatComponentsParser.g:2228:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    // InternalGoatComponentsParser.g:2328:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
     public final EObject entryRuleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5520,8 +5763,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2228:51: (iv_ruleExpression= ruleExpression EOF )
-            // InternalGoatComponentsParser.g:2229:2: iv_ruleExpression= ruleExpression EOF
+            // InternalGoatComponentsParser.g:2328:51: (iv_ruleExpression= ruleExpression EOF )
+            // InternalGoatComponentsParser.g:2329:2: iv_ruleExpression= ruleExpression EOF
             {
              newCompositeNode(grammarAccess.getExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -5548,7 +5791,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalGoatComponentsParser.g:2235:1: ruleExpression returns [EObject current=null] : this_Or_0= ruleOr ;
+    // InternalGoatComponentsParser.g:2335:1: ruleExpression returns [EObject current=null] : this_Or_0= ruleOr ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5559,8 +5802,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2241:2: (this_Or_0= ruleOr )
-            // InternalGoatComponentsParser.g:2242:2: this_Or_0= ruleOr
+            // InternalGoatComponentsParser.g:2341:2: (this_Or_0= ruleOr )
+            // InternalGoatComponentsParser.g:2342:2: this_Or_0= ruleOr
             {
 
             		newCompositeNode(grammarAccess.getExpressionAccess().getOrParserRuleCall());
@@ -5594,7 +5837,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOr"
-    // InternalGoatComponentsParser.g:2253:1: entryRuleOr returns [EObject current=null] : iv_ruleOr= ruleOr EOF ;
+    // InternalGoatComponentsParser.g:2353:1: entryRuleOr returns [EObject current=null] : iv_ruleOr= ruleOr EOF ;
     public final EObject entryRuleOr() throws RecognitionException {
         EObject current = null;
 
@@ -5602,8 +5845,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2253:43: (iv_ruleOr= ruleOr EOF )
-            // InternalGoatComponentsParser.g:2254:2: iv_ruleOr= ruleOr EOF
+            // InternalGoatComponentsParser.g:2353:43: (iv_ruleOr= ruleOr EOF )
+            // InternalGoatComponentsParser.g:2354:2: iv_ruleOr= ruleOr EOF
             {
              newCompositeNode(grammarAccess.getOrRule()); 
             pushFollow(FOLLOW_1);
@@ -5630,7 +5873,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOr"
-    // InternalGoatComponentsParser.g:2260:1: ruleOr returns [EObject current=null] : (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* ) ;
+    // InternalGoatComponentsParser.g:2360:1: ruleOr returns [EObject current=null] : (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* ) ;
     public final EObject ruleOr() throws RecognitionException {
         EObject current = null;
 
@@ -5644,16 +5887,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2266:2: ( (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* ) )
-            // InternalGoatComponentsParser.g:2267:2: (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* )
+            // InternalGoatComponentsParser.g:2366:2: ( (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* ) )
+            // InternalGoatComponentsParser.g:2367:2: (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* )
             {
-            // InternalGoatComponentsParser.g:2267:2: (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* )
-            // InternalGoatComponentsParser.g:2268:3: this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )*
+            // InternalGoatComponentsParser.g:2367:2: (this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )* )
+            // InternalGoatComponentsParser.g:2368:3: this_And_0= ruleAnd ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getOrAccess().getAndParserRuleCall_0());
             		
-            pushFollow(FOLLOW_37);
+            pushFollow(FOLLOW_38);
             this_And_0=ruleAnd();
 
             state._fsp--;
@@ -5662,23 +5905,23 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_And_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:2276:3: ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )*
-            loop29:
+            // InternalGoatComponentsParser.g:2376:3: ( () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) ) )*
+            loop30:
             do {
-                int alt29=2;
-                int LA29_0 = input.LA(1);
+                int alt30=2;
+                int LA30_0 = input.LA(1);
 
-                if ( (LA29_0==VerticalLineVerticalLine) ) {
-                    alt29=1;
+                if ( (LA30_0==VerticalLineVerticalLine) ) {
+                    alt30=1;
                 }
 
 
-                switch (alt29) {
+                switch (alt30) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:2277:4: () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) )
+            	    // InternalGoatComponentsParser.g:2377:4: () otherlv_2= VerticalLineVerticalLine ( (lv_sub_3_0= ruleAnd ) )
             	    {
-            	    // InternalGoatComponentsParser.g:2277:4: ()
-            	    // InternalGoatComponentsParser.g:2278:5: 
+            	    // InternalGoatComponentsParser.g:2377:4: ()
+            	    // InternalGoatComponentsParser.g:2378:5: 
             	    {
 
             	    					current = forceCreateModelElementAndAdd(
@@ -5692,16 +5935,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    				newLeafNode(otherlv_2, grammarAccess.getOrAccess().getVerticalLineVerticalLineKeyword_1_1());
             	    			
-            	    // InternalGoatComponentsParser.g:2288:4: ( (lv_sub_3_0= ruleAnd ) )
-            	    // InternalGoatComponentsParser.g:2289:5: (lv_sub_3_0= ruleAnd )
+            	    // InternalGoatComponentsParser.g:2388:4: ( (lv_sub_3_0= ruleAnd ) )
+            	    // InternalGoatComponentsParser.g:2389:5: (lv_sub_3_0= ruleAnd )
             	    {
-            	    // InternalGoatComponentsParser.g:2289:5: (lv_sub_3_0= ruleAnd )
-            	    // InternalGoatComponentsParser.g:2290:6: lv_sub_3_0= ruleAnd
+            	    // InternalGoatComponentsParser.g:2389:5: (lv_sub_3_0= ruleAnd )
+            	    // InternalGoatComponentsParser.g:2390:6: lv_sub_3_0= ruleAnd
             	    {
 
             	    						newCompositeNode(grammarAccess.getOrAccess().getSubAndParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_37);
+            	    pushFollow(FOLLOW_38);
             	    lv_sub_3_0=ruleAnd();
 
             	    state._fsp--;
@@ -5715,167 +5958,6 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             	    							"sub",
             	    							lv_sub_3_0,
             	    							"com.sysma.goat.eclipse_plugin.GoatComponents.And");
-            	    						afterParserOrEnumRuleCall();
-            	    					
-
-            	    }
-
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop29;
-                }
-            } while (true);
-
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleOr"
-
-
-    // $ANTLR start "entryRuleAnd"
-    // InternalGoatComponentsParser.g:2312:1: entryRuleAnd returns [EObject current=null] : iv_ruleAnd= ruleAnd EOF ;
-    public final EObject entryRuleAnd() throws RecognitionException {
-        EObject current = null;
-
-        EObject iv_ruleAnd = null;
-
-
-        try {
-            // InternalGoatComponentsParser.g:2312:44: (iv_ruleAnd= ruleAnd EOF )
-            // InternalGoatComponentsParser.g:2313:2: iv_ruleAnd= ruleAnd EOF
-            {
-             newCompositeNode(grammarAccess.getAndRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleAnd=ruleAnd();
-
-            state._fsp--;
-
-             current =iv_ruleAnd; 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleAnd"
-
-
-    // $ANTLR start "ruleAnd"
-    // InternalGoatComponentsParser.g:2319:1: ruleAnd returns [EObject current=null] : (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* ) ;
-    public final EObject ruleAnd() throws RecognitionException {
-        EObject current = null;
-
-        Token otherlv_2=null;
-        EObject this_Equality_0 = null;
-
-        EObject lv_sub_3_0 = null;
-
-
-
-        	enterRule();
-
-        try {
-            // InternalGoatComponentsParser.g:2325:2: ( (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* ) )
-            // InternalGoatComponentsParser.g:2326:2: (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* )
-            {
-            // InternalGoatComponentsParser.g:2326:2: (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* )
-            // InternalGoatComponentsParser.g:2327:3: this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )*
-            {
-
-            			newCompositeNode(grammarAccess.getAndAccess().getEqualityParserRuleCall_0());
-            		
-            pushFollow(FOLLOW_38);
-            this_Equality_0=ruleEquality();
-
-            state._fsp--;
-
-
-            			current = this_Equality_0;
-            			afterParserOrEnumRuleCall();
-            		
-            // InternalGoatComponentsParser.g:2335:3: ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )*
-            loop30:
-            do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
-
-                if ( (LA30_0==AmpersandAmpersand) ) {
-                    alt30=1;
-                }
-
-
-                switch (alt30) {
-            	case 1 :
-            	    // InternalGoatComponentsParser.g:2336:4: () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) )
-            	    {
-            	    // InternalGoatComponentsParser.g:2336:4: ()
-            	    // InternalGoatComponentsParser.g:2337:5: 
-            	    {
-
-            	    					current = forceCreateModelElementAndAdd(
-            	    						grammarAccess.getAndAccess().getAndSubAction_1_0(),
-            	    						current);
-            	    				
-
-            	    }
-
-            	    otherlv_2=(Token)match(input,AmpersandAmpersand,FOLLOW_13); 
-
-            	    				newLeafNode(otherlv_2, grammarAccess.getAndAccess().getAmpersandAmpersandKeyword_1_1());
-            	    			
-            	    // InternalGoatComponentsParser.g:2347:4: ( (lv_sub_3_0= ruleEquality ) )
-            	    // InternalGoatComponentsParser.g:2348:5: (lv_sub_3_0= ruleEquality )
-            	    {
-            	    // InternalGoatComponentsParser.g:2348:5: (lv_sub_3_0= ruleEquality )
-            	    // InternalGoatComponentsParser.g:2349:6: lv_sub_3_0= ruleEquality
-            	    {
-
-            	    						newCompositeNode(grammarAccess.getAndAccess().getSubEqualityParserRuleCall_1_2_0());
-            	    					
-            	    pushFollow(FOLLOW_38);
-            	    lv_sub_3_0=ruleEquality();
-
-            	    state._fsp--;
-
-
-            	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getAndRule());
-            	    						}
-            	    						add(
-            	    							current,
-            	    							"sub",
-            	    							lv_sub_3_0,
-            	    							"com.sysma.goat.eclipse_plugin.GoatComponents.Equality");
             	    						afterParserOrEnumRuleCall();
             	    					
 
@@ -5912,11 +5994,172 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
+    // $ANTLR end "ruleOr"
+
+
+    // $ANTLR start "entryRuleAnd"
+    // InternalGoatComponentsParser.g:2412:1: entryRuleAnd returns [EObject current=null] : iv_ruleAnd= ruleAnd EOF ;
+    public final EObject entryRuleAnd() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAnd = null;
+
+
+        try {
+            // InternalGoatComponentsParser.g:2412:44: (iv_ruleAnd= ruleAnd EOF )
+            // InternalGoatComponentsParser.g:2413:2: iv_ruleAnd= ruleAnd EOF
+            {
+             newCompositeNode(grammarAccess.getAndRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleAnd=ruleAnd();
+
+            state._fsp--;
+
+             current =iv_ruleAnd; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAnd"
+
+
+    // $ANTLR start "ruleAnd"
+    // InternalGoatComponentsParser.g:2419:1: ruleAnd returns [EObject current=null] : (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* ) ;
+    public final EObject ruleAnd() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_2=null;
+        EObject this_Equality_0 = null;
+
+        EObject lv_sub_3_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalGoatComponentsParser.g:2425:2: ( (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* ) )
+            // InternalGoatComponentsParser.g:2426:2: (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* )
+            {
+            // InternalGoatComponentsParser.g:2426:2: (this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )* )
+            // InternalGoatComponentsParser.g:2427:3: this_Equality_0= ruleEquality ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getAndAccess().getEqualityParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_39);
+            this_Equality_0=ruleEquality();
+
+            state._fsp--;
+
+
+            			current = this_Equality_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalGoatComponentsParser.g:2435:3: ( () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) ) )*
+            loop31:
+            do {
+                int alt31=2;
+                int LA31_0 = input.LA(1);
+
+                if ( (LA31_0==AmpersandAmpersand) ) {
+                    alt31=1;
+                }
+
+
+                switch (alt31) {
+            	case 1 :
+            	    // InternalGoatComponentsParser.g:2436:4: () otherlv_2= AmpersandAmpersand ( (lv_sub_3_0= ruleEquality ) )
+            	    {
+            	    // InternalGoatComponentsParser.g:2436:4: ()
+            	    // InternalGoatComponentsParser.g:2437:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndAdd(
+            	    						grammarAccess.getAndAccess().getAndSubAction_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    otherlv_2=(Token)match(input,AmpersandAmpersand,FOLLOW_13); 
+
+            	    				newLeafNode(otherlv_2, grammarAccess.getAndAccess().getAmpersandAmpersandKeyword_1_1());
+            	    			
+            	    // InternalGoatComponentsParser.g:2447:4: ( (lv_sub_3_0= ruleEquality ) )
+            	    // InternalGoatComponentsParser.g:2448:5: (lv_sub_3_0= ruleEquality )
+            	    {
+            	    // InternalGoatComponentsParser.g:2448:5: (lv_sub_3_0= ruleEquality )
+            	    // InternalGoatComponentsParser.g:2449:6: lv_sub_3_0= ruleEquality
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getAndAccess().getSubEqualityParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_39);
+            	    lv_sub_3_0=ruleEquality();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getAndRule());
+            	    						}
+            	    						add(
+            	    							current,
+            	    							"sub",
+            	    							lv_sub_3_0,
+            	    							"com.sysma.goat.eclipse_plugin.GoatComponents.Equality");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop31;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
     // $ANTLR end "ruleAnd"
 
 
     // $ANTLR start "entryRuleEquality"
-    // InternalGoatComponentsParser.g:2371:1: entryRuleEquality returns [EObject current=null] : iv_ruleEquality= ruleEquality EOF ;
+    // InternalGoatComponentsParser.g:2471:1: entryRuleEquality returns [EObject current=null] : iv_ruleEquality= ruleEquality EOF ;
     public final EObject entryRuleEquality() throws RecognitionException {
         EObject current = null;
 
@@ -5924,8 +6167,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2371:49: (iv_ruleEquality= ruleEquality EOF )
-            // InternalGoatComponentsParser.g:2372:2: iv_ruleEquality= ruleEquality EOF
+            // InternalGoatComponentsParser.g:2471:49: (iv_ruleEquality= ruleEquality EOF )
+            // InternalGoatComponentsParser.g:2472:2: iv_ruleEquality= ruleEquality EOF
             {
              newCompositeNode(grammarAccess.getEqualityRule()); 
             pushFollow(FOLLOW_1);
@@ -5952,7 +6195,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEquality"
-    // InternalGoatComponentsParser.g:2378:1: ruleEquality returns [EObject current=null] : (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? ) ;
+    // InternalGoatComponentsParser.g:2478:1: ruleEquality returns [EObject current=null] : (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? ) ;
     public final EObject ruleEquality() throws RecognitionException {
         EObject current = null;
 
@@ -5967,16 +6210,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2384:2: ( (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? ) )
-            // InternalGoatComponentsParser.g:2385:2: (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? )
+            // InternalGoatComponentsParser.g:2484:2: ( (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? ) )
+            // InternalGoatComponentsParser.g:2485:2: (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? )
             {
-            // InternalGoatComponentsParser.g:2385:2: (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? )
-            // InternalGoatComponentsParser.g:2386:3: this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )?
+            // InternalGoatComponentsParser.g:2485:2: (this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )? )
+            // InternalGoatComponentsParser.g:2486:3: this_Comparison_0= ruleComparison ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )?
             {
 
             			newCompositeNode(grammarAccess.getEqualityAccess().getComparisonParserRuleCall_0());
             		
-            pushFollow(FOLLOW_39);
+            pushFollow(FOLLOW_40);
             this_Comparison_0=ruleComparison();
 
             state._fsp--;
@@ -5985,19 +6228,19 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_Comparison_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:2394:3: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:2494:3: ( () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) ) )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0==ExclamationMarkEqualsSign||LA32_0==EqualsSignEqualsSign) ) {
-                alt32=1;
+            if ( (LA33_0==ExclamationMarkEqualsSign||LA33_0==EqualsSignEqualsSign) ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2395:4: () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) )
+                    // InternalGoatComponentsParser.g:2495:4: () ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) ) ( (lv_right_3_0= ruleComparison ) )
                     {
-                    // InternalGoatComponentsParser.g:2395:4: ()
-                    // InternalGoatComponentsParser.g:2396:5: 
+                    // InternalGoatComponentsParser.g:2495:4: ()
+                    // InternalGoatComponentsParser.g:2496:5: 
                     {
 
                     					current = forceCreateModelElementAndSet(
@@ -6007,31 +6250,31 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2402:4: ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) )
-                    // InternalGoatComponentsParser.g:2403:5: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) )
+                    // InternalGoatComponentsParser.g:2502:4: ( ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) ) )
+                    // InternalGoatComponentsParser.g:2503:5: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) )
                     {
-                    // InternalGoatComponentsParser.g:2403:5: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) )
-                    // InternalGoatComponentsParser.g:2404:6: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign )
+                    // InternalGoatComponentsParser.g:2503:5: ( (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign ) )
+                    // InternalGoatComponentsParser.g:2504:6: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign )
                     {
-                    // InternalGoatComponentsParser.g:2404:6: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign )
-                    int alt31=2;
-                    int LA31_0 = input.LA(1);
+                    // InternalGoatComponentsParser.g:2504:6: (lv_op_2_1= EqualsSignEqualsSign | lv_op_2_2= ExclamationMarkEqualsSign )
+                    int alt32=2;
+                    int LA32_0 = input.LA(1);
 
-                    if ( (LA31_0==EqualsSignEqualsSign) ) {
-                        alt31=1;
+                    if ( (LA32_0==EqualsSignEqualsSign) ) {
+                        alt32=1;
                     }
-                    else if ( (LA31_0==ExclamationMarkEqualsSign) ) {
-                        alt31=2;
+                    else if ( (LA32_0==ExclamationMarkEqualsSign) ) {
+                        alt32=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 31, 0, input);
+                            new NoViableAltException("", 32, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt31) {
+                    switch (alt32) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:2405:7: lv_op_2_1= EqualsSignEqualsSign
+                            // InternalGoatComponentsParser.g:2505:7: lv_op_2_1= EqualsSignEqualsSign
                             {
                             lv_op_2_1=(Token)match(input,EqualsSignEqualsSign,FOLLOW_13); 
 
@@ -6047,7 +6290,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2416:7: lv_op_2_2= ExclamationMarkEqualsSign
+                            // InternalGoatComponentsParser.g:2516:7: lv_op_2_2= ExclamationMarkEqualsSign
                             {
                             lv_op_2_2=(Token)match(input,ExclamationMarkEqualsSign,FOLLOW_13); 
 
@@ -6071,11 +6314,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2429:4: ( (lv_right_3_0= ruleComparison ) )
-                    // InternalGoatComponentsParser.g:2430:5: (lv_right_3_0= ruleComparison )
+                    // InternalGoatComponentsParser.g:2529:4: ( (lv_right_3_0= ruleComparison ) )
+                    // InternalGoatComponentsParser.g:2530:5: (lv_right_3_0= ruleComparison )
                     {
-                    // InternalGoatComponentsParser.g:2430:5: (lv_right_3_0= ruleComparison )
-                    // InternalGoatComponentsParser.g:2431:6: lv_right_3_0= ruleComparison
+                    // InternalGoatComponentsParser.g:2530:5: (lv_right_3_0= ruleComparison )
+                    // InternalGoatComponentsParser.g:2531:6: lv_right_3_0= ruleComparison
                     {
 
                     						newCompositeNode(grammarAccess.getEqualityAccess().getRightComparisonParserRuleCall_1_2_0());
@@ -6131,7 +6374,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleComparison"
-    // InternalGoatComponentsParser.g:2453:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
+    // InternalGoatComponentsParser.g:2553:1: entryRuleComparison returns [EObject current=null] : iv_ruleComparison= ruleComparison EOF ;
     public final EObject entryRuleComparison() throws RecognitionException {
         EObject current = null;
 
@@ -6139,8 +6382,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2453:51: (iv_ruleComparison= ruleComparison EOF )
-            // InternalGoatComponentsParser.g:2454:2: iv_ruleComparison= ruleComparison EOF
+            // InternalGoatComponentsParser.g:2553:51: (iv_ruleComparison= ruleComparison EOF )
+            // InternalGoatComponentsParser.g:2554:2: iv_ruleComparison= ruleComparison EOF
             {
              newCompositeNode(grammarAccess.getComparisonRule()); 
             pushFollow(FOLLOW_1);
@@ -6167,7 +6410,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparison"
-    // InternalGoatComponentsParser.g:2460:1: ruleComparison returns [EObject current=null] : (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? ) ;
+    // InternalGoatComponentsParser.g:2560:1: ruleComparison returns [EObject current=null] : (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? ) ;
     public final EObject ruleComparison() throws RecognitionException {
         EObject current = null;
 
@@ -6184,16 +6427,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2466:2: ( (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? ) )
-            // InternalGoatComponentsParser.g:2467:2: (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? )
+            // InternalGoatComponentsParser.g:2566:2: ( (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? ) )
+            // InternalGoatComponentsParser.g:2567:2: (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? )
             {
-            // InternalGoatComponentsParser.g:2467:2: (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? )
-            // InternalGoatComponentsParser.g:2468:3: this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )?
+            // InternalGoatComponentsParser.g:2567:2: (this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )? )
+            // InternalGoatComponentsParser.g:2568:3: this_PlusOrMinus_0= rulePlusOrMinus ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )?
             {
 
             			newCompositeNode(grammarAccess.getComparisonAccess().getPlusOrMinusParserRuleCall_0());
             		
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_41);
             this_PlusOrMinus_0=rulePlusOrMinus();
 
             state._fsp--;
@@ -6202,19 +6445,19 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_PlusOrMinus_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:2476:3: ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:2576:3: ( () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) ) )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA34_0==LessThanSignEqualsSign||LA34_0==GreaterThanSignEqualsSign||LA34_0==LessThanSign||LA34_0==GreaterThanSign) ) {
-                alt34=1;
+            if ( (LA35_0==LessThanSignEqualsSign||LA35_0==GreaterThanSignEqualsSign||LA35_0==LessThanSign||LA35_0==GreaterThanSign) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2477:4: () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) )
+                    // InternalGoatComponentsParser.g:2577:4: () ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) ) ( (lv_right_3_0= rulePlusOrMinus ) )
                     {
-                    // InternalGoatComponentsParser.g:2477:4: ()
-                    // InternalGoatComponentsParser.g:2478:5: 
+                    // InternalGoatComponentsParser.g:2577:4: ()
+                    // InternalGoatComponentsParser.g:2578:5: 
                     {
 
                     					current = forceCreateModelElementAndSet(
@@ -6224,45 +6467,45 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2484:4: ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) )
-                    // InternalGoatComponentsParser.g:2485:5: ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) )
+                    // InternalGoatComponentsParser.g:2584:4: ( ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) ) )
+                    // InternalGoatComponentsParser.g:2585:5: ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) )
                     {
-                    // InternalGoatComponentsParser.g:2485:5: ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) )
-                    // InternalGoatComponentsParser.g:2486:6: (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign )
+                    // InternalGoatComponentsParser.g:2585:5: ( (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign ) )
+                    // InternalGoatComponentsParser.g:2586:6: (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign )
                     {
-                    // InternalGoatComponentsParser.g:2486:6: (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign )
-                    int alt33=4;
+                    // InternalGoatComponentsParser.g:2586:6: (lv_op_2_1= GreaterThanSignEqualsSign | lv_op_2_2= LessThanSignEqualsSign | lv_op_2_3= GreaterThanSign | lv_op_2_4= LessThanSign )
+                    int alt34=4;
                     switch ( input.LA(1) ) {
                     case GreaterThanSignEqualsSign:
                         {
-                        alt33=1;
+                        alt34=1;
                         }
                         break;
                     case LessThanSignEqualsSign:
                         {
-                        alt33=2;
+                        alt34=2;
                         }
                         break;
                     case GreaterThanSign:
                         {
-                        alt33=3;
+                        alt34=3;
                         }
                         break;
                     case LessThanSign:
                         {
-                        alt33=4;
+                        alt34=4;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 33, 0, input);
+                            new NoViableAltException("", 34, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt33) {
+                    switch (alt34) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:2487:7: lv_op_2_1= GreaterThanSignEqualsSign
+                            // InternalGoatComponentsParser.g:2587:7: lv_op_2_1= GreaterThanSignEqualsSign
                             {
                             lv_op_2_1=(Token)match(input,GreaterThanSignEqualsSign,FOLLOW_13); 
 
@@ -6278,7 +6521,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2498:7: lv_op_2_2= LessThanSignEqualsSign
+                            // InternalGoatComponentsParser.g:2598:7: lv_op_2_2= LessThanSignEqualsSign
                             {
                             lv_op_2_2=(Token)match(input,LessThanSignEqualsSign,FOLLOW_13); 
 
@@ -6294,7 +6537,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // InternalGoatComponentsParser.g:2509:7: lv_op_2_3= GreaterThanSign
+                            // InternalGoatComponentsParser.g:2609:7: lv_op_2_3= GreaterThanSign
                             {
                             lv_op_2_3=(Token)match(input,GreaterThanSign,FOLLOW_13); 
 
@@ -6310,7 +6553,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 4 :
-                            // InternalGoatComponentsParser.g:2520:7: lv_op_2_4= LessThanSign
+                            // InternalGoatComponentsParser.g:2620:7: lv_op_2_4= LessThanSign
                             {
                             lv_op_2_4=(Token)match(input,LessThanSign,FOLLOW_13); 
 
@@ -6334,11 +6577,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2533:4: ( (lv_right_3_0= rulePlusOrMinus ) )
-                    // InternalGoatComponentsParser.g:2534:5: (lv_right_3_0= rulePlusOrMinus )
+                    // InternalGoatComponentsParser.g:2633:4: ( (lv_right_3_0= rulePlusOrMinus ) )
+                    // InternalGoatComponentsParser.g:2634:5: (lv_right_3_0= rulePlusOrMinus )
                     {
-                    // InternalGoatComponentsParser.g:2534:5: (lv_right_3_0= rulePlusOrMinus )
-                    // InternalGoatComponentsParser.g:2535:6: lv_right_3_0= rulePlusOrMinus
+                    // InternalGoatComponentsParser.g:2634:5: (lv_right_3_0= rulePlusOrMinus )
+                    // InternalGoatComponentsParser.g:2635:6: lv_right_3_0= rulePlusOrMinus
                     {
 
                     						newCompositeNode(grammarAccess.getComparisonAccess().getRightPlusOrMinusParserRuleCall_1_2_0());
@@ -6394,7 +6637,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePlusOrMinus"
-    // InternalGoatComponentsParser.g:2557:1: entryRulePlusOrMinus returns [EObject current=null] : iv_rulePlusOrMinus= rulePlusOrMinus EOF ;
+    // InternalGoatComponentsParser.g:2657:1: entryRulePlusOrMinus returns [EObject current=null] : iv_rulePlusOrMinus= rulePlusOrMinus EOF ;
     public final EObject entryRulePlusOrMinus() throws RecognitionException {
         EObject current = null;
 
@@ -6402,8 +6645,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2557:52: (iv_rulePlusOrMinus= rulePlusOrMinus EOF )
-            // InternalGoatComponentsParser.g:2558:2: iv_rulePlusOrMinus= rulePlusOrMinus EOF
+            // InternalGoatComponentsParser.g:2657:52: (iv_rulePlusOrMinus= rulePlusOrMinus EOF )
+            // InternalGoatComponentsParser.g:2658:2: iv_rulePlusOrMinus= rulePlusOrMinus EOF
             {
              newCompositeNode(grammarAccess.getPlusOrMinusRule()); 
             pushFollow(FOLLOW_1);
@@ -6430,7 +6673,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePlusOrMinus"
-    // InternalGoatComponentsParser.g:2564:1: rulePlusOrMinus returns [EObject current=null] : (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? ) ;
+    // InternalGoatComponentsParser.g:2664:1: rulePlusOrMinus returns [EObject current=null] : (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? ) ;
     public final EObject rulePlusOrMinus() throws RecognitionException {
         EObject current = null;
 
@@ -6446,16 +6689,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2570:2: ( (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? ) )
-            // InternalGoatComponentsParser.g:2571:2: (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? )
+            // InternalGoatComponentsParser.g:2670:2: ( (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? ) )
+            // InternalGoatComponentsParser.g:2671:2: (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? )
             {
-            // InternalGoatComponentsParser.g:2571:2: (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? )
-            // InternalGoatComponentsParser.g:2572:3: this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )?
+            // InternalGoatComponentsParser.g:2671:2: (this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )? )
+            // InternalGoatComponentsParser.g:2672:3: this_MulOrDiv_0= ruleMulOrDiv ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )?
             {
 
             			newCompositeNode(grammarAccess.getPlusOrMinusAccess().getMulOrDivParserRuleCall_0());
             		
-            pushFollow(FOLLOW_41);
+            pushFollow(FOLLOW_42);
             this_MulOrDiv_0=ruleMulOrDiv();
 
             state._fsp--;
@@ -6464,51 +6707,51 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_MulOrDiv_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:2580:3: ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )?
-            int alt36=2;
-            int LA36_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:2680:3: ( ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) ) )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA36_0==PlusSignPlusSign||LA36_0==PlusSign||LA36_0==HyphenMinus) ) {
-                alt36=1;
+            if ( (LA37_0==PlusSignPlusSign||LA37_0==PlusSign||LA37_0==HyphenMinus) ) {
+                alt37=1;
             }
-            switch (alt36) {
+            switch (alt37) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2581:4: ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) )
+                    // InternalGoatComponentsParser.g:2681:4: ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) ) ( (lv_right_7_0= ruleMulOrDiv ) )
                     {
-                    // InternalGoatComponentsParser.g:2581:4: ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) )
-                    int alt35=3;
+                    // InternalGoatComponentsParser.g:2681:4: ( ( () otherlv_2= PlusSign ) | ( () otherlv_4= HyphenMinus ) | ( () otherlv_6= PlusSignPlusSign ) )
+                    int alt36=3;
                     switch ( input.LA(1) ) {
                     case PlusSign:
                         {
-                        alt35=1;
+                        alt36=1;
                         }
                         break;
                     case HyphenMinus:
                         {
-                        alt35=2;
+                        alt36=2;
                         }
                         break;
                     case PlusSignPlusSign:
                         {
-                        alt35=3;
+                        alt36=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 35, 0, input);
+                            new NoViableAltException("", 36, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt35) {
+                    switch (alt36) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:2582:5: ( () otherlv_2= PlusSign )
+                            // InternalGoatComponentsParser.g:2682:5: ( () otherlv_2= PlusSign )
                             {
-                            // InternalGoatComponentsParser.g:2582:5: ( () otherlv_2= PlusSign )
-                            // InternalGoatComponentsParser.g:2583:6: () otherlv_2= PlusSign
+                            // InternalGoatComponentsParser.g:2682:5: ( () otherlv_2= PlusSign )
+                            // InternalGoatComponentsParser.g:2683:6: () otherlv_2= PlusSign
                             {
-                            // InternalGoatComponentsParser.g:2583:6: ()
-                            // InternalGoatComponentsParser.g:2584:7: 
+                            // InternalGoatComponentsParser.g:2683:6: ()
+                            // InternalGoatComponentsParser.g:2684:7: 
                             {
 
                             							current = forceCreateModelElementAndSet(
@@ -6529,13 +6772,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2596:5: ( () otherlv_4= HyphenMinus )
+                            // InternalGoatComponentsParser.g:2696:5: ( () otherlv_4= HyphenMinus )
                             {
-                            // InternalGoatComponentsParser.g:2596:5: ( () otherlv_4= HyphenMinus )
-                            // InternalGoatComponentsParser.g:2597:6: () otherlv_4= HyphenMinus
+                            // InternalGoatComponentsParser.g:2696:5: ( () otherlv_4= HyphenMinus )
+                            // InternalGoatComponentsParser.g:2697:6: () otherlv_4= HyphenMinus
                             {
-                            // InternalGoatComponentsParser.g:2597:6: ()
-                            // InternalGoatComponentsParser.g:2598:7: 
+                            // InternalGoatComponentsParser.g:2697:6: ()
+                            // InternalGoatComponentsParser.g:2698:7: 
                             {
 
                             							current = forceCreateModelElementAndSet(
@@ -6556,13 +6799,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // InternalGoatComponentsParser.g:2610:5: ( () otherlv_6= PlusSignPlusSign )
+                            // InternalGoatComponentsParser.g:2710:5: ( () otherlv_6= PlusSignPlusSign )
                             {
-                            // InternalGoatComponentsParser.g:2610:5: ( () otherlv_6= PlusSignPlusSign )
-                            // InternalGoatComponentsParser.g:2611:6: () otherlv_6= PlusSignPlusSign
+                            // InternalGoatComponentsParser.g:2710:5: ( () otherlv_6= PlusSignPlusSign )
+                            // InternalGoatComponentsParser.g:2711:6: () otherlv_6= PlusSignPlusSign
                             {
-                            // InternalGoatComponentsParser.g:2611:6: ()
-                            // InternalGoatComponentsParser.g:2612:7: 
+                            // InternalGoatComponentsParser.g:2711:6: ()
+                            // InternalGoatComponentsParser.g:2712:7: 
                             {
 
                             							current = forceCreateModelElementAndSet(
@@ -6585,11 +6828,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2624:4: ( (lv_right_7_0= ruleMulOrDiv ) )
-                    // InternalGoatComponentsParser.g:2625:5: (lv_right_7_0= ruleMulOrDiv )
+                    // InternalGoatComponentsParser.g:2724:4: ( (lv_right_7_0= ruleMulOrDiv ) )
+                    // InternalGoatComponentsParser.g:2725:5: (lv_right_7_0= ruleMulOrDiv )
                     {
-                    // InternalGoatComponentsParser.g:2625:5: (lv_right_7_0= ruleMulOrDiv )
-                    // InternalGoatComponentsParser.g:2626:6: lv_right_7_0= ruleMulOrDiv
+                    // InternalGoatComponentsParser.g:2725:5: (lv_right_7_0= ruleMulOrDiv )
+                    // InternalGoatComponentsParser.g:2726:6: lv_right_7_0= ruleMulOrDiv
                     {
 
                     						newCompositeNode(grammarAccess.getPlusOrMinusAccess().getRightMulOrDivParserRuleCall_1_1_0());
@@ -6645,7 +6888,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMulOrDiv"
-    // InternalGoatComponentsParser.g:2648:1: entryRuleMulOrDiv returns [EObject current=null] : iv_ruleMulOrDiv= ruleMulOrDiv EOF ;
+    // InternalGoatComponentsParser.g:2748:1: entryRuleMulOrDiv returns [EObject current=null] : iv_ruleMulOrDiv= ruleMulOrDiv EOF ;
     public final EObject entryRuleMulOrDiv() throws RecognitionException {
         EObject current = null;
 
@@ -6653,8 +6896,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2648:49: (iv_ruleMulOrDiv= ruleMulOrDiv EOF )
-            // InternalGoatComponentsParser.g:2649:2: iv_ruleMulOrDiv= ruleMulOrDiv EOF
+            // InternalGoatComponentsParser.g:2748:49: (iv_ruleMulOrDiv= ruleMulOrDiv EOF )
+            // InternalGoatComponentsParser.g:2749:2: iv_ruleMulOrDiv= ruleMulOrDiv EOF
             {
              newCompositeNode(grammarAccess.getMulOrDivRule()); 
             pushFollow(FOLLOW_1);
@@ -6681,7 +6924,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMulOrDiv"
-    // InternalGoatComponentsParser.g:2655:1: ruleMulOrDiv returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? ) ;
+    // InternalGoatComponentsParser.g:2755:1: ruleMulOrDiv returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? ) ;
     public final EObject ruleMulOrDiv() throws RecognitionException {
         EObject current = null;
 
@@ -6697,16 +6940,16 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2661:2: ( (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? ) )
-            // InternalGoatComponentsParser.g:2662:2: (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? )
+            // InternalGoatComponentsParser.g:2761:2: ( (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? ) )
+            // InternalGoatComponentsParser.g:2762:2: (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? )
             {
-            // InternalGoatComponentsParser.g:2662:2: (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? )
-            // InternalGoatComponentsParser.g:2663:3: this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )?
+            // InternalGoatComponentsParser.g:2762:2: (this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )? )
+            // InternalGoatComponentsParser.g:2763:3: this_Primary_0= rulePrimary ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )?
             {
 
             			newCompositeNode(grammarAccess.getMulOrDivAccess().getPrimaryParserRuleCall_0());
             		
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             this_Primary_0=rulePrimary();
 
             state._fsp--;
@@ -6715,19 +6958,19 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             			current = this_Primary_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalGoatComponentsParser.g:2671:3: ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:2771:3: ( () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) ) )?
+            int alt39=2;
+            int LA39_0 = input.LA(1);
 
-            if ( (LA38_0==PercentSign||LA38_0==Asterisk||LA38_0==Solidus) ) {
-                alt38=1;
+            if ( (LA39_0==PercentSign||LA39_0==Asterisk||LA39_0==Solidus) ) {
+                alt39=1;
             }
-            switch (alt38) {
+            switch (alt39) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2672:4: () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2772:4: () ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) ) ( (lv_right_3_0= rulePrimary ) )
                     {
-                    // InternalGoatComponentsParser.g:2672:4: ()
-                    // InternalGoatComponentsParser.g:2673:5: 
+                    // InternalGoatComponentsParser.g:2772:4: ()
+                    // InternalGoatComponentsParser.g:2773:5: 
                     {
 
                     					current = forceCreateModelElementAndSet(
@@ -6737,40 +6980,40 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2679:4: ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) )
-                    // InternalGoatComponentsParser.g:2680:5: ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) )
+                    // InternalGoatComponentsParser.g:2779:4: ( ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) ) )
+                    // InternalGoatComponentsParser.g:2780:5: ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) )
                     {
-                    // InternalGoatComponentsParser.g:2680:5: ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) )
-                    // InternalGoatComponentsParser.g:2681:6: (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign )
+                    // InternalGoatComponentsParser.g:2780:5: ( (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign ) )
+                    // InternalGoatComponentsParser.g:2781:6: (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign )
                     {
-                    // InternalGoatComponentsParser.g:2681:6: (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign )
-                    int alt37=3;
+                    // InternalGoatComponentsParser.g:2781:6: (lv_op_2_1= Asterisk | lv_op_2_2= Solidus | lv_op_2_3= PercentSign )
+                    int alt38=3;
                     switch ( input.LA(1) ) {
                     case Asterisk:
                         {
-                        alt37=1;
+                        alt38=1;
                         }
                         break;
                     case Solidus:
                         {
-                        alt37=2;
+                        alt38=2;
                         }
                         break;
                     case PercentSign:
                         {
-                        alt37=3;
+                        alt38=3;
                         }
                         break;
                     default:
                         NoViableAltException nvae =
-                            new NoViableAltException("", 37, 0, input);
+                            new NoViableAltException("", 38, 0, input);
 
                         throw nvae;
                     }
 
-                    switch (alt37) {
+                    switch (alt38) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:2682:7: lv_op_2_1= Asterisk
+                            // InternalGoatComponentsParser.g:2782:7: lv_op_2_1= Asterisk
                             {
                             lv_op_2_1=(Token)match(input,Asterisk,FOLLOW_13); 
 
@@ -6786,7 +7029,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2693:7: lv_op_2_2= Solidus
+                            // InternalGoatComponentsParser.g:2793:7: lv_op_2_2= Solidus
                             {
                             lv_op_2_2=(Token)match(input,Solidus,FOLLOW_13); 
 
@@ -6802,7 +7045,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 3 :
-                            // InternalGoatComponentsParser.g:2704:7: lv_op_2_3= PercentSign
+                            // InternalGoatComponentsParser.g:2804:7: lv_op_2_3= PercentSign
                             {
                             lv_op_2_3=(Token)match(input,PercentSign,FOLLOW_13); 
 
@@ -6826,11 +7069,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2717:4: ( (lv_right_3_0= rulePrimary ) )
-                    // InternalGoatComponentsParser.g:2718:5: (lv_right_3_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2817:4: ( (lv_right_3_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2818:5: (lv_right_3_0= rulePrimary )
                     {
-                    // InternalGoatComponentsParser.g:2718:5: (lv_right_3_0= rulePrimary )
-                    // InternalGoatComponentsParser.g:2719:6: lv_right_3_0= rulePrimary
+                    // InternalGoatComponentsParser.g:2818:5: (lv_right_3_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2819:6: lv_right_3_0= rulePrimary
                     {
 
                     						newCompositeNode(grammarAccess.getMulOrDivAccess().getRightPrimaryParserRuleCall_1_2_0());
@@ -6886,7 +7129,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimary"
-    // InternalGoatComponentsParser.g:2741:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
+    // InternalGoatComponentsParser.g:2841:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
     public final EObject entryRulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -6894,8 +7137,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2741:48: (iv_rulePrimary= rulePrimary EOF )
-            // InternalGoatComponentsParser.g:2742:2: iv_rulePrimary= rulePrimary EOF
+            // InternalGoatComponentsParser.g:2841:48: (iv_rulePrimary= rulePrimary EOF )
+            // InternalGoatComponentsParser.g:2842:2: iv_rulePrimary= rulePrimary EOF
             {
              newCompositeNode(grammarAccess.getPrimaryRule()); 
             pushFollow(FOLLOW_1);
@@ -6922,7 +7165,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimary"
-    // InternalGoatComponentsParser.g:2748:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) ;
+    // InternalGoatComponentsParser.g:2848:1: rulePrimary returns [EObject current=null] : ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -6943,25 +7186,25 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2754:2: ( ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) )
-            // InternalGoatComponentsParser.g:2755:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
+            // InternalGoatComponentsParser.g:2854:2: ( ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic ) )
+            // InternalGoatComponentsParser.g:2855:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
             {
-            // InternalGoatComponentsParser.g:2755:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
-            int alt39=4;
+            // InternalGoatComponentsParser.g:2855:2: ( (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis ) | ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) ) | ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) ) | this_Atomic_9= ruleAtomic )
+            int alt40=4;
             switch ( input.LA(1) ) {
             case LeftParenthesis:
                 {
-                alt39=1;
+                alt40=1;
                 }
                 break;
             case HyphenMinus:
                 {
-                alt39=2;
+                alt40=2;
                 }
                 break;
             case ExclamationMark:
                 {
-                alt39=3;
+                alt40=3;
                 }
                 break;
             case Receiver:
@@ -6973,22 +7216,22 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             case RULE_INT:
             case RULE_STRING:
                 {
-                alt39=4;
+                alt40=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 39, 0, input);
+                    new NoViableAltException("", 40, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt39) {
+            switch (alt40) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2756:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
+                    // InternalGoatComponentsParser.g:2856:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
                     {
-                    // InternalGoatComponentsParser.g:2756:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
-                    // InternalGoatComponentsParser.g:2757:4: otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis
+                    // InternalGoatComponentsParser.g:2856:3: (otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis )
+                    // InternalGoatComponentsParser.g:2857:4: otherlv_0= LeftParenthesis this_Expression_1= ruleExpression otherlv_2= RightParenthesis
                     {
                     otherlv_0=(Token)match(input,LeftParenthesis,FOLLOW_13); 
 
@@ -7017,13 +7260,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:2775:3: ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) )
+                    // InternalGoatComponentsParser.g:2875:3: ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2775:3: ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) )
-                    // InternalGoatComponentsParser.g:2776:4: () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2875:3: ( () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) ) )
+                    // InternalGoatComponentsParser.g:2876:4: () otherlv_4= HyphenMinus ( (lv_expression_5_0= rulePrimary ) )
                     {
-                    // InternalGoatComponentsParser.g:2776:4: ()
-                    // InternalGoatComponentsParser.g:2777:5: 
+                    // InternalGoatComponentsParser.g:2876:4: ()
+                    // InternalGoatComponentsParser.g:2877:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7037,11 +7280,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_4, grammarAccess.getPrimaryAccess().getHyphenMinusKeyword_1_1());
                     			
-                    // InternalGoatComponentsParser.g:2787:4: ( (lv_expression_5_0= rulePrimary ) )
-                    // InternalGoatComponentsParser.g:2788:5: (lv_expression_5_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2887:4: ( (lv_expression_5_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2888:5: (lv_expression_5_0= rulePrimary )
                     {
-                    // InternalGoatComponentsParser.g:2788:5: (lv_expression_5_0= rulePrimary )
-                    // InternalGoatComponentsParser.g:2789:6: lv_expression_5_0= rulePrimary
+                    // InternalGoatComponentsParser.g:2888:5: (lv_expression_5_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2889:6: lv_expression_5_0= rulePrimary
                     {
 
                     						newCompositeNode(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_1_2_0());
@@ -7075,13 +7318,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:2808:3: ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) )
+                    // InternalGoatComponentsParser.g:2908:3: ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2808:3: ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) )
-                    // InternalGoatComponentsParser.g:2809:4: () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2908:3: ( () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) ) )
+                    // InternalGoatComponentsParser.g:2909:4: () otherlv_7= ExclamationMark ( (lv_expression_8_0= rulePrimary ) )
                     {
-                    // InternalGoatComponentsParser.g:2809:4: ()
-                    // InternalGoatComponentsParser.g:2810:5: 
+                    // InternalGoatComponentsParser.g:2909:4: ()
+                    // InternalGoatComponentsParser.g:2910:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7095,11 +7338,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_7, grammarAccess.getPrimaryAccess().getExclamationMarkKeyword_2_1());
                     			
-                    // InternalGoatComponentsParser.g:2820:4: ( (lv_expression_8_0= rulePrimary ) )
-                    // InternalGoatComponentsParser.g:2821:5: (lv_expression_8_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2920:4: ( (lv_expression_8_0= rulePrimary ) )
+                    // InternalGoatComponentsParser.g:2921:5: (lv_expression_8_0= rulePrimary )
                     {
-                    // InternalGoatComponentsParser.g:2821:5: (lv_expression_8_0= rulePrimary )
-                    // InternalGoatComponentsParser.g:2822:6: lv_expression_8_0= rulePrimary
+                    // InternalGoatComponentsParser.g:2921:5: (lv_expression_8_0= rulePrimary )
+                    // InternalGoatComponentsParser.g:2922:6: lv_expression_8_0= rulePrimary
                     {
 
                     						newCompositeNode(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_2_2_0());
@@ -7133,7 +7376,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGoatComponentsParser.g:2841:3: this_Atomic_9= ruleAtomic
+                    // InternalGoatComponentsParser.g:2941:3: this_Atomic_9= ruleAtomic
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryAccess().getAtomicParserRuleCall_3());
@@ -7173,7 +7416,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAtomic"
-    // InternalGoatComponentsParser.g:2853:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    // InternalGoatComponentsParser.g:2953:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
     public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -7181,8 +7424,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:2853:47: (iv_ruleAtomic= ruleAtomic EOF )
-            // InternalGoatComponentsParser.g:2854:2: iv_ruleAtomic= ruleAtomic EOF
+            // InternalGoatComponentsParser.g:2953:47: (iv_ruleAtomic= ruleAtomic EOF )
+            // InternalGoatComponentsParser.g:2954:2: iv_ruleAtomic= ruleAtomic EOF
             {
              newCompositeNode(grammarAccess.getAtomicRule()); 
             pushFollow(FOLLOW_1);
@@ -7209,7 +7452,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAtomic"
-    // InternalGoatComponentsParser.g:2860:1: ruleAtomic returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) ) ;
+    // InternalGoatComponentsParser.g:2960:1: ruleAtomic returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) ) ;
     public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
@@ -7240,21 +7483,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:2866:2: ( ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) ) )
-            // InternalGoatComponentsParser.g:2867:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )
+            // InternalGoatComponentsParser.g:2966:2: ( ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) ) )
+            // InternalGoatComponentsParser.g:2967:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )
             {
-            // InternalGoatComponentsParser.g:2867:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )
-            int alt43=8;
-            alt43 = dfa43.predict(input);
-            switch (alt43) {
+            // InternalGoatComponentsParser.g:2967:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )
+            int alt44=8;
+            alt44 = dfa44.predict(input);
+            switch (alt44) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:2868:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:2968:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2868:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
-                    // InternalGoatComponentsParser.g:2869:4: () ( (lv_value_1_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:2968:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
+                    // InternalGoatComponentsParser.g:2969:4: () ( (lv_value_1_0= RULE_INT ) )
                     {
-                    // InternalGoatComponentsParser.g:2869:4: ()
-                    // InternalGoatComponentsParser.g:2870:5: 
+                    // InternalGoatComponentsParser.g:2969:4: ()
+                    // InternalGoatComponentsParser.g:2970:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7264,11 +7507,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2876:4: ( (lv_value_1_0= RULE_INT ) )
-                    // InternalGoatComponentsParser.g:2877:5: (lv_value_1_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:2976:4: ( (lv_value_1_0= RULE_INT ) )
+                    // InternalGoatComponentsParser.g:2977:5: (lv_value_1_0= RULE_INT )
                     {
-                    // InternalGoatComponentsParser.g:2877:5: (lv_value_1_0= RULE_INT )
-                    // InternalGoatComponentsParser.g:2878:6: lv_value_1_0= RULE_INT
+                    // InternalGoatComponentsParser.g:2977:5: (lv_value_1_0= RULE_INT )
+                    // InternalGoatComponentsParser.g:2978:6: lv_value_1_0= RULE_INT
                     {
                     lv_value_1_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -7297,13 +7540,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:2896:3: ( () ( (lv_value_3_0= RULE_STRING ) ) )
+                    // InternalGoatComponentsParser.g:2996:3: ( () ( (lv_value_3_0= RULE_STRING ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2896:3: ( () ( (lv_value_3_0= RULE_STRING ) ) )
-                    // InternalGoatComponentsParser.g:2897:4: () ( (lv_value_3_0= RULE_STRING ) )
+                    // InternalGoatComponentsParser.g:2996:3: ( () ( (lv_value_3_0= RULE_STRING ) ) )
+                    // InternalGoatComponentsParser.g:2997:4: () ( (lv_value_3_0= RULE_STRING ) )
                     {
-                    // InternalGoatComponentsParser.g:2897:4: ()
-                    // InternalGoatComponentsParser.g:2898:5: 
+                    // InternalGoatComponentsParser.g:2997:4: ()
+                    // InternalGoatComponentsParser.g:2998:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7313,11 +7556,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2904:4: ( (lv_value_3_0= RULE_STRING ) )
-                    // InternalGoatComponentsParser.g:2905:5: (lv_value_3_0= RULE_STRING )
+                    // InternalGoatComponentsParser.g:3004:4: ( (lv_value_3_0= RULE_STRING ) )
+                    // InternalGoatComponentsParser.g:3005:5: (lv_value_3_0= RULE_STRING )
                     {
-                    // InternalGoatComponentsParser.g:2905:5: (lv_value_3_0= RULE_STRING )
-                    // InternalGoatComponentsParser.g:2906:6: lv_value_3_0= RULE_STRING
+                    // InternalGoatComponentsParser.g:3005:5: (lv_value_3_0= RULE_STRING )
+                    // InternalGoatComponentsParser.g:3006:6: lv_value_3_0= RULE_STRING
                     {
                     lv_value_3_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -7346,13 +7589,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:2924:3: ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) )
+                    // InternalGoatComponentsParser.g:3024:3: ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2924:3: ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) )
-                    // InternalGoatComponentsParser.g:2925:4: () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) )
+                    // InternalGoatComponentsParser.g:3024:3: ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) )
+                    // InternalGoatComponentsParser.g:3025:4: () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2925:4: ()
-                    // InternalGoatComponentsParser.g:2926:5: 
+                    // InternalGoatComponentsParser.g:3025:4: ()
+                    // InternalGoatComponentsParser.g:3026:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7362,31 +7605,31 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2932:4: ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) )
-                    // InternalGoatComponentsParser.g:2933:5: ( (lv_value_5_1= True | lv_value_5_2= False ) )
+                    // InternalGoatComponentsParser.g:3032:4: ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) )
+                    // InternalGoatComponentsParser.g:3033:5: ( (lv_value_5_1= True | lv_value_5_2= False ) )
                     {
-                    // InternalGoatComponentsParser.g:2933:5: ( (lv_value_5_1= True | lv_value_5_2= False ) )
-                    // InternalGoatComponentsParser.g:2934:6: (lv_value_5_1= True | lv_value_5_2= False )
+                    // InternalGoatComponentsParser.g:3033:5: ( (lv_value_5_1= True | lv_value_5_2= False ) )
+                    // InternalGoatComponentsParser.g:3034:6: (lv_value_5_1= True | lv_value_5_2= False )
                     {
-                    // InternalGoatComponentsParser.g:2934:6: (lv_value_5_1= True | lv_value_5_2= False )
-                    int alt40=2;
-                    int LA40_0 = input.LA(1);
+                    // InternalGoatComponentsParser.g:3034:6: (lv_value_5_1= True | lv_value_5_2= False )
+                    int alt41=2;
+                    int LA41_0 = input.LA(1);
 
-                    if ( (LA40_0==True) ) {
-                        alt40=1;
+                    if ( (LA41_0==True) ) {
+                        alt41=1;
                     }
-                    else if ( (LA40_0==False) ) {
-                        alt40=2;
+                    else if ( (LA41_0==False) ) {
+                        alt41=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 40, 0, input);
+                            new NoViableAltException("", 41, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt40) {
+                    switch (alt41) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:2935:7: lv_value_5_1= True
+                            // InternalGoatComponentsParser.g:3035:7: lv_value_5_1= True
                             {
                             lv_value_5_1=(Token)match(input,True,FOLLOW_2); 
 
@@ -7402,7 +7645,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalGoatComponentsParser.g:2946:7: lv_value_5_2= False
+                            // InternalGoatComponentsParser.g:3046:7: lv_value_5_2= False
                             {
                             lv_value_5_2=(Token)match(input,False,FOLLOW_2); 
 
@@ -7433,13 +7676,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGoatComponentsParser.g:2961:3: ( () ( (otherlv_7= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3061:3: ( () ( (otherlv_7= RULE_ID ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2961:3: ( () ( (otherlv_7= RULE_ID ) ) )
-                    // InternalGoatComponentsParser.g:2962:4: () ( (otherlv_7= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3061:3: ( () ( (otherlv_7= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3062:4: () ( (otherlv_7= RULE_ID ) )
                     {
-                    // InternalGoatComponentsParser.g:2962:4: ()
-                    // InternalGoatComponentsParser.g:2963:5: 
+                    // InternalGoatComponentsParser.g:3062:4: ()
+                    // InternalGoatComponentsParser.g:3063:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7449,11 +7692,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:2969:4: ( (otherlv_7= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:2970:5: (otherlv_7= RULE_ID )
+                    // InternalGoatComponentsParser.g:3069:4: ( (otherlv_7= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3070:5: (otherlv_7= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:2970:5: (otherlv_7= RULE_ID )
-                    // InternalGoatComponentsParser.g:2971:6: otherlv_7= RULE_ID
+                    // InternalGoatComponentsParser.g:3070:5: (otherlv_7= RULE_ID )
+                    // InternalGoatComponentsParser.g:3071:6: otherlv_7= RULE_ID
                     {
 
                     						if (current==null) {
@@ -7477,13 +7720,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalGoatComponentsParser.g:2984:3: ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3084:3: ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) )
                     {
-                    // InternalGoatComponentsParser.g:2984:3: ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) )
-                    // InternalGoatComponentsParser.g:2985:4: () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3084:3: ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3085:4: () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) )
                     {
-                    // InternalGoatComponentsParser.g:2985:4: ()
-                    // InternalGoatComponentsParser.g:2986:5: 
+                    // InternalGoatComponentsParser.g:3085:4: ()
+                    // InternalGoatComponentsParser.g:3086:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7501,11 +7744,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_10, grammarAccess.getAtomicAccess().getFullStopKeyword_4_2());
                     			
-                    // InternalGoatComponentsParser.g:3000:4: ( (lv_attribute_11_0= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:3001:5: (lv_attribute_11_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3100:4: ( (lv_attribute_11_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3101:5: (lv_attribute_11_0= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:3001:5: (lv_attribute_11_0= RULE_ID )
-                    // InternalGoatComponentsParser.g:3002:6: lv_attribute_11_0= RULE_ID
+                    // InternalGoatComponentsParser.g:3101:5: (lv_attribute_11_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3102:6: lv_attribute_11_0= RULE_ID
                     {
                     lv_attribute_11_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -7534,13 +7777,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalGoatComponentsParser.g:3020:3: ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis )
+                    // InternalGoatComponentsParser.g:3120:3: ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis )
                     {
-                    // InternalGoatComponentsParser.g:3020:3: ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis )
-                    // InternalGoatComponentsParser.g:3021:4: () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis
+                    // InternalGoatComponentsParser.g:3120:3: ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis )
+                    // InternalGoatComponentsParser.g:3121:4: () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis
                     {
-                    // InternalGoatComponentsParser.g:3021:4: ()
-                    // InternalGoatComponentsParser.g:3022:5: 
+                    // InternalGoatComponentsParser.g:3121:4: ()
+                    // InternalGoatComponentsParser.g:3122:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7550,11 +7793,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:3028:4: ( (otherlv_13= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:3029:5: (otherlv_13= RULE_ID )
+                    // InternalGoatComponentsParser.g:3128:4: ( (otherlv_13= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3129:5: (otherlv_13= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:3029:5: (otherlv_13= RULE_ID )
-                    // InternalGoatComponentsParser.g:3030:6: otherlv_13= RULE_ID
+                    // InternalGoatComponentsParser.g:3129:5: (otherlv_13= RULE_ID )
+                    // InternalGoatComponentsParser.g:3130:6: otherlv_13= RULE_ID
                     {
 
                     						if (current==null) {
@@ -7571,31 +7814,31 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_14=(Token)match(input,LeftParenthesis,FOLLOW_43); 
+                    otherlv_14=(Token)match(input,LeftParenthesis,FOLLOW_44); 
 
                     				newLeafNode(otherlv_14, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_5_2());
                     			
-                    // InternalGoatComponentsParser.g:3045:4: ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )?
-                    int alt42=2;
-                    int LA42_0 = input.LA(1);
+                    // InternalGoatComponentsParser.g:3145:4: ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )?
+                    int alt43=2;
+                    int LA43_0 = input.LA(1);
 
-                    if ( (LA42_0==Receiver||LA42_0==False||LA42_0==Comp||LA42_0==Proc||LA42_0==True||LA42_0==ExclamationMark||LA42_0==LeftParenthesis||LA42_0==HyphenMinus||(LA42_0>=RULE_ID && LA42_0<=RULE_STRING)) ) {
-                        alt42=1;
+                    if ( (LA43_0==Receiver||LA43_0==False||LA43_0==Comp||LA43_0==Proc||LA43_0==True||LA43_0==ExclamationMark||LA43_0==LeftParenthesis||LA43_0==HyphenMinus||(LA43_0>=RULE_ID && LA43_0<=RULE_STRING)) ) {
+                        alt43=1;
                     }
-                    switch (alt42) {
+                    switch (alt43) {
                         case 1 :
-                            // InternalGoatComponentsParser.g:3046:5: ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )*
+                            // InternalGoatComponentsParser.g:3146:5: ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )*
                             {
-                            // InternalGoatComponentsParser.g:3046:5: ( (lv_params_15_0= ruleExpression ) )
-                            // InternalGoatComponentsParser.g:3047:6: (lv_params_15_0= ruleExpression )
+                            // InternalGoatComponentsParser.g:3146:5: ( (lv_params_15_0= ruleExpression ) )
+                            // InternalGoatComponentsParser.g:3147:6: (lv_params_15_0= ruleExpression )
                             {
-                            // InternalGoatComponentsParser.g:3047:6: (lv_params_15_0= ruleExpression )
-                            // InternalGoatComponentsParser.g:3048:7: lv_params_15_0= ruleExpression
+                            // InternalGoatComponentsParser.g:3147:6: (lv_params_15_0= ruleExpression )
+                            // InternalGoatComponentsParser.g:3148:7: lv_params_15_0= ruleExpression
                             {
 
                             							newCompositeNode(grammarAccess.getAtomicAccess().getParamsExpressionParserRuleCall_5_3_0_0());
                             						
-                            pushFollow(FOLLOW_44);
+                            pushFollow(FOLLOW_45);
                             lv_params_15_0=ruleExpression();
 
                             state._fsp--;
@@ -7617,35 +7860,35 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // InternalGoatComponentsParser.g:3065:5: (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )*
-                            loop41:
+                            // InternalGoatComponentsParser.g:3165:5: (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )*
+                            loop42:
                             do {
-                                int alt41=2;
-                                int LA41_0 = input.LA(1);
+                                int alt42=2;
+                                int LA42_0 = input.LA(1);
 
-                                if ( (LA41_0==Comma) ) {
-                                    alt41=1;
+                                if ( (LA42_0==Comma) ) {
+                                    alt42=1;
                                 }
 
 
-                                switch (alt41) {
+                                switch (alt42) {
                             	case 1 :
-                            	    // InternalGoatComponentsParser.g:3066:6: otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) )
+                            	    // InternalGoatComponentsParser.g:3166:6: otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) )
                             	    {
                             	    otherlv_16=(Token)match(input,Comma,FOLLOW_13); 
 
                             	    						newLeafNode(otherlv_16, grammarAccess.getAtomicAccess().getCommaKeyword_5_3_1_0());
                             	    					
-                            	    // InternalGoatComponentsParser.g:3070:6: ( (lv_params_17_0= ruleExpression ) )
-                            	    // InternalGoatComponentsParser.g:3071:7: (lv_params_17_0= ruleExpression )
+                            	    // InternalGoatComponentsParser.g:3170:6: ( (lv_params_17_0= ruleExpression ) )
+                            	    // InternalGoatComponentsParser.g:3171:7: (lv_params_17_0= ruleExpression )
                             	    {
-                            	    // InternalGoatComponentsParser.g:3071:7: (lv_params_17_0= ruleExpression )
-                            	    // InternalGoatComponentsParser.g:3072:8: lv_params_17_0= ruleExpression
+                            	    // InternalGoatComponentsParser.g:3171:7: (lv_params_17_0= ruleExpression )
+                            	    // InternalGoatComponentsParser.g:3172:8: lv_params_17_0= ruleExpression
                             	    {
 
                             	    								newCompositeNode(grammarAccess.getAtomicAccess().getParamsExpressionParserRuleCall_5_3_1_1_0());
                             	    							
-                            	    pushFollow(FOLLOW_44);
+                            	    pushFollow(FOLLOW_45);
                             	    lv_params_17_0=ruleExpression();
 
                             	    state._fsp--;
@@ -7672,7 +7915,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                             	    break;
 
                             	default :
-                            	    break loop41;
+                            	    break loop42;
                                 }
                             } while (true);
 
@@ -7693,13 +7936,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalGoatComponentsParser.g:3097:3: ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3197:3: ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) )
                     {
-                    // InternalGoatComponentsParser.g:3097:3: ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) )
-                    // InternalGoatComponentsParser.g:3098:4: () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3197:3: ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3198:4: () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) )
                     {
-                    // InternalGoatComponentsParser.g:3098:4: ()
-                    // InternalGoatComponentsParser.g:3099:5: 
+                    // InternalGoatComponentsParser.g:3198:4: ()
+                    // InternalGoatComponentsParser.g:3199:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7717,11 +7960,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_21, grammarAccess.getAtomicAccess().getFullStopKeyword_6_2());
                     			
-                    // InternalGoatComponentsParser.g:3113:4: ( (lv_attribute_22_0= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:3114:5: (lv_attribute_22_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3213:4: ( (lv_attribute_22_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3214:5: (lv_attribute_22_0= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:3114:5: (lv_attribute_22_0= RULE_ID )
-                    // InternalGoatComponentsParser.g:3115:6: lv_attribute_22_0= RULE_ID
+                    // InternalGoatComponentsParser.g:3214:5: (lv_attribute_22_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3215:6: lv_attribute_22_0= RULE_ID
                     {
                     lv_attribute_22_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -7750,13 +7993,13 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalGoatComponentsParser.g:3133:3: ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3233:3: ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) )
                     {
-                    // InternalGoatComponentsParser.g:3133:3: ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) )
-                    // InternalGoatComponentsParser.g:3134:4: () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3233:3: ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) )
+                    // InternalGoatComponentsParser.g:3234:4: () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) )
                     {
-                    // InternalGoatComponentsParser.g:3134:4: ()
-                    // InternalGoatComponentsParser.g:3135:5: 
+                    // InternalGoatComponentsParser.g:3234:4: ()
+                    // InternalGoatComponentsParser.g:3235:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -7774,11 +8017,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     				newLeafNode(otherlv_25, grammarAccess.getAtomicAccess().getFullStopKeyword_7_2());
                     			
-                    // InternalGoatComponentsParser.g:3149:4: ( (lv_attribute_26_0= RULE_ID ) )
-                    // InternalGoatComponentsParser.g:3150:5: (lv_attribute_26_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3249:4: ( (lv_attribute_26_0= RULE_ID ) )
+                    // InternalGoatComponentsParser.g:3250:5: (lv_attribute_26_0= RULE_ID )
                     {
-                    // InternalGoatComponentsParser.g:3150:5: (lv_attribute_26_0= RULE_ID )
-                    // InternalGoatComponentsParser.g:3151:6: lv_attribute_26_0= RULE_ID
+                    // InternalGoatComponentsParser.g:3250:5: (lv_attribute_26_0= RULE_ID )
+                    // InternalGoatComponentsParser.g:3251:6: lv_attribute_26_0= RULE_ID
                     {
                     lv_attribute_26_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -7829,7 +8072,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncParam"
-    // InternalGoatComponentsParser.g:3172:1: entryRuleFuncParam returns [EObject current=null] : iv_ruleFuncParam= ruleFuncParam EOF ;
+    // InternalGoatComponentsParser.g:3272:1: entryRuleFuncParam returns [EObject current=null] : iv_ruleFuncParam= ruleFuncParam EOF ;
     public final EObject entryRuleFuncParam() throws RecognitionException {
         EObject current = null;
 
@@ -7837,8 +8080,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3172:50: (iv_ruleFuncParam= ruleFuncParam EOF )
-            // InternalGoatComponentsParser.g:3173:2: iv_ruleFuncParam= ruleFuncParam EOF
+            // InternalGoatComponentsParser.g:3272:50: (iv_ruleFuncParam= ruleFuncParam EOF )
+            // InternalGoatComponentsParser.g:3273:2: iv_ruleFuncParam= ruleFuncParam EOF
             {
              newCompositeNode(grammarAccess.getFuncParamRule()); 
             pushFollow(FOLLOW_1);
@@ -7865,7 +8108,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncParam"
-    // InternalGoatComponentsParser.g:3179:1: ruleFuncParam returns [EObject current=null] : ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) ) ;
+    // InternalGoatComponentsParser.g:3279:1: ruleFuncParam returns [EObject current=null] : ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) ) ;
     public final EObject ruleFuncParam() throws RecognitionException {
         EObject current = null;
 
@@ -7876,17 +8119,17 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3185:2: ( ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) ) )
-            // InternalGoatComponentsParser.g:3186:2: ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:3285:2: ( ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) ) )
+            // InternalGoatComponentsParser.g:3286:2: ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) )
             {
-            // InternalGoatComponentsParser.g:3186:2: ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) )
-            // InternalGoatComponentsParser.g:3187:3: ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:3286:2: ( ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) ) )
+            // InternalGoatComponentsParser.g:3287:3: ( (lv_type_0_0= RULE_TYPE ) ) ( (lv_name_1_0= RULE_ID ) )
             {
-            // InternalGoatComponentsParser.g:3187:3: ( (lv_type_0_0= RULE_TYPE ) )
-            // InternalGoatComponentsParser.g:3188:4: (lv_type_0_0= RULE_TYPE )
+            // InternalGoatComponentsParser.g:3287:3: ( (lv_type_0_0= RULE_TYPE ) )
+            // InternalGoatComponentsParser.g:3288:4: (lv_type_0_0= RULE_TYPE )
             {
-            // InternalGoatComponentsParser.g:3188:4: (lv_type_0_0= RULE_TYPE )
-            // InternalGoatComponentsParser.g:3189:5: lv_type_0_0= RULE_TYPE
+            // InternalGoatComponentsParser.g:3288:4: (lv_type_0_0= RULE_TYPE )
+            // InternalGoatComponentsParser.g:3289:5: lv_type_0_0= RULE_TYPE
             {
             lv_type_0_0=(Token)match(input,RULE_TYPE,FOLLOW_3); 
 
@@ -7908,11 +8151,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:3205:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:3206:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3305:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:3306:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:3206:4: (lv_name_1_0= RULE_ID )
-            // InternalGoatComponentsParser.g:3207:5: lv_name_1_0= RULE_ID
+            // InternalGoatComponentsParser.g:3306:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3307:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -7957,7 +8200,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncDefinition"
-    // InternalGoatComponentsParser.g:3227:1: entryRuleFuncDefinition returns [EObject current=null] : iv_ruleFuncDefinition= ruleFuncDefinition EOF ;
+    // InternalGoatComponentsParser.g:3327:1: entryRuleFuncDefinition returns [EObject current=null] : iv_ruleFuncDefinition= ruleFuncDefinition EOF ;
     public final EObject entryRuleFuncDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -7965,8 +8208,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3227:55: (iv_ruleFuncDefinition= ruleFuncDefinition EOF )
-            // InternalGoatComponentsParser.g:3228:2: iv_ruleFuncDefinition= ruleFuncDefinition EOF
+            // InternalGoatComponentsParser.g:3327:55: (iv_ruleFuncDefinition= ruleFuncDefinition EOF )
+            // InternalGoatComponentsParser.g:3328:2: iv_ruleFuncDefinition= ruleFuncDefinition EOF
             {
              newCompositeNode(grammarAccess.getFuncDefinitionRule()); 
             pushFollow(FOLLOW_1);
@@ -7993,7 +8236,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncDefinition"
-    // InternalGoatComponentsParser.g:3234:1: ruleFuncDefinition returns [EObject current=null] : (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) ) ;
+    // InternalGoatComponentsParser.g:3334:1: ruleFuncDefinition returns [EObject current=null] : (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) ) ;
     public final EObject ruleFuncDefinition() throws RecognitionException {
         EObject current = null;
 
@@ -8014,21 +8257,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3240:2: ( (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) ) )
-            // InternalGoatComponentsParser.g:3241:2: (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) )
+            // InternalGoatComponentsParser.g:3340:2: ( (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) ) )
+            // InternalGoatComponentsParser.g:3341:2: (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) )
             {
-            // InternalGoatComponentsParser.g:3241:2: (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) )
-            // InternalGoatComponentsParser.g:3242:3: otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) )
+            // InternalGoatComponentsParser.g:3341:2: (otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) ) )
+            // InternalGoatComponentsParser.g:3342:3: otherlv_0= Function ( (lv_type_1_0= RULE_TYPE ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= LeftParenthesis ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )? otherlv_7= RightParenthesis ( (lv_blk_8_0= ruleFuncBlock ) )
             {
-            otherlv_0=(Token)match(input,Function,FOLLOW_45); 
+            otherlv_0=(Token)match(input,Function,FOLLOW_46); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFuncDefinitionAccess().getFunctionKeyword_0());
             		
-            // InternalGoatComponentsParser.g:3246:3: ( (lv_type_1_0= RULE_TYPE ) )
-            // InternalGoatComponentsParser.g:3247:4: (lv_type_1_0= RULE_TYPE )
+            // InternalGoatComponentsParser.g:3346:3: ( (lv_type_1_0= RULE_TYPE ) )
+            // InternalGoatComponentsParser.g:3347:4: (lv_type_1_0= RULE_TYPE )
             {
-            // InternalGoatComponentsParser.g:3247:4: (lv_type_1_0= RULE_TYPE )
-            // InternalGoatComponentsParser.g:3248:5: lv_type_1_0= RULE_TYPE
+            // InternalGoatComponentsParser.g:3347:4: (lv_type_1_0= RULE_TYPE )
+            // InternalGoatComponentsParser.g:3348:5: lv_type_1_0= RULE_TYPE
             {
             lv_type_1_0=(Token)match(input,RULE_TYPE,FOLLOW_3); 
 
@@ -8050,11 +8293,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:3264:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:3265:4: (lv_name_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3364:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:3365:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:3265:4: (lv_name_2_0= RULE_ID )
-            // InternalGoatComponentsParser.g:3266:5: lv_name_2_0= RULE_ID
+            // InternalGoatComponentsParser.g:3365:4: (lv_name_2_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3366:5: lv_name_2_0= RULE_ID
             {
             lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_8); 
 
@@ -8076,31 +8319,31 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,LeftParenthesis,FOLLOW_46); 
+            otherlv_3=(Token)match(input,LeftParenthesis,FOLLOW_47); 
 
             			newLeafNode(otherlv_3, grammarAccess.getFuncDefinitionAccess().getLeftParenthesisKeyword_3());
             		
-            // InternalGoatComponentsParser.g:3286:3: ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:3386:3: ( ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )* )?
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==RULE_TYPE) ) {
-                alt45=1;
+            if ( (LA46_0==RULE_TYPE) ) {
+                alt46=1;
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:3287:4: ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )*
+                    // InternalGoatComponentsParser.g:3387:4: ( (lv_params_4_0= ruleFuncParam ) ) (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )*
                     {
-                    // InternalGoatComponentsParser.g:3287:4: ( (lv_params_4_0= ruleFuncParam ) )
-                    // InternalGoatComponentsParser.g:3288:5: (lv_params_4_0= ruleFuncParam )
+                    // InternalGoatComponentsParser.g:3387:4: ( (lv_params_4_0= ruleFuncParam ) )
+                    // InternalGoatComponentsParser.g:3388:5: (lv_params_4_0= ruleFuncParam )
                     {
-                    // InternalGoatComponentsParser.g:3288:5: (lv_params_4_0= ruleFuncParam )
-                    // InternalGoatComponentsParser.g:3289:6: lv_params_4_0= ruleFuncParam
+                    // InternalGoatComponentsParser.g:3388:5: (lv_params_4_0= ruleFuncParam )
+                    // InternalGoatComponentsParser.g:3389:6: lv_params_4_0= ruleFuncParam
                     {
 
                     						newCompositeNode(grammarAccess.getFuncDefinitionAccess().getParamsFuncParamParserRuleCall_4_0_0());
                     					
-                    pushFollow(FOLLOW_44);
+                    pushFollow(FOLLOW_45);
                     lv_params_4_0=ruleFuncParam();
 
                     state._fsp--;
@@ -8122,35 +8365,35 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalGoatComponentsParser.g:3306:4: (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )*
-                    loop44:
+                    // InternalGoatComponentsParser.g:3406:4: (otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) ) )*
+                    loop45:
                     do {
-                        int alt44=2;
-                        int LA44_0 = input.LA(1);
+                        int alt45=2;
+                        int LA45_0 = input.LA(1);
 
-                        if ( (LA44_0==Comma) ) {
-                            alt44=1;
+                        if ( (LA45_0==Comma) ) {
+                            alt45=1;
                         }
 
 
-                        switch (alt44) {
+                        switch (alt45) {
                     	case 1 :
-                    	    // InternalGoatComponentsParser.g:3307:5: otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) )
+                    	    // InternalGoatComponentsParser.g:3407:5: otherlv_5= Comma ( (lv_params_6_0= ruleFuncParam ) )
                     	    {
-                    	    otherlv_5=(Token)match(input,Comma,FOLLOW_45); 
+                    	    otherlv_5=(Token)match(input,Comma,FOLLOW_46); 
 
                     	    					newLeafNode(otherlv_5, grammarAccess.getFuncDefinitionAccess().getCommaKeyword_4_1_0());
                     	    				
-                    	    // InternalGoatComponentsParser.g:3311:5: ( (lv_params_6_0= ruleFuncParam ) )
-                    	    // InternalGoatComponentsParser.g:3312:6: (lv_params_6_0= ruleFuncParam )
+                    	    // InternalGoatComponentsParser.g:3411:5: ( (lv_params_6_0= ruleFuncParam ) )
+                    	    // InternalGoatComponentsParser.g:3412:6: (lv_params_6_0= ruleFuncParam )
                     	    {
-                    	    // InternalGoatComponentsParser.g:3312:6: (lv_params_6_0= ruleFuncParam )
-                    	    // InternalGoatComponentsParser.g:3313:7: lv_params_6_0= ruleFuncParam
+                    	    // InternalGoatComponentsParser.g:3412:6: (lv_params_6_0= ruleFuncParam )
+                    	    // InternalGoatComponentsParser.g:3413:7: lv_params_6_0= ruleFuncParam
                     	    {
 
                     	    							newCompositeNode(grammarAccess.getFuncDefinitionAccess().getParamsFuncParamParserRuleCall_4_1_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_44);
+                    	    pushFollow(FOLLOW_45);
                     	    lv_params_6_0=ruleFuncParam();
 
                     	    state._fsp--;
@@ -8177,7 +8420,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop44;
+                    	    break loop45;
                         }
                     } while (true);
 
@@ -8191,11 +8434,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_7, grammarAccess.getFuncDefinitionAccess().getRightParenthesisKeyword_5());
             		
-            // InternalGoatComponentsParser.g:3336:3: ( (lv_blk_8_0= ruleFuncBlock ) )
-            // InternalGoatComponentsParser.g:3337:4: (lv_blk_8_0= ruleFuncBlock )
+            // InternalGoatComponentsParser.g:3436:3: ( (lv_blk_8_0= ruleFuncBlock ) )
+            // InternalGoatComponentsParser.g:3437:4: (lv_blk_8_0= ruleFuncBlock )
             {
-            // InternalGoatComponentsParser.g:3337:4: (lv_blk_8_0= ruleFuncBlock )
-            // InternalGoatComponentsParser.g:3338:5: lv_blk_8_0= ruleFuncBlock
+            // InternalGoatComponentsParser.g:3437:4: (lv_blk_8_0= ruleFuncBlock )
+            // InternalGoatComponentsParser.g:3438:5: lv_blk_8_0= ruleFuncBlock
             {
 
             					newCompositeNode(grammarAccess.getFuncDefinitionAccess().getBlkFuncBlockParserRuleCall_6_0());
@@ -8245,7 +8488,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncBlock"
-    // InternalGoatComponentsParser.g:3359:1: entryRuleFuncBlock returns [EObject current=null] : iv_ruleFuncBlock= ruleFuncBlock EOF ;
+    // InternalGoatComponentsParser.g:3459:1: entryRuleFuncBlock returns [EObject current=null] : iv_ruleFuncBlock= ruleFuncBlock EOF ;
     public final EObject entryRuleFuncBlock() throws RecognitionException {
         EObject current = null;
 
@@ -8253,8 +8496,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3359:50: (iv_ruleFuncBlock= ruleFuncBlock EOF )
-            // InternalGoatComponentsParser.g:3360:2: iv_ruleFuncBlock= ruleFuncBlock EOF
+            // InternalGoatComponentsParser.g:3459:50: (iv_ruleFuncBlock= ruleFuncBlock EOF )
+            // InternalGoatComponentsParser.g:3460:2: iv_ruleFuncBlock= ruleFuncBlock EOF
             {
              newCompositeNode(grammarAccess.getFuncBlockRule()); 
             pushFollow(FOLLOW_1);
@@ -8281,7 +8524,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncBlock"
-    // InternalGoatComponentsParser.g:3366:1: ruleFuncBlock returns [EObject current=null] : (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket ) ;
+    // InternalGoatComponentsParser.g:3466:1: ruleFuncBlock returns [EObject current=null] : (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket ) ;
     public final EObject ruleFuncBlock() throws RecognitionException {
         EObject current = null;
 
@@ -8294,18 +8537,18 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3372:2: ( (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket ) )
-            // InternalGoatComponentsParser.g:3373:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:3472:2: ( (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket ) )
+            // InternalGoatComponentsParser.g:3473:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket )
             {
-            // InternalGoatComponentsParser.g:3373:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket )
-            // InternalGoatComponentsParser.g:3374:3: otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket
+            // InternalGoatComponentsParser.g:3473:2: (otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket )
+            // InternalGoatComponentsParser.g:3474:3: otherlv_0= LeftCurlyBracket () ( (lv_statements_2_0= ruleFuncStatement ) )* otherlv_3= RightCurlyBracket
             {
-            otherlv_0=(Token)match(input,LeftCurlyBracket,FOLLOW_47); 
+            otherlv_0=(Token)match(input,LeftCurlyBracket,FOLLOW_48); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFuncBlockAccess().getLeftCurlyBracketKeyword_0());
             		
-            // InternalGoatComponentsParser.g:3378:3: ()
-            // InternalGoatComponentsParser.g:3379:4: 
+            // InternalGoatComponentsParser.g:3478:3: ()
+            // InternalGoatComponentsParser.g:3479:4: 
             {
 
             				current = forceCreateModelElement(
@@ -8315,28 +8558,28 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:3385:3: ( (lv_statements_2_0= ruleFuncStatement ) )*
-            loop46:
+            // InternalGoatComponentsParser.g:3485:3: ( (lv_statements_2_0= ruleFuncStatement ) )*
+            loop47:
             do {
-                int alt46=2;
-                int LA46_0 = input.LA(1);
+                int alt47=2;
+                int LA47_0 = input.LA(1);
 
-                if ( (LA46_0==Return||LA46_0==Var||LA46_0==If||LA46_0==RULE_ID) ) {
-                    alt46=1;
+                if ( (LA47_0==Return||LA47_0==Var||LA47_0==If||LA47_0==RULE_ID) ) {
+                    alt47=1;
                 }
 
 
-                switch (alt46) {
+                switch (alt47) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:3386:4: (lv_statements_2_0= ruleFuncStatement )
+            	    // InternalGoatComponentsParser.g:3486:4: (lv_statements_2_0= ruleFuncStatement )
             	    {
-            	    // InternalGoatComponentsParser.g:3386:4: (lv_statements_2_0= ruleFuncStatement )
-            	    // InternalGoatComponentsParser.g:3387:5: lv_statements_2_0= ruleFuncStatement
+            	    // InternalGoatComponentsParser.g:3486:4: (lv_statements_2_0= ruleFuncStatement )
+            	    // InternalGoatComponentsParser.g:3487:5: lv_statements_2_0= ruleFuncStatement
             	    {
 
             	    					newCompositeNode(grammarAccess.getFuncBlockAccess().getStatementsFuncStatementParserRuleCall_2_0());
             	    				
-            	    pushFollow(FOLLOW_47);
+            	    pushFollow(FOLLOW_48);
             	    lv_statements_2_0=ruleFuncStatement();
 
             	    state._fsp--;
@@ -8360,7 +8603,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop46;
+            	    break loop47;
                 }
             } while (true);
 
@@ -8391,7 +8634,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncStatement"
-    // InternalGoatComponentsParser.g:3412:1: entryRuleFuncStatement returns [EObject current=null] : iv_ruleFuncStatement= ruleFuncStatement EOF ;
+    // InternalGoatComponentsParser.g:3512:1: entryRuleFuncStatement returns [EObject current=null] : iv_ruleFuncStatement= ruleFuncStatement EOF ;
     public final EObject entryRuleFuncStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8399,8 +8642,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3412:54: (iv_ruleFuncStatement= ruleFuncStatement EOF )
-            // InternalGoatComponentsParser.g:3413:2: iv_ruleFuncStatement= ruleFuncStatement EOF
+            // InternalGoatComponentsParser.g:3512:54: (iv_ruleFuncStatement= ruleFuncStatement EOF )
+            // InternalGoatComponentsParser.g:3513:2: iv_ruleFuncStatement= ruleFuncStatement EOF
             {
              newCompositeNode(grammarAccess.getFuncStatementRule()); 
             pushFollow(FOLLOW_1);
@@ -8427,7 +8670,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncStatement"
-    // InternalGoatComponentsParser.g:3419:1: ruleFuncStatement returns [EObject current=null] : (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration ) ;
+    // InternalGoatComponentsParser.g:3519:1: ruleFuncStatement returns [EObject current=null] : (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration ) ;
     public final EObject ruleFuncStatement() throws RecognitionException {
         EObject current = null;
 
@@ -8444,42 +8687,42 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3425:2: ( (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration ) )
-            // InternalGoatComponentsParser.g:3426:2: (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration )
+            // InternalGoatComponentsParser.g:3525:2: ( (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration ) )
+            // InternalGoatComponentsParser.g:3526:2: (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration )
             {
-            // InternalGoatComponentsParser.g:3426:2: (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration )
-            int alt47=4;
+            // InternalGoatComponentsParser.g:3526:2: (this_FuncVarAssign_0= ruleFuncVarAssign | this_FuncIfElse_1= ruleFuncIfElse | this_FuncReturn_2= ruleFuncReturn | this_FuncVarDeclaration_3= ruleFuncVarDeclaration )
+            int alt48=4;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt47=1;
+                alt48=1;
                 }
                 break;
             case If:
                 {
-                alt47=2;
+                alt48=2;
                 }
                 break;
             case Return:
                 {
-                alt47=3;
+                alt48=3;
                 }
                 break;
             case Var:
                 {
-                alt47=4;
+                alt48=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 47, 0, input);
+                    new NoViableAltException("", 48, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt47) {
+            switch (alt48) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:3427:3: this_FuncVarAssign_0= ruleFuncVarAssign
+                    // InternalGoatComponentsParser.g:3527:3: this_FuncVarAssign_0= ruleFuncVarAssign
                     {
 
                     			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncVarAssignParserRuleCall_0());
@@ -8497,7 +8740,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalGoatComponentsParser.g:3436:3: this_FuncIfElse_1= ruleFuncIfElse
+                    // InternalGoatComponentsParser.g:3536:3: this_FuncIfElse_1= ruleFuncIfElse
                     {
 
                     			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncIfElseParserRuleCall_1());
@@ -8515,7 +8758,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalGoatComponentsParser.g:3445:3: this_FuncReturn_2= ruleFuncReturn
+                    // InternalGoatComponentsParser.g:3545:3: this_FuncReturn_2= ruleFuncReturn
                     {
 
                     			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncReturnParserRuleCall_2());
@@ -8533,7 +8776,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalGoatComponentsParser.g:3454:3: this_FuncVarDeclaration_3= ruleFuncVarDeclaration
+                    // InternalGoatComponentsParser.g:3554:3: this_FuncVarDeclaration_3= ruleFuncVarDeclaration
                     {
 
                     			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncVarDeclarationParserRuleCall_3());
@@ -8573,7 +8816,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncVarDeclaration"
-    // InternalGoatComponentsParser.g:3466:1: entryRuleFuncVarDeclaration returns [EObject current=null] : iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF ;
+    // InternalGoatComponentsParser.g:3566:1: entryRuleFuncVarDeclaration returns [EObject current=null] : iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF ;
     public final EObject entryRuleFuncVarDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -8581,8 +8824,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3466:59: (iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF )
-            // InternalGoatComponentsParser.g:3467:2: iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF
+            // InternalGoatComponentsParser.g:3566:59: (iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF )
+            // InternalGoatComponentsParser.g:3567:2: iv_ruleFuncVarDeclaration= ruleFuncVarDeclaration EOF
             {
              newCompositeNode(grammarAccess.getFuncVarDeclarationRule()); 
             pushFollow(FOLLOW_1);
@@ -8609,7 +8852,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncVarDeclaration"
-    // InternalGoatComponentsParser.g:3473:1: ruleFuncVarDeclaration returns [EObject current=null] : (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) ) ;
+    // InternalGoatComponentsParser.g:3573:1: ruleFuncVarDeclaration returns [EObject current=null] : (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) ) ;
     public final EObject ruleFuncVarDeclaration() throws RecognitionException {
         EObject current = null;
 
@@ -8623,23 +8866,23 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3479:2: ( (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) ) )
-            // InternalGoatComponentsParser.g:3480:2: (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3579:2: ( (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) ) )
+            // InternalGoatComponentsParser.g:3580:2: (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) )
             {
-            // InternalGoatComponentsParser.g:3480:2: (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) )
-            // InternalGoatComponentsParser.g:3481:3: otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3580:2: (otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3581:3: otherlv_0= Var ( (lv_name_1_0= RULE_ID ) ) otherlv_2= EqualsSign ( (lv_val_3_0= ruleExpression ) )
             {
             otherlv_0=(Token)match(input,Var,FOLLOW_3); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFuncVarDeclarationAccess().getVarKeyword_0());
             		
-            // InternalGoatComponentsParser.g:3485:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:3486:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3585:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:3586:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:3486:4: (lv_name_1_0= RULE_ID )
-            // InternalGoatComponentsParser.g:3487:5: lv_name_1_0= RULE_ID
+            // InternalGoatComponentsParser.g:3586:4: (lv_name_1_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3587:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_48); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_49); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getFuncVarDeclarationAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -8663,11 +8906,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getFuncVarDeclarationAccess().getEqualsSignKeyword_2());
             		
-            // InternalGoatComponentsParser.g:3507:3: ( (lv_val_3_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:3508:4: (lv_val_3_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3607:3: ( (lv_val_3_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3608:4: (lv_val_3_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:3508:4: (lv_val_3_0= ruleExpression )
-            // InternalGoatComponentsParser.g:3509:5: lv_val_3_0= ruleExpression
+            // InternalGoatComponentsParser.g:3608:4: (lv_val_3_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3609:5: lv_val_3_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFuncVarDeclarationAccess().getValExpressionParserRuleCall_3_0());
@@ -8717,7 +8960,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncVarAssign"
-    // InternalGoatComponentsParser.g:3530:1: entryRuleFuncVarAssign returns [EObject current=null] : iv_ruleFuncVarAssign= ruleFuncVarAssign EOF ;
+    // InternalGoatComponentsParser.g:3630:1: entryRuleFuncVarAssign returns [EObject current=null] : iv_ruleFuncVarAssign= ruleFuncVarAssign EOF ;
     public final EObject entryRuleFuncVarAssign() throws RecognitionException {
         EObject current = null;
 
@@ -8725,8 +8968,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3530:54: (iv_ruleFuncVarAssign= ruleFuncVarAssign EOF )
-            // InternalGoatComponentsParser.g:3531:2: iv_ruleFuncVarAssign= ruleFuncVarAssign EOF
+            // InternalGoatComponentsParser.g:3630:54: (iv_ruleFuncVarAssign= ruleFuncVarAssign EOF )
+            // InternalGoatComponentsParser.g:3631:2: iv_ruleFuncVarAssign= ruleFuncVarAssign EOF
             {
              newCompositeNode(grammarAccess.getFuncVarAssignRule()); 
             pushFollow(FOLLOW_1);
@@ -8753,7 +8996,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncVarAssign"
-    // InternalGoatComponentsParser.g:3537:1: ruleFuncVarAssign returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) ) ;
+    // InternalGoatComponentsParser.g:3637:1: ruleFuncVarAssign returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) ) ;
     public final EObject ruleFuncVarAssign() throws RecognitionException {
         EObject current = null;
 
@@ -8766,24 +9009,24 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3543:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) ) )
-            // InternalGoatComponentsParser.g:3544:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3643:2: ( ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) ) )
+            // InternalGoatComponentsParser.g:3644:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) )
             {
-            // InternalGoatComponentsParser.g:3544:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) )
-            // InternalGoatComponentsParser.g:3545:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3644:2: ( ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3645:3: ( (otherlv_0= RULE_ID ) ) otherlv_1= EqualsSign ( (lv_val_2_0= ruleExpression ) )
             {
-            // InternalGoatComponentsParser.g:3545:3: ( (otherlv_0= RULE_ID ) )
-            // InternalGoatComponentsParser.g:3546:4: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3645:3: ( (otherlv_0= RULE_ID ) )
+            // InternalGoatComponentsParser.g:3646:4: (otherlv_0= RULE_ID )
             {
-            // InternalGoatComponentsParser.g:3546:4: (otherlv_0= RULE_ID )
-            // InternalGoatComponentsParser.g:3547:5: otherlv_0= RULE_ID
+            // InternalGoatComponentsParser.g:3646:4: (otherlv_0= RULE_ID )
+            // InternalGoatComponentsParser.g:3647:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getFuncVarAssignRule());
             					}
             				
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_48); 
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_49); 
 
             					newLeafNode(otherlv_0, grammarAccess.getFuncVarAssignAccess().getVarFuncVarDeclarationCrossReference_0_0());
             				
@@ -8797,11 +9040,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getFuncVarAssignAccess().getEqualsSignKeyword_1());
             		
-            // InternalGoatComponentsParser.g:3562:3: ( (lv_val_2_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:3563:4: (lv_val_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3662:3: ( (lv_val_2_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3663:4: (lv_val_2_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:3563:4: (lv_val_2_0= ruleExpression )
-            // InternalGoatComponentsParser.g:3564:5: lv_val_2_0= ruleExpression
+            // InternalGoatComponentsParser.g:3663:4: (lv_val_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3664:5: lv_val_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFuncVarAssignAccess().getValExpressionParserRuleCall_2_0());
@@ -8851,7 +9094,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncIfElse"
-    // InternalGoatComponentsParser.g:3585:1: entryRuleFuncIfElse returns [EObject current=null] : iv_ruleFuncIfElse= ruleFuncIfElse EOF ;
+    // InternalGoatComponentsParser.g:3685:1: entryRuleFuncIfElse returns [EObject current=null] : iv_ruleFuncIfElse= ruleFuncIfElse EOF ;
     public final EObject entryRuleFuncIfElse() throws RecognitionException {
         EObject current = null;
 
@@ -8859,8 +9102,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3585:51: (iv_ruleFuncIfElse= ruleFuncIfElse EOF )
-            // InternalGoatComponentsParser.g:3586:2: iv_ruleFuncIfElse= ruleFuncIfElse EOF
+            // InternalGoatComponentsParser.g:3685:51: (iv_ruleFuncIfElse= ruleFuncIfElse EOF )
+            // InternalGoatComponentsParser.g:3686:2: iv_ruleFuncIfElse= ruleFuncIfElse EOF
             {
              newCompositeNode(grammarAccess.getFuncIfElseRule()); 
             pushFollow(FOLLOW_1);
@@ -8887,7 +9130,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncIfElse"
-    // InternalGoatComponentsParser.g:3592:1: ruleFuncIfElse returns [EObject current=null] : (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? ) ;
+    // InternalGoatComponentsParser.g:3692:1: ruleFuncIfElse returns [EObject current=null] : (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? ) ;
     public final EObject ruleFuncIfElse() throws RecognitionException {
         EObject current = null;
 
@@ -8914,11 +9157,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3598:2: ( (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? ) )
-            // InternalGoatComponentsParser.g:3599:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? )
+            // InternalGoatComponentsParser.g:3698:2: ( (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? ) )
+            // InternalGoatComponentsParser.g:3699:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? )
             {
-            // InternalGoatComponentsParser.g:3599:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? )
-            // InternalGoatComponentsParser.g:3600:3: otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )?
+            // InternalGoatComponentsParser.g:3699:2: (otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )? )
+            // InternalGoatComponentsParser.g:3700:3: otherlv_0= If otherlv_1= LeftParenthesis ( (lv_test_2_0= ruleExpression ) ) otherlv_3= RightParenthesis ( (lv_then_4_0= ruleFuncBlock ) ) (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )* (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )?
             {
             otherlv_0=(Token)match(input,If,FOLLOW_8); 
 
@@ -8928,11 +9171,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalGoatComponentsParser.g:3608:3: ( (lv_test_2_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:3609:4: (lv_test_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3708:3: ( (lv_test_2_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3709:4: (lv_test_2_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:3609:4: (lv_test_2_0= ruleExpression )
-            // InternalGoatComponentsParser.g:3610:5: lv_test_2_0= ruleExpression
+            // InternalGoatComponentsParser.g:3709:4: (lv_test_2_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3710:5: lv_test_2_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_2_0());
@@ -8963,11 +9206,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_3());
             		
-            // InternalGoatComponentsParser.g:3631:3: ( (lv_then_4_0= ruleFuncBlock ) )
-            // InternalGoatComponentsParser.g:3632:4: (lv_then_4_0= ruleFuncBlock )
+            // InternalGoatComponentsParser.g:3731:3: ( (lv_then_4_0= ruleFuncBlock ) )
+            // InternalGoatComponentsParser.g:3732:4: (lv_then_4_0= ruleFuncBlock )
             {
-            // InternalGoatComponentsParser.g:3632:4: (lv_then_4_0= ruleFuncBlock )
-            // InternalGoatComponentsParser.g:3633:5: lv_then_4_0= ruleFuncBlock
+            // InternalGoatComponentsParser.g:3732:4: (lv_then_4_0= ruleFuncBlock )
+            // InternalGoatComponentsParser.g:3733:5: lv_then_4_0= ruleFuncBlock
             {
 
             					newCompositeNode(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_4_0());
@@ -8994,26 +9237,26 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalGoatComponentsParser.g:3650:3: (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )*
-            loop48:
+            // InternalGoatComponentsParser.g:3750:3: (otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) ) )*
+            loop49:
             do {
-                int alt48=2;
-                int LA48_0 = input.LA(1);
+                int alt49=2;
+                int LA49_0 = input.LA(1);
 
-                if ( (LA48_0==Else) ) {
-                    int LA48_1 = input.LA(2);
+                if ( (LA49_0==Else) ) {
+                    int LA49_1 = input.LA(2);
 
-                    if ( (LA48_1==If) ) {
-                        alt48=1;
+                    if ( (LA49_1==If) ) {
+                        alt49=1;
                     }
 
 
                 }
 
 
-                switch (alt48) {
+                switch (alt49) {
             	case 1 :
-            	    // InternalGoatComponentsParser.g:3651:4: otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) )
+            	    // InternalGoatComponentsParser.g:3751:4: otherlv_5= Else otherlv_6= If otherlv_7= LeftParenthesis ( (lv_test_8_0= ruleExpression ) ) otherlv_9= RightParenthesis ( (lv_then_10_0= ruleFuncBlock ) )
             	    {
             	    otherlv_5=(Token)match(input,Else,FOLLOW_25); 
 
@@ -9027,11 +9270,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    				newLeafNode(otherlv_7, grammarAccess.getFuncIfElseAccess().getLeftParenthesisKeyword_5_2());
             	    			
-            	    // InternalGoatComponentsParser.g:3663:4: ( (lv_test_8_0= ruleExpression ) )
-            	    // InternalGoatComponentsParser.g:3664:5: (lv_test_8_0= ruleExpression )
+            	    // InternalGoatComponentsParser.g:3763:4: ( (lv_test_8_0= ruleExpression ) )
+            	    // InternalGoatComponentsParser.g:3764:5: (lv_test_8_0= ruleExpression )
             	    {
-            	    // InternalGoatComponentsParser.g:3664:5: (lv_test_8_0= ruleExpression )
-            	    // InternalGoatComponentsParser.g:3665:6: lv_test_8_0= ruleExpression
+            	    // InternalGoatComponentsParser.g:3764:5: (lv_test_8_0= ruleExpression )
+            	    // InternalGoatComponentsParser.g:3765:6: lv_test_8_0= ruleExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getFuncIfElseAccess().getTestExpressionParserRuleCall_5_3_0());
@@ -9062,11 +9305,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
             	    				newLeafNode(otherlv_9, grammarAccess.getFuncIfElseAccess().getRightParenthesisKeyword_5_4());
             	    			
-            	    // InternalGoatComponentsParser.g:3686:4: ( (lv_then_10_0= ruleFuncBlock ) )
-            	    // InternalGoatComponentsParser.g:3687:5: (lv_then_10_0= ruleFuncBlock )
+            	    // InternalGoatComponentsParser.g:3786:4: ( (lv_then_10_0= ruleFuncBlock ) )
+            	    // InternalGoatComponentsParser.g:3787:5: (lv_then_10_0= ruleFuncBlock )
             	    {
-            	    // InternalGoatComponentsParser.g:3687:5: (lv_then_10_0= ruleFuncBlock )
-            	    // InternalGoatComponentsParser.g:3688:6: lv_then_10_0= ruleFuncBlock
+            	    // InternalGoatComponentsParser.g:3787:5: (lv_then_10_0= ruleFuncBlock )
+            	    // InternalGoatComponentsParser.g:3788:6: lv_then_10_0= ruleFuncBlock
             	    {
 
             	    						newCompositeNode(grammarAccess.getFuncIfElseAccess().getThenFuncBlockParserRuleCall_5_5_0());
@@ -9098,30 +9341,30 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop48;
+            	    break loop49;
                 }
             } while (true);
 
-            // InternalGoatComponentsParser.g:3706:3: (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )?
-            int alt49=2;
-            int LA49_0 = input.LA(1);
+            // InternalGoatComponentsParser.g:3806:3: (otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) ) )?
+            int alt50=2;
+            int LA50_0 = input.LA(1);
 
-            if ( (LA49_0==Else) ) {
-                alt49=1;
+            if ( (LA50_0==Else) ) {
+                alt50=1;
             }
-            switch (alt49) {
+            switch (alt50) {
                 case 1 :
-                    // InternalGoatComponentsParser.g:3707:4: otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) )
+                    // InternalGoatComponentsParser.g:3807:4: otherlv_11= Else ( (lv_elseBranch_12_0= ruleFuncBlock ) )
                     {
                     otherlv_11=(Token)match(input,Else,FOLLOW_10); 
 
                     				newLeafNode(otherlv_11, grammarAccess.getFuncIfElseAccess().getElseKeyword_6_0());
                     			
-                    // InternalGoatComponentsParser.g:3711:4: ( (lv_elseBranch_12_0= ruleFuncBlock ) )
-                    // InternalGoatComponentsParser.g:3712:5: (lv_elseBranch_12_0= ruleFuncBlock )
+                    // InternalGoatComponentsParser.g:3811:4: ( (lv_elseBranch_12_0= ruleFuncBlock ) )
+                    // InternalGoatComponentsParser.g:3812:5: (lv_elseBranch_12_0= ruleFuncBlock )
                     {
-                    // InternalGoatComponentsParser.g:3712:5: (lv_elseBranch_12_0= ruleFuncBlock )
-                    // InternalGoatComponentsParser.g:3713:6: lv_elseBranch_12_0= ruleFuncBlock
+                    // InternalGoatComponentsParser.g:3812:5: (lv_elseBranch_12_0= ruleFuncBlock )
+                    // InternalGoatComponentsParser.g:3813:6: lv_elseBranch_12_0= ruleFuncBlock
                     {
 
                     						newCompositeNode(grammarAccess.getFuncIfElseAccess().getElseBranchFuncBlockParserRuleCall_6_1_0());
@@ -9177,7 +9420,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncReturn"
-    // InternalGoatComponentsParser.g:3735:1: entryRuleFuncReturn returns [EObject current=null] : iv_ruleFuncReturn= ruleFuncReturn EOF ;
+    // InternalGoatComponentsParser.g:3835:1: entryRuleFuncReturn returns [EObject current=null] : iv_ruleFuncReturn= ruleFuncReturn EOF ;
     public final EObject entryRuleFuncReturn() throws RecognitionException {
         EObject current = null;
 
@@ -9185,8 +9428,8 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalGoatComponentsParser.g:3735:51: (iv_ruleFuncReturn= ruleFuncReturn EOF )
-            // InternalGoatComponentsParser.g:3736:2: iv_ruleFuncReturn= ruleFuncReturn EOF
+            // InternalGoatComponentsParser.g:3835:51: (iv_ruleFuncReturn= ruleFuncReturn EOF )
+            // InternalGoatComponentsParser.g:3836:2: iv_ruleFuncReturn= ruleFuncReturn EOF
             {
              newCompositeNode(grammarAccess.getFuncReturnRule()); 
             pushFollow(FOLLOW_1);
@@ -9213,7 +9456,7 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncReturn"
-    // InternalGoatComponentsParser.g:3742:1: ruleFuncReturn returns [EObject current=null] : (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) ) ;
+    // InternalGoatComponentsParser.g:3842:1: ruleFuncReturn returns [EObject current=null] : (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) ) ;
     public final EObject ruleFuncReturn() throws RecognitionException {
         EObject current = null;
 
@@ -9225,21 +9468,21 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalGoatComponentsParser.g:3748:2: ( (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) ) )
-            // InternalGoatComponentsParser.g:3749:2: (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3848:2: ( (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) ) )
+            // InternalGoatComponentsParser.g:3849:2: (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) )
             {
-            // InternalGoatComponentsParser.g:3749:2: (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) )
-            // InternalGoatComponentsParser.g:3750:3: otherlv_0= Return ( (lv_val_1_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3849:2: (otherlv_0= Return ( (lv_val_1_0= ruleExpression ) ) )
+            // InternalGoatComponentsParser.g:3850:3: otherlv_0= Return ( (lv_val_1_0= ruleExpression ) )
             {
             otherlv_0=(Token)match(input,Return,FOLLOW_13); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFuncReturnAccess().getReturnKeyword_0());
             		
-            // InternalGoatComponentsParser.g:3754:3: ( (lv_val_1_0= ruleExpression ) )
-            // InternalGoatComponentsParser.g:3755:4: (lv_val_1_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3854:3: ( (lv_val_1_0= ruleExpression ) )
+            // InternalGoatComponentsParser.g:3855:4: (lv_val_1_0= ruleExpression )
             {
-            // InternalGoatComponentsParser.g:3755:4: (lv_val_1_0= ruleExpression )
-            // InternalGoatComponentsParser.g:3756:5: lv_val_1_0= ruleExpression
+            // InternalGoatComponentsParser.g:3855:4: (lv_val_1_0= ruleExpression )
+            // InternalGoatComponentsParser.g:3856:5: lv_val_1_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getFuncReturnAccess().getValExpressionParserRuleCall_1_0());
@@ -9290,11 +9533,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
     // Delegated rules
 
 
-    protected DFA43 dfa43 = new DFA43(this);
+    protected DFA44 dfa44 = new DFA44(this);
     static final String dfa_1s = "\12\uffff";
     static final String dfa_2s = "\4\uffff\1\10\5\uffff";
-    static final String dfa_3s = "\1\7\3\uffff\1\13\5\uffff";
-    static final String dfa_4s = "\1\72\3\uffff\1\70\5\uffff";
+    static final String dfa_3s = "\1\10\3\uffff\1\14\5\uffff";
+    static final String dfa_4s = "\1\73\3\uffff\1\71\5\uffff";
     static final String dfa_5s = "\1\uffff\1\1\1\2\1\3\1\uffff\1\5\1\7\1\10\1\4\1\6";
     static final String dfa_6s = "\12\uffff}>";
     static final String[] dfa_7s = {
@@ -9318,11 +9561,11 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
     static final short[] dfa_6 = DFA.unpackEncodedString(dfa_6s);
     static final short[][] dfa_7 = unpackEncodedStringArray(dfa_7s);
 
-    class DFA43 extends DFA {
+    class DFA44 extends DFA {
 
-        public DFA43(BaseRecognizer recognizer) {
+        public DFA44(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 43;
+            this.decisionNumber = 44;
             this.eot = dfa_1;
             this.eof = dfa_2;
             this.min = dfa_3;
@@ -9332,58 +9575,59 @@ public class InternalGoatComponentsParser extends AbstractInternalAntlrParser {
             this.transition = dfa_7;
         }
         public String getDescription() {
-            return "2867:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )";
+            return "2967:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () ( (lv_value_3_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_5_1= True | lv_value_5_2= False ) ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) ) | ( () otherlv_9= Proc otherlv_10= FullStop ( (lv_attribute_11_0= RULE_ID ) ) ) | ( () ( (otherlv_13= RULE_ID ) ) otherlv_14= LeftParenthesis ( ( (lv_params_15_0= ruleExpression ) ) (otherlv_16= Comma ( (lv_params_17_0= ruleExpression ) ) )* )? otherlv_18= RightParenthesis ) | ( () otherlv_20= Comp otherlv_21= FullStop ( (lv_attribute_22_0= RULE_ID ) ) ) | ( () otherlv_24= Receiver otherlv_25= FullStop ( (lv_attribute_26_0= RULE_ID ) ) ) )";
         }
     }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000162L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0010800000000000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0040000100A8C600L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0740021400521080L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0040010000000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0700021400521080L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0002000000000000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0004200000002000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000200000002000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0040000000010000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0140000000000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0004000000002000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000A00200L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000100A8C602L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000120000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0008010000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0600020000401000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0110800000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000200000002L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000004000002L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000042000002L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x00014000A0000002L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000028008000002L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000084800000002L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0700023400521080L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000012000000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0080002000000000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0140000101000800L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000000000002E2L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0021000000000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0080000201518C00L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0E80042800A42100L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0080020000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0E00042800A42100L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0008400000004000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000400000004000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0080000000020000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0280000000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0008000000004000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000001400400L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000201518C02L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000240000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0010020000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0C00040000802000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0220000000000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0221000000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000084000002L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0002800140000002L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000050010000002L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000109000000002L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0E00046800A42100L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000024000000000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0100000000000000L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0100004000000000L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0280000202001000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0001000000000000L});
 
 }

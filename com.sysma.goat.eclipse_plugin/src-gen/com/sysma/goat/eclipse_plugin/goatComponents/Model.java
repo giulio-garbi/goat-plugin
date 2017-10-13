@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getProcesses <em>Processes</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getComponents <em>Components</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getFunctions <em>Functions</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.Model#getEnvironments <em>Environments</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getModel()
@@ -103,5 +104,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<FuncDefinition> getFunctions();
+
+  /**
+   * Returns the value of the '<em><b>Environments</b></em>' containment reference list.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Environments</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Environments</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getModel_Environments()
+   * @model containment="true"
+   * @generated
+   */
+  EList<EnvironmentDefinition> getEnvironments();
 
 } // Model

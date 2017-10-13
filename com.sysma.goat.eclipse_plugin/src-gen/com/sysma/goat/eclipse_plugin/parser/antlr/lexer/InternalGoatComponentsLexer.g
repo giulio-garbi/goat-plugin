@@ -13,6 +13,8 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 
 Infrastructure : 'infrastructure';
 
+Environment : 'environment';
+
 Component : 'component';
 
 Function : 'function';

@@ -10,9 +10,11 @@ Model:
 	'infrastructure' infrastructure = [infr::Infrastructure]
 	(processes += ProcessDefinition |
 	components += ComponentDefinition | 
-	functions += FuncDefinition)*;
+	functions += FuncDefinition |
+	environments += EnvironmentDefinition)*;
 
 //Process
+
 
 ProcessDefinition:
 	'process' name=ID ('=' block = PDPBlock | block = ProcessBlock)
@@ -134,8 +136,13 @@ Environment:
 	{Environment} "{"(attrs += ID ':=' vals+=EnvInitValue (","attrs += ID ':=' vals+=EnvInitValue)*)?"}"
 ;
 
+
+EnvironmentDefinition:
+	'environment' name=ID env = Environment
+;
+
 ComponentDefinition:
-	"component" env = Environment block = (PDPBlock|ProcessBlock)
+	"component" (envref = [EnvironmentDefinition]|env = Environment) ':' block = (PDPBlock|ProcessBlock)
 ;
 
 // Expression

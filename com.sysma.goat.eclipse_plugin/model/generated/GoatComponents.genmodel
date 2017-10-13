@@ -11,6 +11,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/processes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/components"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/functions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Model/environments"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//ProcessDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//ProcessDefinition/name"/>
@@ -83,7 +84,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//Environment/attrs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Environment/vals"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//EnvironmentDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//EnvironmentDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//EnvironmentDefinition/env"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//ComponentDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/envref"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/env"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/block"/>
     </genClasses>

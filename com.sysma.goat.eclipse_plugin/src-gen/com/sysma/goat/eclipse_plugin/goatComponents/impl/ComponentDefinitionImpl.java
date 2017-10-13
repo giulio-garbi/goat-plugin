@@ -5,6 +5,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnvref <em>Envref</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getBlock <em>Block</em>}</li>
  * </ul>
@@ -33,6 +35,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implements ComponentDefinition
 {
+  /**
+   * The cached value of the '{@link #getEnvref() <em>Envref</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnvref()
+   * @generated
+   * @ordered
+   */
+  protected EnvironmentDefinition envref;
+
   /**
    * The cached value of the '{@link #getEnv() <em>Env</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -72,6 +84,49 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   protected EClass eStaticClass()
   {
     return GoatComponentsPackage.Literals.COMPONENT_DEFINITION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnvironmentDefinition getEnvref()
+  {
+    if (envref != null && envref.eIsProxy())
+    {
+      InternalEObject oldEnvref = (InternalEObject)envref;
+      envref = (EnvironmentDefinition)eResolveProxy(oldEnvref);
+      if (envref != oldEnvref)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF, oldEnvref, envref));
+      }
+    }
+    return envref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnvironmentDefinition basicGetEnvref()
+  {
+    return envref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEnvref(EnvironmentDefinition newEnvref)
+  {
+    EnvironmentDefinition oldEnvref = envref;
+    envref = newEnvref;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF, oldEnvref, envref));
   }
 
   /**
@@ -198,6 +253,9 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
+        if (resolve) return getEnvref();
+        return basicGetEnvref();
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return getEnv();
       case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
@@ -216,6 +274,9 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
+        setEnvref((EnvironmentDefinition)newValue);
+        return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)newValue);
         return;
@@ -236,6 +297,9 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
+        setEnvref((EnvironmentDefinition)null);
+        return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)null);
         return;
@@ -256,6 +320,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
+        return envref != null;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return env != null;
       case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:

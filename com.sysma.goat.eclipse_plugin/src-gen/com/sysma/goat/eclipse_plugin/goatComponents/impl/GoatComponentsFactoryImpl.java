@@ -89,6 +89,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT: return createPrintFormattedStatement();
       case GoatComponentsPackage.EXPRESSION: return createExpression();
       case GoatComponentsPackage.ENVIRONMENT: return createEnvironment();
+      case GoatComponentsPackage.ENVIRONMENT_DEFINITION: return createEnvironmentDefinition();
       case GoatComponentsPackage.COMPONENT_DEFINITION: return createComponentDefinition();
       case GoatComponentsPackage.LREF: return createLRef();
       case GoatComponentsPackage.FUNC_PARAM: return createFuncParam();
@@ -385,6 +386,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     EnvironmentImpl environment = new EnvironmentImpl();
     return environment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnvironmentDefinition createEnvironmentDefinition()
+  {
+    EnvironmentDefinitionImpl environmentDefinition = new EnvironmentDefinitionImpl();
+    return environmentDefinition;
   }
 
   /**

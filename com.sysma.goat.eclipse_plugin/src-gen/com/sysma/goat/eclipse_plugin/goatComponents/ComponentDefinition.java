@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvref <em>Envref</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getBlock <em>Block</em>}</li>
  * </ul>
@@ -24,6 +25,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ComponentDefinition extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Envref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Envref</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Envref</em>' reference.
+   * @see #setEnvref(EnvironmentDefinition)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getComponentDefinition_Envref()
+   * @model
+   * @generated
+   */
+  EnvironmentDefinition getEnvref();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvref <em>Envref</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Envref</em>' reference.
+   * @see #getEnvref()
+   * @generated
+   */
+  void setEnvref(EnvironmentDefinition value);
+
   /**
    * Returns the value of the '<em><b>Env</b></em>' containment reference.
    * <!-- begin-user-doc -->
