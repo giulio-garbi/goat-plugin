@@ -56,7 +56,7 @@ class GoatInfrastructureGenerator extends AbstractGenerator implements IGenerato
 		val goatGen = new GoatComponentsGenerator()
 		input.resources.forEach[
 			doGenerate(it, fsa)
-			goatGen.doGenerate(it, fsa, null)
+			goatGen.doGenerateInt(it, fsa, null)
 		]
 	}
 	

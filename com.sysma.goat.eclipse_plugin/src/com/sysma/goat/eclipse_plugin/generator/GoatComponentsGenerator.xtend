@@ -19,10 +19,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class GoatComponentsGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		doGenerate(resource, fsa, context)
+		doGenerateInt(resource, fsa, context)
 	}
 	
-	def void doGenerate(Resource resource, IFileSystemAccess fsa, IGeneratorContext context) {
+	def void doGenerateInt(Resource resource, IFileSystemAccess fsa, IGeneratorContext context) {
 		for(model:(resource.allContents.toIterable.filter(Model))){
 			val c_model = new CodeModel(model)
 			val goFileName =
