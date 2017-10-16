@@ -21,8 +21,9 @@ public class CodeSingleServer implements CodeInfrastructure {
     _builder.append("import (");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("\"github.com/giulio-garbi/goat/goat\"");
-    _builder.newLine();
+    CharSequence _importPath = Utils.getImportPath();
+    _builder.append(_importPath, "\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("\"fmt\"");
     _builder.newLine();

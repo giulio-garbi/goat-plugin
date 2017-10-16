@@ -31,7 +31,7 @@ class CodeModel {
 		package «packageName»
 		
 		import (
-			"github.com/giulio-garbi/goat/goat"
+			«Utils.importPath»
 			"strings"
 			"fmt"
 			"strconv"

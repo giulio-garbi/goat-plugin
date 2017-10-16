@@ -14,6 +14,10 @@ import com.google.common.net.HostAndPort
 import java.util.List
 
 class Utils{
+	def static getImportPath(){
+		'''"goat-plugin/goat/goat"'''
+	}
+	
 	def static getCode(ProcessStatement stmt, LocalVariableMap locvars, CharSequence processRef){
 		switch(stmt){
 			ProcessSpawn:

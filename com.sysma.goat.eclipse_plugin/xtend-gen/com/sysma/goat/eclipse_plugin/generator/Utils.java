@@ -29,7 +29,13 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class Utils {
-  public static Object getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
+  public static CharSequence getImportPath() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"goat-plugin/goat/goat\"");
+    return _builder;
+  }
+  
+  public static CharSequence getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (stmt instanceof ProcessSpawn) {

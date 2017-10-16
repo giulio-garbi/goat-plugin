@@ -16,7 +16,7 @@ class CodeRing implements CodeInfrastructure {
 		'''
 			package main
 			import (
-				"github.com/giulio-garbi/goat/goat"
+				«Utils.importPath»
 				"fmt"
 			)
 			
