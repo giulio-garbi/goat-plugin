@@ -37,7 +37,7 @@ public class CodeProcessSet {
       final String attrVar = "attrs";
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(this.procRef);
-      _builder.append(".Send(func(");
+      _builder.append(".SendFunc(func(");
       _builder.append(attrVar);
       _builder.append(" *goat.Attributes) (goat.Tuple, goat.Predicate, bool){");
       _builder.newLineIfNotEmpty();
@@ -51,7 +51,7 @@ public class CodeProcessSet {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("return goat.NewTuple(), goat.False{}, false");
+          _builder.append("return goat.NewTuple(), goat.False(), false");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("}");
@@ -74,7 +74,7 @@ public class CodeProcessSet {
         }
       }
       _builder.append("\t");
-      _builder.append("return goat.NewTuple(), goat.False{}, true");
+      _builder.append("return goat.NewTuple(), goat.False(), true");
       _builder.newLine();
       _builder.append("})");
       _builder.newLine();
@@ -98,7 +98,7 @@ public class CodeProcessSet {
         _builder.newLineIfNotEmpty();
       }
     }
-    _builder.append("return goat.ThenSend(goat.NewTuple(), goat.False{})");
+    _builder.append("return goat.ThenSend(goat.NewTuple(), goat.False())");
     _builder.newLine();
     return _builder;
   }

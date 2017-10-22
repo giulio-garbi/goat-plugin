@@ -55,7 +55,7 @@ public class CodeProcessSend {
       final List<CharSequence> messageParts = ListExtensions.<Expression, CharSequence>map(_elvis, _function);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(this.procRef);
-      _builder.append(".Send(func(");
+      _builder.append(".SendFunc(func(");
       _builder.append(attrVar);
       _builder.append(" *goat.Attributes) (goat.Tuple, goat.Predicate, bool){");
       _builder.newLineIfNotEmpty();
@@ -69,7 +69,7 @@ public class CodeProcessSend {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
-          _builder.append("return goat.NewTuple(), goat.False{}, false");
+          _builder.append("return goat.NewTuple(), goat.False(), false");
           _builder.newLine();
           _builder.append("\t");
           _builder.append("}");
@@ -174,7 +174,9 @@ public class CodeProcessSend {
       }
       _builder.append("return goat.ThenSend(");
       _builder.append(messageVar);
-      _builder.append(", pred)");
+      _builder.append(", pred.CloseUnder(");
+      _builder.append(attrVar);
+      _builder.append("))");
       _builder.newLineIfNotEmpty();
       _xblockexpression = _builder;
     }

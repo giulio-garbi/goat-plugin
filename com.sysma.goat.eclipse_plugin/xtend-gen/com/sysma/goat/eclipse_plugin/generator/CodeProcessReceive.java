@@ -38,7 +38,6 @@ public class CodeProcessReceive {
     CharSequence _xblockexpression = null;
     {
       final String varForChoice = "branch";
-      final String attributesVar = "attrs";
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("{");
       _builder.newLine();
@@ -49,15 +48,7 @@ public class CodeProcessReceive {
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       _builder.append(this.procRef, "\t");
-      _builder.append(".Receive(func(");
-      _builder.append(attributesVar, "\t");
-      _builder.append(" *goat.Attributes) bool{");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
-      _builder.append("return true");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("}, ");
+      _builder.append(".Receive(");
       CharSequence _acceptCode = this.getAcceptCode(varForChoice);
       _builder.append(_acceptCode, "\t");
       _builder.append(")");

@@ -31,7 +31,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class Utils {
   public static CharSequence getImportPath() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\"goat-plugin/goat/goat\"");
+    _builder.append("\"github.com/goat-package/goat/goat\"");
     return _builder;
   }
   

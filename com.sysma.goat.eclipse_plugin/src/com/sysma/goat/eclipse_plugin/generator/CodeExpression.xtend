@@ -118,7 +118,7 @@ class CodeExpression {
 	}
 	
 	def static CharSequence binaryOperatorExtensor(CharSequence operator, List<CharSequence> operands){
-		operands.tail.map[operator + "{"].join + operands.head + operands.tail.map[''', «it»}'''].join
+		operands.tail.map[operator + "("].join + operands.head + operands.tail.map[''', «it»)'''].join
 	}
 	
 	def static CharSequence getOutputPredicate(Expression expr, LocalVariableMap localAttributesMap, CharSequence attrName){
@@ -128,25 +128,25 @@ class CodeExpression {
 			Or:
 				binaryOperatorExtensor("goat.Or", expr.sub.map[getOutputPredicate(it, localAttributesMap, attrName)])
 			Not:
-				'''goat.Not{«getOutputPredicate(expr.expression, localAttributesMap, attrName)»}'''
+				'''goat.Not(«getOutputPredicate(expr.expression, localAttributesMap, attrName)»)'''
 			Equality:
 			{
 				val isOpLImm = !isOPAttribute(expr.left)
 				val isOpRImm = !isOPAttribute(expr.right)
 					
-				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
-					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»}'''
+				'''goat.Comparison(«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
+					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»)'''
 			}
 			Comparison:
 			{
 				val isOpLImm = !isOPAttribute(expr.left)
 				val isOpRImm = !isOPAttribute(expr.right)
 					
-				'''goat.Comp{«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
-					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»}'''
+				'''goat.Comparison(«getOutputPredicate(expr.left, localAttributesMap, attrName)», «!isOpLImm», "«expr.op»", '''
+					+ '''«getOutputPredicate(expr.right, localAttributesMap, attrName)», «!isOpRImm»)'''
 			}
 			BoolConstant:
-				'''goat.«StringExtensions.toFirstUpper(expr.value)»{}'''
+				'''goat.«StringExtensions.toFirstUpper(expr.value)»()'''
 			RecAttributeRef:
 				'''"«expr.attribute»"'''
 			Expression:

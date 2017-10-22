@@ -24,10 +24,10 @@ class CodeProcessSend {
 		val attrVar = "attrs"
 		val messageParts = (send.msgOutParts?:#[]).map[CodeExpression.getExpressionWithAttributes(it, map, attrVar)]
 		'''
-		«procRef».Send(func(«attrVar» *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
+		«procRef».SendFunc(func(«attrVar» *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
 			«IF precond !== null»
 				if (!«CodeExpression.cast(ExprType.BOOL,precond, map, attrVar)»){
-					return goat.NewTuple(), goat.False{}, false
+					return goat.NewTuple(), goat.False(), false
 				}
 			«ENDIF»
 			«messageVar» := goat.NewTuple(«messageParts.join(", ")»)
@@ -51,7 +51,7 @@ class CodeProcessSend {
 		«IF send.print !== null»
 			«CodePrint.of(send.print, attrVar, map, (send.msgOutParts?:#[]))»
 		«ENDIF»
-		return goat.ThenSend(«messageVar», pred)
+		return goat.ThenSend(«messageVar», pred.CloseUnder(«attrVar»))
 		'''
 	}
 }

@@ -17,13 +17,11 @@ class CodeProcessReceive {
 	
 	def getCode() {
 		val varForChoice = "branch"
-		val attributesVar = "attrs"
+		//val attributesVar = "attrs"
 		'''
 		{
 			var «varForChoice» int
-			«procRef».Receive(func(«attributesVar» *goat.Attributes) bool{
-				return true
-			}, «getAcceptCode(varForChoice)»)
+			«procRef».Receive(«getAcceptCode(varForChoice)»)
 			
 			«getThenCode(varForChoice)»
 		}

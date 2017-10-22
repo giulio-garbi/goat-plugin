@@ -22,17 +22,17 @@ class CodeProcessSet {
 	def getCodeWithPrecondition(Expression precond){
 		val attrVar = "attrs"
 		'''
-		«procRef».Send(func(«attrVar» *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
+		«procRef».SendFunc(func(«attrVar» *goat.Attributes) (goat.Tuple, goat.Predicate, bool){
 			«IF precond !== null»
 				if (!«CodeExpression.cast(ExprType.BOOL,precond, map, attrVar)»){
-					return goat.NewTuple(), goat.False{}, false
+					return goat.NewTuple(), goat.False(), false
 				}
 			«ENDIF»
 			«new CodeUpdate(set.update, map, procRef, attrVar).code»
 			«IF set.print !== null»
 				«CodePrint.of(set.print, attrVar, map, #[])»
 			«ENDIF»
-			return goat.NewTuple(), goat.False{}, true
+			return goat.NewTuple(), goat.False(), true
 		})
 		'''
 	}
@@ -43,7 +43,7 @@ class CodeProcessSet {
 		«IF set.print !== null»
 			«CodePrint.of(set.print, attrVar, map, #[])»
 		«ENDIF»
-		return goat.ThenSend(goat.NewTuple(), goat.False{})
+		return goat.ThenSend(goat.NewTuple(), goat.False())
 		'''
 	}
 }

@@ -360,7 +360,7 @@ public class CodeExpression {
   
   public static CharSequence binaryOperatorExtensor(final CharSequence operator, final List<CharSequence> operands) {
     final Function1<CharSequence, String> _function = (CharSequence it) -> {
-      return (operator + "{");
+      return (operator + "(");
     };
     String _join = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function));
     CharSequence _head = IterableExtensions.<CharSequence>head(operands);
@@ -369,7 +369,7 @@ public class CodeExpression {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(", ");
       _builder.append(it);
-      _builder.append("}");
+      _builder.append(")");
       return _builder.toString();
     };
     String _join_1 = IterableExtensions.join(IterableExtensions.<CharSequence, String>map(IterableExtensions.<CharSequence>tail(operands), _function_1));
@@ -399,10 +399,10 @@ public class CodeExpression {
       if (expr instanceof Not) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("goat.Not{");
+        _builder.append("goat.Not(");
         CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Not)expr).getExpression(), localAttributesMap, attrName);
         _builder.append(_outputPredicate);
-        _builder.append("}");
+        _builder.append(")");
         _switchResult = _builder;
       }
     }
@@ -416,7 +416,7 @@ public class CodeExpression {
           boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Equality)expr).getRight());
           final boolean isOpRImm = (!_isOPAttribute_1);
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("goat.Comp{");
+          _builder.append("goat.Comparison(");
           CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Equality)expr).getLeft(), localAttributesMap, attrName);
           _builder.append(_outputPredicate);
           _builder.append(", ");
@@ -430,7 +430,7 @@ public class CodeExpression {
           _builder_1.append(_outputPredicate_1);
           _builder_1.append(", ");
           _builder_1.append((!isOpRImm));
-          _builder_1.append("}");
+          _builder_1.append(")");
           _xblockexpression = (_builder.toString() + _builder_1);
         }
         _switchResult = _xblockexpression;
@@ -446,7 +446,7 @@ public class CodeExpression {
           boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((Comparison)expr).getRight());
           final boolean isOpRImm = (!_isOPAttribute_1);
           StringConcatenation _builder = new StringConcatenation();
-          _builder.append("goat.Comp{");
+          _builder.append("goat.Comparison(");
           CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((Comparison)expr).getLeft(), localAttributesMap, attrName);
           _builder.append(_outputPredicate);
           _builder.append(", ");
@@ -460,7 +460,7 @@ public class CodeExpression {
           _builder_1.append(_outputPredicate_1);
           _builder_1.append(", ");
           _builder_1.append((!isOpRImm));
-          _builder_1.append("}");
+          _builder_1.append(")");
           _xblockexpression = (_builder.toString() + _builder_1);
         }
         _switchResult = _xblockexpression;
@@ -473,7 +473,7 @@ public class CodeExpression {
         _builder.append("goat.");
         String _firstUpper = StringExtensions.toFirstUpper(((BoolConstant)expr).getValue());
         _builder.append(_firstUpper);
-        _builder.append("{}");
+        _builder.append("()");
         _switchResult = _builder;
       }
     }

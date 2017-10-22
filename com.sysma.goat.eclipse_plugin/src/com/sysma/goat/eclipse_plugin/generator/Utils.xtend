@@ -15,7 +15,7 @@ import java.util.List
 
 class Utils{
 	def static getImportPath(){
-		'''"goat-plugin/goat/goat"'''
+		'''"github.com/goat-package/goat/goat"'''
 	}
 	
 	def static getCode(ProcessStatement stmt, LocalVariableMap locvars, CharSequence processRef){
