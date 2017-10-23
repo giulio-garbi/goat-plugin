@@ -408,36 +408,6 @@ public class CodeExpression {
       }
     }
     if (!_matched) {
-      if (expr instanceof OutEqualityComparison) {
-        _matched=true;
-        String _xblockexpression = null;
-        {
-          boolean _isOPAttribute = CodeExpression.isOPAttribute(((OutEqualityComparison)expr).getLeft());
-          final boolean isOpLImm = (!_isOPAttribute);
-          boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((OutEqualityComparison)expr).getRight());
-          final boolean isOpRImm = (!_isOPAttribute_1);
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("goat.Comparison(");
-          CharSequence _outputPredicate = CodeExpression.getOutputPredicate(((OutEqualityComparison)expr).getLeft(), localAttributesMap, attrName);
-          _builder.append(_outputPredicate);
-          _builder.append(", ");
-          _builder.append((!isOpLImm));
-          _builder.append(", \"");
-          String _op = ((OutEqualityComparison)expr).getOp();
-          _builder.append(_op);
-          _builder.append("\", ");
-          StringConcatenation _builder_1 = new StringConcatenation();
-          CharSequence _outputPredicate_1 = CodeExpression.getOutputPredicate(((OutEqualityComparison)expr).getRight(), localAttributesMap, attrName);
-          _builder_1.append(_outputPredicate_1);
-          _builder_1.append(", ");
-          _builder_1.append((!isOpRImm));
-          _builder_1.append(")");
-          _xblockexpression = (_builder.toString() + _builder_1);
-        }
-        _switchResult = _xblockexpression;
-      }
-    }
-    if (!_matched) {
       if (expr instanceof BoolConstant) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
@@ -447,6 +417,43 @@ public class CodeExpression {
         _builder.append("()");
         _switchResult = _builder;
       }
+    }
+    if (!_matched) {
+      _switchResult = CodeExpression.getOutputPredicateExpr(expr, localAttributesMap, attrName);
+    }
+    return _switchResult;
+  }
+  
+  public static CharSequence getOutputPredicateExpr(final Expression expr, final LocalVariableMap localAttributesMap, final CharSequence attrName) {
+    CharSequence _switchResult = null;
+    boolean _matched = false;
+    if (expr instanceof OutEqualityComparison) {
+      _matched=true;
+      String _xblockexpression = null;
+      {
+        boolean _isOPAttribute = CodeExpression.isOPAttribute(((OutEqualityComparison)expr).getLeft());
+        final boolean isOpLImm = (!_isOPAttribute);
+        boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((OutEqualityComparison)expr).getRight());
+        final boolean isOpRImm = (!_isOPAttribute_1);
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("goat.Comparison(");
+        CharSequence _outputPredicateExpr = CodeExpression.getOutputPredicateExpr(((OutEqualityComparison)expr).getLeft(), localAttributesMap, attrName);
+        _builder.append(_outputPredicateExpr);
+        _builder.append(", ");
+        _builder.append((!isOpLImm));
+        _builder.append(", \"");
+        String _op = ((OutEqualityComparison)expr).getOp();
+        _builder.append(_op);
+        _builder.append("\", ");
+        StringConcatenation _builder_1 = new StringConcatenation();
+        CharSequence _outputPredicateExpr_1 = CodeExpression.getOutputPredicateExpr(((OutEqualityComparison)expr).getRight(), localAttributesMap, attrName);
+        _builder_1.append(_outputPredicateExpr_1);
+        _builder_1.append(", ");
+        _builder_1.append((!isOpRImm));
+        _builder_1.append(")");
+        _xblockexpression = (_builder.toString() + _builder_1);
+      }
+      _switchResult = _xblockexpression;
     }
     if (!_matched) {
       if (expr instanceof RecAttributeRef) {
@@ -494,6 +501,15 @@ public class CodeExpression {
         String _attribute = ((ComponentAttributeRef)expr).getAttribute();
         _builder.append(_attribute);
         _builder.append("\")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof BoolConstant) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _value = ((BoolConstant)expr).getValue();
+        _builder.append(_value);
         _switchResult = _builder;
       }
     }
