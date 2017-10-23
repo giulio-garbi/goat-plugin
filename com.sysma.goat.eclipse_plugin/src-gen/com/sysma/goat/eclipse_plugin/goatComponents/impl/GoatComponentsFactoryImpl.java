@@ -118,6 +118,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF: return createLocalAttributeRef();
       case GoatComponentsPackage.FUNCTION_CALL: return createFunctionCall();
       case GoatComponentsPackage.COMPONENT_ATTRIBUTE_REF: return createComponentAttributeRef();
+      case GoatComponentsPackage.OUT_EQUALITY_COMPARISON: return createOutEqualityComparison();
       case GoatComponentsPackage.REC_ATTRIBUTE_REF: return createRecAttributeRef();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -705,6 +706,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     ComponentAttributeRefImpl componentAttributeRef = new ComponentAttributeRefImpl();
     return componentAttributeRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OutEqualityComparison createOutEqualityComparison()
+  {
+    OutEqualityComparisonImpl outEqualityComparison = new OutEqualityComparisonImpl();
+    return outEqualityComparison;
   }
 
   /**

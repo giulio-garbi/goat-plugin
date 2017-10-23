@@ -704,9 +704,9 @@ ruleProcessSend returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getProcessSendAccess().getSend_predExpressionParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getProcessSendAccess().getSend_predOutputPredicateParserRuleCall_6_0());
 				}
-				lv_send_pred_8_0=ruleExpression
+				lv_send_pred_8_0=ruleOutputPredicate
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProcessSendRule());
@@ -715,7 +715,7 @@ ruleProcessSend returns [EObject current=null]
 						$current,
 						"send_pred",
 						lv_send_pred_8_0,
-						"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
+						"com.sysma.goat.eclipse_plugin.GoatComponents.OutputPredicate");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -3229,37 +3229,720 @@ ruleAtomic returns [EObject current=null]
 				)
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleOutputPredicate
+entryRuleOutputPredicate returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutputPredicateRule()); }
+	iv_ruleOutputPredicate=ruleOutputPredicate
+	{ $current=$iv_ruleOutputPredicate.current; }
+	EOF;
+
+// Rule OutputPredicate
+ruleOutputPredicate returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getOutputPredicateAccess().getOutOrParserRuleCall());
+	}
+	this_OutOr_0=ruleOutOr
+	{
+		$current = $this_OutOr_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRuleOutOr
+entryRuleOutOr returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutOrRule()); }
+	iv_ruleOutOr=ruleOutOr
+	{ $current=$iv_ruleOutOr.current; }
+	EOF;
+
+// Rule OutOr
+ruleOutOr returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getOutOrAccess().getOutAndParserRuleCall_0());
+		}
+		this_OutAnd_0=ruleOutAnd
+		{
+			$current = $this_OutAnd_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndAdd(
+						grammarAccess.getOutOrAccess().getOrSubAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2=VerticalLineVerticalLine
+			{
+				newLeafNode(otherlv_2, grammarAccess.getOutOrAccess().getVerticalLineVerticalLineKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOutOrAccess().getSubOutAndParserRuleCall_1_2_0());
+					}
+					lv_sub_3_0=ruleOutAnd
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutOrRule());
+						}
+						add(
+							$current,
+							"sub",
+							lv_sub_3_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutAnd");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleOutAnd
+entryRuleOutAnd returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutAndRule()); }
+	iv_ruleOutAnd=ruleOutAnd
+	{ $current=$iv_ruleOutAnd.current; }
+	EOF;
+
+// Rule OutAnd
+ruleOutAnd returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getOutAndAccess().getOutEqualityComparisonParserRuleCall_0());
+		}
+		this_OutEqualityComparison_0=ruleOutEqualityComparison
+		{
+			$current = $this_OutEqualityComparison_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndAdd(
+						grammarAccess.getOutAndAccess().getAndSubAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2=AmpersandAmpersand
+			{
+				newLeafNode(otherlv_2, grammarAccess.getOutAndAccess().getAmpersandAmpersandKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOutAndAccess().getSubOutEqualityComparisonParserRuleCall_1_2_0());
+					}
+					lv_sub_3_0=ruleOutEqualityComparison
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutAndRule());
+						}
+						add(
+							$current,
+							"sub",
+							lv_sub_3_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutEqualityComparison");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleOutEqualityComparison
+entryRuleOutEqualityComparison returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutEqualityComparisonRule()); }
+	iv_ruleOutEqualityComparison=ruleOutEqualityComparison
+	{ $current=$iv_ruleOutEqualityComparison.current; }
+	EOF;
+
+// Rule OutEqualityComparison
+ruleOutEqualityComparison returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getOutEqualityComparisonAccess().getOutPrimaryParserRuleCall_0());
+		}
+		this_OutPrimary_0=ruleOutPrimary
+		{
+			$current = $this_OutPrimary_0.current;
+			afterParserOrEnumRuleCall();
+		}
 		    |
 		(
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getRecAttributeRefAction_7_0(),
+						grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonAction_1_0(),
 						$current);
 				}
 			)
-			otherlv_24=Receiver
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOutEqualityComparisonAccess().getLeftOutAtomicOrRecParserRuleCall_1_1_0());
+					}
+					lv_left_2_0=ruleOutAtomicOrRec
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutEqualityComparisonRule());
+						}
+						set(
+							$current,
+							"left",
+							lv_left_2_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomicOrRec");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					(
+						lv_op_3_1=EqualsSignEqualsSign
+						{
+							newLeafNode(lv_op_3_1, grammarAccess.getOutEqualityComparisonAccess().getOpEqualsSignEqualsSignKeyword_1_2_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_1, null);
+						}
+						    |
+						lv_op_3_2=ExclamationMarkEqualsSign
+						{
+							newLeafNode(lv_op_3_2, grammarAccess.getOutEqualityComparisonAccess().getOpExclamationMarkEqualsSignKeyword_1_2_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_2, null);
+						}
+						    |
+						lv_op_3_3=GreaterThanSignEqualsSign
+						{
+							newLeafNode(lv_op_3_3, grammarAccess.getOutEqualityComparisonAccess().getOpGreaterThanSignEqualsSignKeyword_1_2_0_2());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_3, null);
+						}
+						    |
+						lv_op_3_4=LessThanSignEqualsSign
+						{
+							newLeafNode(lv_op_3_4, grammarAccess.getOutEqualityComparisonAccess().getOpLessThanSignEqualsSignKeyword_1_2_0_3());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_4, null);
+						}
+						    |
+						lv_op_3_5=GreaterThanSign
+						{
+							newLeafNode(lv_op_3_5, grammarAccess.getOutEqualityComparisonAccess().getOpGreaterThanSignKeyword_1_2_0_4());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_5, null);
+						}
+						    |
+						lv_op_3_6=LessThanSign
+						{
+							newLeafNode(lv_op_3_6, grammarAccess.getOutEqualityComparisonAccess().getOpLessThanSignKeyword_1_2_0_5());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutEqualityComparisonRule());
+							}
+							setWithLastConsumed($current, "op", lv_op_3_6, null);
+						}
+					)
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getOutEqualityComparisonAccess().getRightOutAtomicOrRecParserRuleCall_1_3_0());
+					}
+					lv_right_4_0=ruleOutAtomicOrRec
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutEqualityComparisonRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_4_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomicOrRec");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleOutPrimary
+entryRuleOutPrimary returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutPrimaryRule()); }
+	iv_ruleOutPrimary=ruleOutPrimary
+	{ $current=$iv_ruleOutPrimary.current; }
+	EOF;
+
+// Rule OutPrimary
+ruleOutPrimary returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0=LeftParenthesis
 			{
-				newLeafNode(otherlv_24, grammarAccess.getAtomicAccess().getReceiverKeyword_7_1());
+				newLeafNode(otherlv_0, grammarAccess.getOutPrimaryAccess().getLeftParenthesisKeyword_0_0());
 			}
-			otherlv_25=FullStop
 			{
-				newLeafNode(otherlv_25, grammarAccess.getAtomicAccess().getFullStopKeyword_7_2());
+				newCompositeNode(grammarAccess.getOutPrimaryAccess().getOutputPredicateParserRuleCall_0_1());
+			}
+			this_OutputPredicate_1=ruleOutputPredicate
+			{
+				$current = $this_OutputPredicate_1.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_2=RightParenthesis
+			{
+				newLeafNode(otherlv_2, grammarAccess.getOutPrimaryAccess().getRightParenthesisKeyword_0_2());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutPrimaryAccess().getNotAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_4=ExclamationMark
+			{
+				newLeafNode(otherlv_4, grammarAccess.getOutPrimaryAccess().getExclamationMarkKeyword_1_1());
 			}
 			(
 				(
-					lv_attribute_26_0=RULE_ID
 					{
-						newLeafNode(lv_attribute_26_0, grammarAccess.getAtomicAccess().getAttributeIDTerminalRuleCall_7_3_0());
+						newCompositeNode(grammarAccess.getOutPrimaryAccess().getExpressionOutPrimaryParserRuleCall_1_2_0());
+					}
+					lv_expression_5_0=ruleOutPrimary
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutPrimaryRule());
+						}
+						set(
+							$current,
+							"expression",
+							lv_expression_5_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutPrimary");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutPrimaryAccess().getBoolConstantAction_2_0(),
+						$current);
+				}
+			)
+			(
+				(
+					(
+						lv_value_7_1=True
+						{
+							newLeafNode(lv_value_7_1, grammarAccess.getOutPrimaryAccess().getValueTrueKeyword_2_1_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutPrimaryRule());
+							}
+							setWithLastConsumed($current, "value", lv_value_7_1, null);
+						}
+						    |
+						lv_value_7_2=False
+						{
+							newLeafNode(lv_value_7_2, grammarAccess.getOutPrimaryAccess().getValueFalseKeyword_2_1_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutPrimaryRule());
+							}
+							setWithLastConsumed($current, "value", lv_value_7_2, null);
+						}
+					)
+				)
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleOutAtomicOrRec
+entryRuleOutAtomicOrRec returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutAtomicOrRecRule()); }
+	iv_ruleOutAtomicOrRec=ruleOutAtomicOrRec
+	{ $current=$iv_ruleOutAtomicOrRec.current; }
+	EOF;
+
+// Rule OutAtomicOrRec
+ruleOutAtomicOrRec returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicOrRecAccess().getRecAttributeRefAction_0_0(),
+						$current);
+				}
+			)
+			otherlv_1=Receiver
+			{
+				newLeafNode(otherlv_1, grammarAccess.getOutAtomicOrRecAccess().getReceiverKeyword_0_1());
+			}
+			otherlv_2=FullStop
+			{
+				newLeafNode(otherlv_2, grammarAccess.getOutAtomicOrRecAccess().getFullStopKeyword_0_2());
+			}
+			(
+				(
+					lv_attribute_3_0=RULE_ID
+					{
+						newLeafNode(lv_attribute_3_0, grammarAccess.getOutAtomicOrRecAccess().getAttributeIDTerminalRuleCall_0_3_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElement(grammarAccess.getOutAtomicOrRecRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"attribute",
-							lv_attribute_26_0,
+							lv_attribute_3_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+		)
+		    |
+		{
+			newCompositeNode(grammarAccess.getOutAtomicOrRecAccess().getOutAtomicParserRuleCall_1());
+		}
+		this_OutAtomic_4=ruleOutAtomic
+		{
+			$current = $this_OutAtomic_4.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleOutAtomic
+entryRuleOutAtomic returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutAtomicRule()); }
+	iv_ruleOutAtomic=ruleOutAtomic
+	{ $current=$iv_ruleOutAtomic.current; }
+	EOF;
+
+// Rule OutAtomic
+ruleOutAtomic returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getIntConstantAction_0_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_1_0=RULE_INT
+					{
+						newLeafNode(lv_value_1_0, grammarAccess.getOutAtomicAccess().getValueINTTerminalRuleCall_0_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_1_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getStringConstantAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_3_0=RULE_STRING
+					{
+						newLeafNode(lv_value_3_0, grammarAccess.getOutAtomicAccess().getValueSTRINGTerminalRuleCall_1_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_3_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getBoolConstantAction_2_0(),
+						$current);
+				}
+			)
+			(
+				(
+					(
+						lv_value_5_1=True
+						{
+							newLeafNode(lv_value_5_1, grammarAccess.getOutAtomicAccess().getValueTrueKeyword_2_1_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutAtomicRule());
+							}
+							setWithLastConsumed($current, "value", lv_value_5_1, null);
+						}
+						    |
+						lv_value_5_2=False
+						{
+							newLeafNode(lv_value_5_2, grammarAccess.getOutAtomicAccess().getValueFalseKeyword_2_1_0_1());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getOutAtomicRule());
+							}
+							setWithLastConsumed($current, "value", lv_value_5_2, null);
+						}
+					)
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getFunctionCallAction_3_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicRule());
+						}
+					}
+					otherlv_7=RULE_ID
+					{
+						newLeafNode(otherlv_7, grammarAccess.getOutAtomicAccess().getFunctionFuncDefinitionCrossReference_3_1_0());
+					}
+				)
+			)
+			otherlv_8=LeftParenthesis
+			{
+				newLeafNode(otherlv_8, grammarAccess.getOutAtomicAccess().getLeftParenthesisKeyword_3_2());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getOutAtomicAccess().getParamsOutAtomicParserRuleCall_3_3_0_0());
+						}
+						lv_params_9_0=ruleOutAtomic
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getOutAtomicRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_9_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_10=Comma
+					{
+						newLeafNode(otherlv_10, grammarAccess.getOutAtomicAccess().getCommaKeyword_3_3_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getOutAtomicAccess().getParamsOutAtomicParserRuleCall_3_3_1_1_0());
+							}
+							lv_params_11_0=ruleOutAtomic
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getOutAtomicRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_11_0,
+									"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_12=RightParenthesis
+			{
+				newLeafNode(otherlv_12, grammarAccess.getOutAtomicAccess().getRightParenthesisKeyword_3_4());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getLocalAttributeRefAction_4_0(),
+						$current);
+				}
+			)
+			otherlv_14=Proc
+			{
+				newLeafNode(otherlv_14, grammarAccess.getOutAtomicAccess().getProcKeyword_4_1());
+			}
+			otherlv_15=FullStop
+			{
+				newLeafNode(otherlv_15, grammarAccess.getOutAtomicAccess().getFullStopKeyword_4_2());
+			}
+			(
+				(
+					lv_attribute_16_0=RULE_ID
+					{
+						newLeafNode(lv_attribute_16_0, grammarAccess.getOutAtomicAccess().getAttributeIDTerminalRuleCall_4_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"attribute",
+							lv_attribute_16_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicAccess().getComponentAttributeRefAction_5_0(),
+						$current);
+				}
+			)
+			otherlv_18=Comp
+			{
+				newLeafNode(otherlv_18, grammarAccess.getOutAtomicAccess().getCompKeyword_5_1());
+			}
+			otherlv_19=FullStop
+			{
+				newLeafNode(otherlv_19, grammarAccess.getOutAtomicAccess().getFullStopKeyword_5_2());
+			}
+			(
+				(
+					lv_attribute_20_0=RULE_ID
+					{
+						newLeafNode(lv_attribute_20_0, grammarAccess.getOutAtomicAccess().getAttributeIDTerminalRuleCall_5_3_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"attribute",
+							lv_attribute_20_0,
 							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)

@@ -1884,6 +1884,52 @@ public interface GoatComponentsPackage extends EPackage
   int COMPONENT_ATTRIBUTE_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OutEqualityComparisonImpl <em>Out Equality Comparison</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.OutEqualityComparisonImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOutEqualityComparison()
+   * @generated
+   */
+  int OUT_EQUALITY_COMPARISON = 53;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUT_EQUALITY_COMPARISON__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUT_EQUALITY_COMPARISON__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUT_EQUALITY_COMPARISON__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Out Equality Comparison</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OUT_EQUALITY_COMPARISON_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl <em>Rec Attribute Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1891,7 +1937,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
    * @generated
    */
-  int REC_ATTRIBUTE_REF = 53;
+  int REC_ATTRIBUTE_REF = 54;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -3356,6 +3402,49 @@ public interface GoatComponentsPackage extends EPackage
   EAttribute getComponentAttributeRef_Attribute();
 
   /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison <em>Out Equality Comparison</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Out Equality Comparison</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison
+   * @generated
+   */
+  EClass getOutEqualityComparison();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getLeft()
+   * @see #getOutEqualityComparison()
+   * @generated
+   */
+  EReference getOutEqualityComparison_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getOp()
+   * @see #getOutEqualityComparison()
+   * @generated
+   */
+  EAttribute getOutEqualityComparison_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison#getRight()
+   * @see #getOutEqualityComparison()
+   * @generated
+   */
+  EReference getOutEqualityComparison_Right();
+
+  /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef <em>Rec Attribute Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4592,6 +4681,40 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EAttribute COMPONENT_ATTRIBUTE_REF__ATTRIBUTE = eINSTANCE.getComponentAttributeRef_Attribute();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OutEqualityComparisonImpl <em>Out Equality Comparison</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.OutEqualityComparisonImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOutEqualityComparison()
+     * @generated
+     */
+    EClass OUT_EQUALITY_COMPARISON = eINSTANCE.getOutEqualityComparison();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OUT_EQUALITY_COMPARISON__LEFT = eINSTANCE.getOutEqualityComparison_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute OUT_EQUALITY_COMPARISON__OP = eINSTANCE.getOutEqualityComparison_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OUT_EQUALITY_COMPARISON__RIGHT = eINSTANCE.getOutEqualityComparison_Right();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.RecAttributeRefImpl <em>Rec Attribute Ref</em>}' class.

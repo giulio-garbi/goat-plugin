@@ -188,6 +188,11 @@
     <genClasses ecoreClass="GoatComponents.ecore#//ComponentAttributeRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//ComponentAttributeRef/attribute"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//OutEqualityComparison">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutEqualityComparison/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//OutEqualityComparison/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//OutEqualityComparison/right"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//RecAttributeRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//RecAttributeRef/attribute"/>
     </genClasses>

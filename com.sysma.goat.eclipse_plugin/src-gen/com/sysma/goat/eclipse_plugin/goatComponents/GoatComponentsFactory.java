@@ -501,6 +501,15 @@ public interface GoatComponentsFactory extends EFactory
   ComponentAttributeRef createComponentAttributeRef();
 
   /**
+   * Returns a new object of class '<em>Out Equality Comparison</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Out Equality Comparison</em>'.
+   * @generated
+   */
+  OutEqualityComparison createOutEqualityComparison();
+
+  /**
    * Returns a new object of class '<em>Rec Attribute Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

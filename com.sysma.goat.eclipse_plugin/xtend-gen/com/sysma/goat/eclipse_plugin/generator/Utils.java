@@ -35,7 +35,7 @@ public class Utils {
     return _builder;
   }
   
-  public static CharSequence getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
+  public static Object getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (stmt instanceof ProcessSpawn) {

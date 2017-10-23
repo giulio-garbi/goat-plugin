@@ -34,6 +34,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.MulOrDiv;
 import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Not;
 import com.sysma.goat.eclipse_plugin.goatComponents.Or;
+import com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintAllStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintFormattedStatement;
@@ -447,6 +448,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass componentAttributeRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass outEqualityComparisonEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1886,6 +1894,46 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getOutEqualityComparison()
+  {
+    return outEqualityComparisonEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOutEqualityComparison_Left()
+  {
+    return (EReference)outEqualityComparisonEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getOutEqualityComparison_Op()
+  {
+    return (EAttribute)outEqualityComparisonEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOutEqualityComparison_Right()
+  {
+    return (EReference)outEqualityComparisonEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRecAttributeRef()
   {
     return recAttributeRefEClass;
@@ -2120,6 +2168,11 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     componentAttributeRefEClass = createEClass(COMPONENT_ATTRIBUTE_REF);
     createEAttribute(componentAttributeRefEClass, COMPONENT_ATTRIBUTE_REF__ATTRIBUTE);
 
+    outEqualityComparisonEClass = createEClass(OUT_EQUALITY_COMPARISON);
+    createEReference(outEqualityComparisonEClass, OUT_EQUALITY_COMPARISON__LEFT);
+    createEAttribute(outEqualityComparisonEClass, OUT_EQUALITY_COMPARISON__OP);
+    createEReference(outEqualityComparisonEClass, OUT_EQUALITY_COMPARISON__RIGHT);
+
     recAttributeRefEClass = createEClass(REC_ATTRIBUTE_REF);
     createEAttribute(recAttributeRefEClass, REC_ATTRIBUTE_REF__ATTRIBUTE);
   }
@@ -2192,6 +2245,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     localAttributeRefEClass.getESuperTypes().add(this.getExpression());
     functionCallEClass.getESuperTypes().add(this.getExpression());
     componentAttributeRefEClass.getESuperTypes().add(this.getExpression());
+    outEqualityComparisonEClass.getESuperTypes().add(this.getExpression());
     recAttributeRefEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
@@ -2383,6 +2437,11 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(componentAttributeRefEClass, ComponentAttributeRef.class, "ComponentAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getComponentAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, ComponentAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(outEqualityComparisonEClass, OutEqualityComparison.class, "OutEqualityComparison", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOutEqualityComparison_Left(), this.getExpression(), null, "left", null, 0, 1, OutEqualityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getOutEqualityComparison_Op(), ecorePackage.getEString(), "op", null, 0, 1, OutEqualityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOutEqualityComparison_Right(), this.getExpression(), null, "right", null, 0, 1, OutEqualityComparison.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recAttributeRefEClass, RecAttributeRef.class, "RecAttributeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecAttributeRef_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, RecAttributeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

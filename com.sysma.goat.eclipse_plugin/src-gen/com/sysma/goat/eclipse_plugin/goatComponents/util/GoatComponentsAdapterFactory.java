@@ -341,6 +341,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createComponentAttributeRefAdapter();
       }
       @Override
+      public Adapter caseOutEqualityComparison(OutEqualityComparison object)
+      {
+        return createOutEqualityComparisonAdapter();
+      }
+      @Override
       public Adapter caseRecAttributeRef(RecAttributeRef object)
       {
         return createRecAttributeRefAdapter();
@@ -1158,6 +1163,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createComponentAttributeRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison <em>Out Equality Comparison</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison
+   * @generated
+   */
+  public Adapter createOutEqualityComparisonAdapter()
   {
     return null;
   }

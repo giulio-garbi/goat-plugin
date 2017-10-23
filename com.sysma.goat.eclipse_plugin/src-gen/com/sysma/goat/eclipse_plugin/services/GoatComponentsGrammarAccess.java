@@ -381,7 +381,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommercialAtKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cSend_predAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cSend_predExpressionParserRuleCall_6_0 = (RuleCall)cSend_predAssignment_6.eContents().get(0);
+		private final RuleCall cSend_predOutputPredicateParserRuleCall_6_0 = (RuleCall)cSend_predAssignment_6.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cUpdatesAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cUpdatesUpdateParserRuleCall_8_0 = (RuleCall)cUpdatesAssignment_8.eContents().get(0);
@@ -390,12 +390,12 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//ProcessSend:
-		//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")"
+		//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=OutputPredicate ")"
 		//	updates=Update print=PrintStatement? ";";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")" updates=Update
-		//print=PrintStatement? ";"
+		//"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=OutputPredicate ")"
+		//updates=Update print=PrintStatement? ";"
 		public Group getGroup() { return cGroup; }
 		
 		//"send"
@@ -434,11 +434,11 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
 		
-		//send_pred=Expression
+		//send_pred=OutputPredicate
 		public Assignment getSend_predAssignment_6() { return cSend_predAssignment_6; }
 		
-		//Expression
-		public RuleCall getSend_predExpressionParserRuleCall_6_0() { return cSend_predExpressionParserRuleCall_6_0; }
+		//OutputPredicate
+		public RuleCall getSend_predOutputPredicateParserRuleCall_6_0() { return cSend_predOutputPredicateParserRuleCall_6_0; }
 		
 		//")"
 		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
@@ -1819,24 +1819,18 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFullStopKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
 		private final Assignment cAttributeAssignment_6_3 = (Assignment)cGroup_6.eContents().get(3);
 		private final RuleCall cAttributeIDTerminalRuleCall_6_3_0 = (RuleCall)cAttributeAssignment_6_3.eContents().get(0);
-		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
-		private final Action cRecAttributeRefAction_7_0 = (Action)cGroup_7.eContents().get(0);
-		private final Keyword cReceiverKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
-		private final Keyword cFullStopKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
-		private final Assignment cAttributeAssignment_7_3 = (Assignment)cGroup_7.eContents().get(3);
-		private final RuleCall cAttributeIDTerminalRuleCall_7_3_0 = (RuleCall)cAttributeAssignment_7_3.eContents().get(0);
 		
 		//Atomic Expression:
 		//	{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {LocalVarRef}
 		//	ref=[LRef] | {LocalAttributeRef} "proc" "." attribute=ID | {FunctionCall} function=[FuncDefinition] "("
-		//	(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID |
-		//	{RecAttributeRef} "receiver" "." attribute=ID;
+		//	(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID //|
+		//	//{RecAttributeRef} "receiver""."attribute=ID
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {LocalVarRef}
 		//ref=[LRef] | {LocalAttributeRef} "proc" "." attribute=ID | {FunctionCall} function=[FuncDefinition] "("
-		//(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID |
-		//{RecAttributeRef} "receiver" "." attribute=ID
+		//(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{IntConstant} value=INT
@@ -1973,24 +1967,445 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getAttributeIDTerminalRuleCall_6_3_0() { return cAttributeIDTerminalRuleCall_6_3_0; }
+	}
+	public class OutputPredicateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutputPredicate");
+		private final RuleCall cOutOrParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//// OutputPredicate
+		//OutputPredicate Expression:
+		//	OutOr;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OutOr
+		public RuleCall getOutOrParserRuleCall() { return cOutOrParserRuleCall; }
+	}
+	public class OutOrElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutOr");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOutAndParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cOrSubAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cVerticalLineVerticalLineKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cSubAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cSubOutAndParserRuleCall_1_2_0 = (RuleCall)cSubAssignment_1_2.eContents().get(0);
+		
+		//OutOr Expression:
+		//	OutAnd ({Or.sub+=current} "||" sub+=OutAnd)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OutAnd ({Or.sub+=current} "||" sub+=OutAnd)*
+		public Group getGroup() { return cGroup; }
+		
+		//OutAnd
+		public RuleCall getOutAndParserRuleCall_0() { return cOutAndParserRuleCall_0; }
+		
+		//({Or.sub+=current} "||" sub+=OutAnd)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Or.sub+=current}
+		public Action getOrSubAction_1_0() { return cOrSubAction_1_0; }
+		
+		//"||"
+		public Keyword getVerticalLineVerticalLineKeyword_1_1() { return cVerticalLineVerticalLineKeyword_1_1; }
+		
+		//sub+=OutAnd
+		public Assignment getSubAssignment_1_2() { return cSubAssignment_1_2; }
+		
+		//OutAnd
+		public RuleCall getSubOutAndParserRuleCall_1_2_0() { return cSubOutAndParserRuleCall_1_2_0; }
+	}
+	public class OutAndElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutAnd");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cOutEqualityComparisonParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cAndSubAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cAmpersandAmpersandKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cSubAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cSubOutEqualityComparisonParserRuleCall_1_2_0 = (RuleCall)cSubAssignment_1_2.eContents().get(0);
+		
+		//OutAnd Expression:
+		//	OutEqualityComparison ({And.sub+=current} "&&" sub+=OutEqualityComparison)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OutEqualityComparison ({And.sub+=current} "&&" sub+=OutEqualityComparison)*
+		public Group getGroup() { return cGroup; }
+		
+		//OutEqualityComparison
+		public RuleCall getOutEqualityComparisonParserRuleCall_0() { return cOutEqualityComparisonParserRuleCall_0; }
+		
+		//({And.sub+=current} "&&" sub+=OutEqualityComparison)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{And.sub+=current}
+		public Action getAndSubAction_1_0() { return cAndSubAction_1_0; }
+		
+		//"&&"
+		public Keyword getAmpersandAmpersandKeyword_1_1() { return cAmpersandAmpersandKeyword_1_1; }
+		
+		//sub+=OutEqualityComparison
+		public Assignment getSubAssignment_1_2() { return cSubAssignment_1_2; }
+		
+		//OutEqualityComparison
+		public RuleCall getSubOutEqualityComparisonParserRuleCall_1_2_0() { return cSubOutEqualityComparisonParserRuleCall_1_2_0; }
+	}
+	public class OutEqualityComparisonElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutEqualityComparison");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cOutPrimaryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cOutEqualityComparisonAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cLeftAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cLeftOutAtomicOrRecParserRuleCall_1_1_0 = (RuleCall)cLeftAssignment_1_1.eContents().get(0);
+		private final Assignment cOpAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final Alternatives cOpAlternatives_1_2_0 = (Alternatives)cOpAssignment_1_2.eContents().get(0);
+		private final Keyword cOpEqualsSignEqualsSignKeyword_1_2_0_0 = (Keyword)cOpAlternatives_1_2_0.eContents().get(0);
+		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_2_0_1 = (Keyword)cOpAlternatives_1_2_0.eContents().get(1);
+		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_2_0_2 = (Keyword)cOpAlternatives_1_2_0.eContents().get(2);
+		private final Keyword cOpLessThanSignEqualsSignKeyword_1_2_0_3 = (Keyword)cOpAlternatives_1_2_0.eContents().get(3);
+		private final Keyword cOpGreaterThanSignKeyword_1_2_0_4 = (Keyword)cOpAlternatives_1_2_0.eContents().get(4);
+		private final Keyword cOpLessThanSignKeyword_1_2_0_5 = (Keyword)cOpAlternatives_1_2_0.eContents().get(5);
+		private final Assignment cRightAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cRightOutAtomicOrRecParserRuleCall_1_3_0 = (RuleCall)cRightAssignment_1_3.eContents().get(0);
+		
+		//OutEqualityComparison Expression:
+		//	OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+		//	right=OutAtomicOrRec;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//OutPrimary
+		public RuleCall getOutPrimaryParserRuleCall_0() { return cOutPrimaryParserRuleCall_0; }
+		
+		//{OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{OutEqualityComparison}
+		public Action getOutEqualityComparisonAction_1_0() { return cOutEqualityComparisonAction_1_0; }
+		
+		//left=OutAtomicOrRec
+		public Assignment getLeftAssignment_1_1() { return cLeftAssignment_1_1; }
+		
+		//OutAtomicOrRec
+		public RuleCall getLeftOutAtomicOrRecParserRuleCall_1_1_0() { return cLeftOutAtomicOrRecParserRuleCall_1_1_0; }
+		
+		//op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+		public Assignment getOpAssignment_1_2() { return cOpAssignment_1_2; }
+		
+		//("==" | "!=" | ">=" | "<=" | ">" | "<")
+		public Alternatives getOpAlternatives_1_2_0() { return cOpAlternatives_1_2_0; }
+		
+		//"=="
+		public Keyword getOpEqualsSignEqualsSignKeyword_1_2_0_0() { return cOpEqualsSignEqualsSignKeyword_1_2_0_0; }
+		
+		//"!="
+		public Keyword getOpExclamationMarkEqualsSignKeyword_1_2_0_1() { return cOpExclamationMarkEqualsSignKeyword_1_2_0_1; }
+		
+		//">="
+		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_2_0_2() { return cOpGreaterThanSignEqualsSignKeyword_1_2_0_2; }
+		
+		//"<="
+		public Keyword getOpLessThanSignEqualsSignKeyword_1_2_0_3() { return cOpLessThanSignEqualsSignKeyword_1_2_0_3; }
+		
+		//">"
+		public Keyword getOpGreaterThanSignKeyword_1_2_0_4() { return cOpGreaterThanSignKeyword_1_2_0_4; }
+		
+		//"<"
+		public Keyword getOpLessThanSignKeyword_1_2_0_5() { return cOpLessThanSignKeyword_1_2_0_5; }
+		
+		//right=OutAtomicOrRec
+		public Assignment getRightAssignment_1_3() { return cRightAssignment_1_3; }
+		
+		//OutAtomicOrRec
+		public RuleCall getRightOutAtomicOrRecParserRuleCall_1_3_0() { return cRightOutAtomicOrRecParserRuleCall_1_3_0; }
+	}
+	public class OutPrimaryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutPrimary");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cOutputPredicateParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cNotAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpressionOutPrimaryParserRuleCall_1_2_0 = (RuleCall)cExpressionAssignment_1_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cBoolConstantAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Alternatives cValueAlternatives_2_1_0 = (Alternatives)cValueAssignment_2_1.eContents().get(0);
+		private final Keyword cValueTrueKeyword_2_1_0_0 = (Keyword)cValueAlternatives_2_1_0.eContents().get(0);
+		private final Keyword cValueFalseKeyword_2_1_0_1 = (Keyword)cValueAlternatives_2_1_0.eContents().get(1);
+		
+		//OutPrimary Expression:
+		//	'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false')
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'(' OutputPredicate ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//OutputPredicate
+		public RuleCall getOutputPredicateParserRuleCall_0_1() { return cOutputPredicateParserRuleCall_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//{Not} "!" expression=OutPrimary
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Not}
+		public Action getNotAction_1_0() { return cNotAction_1_0; }
+		
+		//"!"
+		public Keyword getExclamationMarkKeyword_1_1() { return cExclamationMarkKeyword_1_1; }
+		
+		//expression=OutPrimary
+		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
+		
+		//OutPrimary
+		public RuleCall getExpressionOutPrimaryParserRuleCall_1_2_0() { return cExpressionOutPrimaryParserRuleCall_1_2_0; }
+		
+		//{BoolConstant} value=('true' | 'false')
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//{BoolConstant}
+		public Action getBoolConstantAction_2_0() { return cBoolConstantAction_2_0; }
+		
+		//value=('true' | 'false')
+		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
+		
+		//('true' | 'false')
+		public Alternatives getValueAlternatives_2_1_0() { return cValueAlternatives_2_1_0; }
+		
+		//'true'
+		public Keyword getValueTrueKeyword_2_1_0_0() { return cValueTrueKeyword_2_1_0_0; }
+		
+		//'false'
+		public Keyword getValueFalseKeyword_2_1_0_1() { return cValueFalseKeyword_2_1_0_1; }
+	}
+	public class OutAtomicOrRecElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomicOrRec");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cRecAttributeRefAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cReceiverKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Assignment cAttributeAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
+		private final RuleCall cAttributeIDTerminalRuleCall_0_3_0 = (RuleCall)cAttributeAssignment_0_3.eContents().get(0);
+		private final RuleCall cOutAtomicParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//OutAtomicOrRec Expression:
+		//	{RecAttributeRef} "receiver" "." attribute=ID | OutAtomic;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{RecAttributeRef} "receiver" "." attribute=ID | OutAtomic
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{RecAttributeRef} "receiver" "." attribute=ID
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//{RecAttributeRef}
-		public Action getRecAttributeRefAction_7_0() { return cRecAttributeRefAction_7_0; }
+		public Action getRecAttributeRefAction_0_0() { return cRecAttributeRefAction_0_0; }
 		
 		//"receiver"
-		public Keyword getReceiverKeyword_7_1() { return cReceiverKeyword_7_1; }
+		public Keyword getReceiverKeyword_0_1() { return cReceiverKeyword_0_1; }
 		
 		//"."
-		public Keyword getFullStopKeyword_7_2() { return cFullStopKeyword_7_2; }
+		public Keyword getFullStopKeyword_0_2() { return cFullStopKeyword_0_2; }
 		
 		//attribute=ID
-		public Assignment getAttributeAssignment_7_3() { return cAttributeAssignment_7_3; }
+		public Assignment getAttributeAssignment_0_3() { return cAttributeAssignment_0_3; }
 		
 		//ID
-		public RuleCall getAttributeIDTerminalRuleCall_7_3_0() { return cAttributeIDTerminalRuleCall_7_3_0; }
+		public RuleCall getAttributeIDTerminalRuleCall_0_3_0() { return cAttributeIDTerminalRuleCall_0_3_0; }
+		
+		//OutAtomic
+		public RuleCall getOutAtomicParserRuleCall_1() { return cOutAtomicParserRuleCall_1; }
+	}
+	public class OutAtomicElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cIntConstantAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cStringConstantAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cBoolConstantAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Alternatives cValueAlternatives_2_1_0 = (Alternatives)cValueAssignment_2_1.eContents().get(0);
+		private final Keyword cValueTrueKeyword_2_1_0_0 = (Keyword)cValueAlternatives_2_1_0.eContents().get(0);
+		private final Keyword cValueFalseKeyword_2_1_0_1 = (Keyword)cValueAlternatives_2_1_0.eContents().get(1);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cFunctionCallAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Assignment cFunctionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cFunctionFuncDefinitionCrossReference_3_1_0 = (CrossReference)cFunctionAssignment_3_1.eContents().get(0);
+		private final RuleCall cFunctionFuncDefinitionIDTerminalRuleCall_3_1_0_1 = (RuleCall)cFunctionFuncDefinitionCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Assignment cParamsAssignment_3_3_0 = (Assignment)cGroup_3_3.eContents().get(0);
+		private final RuleCall cParamsOutAtomicParserRuleCall_3_3_0_0 = (RuleCall)cParamsAssignment_3_3_0.eContents().get(0);
+		private final Group cGroup_3_3_1 = (Group)cGroup_3_3.eContents().get(1);
+		private final Keyword cCommaKeyword_3_3_1_0 = (Keyword)cGroup_3_3_1.eContents().get(0);
+		private final Assignment cParamsAssignment_3_3_1_1 = (Assignment)cGroup_3_3_1.eContents().get(1);
+		private final RuleCall cParamsOutAtomicParserRuleCall_3_3_1_1_0 = (RuleCall)cParamsAssignment_3_3_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cLocalAttributeRefAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cProcKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cFullStopKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cAttributeAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cAttributeIDTerminalRuleCall_4_3_0 = (RuleCall)cAttributeAssignment_4_3.eContents().get(0);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cComponentAttributeRefAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cCompKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Keyword cFullStopKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cAttributeAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
+		private final RuleCall cAttributeIDTerminalRuleCall_5_3_0 = (RuleCall)cAttributeAssignment_5_3.eContents().get(0);
+		
+		//OutAtomic Expression:
+		//	{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {FunctionCall}
+		//	function=[FuncDefinition] "(" (params+=OutAtomic ("," params+=OutAtomic)*)? ")" | {LocalAttributeRef} "proc" "."
+		//	attribute=ID | {ComponentAttributeRef} "comp" "." attribute=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {FunctionCall}
+		//function=[FuncDefinition] "(" (params+=OutAtomic ("," params+=OutAtomic)*)? ")" | {LocalAttributeRef} "proc" "."
+		//attribute=ID | {ComponentAttributeRef} "comp" "." attribute=ID
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{IntConstant} value=INT
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{IntConstant}
+		public Action getIntConstantAction_0_0() { return cIntConstantAction_0_0; }
+		
+		//value=INT
+		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
+		
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0_1_0() { return cValueINTTerminalRuleCall_0_1_0; }
+		
+		//{StringConstant} value=STRING
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{StringConstant}
+		public Action getStringConstantAction_1_0() { return cStringConstantAction_1_0; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_1_0() { return cValueSTRINGTerminalRuleCall_1_1_0; }
+		
+		//{BoolConstant} value=('true' | 'false')
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//{BoolConstant}
+		public Action getBoolConstantAction_2_0() { return cBoolConstantAction_2_0; }
+		
+		//value=('true' | 'false')
+		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
+		
+		//('true' | 'false')
+		public Alternatives getValueAlternatives_2_1_0() { return cValueAlternatives_2_1_0; }
+		
+		//'true'
+		public Keyword getValueTrueKeyword_2_1_0_0() { return cValueTrueKeyword_2_1_0_0; }
+		
+		//'false'
+		public Keyword getValueFalseKeyword_2_1_0_1() { return cValueFalseKeyword_2_1_0_1; }
+		
+		//{FunctionCall} function=[FuncDefinition] "(" (params+=OutAtomic ("," params+=OutAtomic)*)? ")"
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{FunctionCall}
+		public Action getFunctionCallAction_3_0() { return cFunctionCallAction_3_0; }
+		
+		//function=[FuncDefinition]
+		public Assignment getFunctionAssignment_3_1() { return cFunctionAssignment_3_1; }
+		
+		//[FuncDefinition]
+		public CrossReference getFunctionFuncDefinitionCrossReference_3_1_0() { return cFunctionFuncDefinitionCrossReference_3_1_0; }
+		
+		//ID
+		public RuleCall getFunctionFuncDefinitionIDTerminalRuleCall_3_1_0_1() { return cFunctionFuncDefinitionIDTerminalRuleCall_3_1_0_1; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_3_2() { return cLeftParenthesisKeyword_3_2; }
+		
+		//(params+=OutAtomic ("," params+=OutAtomic)*)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+		
+		//params+=OutAtomic
+		public Assignment getParamsAssignment_3_3_0() { return cParamsAssignment_3_3_0; }
+		
+		//OutAtomic
+		public RuleCall getParamsOutAtomicParserRuleCall_3_3_0_0() { return cParamsOutAtomicParserRuleCall_3_3_0_0; }
+		
+		//("," params+=OutAtomic)*
+		public Group getGroup_3_3_1() { return cGroup_3_3_1; }
+		
+		//","
+		public Keyword getCommaKeyword_3_3_1_0() { return cCommaKeyword_3_3_1_0; }
+		
+		//params+=OutAtomic
+		public Assignment getParamsAssignment_3_3_1_1() { return cParamsAssignment_3_3_1_1; }
+		
+		//OutAtomic
+		public RuleCall getParamsOutAtomicParserRuleCall_3_3_1_1_0() { return cParamsOutAtomicParserRuleCall_3_3_1_1_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		
+		//{LocalAttributeRef} "proc" "." attribute=ID
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{LocalAttributeRef}
+		public Action getLocalAttributeRefAction_4_0() { return cLocalAttributeRefAction_4_0; }
+		
+		//"proc"
+		public Keyword getProcKeyword_4_1() { return cProcKeyword_4_1; }
+		
+		//"."
+		public Keyword getFullStopKeyword_4_2() { return cFullStopKeyword_4_2; }
+		
+		//attribute=ID
+		public Assignment getAttributeAssignment_4_3() { return cAttributeAssignment_4_3; }
+		
+		//ID
+		public RuleCall getAttributeIDTerminalRuleCall_4_3_0() { return cAttributeIDTerminalRuleCall_4_3_0; }
+		
+		//{ComponentAttributeRef} "comp" "." attribute=ID
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//{ComponentAttributeRef}
+		public Action getComponentAttributeRefAction_5_0() { return cComponentAttributeRefAction_5_0; }
+		
+		//"comp"
+		public Keyword getCompKeyword_5_1() { return cCompKeyword_5_1; }
+		
+		//"."
+		public Keyword getFullStopKeyword_5_2() { return cFullStopKeyword_5_2; }
+		
+		//attribute=ID
+		public Assignment getAttributeAssignment_5_3() { return cAttributeAssignment_5_3; }
+		
+		//ID
+		public RuleCall getAttributeIDTerminalRuleCall_5_3_0() { return cAttributeIDTerminalRuleCall_5_3_0; }
 	}
 	public class FuncParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.FuncParam");
@@ -2383,6 +2798,13 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final LRefElements pLRef;
 	private final AtomicElements pAtomic;
 	private final TerminalRule tTYPE;
+	private final OutputPredicateElements pOutputPredicate;
+	private final OutOrElements pOutOr;
+	private final OutAndElements pOutAnd;
+	private final OutEqualityComparisonElements pOutEqualityComparison;
+	private final OutPrimaryElements pOutPrimary;
+	private final OutAtomicOrRecElements pOutAtomicOrRec;
+	private final OutAtomicElements pOutAtomic;
 	private final FuncParamElements pFuncParam;
 	private final FuncDefinitionElements pFuncDefinition;
 	private final FuncBlockElements pFuncBlock;
@@ -2443,6 +2865,13 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pLRef = new LRefElements();
 		this.pAtomic = new AtomicElements();
 		this.tTYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.TYPE");
+		this.pOutputPredicate = new OutputPredicateElements();
+		this.pOutOr = new OutOrElements();
+		this.pOutAnd = new OutAndElements();
+		this.pOutEqualityComparison = new OutEqualityComparisonElements();
+		this.pOutPrimary = new OutPrimaryElements();
+		this.pOutAtomicOrRec = new OutAtomicOrRecElements();
+		this.pOutAtomic = new OutAtomicElements();
 		this.pFuncParam = new FuncParamElements();
 		this.pFuncDefinition = new FuncDefinitionElements();
 		this.pFuncBlock = new FuncBlockElements();
@@ -2575,7 +3004,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ProcessSend:
-	//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=Expression ")"
+	//	"send" "{" (msgOutParts+=Expression ("," msgOutParts+=Expression)*)? "}" "@" "(" send_pred=OutputPredicate ")"
 	//	updates=Update print=PrintStatement? ";";
 	public ProcessSendElements getProcessSendAccess() {
 		return pProcessSend;
@@ -2895,8 +3324,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	//Atomic Expression:
 	//	{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {LocalVarRef}
 	//	ref=[LRef] | {LocalAttributeRef} "proc" "." attribute=ID | {FunctionCall} function=[FuncDefinition] "("
-	//	(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID |
-	//	{RecAttributeRef} "receiver" "." attribute=ID;
+	//	(params+=Expression ("," params+=Expression)*)? ")" | {ComponentAttributeRef} "comp" "." attribute=ID //|
+	//	//{RecAttributeRef} "receiver""."attribute=ID
+	//;
 	public AtomicElements getAtomicAccess() {
 		return pAtomic;
 	}
@@ -2909,6 +3339,80 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	//	'int' | 'string' | 'bool';
 	public TerminalRule getTYPERule() {
 		return tTYPE;
+	}
+	
+	//// OutputPredicate
+	//OutputPredicate Expression:
+	//	OutOr;
+	public OutputPredicateElements getOutputPredicateAccess() {
+		return pOutputPredicate;
+	}
+	
+	public ParserRule getOutputPredicateRule() {
+		return getOutputPredicateAccess().getRule();
+	}
+	
+	//OutOr Expression:
+	//	OutAnd ({Or.sub+=current} "||" sub+=OutAnd)*;
+	public OutOrElements getOutOrAccess() {
+		return pOutOr;
+	}
+	
+	public ParserRule getOutOrRule() {
+		return getOutOrAccess().getRule();
+	}
+	
+	//OutAnd Expression:
+	//	OutEqualityComparison ({And.sub+=current} "&&" sub+=OutEqualityComparison)*;
+	public OutAndElements getOutAndAccess() {
+		return pOutAnd;
+	}
+	
+	public ParserRule getOutAndRule() {
+		return getOutAndAccess().getRule();
+	}
+	
+	//OutEqualityComparison Expression:
+	//	OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+	//	right=OutAtomicOrRec;
+	public OutEqualityComparisonElements getOutEqualityComparisonAccess() {
+		return pOutEqualityComparison;
+	}
+	
+	public ParserRule getOutEqualityComparisonRule() {
+		return getOutEqualityComparisonAccess().getRule();
+	}
+	
+	//OutPrimary Expression:
+	//	'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false');
+	public OutPrimaryElements getOutPrimaryAccess() {
+		return pOutPrimary;
+	}
+	
+	public ParserRule getOutPrimaryRule() {
+		return getOutPrimaryAccess().getRule();
+	}
+	
+	//OutAtomicOrRec Expression:
+	//	{RecAttributeRef} "receiver" "." attribute=ID | OutAtomic;
+	public OutAtomicOrRecElements getOutAtomicOrRecAccess() {
+		return pOutAtomicOrRec;
+	}
+	
+	public ParserRule getOutAtomicOrRecRule() {
+		return getOutAtomicOrRecAccess().getRule();
+	}
+	
+	//OutAtomic Expression:
+	//	{IntConstant} value=INT | {StringConstant} value=STRING | {BoolConstant} value=('true' | 'false') | {FunctionCall}
+	//	function=[FuncDefinition] "(" (params+=OutAtomic ("," params+=OutAtomic)*)? ")" | {LocalAttributeRef} "proc" "."
+	//	attribute=ID | {ComponentAttributeRef} "comp" "." attribute=ID;
+	public OutAtomicElements getOutAtomicAccess() {
+		return pOutAtomic;
+	}
+	
+	public ParserRule getOutAtomicRule() {
+		return getOutAtomicAccess().getRule();
 	}
 	
 	//// Functions
