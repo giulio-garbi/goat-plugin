@@ -114,7 +114,15 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//FuncVarAssign">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarAssign/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarAssign/idx"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarAssign/val"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//FuncVarAppend">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarAppend/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarAppend/item"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//FuncVarPop">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncVarPop/var"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//FuncIfElse">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncIfElse/test"/>
@@ -135,6 +143,9 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//BoolConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//BoolConstant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//TupleConstant">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleConstant/elem"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Or">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Or/sub"/>
@@ -174,6 +185,13 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Not">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Not/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//TupleGet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleGet/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleGet/idx"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//TupleLength">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleLength/elem"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//LocalVarRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//LocalVarRef/ref"/>

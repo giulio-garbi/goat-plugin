@@ -27,6 +27,9 @@ import java.util.List
 import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus
 import com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant
 import com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleGet
 
 class CodeExpression {
 	def static cast(String typ, Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
@@ -98,6 +101,12 @@ class CodeExpression {
 					throw new IllegalArgumentException("Unexpected component attribute")
 				else
 					'''«attributesMap».GetValue("«expr.attribute»")'''
+			TupleConstant:
+				'''goat.NewTuple(«expr.elem.map[getExpressionWithAttributes(it, localAttributesMap, attributesMap)].join(", ")»)'''
+			TupleLength:
+				'''(&(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»)).Length()'''
+			TupleGet:
+				'''(&(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»)).Get(«cast("int", expr.idx, localAttributesMap, attributesMap)»)'''
 		}
 	}
 	
@@ -152,6 +161,12 @@ class CodeExpression {
 				'''«expr.value»'''
 			StringConstant:
 				'''"«expr.value»"'''
+			TupleConstant:
+				'''goat.NewTuple(«expr.elem.map[getOutputPredicateExpr(it, localAttributesMap, attrName)].join(", ")»)'''
+			TupleLength:
+				'''(&(«cast("tuple", expr.elem, localAttributesMap, attrName)»)).Length()'''
+			TupleGet:
+				'''(&(«cast("tuple", expr.elem, localAttributesMap, attrName)»)).Get(«cast("int", expr.idx, localAttributesMap, attrName)»)'''
 			LocalAttributeRef:
 				localAttributesMap.readValue(expr.attribute)
 			ComponentAttributeRef:

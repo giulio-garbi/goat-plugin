@@ -8,6 +8,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,18 +23,46 @@ public class ComponentsParsingTest {
   
   @Test
   public void emptyComponent() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field attrs is undefined for the type EnvironmentDefinition"
-      + "\nlength cannot be resolved"
-      + "\n== cannot be resolved");
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("process P {}");
+      _builder.newLine();
+      _builder.append("component {} P");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      ParsingTestHelper.checkNoErrorApartInfr(result);
+      int _length = ((Object[])Conversions.unwrapArray(result.getComponents().get(0).getEnv().getAttrs(), Object.class)).length;
+      boolean _equals = (_length == 0);
+      Assert.assertTrue(_equals);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   @Test
   public void filledComponent() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field attrs is undefined for the type EnvironmentDefinition"
-      + "\nlength cannot be resolved"
-      + "\n== cannot be resolved");
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("infrastructure infr");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("process P {}");
+      _builder.newLine();
+      _builder.append("component {x := 4} P");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      ParsingTestHelper.checkNoErrorApartInfr(result);
+      int _length = ((Object[])Conversions.unwrapArray(result.getComponents().get(0).getEnv().getAttrs(), Object.class)).length;
+      boolean _equals = (_length == 1);
+      Assert.assertTrue(_equals);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   @Test

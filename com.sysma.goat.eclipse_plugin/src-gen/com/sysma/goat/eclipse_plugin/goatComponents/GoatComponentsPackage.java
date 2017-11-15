@@ -1198,13 +1198,22 @@ public interface GoatComponentsPackage extends EPackage
   int FUNC_VAR_ASSIGN__VAR = FUNC_STATEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Idx</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_ASSIGN__IDX = FUNC_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNC_VAR_ASSIGN__VAL = FUNC_STATEMENT_FEATURE_COUNT + 1;
+  int FUNC_VAR_ASSIGN__VAL = FUNC_STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Func Var Assign</em>' class.
@@ -1213,7 +1222,72 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNC_VAR_ASSIGN_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 2;
+  int FUNC_VAR_ASSIGN_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAppendImpl <em>Func Var Append</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAppendImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarAppend()
+   * @generated
+   */
+  int FUNC_VAR_APPEND = 33;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_APPEND__VAR = FUNC_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Item</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_APPEND__ITEM = FUNC_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Func Var Append</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_APPEND_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarPopImpl <em>Func Var Pop</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarPopImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarPop()
+   * @generated
+   */
+  int FUNC_VAR_POP = 34;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_POP__VAR = FUNC_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Func Var Pop</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_VAR_POP_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncIfElseImpl <em>Func If Else</em>}' class.
@@ -1223,7 +1297,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncIfElse()
    * @generated
    */
-  int FUNC_IF_ELSE = 33;
+  int FUNC_IF_ELSE = 35;
 
   /**
    * The feature id for the '<em><b>Test</b></em>' containment reference list.
@@ -1269,7 +1343,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncReturn()
    * @generated
    */
-  int FUNC_RETURN = 34;
+  int FUNC_RETURN = 36;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' containment reference.
@@ -1297,7 +1371,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNegativeIntConstant()
    * @generated
    */
-  int NEGATIVE_INT_CONSTANT = 35;
+  int NEGATIVE_INT_CONSTANT = 37;
 
   /**
    * The feature id for the '<em><b>Negvalue</b></em>' attribute.
@@ -1325,7 +1399,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIntConstant()
    * @generated
    */
-  int INT_CONSTANT = 36;
+  int INT_CONSTANT = 38;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1353,7 +1427,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getStringConstant()
    * @generated
    */
-  int STRING_CONSTANT = 37;
+  int STRING_CONSTANT = 39;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1381,7 +1455,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getBoolConstant()
    * @generated
    */
-  int BOOL_CONSTANT = 38;
+  int BOOL_CONSTANT = 40;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1402,6 +1476,34 @@ public interface GoatComponentsPackage extends EPackage
   int BOOL_CONSTANT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleConstantImpl <em>Tuple Constant</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleConstantImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleConstant()
+   * @generated
+   */
+  int TUPLE_CONSTANT = 41;
+
+  /**
+   * The feature id for the '<em><b>Elem</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_CONSTANT__ELEM = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Tuple Constant</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_CONSTANT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl <em>Or</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1409,7 +1511,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOr()
    * @generated
    */
-  int OR = 39;
+  int OR = 42;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1437,7 +1539,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAnd()
    * @generated
    */
-  int AND = 40;
+  int AND = 43;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1465,7 +1567,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 41;
+  int EQUALITY = 44;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1511,7 +1613,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComparison()
    * @generated
    */
-  int COMPARISON = 42;
+  int COMPARISON = 45;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1557,7 +1659,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 43;
+  int PLUS = 46;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1594,7 +1696,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 44;
+  int MINUS = 47;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1631,7 +1733,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getConcatenate()
    * @generated
    */
-  int CONCATENATE = 45;
+  int CONCATENATE = 48;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1668,7 +1770,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMulOrDiv()
    * @generated
    */
-  int MUL_OR_DIV = 46;
+  int MUL_OR_DIV = 49;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1714,7 +1816,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getUnaryMinus()
    * @generated
    */
-  int UNARY_MINUS = 47;
+  int UNARY_MINUS = 50;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1742,7 +1844,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNot()
    * @generated
    */
-  int NOT = 48;
+  int NOT = 51;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1763,6 +1865,71 @@ public interface GoatComponentsPackage extends EPackage
   int NOT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleGetImpl <em>Tuple Get</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleGetImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleGet()
+   * @generated
+   */
+  int TUPLE_GET = 52;
+
+  /**
+   * The feature id for the '<em><b>Elem</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_GET__ELEM = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Idx</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_GET__IDX = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Tuple Get</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_GET_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleLengthImpl <em>Tuple Length</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleLengthImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleLength()
+   * @generated
+   */
+  int TUPLE_LENGTH = 53;
+
+  /**
+   * The feature id for the '<em><b>Elem</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_LENGTH__ELEM = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Tuple Length</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TUPLE_LENGTH_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl <em>Local Var Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1770,7 +1937,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalVarRef()
    * @generated
    */
-  int LOCAL_VAR_REF = 49;
+  int LOCAL_VAR_REF = 54;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1798,7 +1965,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeRef()
    * @generated
    */
-  int LOCAL_ATTRIBUTE_REF = 50;
+  int LOCAL_ATTRIBUTE_REF = 55;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1826,7 +1993,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 51;
+  int FUNCTION_CALL = 56;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -1863,7 +2030,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeRef()
    * @generated
    */
-  int COMPONENT_ATTRIBUTE_REF = 52;
+  int COMPONENT_ATTRIBUTE_REF = 57;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1891,7 +2058,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOutEqualityComparison()
    * @generated
    */
-  int OUT_EQUALITY_COMPARISON = 53;
+  int OUT_EQUALITY_COMPARISON = 58;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1937,7 +2104,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
    * @generated
    */
-  int REC_ATTRIBUTE_REF = 54;
+  int REC_ATTRIBUTE_REF = 59;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -2839,6 +3006,17 @@ public interface GoatComponentsPackage extends EPackage
   EReference getFuncVarAssign_Var();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getIdx <em>Idx</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Idx</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getIdx()
+   * @see #getFuncVarAssign()
+   * @generated
+   */
+  EReference getFuncVarAssign_Idx();
+
+  /**
    * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2848,6 +3026,59 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getFuncVarAssign_Val();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend <em>Func Var Append</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Func Var Append</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend
+   * @generated
+   */
+  EClass getFuncVarAppend();
+
+  /**
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend#getVar()
+   * @see #getFuncVarAppend()
+   * @generated
+   */
+  EReference getFuncVarAppend_Var();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend#getItem <em>Item</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Item</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend#getItem()
+   * @see #getFuncVarAppend()
+   * @generated
+   */
+  EReference getFuncVarAppend_Item();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop <em>Func Var Pop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Func Var Pop</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop
+   * @generated
+   */
+  EClass getFuncVarPop();
+
+  /**
+   * Returns the meta object for the reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop#getVar()
+   * @see #getFuncVarPop()
+   * @generated
+   */
+  EReference getFuncVarPop_Var();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse <em>Func If Else</em>}'.
@@ -2996,6 +3227,27 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EAttribute getBoolConstant_Value();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant <em>Tuple Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tuple Constant</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant
+   * @generated
+   */
+  EClass getTupleConstant();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant#getElem <em>Elem</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Elem</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant#getElem()
+   * @see #getTupleConstant()
+   * @generated
+   */
+  EReference getTupleConstant_Elem();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or <em>Or</em>}'.
@@ -3305,6 +3557,59 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getNot_Expression();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleGet <em>Tuple Get</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tuple Get</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleGet
+   * @generated
+   */
+  EClass getTupleGet();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleGet#getElem <em>Elem</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Elem</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleGet#getElem()
+   * @see #getTupleGet()
+   * @generated
+   */
+  EReference getTupleGet_Elem();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleGet#getIdx <em>Idx</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Idx</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleGet#getIdx()
+   * @see #getTupleGet()
+   * @generated
+   */
+  EReference getTupleGet_Idx();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleLength <em>Tuple Length</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Tuple Length</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleLength
+   * @generated
+   */
+  EClass getTupleLength();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleLength#getElem <em>Elem</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Elem</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleLength#getElem()
+   * @see #getTupleLength()
+   * @generated
+   */
+  EReference getTupleLength_Elem();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef <em>Local Var Ref</em>}'.
@@ -4219,12 +4524,64 @@ public interface GoatComponentsPackage extends EPackage
     EReference FUNC_VAR_ASSIGN__VAR = eINSTANCE.getFuncVarAssign_Var();
 
     /**
+     * The meta object literal for the '<em><b>Idx</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_VAR_ASSIGN__IDX = eINSTANCE.getFuncVarAssign_Idx();
+
+    /**
      * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference FUNC_VAR_ASSIGN__VAL = eINSTANCE.getFuncVarAssign_Val();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAppendImpl <em>Func Var Append</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAppendImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarAppend()
+     * @generated
+     */
+    EClass FUNC_VAR_APPEND = eINSTANCE.getFuncVarAppend();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_VAR_APPEND__VAR = eINSTANCE.getFuncVarAppend_Var();
+
+    /**
+     * The meta object literal for the '<em><b>Item</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_VAR_APPEND__ITEM = eINSTANCE.getFuncVarAppend_Item();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarPopImpl <em>Func Var Pop</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarPopImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncVarPop()
+     * @generated
+     */
+    EClass FUNC_VAR_POP = eINSTANCE.getFuncVarPop();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_VAR_POP__VAR = eINSTANCE.getFuncVarPop_Var();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncIfElseImpl <em>Func If Else</em>}' class.
@@ -4349,6 +4706,24 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EAttribute BOOL_CONSTANT__VALUE = eINSTANCE.getBoolConstant_Value();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleConstantImpl <em>Tuple Constant</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleConstantImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleConstant()
+     * @generated
+     */
+    EClass TUPLE_CONSTANT = eINSTANCE.getTupleConstant();
+
+    /**
+     * The meta object literal for the '<em><b>Elem</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TUPLE_CONSTANT__ELEM = eINSTANCE.getTupleConstant_Elem();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.OrImpl <em>Or</em>}' class.
@@ -4601,6 +4976,50 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EReference NOT__EXPRESSION = eINSTANCE.getNot_Expression();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleGetImpl <em>Tuple Get</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleGetImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleGet()
+     * @generated
+     */
+    EClass TUPLE_GET = eINSTANCE.getTupleGet();
+
+    /**
+     * The meta object literal for the '<em><b>Elem</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TUPLE_GET__ELEM = eINSTANCE.getTupleGet_Elem();
+
+    /**
+     * The meta object literal for the '<em><b>Idx</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TUPLE_GET__IDX = eINSTANCE.getTupleGet_Idx();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleLengthImpl <em>Tuple Length</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.TupleLengthImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleLength()
+     * @generated
+     */
+    EClass TUPLE_LENGTH = eINSTANCE.getTupleLength();
+
+    /**
+     * The meta object literal for the '<em><b>Elem</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TUPLE_LENGTH__ELEM = eINSTANCE.getTupleLength_Elem();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.LocalVarRefImpl <em>Local Var Ref</em>}' class.

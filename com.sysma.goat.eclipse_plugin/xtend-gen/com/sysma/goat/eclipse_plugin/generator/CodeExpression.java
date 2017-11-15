@@ -24,6 +24,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleGet;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength;
 import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus;
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping;
 import java.util.List;
@@ -338,6 +341,45 @@ public class CodeExpression {
         _switchResult = _xifexpression;
       }
     }
+    if (!_matched) {
+      if (expr instanceof TupleConstant) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("goat.NewTuple(");
+        final Function1<Expression, CharSequence> _function = (Expression it) -> {
+          return CodeExpression.getExpressionWithAttributes(it, localAttributesMap, attributesMap);
+        };
+        String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((TupleConstant)expr).getElem(), _function), ", ");
+        _builder.append(_join);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleLength) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(&(");
+        CharSequence _cast = CodeExpression.cast("tuple", ((TupleLength)expr).getElem(), localAttributesMap, attributesMap);
+        _builder.append(_cast);
+        _builder.append(")).Length()");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleGet) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(&(");
+        CharSequence _cast = CodeExpression.cast("tuple", ((TupleGet)expr).getElem(), localAttributesMap, attributesMap);
+        _builder.append(_cast);
+        _builder.append(")).Get(");
+        CharSequence _cast_1 = CodeExpression.cast("int", ((TupleGet)expr).getIdx(), localAttributesMap, attributesMap);
+        _builder.append(_cast_1);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
     return _switchResult;
   }
   
@@ -483,6 +525,45 @@ public class CodeExpression {
         String _value = ((StringConstant)expr).getValue();
         _builder.append(_value);
         _builder.append("\"");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleConstant) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("goat.NewTuple(");
+        final Function1<Expression, CharSequence> _function = (Expression it) -> {
+          return CodeExpression.getOutputPredicateExpr(it, localAttributesMap, attrName);
+        };
+        String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(((TupleConstant)expr).getElem(), _function), ", ");
+        _builder.append(_join);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleLength) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(&(");
+        CharSequence _cast = CodeExpression.cast("tuple", ((TupleLength)expr).getElem(), localAttributesMap, attrName);
+        _builder.append(_cast);
+        _builder.append(")).Length()");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleGet) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(&(");
+        CharSequence _cast = CodeExpression.cast("tuple", ((TupleGet)expr).getElem(), localAttributesMap, attrName);
+        _builder.append(_cast);
+        _builder.append(")).Get(");
+        CharSequence _cast_1 = CodeExpression.cast("int", ((TupleGet)expr).getIdx(), localAttributesMap, attrName);
+        _builder.append(_cast_1);
+        _builder.append(")");
         _switchResult = _builder;
       }
     }

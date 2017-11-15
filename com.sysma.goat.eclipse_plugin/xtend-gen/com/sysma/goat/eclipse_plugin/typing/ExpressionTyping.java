@@ -22,6 +22,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Or;
 import com.sysma.goat.eclipse_plugin.goatComponents.Plus;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength;
 
 @SuppressWarnings("all")
 public class ExpressionTyping {
@@ -31,6 +33,8 @@ public class ExpressionTyping {
     BOOL,
     
     STRING,
+    
+    TUPLE,
     
     UNKNOWN;
   }
@@ -63,6 +67,11 @@ public class ExpressionTyping {
         case "bool":
           _switchResult = ExpressionTyping.ExprType.BOOL;
           break;
+        case "tuple":
+        case "Tuple":
+        case "goat.Tuple":
+          _switchResult = ExpressionTyping.ExprType.TUPLE;
+          break;
         default:
           _switchResult = ExpressionTyping.ExprType.UNKNOWN;
           break;
@@ -93,6 +102,9 @@ public class ExpressionTyping {
           break;
         case STRING:
           _switchResult = "string";
+          break;
+        case TUPLE:
+          _switchResult = "goat.Tuple";
           break;
         case UNKNOWN:
           _switchResult = "interface{}";
@@ -154,6 +166,11 @@ public class ExpressionTyping {
       }
       if (!_matched) {
         if (expr instanceof IntConstant) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (expr instanceof TupleLength) {
           _matched=true;
         }
       }
@@ -220,6 +237,12 @@ public class ExpressionTyping {
       }
       if (_matched) {
         _switchResult = ExpressionTyping.ExprType.UNKNOWN;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof TupleConstant) {
+        _matched=true;
+        _switchResult = ExpressionTyping.ExprType.TUPLE;
       }
     }
     if (!_matched) {

@@ -322,6 +322,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.FUNC_VAR_APPEND:
+      {
+        FuncVarAppend funcVarAppend = (FuncVarAppend)theEObject;
+        T result = caseFuncVarAppend(funcVarAppend);
+        if (result == null) result = caseFuncStatement(funcVarAppend);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.FUNC_VAR_POP:
+      {
+        FuncVarPop funcVarPop = (FuncVarPop)theEObject;
+        T result = caseFuncVarPop(funcVarPop);
+        if (result == null) result = caseFuncStatement(funcVarPop);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.FUNC_IF_ELSE:
       {
         FuncIfElse funcIfElse = (FuncIfElse)theEObject;
@@ -367,6 +383,14 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         BoolConstant boolConstant = (BoolConstant)theEObject;
         T result = caseBoolConstant(boolConstant);
         if (result == null) result = caseExpression(boolConstant);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.TUPLE_CONSTANT:
+      {
+        TupleConstant tupleConstant = (TupleConstant)theEObject;
+        T result = caseTupleConstant(tupleConstant);
+        if (result == null) result = caseExpression(tupleConstant);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -447,6 +471,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         Not not = (Not)theEObject;
         T result = caseNot(not);
         if (result == null) result = caseExpression(not);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.TUPLE_GET:
+      {
+        TupleGet tupleGet = (TupleGet)theEObject;
+        T result = caseTupleGet(tupleGet);
+        if (result == null) result = caseExpression(tupleGet);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.TUPLE_LENGTH:
+      {
+        TupleLength tupleLength = (TupleLength)theEObject;
+        T result = caseTupleLength(tupleLength);
+        if (result == null) result = caseExpression(tupleLength);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1031,6 +1071,38 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Var Append</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Var Append</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncVarAppend(FuncVarAppend object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func Var Pop</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func Var Pop</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncVarPop(FuncVarPop object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Func If Else</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1122,6 +1194,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBoolConstant(BoolConstant object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tuple Constant</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tuple Constant</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTupleConstant(TupleConstant object)
   {
     return null;
   }
@@ -1282,6 +1370,38 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNot(Not object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tuple Get</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tuple Get</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTupleGet(TupleGet object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Tuple Length</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Tuple Length</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTupleLength(TupleLength object)
   {
     return null;
   }

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAssignImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAssignImpl#getIdx <em>Idx</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncVarAssignImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
@@ -41,6 +42,16 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * @ordered
    */
   protected FuncVarDeclaration var;
+
+  /**
+   * The cached value of the '{@link #getIdx() <em>Idx</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIdx()
+   * @generated
+   * @ordered
+   */
+  protected Expression idx;
 
   /**
    * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
@@ -121,6 +132,54 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
    * <!-- end-user-doc -->
    * @generated
    */
+  public Expression getIdx()
+  {
+    return idx;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetIdx(Expression newIdx, NotificationChain msgs)
+  {
+    Expression oldIdx = idx;
+    idx = newIdx;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX, oldIdx, newIdx);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setIdx(Expression newIdx)
+  {
+    if (newIdx != idx)
+    {
+      NotificationChain msgs = null;
+      if (idx != null)
+        msgs = ((InternalEObject)idx).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX, null, msgs);
+      if (newIdx != null)
+        msgs = ((InternalEObject)newIdx).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX, null, msgs);
+      msgs = basicSetIdx(newIdx, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX, newIdx, newIdx));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Expression getVal()
   {
     return val;
@@ -174,6 +233,8 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX:
+        return basicSetIdx(null, msgs);
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
         return basicSetVal(null, msgs);
     }
@@ -193,6 +254,8 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAR:
         if (resolve) return getVar();
         return basicGetVar();
+      case GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX:
+        return getIdx();
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
         return getVal();
     }
@@ -211,6 +274,9 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
     {
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAR:
         setVar((FuncVarDeclaration)newValue);
+        return;
+      case GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX:
+        setIdx((Expression)newValue);
         return;
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
         setVal((Expression)newValue);
@@ -232,6 +298,9 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAR:
         setVar((FuncVarDeclaration)null);
         return;
+      case GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX:
+        setIdx((Expression)null);
+        return;
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
         setVal((Expression)null);
         return;
@@ -251,6 +320,8 @@ public class FuncVarAssignImpl extends FuncStatementImpl implements FuncVarAssig
     {
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAR:
         return var != null;
+      case GoatComponentsPackage.FUNC_VAR_ASSIGN__IDX:
+        return idx != null;
       case GoatComponentsPackage.FUNC_VAR_ASSIGN__VAL:
         return val != null;
     }

@@ -94,7 +94,11 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) '!' expression=Primary
 	 *     (rule start) (ambiguity) '-' expression=Primary
+	 *     (rule start) (ambiguity) '[' ']' (rule start)
+	 *     (rule start) (ambiguity) '[' elem+=Expression
 	 *     (rule start) (ambiguity) 'comp' '.' attribute=ID
+	 *     (rule start) (ambiguity) 'get' '(' elem=Atomic
+	 *     (rule start) (ambiguity) 'length' '(' elem=Atomic
 	 *     (rule start) (ambiguity) 'proc' '.' attribute=ID
 	 *     (rule start) (ambiguity) function=[FuncDefinition|ID]
 	 *     (rule start) (ambiguity) ref=[LRef|ID]
@@ -110,6 +114,7 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     (rule start) (ambiguity) {MulOrDiv.left=}
 	 *     (rule start) (ambiguity) {Or.sub+=}
 	 *     (rule start) (ambiguity) {Plus.left=}
+	 *     (rule start) (ambiguity) {TupleGet.elem=}
 	 */
 	protected void emit_Primary_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

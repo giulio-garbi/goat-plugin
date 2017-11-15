@@ -146,8 +146,18 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FuncVarAssign" eSuperTypes="#//FuncStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//FuncVarDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idx" eType="#//Expression"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" eType="#//Expression"
         containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncVarAppend" eSuperTypes="#//FuncStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//FuncVarDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="item" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FuncVarPop" eSuperTypes="#//FuncStatement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//FuncVarDeclaration"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FuncIfElse" eSuperTypes="#//FuncStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="test" upperBound="-1" eType="#//Expression"
@@ -172,6 +182,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BoolConstant" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TupleConstant" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" upperBound="-1" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Or" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sub" upperBound="-1" eType="#//Expression"
@@ -226,6 +240,16 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Not" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TupleGet" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idx" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TupleLength" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elem" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LocalVarRef" eSuperTypes="#//Expression">

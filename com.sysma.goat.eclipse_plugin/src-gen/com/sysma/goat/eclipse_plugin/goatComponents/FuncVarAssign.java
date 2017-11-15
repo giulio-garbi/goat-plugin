@@ -14,6 +14,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getVar <em>Var</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getIdx <em>Idx</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getVal <em>Val</em>}</li>
  * </ul>
  *
@@ -48,6 +49,32 @@ public interface FuncVarAssign extends FuncStatement
    * @generated
    */
   void setVar(FuncVarDeclaration value);
+
+  /**
+   * Returns the value of the '<em><b>Idx</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Idx</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Idx</em>' containment reference.
+   * @see #setIdx(Expression)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getFuncVarAssign_Idx()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getIdx();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign#getIdx <em>Idx</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Idx</em>' containment reference.
+   * @see #getIdx()
+   * @generated
+   */
+  void setIdx(Expression value);
 
   /**
    * Returns the value of the '<em><b>Val</b></em>' containment reference.

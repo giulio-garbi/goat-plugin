@@ -129,7 +129,8 @@ EnvInitValue returns Expression:
 	{NegativeIntConstant} "-" negvalue=INT |
 	{IntConstant} value=INT |
 	{StringConstant} value=STRING |
-	{BoolConstant} value=('true'|'false') 
+	{BoolConstant} value=('true'|'false') | 
+	{TupleConstant} '['(elem += EnvInitValue (',' elem += EnvInitValue)*)?']'
 ;
 
 Environment:
@@ -199,15 +200,21 @@ Atomic returns Expression:
 	{IntConstant} value=INT |
 	{StringConstant} value=STRING |
 	{BoolConstant} value=('true'|'false') |
+	AtomicIndexable ('['{TupleGet.elem = current} idx = Atomic ']')?
+;
+
+AtomicIndexable returns Expression:
+	{TupleConstant} '['(elem += Expression (',' elem += Expression)*)?']'|
+	{TupleLength} 'length''('elem = Atomic')'|
+	{TupleGet} 'get''('elem = Atomic ',' idx = Atomic')' |
 	{LocalVarRef} ref=[LRef] |
 	{LocalAttributeRef} "proc" "." attribute=ID |
 	{FunctionCall} function=[FuncDefinition]"("(params+=Expression(","params+=Expression)*)?")"|
-	{ComponentAttributeRef} "comp""."attribute=ID //|
-	//{RecAttributeRef} "receiver""."attribute=ID
+	{ComponentAttributeRef} "comp""."attribute=ID 
 ;
 
 terminal TYPE:
-	('int'|'string'|'bool')
+	('int'|'string'|'bool'|'tuple')
 ;
 
 // OutputPredicate
@@ -242,6 +249,12 @@ OutAtomic returns Expression:
 	{IntConstant} value=INT |
 	{StringConstant} value=STRING |
 	{BoolConstant} value=('true'|'false') |
+	OutAtomicIndexable ('['{TupleGet.elem = current} idx = OutAtomic ']')?
+;
+
+OutAtomicIndexable returns Expression:
+	{TupleConstant} '['(elem += OutAtomic (',' elem += OutAtomic)*)?']'|
+	{TupleLength} 'length''('elem = OutAtomic')'|
 	{FunctionCall} function=[FuncDefinition]"("(params+=OutAtomic(","params+=OutAtomic)*)?")"|
 	{LocalAttributeRef} "proc" "." attribute=ID |
 	{ComponentAttributeRef} "comp""."attribute=ID
@@ -258,7 +271,7 @@ FuncBlock:
 	'{' {FuncBlock} (statements += FuncStatement)* '}'
 ;
 FuncStatement:
-	(FuncVarAssign | FuncIfElse | FuncReturn | FuncVarDeclaration) 
+	(FuncVarAssign | FuncIfElse | FuncReturn | FuncVarDeclaration | FuncVarAppend | FuncVarPop) 
 ;
 
 FuncVarDeclaration:
@@ -266,7 +279,15 @@ FuncVarDeclaration:
 ;
 
 FuncVarAssign:
-	var = [FuncVarDeclaration] '=' val = Expression
+	var = [FuncVarDeclaration] ('['idx = Expression']')? '=' val = Expression
+;
+
+FuncVarAppend:
+	var = [FuncVarDeclaration] '.''append''('item = Expression')'
+;
+
+FuncVarPop:
+	var = [FuncVarDeclaration] '.''pop''('')'
 ;
 
 FuncIfElse:

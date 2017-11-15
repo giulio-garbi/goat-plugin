@@ -20,13 +20,13 @@ public class CodeProcessLoop {
     this.procRef = procRef;
   }
   
-  public CharSequence getCode() {
+  public Object getCode() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for {");
     _builder.newLine();
     _builder.append("\t");
     ProcessBlock _block = this.loop.getBlock();
-    CharSequence _code = new CodeProcessBlock(_block, this.map, this.procRef).getCode();
+    Object _code = new CodeProcessBlock(_block, this.map, this.procRef).getCode();
     _builder.append(_code, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");

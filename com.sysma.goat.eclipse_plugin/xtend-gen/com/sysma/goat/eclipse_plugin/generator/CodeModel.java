@@ -114,7 +114,7 @@ public class CodeModel {
     _builder.append("(){");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    _builder.append("//Needed to avoid golang errors \"imported and not used\"");
+    _builder.append("// Needed to avoid golang errors \"imported and not used\"");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("_ = func(){");
@@ -127,6 +127,14 @@ public class CodeModel {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("// Needed to send tuples");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("goat.InitSend()");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();

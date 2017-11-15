@@ -8,6 +8,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop
 
 class CodeFunction {
 	val FuncDefinition definition;
@@ -31,7 +33,14 @@ class CodeFunction {
 					«item.statements.map[makeCode].join('\n')»
 				}'''
 			FuncVarAssign:
-				'''«item.^var.name» = «makeCode(item.^val)»'''
+				if(item.idx === null)
+					'''«item.^var.name» = «makeCode(item.^val)»'''
+				else
+					'''(«item.^var.name».(goat.Tuple)).Set(«makeCode(item.idx)», «makeCode(item.^val)»)'''
+			FuncVarAppend:
+				'''(«item.^var.name».(goat.Tuple)).Append(«makeCode(item.item)»)'''
+			FuncVarPop:
+				'''(«item.^var.name».(goat.Tuple)).Pop()'''
 			FuncIfElse:
 				(0..<item.then.length).map[i|
 					'''

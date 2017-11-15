@@ -27,6 +27,10 @@ Receive : 'receive';
 
 Waitfor : 'waitfor';
 
+Append : 'append';
+
+Length : 'length';
+
 Return : 'return';
 
 False : 'false';
@@ -50,6 +54,10 @@ Proc : 'proc';
 Send : 'send';
 
 True : 'true';
+
+Get : 'get';
+
+Pop : 'pop';
 
 Set : 'set';
 
@@ -115,7 +123,7 @@ VerticalLine : '|';
 
 RightCurlyBracket : '}';
 
-RULE_TYPE : ('int'|'string'|'bool');
+RULE_TYPE : ('int'|'string'|'bool'|'tuple');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

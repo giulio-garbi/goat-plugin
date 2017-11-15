@@ -31,12 +31,12 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class Utils {
   public static CharSequence getImportPath() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\"github.com/goat-package/goat/goat\"");
+    _builder.append("\"github.com/giulio-garbi/goat/goat\"");
     return _builder;
   }
   
   public static Object getCode(final ProcessStatement stmt, final LocalVariableMap locvars, final CharSequence processRef) {
-    CharSequence _switchResult = null;
+    Object _switchResult = null;
     boolean _matched = false;
     if (stmt instanceof ProcessSpawn) {
       _matched=true;

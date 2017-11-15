@@ -23,7 +23,7 @@ public class CodeProcessBlock {
     this.processRef = processRef;
   }
   
-  public CharSequence getCode() {
+  public Object getCode() {
     StringConcatenation _builder = new StringConcatenation();
     {
       final Function1<ProcessStatement, Object> _function = (ProcessStatement it) -> {
@@ -47,7 +47,7 @@ public class CodeProcessBlock {
     _builder.append(" *goat.Process) continuationProcess{");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    CharSequence _code = this.getCode();
+    Object _code = this.getCode();
     _builder.append(_code, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");

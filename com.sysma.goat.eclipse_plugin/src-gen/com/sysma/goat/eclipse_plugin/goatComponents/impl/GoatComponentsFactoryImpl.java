@@ -98,12 +98,15 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.FUNC_STATEMENT: return createFuncStatement();
       case GoatComponentsPackage.FUNC_VAR_DECLARATION: return createFuncVarDeclaration();
       case GoatComponentsPackage.FUNC_VAR_ASSIGN: return createFuncVarAssign();
+      case GoatComponentsPackage.FUNC_VAR_APPEND: return createFuncVarAppend();
+      case GoatComponentsPackage.FUNC_VAR_POP: return createFuncVarPop();
       case GoatComponentsPackage.FUNC_IF_ELSE: return createFuncIfElse();
       case GoatComponentsPackage.FUNC_RETURN: return createFuncReturn();
       case GoatComponentsPackage.NEGATIVE_INT_CONSTANT: return createNegativeIntConstant();
       case GoatComponentsPackage.INT_CONSTANT: return createIntConstant();
       case GoatComponentsPackage.STRING_CONSTANT: return createStringConstant();
       case GoatComponentsPackage.BOOL_CONSTANT: return createBoolConstant();
+      case GoatComponentsPackage.TUPLE_CONSTANT: return createTupleConstant();
       case GoatComponentsPackage.OR: return createOr();
       case GoatComponentsPackage.AND: return createAnd();
       case GoatComponentsPackage.EQUALITY: return createEquality();
@@ -114,6 +117,8 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.MUL_OR_DIV: return createMulOrDiv();
       case GoatComponentsPackage.UNARY_MINUS: return createUnaryMinus();
       case GoatComponentsPackage.NOT: return createNot();
+      case GoatComponentsPackage.TUPLE_GET: return createTupleGet();
+      case GoatComponentsPackage.TUPLE_LENGTH: return createTupleLength();
       case GoatComponentsPackage.LOCAL_VAR_REF: return createLocalVarRef();
       case GoatComponentsPackage.LOCAL_ATTRIBUTE_REF: return createLocalAttributeRef();
       case GoatComponentsPackage.FUNCTION_CALL: return createFunctionCall();
@@ -493,6 +498,28 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public FuncVarAppend createFuncVarAppend()
+  {
+    FuncVarAppendImpl funcVarAppend = new FuncVarAppendImpl();
+    return funcVarAppend;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FuncVarPop createFuncVarPop()
+  {
+    FuncVarPopImpl funcVarPop = new FuncVarPopImpl();
+    return funcVarPop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FuncIfElse createFuncIfElse()
   {
     FuncIfElseImpl funcIfElse = new FuncIfElseImpl();
@@ -552,6 +579,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     BoolConstantImpl boolConstant = new BoolConstantImpl();
     return boolConstant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TupleConstant createTupleConstant()
+  {
+    TupleConstantImpl tupleConstant = new TupleConstantImpl();
+    return tupleConstant;
   }
 
   /**
@@ -662,6 +700,28 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     NotImpl not = new NotImpl();
     return not;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TupleGet createTupleGet()
+  {
+    TupleGetImpl tupleGet = new TupleGetImpl();
+    return tupleGet;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TupleLength createTupleLength()
+  {
+    TupleLengthImpl tupleLength = new TupleLengthImpl();
+    return tupleLength;
   }
 
   /**

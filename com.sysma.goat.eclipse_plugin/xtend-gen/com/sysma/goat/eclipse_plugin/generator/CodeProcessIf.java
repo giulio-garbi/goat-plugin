@@ -204,7 +204,7 @@ public class CodeProcessIf {
           }
           _builder.append("\t\t");
           _builder.append("\t");
-          CharSequence _code = new CodeProcessBlock(then, this.map, this.procRef).getCode();
+          Object _code = new CodeProcessBlock(then, this.map, this.procRef).getCode();
           _builder.append(_code, "\t\t\t");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t");

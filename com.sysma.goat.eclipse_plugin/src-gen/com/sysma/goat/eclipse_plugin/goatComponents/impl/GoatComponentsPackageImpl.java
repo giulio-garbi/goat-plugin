@@ -19,8 +19,10 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncReturn;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop;
 import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
@@ -56,6 +58,9 @@ import com.sysma.goat.eclipse_plugin.goatComponents.ProcessWaitFor;
 import com.sysma.goat.eclipse_plugin.goatComponents.RecAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.goatComponents.StringConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleGet;
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength;
 import com.sysma.goat.eclipse_plugin.goatComponents.UnaryMinus;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
 import com.sysma.goat.eclipse_plugin.goatComponents.UpdateComponentAttribute;
@@ -314,6 +319,20 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass funcVarAppendEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcVarPopEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass funcIfElseEClass = null;
 
   /**
@@ -350,6 +369,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass boolConstantEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tupleConstantEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -420,6 +446,20 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass notEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tupleGetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tupleLengthEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1364,9 +1404,69 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFuncVarAssign_Val()
+  public EReference getFuncVarAssign_Idx()
   {
     return (EReference)funcVarAssignEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncVarAssign_Val()
+  {
+    return (EReference)funcVarAssignEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFuncVarAppend()
+  {
+    return funcVarAppendEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncVarAppend_Var()
+  {
+    return (EReference)funcVarAppendEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncVarAppend_Item()
+  {
+    return (EReference)funcVarAppendEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFuncVarPop()
+  {
+    return funcVarPopEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncVarPop_Var()
+  {
+    return (EReference)funcVarPopEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1507,6 +1607,26 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EAttribute getBoolConstant_Value()
   {
     return (EAttribute)boolConstantEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTupleConstant()
+  {
+    return tupleConstantEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTupleConstant_Elem()
+  {
+    return (EReference)tupleConstantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1804,6 +1924,56 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getTupleGet()
+  {
+    return tupleGetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTupleGet_Elem()
+  {
+    return (EReference)tupleGetEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTupleGet_Idx()
+  {
+    return (EReference)tupleGetEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTupleLength()
+  {
+    return tupleLengthEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTupleLength_Elem()
+  {
+    return (EReference)tupleLengthEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLocalVarRef()
   {
     return localVarRefEClass;
@@ -2094,7 +2264,15 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     funcVarAssignEClass = createEClass(FUNC_VAR_ASSIGN);
     createEReference(funcVarAssignEClass, FUNC_VAR_ASSIGN__VAR);
+    createEReference(funcVarAssignEClass, FUNC_VAR_ASSIGN__IDX);
     createEReference(funcVarAssignEClass, FUNC_VAR_ASSIGN__VAL);
+
+    funcVarAppendEClass = createEClass(FUNC_VAR_APPEND);
+    createEReference(funcVarAppendEClass, FUNC_VAR_APPEND__VAR);
+    createEReference(funcVarAppendEClass, FUNC_VAR_APPEND__ITEM);
+
+    funcVarPopEClass = createEClass(FUNC_VAR_POP);
+    createEReference(funcVarPopEClass, FUNC_VAR_POP__VAR);
 
     funcIfElseEClass = createEClass(FUNC_IF_ELSE);
     createEReference(funcIfElseEClass, FUNC_IF_ELSE__TEST);
@@ -2115,6 +2293,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     boolConstantEClass = createEClass(BOOL_CONSTANT);
     createEAttribute(boolConstantEClass, BOOL_CONSTANT__VALUE);
+
+    tupleConstantEClass = createEClass(TUPLE_CONSTANT);
+    createEReference(tupleConstantEClass, TUPLE_CONSTANT__ELEM);
 
     orEClass = createEClass(OR);
     createEReference(orEClass, OR__SUB);
@@ -2154,6 +2335,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     notEClass = createEClass(NOT);
     createEReference(notEClass, NOT__EXPRESSION);
+
+    tupleGetEClass = createEClass(TUPLE_GET);
+    createEReference(tupleGetEClass, TUPLE_GET__ELEM);
+    createEReference(tupleGetEClass, TUPLE_GET__IDX);
+
+    tupleLengthEClass = createEClass(TUPLE_LENGTH);
+    createEReference(tupleLengthEClass, TUPLE_LENGTH__ELEM);
 
     localVarRefEClass = createEClass(LOCAL_VAR_REF);
     createEReference(localVarRefEClass, LOCAL_VAR_REF__REF);
@@ -2225,12 +2413,15 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcVarDeclarationEClass.getESuperTypes().add(this.getLRef());
     funcVarDeclarationEClass.getESuperTypes().add(this.getFuncStatement());
     funcVarAssignEClass.getESuperTypes().add(this.getFuncStatement());
+    funcVarAppendEClass.getESuperTypes().add(this.getFuncStatement());
+    funcVarPopEClass.getESuperTypes().add(this.getFuncStatement());
     funcIfElseEClass.getESuperTypes().add(this.getFuncStatement());
     funcReturnEClass.getESuperTypes().add(this.getFuncStatement());
     negativeIntConstantEClass.getESuperTypes().add(this.getExpression());
     intConstantEClass.getESuperTypes().add(this.getExpression());
     stringConstantEClass.getESuperTypes().add(this.getExpression());
     boolConstantEClass.getESuperTypes().add(this.getExpression());
+    tupleConstantEClass.getESuperTypes().add(this.getExpression());
     orEClass.getESuperTypes().add(this.getExpression());
     andEClass.getESuperTypes().add(this.getExpression());
     equalityEClass.getESuperTypes().add(this.getExpression());
@@ -2241,6 +2432,8 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     mulOrDivEClass.getESuperTypes().add(this.getExpression());
     unaryMinusEClass.getESuperTypes().add(this.getExpression());
     notEClass.getESuperTypes().add(this.getExpression());
+    tupleGetEClass.getESuperTypes().add(this.getExpression());
+    tupleLengthEClass.getESuperTypes().add(this.getExpression());
     localVarRefEClass.getESuperTypes().add(this.getExpression());
     localAttributeRefEClass.getESuperTypes().add(this.getExpression());
     functionCallEClass.getESuperTypes().add(this.getExpression());
@@ -2364,7 +2557,15 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(funcVarAssignEClass, FuncVarAssign.class, "FuncVarAssign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncVarAssign_Var(), this.getFuncVarDeclaration(), null, "var", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncVarAssign_Idx(), this.getExpression(), null, "idx", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncVarAssign_Val(), this.getExpression(), null, "val", null, 0, 1, FuncVarAssign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcVarAppendEClass, FuncVarAppend.class, "FuncVarAppend", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncVarAppend_Var(), this.getFuncVarDeclaration(), null, "var", null, 0, 1, FuncVarAppend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncVarAppend_Item(), this.getExpression(), null, "item", null, 0, 1, FuncVarAppend.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcVarPopEClass, FuncVarPop.class, "FuncVarPop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncVarPop_Var(), this.getFuncVarDeclaration(), null, "var", null, 0, 1, FuncVarPop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funcIfElseEClass, FuncIfElse.class, "FuncIfElse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncIfElse_Test(), this.getExpression(), null, "test", null, 0, -1, FuncIfElse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2385,6 +2586,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(boolConstantEClass, BoolConstant.class, "BoolConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBoolConstant_Value(), ecorePackage.getEString(), "value", null, 0, 1, BoolConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tupleConstantEClass, TupleConstant.class, "TupleConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTupleConstant_Elem(), this.getExpression(), null, "elem", null, 0, -1, TupleConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOr_Sub(), this.getExpression(), null, "sub", null, 0, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2424,6 +2628,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNot_Expression(), this.getExpression(), null, "expression", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tupleGetEClass, TupleGet.class, "TupleGet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTupleGet_Elem(), this.getExpression(), null, "elem", null, 0, 1, TupleGet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTupleGet_Idx(), this.getExpression(), null, "idx", null, 0, 1, TupleGet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(tupleLengthEClass, TupleLength.class, "TupleLength", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTupleLength_Elem(), this.getExpression(), null, "elem", null, 0, 1, TupleLength.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localVarRefEClass, LocalVarRef.class, "LocalVarRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLocalVarRef_Ref(), this.getLRef(), null, "ref", null, 0, 1, LocalVarRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

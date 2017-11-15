@@ -241,6 +241,16 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createFuncVarAssignAdapter();
       }
       @Override
+      public Adapter caseFuncVarAppend(FuncVarAppend object)
+      {
+        return createFuncVarAppendAdapter();
+      }
+      @Override
+      public Adapter caseFuncVarPop(FuncVarPop object)
+      {
+        return createFuncVarPopAdapter();
+      }
+      @Override
       public Adapter caseFuncIfElse(FuncIfElse object)
       {
         return createFuncIfElseAdapter();
@@ -269,6 +279,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBoolConstant(BoolConstant object)
       {
         return createBoolConstantAdapter();
+      }
+      @Override
+      public Adapter caseTupleConstant(TupleConstant object)
+      {
+        return createTupleConstantAdapter();
       }
       @Override
       public Adapter caseOr(Or object)
@@ -319,6 +334,16 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNot(Not object)
       {
         return createNotAdapter();
+      }
+      @Override
+      public Adapter caseTupleGet(TupleGet object)
+      {
+        return createTupleGetAdapter();
+      }
+      @Override
+      public Adapter caseTupleLength(TupleLength object)
+      {
+        return createTupleLengthAdapter();
       }
       @Override
       public Adapter caseLocalVarRef(LocalVarRef object)
@@ -868,6 +893,36 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend <em>Func Var Append</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend
+   * @generated
+   */
+  public Adapter createFuncVarAppendAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop <em>Func Var Pop</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop
+   * @generated
+   */
+  public Adapter createFuncVarPopAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncIfElse <em>Func If Else</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -953,6 +1008,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBoolConstantAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant <em>Tuple Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant
+   * @generated
+   */
+  public Adapter createTupleConstantAdapter()
   {
     return null;
   }
@@ -1103,6 +1173,36 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleGet <em>Tuple Get</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleGet
+   * @generated
+   */
+  public Adapter createTupleGetAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.TupleLength <em>Tuple Length</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.TupleLength
+   * @generated
+   */
+  public Adapter createTupleLengthAdapter()
   {
     return null;
   }

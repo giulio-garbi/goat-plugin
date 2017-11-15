@@ -321,6 +321,24 @@ public interface GoatComponentsFactory extends EFactory
   FuncVarAssign createFuncVarAssign();
 
   /**
+   * Returns a new object of class '<em>Func Var Append</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Var Append</em>'.
+   * @generated
+   */
+  FuncVarAppend createFuncVarAppend();
+
+  /**
+   * Returns a new object of class '<em>Func Var Pop</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func Var Pop</em>'.
+   * @generated
+   */
+  FuncVarPop createFuncVarPop();
+
+  /**
    * Returns a new object of class '<em>Func If Else</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -373,6 +391,15 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   BoolConstant createBoolConstant();
+
+  /**
+   * Returns a new object of class '<em>Tuple Constant</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tuple Constant</em>'.
+   * @generated
+   */
+  TupleConstant createTupleConstant();
 
   /**
    * Returns a new object of class '<em>Or</em>'.
@@ -463,6 +490,24 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   Not createNot();
+
+  /**
+   * Returns a new object of class '<em>Tuple Get</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tuple Get</em>'.
+   * @generated
+   */
+  TupleGet createTupleGet();
+
+  /**
+   * Returns a new object of class '<em>Tuple Length</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Tuple Length</em>'.
+   * @generated
+   */
+  TupleLength createTupleLength();
 
   /**
    * Returns a new object of class '<em>Local Var Ref</em>'.

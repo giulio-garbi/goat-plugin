@@ -21,10 +21,12 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam
 import com.sysma.goat.eclipse_plugin.goatComponents.LocalVarRef
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant
+import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength
 
 class ExpressionTyping {
 	enum ExprType{
-		INT, BOOL, STRING, UNKNOWN
+		INT, BOOL, STRING, TUPLE, UNKNOWN
 	}
 	
 	def static matchable(ExprType a, ExprType b){
@@ -43,6 +45,8 @@ class ExpressionTyping {
 				ExprType.STRING
 			case 'bool':
 				ExprType.BOOL
+			case 'tuple', case 'Tuple', case 'goat.Tuple':
+				ExprType.TUPLE
 			default:
 				ExprType.UNKNOWN
 		}
@@ -67,6 +71,9 @@ class ExpressionTyping {
 			case STRING: {
 				"string"
 			}
+			case TUPLE: {
+				"goat.Tuple"
+			}
 			case UNKNOWN: {
 				"interface{}"
 			}
@@ -78,7 +85,7 @@ class ExpressionTyping {
 			And, Or, Not, Equality, Comparison, BoolConstant:
 				ExprType.BOOL
 
-			Plus, Minus, MulOrDiv, IntConstant:
+			Plus, Minus, MulOrDiv, IntConstant, TupleLength:
 				ExprType.INT
 				
 			Concatenate, StringConstant:
@@ -103,6 +110,9 @@ class ExpressionTyping {
 				
 			RecAttributeRef, ComponentAttributeRef:
 				ExprType.UNKNOWN
+				
+			TupleConstant:
+				ExprType.TUPLE
 				
 			default:
 				ExprType.UNKNOWN

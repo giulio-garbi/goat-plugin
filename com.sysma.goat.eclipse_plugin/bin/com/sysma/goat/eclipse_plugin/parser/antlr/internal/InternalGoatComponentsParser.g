@@ -2038,6 +2038,70 @@ ruleEnvInitValue returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getEnvInitValueAccess().getTupleConstantAction_4_0(),
+						$current);
+				}
+			)
+			otherlv_10=LeftSquareBracket
+			{
+				newLeafNode(otherlv_10, grammarAccess.getEnvInitValueAccess().getLeftSquareBracketKeyword_4_1());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getEnvInitValueAccess().getElemEnvInitValueParserRuleCall_4_2_0_0());
+						}
+						lv_elem_11_0=ruleEnvInitValue
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getEnvInitValueRule());
+							}
+							add(
+								$current,
+								"elem",
+								lv_elem_11_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.EnvInitValue");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_12=Comma
+					{
+						newLeafNode(otherlv_12, grammarAccess.getEnvInitValueAccess().getCommaKeyword_4_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getEnvInitValueAccess().getElemEnvInitValueParserRuleCall_4_2_1_1_0());
+							}
+							lv_elem_13_0=ruleEnvInitValue
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getEnvInitValueRule());
+								}
+								add(
+									$current,
+									"elem",
+									lv_elem_13_0,
+									"com.sysma.goat.eclipse_plugin.GoatComponents.EnvInitValue");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_14=RightSquareBracket
+			{
+				newLeafNode(otherlv_14, grammarAccess.getEnvInitValueAccess().getRightSquareBracketKeyword_4_3());
+			}
+		)
 	)
 ;
 
@@ -3059,10 +3123,244 @@ ruleAtomic returns [EObject current=null]
 		)
 		    |
 		(
+			{
+				newCompositeNode(grammarAccess.getAtomicAccess().getAtomicIndexableParserRuleCall_3_0());
+			}
+			this_AtomicIndexable_6=ruleAtomicIndexable
+			{
+				$current = $this_AtomicIndexable_6.current;
+				afterParserOrEnumRuleCall();
+			}
+			(
+				otherlv_7=LeftSquareBracket
+				{
+					newLeafNode(otherlv_7, grammarAccess.getAtomicAccess().getLeftSquareBracketKeyword_3_1_0());
+				}
+				(
+					{
+						$current = forceCreateModelElementAndSet(
+							grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1(),
+							$current);
+					}
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getAtomicAccess().getIdxAtomicParserRuleCall_3_1_2_0());
+						}
+						lv_idx_9_0=ruleAtomic
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getAtomicRule());
+							}
+							set(
+								$current,
+								"idx",
+								lv_idx_9_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.Atomic");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_10=RightSquareBracket
+				{
+					newLeafNode(otherlv_10, grammarAccess.getAtomicAccess().getRightSquareBracketKeyword_3_1_3());
+				}
+			)?
+		)
+	)
+;
+
+// Entry rule entryRuleAtomicIndexable
+entryRuleAtomicIndexable returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAtomicIndexableRule()); }
+	iv_ruleAtomicIndexable=ruleAtomicIndexable
+	{ $current=$iv_ruleAtomicIndexable.current; }
+	EOF;
+
+// Rule AtomicIndexable
+ruleAtomicIndexable returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getLocalVarRefAction_3_0(),
+						grammarAccess.getAtomicIndexableAccess().getTupleConstantAction_0_0(),
+						$current);
+				}
+			)
+			otherlv_1=LeftSquareBracket
+			{
+				newLeafNode(otherlv_1, grammarAccess.getAtomicIndexableAccess().getLeftSquareBracketKeyword_0_1());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getAtomicIndexableAccess().getElemExpressionParserRuleCall_0_2_0_0());
+						}
+						lv_elem_2_0=ruleExpression
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
+							}
+							add(
+								$current,
+								"elem",
+								lv_elem_2_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_3=Comma
+					{
+						newLeafNode(otherlv_3, grammarAccess.getAtomicIndexableAccess().getCommaKeyword_0_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getAtomicIndexableAccess().getElemExpressionParserRuleCall_0_2_1_1_0());
+							}
+							lv_elem_4_0=ruleExpression
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
+								}
+								add(
+									$current,
+									"elem",
+									lv_elem_4_0,
+									"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_5=RightSquareBracket
+			{
+				newLeafNode(otherlv_5, grammarAccess.getAtomicIndexableAccess().getRightSquareBracketKeyword_0_3());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicIndexableAccess().getTupleLengthAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_7=Length
+			{
+				newLeafNode(otherlv_7, grammarAccess.getAtomicIndexableAccess().getLengthKeyword_1_1());
+			}
+			otherlv_8=LeftParenthesis
+			{
+				newLeafNode(otherlv_8, grammarAccess.getAtomicIndexableAccess().getLeftParenthesisKeyword_1_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAtomicIndexableAccess().getElemAtomicParserRuleCall_1_3_0());
+					}
+					lv_elem_9_0=ruleAtomic
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
+						}
+						set(
+							$current,
+							"elem",
+							lv_elem_9_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.Atomic");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_10=RightParenthesis
+			{
+				newLeafNode(otherlv_10, grammarAccess.getAtomicIndexableAccess().getRightParenthesisKeyword_1_4());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicIndexableAccess().getTupleGetAction_2_0(),
+						$current);
+				}
+			)
+			otherlv_12=Get
+			{
+				newLeafNode(otherlv_12, grammarAccess.getAtomicIndexableAccess().getGetKeyword_2_1());
+			}
+			otherlv_13=LeftParenthesis
+			{
+				newLeafNode(otherlv_13, grammarAccess.getAtomicIndexableAccess().getLeftParenthesisKeyword_2_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAtomicIndexableAccess().getElemAtomicParserRuleCall_2_3_0());
+					}
+					lv_elem_14_0=ruleAtomic
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
+						}
+						set(
+							$current,
+							"elem",
+							lv_elem_14_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.Atomic");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_15=Comma
+			{
+				newLeafNode(otherlv_15, grammarAccess.getAtomicIndexableAccess().getCommaKeyword_2_4());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAtomicIndexableAccess().getIdxAtomicParserRuleCall_2_5_0());
+					}
+					lv_idx_16_0=ruleAtomic
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
+						}
+						set(
+							$current,
+							"idx",
+							lv_idx_16_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.Atomic");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_17=RightParenthesis
+			{
+				newLeafNode(otherlv_17, grammarAccess.getAtomicIndexableAccess().getRightParenthesisKeyword_2_6());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getAtomicIndexableAccess().getLocalVarRefAction_3_0(),
 						$current);
 				}
 			)
@@ -3070,12 +3368,12 @@ ruleAtomic returns [EObject current=null]
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElement(grammarAccess.getAtomicIndexableRule());
 						}
 					}
-					otherlv_7=RULE_ID
+					otherlv_19=RULE_ID
 					{
-						newLeafNode(otherlv_7, grammarAccess.getAtomicAccess().getRefLRefCrossReference_3_1_0());
+						newLeafNode(otherlv_19, grammarAccess.getAtomicIndexableAccess().getRefLRefCrossReference_3_1_0());
 					}
 				)
 			)
@@ -3085,32 +3383,32 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getLocalAttributeRefAction_4_0(),
+						grammarAccess.getAtomicIndexableAccess().getLocalAttributeRefAction_4_0(),
 						$current);
 				}
 			)
-			otherlv_9=Proc
+			otherlv_21=Proc
 			{
-				newLeafNode(otherlv_9, grammarAccess.getAtomicAccess().getProcKeyword_4_1());
+				newLeafNode(otherlv_21, grammarAccess.getAtomicIndexableAccess().getProcKeyword_4_1());
 			}
-			otherlv_10=FullStop
+			otherlv_22=FullStop
 			{
-				newLeafNode(otherlv_10, grammarAccess.getAtomicAccess().getFullStopKeyword_4_2());
+				newLeafNode(otherlv_22, grammarAccess.getAtomicIndexableAccess().getFullStopKeyword_4_2());
 			}
 			(
 				(
-					lv_attribute_11_0=RULE_ID
+					lv_attribute_23_0=RULE_ID
 					{
-						newLeafNode(lv_attribute_11_0, grammarAccess.getAtomicAccess().getAttributeIDTerminalRuleCall_4_3_0());
+						newLeafNode(lv_attribute_23_0, grammarAccess.getAtomicIndexableAccess().getAttributeIDTerminalRuleCall_4_3_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElement(grammarAccess.getAtomicIndexableRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"attribute",
-							lv_attribute_11_0,
+							lv_attribute_23_0,
 							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
@@ -3121,7 +3419,7 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getFunctionCallAction_5_0(),
+						grammarAccess.getAtomicIndexableAccess().getFunctionCallAction_5_0(),
 						$current);
 				}
 			)
@@ -3129,58 +3427,58 @@ ruleAtomic returns [EObject current=null]
 				(
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElement(grammarAccess.getAtomicIndexableRule());
 						}
 					}
-					otherlv_13=RULE_ID
+					otherlv_25=RULE_ID
 					{
-						newLeafNode(otherlv_13, grammarAccess.getAtomicAccess().getFunctionFuncDefinitionCrossReference_5_1_0());
+						newLeafNode(otherlv_25, grammarAccess.getAtomicIndexableAccess().getFunctionFuncDefinitionCrossReference_5_1_0());
 					}
 				)
 			)
-			otherlv_14=LeftParenthesis
+			otherlv_26=LeftParenthesis
 			{
-				newLeafNode(otherlv_14, grammarAccess.getAtomicAccess().getLeftParenthesisKeyword_5_2());
+				newLeafNode(otherlv_26, grammarAccess.getAtomicIndexableAccess().getLeftParenthesisKeyword_5_2());
 			}
 			(
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getAtomicAccess().getParamsExpressionParserRuleCall_5_3_0_0());
+							newCompositeNode(grammarAccess.getAtomicIndexableAccess().getParamsExpressionParserRuleCall_5_3_0_0());
 						}
-						lv_params_15_0=ruleExpression
+						lv_params_27_0=ruleExpression
 						{
 							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getAtomicRule());
+								$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
 							}
 							add(
 								$current,
 								"params",
-								lv_params_15_0,
+								lv_params_27_0,
 								"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 				(
-					otherlv_16=Comma
+					otherlv_28=Comma
 					{
-						newLeafNode(otherlv_16, grammarAccess.getAtomicAccess().getCommaKeyword_5_3_1_0());
+						newLeafNode(otherlv_28, grammarAccess.getAtomicIndexableAccess().getCommaKeyword_5_3_1_0());
 					}
 					(
 						(
 							{
-								newCompositeNode(grammarAccess.getAtomicAccess().getParamsExpressionParserRuleCall_5_3_1_1_0());
+								newCompositeNode(grammarAccess.getAtomicIndexableAccess().getParamsExpressionParserRuleCall_5_3_1_1_0());
 							}
-							lv_params_17_0=ruleExpression
+							lv_params_29_0=ruleExpression
 							{
 								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getAtomicRule());
+									$current = createModelElementForParent(grammarAccess.getAtomicIndexableRule());
 								}
 								add(
 									$current,
 									"params",
-									lv_params_17_0,
+									lv_params_29_0,
 									"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
 								afterParserOrEnumRuleCall();
 							}
@@ -3188,9 +3486,9 @@ ruleAtomic returns [EObject current=null]
 					)
 				)*
 			)?
-			otherlv_18=RightParenthesis
+			otherlv_30=RightParenthesis
 			{
-				newLeafNode(otherlv_18, grammarAccess.getAtomicAccess().getRightParenthesisKeyword_5_4());
+				newLeafNode(otherlv_30, grammarAccess.getAtomicIndexableAccess().getRightParenthesisKeyword_5_4());
 			}
 		)
 		    |
@@ -3198,32 +3496,32 @@ ruleAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getAtomicAccess().getComponentAttributeRefAction_6_0(),
+						grammarAccess.getAtomicIndexableAccess().getComponentAttributeRefAction_6_0(),
 						$current);
 				}
 			)
-			otherlv_20=Comp
+			otherlv_32=Comp
 			{
-				newLeafNode(otherlv_20, grammarAccess.getAtomicAccess().getCompKeyword_6_1());
+				newLeafNode(otherlv_32, grammarAccess.getAtomicIndexableAccess().getCompKeyword_6_1());
 			}
-			otherlv_21=FullStop
+			otherlv_33=FullStop
 			{
-				newLeafNode(otherlv_21, grammarAccess.getAtomicAccess().getFullStopKeyword_6_2());
+				newLeafNode(otherlv_33, grammarAccess.getAtomicIndexableAccess().getFullStopKeyword_6_2());
 			}
 			(
 				(
-					lv_attribute_22_0=RULE_ID
+					lv_attribute_34_0=RULE_ID
 					{
-						newLeafNode(lv_attribute_22_0, grammarAccess.getAtomicAccess().getAttributeIDTerminalRuleCall_6_3_0());
+						newLeafNode(lv_attribute_34_0, grammarAccess.getAtomicIndexableAccess().getAttributeIDTerminalRuleCall_6_3_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getAtomicRule());
+							$current = createModelElement(grammarAccess.getAtomicIndexableRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"attribute",
-							lv_attribute_22_0,
+							lv_attribute_34_0,
 							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
@@ -3801,69 +4099,121 @@ ruleOutAtomic returns [EObject current=null]
 		)
 		    |
 		(
+			{
+				newCompositeNode(grammarAccess.getOutAtomicAccess().getOutAtomicIndexableParserRuleCall_3_0());
+			}
+			this_OutAtomicIndexable_6=ruleOutAtomicIndexable
+			{
+				$current = $this_OutAtomicIndexable_6.current;
+				afterParserOrEnumRuleCall();
+			}
+			(
+				otherlv_7=LeftSquareBracket
+				{
+					newLeafNode(otherlv_7, grammarAccess.getOutAtomicAccess().getLeftSquareBracketKeyword_3_1_0());
+				}
+				(
+					{
+						$current = forceCreateModelElementAndSet(
+							grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1(),
+							$current);
+					}
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getOutAtomicAccess().getIdxOutAtomicParserRuleCall_3_1_2_0());
+						}
+						lv_idx_9_0=ruleOutAtomic
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getOutAtomicRule());
+							}
+							set(
+								$current,
+								"idx",
+								lv_idx_9_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				otherlv_10=RightSquareBracket
+				{
+					newLeafNode(otherlv_10, grammarAccess.getOutAtomicAccess().getRightSquareBracketKeyword_3_1_3());
+				}
+			)?
+		)
+	)
+;
+
+// Entry rule entryRuleOutAtomicIndexable
+entryRuleOutAtomicIndexable returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getOutAtomicIndexableRule()); }
+	iv_ruleOutAtomicIndexable=ruleOutAtomicIndexable
+	{ $current=$iv_ruleOutAtomicIndexable.current; }
+	EOF;
+
+// Rule OutAtomicIndexable
+ruleOutAtomicIndexable returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOutAtomicAccess().getFunctionCallAction_3_0(),
+						grammarAccess.getOutAtomicIndexableAccess().getTupleConstantAction_0_0(),
 						$current);
 				}
 			)
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOutAtomicRule());
-						}
-					}
-					otherlv_7=RULE_ID
-					{
-						newLeafNode(otherlv_7, grammarAccess.getOutAtomicAccess().getFunctionFuncDefinitionCrossReference_3_1_0());
-					}
-				)
-			)
-			otherlv_8=LeftParenthesis
+			otherlv_1=LeftSquareBracket
 			{
-				newLeafNode(otherlv_8, grammarAccess.getOutAtomicAccess().getLeftParenthesisKeyword_3_2());
+				newLeafNode(otherlv_1, grammarAccess.getOutAtomicIndexableAccess().getLeftSquareBracketKeyword_0_1());
 			}
 			(
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getOutAtomicAccess().getParamsOutAtomicParserRuleCall_3_3_0_0());
+							newCompositeNode(grammarAccess.getOutAtomicIndexableAccess().getElemOutAtomicParserRuleCall_0_2_0_0());
 						}
-						lv_params_9_0=ruleOutAtomic
+						lv_elem_2_0=ruleOutAtomic
 						{
 							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getOutAtomicRule());
+								$current = createModelElementForParent(grammarAccess.getOutAtomicIndexableRule());
 							}
 							add(
 								$current,
-								"params",
-								lv_params_9_0,
+								"elem",
+								lv_elem_2_0,
 								"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
 				(
-					otherlv_10=Comma
+					otherlv_3=Comma
 					{
-						newLeafNode(otherlv_10, grammarAccess.getOutAtomicAccess().getCommaKeyword_3_3_1_0());
+						newLeafNode(otherlv_3, grammarAccess.getOutAtomicIndexableAccess().getCommaKeyword_0_2_1_0());
 					}
 					(
 						(
 							{
-								newCompositeNode(grammarAccess.getOutAtomicAccess().getParamsOutAtomicParserRuleCall_3_3_1_1_0());
+								newCompositeNode(grammarAccess.getOutAtomicIndexableAccess().getElemOutAtomicParserRuleCall_0_2_1_1_0());
 							}
-							lv_params_11_0=ruleOutAtomic
+							lv_elem_4_0=ruleOutAtomic
 							{
 								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getOutAtomicRule());
+									$current = createModelElementForParent(grammarAccess.getOutAtomicIndexableRule());
 								}
 								add(
 									$current,
-									"params",
-									lv_params_11_0,
+									"elem",
+									lv_elem_4_0,
 									"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
 								afterParserOrEnumRuleCall();
 							}
@@ -3871,9 +4221,9 @@ ruleOutAtomic returns [EObject current=null]
 					)
 				)*
 			)?
-			otherlv_12=RightParenthesis
+			otherlv_5=RightSquareBracket
 			{
-				newLeafNode(otherlv_12, grammarAccess.getOutAtomicAccess().getRightParenthesisKeyword_3_4());
+				newLeafNode(otherlv_5, grammarAccess.getOutAtomicIndexableAccess().getRightSquareBracketKeyword_0_3());
 			}
 		)
 		    |
@@ -3881,32 +4231,150 @@ ruleOutAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOutAtomicAccess().getLocalAttributeRefAction_4_0(),
+						grammarAccess.getOutAtomicIndexableAccess().getTupleLengthAction_1_0(),
 						$current);
 				}
 			)
-			otherlv_14=Proc
+			otherlv_7=Length
 			{
-				newLeafNode(otherlv_14, grammarAccess.getOutAtomicAccess().getProcKeyword_4_1());
+				newLeafNode(otherlv_7, grammarAccess.getOutAtomicIndexableAccess().getLengthKeyword_1_1());
 			}
-			otherlv_15=FullStop
+			otherlv_8=LeftParenthesis
 			{
-				newLeafNode(otherlv_15, grammarAccess.getOutAtomicAccess().getFullStopKeyword_4_2());
+				newLeafNode(otherlv_8, grammarAccess.getOutAtomicIndexableAccess().getLeftParenthesisKeyword_1_2());
 			}
 			(
 				(
-					lv_attribute_16_0=RULE_ID
 					{
-						newLeafNode(lv_attribute_16_0, grammarAccess.getOutAtomicAccess().getAttributeIDTerminalRuleCall_4_3_0());
+						newCompositeNode(grammarAccess.getOutAtomicIndexableAccess().getElemOutAtomicParserRuleCall_1_3_0());
+					}
+					lv_elem_9_0=ruleOutAtomic
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getOutAtomicIndexableRule());
+						}
+						set(
+							$current,
+							"elem",
+							lv_elem_9_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_10=RightParenthesis
+			{
+				newLeafNode(otherlv_10, grammarAccess.getOutAtomicIndexableAccess().getRightParenthesisKeyword_1_4());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicIndexableAccess().getFunctionCallAction_2_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getOutAtomicIndexableRule());
+						}
+					}
+					otherlv_12=RULE_ID
+					{
+						newLeafNode(otherlv_12, grammarAccess.getOutAtomicIndexableAccess().getFunctionFuncDefinitionCrossReference_2_1_0());
+					}
+				)
+			)
+			otherlv_13=LeftParenthesis
+			{
+				newLeafNode(otherlv_13, grammarAccess.getOutAtomicIndexableAccess().getLeftParenthesisKeyword_2_2());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getOutAtomicIndexableAccess().getParamsOutAtomicParserRuleCall_2_3_0_0());
+						}
+						lv_params_14_0=ruleOutAtomic
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getOutAtomicIndexableRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_14_0,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_15=Comma
+					{
+						newLeafNode(otherlv_15, grammarAccess.getOutAtomicIndexableAccess().getCommaKeyword_2_3_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getOutAtomicIndexableAccess().getParamsOutAtomicParserRuleCall_2_3_1_1_0());
+							}
+							lv_params_16_0=ruleOutAtomic
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getOutAtomicIndexableRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_16_0,
+									"com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomic");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_17=RightParenthesis
+			{
+				newLeafNode(otherlv_17, grammarAccess.getOutAtomicIndexableAccess().getRightParenthesisKeyword_2_4());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getOutAtomicIndexableAccess().getLocalAttributeRefAction_3_0(),
+						$current);
+				}
+			)
+			otherlv_19=Proc
+			{
+				newLeafNode(otherlv_19, grammarAccess.getOutAtomicIndexableAccess().getProcKeyword_3_1());
+			}
+			otherlv_20=FullStop
+			{
+				newLeafNode(otherlv_20, grammarAccess.getOutAtomicIndexableAccess().getFullStopKeyword_3_2());
+			}
+			(
+				(
+					lv_attribute_21_0=RULE_ID
+					{
+						newLeafNode(lv_attribute_21_0, grammarAccess.getOutAtomicIndexableAccess().getAttributeIDTerminalRuleCall_3_3_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOutAtomicRule());
+							$current = createModelElement(grammarAccess.getOutAtomicIndexableRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"attribute",
-							lv_attribute_16_0,
+							lv_attribute_21_0,
 							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
@@ -3917,32 +4385,32 @@ ruleOutAtomic returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getOutAtomicAccess().getComponentAttributeRefAction_5_0(),
+						grammarAccess.getOutAtomicIndexableAccess().getComponentAttributeRefAction_4_0(),
 						$current);
 				}
 			)
-			otherlv_18=Comp
+			otherlv_23=Comp
 			{
-				newLeafNode(otherlv_18, grammarAccess.getOutAtomicAccess().getCompKeyword_5_1());
+				newLeafNode(otherlv_23, grammarAccess.getOutAtomicIndexableAccess().getCompKeyword_4_1());
 			}
-			otherlv_19=FullStop
+			otherlv_24=FullStop
 			{
-				newLeafNode(otherlv_19, grammarAccess.getOutAtomicAccess().getFullStopKeyword_5_2());
+				newLeafNode(otherlv_24, grammarAccess.getOutAtomicIndexableAccess().getFullStopKeyword_4_2());
 			}
 			(
 				(
-					lv_attribute_20_0=RULE_ID
+					lv_attribute_25_0=RULE_ID
 					{
-						newLeafNode(lv_attribute_20_0, grammarAccess.getOutAtomicAccess().getAttributeIDTerminalRuleCall_5_3_0());
+						newLeafNode(lv_attribute_25_0, grammarAccess.getOutAtomicIndexableAccess().getAttributeIDTerminalRuleCall_4_3_0());
 					}
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getOutAtomicRule());
+							$current = createModelElement(grammarAccess.getOutAtomicIndexableRule());
 						}
 						setWithLastConsumed(
 							$current,
 							"attribute",
-							lv_attribute_20_0,
+							lv_attribute_25_0,
 							"org.eclipse.xtext.common.Terminals.ID");
 					}
 				)
@@ -4242,6 +4710,24 @@ ruleFuncStatement returns [EObject current=null]
 			$current = $this_FuncVarDeclaration_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncVarAppendParserRuleCall_4());
+		}
+		this_FuncVarAppend_4=ruleFuncVarAppend
+		{
+			$current = $this_FuncVarAppend_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFuncStatementAccess().getFuncVarPopParserRuleCall_5());
+		}
+		this_FuncVarPop_5=ruleFuncVarPop
+		{
+			$current = $this_FuncVarPop_5.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -4338,16 +4824,45 @@ ruleFuncVarAssign returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_1=EqualsSign
+		(
+			otherlv_1=LeftSquareBracket
+			{
+				newLeafNode(otherlv_1, grammarAccess.getFuncVarAssignAccess().getLeftSquareBracketKeyword_1_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getFuncVarAssignAccess().getIdxExpressionParserRuleCall_1_1_0());
+					}
+					lv_idx_2_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getFuncVarAssignRule());
+						}
+						set(
+							$current,
+							"idx",
+							lv_idx_2_0,
+							"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_3=RightSquareBracket
+			{
+				newLeafNode(otherlv_3, grammarAccess.getFuncVarAssignAccess().getRightSquareBracketKeyword_1_2());
+			}
+		)?
+		otherlv_4=EqualsSign
 		{
-			newLeafNode(otherlv_1, grammarAccess.getFuncVarAssignAccess().getEqualsSignKeyword_1());
+			newLeafNode(otherlv_4, grammarAccess.getFuncVarAssignAccess().getEqualsSignKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFuncVarAssignAccess().getValExpressionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getFuncVarAssignAccess().getValExpressionParserRuleCall_3_0());
 				}
-				lv_val_2_0=ruleExpression
+				lv_val_5_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFuncVarAssignRule());
@@ -4355,12 +4870,127 @@ ruleFuncVarAssign returns [EObject current=null]
 					set(
 						$current,
 						"val",
-						lv_val_2_0,
+						lv_val_5_0,
 						"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleFuncVarAppend
+entryRuleFuncVarAppend returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFuncVarAppendRule()); }
+	iv_ruleFuncVarAppend=ruleFuncVarAppend
+	{ $current=$iv_ruleFuncVarAppend.current; }
+	EOF;
+
+// Rule FuncVarAppend
+ruleFuncVarAppend returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuncVarAppendRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFuncVarAppendAccess().getVarFuncVarDeclarationCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1=FullStop
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFuncVarAppendAccess().getFullStopKeyword_1());
+		}
+		otherlv_2=Append
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFuncVarAppendAccess().getAppendKeyword_2());
+		}
+		otherlv_3=LeftParenthesis
+		{
+			newLeafNode(otherlv_3, grammarAccess.getFuncVarAppendAccess().getLeftParenthesisKeyword_3());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFuncVarAppendAccess().getItemExpressionParserRuleCall_4_0());
+				}
+				lv_item_4_0=ruleExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFuncVarAppendRule());
+					}
+					set(
+						$current,
+						"item",
+						lv_item_4_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.Expression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_5=RightParenthesis
+		{
+			newLeafNode(otherlv_5, grammarAccess.getFuncVarAppendAccess().getRightParenthesisKeyword_5());
+		}
+	)
+;
+
+// Entry rule entryRuleFuncVarPop
+entryRuleFuncVarPop returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFuncVarPopRule()); }
+	iv_ruleFuncVarPop=ruleFuncVarPop
+	{ $current=$iv_ruleFuncVarPop.current; }
+	EOF;
+
+// Rule FuncVarPop
+ruleFuncVarPop returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFuncVarPopRule());
+					}
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getFuncVarPopAccess().getVarFuncVarDeclarationCrossReference_0_0());
+				}
+			)
+		)
+		otherlv_1=FullStop
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFuncVarPopAccess().getFullStopKeyword_1());
+		}
+		otherlv_2=Pop
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFuncVarPopAccess().getPopKeyword_2());
+		}
+		otherlv_3=LeftParenthesis
+		{
+			newLeafNode(otherlv_3, grammarAccess.getFuncVarPopAccess().getLeftParenthesisKeyword_3());
+		}
+		otherlv_4=RightParenthesis
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFuncVarPopAccess().getRightParenthesisKeyword_4());
+		}
 	)
 ;
 

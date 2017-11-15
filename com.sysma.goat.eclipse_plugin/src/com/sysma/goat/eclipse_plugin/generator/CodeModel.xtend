@@ -51,11 +51,14 @@ class CodeModel {
 		«ENDFOR»
 		
 		func «mainFuncName»(){
-			//Needed to avoid golang errors "imported and not used"
+			// Needed to avoid golang errors "imported and not used"
 			_ = func(){
 				fmt.Println(strings.Join([]string{},""))
 				strconv.Atoi("")
 			}
+			
+			// Needed to send tuples
+			goat.InitSend()
 			
 			var wg sync.WaitGroup
 			«FOR cdef: components»
