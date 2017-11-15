@@ -10,6 +10,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Expression
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile
 
 class CodeFunction {
 	val FuncDefinition definition;
@@ -36,11 +37,11 @@ class CodeFunction {
 				if(item.idx === null)
 					'''«item.^var.name» = «makeCode(item.^val)»'''
 				else
-					'''(«item.^var.name».(goat.Tuple)).Set(«makeCode(item.idx)», «makeCode(item.^val)»)'''
+					'''cast_tuple_ptr(&«item.^var.name»).Set(«makeCode(item.idx)», «makeCode(item.^val)»)'''
 			FuncVarAppend:
-				'''(«item.^var.name».(goat.Tuple)).Append(«makeCode(item.item)»)'''
+				'''cast_tuple_ptr(&«item.^var.name»).Append(«makeCode(item.item)»)'''
 			FuncVarPop:
-				'''(«item.^var.name».(goat.Tuple)).Pop()'''
+				'''cast_tuple_ptr(&«item.^var.name»).Pop()'''
 			FuncIfElse:
 				(0..<item.then.length).map[i|
 					'''
@@ -57,6 +58,9 @@ class CodeFunction {
 				'''
 				var «item.name» = «makeCode(item.^val)»
 				_ = «item.name»'''
+			FuncWhile:
+				'''
+				for «makeCode(item.cond)» «makeCode(item.cycle)»'''
 			Expression:
 				CodeExpression.getExpressionWithoutAttributes(item)
 		}

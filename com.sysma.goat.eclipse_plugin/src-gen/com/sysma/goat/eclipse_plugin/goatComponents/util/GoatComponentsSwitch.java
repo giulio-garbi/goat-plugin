@@ -354,6 +354,14 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.FUNC_WHILE:
+      {
+        FuncWhile funcWhile = (FuncWhile)theEObject;
+        T result = caseFuncWhile(funcWhile);
+        if (result == null) result = caseFuncStatement(funcWhile);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.NEGATIVE_INT_CONSTANT:
       {
         NegativeIntConstant negativeIntConstant = (NegativeIntConstant)theEObject;
@@ -1130,6 +1138,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFuncReturn(FuncReturn object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Func While</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Func While</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFuncWhile(FuncWhile object)
   {
     return null;
   }

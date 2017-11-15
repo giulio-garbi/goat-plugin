@@ -12,6 +12,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop;
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile;
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -89,10 +90,10 @@ public class CodeFunction {
           _xifexpression = _builder;
         } else {
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("(");
+          _builder_1.append("cast_tuple_ptr(&");
           String _name_1 = ((FuncVarAssign)item).getVar().getName();
           _builder_1.append(_name_1);
-          _builder_1.append(".(goat.Tuple)).Set(");
+          _builder_1.append(").Set(");
           CharSequence _makeCode_1 = this.makeCode(((FuncVarAssign)item).getIdx());
           _builder_1.append(_makeCode_1);
           _builder_1.append(", ");
@@ -108,10 +109,10 @@ public class CodeFunction {
       if (item instanceof FuncVarAppend) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(");
+        _builder.append("cast_tuple_ptr(&");
         String _name = ((FuncVarAppend)item).getVar().getName();
         _builder.append(_name);
-        _builder.append(".(goat.Tuple)).Append(");
+        _builder.append(").Append(");
         CharSequence _makeCode = this.makeCode(((FuncVarAppend)item).getItem());
         _builder.append(_makeCode);
         _builder.append(")");
@@ -122,10 +123,10 @@ public class CodeFunction {
       if (item instanceof FuncVarPop) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(");
+        _builder.append("cast_tuple_ptr(&");
         String _name = ((FuncVarPop)item).getVar().getName();
         _builder.append(_name);
-        _builder.append(".(goat.Tuple)).Pop()");
+        _builder.append(").Pop()");
         _switchResult = _builder;
       }
     }
@@ -183,6 +184,19 @@ public class CodeFunction {
         _builder.append("_ = ");
         String _name_1 = ((FuncVarDeclaration)item).getName();
         _builder.append(_name_1);
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (item instanceof FuncWhile) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("for ");
+        CharSequence _makeCode = this.makeCode(((FuncWhile)item).getCond());
+        _builder.append(_makeCode);
+        _builder.append(" ");
+        CharSequence _makeCode_1 = this.makeCode(((FuncWhile)item).getCycle());
+        _builder.append(_makeCode_1);
         _switchResult = _builder;
       }
     }

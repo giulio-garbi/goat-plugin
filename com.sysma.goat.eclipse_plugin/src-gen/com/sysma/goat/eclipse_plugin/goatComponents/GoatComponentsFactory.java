@@ -357,6 +357,15 @@ public interface GoatComponentsFactory extends EFactory
   FuncReturn createFuncReturn();
 
   /**
+   * Returns a new object of class '<em>Func While</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Func While</em>'.
+   * @generated
+   */
+  FuncWhile createFuncWhile();
+
+  /**
    * Returns a new object of class '<em>Negative Int Constant</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

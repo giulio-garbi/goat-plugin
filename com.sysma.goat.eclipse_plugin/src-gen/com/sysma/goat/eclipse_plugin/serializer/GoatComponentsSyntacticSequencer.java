@@ -97,7 +97,6 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     (rule start) (ambiguity) '[' ']' (rule start)
 	 *     (rule start) (ambiguity) '[' elem+=Expression
 	 *     (rule start) (ambiguity) 'comp' '.' attribute=ID
-	 *     (rule start) (ambiguity) 'get' '(' elem=Atomic
 	 *     (rule start) (ambiguity) 'length' '(' elem=Atomic
 	 *     (rule start) (ambiguity) 'proc' '.' attribute=ID
 	 *     (rule start) (ambiguity) function=[FuncDefinition|ID]

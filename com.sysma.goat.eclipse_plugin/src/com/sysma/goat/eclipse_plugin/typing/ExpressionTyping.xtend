@@ -60,6 +60,26 @@ class ExpressionTyping {
 		goType(typeOf(x))
 	}
 	
+	def static String castFunction(ExprType x){
+		switch(x){
+			case INT: {
+				"cast_int"
+			}
+			case BOOL: {
+				"cast_bool"
+			}
+			case STRING: {
+				"cast_string"
+			}
+			case TUPLE: {
+				"cast_tuple"
+			}
+			case UNKNOWN: {
+				""
+			}
+		}
+	}
+	
 	def static String goType(ExprType x){
 		switch(x){
 			case INT: {

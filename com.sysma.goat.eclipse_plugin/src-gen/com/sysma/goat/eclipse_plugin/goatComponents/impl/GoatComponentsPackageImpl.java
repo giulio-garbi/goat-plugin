@@ -23,6 +23,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAppend;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarAssign;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarDeclaration;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncVarPop;
+import com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile;
 import com.sysma.goat.eclipse_plugin.goatComponents.FunctionCall;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsFactory;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
@@ -341,6 +342,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass funcReturnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcWhileEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1534,6 +1542,36 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getFuncWhile()
+  {
+    return funcWhileEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncWhile_Cond()
+  {
+    return (EReference)funcWhileEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFuncWhile_Cycle()
+  {
+    return (EReference)funcWhileEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getNegativeIntConstant()
   {
     return negativeIntConstantEClass;
@@ -2282,6 +2320,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcReturnEClass = createEClass(FUNC_RETURN);
     createEReference(funcReturnEClass, FUNC_RETURN__VAL);
 
+    funcWhileEClass = createEClass(FUNC_WHILE);
+    createEReference(funcWhileEClass, FUNC_WHILE__COND);
+    createEReference(funcWhileEClass, FUNC_WHILE__CYCLE);
+
     negativeIntConstantEClass = createEClass(NEGATIVE_INT_CONSTANT);
     createEAttribute(negativeIntConstantEClass, NEGATIVE_INT_CONSTANT__NEGVALUE);
 
@@ -2417,6 +2459,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     funcVarPopEClass.getESuperTypes().add(this.getFuncStatement());
     funcIfElseEClass.getESuperTypes().add(this.getFuncStatement());
     funcReturnEClass.getESuperTypes().add(this.getFuncStatement());
+    funcWhileEClass.getESuperTypes().add(this.getFuncStatement());
     negativeIntConstantEClass.getESuperTypes().add(this.getExpression());
     intConstantEClass.getESuperTypes().add(this.getExpression());
     stringConstantEClass.getESuperTypes().add(this.getExpression());
@@ -2574,6 +2617,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(funcReturnEClass, FuncReturn.class, "FuncReturn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncReturn_Val(), this.getExpression(), null, "val", null, 0, 1, FuncReturn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcWhileEClass, FuncWhile.class, "FuncWhile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncWhile_Cond(), this.getExpression(), null, "cond", null, 0, 1, FuncWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncWhile_Cycle(), this.getFuncBlock(), null, "cycle", null, 0, 1, FuncWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(negativeIntConstantEClass, NegativeIntConstant.class, "NegativeIntConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNegativeIntConstant_Negvalue(), ecorePackage.getEInt(), "negvalue", null, 0, 1, NegativeIntConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

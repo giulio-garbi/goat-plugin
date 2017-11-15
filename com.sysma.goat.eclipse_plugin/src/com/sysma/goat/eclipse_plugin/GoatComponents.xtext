@@ -200,13 +200,12 @@ Atomic returns Expression:
 	{IntConstant} value=INT |
 	{StringConstant} value=STRING |
 	{BoolConstant} value=('true'|'false') |
-	AtomicIndexable ('['{TupleGet.elem = current} idx = Atomic ']')?
+	AtomicIndexable ('['{TupleGet.elem = current} idx = Expression ']')?
 ;
 
 AtomicIndexable returns Expression:
 	{TupleConstant} '['(elem += Expression (',' elem += Expression)*)?']'|
 	{TupleLength} 'length''('elem = Atomic')'|
-	{TupleGet} 'get''('elem = Atomic ',' idx = Atomic')' |
 	{LocalVarRef} ref=[LRef] |
 	{LocalAttributeRef} "proc" "." attribute=ID |
 	{FunctionCall} function=[FuncDefinition]"("(params+=Expression(","params+=Expression)*)?")"|
@@ -271,7 +270,7 @@ FuncBlock:
 	'{' {FuncBlock} (statements += FuncStatement)* '}'
 ;
 FuncStatement:
-	(FuncVarAssign | FuncIfElse | FuncReturn | FuncVarDeclaration | FuncVarAppend | FuncVarPop) 
+	(FuncVarAssign | FuncIfElse | FuncReturn | FuncVarDeclaration | FuncVarAppend | FuncVarPop | FuncWhile) 
 ;
 
 FuncVarDeclaration:
@@ -297,6 +296,10 @@ FuncIfElse:
 ;
 FuncReturn:
 	'return' val = Expression
+;
+
+FuncWhile:
+	'while''('cond = Expression')' cycle=FuncBlock
 ;
 
 //@Override 

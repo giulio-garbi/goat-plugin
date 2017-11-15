@@ -68,6 +68,26 @@ class Utils{
 			_, h := (*x)[k]
 			return h
 		}
+		
+		func cast_int(x interface{}) int {
+			return x.(int)
+		}
+		
+		func cast_string(x interface{}) string {
+			return x.(string)
+		}
+		
+		func cast_bool(x interface{}) bool {
+			return x.(bool)
+		}
+		
+		func cast_tuple(x interface{}) goat.Tuple {
+			return x.(goat.Tuple)
+		}
+		
+		func cast_tuple_ptr(x interface{}) *goat.Tuple {
+			return x.(*goat.Tuple)
+		}
 		'''
 	}
 	

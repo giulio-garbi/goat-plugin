@@ -1364,6 +1364,43 @@ public interface GoatComponentsPackage extends EPackage
   int FUNC_RETURN_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncWhileImpl <em>Func While</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncWhileImpl
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncWhile()
+   * @generated
+   */
+  int FUNC_WHILE = 37;
+
+  /**
+   * The feature id for the '<em><b>Cond</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_WHILE__COND = FUNC_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Cycle</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_WHILE__CYCLE = FUNC_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Func While</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNC_WHILE_FEATURE_COUNT = FUNC_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NegativeIntConstantImpl <em>Negative Int Constant</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1371,7 +1408,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNegativeIntConstant()
    * @generated
    */
-  int NEGATIVE_INT_CONSTANT = 37;
+  int NEGATIVE_INT_CONSTANT = 38;
 
   /**
    * The feature id for the '<em><b>Negvalue</b></em>' attribute.
@@ -1399,7 +1436,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getIntConstant()
    * @generated
    */
-  int INT_CONSTANT = 38;
+  int INT_CONSTANT = 39;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1427,7 +1464,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getStringConstant()
    * @generated
    */
-  int STRING_CONSTANT = 39;
+  int STRING_CONSTANT = 40;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1455,7 +1492,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getBoolConstant()
    * @generated
    */
-  int BOOL_CONSTANT = 40;
+  int BOOL_CONSTANT = 41;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1483,7 +1520,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleConstant()
    * @generated
    */
-  int TUPLE_CONSTANT = 41;
+  int TUPLE_CONSTANT = 42;
 
   /**
    * The feature id for the '<em><b>Elem</b></em>' containment reference list.
@@ -1511,7 +1548,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOr()
    * @generated
    */
-  int OR = 42;
+  int OR = 43;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1539,7 +1576,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getAnd()
    * @generated
    */
-  int AND = 43;
+  int AND = 44;
 
   /**
    * The feature id for the '<em><b>Sub</b></em>' containment reference list.
@@ -1567,7 +1604,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 44;
+  int EQUALITY = 45;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1613,7 +1650,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComparison()
    * @generated
    */
-  int COMPARISON = 45;
+  int COMPARISON = 46;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1659,7 +1696,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 46;
+  int PLUS = 47;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1696,7 +1733,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 47;
+  int MINUS = 48;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1733,7 +1770,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getConcatenate()
    * @generated
    */
-  int CONCATENATE = 48;
+  int CONCATENATE = 49;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1770,7 +1807,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getMulOrDiv()
    * @generated
    */
-  int MUL_OR_DIV = 49;
+  int MUL_OR_DIV = 50;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1816,7 +1853,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getUnaryMinus()
    * @generated
    */
-  int UNARY_MINUS = 50;
+  int UNARY_MINUS = 51;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1844,7 +1881,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getNot()
    * @generated
    */
-  int NOT = 51;
+  int NOT = 52;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1872,7 +1909,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleGet()
    * @generated
    */
-  int TUPLE_GET = 52;
+  int TUPLE_GET = 53;
 
   /**
    * The feature id for the '<em><b>Elem</b></em>' containment reference.
@@ -1909,7 +1946,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getTupleLength()
    * @generated
    */
-  int TUPLE_LENGTH = 53;
+  int TUPLE_LENGTH = 54;
 
   /**
    * The feature id for the '<em><b>Elem</b></em>' containment reference.
@@ -1937,7 +1974,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalVarRef()
    * @generated
    */
-  int LOCAL_VAR_REF = 54;
+  int LOCAL_VAR_REF = 55;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -1965,7 +2002,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getLocalAttributeRef()
    * @generated
    */
-  int LOCAL_ATTRIBUTE_REF = 55;
+  int LOCAL_ATTRIBUTE_REF = 56;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -1993,7 +2030,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 56;
+  int FUNCTION_CALL = 57;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -2030,7 +2067,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getComponentAttributeRef()
    * @generated
    */
-  int COMPONENT_ATTRIBUTE_REF = 57;
+  int COMPONENT_ATTRIBUTE_REF = 58;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -2058,7 +2095,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getOutEqualityComparison()
    * @generated
    */
-  int OUT_EQUALITY_COMPARISON = 58;
+  int OUT_EQUALITY_COMPARISON = 59;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -2104,7 +2141,7 @@ public interface GoatComponentsPackage extends EPackage
    * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getRecAttributeRef()
    * @generated
    */
-  int REC_ATTRIBUTE_REF = 59;
+  int REC_ATTRIBUTE_REF = 60;
 
   /**
    * The feature id for the '<em><b>Attribute</b></em>' attribute.
@@ -3143,6 +3180,38 @@ public interface GoatComponentsPackage extends EPackage
    * @generated
    */
   EReference getFuncReturn_Val();
+
+  /**
+   * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile <em>Func While</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Func While</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile
+   * @generated
+   */
+  EClass getFuncWhile();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile#getCond <em>Cond</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cond</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile#getCond()
+   * @see #getFuncWhile()
+   * @generated
+   */
+  EReference getFuncWhile_Cond();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile#getCycle <em>Cycle</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Cycle</em>'.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile#getCycle()
+   * @see #getFuncWhile()
+   * @generated
+   */
+  EReference getFuncWhile_Cycle();
 
   /**
    * Returns the meta object for class '{@link com.sysma.goat.eclipse_plugin.goatComponents.NegativeIntConstant <em>Negative Int Constant</em>}'.
@@ -4634,6 +4703,32 @@ public interface GoatComponentsPackage extends EPackage
      * @generated
      */
     EReference FUNC_RETURN__VAL = eINSTANCE.getFuncReturn_Val();
+
+    /**
+     * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncWhileImpl <em>Func While</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.FuncWhileImpl
+     * @see com.sysma.goat.eclipse_plugin.goatComponents.impl.GoatComponentsPackageImpl#getFuncWhile()
+     * @generated
+     */
+    EClass FUNC_WHILE = eINSTANCE.getFuncWhile();
+
+    /**
+     * The meta object literal for the '<em><b>Cond</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_WHILE__COND = eINSTANCE.getFuncWhile_Cond();
+
+    /**
+     * The meta object literal for the '<em><b>Cycle</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNC_WHILE__CYCLE = eINSTANCE.getFuncWhile_Cycle();
 
     /**
      * The meta object literal for the '{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.NegativeIntConstantImpl <em>Negative Int Constant</em>}' class.

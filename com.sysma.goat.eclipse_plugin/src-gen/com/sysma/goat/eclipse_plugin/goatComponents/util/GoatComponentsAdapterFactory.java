@@ -261,6 +261,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createFuncReturnAdapter();
       }
       @Override
+      public Adapter caseFuncWhile(FuncWhile object)
+      {
+        return createFuncWhileAdapter();
+      }
+      @Override
       public Adapter caseNegativeIntConstant(NegativeIntConstant object)
       {
         return createNegativeIntConstantAdapter();
@@ -948,6 +953,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFuncReturnAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile <em>Func While</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.FuncWhile
+   * @generated
+   */
+  public Adapter createFuncWhileAdapter()
   {
     return null;
   }

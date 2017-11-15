@@ -64,13 +64,32 @@ public class CodeExpression {
           _matched=true;
         }
       }
+      if (!_matched) {
+        if (expr instanceof LocalVarRef) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (expr instanceof TupleGet) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (expr instanceof TupleLength) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (expr instanceof TupleConstant) {
+          _matched=true;
+        }
+      }
       if (_matched) {
         StringConcatenation _builder = new StringConcatenation();
+        String _castFunction = ExpressionTyping.castFunction(typ);
+        _builder.append(_castFunction);
         _builder.append("(");
         _builder.append(econv);
-        _builder.append(").(");
-        String _goType = ExpressionTyping.goType(typ);
-        _builder.append(_goType);
         _builder.append(")");
         _switchResult = _builder;
       }
@@ -359,10 +378,10 @@ public class CodeExpression {
       if (expr instanceof TupleLength) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(&(");
+        _builder.append("(");
         CharSequence _cast = CodeExpression.cast("tuple", ((TupleLength)expr).getElem(), localAttributesMap, attributesMap);
         _builder.append(_cast);
-        _builder.append(")).Length()");
+        _builder.append(").Length()");
         _switchResult = _builder;
       }
     }
@@ -370,10 +389,10 @@ public class CodeExpression {
       if (expr instanceof TupleGet) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(&(");
+        _builder.append("(");
         CharSequence _cast = CodeExpression.cast("tuple", ((TupleGet)expr).getElem(), localAttributesMap, attributesMap);
         _builder.append(_cast);
-        _builder.append(")).Get(");
+        _builder.append(").Get(");
         CharSequence _cast_1 = CodeExpression.cast("int", ((TupleGet)expr).getIdx(), localAttributesMap, attributesMap);
         _builder.append(_cast_1);
         _builder.append(")");
@@ -546,10 +565,10 @@ public class CodeExpression {
       if (expr instanceof TupleLength) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(&(");
+        _builder.append("(");
         CharSequence _cast = CodeExpression.cast("tuple", ((TupleLength)expr).getElem(), localAttributesMap, attrName);
         _builder.append(_cast);
-        _builder.append(")).Length()");
+        _builder.append(").Length()");
         _switchResult = _builder;
       }
     }
@@ -557,10 +576,10 @@ public class CodeExpression {
       if (expr instanceof TupleGet) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("(&(");
+        _builder.append("(");
         CharSequence _cast = CodeExpression.cast("tuple", ((TupleGet)expr).getElem(), localAttributesMap, attrName);
         _builder.append(_cast);
-        _builder.append(")).Get(");
+        _builder.append(").Get(");
         CharSequence _cast_1 = CodeExpression.cast("int", ((TupleGet)expr).getIdx(), localAttributesMap, attrName);
         _builder.append(_cast_1);
         _builder.append(")");

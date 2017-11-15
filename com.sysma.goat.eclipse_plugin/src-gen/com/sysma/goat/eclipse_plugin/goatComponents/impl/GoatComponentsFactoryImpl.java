@@ -102,6 +102,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.FUNC_VAR_POP: return createFuncVarPop();
       case GoatComponentsPackage.FUNC_IF_ELSE: return createFuncIfElse();
       case GoatComponentsPackage.FUNC_RETURN: return createFuncReturn();
+      case GoatComponentsPackage.FUNC_WHILE: return createFuncWhile();
       case GoatComponentsPackage.NEGATIVE_INT_CONSTANT: return createNegativeIntConstant();
       case GoatComponentsPackage.INT_CONSTANT: return createIntConstant();
       case GoatComponentsPackage.STRING_CONSTANT: return createStringConstant();
@@ -535,6 +536,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     FuncReturnImpl funcReturn = new FuncReturnImpl();
     return funcReturn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FuncWhile createFuncWhile()
+  {
+    FuncWhileImpl funcWhile = new FuncWhileImpl();
+    return funcWhile;
   }
 
   /**

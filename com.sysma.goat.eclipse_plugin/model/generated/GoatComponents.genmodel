@@ -132,6 +132,10 @@
     <genClasses ecoreClass="GoatComponents.ecore#//FuncReturn">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncReturn/val"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//FuncWhile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncWhile/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//FuncWhile/cycle"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//NegativeIntConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//NegativeIntConstant/negvalue"/>
     </genClasses>

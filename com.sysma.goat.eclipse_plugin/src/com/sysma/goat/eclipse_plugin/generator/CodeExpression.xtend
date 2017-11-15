@@ -38,8 +38,8 @@ class CodeExpression {
 	def static cast(ExprType typ, Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
 		val econv = getExpressionWithAttributes(expr, localAttributesMap, attributesMap)
 		switch(expr){
-			LocalAttributeRef, RecAttributeRef, ComponentAttributeRef:
-				'''(«econv»).(«ExpressionTyping.goType(typ)»)'''
+			LocalAttributeRef, RecAttributeRef, ComponentAttributeRef, LocalVarRef, TupleGet, TupleLength, TupleConstant:
+				'''«ExpressionTyping.castFunction(typ)»(«econv»)'''
 			default:
 				econv
 		}
@@ -104,9 +104,9 @@ class CodeExpression {
 			TupleConstant:
 				'''goat.NewTuple(«expr.elem.map[getExpressionWithAttributes(it, localAttributesMap, attributesMap)].join(", ")»)'''
 			TupleLength:
-				'''(&(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»)).Length()'''
+				'''(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»).Length()'''
 			TupleGet:
-				'''(&(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»)).Get(«cast("int", expr.idx, localAttributesMap, attributesMap)»)'''
+				'''(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»).Get(«cast("int", expr.idx, localAttributesMap, attributesMap)»)'''
 		}
 	}
 	
@@ -164,9 +164,9 @@ class CodeExpression {
 			TupleConstant:
 				'''goat.NewTuple(«expr.elem.map[getOutputPredicateExpr(it, localAttributesMap, attrName)].join(", ")»)'''
 			TupleLength:
-				'''(&(«cast("tuple", expr.elem, localAttributesMap, attrName)»)).Length()'''
+				'''(«cast("tuple", expr.elem, localAttributesMap, attrName)»).Length()'''
 			TupleGet:
-				'''(&(«cast("tuple", expr.elem, localAttributesMap, attrName)»)).Get(«cast("int", expr.idx, localAttributesMap, attrName)»)'''
+				'''(«cast("tuple", expr.elem, localAttributesMap, attrName)»).Get(«cast("int", expr.idx, localAttributesMap, attrName)»)'''
 			LocalAttributeRef:
 				localAttributesMap.readValue(expr.attribute)
 			ComponentAttributeRef:

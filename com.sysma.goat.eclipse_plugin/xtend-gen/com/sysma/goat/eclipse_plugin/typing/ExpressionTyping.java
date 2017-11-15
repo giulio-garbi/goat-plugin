@@ -90,6 +90,32 @@ public class ExpressionTyping {
     return ExpressionTyping.goType(ExpressionTyping.typeOf(x));
   }
   
+  public static String castFunction(final ExpressionTyping.ExprType x) {
+    String _switchResult = null;
+    if (x != null) {
+      switch (x) {
+        case INT:
+          _switchResult = "cast_int";
+          break;
+        case BOOL:
+          _switchResult = "cast_bool";
+          break;
+        case STRING:
+          _switchResult = "cast_string";
+          break;
+        case TUPLE:
+          _switchResult = "cast_tuple";
+          break;
+        case UNKNOWN:
+          _switchResult = "";
+          break;
+        default:
+          break;
+      }
+    }
+    return _switchResult;
+  }
+  
   public static String goType(final ExpressionTyping.ExprType x) {
     String _switchResult = null;
     if (x != null) {
