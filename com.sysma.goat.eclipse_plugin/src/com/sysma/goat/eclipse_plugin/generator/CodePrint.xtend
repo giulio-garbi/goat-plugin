@@ -48,6 +48,9 @@ class CodePrint {
 			if(escapedSequence.startsWith("comp.")){
 				compLevel = true
 				attrName = escapedSequence.substring(5)
+			} else if(escapedSequence.startsWith("proc.")) {
+				compLevel = false
+				attrName = escapedSequence
 			} else {
 				compLevel = false
 				attrName = escapedSequence

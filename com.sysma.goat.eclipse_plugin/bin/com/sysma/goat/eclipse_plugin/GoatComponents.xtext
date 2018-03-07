@@ -133,17 +133,22 @@ EnvInitValue returns Expression:
 	{TupleConstant} '['(elem += EnvInitValue (',' elem += EnvInitValue)*)?']'
 ;
 
-Environment:
-	{Environment} "{"(attrs += ID ':=' vals+=EnvInitValue (","attrs += ID ':=' vals+=EnvInitValue)*)?"}"
+EnvInitOrArg returns Expression:
+	EnvInitValue | {EnvironmentArg} arg = [EnvParam]
 ;
 
+Environment:
+	{Environment} "{"(attrs += ID ':=' vals+=EnvInitOrArg (","attrs += ID ':=' vals+=EnvInitOrArg)*)?"}"
+;
+
+EnvParam : name = ID;
 
 EnvironmentDefinition:
-	'environment' name=ID env = Environment
+	'environment' name=ID ("(" envParams += EnvParam ("," envParams += EnvParam)*")")? env = Environment
 ;
 
 ComponentDefinition:
-	"component" (envref = [EnvironmentDefinition]|env = Environment) ':' block = (PDPBlock|ProcessBlock)
+	"component" (envref = [EnvironmentDefinition]("("envargs += EnvInitOrArg(","envargs += EnvInitOrArg)*")")?|env = Environment) ':' block = (PDPBlock|ProcessBlock)
 ;
 
 // Expression
@@ -186,10 +191,17 @@ MulOrDiv returns Expression:
 ;
 
 Primary returns Expression:
-	'(' Expression ')' |
-	{UnaryMinus} "-" expression=Primary |
-	{Not} "!" expression=Primary |
-	Atomic
+	{UnaryMinus} "-" expression=ContainmentExpr |
+	{Not} "!" expression=ContainmentExpr |
+	ContainmentExpr
+;
+
+ContainmentExpr returns Expression:
+	AtomicOrExpr ({ContainmentExpression.elem = current} "in" tuple = AtomicOrExpr)?
+;
+
+AtomicOrExpr returns Expression:
+	'(' Expression ')' | Atomic
 ;
 
 LRef:
@@ -209,7 +221,7 @@ AtomicIndexable returns Expression:
 	{LocalVarRef} ref=[LRef] |
 	{LocalAttributeRef} "proc" "." attribute=ID |
 	{FunctionCall} function=[FuncDefinition]"("(params+=Expression(","params+=Expression)*)?")"|
-	{ComponentAttributeRef} "comp""."attribute=ID 
+	{ComponentAttributeRef} "comp""."attribute=ID
 ;
 
 terminal TYPE:
@@ -229,14 +241,21 @@ OutAnd returns Expression:
 
 OutEqualityComparison returns Expression:
 	OutPrimary | 
-	( {OutEqualityComparison} left= OutAtomicOrRec op=("=="|"!="|">="|"<="|">"|"<") right=OutAtomicOrRec )
+	( 
+		OutAtomicOrRec
+		(({OutEqualityComparison.left = current} op=("=="|"!="|">="|"<="|">"|"<") right=OutAtomicOrRec) |
+		({ContainmentExpression.elem = current} "in" tuple=OutAtomicOrRec))
+	)
 ;
 
-
 OutPrimary returns Expression:
-	'(' OutputPredicate ')' |
-	{Not} "!" expression=OutPrimary |
+	{Not} "!" expression=(OutPrimary|OCE) |
+	'(' OutputPredicate ')' | 
 	{BoolConstant} value=('true'|'false') 
+;
+
+OCE returns Expression:
+	{ContainmentExpression} elem = OutAtomicOrRec "in" tuple=OutAtomicOrRec
 ;
 
 OutAtomicOrRec returns Expression:

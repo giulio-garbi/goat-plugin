@@ -81,7 +81,6 @@ public class Main {
         System.err.println(it);
       };
       issues.forEach(_function);
-      return;
     }
     this.fileAccess.setOutputPath(projectPath.append("src-gen").toString());
     String _string = projectPath.toString();

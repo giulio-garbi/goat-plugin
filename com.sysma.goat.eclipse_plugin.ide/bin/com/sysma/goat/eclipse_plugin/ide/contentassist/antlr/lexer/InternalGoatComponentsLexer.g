@@ -39,6 +39,8 @@ Print : 'print';
 
 Spawn : 'spawn';
 
+While : 'while';
+
 Call : 'call';
 
 Case : 'case';
@@ -54,8 +56,6 @@ Proc : 'proc';
 Send : 'send';
 
 True : 'true';
-
-Get : 'get';
 
 Pop : 'pop';
 
@@ -78,6 +78,8 @@ EqualsSignEqualsSign : '==';
 GreaterThanSignEqualsSign : '>=';
 
 If : 'if';
+
+In : 'in';
 
 VerticalLineVerticalLine : '||';
 

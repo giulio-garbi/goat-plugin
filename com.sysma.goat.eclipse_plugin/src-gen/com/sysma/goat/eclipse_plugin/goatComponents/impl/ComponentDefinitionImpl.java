@@ -6,17 +6,25 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +35,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnvref <em>Envref</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnvargs <em>Envargs</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ComponentDefinitionImpl#getBlock <em>Block</em>}</li>
  * </ul>
@@ -44,6 +53,16 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected EnvironmentDefinition envref;
+
+  /**
+   * The cached value of the '{@link #getEnvargs() <em>Envargs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEnvargs()
+   * @generated
+   * @ordered
+   */
+  protected EList<Expression> envargs;
 
   /**
    * The cached value of the '{@link #getEnv() <em>Env</em>}' containment reference.
@@ -127,6 +146,20 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     envref = newEnvref;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF, oldEnvref, envref));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Expression> getEnvargs()
+  {
+    if (envargs == null)
+    {
+      envargs = new EObjectContainmentEList<Expression>(Expression.class, this, GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS);
+    }
+    return envargs;
   }
 
   /**
@@ -235,6 +268,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS:
+        return ((InternalEList<?>)getEnvargs()).basicRemove(otherEnd, msgs);
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return basicSetEnv(null, msgs);
       case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
@@ -256,6 +291,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
         if (resolve) return getEnvref();
         return basicGetEnvref();
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS:
+        return getEnvargs();
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return getEnv();
       case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:
@@ -269,6 +306,7 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -276,6 +314,10 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     {
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
         setEnvref((EnvironmentDefinition)newValue);
+        return;
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS:
+        getEnvargs().clear();
+        getEnvargs().addAll((Collection<? extends Expression>)newValue);
         return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)newValue);
@@ -300,6 +342,9 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
         setEnvref((EnvironmentDefinition)null);
         return;
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS:
+        getEnvargs().clear();
+        return;
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         setEnv((Environment)null);
         return;
@@ -322,6 +367,8 @@ public class ComponentDefinitionImpl extends MinimalEObjectImpl.Container implem
     {
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENVREF:
         return envref != null;
+      case GoatComponentsPackage.COMPONENT_DEFINITION__ENVARGS:
+        return envargs != null && !envargs.isEmpty();
       case GoatComponentsPackage.COMPONENT_DEFINITION__ENV:
         return env != null;
       case GoatComponentsPackage.COMPONENT_DEFINITION__BLOCK:

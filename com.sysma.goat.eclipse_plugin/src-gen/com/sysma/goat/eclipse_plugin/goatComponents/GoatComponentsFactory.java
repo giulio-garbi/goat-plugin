@@ -240,6 +240,15 @@ public interface GoatComponentsFactory extends EFactory
   Environment createEnvironment();
 
   /**
+   * Returns a new object of class '<em>Env Param</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Env Param</em>'.
+   * @generated
+   */
+  EnvParam createEnvParam();
+
+  /**
    * Returns a new object of class '<em>Environment Definition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -411,6 +420,15 @@ public interface GoatComponentsFactory extends EFactory
   TupleConstant createTupleConstant();
 
   /**
+   * Returns a new object of class '<em>Environment Arg</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Environment Arg</em>'.
+   * @generated
+   */
+  EnvironmentArg createEnvironmentArg();
+
+  /**
    * Returns a new object of class '<em>Or</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -499,6 +517,15 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   Not createNot();
+
+  /**
+   * Returns a new object of class '<em>Containment Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Containment Expression</em>'.
+   * @generated
+   */
+  ContainmentExpression createContainmentExpression();
 
   /**
    * Returns a new object of class '<em>Tuple Get</em>'.

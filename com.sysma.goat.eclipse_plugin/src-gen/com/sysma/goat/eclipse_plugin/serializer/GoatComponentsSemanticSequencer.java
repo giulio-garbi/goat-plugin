@@ -10,7 +10,10 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
+import com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvParam;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg;
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncBlock;
@@ -101,7 +104,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| action == grammarAccess.getPlusOrMinusAccess().getConcatenateLeftAction_1_0_2_0()
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()) {
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()) {
 					sequence_And(context, (And) semanticObject); 
 					return; 
 				}
@@ -133,15 +139,21 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (BoolConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getEnvInitValueRule()) {
+				else if (rule == grammarAccess.getEnvInitValueRule()
+						|| rule == grammarAccess.getEnvInitOrArgRule()) {
 					sequence_EnvInitValue(context, (BoolConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()) {
 					sequence_OutAtomic(context, (BoolConstant) semanticObject); 
 					return; 
@@ -177,13 +189,18 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()
 						|| action == grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getAtomicIndexableRule()) {
 					sequence_AtomicIndexable(context, (ComponentAttributeRef) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()
 						|| action == grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getOutAtomicIndexableRule()) {
@@ -197,8 +214,52 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 			case GoatComponentsPackage.CONCATENATE:
 				sequence_PlusOrMinus(context, (Concatenate) semanticObject); 
 				return; 
+			case GoatComponentsPackage.CONTAINMENT_EXPRESSION:
+				if (rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getOrRule()
+						|| action == grammarAccess.getOrAccess().getOrSubAction_1_0()
+						|| rule == grammarAccess.getAndRule()
+						|| action == grammarAccess.getAndAccess().getAndSubAction_1_0()
+						|| rule == grammarAccess.getEqualityRule()
+						|| action == grammarAccess.getEqualityAccess().getEqualityLeftAction_1_0()
+						|| rule == grammarAccess.getComparisonRule()
+						|| action == grammarAccess.getComparisonAccess().getComparisonLeftAction_1_0()
+						|| rule == grammarAccess.getPlusOrMinusRule()
+						|| action == grammarAccess.getPlusOrMinusAccess().getPlusLeftAction_1_0_0_0()
+						|| action == grammarAccess.getPlusOrMinusAccess().getMinusLeftAction_1_0_1_0()
+						|| action == grammarAccess.getPlusOrMinusAccess().getConcatenateLeftAction_1_0_2_0()
+						|| rule == grammarAccess.getMulOrDivRule()
+						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()) {
+					sequence_ContainmentExpr(context, (ContainmentExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getOCERule()) {
+					sequence_OCE(context, (ContainmentExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getOutputPredicateRule()
+						|| rule == grammarAccess.getOutOrRule()
+						|| action == grammarAccess.getOutOrAccess().getOrSubAction_1_0()
+						|| rule == grammarAccess.getOutAndRule()
+						|| action == grammarAccess.getOutAndAccess().getAndSubAction_1_0()
+						|| rule == grammarAccess.getOutEqualityComparisonRule()
+						|| rule == grammarAccess.getOutPrimaryRule()) {
+					sequence_OutEqualityComparison(context, (ContainmentExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case GoatComponentsPackage.ENV_PARAM:
+				sequence_EnvParam(context, (EnvParam) semanticObject); 
+				return; 
 			case GoatComponentsPackage.ENVIRONMENT:
 				sequence_Environment(context, (Environment) semanticObject); 
+				return; 
+			case GoatComponentsPackage.ENVIRONMENT_ARG:
+				sequence_EnvInitOrArg(context, (EnvironmentArg) semanticObject); 
 				return; 
 			case GoatComponentsPackage.ENVIRONMENT_DEFINITION:
 				sequence_EnvironmentDefinition(context, (EnvironmentDefinition) semanticObject); 
@@ -253,13 +314,18 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()
 						|| action == grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getAtomicIndexableRule()) {
 					sequence_AtomicIndexable(context, (FunctionCall) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()
 						|| action == grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getOutAtomicIndexableRule()) {
@@ -284,15 +350,21 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (IntConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getEnvInitValueRule()) {
+				else if (rule == grammarAccess.getEnvInitValueRule()
+						|| rule == grammarAccess.getEnvInitOrArgRule()) {
 					sequence_EnvInitValue(context, (IntConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()) {
 					sequence_OutAtomic(context, (IntConstant) semanticObject); 
 					return; 
@@ -315,13 +387,18 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()
 						|| action == grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getAtomicIndexableRule()) {
 					sequence_AtomicIndexable(context, (LocalAttributeRef) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()
 						|| action == grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getOutAtomicIndexableRule()) {
@@ -370,7 +447,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| action == grammarAccess.getPlusOrMinusAccess().getConcatenateLeftAction_1_0_2_0()
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()) {
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()) {
 					sequence_Primary(context, (Not) semanticObject); 
 					return; 
 				}
@@ -391,7 +471,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| action == grammarAccess.getPlusOrMinusAccess().getConcatenateLeftAction_1_0_2_0()
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
-						|| rule == grammarAccess.getPrimaryRule()) {
+						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()) {
 					sequence_Or(context, (Or) semanticObject); 
 					return; 
 				}
@@ -505,15 +588,21 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (StringConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getEnvInitValueRule()) {
+				else if (rule == grammarAccess.getEnvInitValueRule()
+						|| rule == grammarAccess.getEnvInitOrArgRule()) {
 					sequence_EnvInitValue(context, (StringConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()) {
 					sequence_OutAtomic(context, (StringConstant) semanticObject); 
 					return; 
@@ -536,17 +625,23 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()
 						|| action == grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getAtomicIndexableRule()) {
 					sequence_AtomicIndexable(context, (TupleConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getEnvInitValueRule()) {
+				else if (rule == grammarAccess.getEnvInitValueRule()
+						|| rule == grammarAccess.getEnvInitOrArgRule()) {
 					sequence_EnvInitValue(context, (TupleConstant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()
 						|| action == grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getOutAtomicIndexableRule()) {
@@ -571,11 +666,16 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()) {
 					sequence_Atomic(context, (TupleGet) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()) {
 					sequence_OutAtomic(context, (TupleGet) semanticObject); 
 					return; 
@@ -598,13 +698,18 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 						|| rule == grammarAccess.getMulOrDivRule()
 						|| action == grammarAccess.getMulOrDivAccess().getMulOrDivLeftAction_1_0()
 						|| rule == grammarAccess.getPrimaryRule()
+						|| rule == grammarAccess.getContainmentExprRule()
+						|| action == grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0()
+						|| rule == grammarAccess.getAtomicOrExprRule()
 						|| rule == grammarAccess.getAtomicRule()
 						|| action == grammarAccess.getAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getAtomicIndexableRule()) {
 					sequence_AtomicIndexable(context, (TupleLength) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getOutAtomicOrRecRule()
+				else if (action == grammarAccess.getOutEqualityComparisonAccess().getOutEqualityComparisonLeftAction_1_1_0_0()
+						|| action == grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0()
+						|| rule == grammarAccess.getOutAtomicOrRecRule()
 						|| rule == grammarAccess.getOutAtomicRule()
 						|| action == grammarAccess.getOutAtomicAccess().getTupleGetElemAction_3_1_1()
 						|| rule == grammarAccess.getOutAtomicIndexableRule()) {
@@ -647,6 +752,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns And
 	 *     MulOrDiv.MulOrDiv_1_0 returns And
 	 *     Primary returns And
+	 *     ContainmentExpr returns And
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns And
+	 *     AtomicOrExpr returns And
 	 *
 	 * Constraint:
 	 *     (sub+=And_And_1_0 sub+=Equality)
@@ -674,6 +782,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns ComponentAttributeRef
 	 *     MulOrDiv.MulOrDiv_1_0 returns ComponentAttributeRef
 	 *     Primary returns ComponentAttributeRef
+	 *     ContainmentExpr returns ComponentAttributeRef
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns ComponentAttributeRef
+	 *     AtomicOrExpr returns ComponentAttributeRef
 	 *     Atomic returns ComponentAttributeRef
 	 *     Atomic.TupleGet_3_1_1 returns ComponentAttributeRef
 	 *     AtomicIndexable returns ComponentAttributeRef
@@ -710,6 +821,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns FunctionCall
 	 *     MulOrDiv.MulOrDiv_1_0 returns FunctionCall
 	 *     Primary returns FunctionCall
+	 *     ContainmentExpr returns FunctionCall
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns FunctionCall
+	 *     AtomicOrExpr returns FunctionCall
 	 *     Atomic returns FunctionCall
 	 *     Atomic.TupleGet_3_1_1 returns FunctionCall
 	 *     AtomicIndexable returns FunctionCall
@@ -740,6 +854,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns LocalAttributeRef
 	 *     MulOrDiv.MulOrDiv_1_0 returns LocalAttributeRef
 	 *     Primary returns LocalAttributeRef
+	 *     ContainmentExpr returns LocalAttributeRef
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns LocalAttributeRef
+	 *     AtomicOrExpr returns LocalAttributeRef
 	 *     Atomic returns LocalAttributeRef
 	 *     Atomic.TupleGet_3_1_1 returns LocalAttributeRef
 	 *     AtomicIndexable returns LocalAttributeRef
@@ -776,6 +893,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns LocalVarRef
 	 *     MulOrDiv.MulOrDiv_1_0 returns LocalVarRef
 	 *     Primary returns LocalVarRef
+	 *     ContainmentExpr returns LocalVarRef
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns LocalVarRef
+	 *     AtomicOrExpr returns LocalVarRef
 	 *     Atomic returns LocalVarRef
 	 *     Atomic.TupleGet_3_1_1 returns LocalVarRef
 	 *     AtomicIndexable returns LocalVarRef
@@ -812,6 +932,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns TupleConstant
 	 *     MulOrDiv.MulOrDiv_1_0 returns TupleConstant
 	 *     Primary returns TupleConstant
+	 *     ContainmentExpr returns TupleConstant
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns TupleConstant
+	 *     AtomicOrExpr returns TupleConstant
 	 *     Atomic returns TupleConstant
 	 *     Atomic.TupleGet_3_1_1 returns TupleConstant
 	 *     AtomicIndexable returns TupleConstant
@@ -842,6 +965,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns TupleLength
 	 *     MulOrDiv.MulOrDiv_1_0 returns TupleLength
 	 *     Primary returns TupleLength
+	 *     ContainmentExpr returns TupleLength
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns TupleLength
+	 *     AtomicOrExpr returns TupleLength
 	 *     Atomic returns TupleLength
 	 *     Atomic.TupleGet_3_1_1 returns TupleLength
 	 *     AtomicIndexable returns TupleLength
@@ -878,6 +1004,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns BoolConstant
 	 *     MulOrDiv.MulOrDiv_1_0 returns BoolConstant
 	 *     Primary returns BoolConstant
+	 *     ContainmentExpr returns BoolConstant
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns BoolConstant
+	 *     AtomicOrExpr returns BoolConstant
 	 *     Atomic returns BoolConstant
 	 *
 	 * Constraint:
@@ -906,6 +1035,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns IntConstant
 	 *     MulOrDiv.MulOrDiv_1_0 returns IntConstant
 	 *     Primary returns IntConstant
+	 *     ContainmentExpr returns IntConstant
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns IntConstant
+	 *     AtomicOrExpr returns IntConstant
 	 *     Atomic returns IntConstant
 	 *
 	 * Constraint:
@@ -940,6 +1072,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns StringConstant
 	 *     MulOrDiv.MulOrDiv_1_0 returns StringConstant
 	 *     Primary returns StringConstant
+	 *     ContainmentExpr returns StringConstant
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns StringConstant
+	 *     AtomicOrExpr returns StringConstant
 	 *     Atomic returns StringConstant
 	 *
 	 * Constraint:
@@ -974,6 +1109,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns TupleGet
 	 *     MulOrDiv.MulOrDiv_1_0 returns TupleGet
 	 *     Primary returns TupleGet
+	 *     ContainmentExpr returns TupleGet
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns TupleGet
+	 *     AtomicOrExpr returns TupleGet
 	 *     Atomic returns TupleGet
 	 *
 	 * Constraint:
@@ -1011,6 +1149,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Comparison
 	 *     MulOrDiv.MulOrDiv_1_0 returns Comparison
 	 *     Primary returns Comparison
+	 *     ContainmentExpr returns Comparison
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Comparison
+	 *     AtomicOrExpr returns Comparison
 	 *
 	 * Constraint:
 	 *     (left=Comparison_Comparison_1_0 (op='>=' | op='<=' | op='>' | op='<') right=PlusOrMinus)
@@ -1025,10 +1166,49 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     ComponentDefinition returns ComponentDefinition
 	 *
 	 * Constraint:
-	 *     ((envref=[EnvironmentDefinition|ID] | env=Environment) (block=PDPBlock | block=ProcessBlock))
+	 *     (((envref=[EnvironmentDefinition|ID] (envargs+=EnvInitOrArg envargs+=EnvInitOrArg*)?) | env=Environment) (block=PDPBlock | block=ProcessBlock))
 	 */
 	protected void sequence_ComponentDefinition(ISerializationContext context, ComponentDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns ContainmentExpression
+	 *     Or returns ContainmentExpression
+	 *     Or.Or_1_0 returns ContainmentExpression
+	 *     And returns ContainmentExpression
+	 *     And.And_1_0 returns ContainmentExpression
+	 *     Equality returns ContainmentExpression
+	 *     Equality.Equality_1_0 returns ContainmentExpression
+	 *     Comparison returns ContainmentExpression
+	 *     Comparison.Comparison_1_0 returns ContainmentExpression
+	 *     PlusOrMinus returns ContainmentExpression
+	 *     PlusOrMinus.Plus_1_0_0_0 returns ContainmentExpression
+	 *     PlusOrMinus.Minus_1_0_1_0 returns ContainmentExpression
+	 *     PlusOrMinus.Concatenate_1_0_2_0 returns ContainmentExpression
+	 *     MulOrDiv returns ContainmentExpression
+	 *     MulOrDiv.MulOrDiv_1_0 returns ContainmentExpression
+	 *     Primary returns ContainmentExpression
+	 *     ContainmentExpr returns ContainmentExpression
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns ContainmentExpression
+	 *     AtomicOrExpr returns ContainmentExpression
+	 *
+	 * Constraint:
+	 *     (elem=ContainmentExpr_ContainmentExpression_1_0 tuple=AtomicOrExpr)
+	 */
+	protected void sequence_ContainmentExpr(ISerializationContext context, ContainmentExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getContainmentExprAccess().getContainmentExpressionElemAction_1_0(), semanticObject.getElem());
+		feeder.accept(grammarAccess.getContainmentExprAccess().getTupleAtomicOrExprParserRuleCall_1_2_0(), semanticObject.getTuple());
+		feeder.finish();
 	}
 	
 	
@@ -1046,7 +1226,26 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     EnvInitOrArg returns EnvironmentArg
+	 *
+	 * Constraint:
+	 *     arg=[EnvParam|ID]
+	 */
+	protected void sequence_EnvInitOrArg(ISerializationContext context, EnvironmentArg semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_ARG__ARG) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_ARG__ARG));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEnvInitOrArgAccess().getArgEnvParamIDTerminalRuleCall_1_1_0_1(), semanticObject.eGet(GoatComponentsPackage.Literals.ENVIRONMENT_ARG__ARG, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EnvInitValue returns BoolConstant
+	 *     EnvInitOrArg returns BoolConstant
 	 *
 	 * Constraint:
 	 *     (value='true' | value='false')
@@ -1059,6 +1258,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	/**
 	 * Contexts:
 	 *     EnvInitValue returns IntConstant
+	 *     EnvInitOrArg returns IntConstant
 	 *
 	 * Constraint:
 	 *     value=INT
@@ -1077,6 +1277,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	/**
 	 * Contexts:
 	 *     EnvInitValue returns NegativeIntConstant
+	 *     EnvInitOrArg returns NegativeIntConstant
 	 *
 	 * Constraint:
 	 *     negvalue=INT
@@ -1095,6 +1296,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	/**
 	 * Contexts:
 	 *     EnvInitValue returns StringConstant
+	 *     EnvInitOrArg returns StringConstant
 	 *
 	 * Constraint:
 	 *     value=STRING
@@ -1113,6 +1315,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	/**
 	 * Contexts:
 	 *     EnvInitValue returns TupleConstant
+	 *     EnvInitOrArg returns TupleConstant
 	 *
 	 * Constraint:
 	 *     (elem+=EnvInitValue elem+=EnvInitValue*)?
@@ -1124,22 +1327,31 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     EnvParam returns EnvParam
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_EnvParam(ISerializationContext context, EnvParam semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENV_PARAM__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENV_PARAM__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEnvParamAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     EnvironmentDefinition returns EnvironmentDefinition
 	 *
 	 * Constraint:
-	 *     (name=ID env=Environment)
+	 *     (name=ID (envParams+=EnvParam envParams+=EnvParam*)? env=Environment)
 	 */
 	protected void sequence_EnvironmentDefinition(ISerializationContext context, EnvironmentDefinition semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__NAME));
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__ENV) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.ENVIRONMENT_DEFINITION__ENV));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEnvironmentDefinitionAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getEnvironmentDefinitionAccess().getEnvEnvironmentParserRuleCall_2_0(), semanticObject.getEnv());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1148,7 +1360,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     Environment returns Environment
 	 *
 	 * Constraint:
-	 *     (attrs+=ID vals+=EnvInitValue (attrs+=ID vals+=EnvInitValue)*)?
+	 *     (attrs+=ID vals+=EnvInitOrArg (attrs+=ID vals+=EnvInitOrArg)*)?
 	 */
 	protected void sequence_Environment(ISerializationContext context, Environment semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1173,6 +1385,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Equality
 	 *     MulOrDiv.MulOrDiv_1_0 returns Equality
 	 *     Primary returns Equality
+	 *     ContainmentExpr returns Equality
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Equality
+	 *     AtomicOrExpr returns Equality
 	 *
 	 * Constraint:
 	 *     (left=Equality_Equality_1_0 (op='==' | op='!=') right=Comparison)
@@ -1392,12 +1607,36 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns MulOrDiv
 	 *     MulOrDiv.MulOrDiv_1_0 returns MulOrDiv
 	 *     Primary returns MulOrDiv
+	 *     ContainmentExpr returns MulOrDiv
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns MulOrDiv
+	 *     AtomicOrExpr returns MulOrDiv
 	 *
 	 * Constraint:
 	 *     (left=MulOrDiv_MulOrDiv_1_0 (op='*' | op='/' | op='%') right=Primary)
 	 */
 	protected void sequence_MulOrDiv(ISerializationContext context, MulOrDiv semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     OCE returns ContainmentExpression
+	 *
+	 * Constraint:
+	 *     (elem=OutAtomicOrRec tuple=OutAtomicOrRec)
+	 */
+	protected void sequence_OCE(ISerializationContext context, ContainmentExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOCEAccess().getElemOutAtomicOrRecParserRuleCall_1_0(), semanticObject.getElem());
+		feeder.accept(grammarAccess.getOCEAccess().getTupleOutAtomicOrRecParserRuleCall_3_0(), semanticObject.getTuple());
+		feeder.finish();
 	}
 	
 	
@@ -1419,6 +1658,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Or
 	 *     MulOrDiv.MulOrDiv_1_0 returns Or
 	 *     Primary returns Or
+	 *     ContainmentExpr returns Or
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Or
+	 *     AtomicOrExpr returns Or
 	 *
 	 * Constraint:
 	 *     (sub+=Or_Or_1_0 sub+=And)
@@ -1448,6 +1690,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns ComponentAttributeRef
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns ComponentAttributeRef
 	 *     OutAtomicOrRec returns ComponentAttributeRef
 	 *     OutAtomic returns ComponentAttributeRef
 	 *     OutAtomic.TupleGet_3_1_1 returns ComponentAttributeRef
@@ -1469,6 +1713,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns FunctionCall
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns FunctionCall
 	 *     OutAtomicOrRec returns FunctionCall
 	 *     OutAtomic returns FunctionCall
 	 *     OutAtomic.TupleGet_3_1_1 returns FunctionCall
@@ -1484,6 +1730,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns LocalAttributeRef
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns LocalAttributeRef
 	 *     OutAtomicOrRec returns LocalAttributeRef
 	 *     OutAtomic returns LocalAttributeRef
 	 *     OutAtomic.TupleGet_3_1_1 returns LocalAttributeRef
@@ -1505,6 +1753,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns TupleConstant
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns TupleConstant
 	 *     OutAtomicOrRec returns TupleConstant
 	 *     OutAtomic returns TupleConstant
 	 *     OutAtomic.TupleGet_3_1_1 returns TupleConstant
@@ -1520,6 +1770,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns TupleLength
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns TupleLength
 	 *     OutAtomicOrRec returns TupleLength
 	 *     OutAtomic returns TupleLength
 	 *     OutAtomic.TupleGet_3_1_1 returns TupleLength
@@ -1541,6 +1793,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns RecAttributeRef
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns RecAttributeRef
 	 *     OutAtomicOrRec returns RecAttributeRef
 	 *
 	 * Constraint:
@@ -1559,6 +1813,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns BoolConstant
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns BoolConstant
 	 *     OutAtomicOrRec returns BoolConstant
 	 *     OutAtomic returns BoolConstant
 	 *
@@ -1572,6 +1828,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns IntConstant
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns IntConstant
 	 *     OutAtomicOrRec returns IntConstant
 	 *     OutAtomic returns IntConstant
 	 *
@@ -1591,6 +1849,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns StringConstant
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns StringConstant
 	 *     OutAtomicOrRec returns StringConstant
 	 *     OutAtomic returns StringConstant
 	 *
@@ -1610,6 +1870,8 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutEqualityComparison.OutEqualityComparison_1_1_0_0 returns TupleGet
+	 *     OutEqualityComparison.ContainmentExpression_1_1_1_0 returns TupleGet
 	 *     OutAtomicOrRec returns TupleGet
 	 *     OutAtomic returns TupleGet
 	 *
@@ -1632,6 +1894,33 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	
 	/**
 	 * Contexts:
+	 *     OutputPredicate returns ContainmentExpression
+	 *     OutOr returns ContainmentExpression
+	 *     OutOr.Or_1_0 returns ContainmentExpression
+	 *     OutAnd returns ContainmentExpression
+	 *     OutAnd.And_1_0 returns ContainmentExpression
+	 *     OutEqualityComparison returns ContainmentExpression
+	 *     OutPrimary returns ContainmentExpression
+	 *
+	 * Constraint:
+	 *     (elem=OutEqualityComparison_ContainmentExpression_1_1_1_0 tuple=OutAtomicOrRec)
+	 */
+	protected void sequence_OutEqualityComparison(ISerializationContext context, ContainmentExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__ELEM));
+			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.CONTAINMENT_EXPRESSION__TUPLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOutEqualityComparisonAccess().getContainmentExpressionElemAction_1_1_1_0(), semanticObject.getElem());
+		feeder.accept(grammarAccess.getOutEqualityComparisonAccess().getTupleOutAtomicOrRecParserRuleCall_1_1_1_2_0(), semanticObject.getTuple());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     OutputPredicate returns OutEqualityComparison
 	 *     OutOr returns OutEqualityComparison
 	 *     OutOr.Or_1_0 returns OutEqualityComparison
@@ -1642,7 +1931,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *
 	 * Constraint:
 	 *     (
-	 *         left=OutAtomicOrRec 
+	 *         left=OutEqualityComparison_OutEqualityComparison_1_1_0_0 
 	 *         (
 	 *             op='==' | 
 	 *             op='!=' | 
@@ -1706,16 +1995,10 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     OutPrimary returns Not
 	 *
 	 * Constraint:
-	 *     expression=OutPrimary
+	 *     (expression=OutPrimary | expression=OCE)
 	 */
 	protected void sequence_OutPrimary(ISerializationContext context, Not semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GoatComponentsPackage.Literals.NOT__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.NOT__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getOutPrimaryAccess().getExpressionOutPrimaryParserRuleCall_1_2_0(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1797,6 +2080,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Concatenate
 	 *     MulOrDiv.MulOrDiv_1_0 returns Concatenate
 	 *     Primary returns Concatenate
+	 *     ContainmentExpr returns Concatenate
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Concatenate
+	 *     AtomicOrExpr returns Concatenate
 	 *
 	 * Constraint:
 	 *     (left=PlusOrMinus_Concatenate_1_0_2_0 right=MulOrDiv)
@@ -1833,6 +2119,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Minus
 	 *     MulOrDiv.MulOrDiv_1_0 returns Minus
 	 *     Primary returns Minus
+	 *     ContainmentExpr returns Minus
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Minus
+	 *     AtomicOrExpr returns Minus
 	 *
 	 * Constraint:
 	 *     (left=PlusOrMinus_Minus_1_0_1_0 right=MulOrDiv)
@@ -1869,6 +2158,9 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Plus
 	 *     MulOrDiv.MulOrDiv_1_0 returns Plus
 	 *     Primary returns Plus
+	 *     ContainmentExpr returns Plus
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Plus
+	 *     AtomicOrExpr returns Plus
 	 *
 	 * Constraint:
 	 *     (left=PlusOrMinus_Plus_1_0_0_0 right=MulOrDiv)
@@ -1905,9 +2197,12 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns Not
 	 *     MulOrDiv.MulOrDiv_1_0 returns Not
 	 *     Primary returns Not
+	 *     ContainmentExpr returns Not
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns Not
+	 *     AtomicOrExpr returns Not
 	 *
 	 * Constraint:
-	 *     expression=Primary
+	 *     expression=ContainmentExpr
 	 */
 	protected void sequence_Primary(ISerializationContext context, Not semanticObject) {
 		if (errorAcceptor != null) {
@@ -1915,7 +2210,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.NOT__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_2_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionContainmentExprParserRuleCall_1_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -1938,9 +2233,12 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 	 *     MulOrDiv returns UnaryMinus
 	 *     MulOrDiv.MulOrDiv_1_0 returns UnaryMinus
 	 *     Primary returns UnaryMinus
+	 *     ContainmentExpr returns UnaryMinus
+	 *     ContainmentExpr.ContainmentExpression_1_0 returns UnaryMinus
+	 *     AtomicOrExpr returns UnaryMinus
 	 *
 	 * Constraint:
-	 *     expression=Primary
+	 *     expression=ContainmentExpr
 	 */
 	protected void sequence_Primary(ISerializationContext context, UnaryMinus semanticObject) {
 		if (errorAcceptor != null) {
@@ -1948,7 +2246,7 @@ public class GoatComponentsSemanticSequencer extends AbstractDelegatingSemanticS
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GoatComponentsPackage.Literals.UNARY_MINUS__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionPrimaryParserRuleCall_1_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getPrimaryAccess().getExpressionContainmentExprParserRuleCall_0_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	

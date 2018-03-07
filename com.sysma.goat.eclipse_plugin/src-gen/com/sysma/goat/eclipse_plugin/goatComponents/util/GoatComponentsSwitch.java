@@ -255,6 +255,13 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.ENV_PARAM:
+      {
+        EnvParam envParam = (EnvParam)theEObject;
+        T result = caseEnvParam(envParam);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.ENVIRONMENT_DEFINITION:
       {
         EnvironmentDefinition environmentDefinition = (EnvironmentDefinition)theEObject;
@@ -402,6 +409,14 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.ENVIRONMENT_ARG:
+      {
+        EnvironmentArg environmentArg = (EnvironmentArg)theEObject;
+        T result = caseEnvironmentArg(environmentArg);
+        if (result == null) result = caseExpression(environmentArg);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.OR:
       {
         Or or = (Or)theEObject;
@@ -479,6 +494,14 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         Not not = (Not)theEObject;
         T result = caseNot(not);
         if (result == null) result = caseExpression(not);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.CONTAINMENT_EXPRESSION:
+      {
+        ContainmentExpression containmentExpression = (ContainmentExpression)theEObject;
+        T result = caseContainmentExpression(containmentExpression);
+        if (result == null) result = caseExpression(containmentExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -935,6 +958,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Env Param</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Env Param</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnvParam(EnvParam object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Environment Definition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1239,6 +1278,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Environment Arg</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Environment Arg</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnvironmentArg(EnvironmentArg object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Or</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1394,6 +1449,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNot(Not object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Containment Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Containment Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseContainmentExpression(ContainmentExpression object)
   {
     return null;
   }

@@ -89,6 +89,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.PRINT_FORMATTED_STATEMENT: return createPrintFormattedStatement();
       case GoatComponentsPackage.EXPRESSION: return createExpression();
       case GoatComponentsPackage.ENVIRONMENT: return createEnvironment();
+      case GoatComponentsPackage.ENV_PARAM: return createEnvParam();
       case GoatComponentsPackage.ENVIRONMENT_DEFINITION: return createEnvironmentDefinition();
       case GoatComponentsPackage.COMPONENT_DEFINITION: return createComponentDefinition();
       case GoatComponentsPackage.LREF: return createLRef();
@@ -108,6 +109,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.STRING_CONSTANT: return createStringConstant();
       case GoatComponentsPackage.BOOL_CONSTANT: return createBoolConstant();
       case GoatComponentsPackage.TUPLE_CONSTANT: return createTupleConstant();
+      case GoatComponentsPackage.ENVIRONMENT_ARG: return createEnvironmentArg();
       case GoatComponentsPackage.OR: return createOr();
       case GoatComponentsPackage.AND: return createAnd();
       case GoatComponentsPackage.EQUALITY: return createEquality();
@@ -118,6 +120,7 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
       case GoatComponentsPackage.MUL_OR_DIV: return createMulOrDiv();
       case GoatComponentsPackage.UNARY_MINUS: return createUnaryMinus();
       case GoatComponentsPackage.NOT: return createNot();
+      case GoatComponentsPackage.CONTAINMENT_EXPRESSION: return createContainmentExpression();
       case GoatComponentsPackage.TUPLE_GET: return createTupleGet();
       case GoatComponentsPackage.TUPLE_LENGTH: return createTupleLength();
       case GoatComponentsPackage.LOCAL_VAR_REF: return createLocalVarRef();
@@ -400,6 +403,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EnvParam createEnvParam()
+  {
+    EnvParamImpl envParam = new EnvParamImpl();
+    return envParam;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EnvironmentDefinition createEnvironmentDefinition()
   {
     EnvironmentDefinitionImpl environmentDefinition = new EnvironmentDefinitionImpl();
@@ -609,6 +623,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EnvironmentArg createEnvironmentArg()
+  {
+    EnvironmentArgImpl environmentArg = new EnvironmentArgImpl();
+    return environmentArg;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Or createOr()
   {
     OrImpl or = new OrImpl();
@@ -712,6 +737,17 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     NotImpl not = new NotImpl();
     return not;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ContainmentExpression createContainmentExpression()
+  {
+    ContainmentExpressionImpl containmentExpression = new ContainmentExpressionImpl();
+    return containmentExpression;
   }
 
   /**

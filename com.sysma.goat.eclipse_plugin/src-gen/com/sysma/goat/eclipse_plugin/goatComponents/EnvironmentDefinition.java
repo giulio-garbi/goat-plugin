@@ -3,6 +3,8 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getName <em>Name</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getEnvParams <em>Env Params</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition#getEnv <em>Env</em>}</li>
  * </ul>
  *
@@ -49,6 +52,22 @@ public interface EnvironmentDefinition extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Env Params</b></em>' containment reference list.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.EnvParam}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Env Params</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Env Params</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getEnvironmentDefinition_EnvParams()
+   * @model containment="true"
+   * @generated
+   */
+  EList<EnvParam> getEnvParams();
 
   /**
    * Returns the value of the '<em><b>Env</b></em>' containment reference.

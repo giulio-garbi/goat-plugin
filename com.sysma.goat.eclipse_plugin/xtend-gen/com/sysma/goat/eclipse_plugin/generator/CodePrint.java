@@ -87,8 +87,14 @@ public class CodePrint {
           compLevel = true;
           attrName = escapedSequence.substring(5);
         } else {
-          compLevel = false;
-          attrName = escapedSequence;
+          boolean _startsWith_1 = escapedSequence.startsWith("proc.");
+          if (_startsWith_1) {
+            compLevel = false;
+            attrName = escapedSequence;
+          } else {
+            compLevel = false;
+            attrName = escapedSequence;
+          }
         }
         final CodeAttribute attribCode = new CodeAttribute(attrName, compLevel, componentAttr, localAttr);
         StringConcatenation _builder_2 = new StringConcatenation();

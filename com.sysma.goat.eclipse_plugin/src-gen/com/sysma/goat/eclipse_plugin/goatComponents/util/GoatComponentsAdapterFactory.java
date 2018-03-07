@@ -196,6 +196,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createEnvironmentAdapter();
       }
       @Override
+      public Adapter caseEnvParam(EnvParam object)
+      {
+        return createEnvParamAdapter();
+      }
+      @Override
       public Adapter caseEnvironmentDefinition(EnvironmentDefinition object)
       {
         return createEnvironmentDefinitionAdapter();
@@ -291,6 +296,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createTupleConstantAdapter();
       }
       @Override
+      public Adapter caseEnvironmentArg(EnvironmentArg object)
+      {
+        return createEnvironmentArgAdapter();
+      }
+      @Override
       public Adapter caseOr(Or object)
       {
         return createOrAdapter();
@@ -339,6 +349,11 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNot(Not object)
       {
         return createNotAdapter();
+      }
+      @Override
+      public Adapter caseContainmentExpression(ContainmentExpression object)
+      {
+        return createContainmentExpressionAdapter();
       }
       @Override
       public Adapter caseTupleGet(TupleGet object)
@@ -763,6 +778,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvParam <em>Env Param</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvParam
+   * @generated
+   */
+  public Adapter createEnvParamAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition <em>Environment Definition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1048,6 +1078,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg <em>Environment Arg</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg
+   * @generated
+   */
+  public Adapter createEnvironmentArgAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.Or <em>Or</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1193,6 +1238,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNotAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression <em>Containment Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression
+   * @generated
+   */
+  public Adapter createContainmentExpressionAdapter()
   {
     return null;
   }

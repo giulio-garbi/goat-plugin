@@ -6,6 +6,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.BoolConstant;
 import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
+import com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.FuncParam;
@@ -361,6 +362,20 @@ public class CodeExpression {
       }
     }
     if (!_matched) {
+      if (expr instanceof ContainmentExpression) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(");
+        CharSequence _cast = CodeExpression.cast("tuple", ((ContainmentExpression)expr).getTuple(), localAttributesMap, attributesMap);
+        _builder.append(_cast);
+        _builder.append(").Contains(");
+        CharSequence _expressionWithAttributes = CodeExpression.getExpressionWithAttributes(((ContainmentExpression)expr).getElem(), localAttributesMap, attributesMap);
+        _builder.append(_expressionWithAttributes);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
       if (expr instanceof TupleConstant) {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
@@ -602,6 +617,33 @@ public class CodeExpression {
         _builder.append(_attribute);
         _builder.append("\")");
         _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (expr instanceof ContainmentExpression) {
+        _matched=true;
+        String _xblockexpression = null;
+        {
+          boolean _isOPAttribute = CodeExpression.isOPAttribute(((ContainmentExpression)expr).getElem());
+          final boolean isOpLImm = (!_isOPAttribute);
+          boolean _isOPAttribute_1 = CodeExpression.isOPAttribute(((ContainmentExpression)expr).getTuple());
+          final boolean isOpRImm = (!_isOPAttribute_1);
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("goat.IsIn(");
+          CharSequence _outputPredicateExpr = CodeExpression.getOutputPredicateExpr(((ContainmentExpression)expr).getElem(), localAttributesMap, attrName);
+          _builder.append(_outputPredicateExpr);
+          _builder.append(", ");
+          _builder.append((!isOpLImm));
+          _builder.append(", ");
+          StringConcatenation _builder_1 = new StringConcatenation();
+          CharSequence _outputPredicateExpr_1 = CodeExpression.getOutputPredicateExpr(((ContainmentExpression)expr).getTuple(), localAttributesMap, attrName);
+          _builder_1.append(_outputPredicateExpr_1);
+          _builder_1.append(", ");
+          _builder_1.append((!isOpRImm));
+          _builder_1.append(")");
+          _xblockexpression = (_builder.toString() + _builder_1);
+        }
+        _switchResult = _xblockexpression;
       }
     }
     if (!_matched) {

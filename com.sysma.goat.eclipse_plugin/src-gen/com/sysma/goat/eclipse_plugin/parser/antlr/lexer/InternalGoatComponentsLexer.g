@@ -79,6 +79,8 @@ GreaterThanSignEqualsSign : '>=';
 
 If : 'if';
 
+In : 'in';
+
 VerticalLineVerticalLine : '||';
 
 ExclamationMark : '!';

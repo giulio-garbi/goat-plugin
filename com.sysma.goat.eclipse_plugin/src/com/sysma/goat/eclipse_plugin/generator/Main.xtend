@@ -61,7 +61,7 @@ class Main {
 		val issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl)
 		if (!issues.empty) {
 			issues.forEach[System.err.println(it)]
-			return
+			//return
 		}
 
 		// Configure and start the generator

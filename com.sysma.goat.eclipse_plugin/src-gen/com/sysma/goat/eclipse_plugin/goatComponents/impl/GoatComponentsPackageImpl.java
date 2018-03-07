@@ -9,7 +9,10 @@ import com.sysma.goat.eclipse_plugin.goatComponents.Comparison;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentAttributeRef;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Concatenate;
+import com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvParam;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
+import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg;
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Equality;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
@@ -257,6 +260,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass envParamEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass environmentDefinitionEClass = null;
 
   /**
@@ -390,6 +400,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass environmentArgEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass orEClass = null;
 
   /**
@@ -454,6 +471,13 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * @generated
    */
   private EClass notEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass containmentExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1182,6 +1206,26 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEnvParam()
+  {
+    return envParamEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEnvParam_Name()
+  {
+    return (EAttribute)envParamEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEnvironmentDefinition()
   {
     return environmentDefinitionEClass;
@@ -1202,9 +1246,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEnvironmentDefinition_Env()
+  public EReference getEnvironmentDefinition_EnvParams()
   {
     return (EReference)environmentDefinitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnvironmentDefinition_Env()
+  {
+    return (EReference)environmentDefinitionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1232,7 +1286,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentDefinition_Env()
+  public EReference getComponentDefinition_Envargs()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(1);
   }
@@ -1242,9 +1296,19 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getComponentDefinition_Block()
+  public EReference getComponentDefinition_Env()
   {
     return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComponentDefinition_Block()
+  {
+    return (EReference)componentDefinitionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1672,6 +1736,26 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEnvironmentArg()
+  {
+    return environmentArgEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnvironmentArg_Arg()
+  {
+    return (EReference)environmentArgEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOr()
   {
     return orEClass;
@@ -1955,6 +2039,36 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
   public EReference getNot_Expression()
   {
     return (EReference)notEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getContainmentExpression()
+  {
+    return containmentExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContainmentExpression_Elem()
+  {
+    return (EReference)containmentExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getContainmentExpression_Tuple()
+  {
+    return (EReference)containmentExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2271,12 +2385,17 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     createEAttribute(environmentEClass, ENVIRONMENT__ATTRS);
     createEReference(environmentEClass, ENVIRONMENT__VALS);
 
+    envParamEClass = createEClass(ENV_PARAM);
+    createEAttribute(envParamEClass, ENV_PARAM__NAME);
+
     environmentDefinitionEClass = createEClass(ENVIRONMENT_DEFINITION);
     createEAttribute(environmentDefinitionEClass, ENVIRONMENT_DEFINITION__NAME);
+    createEReference(environmentDefinitionEClass, ENVIRONMENT_DEFINITION__ENV_PARAMS);
     createEReference(environmentDefinitionEClass, ENVIRONMENT_DEFINITION__ENV);
 
     componentDefinitionEClass = createEClass(COMPONENT_DEFINITION);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENVREF);
+    createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENVARGS);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__ENV);
     createEReference(componentDefinitionEClass, COMPONENT_DEFINITION__BLOCK);
 
@@ -2339,6 +2458,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     tupleConstantEClass = createEClass(TUPLE_CONSTANT);
     createEReference(tupleConstantEClass, TUPLE_CONSTANT__ELEM);
 
+    environmentArgEClass = createEClass(ENVIRONMENT_ARG);
+    createEReference(environmentArgEClass, ENVIRONMENT_ARG__ARG);
+
     orEClass = createEClass(OR);
     createEReference(orEClass, OR__SUB);
 
@@ -2377,6 +2499,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     notEClass = createEClass(NOT);
     createEReference(notEClass, NOT__EXPRESSION);
+
+    containmentExpressionEClass = createEClass(CONTAINMENT_EXPRESSION);
+    createEReference(containmentExpressionEClass, CONTAINMENT_EXPRESSION__ELEM);
+    createEReference(containmentExpressionEClass, CONTAINMENT_EXPRESSION__TUPLE);
 
     tupleGetEClass = createEClass(TUPLE_GET);
     createEReference(tupleGetEClass, TUPLE_GET__ELEM);
@@ -2465,6 +2591,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     stringConstantEClass.getESuperTypes().add(this.getExpression());
     boolConstantEClass.getESuperTypes().add(this.getExpression());
     tupleConstantEClass.getESuperTypes().add(this.getExpression());
+    environmentArgEClass.getESuperTypes().add(this.getExpression());
     orEClass.getESuperTypes().add(this.getExpression());
     andEClass.getESuperTypes().add(this.getExpression());
     equalityEClass.getESuperTypes().add(this.getExpression());
@@ -2475,6 +2602,7 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     mulOrDivEClass.getESuperTypes().add(this.getExpression());
     unaryMinusEClass.getESuperTypes().add(this.getExpression());
     notEClass.getESuperTypes().add(this.getExpression());
+    containmentExpressionEClass.getESuperTypes().add(this.getExpression());
     tupleGetEClass.getESuperTypes().add(this.getExpression());
     tupleLengthEClass.getESuperTypes().add(this.getExpression());
     localVarRefEClass.getESuperTypes().add(this.getExpression());
@@ -2569,12 +2697,17 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEAttribute(getEnvironment_Attrs(), ecorePackage.getEString(), "attrs", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnvironment_Vals(), this.getExpression(), null, "vals", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(envParamEClass, EnvParam.class, "EnvParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnvParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnvParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(environmentDefinitionEClass, EnvironmentDefinition.class, "EnvironmentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnvironmentDefinition_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnvironmentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnvironmentDefinition_EnvParams(), this.getEnvParam(), null, "envParams", null, 0, -1, EnvironmentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnvironmentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, EnvironmentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(componentDefinitionEClass, ComponentDefinition.class, "ComponentDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getComponentDefinition_Envref(), this.getEnvironmentDefinition(), null, "envref", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComponentDefinition_Envargs(), this.getExpression(), null, "envargs", null, 0, -1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Env(), this.getEnvironment(), null, "env", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getComponentDefinition_Block(), this.getProcessBlock(), null, "block", null, 0, 1, ComponentDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2637,6 +2770,9 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
     initEClass(tupleConstantEClass, TupleConstant.class, "TupleConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTupleConstant_Elem(), this.getExpression(), null, "elem", null, 0, -1, TupleConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(environmentArgEClass, EnvironmentArg.class, "EnvironmentArg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnvironmentArg_Arg(), this.getEnvParam(), null, "arg", null, 0, 1, EnvironmentArg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(orEClass, Or.class, "Or", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOr_Sub(), this.getExpression(), null, "sub", null, 0, -1, Or.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2675,6 +2811,10 @@ public class GoatComponentsPackageImpl extends EPackageImpl implements GoatCompo
 
     initEClass(notEClass, Not.class, "Not", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNot_Expression(), this.getExpression(), null, "expression", null, 0, 1, Not.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(containmentExpressionEClass, ContainmentExpression.class, "ContainmentExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getContainmentExpression_Elem(), this.getExpression(), null, "elem", null, 0, 1, ContainmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContainmentExpression_Tuple(), this.getExpression(), null, "tuple", null, 0, 1, ContainmentExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tupleGetEClass, TupleGet.class, "TupleGet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTupleGet_Elem(), this.getExpression(), null, "elem", null, 0, 1, TupleGet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

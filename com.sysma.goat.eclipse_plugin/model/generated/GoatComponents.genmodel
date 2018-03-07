@@ -84,12 +84,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//Environment/attrs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Environment/vals"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//EnvParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//EnvParam/name"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//EnvironmentDefinition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GoatComponents.ecore#//EnvironmentDefinition/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//EnvironmentDefinition/envParams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//EnvironmentDefinition/env"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//ComponentDefinition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/envref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/envargs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/env"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ComponentDefinition/block"/>
     </genClasses>
@@ -151,6 +156,9 @@
     <genClasses ecoreClass="GoatComponents.ecore#//TupleConstant">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleConstant/elem"/>
     </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//EnvironmentArg">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//EnvironmentArg/arg"/>
+    </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Or">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Or/sub"/>
     </genClasses>
@@ -189,6 +197,10 @@
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//Not">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//Not/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="GoatComponents.ecore#//ContainmentExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ContainmentExpression/elem"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//ContainmentExpression/tuple"/>
     </genClasses>
     <genClasses ecoreClass="GoatComponents.ecore#//TupleGet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GoatComponents.ecore#//TupleGet/elem"/>

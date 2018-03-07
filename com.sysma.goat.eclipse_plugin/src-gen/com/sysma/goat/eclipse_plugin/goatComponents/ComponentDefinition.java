@@ -3,6 +3,8 @@
  */
 package com.sysma.goat.eclipse_plugin.goatComponents;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvref <em>Envref</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnvargs <em>Envargs</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getEnv <em>Env</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition#getBlock <em>Block</em>}</li>
  * </ul>
@@ -50,6 +53,22 @@ public interface ComponentDefinition extends EObject
    * @generated
    */
   void setEnvref(EnvironmentDefinition value);
+
+  /**
+   * Returns the value of the '<em><b>Envargs</b></em>' containment reference list.
+   * The list contents are of type {@link com.sysma.goat.eclipse_plugin.goatComponents.Expression}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Envargs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Envargs</em>' containment reference list.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getComponentDefinition_Envargs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Expression> getEnvargs();
 
   /**
    * Returns the value of the '<em><b>Env</b></em>' containment reference.

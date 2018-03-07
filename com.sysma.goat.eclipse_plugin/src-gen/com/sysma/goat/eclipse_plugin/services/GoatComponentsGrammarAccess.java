@@ -1258,6 +1258,41 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//']'
 		public Keyword getRightSquareBracketKeyword_4_3() { return cRightSquareBracketKeyword_4_3; }
 	}
+	public class EnvInitOrArgElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.EnvInitOrArg");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cEnvInitValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cEnvironmentArgAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cArgAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cArgEnvParamCrossReference_1_1_0 = (CrossReference)cArgAssignment_1_1.eContents().get(0);
+		private final RuleCall cArgEnvParamIDTerminalRuleCall_1_1_0_1 = (RuleCall)cArgEnvParamCrossReference_1_1_0.eContents().get(1);
+		
+		//EnvInitOrArg Expression:
+		//	EnvInitValue | {EnvironmentArg} arg=[EnvParam];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//EnvInitValue | {EnvironmentArg} arg=[EnvParam]
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EnvInitValue
+		public RuleCall getEnvInitValueParserRuleCall_0() { return cEnvInitValueParserRuleCall_0; }
+		
+		//{EnvironmentArg} arg=[EnvParam]
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{EnvironmentArg}
+		public Action getEnvironmentArgAction_1_0() { return cEnvironmentArgAction_1_0; }
+		
+		//arg=[EnvParam]
+		public Assignment getArgAssignment_1_1() { return cArgAssignment_1_1; }
+		
+		//[EnvParam]
+		public CrossReference getArgEnvParamCrossReference_1_1_0() { return cArgEnvParamCrossReference_1_1_0; }
+		
+		//ID
+		public RuleCall getArgEnvParamIDTerminalRuleCall_1_1_0_1() { return cArgEnvParamIDTerminalRuleCall_1_1_0_1; }
+	}
 	public class EnvironmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Environment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1268,21 +1303,21 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAttrsIDTerminalRuleCall_2_0_0 = (RuleCall)cAttrsAssignment_2_0.eContents().get(0);
 		private final Keyword cColonEqualsSignKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final Assignment cValsAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cValsEnvInitValueParserRuleCall_2_2_0 = (RuleCall)cValsAssignment_2_2.eContents().get(0);
+		private final RuleCall cValsEnvInitOrArgParserRuleCall_2_2_0 = (RuleCall)cValsAssignment_2_2.eContents().get(0);
 		private final Group cGroup_2_3 = (Group)cGroup_2.eContents().get(3);
 		private final Keyword cCommaKeyword_2_3_0 = (Keyword)cGroup_2_3.eContents().get(0);
 		private final Assignment cAttrsAssignment_2_3_1 = (Assignment)cGroup_2_3.eContents().get(1);
 		private final RuleCall cAttrsIDTerminalRuleCall_2_3_1_0 = (RuleCall)cAttrsAssignment_2_3_1.eContents().get(0);
 		private final Keyword cColonEqualsSignKeyword_2_3_2 = (Keyword)cGroup_2_3.eContents().get(2);
 		private final Assignment cValsAssignment_2_3_3 = (Assignment)cGroup_2_3.eContents().get(3);
-		private final RuleCall cValsEnvInitValueParserRuleCall_2_3_3_0 = (RuleCall)cValsAssignment_2_3_3.eContents().get(0);
+		private final RuleCall cValsEnvInitOrArgParserRuleCall_2_3_3_0 = (RuleCall)cValsAssignment_2_3_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Environment:
-		//	{Environment} "{" (attrs+=ID ':=' vals+=EnvInitValue ("," attrs+=ID ':=' vals+=EnvInitValue)*)? "}";
+		//	{Environment} "{" (attrs+=ID ':=' vals+=EnvInitOrArg ("," attrs+=ID ':=' vals+=EnvInitOrArg)*)? "}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Environment} "{" (attrs+=ID ':=' vals+=EnvInitValue ("," attrs+=ID ':=' vals+=EnvInitValue)*)? "}"
+		//{Environment} "{" (attrs+=ID ':=' vals+=EnvInitOrArg ("," attrs+=ID ':=' vals+=EnvInitOrArg)*)? "}"
 		public Group getGroup() { return cGroup; }
 		
 		//{Environment}
@@ -1291,7 +1326,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 		
-		//(attrs+=ID ':=' vals+=EnvInitValue ("," attrs+=ID ':=' vals+=EnvInitValue)*)?
+		//(attrs+=ID ':=' vals+=EnvInitOrArg ("," attrs+=ID ':=' vals+=EnvInitOrArg)*)?
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//attrs+=ID
@@ -1303,13 +1338,13 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//':='
 		public Keyword getColonEqualsSignKeyword_2_1() { return cColonEqualsSignKeyword_2_1; }
 		
-		//vals+=EnvInitValue
+		//vals+=EnvInitOrArg
 		public Assignment getValsAssignment_2_2() { return cValsAssignment_2_2; }
 		
-		//EnvInitValue
-		public RuleCall getValsEnvInitValueParserRuleCall_2_2_0() { return cValsEnvInitValueParserRuleCall_2_2_0; }
+		//EnvInitOrArg
+		public RuleCall getValsEnvInitOrArgParserRuleCall_2_2_0() { return cValsEnvInitOrArgParserRuleCall_2_2_0; }
 		
-		//("," attrs+=ID ':=' vals+=EnvInitValue)*
+		//("," attrs+=ID ':=' vals+=EnvInitOrArg)*
 		public Group getGroup_2_3() { return cGroup_2_3; }
 		
 		//","
@@ -1324,14 +1359,29 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//':='
 		public Keyword getColonEqualsSignKeyword_2_3_2() { return cColonEqualsSignKeyword_2_3_2; }
 		
-		//vals+=EnvInitValue
+		//vals+=EnvInitOrArg
 		public Assignment getValsAssignment_2_3_3() { return cValsAssignment_2_3_3; }
 		
-		//EnvInitValue
-		public RuleCall getValsEnvInitValueParserRuleCall_2_3_3_0() { return cValsEnvInitValueParserRuleCall_2_3_3_0; }
+		//EnvInitOrArg
+		public RuleCall getValsEnvInitOrArgParserRuleCall_2_3_3_0() { return cValsEnvInitOrArgParserRuleCall_2_3_3_0; }
 		
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+	}
+	public class EnvParamElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.EnvParam");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//EnvParam:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class EnvironmentDefinitionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.EnvironmentDefinition");
@@ -1339,14 +1389,23 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEnvironmentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cEnvAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cEnvEnvironmentParserRuleCall_2_0 = (RuleCall)cEnvAssignment_2.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cEnvParamsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cEnvParamsEnvParamParserRuleCall_2_1_0 = (RuleCall)cEnvParamsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cEnvParamsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cEnvParamsEnvParamParserRuleCall_2_2_1_0 = (RuleCall)cEnvParamsAssignment_2_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
+		private final Assignment cEnvAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEnvEnvironmentParserRuleCall_3_0 = (RuleCall)cEnvAssignment_3.eContents().get(0);
 		
 		//EnvironmentDefinition:
-		//	'environment' name=ID env=Environment;
+		//	'environment' name=ID ("(" envParams+=EnvParam ("," envParams+=EnvParam)* ")")? env=Environment;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'environment' name=ID env=Environment
+		//'environment' name=ID ("(" envParams+=EnvParam ("," envParams+=EnvParam)* ")")? env=Environment
 		public Group getGroup() { return cGroup; }
 		
 		//'environment'
@@ -1358,20 +1417,57 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
+		//("(" envParams+=EnvParam ("," envParams+=EnvParam)* ")")?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		
+		//envParams+=EnvParam
+		public Assignment getEnvParamsAssignment_2_1() { return cEnvParamsAssignment_2_1; }
+		
+		//EnvParam
+		public RuleCall getEnvParamsEnvParamParserRuleCall_2_1_0() { return cEnvParamsEnvParamParserRuleCall_2_1_0; }
+		
+		//("," envParams+=EnvParam)*
+		public Group getGroup_2_2() { return cGroup_2_2; }
+		
+		//","
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+		
+		//envParams+=EnvParam
+		public Assignment getEnvParamsAssignment_2_2_1() { return cEnvParamsAssignment_2_2_1; }
+		
+		//EnvParam
+		public RuleCall getEnvParamsEnvParamParserRuleCall_2_2_1_0() { return cEnvParamsEnvParamParserRuleCall_2_2_1_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
+		
 		//env=Environment
-		public Assignment getEnvAssignment_2() { return cEnvAssignment_2; }
+		public Assignment getEnvAssignment_3() { return cEnvAssignment_3; }
 		
 		//Environment
-		public RuleCall getEnvEnvironmentParserRuleCall_2_0() { return cEnvEnvironmentParserRuleCall_2_0; }
+		public RuleCall getEnvEnvironmentParserRuleCall_3_0() { return cEnvEnvironmentParserRuleCall_3_0; }
 	}
 	public class ComponentDefinitionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.ComponentDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cComponentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cEnvrefAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final CrossReference cEnvrefEnvironmentDefinitionCrossReference_1_0_0 = (CrossReference)cEnvrefAssignment_1_0.eContents().get(0);
-		private final RuleCall cEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_1 = (RuleCall)cEnvrefEnvironmentDefinitionCrossReference_1_0_0.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Assignment cEnvrefAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final CrossReference cEnvrefEnvironmentDefinitionCrossReference_1_0_0_0 = (CrossReference)cEnvrefAssignment_1_0_0.eContents().get(0);
+		private final RuleCall cEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_0_1 = (RuleCall)cEnvrefEnvironmentDefinitionCrossReference_1_0_0_0.eContents().get(1);
+		private final Group cGroup_1_0_1 = (Group)cGroup_1_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_0_1_0 = (Keyword)cGroup_1_0_1.eContents().get(0);
+		private final Assignment cEnvargsAssignment_1_0_1_1 = (Assignment)cGroup_1_0_1.eContents().get(1);
+		private final RuleCall cEnvargsEnvInitOrArgParserRuleCall_1_0_1_1_0 = (RuleCall)cEnvargsAssignment_1_0_1_1.eContents().get(0);
+		private final Group cGroup_1_0_1_2 = (Group)cGroup_1_0_1.eContents().get(2);
+		private final Keyword cCommaKeyword_1_0_1_2_0 = (Keyword)cGroup_1_0_1_2.eContents().get(0);
+		private final Assignment cEnvargsAssignment_1_0_1_2_1 = (Assignment)cGroup_1_0_1_2.eContents().get(1);
+		private final RuleCall cEnvargsEnvInitOrArgParserRuleCall_1_0_1_2_1_0 = (RuleCall)cEnvargsAssignment_1_0_1_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_0_1_3 = (Keyword)cGroup_1_0_1.eContents().get(3);
 		private final Assignment cEnvAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
 		private final RuleCall cEnvEnvironmentParserRuleCall_1_1_0 = (RuleCall)cEnvAssignment_1_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -1381,26 +1477,58 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBlockProcessBlockParserRuleCall_3_0_1 = (RuleCall)cBlockAlternatives_3_0.eContents().get(1);
 		
 		//ComponentDefinition:
-		//	"component" (envref=[EnvironmentDefinition] | env=Environment) ':' block=(PDPBlock | ProcessBlock);
+		//	"component" (envref=[EnvironmentDefinition] ("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")? |
+		//	env=Environment) ':' block=(PDPBlock | ProcessBlock);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"component" (envref=[EnvironmentDefinition] | env=Environment) ':' block=(PDPBlock | ProcessBlock)
+		//"component" (envref=[EnvironmentDefinition] ("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")? |
+		//env=Environment) ':' block=(PDPBlock | ProcessBlock)
 		public Group getGroup() { return cGroup; }
 		
 		//"component"
 		public Keyword getComponentKeyword_0() { return cComponentKeyword_0; }
 		
-		//envref=[EnvironmentDefinition] | env=Environment
+		//envref=[EnvironmentDefinition] ("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")? | env=Environment
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
+		//envref=[EnvironmentDefinition] ("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")?
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
 		//envref=[EnvironmentDefinition]
-		public Assignment getEnvrefAssignment_1_0() { return cEnvrefAssignment_1_0; }
+		public Assignment getEnvrefAssignment_1_0_0() { return cEnvrefAssignment_1_0_0; }
 		
 		//[EnvironmentDefinition]
-		public CrossReference getEnvrefEnvironmentDefinitionCrossReference_1_0_0() { return cEnvrefEnvironmentDefinitionCrossReference_1_0_0; }
+		public CrossReference getEnvrefEnvironmentDefinitionCrossReference_1_0_0_0() { return cEnvrefEnvironmentDefinitionCrossReference_1_0_0_0; }
 		
 		//ID
-		public RuleCall getEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_1() { return cEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_1; }
+		public RuleCall getEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_0_1() { return cEnvrefEnvironmentDefinitionIDTerminalRuleCall_1_0_0_0_1; }
+		
+		//("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")?
+		public Group getGroup_1_0_1() { return cGroup_1_0_1; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1_0_1_0() { return cLeftParenthesisKeyword_1_0_1_0; }
+		
+		//envargs+=EnvInitOrArg
+		public Assignment getEnvargsAssignment_1_0_1_1() { return cEnvargsAssignment_1_0_1_1; }
+		
+		//EnvInitOrArg
+		public RuleCall getEnvargsEnvInitOrArgParserRuleCall_1_0_1_1_0() { return cEnvargsEnvInitOrArgParserRuleCall_1_0_1_1_0; }
+		
+		//("," envargs+=EnvInitOrArg)*
+		public Group getGroup_1_0_1_2() { return cGroup_1_0_1_2; }
+		
+		//","
+		public Keyword getCommaKeyword_1_0_1_2_0() { return cCommaKeyword_1_0_1_2_0; }
+		
+		//envargs+=EnvInitOrArg
+		public Assignment getEnvargsAssignment_1_0_1_2_1() { return cEnvargsAssignment_1_0_1_2_1; }
+		
+		//EnvInitOrArg
+		public RuleCall getEnvargsEnvInitOrArgParserRuleCall_1_0_1_2_1_0() { return cEnvargsEnvInitOrArgParserRuleCall_1_0_1_2_1_0; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_1_0_1_3() { return cRightParenthesisKeyword_1_0_1_3; }
 		
 		//env=Environment
 		public Assignment getEnvAssignment_1_1() { return cEnvAssignment_1_1; }
@@ -1729,26 +1857,106 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.Primary");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cUnaryMinusAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cExpressionAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cExpressionContainmentExprParserRuleCall_0_2_0 = (RuleCall)cExpressionAssignment_0_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cNotAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpressionContainmentExprParserRuleCall_1_2_0 = (RuleCall)cExpressionAssignment_1_2.eContents().get(0);
+		private final RuleCall cContainmentExprParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Primary Expression:
+		//	{UnaryMinus} "-" expression=ContainmentExpr | {Not} "!" expression=ContainmentExpr | ContainmentExpr;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{UnaryMinus} "-" expression=ContainmentExpr | {Not} "!" expression=ContainmentExpr | ContainmentExpr
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{UnaryMinus} "-" expression=ContainmentExpr
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{UnaryMinus}
+		public Action getUnaryMinusAction_0_0() { return cUnaryMinusAction_0_0; }
+		
+		//"-"
+		public Keyword getHyphenMinusKeyword_0_1() { return cHyphenMinusKeyword_0_1; }
+		
+		//expression=ContainmentExpr
+		public Assignment getExpressionAssignment_0_2() { return cExpressionAssignment_0_2; }
+		
+		//ContainmentExpr
+		public RuleCall getExpressionContainmentExprParserRuleCall_0_2_0() { return cExpressionContainmentExprParserRuleCall_0_2_0; }
+		
+		//{Not} "!" expression=ContainmentExpr
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Not}
+		public Action getNotAction_1_0() { return cNotAction_1_0; }
+		
+		//"!"
+		public Keyword getExclamationMarkKeyword_1_1() { return cExclamationMarkKeyword_1_1; }
+		
+		//expression=ContainmentExpr
+		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
+		
+		//ContainmentExpr
+		public RuleCall getExpressionContainmentExprParserRuleCall_1_2_0() { return cExpressionContainmentExprParserRuleCall_1_2_0; }
+		
+		//ContainmentExpr
+		public RuleCall getContainmentExprParserRuleCall_2() { return cContainmentExprParserRuleCall_2; }
+	}
+	public class ContainmentExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.ContainmentExpr");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cAtomicOrExprParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cContainmentExpressionElemAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cInKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cTupleAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cTupleAtomicOrExprParserRuleCall_1_2_0 = (RuleCall)cTupleAssignment_1_2.eContents().get(0);
+		
+		//ContainmentExpr Expression:
+		//	AtomicOrExpr ({ContainmentExpression.elem=current} "in" tuple=AtomicOrExpr)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AtomicOrExpr ({ContainmentExpression.elem=current} "in" tuple=AtomicOrExpr)?
+		public Group getGroup() { return cGroup; }
+		
+		//AtomicOrExpr
+		public RuleCall getAtomicOrExprParserRuleCall_0() { return cAtomicOrExprParserRuleCall_0; }
+		
+		//({ContainmentExpression.elem=current} "in" tuple=AtomicOrExpr)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ContainmentExpression.elem=current}
+		public Action getContainmentExpressionElemAction_1_0() { return cContainmentExpressionElemAction_1_0; }
+		
+		//"in"
+		public Keyword getInKeyword_1_1() { return cInKeyword_1_1; }
+		
+		//tuple=AtomicOrExpr
+		public Assignment getTupleAssignment_1_2() { return cTupleAssignment_1_2; }
+		
+		//AtomicOrExpr
+		public RuleCall getTupleAtomicOrExprParserRuleCall_1_2_0() { return cTupleAtomicOrExprParserRuleCall_1_2_0; }
+	}
+	public class AtomicOrExprElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.AtomicOrExpr");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cExpressionParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cUnaryMinusAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cExpressionPrimaryParserRuleCall_1_2_0 = (RuleCall)cExpressionAssignment_1_2.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cNotAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cExpressionAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cExpressionPrimaryParserRuleCall_2_2_0 = (RuleCall)cExpressionAssignment_2_2.eContents().get(0);
-		private final RuleCall cAtomicParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cAtomicParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Primary Expression:
-		//	'(' Expression ')' | {UnaryMinus} "-" expression=Primary | {Not} "!" expression=Primary | Atomic;
+		//AtomicOrExpr Expression:
+		//	'(' Expression ')' | Atomic;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' Expression ')' | {UnaryMinus} "-" expression=Primary | {Not} "!" expression=Primary | Atomic
+		//'(' Expression ')' | Atomic
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'(' Expression ')'
@@ -1763,38 +1971,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
 		
-		//{UnaryMinus} "-" expression=Primary
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{UnaryMinus}
-		public Action getUnaryMinusAction_1_0() { return cUnaryMinusAction_1_0; }
-		
-		//"-"
-		public Keyword getHyphenMinusKeyword_1_1() { return cHyphenMinusKeyword_1_1; }
-		
-		//expression=Primary
-		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
-		
-		//Primary
-		public RuleCall getExpressionPrimaryParserRuleCall_1_2_0() { return cExpressionPrimaryParserRuleCall_1_2_0; }
-		
-		//{Not} "!" expression=Primary
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//{Not}
-		public Action getNotAction_2_0() { return cNotAction_2_0; }
-		
-		//"!"
-		public Keyword getExclamationMarkKeyword_2_1() { return cExclamationMarkKeyword_2_1; }
-		
-		//expression=Primary
-		public Assignment getExpressionAssignment_2_2() { return cExpressionAssignment_2_2; }
-		
-		//Primary
-		public RuleCall getExpressionPrimaryParserRuleCall_2_2_0() { return cExpressionPrimaryParserRuleCall_2_2_0; }
-		
 		//Atomic
-		public RuleCall getAtomicParserRuleCall_3() { return cAtomicParserRuleCall_3; }
+		public RuleCall getAtomicParserRuleCall_1() { return cAtomicParserRuleCall_1; }
 	}
 	public class LRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.LRef");
@@ -2214,85 +2392,114 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cOutPrimaryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cOutEqualityComparisonAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Assignment cLeftAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cLeftOutAtomicOrRecParserRuleCall_1_1_0 = (RuleCall)cLeftAssignment_1_1.eContents().get(0);
-		private final Assignment cOpAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final Alternatives cOpAlternatives_1_2_0 = (Alternatives)cOpAssignment_1_2.eContents().get(0);
-		private final Keyword cOpEqualsSignEqualsSignKeyword_1_2_0_0 = (Keyword)cOpAlternatives_1_2_0.eContents().get(0);
-		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_2_0_1 = (Keyword)cOpAlternatives_1_2_0.eContents().get(1);
-		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_2_0_2 = (Keyword)cOpAlternatives_1_2_0.eContents().get(2);
-		private final Keyword cOpLessThanSignEqualsSignKeyword_1_2_0_3 = (Keyword)cOpAlternatives_1_2_0.eContents().get(3);
-		private final Keyword cOpGreaterThanSignKeyword_1_2_0_4 = (Keyword)cOpAlternatives_1_2_0.eContents().get(4);
-		private final Keyword cOpLessThanSignKeyword_1_2_0_5 = (Keyword)cOpAlternatives_1_2_0.eContents().get(5);
-		private final Assignment cRightAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cRightOutAtomicOrRecParserRuleCall_1_3_0 = (RuleCall)cRightAssignment_1_3.eContents().get(0);
+		private final RuleCall cOutAtomicOrRecParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Group cGroup_1_1_0 = (Group)cAlternatives_1_1.eContents().get(0);
+		private final Action cOutEqualityComparisonLeftAction_1_1_0_0 = (Action)cGroup_1_1_0.eContents().get(0);
+		private final Assignment cOpAssignment_1_1_0_1 = (Assignment)cGroup_1_1_0.eContents().get(1);
+		private final Alternatives cOpAlternatives_1_1_0_1_0 = (Alternatives)cOpAssignment_1_1_0_1.eContents().get(0);
+		private final Keyword cOpEqualsSignEqualsSignKeyword_1_1_0_1_0_0 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(0);
+		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_1_0_1_0_1 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(1);
+		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_1_0_1_0_2 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(2);
+		private final Keyword cOpLessThanSignEqualsSignKeyword_1_1_0_1_0_3 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(3);
+		private final Keyword cOpGreaterThanSignKeyword_1_1_0_1_0_4 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(4);
+		private final Keyword cOpLessThanSignKeyword_1_1_0_1_0_5 = (Keyword)cOpAlternatives_1_1_0_1_0.eContents().get(5);
+		private final Assignment cRightAssignment_1_1_0_2 = (Assignment)cGroup_1_1_0.eContents().get(2);
+		private final RuleCall cRightOutAtomicOrRecParserRuleCall_1_1_0_2_0 = (RuleCall)cRightAssignment_1_1_0_2.eContents().get(0);
+		private final Group cGroup_1_1_1 = (Group)cAlternatives_1_1.eContents().get(1);
+		private final Action cContainmentExpressionElemAction_1_1_1_0 = (Action)cGroup_1_1_1.eContents().get(0);
+		private final Keyword cInKeyword_1_1_1_1 = (Keyword)cGroup_1_1_1.eContents().get(1);
+		private final Assignment cTupleAssignment_1_1_1_2 = (Assignment)cGroup_1_1_1.eContents().get(2);
+		private final RuleCall cTupleOutAtomicOrRecParserRuleCall_1_1_1_2_0 = (RuleCall)cTupleAssignment_1_1_1_2.eContents().get(0);
 		
 		//OutEqualityComparison Expression:
-		//	OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<")
-		//	right=OutAtomicOrRec;
+		//	OutPrimary | OutAtomicOrRec ({OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+		//	right=OutAtomicOrRec | {ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec
+		//OutPrimary | OutAtomicOrRec ({OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+		//right=OutAtomicOrRec | {ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec)
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//OutPrimary
 		public RuleCall getOutPrimaryParserRuleCall_0() { return cOutPrimaryParserRuleCall_0; }
 		
-		//{OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec
+		//OutAtomicOrRec ({OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec |
+		//{ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec)
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{OutEqualityComparison}
-		public Action getOutEqualityComparisonAction_1_0() { return cOutEqualityComparisonAction_1_0; }
-		
-		//left=OutAtomicOrRec
-		public Assignment getLeftAssignment_1_1() { return cLeftAssignment_1_1; }
-		
 		//OutAtomicOrRec
-		public RuleCall getLeftOutAtomicOrRecParserRuleCall_1_1_0() { return cLeftOutAtomicOrRecParserRuleCall_1_1_0; }
+		public RuleCall getOutAtomicOrRecParserRuleCall_1_0() { return cOutAtomicOrRecParserRuleCall_1_0; }
+		
+		//{OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec |
+		//{ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		
+		//{OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<") right=OutAtomicOrRec
+		public Group getGroup_1_1_0() { return cGroup_1_1_0; }
+		
+		//{OutEqualityComparison.left=current}
+		public Action getOutEqualityComparisonLeftAction_1_1_0_0() { return cOutEqualityComparisonLeftAction_1_1_0_0; }
 		
 		//op=("==" | "!=" | ">=" | "<=" | ">" | "<")
-		public Assignment getOpAssignment_1_2() { return cOpAssignment_1_2; }
+		public Assignment getOpAssignment_1_1_0_1() { return cOpAssignment_1_1_0_1; }
 		
 		//("==" | "!=" | ">=" | "<=" | ">" | "<")
-		public Alternatives getOpAlternatives_1_2_0() { return cOpAlternatives_1_2_0; }
+		public Alternatives getOpAlternatives_1_1_0_1_0() { return cOpAlternatives_1_1_0_1_0; }
 		
 		//"=="
-		public Keyword getOpEqualsSignEqualsSignKeyword_1_2_0_0() { return cOpEqualsSignEqualsSignKeyword_1_2_0_0; }
+		public Keyword getOpEqualsSignEqualsSignKeyword_1_1_0_1_0_0() { return cOpEqualsSignEqualsSignKeyword_1_1_0_1_0_0; }
 		
 		//"!="
-		public Keyword getOpExclamationMarkEqualsSignKeyword_1_2_0_1() { return cOpExclamationMarkEqualsSignKeyword_1_2_0_1; }
+		public Keyword getOpExclamationMarkEqualsSignKeyword_1_1_0_1_0_1() { return cOpExclamationMarkEqualsSignKeyword_1_1_0_1_0_1; }
 		
 		//">="
-		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_2_0_2() { return cOpGreaterThanSignEqualsSignKeyword_1_2_0_2; }
+		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_1_0_1_0_2() { return cOpGreaterThanSignEqualsSignKeyword_1_1_0_1_0_2; }
 		
 		//"<="
-		public Keyword getOpLessThanSignEqualsSignKeyword_1_2_0_3() { return cOpLessThanSignEqualsSignKeyword_1_2_0_3; }
+		public Keyword getOpLessThanSignEqualsSignKeyword_1_1_0_1_0_3() { return cOpLessThanSignEqualsSignKeyword_1_1_0_1_0_3; }
 		
 		//">"
-		public Keyword getOpGreaterThanSignKeyword_1_2_0_4() { return cOpGreaterThanSignKeyword_1_2_0_4; }
+		public Keyword getOpGreaterThanSignKeyword_1_1_0_1_0_4() { return cOpGreaterThanSignKeyword_1_1_0_1_0_4; }
 		
 		//"<"
-		public Keyword getOpLessThanSignKeyword_1_2_0_5() { return cOpLessThanSignKeyword_1_2_0_5; }
+		public Keyword getOpLessThanSignKeyword_1_1_0_1_0_5() { return cOpLessThanSignKeyword_1_1_0_1_0_5; }
 		
 		//right=OutAtomicOrRec
-		public Assignment getRightAssignment_1_3() { return cRightAssignment_1_3; }
+		public Assignment getRightAssignment_1_1_0_2() { return cRightAssignment_1_1_0_2; }
 		
 		//OutAtomicOrRec
-		public RuleCall getRightOutAtomicOrRecParserRuleCall_1_3_0() { return cRightOutAtomicOrRecParserRuleCall_1_3_0; }
+		public RuleCall getRightOutAtomicOrRecParserRuleCall_1_1_0_2_0() { return cRightOutAtomicOrRecParserRuleCall_1_1_0_2_0; }
+		
+		//{ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec
+		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
+		
+		//{ContainmentExpression.elem=current}
+		public Action getContainmentExpressionElemAction_1_1_1_0() { return cContainmentExpressionElemAction_1_1_1_0; }
+		
+		//"in"
+		public Keyword getInKeyword_1_1_1_1() { return cInKeyword_1_1_1_1; }
+		
+		//tuple=OutAtomicOrRec
+		public Assignment getTupleAssignment_1_1_1_2() { return cTupleAssignment_1_1_1_2; }
+		
+		//OutAtomicOrRec
+		public RuleCall getTupleOutAtomicOrRecParserRuleCall_1_1_1_2_0() { return cTupleOutAtomicOrRecParserRuleCall_1_1_1_2_0; }
 	}
 	public class OutPrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutPrimary");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final RuleCall cOutputPredicateParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Action cNotAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cExclamationMarkKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cExpressionAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final Alternatives cExpressionAlternatives_0_2_0 = (Alternatives)cExpressionAssignment_0_2.eContents().get(0);
+		private final RuleCall cExpressionOutPrimaryParserRuleCall_0_2_0_0 = (RuleCall)cExpressionAlternatives_0_2_0.eContents().get(0);
+		private final RuleCall cExpressionOCEParserRuleCall_0_2_0_1 = (RuleCall)cExpressionAlternatives_0_2_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cNotAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cExclamationMarkKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cExpressionAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cExpressionOutPrimaryParserRuleCall_1_2_0 = (RuleCall)cExpressionAssignment_1_2.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cOutputPredicateParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cBoolConstantAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
@@ -2301,38 +2508,45 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cValueFalseKeyword_2_1_0_1 = (Keyword)cValueAlternatives_2_1_0.eContents().get(1);
 		
 		//OutPrimary Expression:
-		//	'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false');
+		//	{Not} "!" expression=(OutPrimary | OCE) |
+		//	'(' OutputPredicate ')' | {BoolConstant} value=('true' | 'false');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false')
+		//{Not} "!" expression=(OutPrimary | OCE) | '(' OutputPredicate ')' | {BoolConstant} value=('true' | 'false')
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'(' OutputPredicate ')'
+		//{Not} "!" expression=(OutPrimary | OCE)
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
-		
-		//OutputPredicate
-		public RuleCall getOutputPredicateParserRuleCall_0_1() { return cOutputPredicateParserRuleCall_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
-		
-		//{Not} "!" expression=OutPrimary
-		public Group getGroup_1() { return cGroup_1; }
-		
 		//{Not}
-		public Action getNotAction_1_0() { return cNotAction_1_0; }
+		public Action getNotAction_0_0() { return cNotAction_0_0; }
 		
 		//"!"
-		public Keyword getExclamationMarkKeyword_1_1() { return cExclamationMarkKeyword_1_1; }
+		public Keyword getExclamationMarkKeyword_0_1() { return cExclamationMarkKeyword_0_1; }
 		
-		//expression=OutPrimary
-		public Assignment getExpressionAssignment_1_2() { return cExpressionAssignment_1_2; }
+		//expression=(OutPrimary | OCE)
+		public Assignment getExpressionAssignment_0_2() { return cExpressionAssignment_0_2; }
+		
+		//(OutPrimary | OCE)
+		public Alternatives getExpressionAlternatives_0_2_0() { return cExpressionAlternatives_0_2_0; }
 		
 		//OutPrimary
-		public RuleCall getExpressionOutPrimaryParserRuleCall_1_2_0() { return cExpressionOutPrimaryParserRuleCall_1_2_0; }
+		public RuleCall getExpressionOutPrimaryParserRuleCall_0_2_0_0() { return cExpressionOutPrimaryParserRuleCall_0_2_0_0; }
+		
+		//OCE
+		public RuleCall getExpressionOCEParserRuleCall_0_2_0_1() { return cExpressionOCEParserRuleCall_0_2_0_1; }
+		
+		//'(' OutputPredicate ')'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		
+		//OutputPredicate
+		public RuleCall getOutputPredicateParserRuleCall_1_1() { return cOutputPredicateParserRuleCall_1_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 		
 		//{BoolConstant} value=('true' | 'false')
 		public Group getGroup_2() { return cGroup_2; }
@@ -2351,6 +2565,41 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'false'
 		public Keyword getValueFalseKeyword_2_1_0_1() { return cValueFalseKeyword_2_1_0_1; }
+	}
+	public class OCEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OCE");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cContainmentExpressionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cElemAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cElemOutAtomicOrRecParserRuleCall_1_0 = (RuleCall)cElemAssignment_1.eContents().get(0);
+		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTupleAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTupleOutAtomicOrRecParserRuleCall_3_0 = (RuleCall)cTupleAssignment_3.eContents().get(0);
+		
+		//OCE Expression:
+		//	{ContainmentExpression} elem=OutAtomicOrRec "in" tuple=OutAtomicOrRec;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ContainmentExpression} elem=OutAtomicOrRec "in" tuple=OutAtomicOrRec
+		public Group getGroup() { return cGroup; }
+		
+		//{ContainmentExpression}
+		public Action getContainmentExpressionAction_0() { return cContainmentExpressionAction_0; }
+		
+		//elem=OutAtomicOrRec
+		public Assignment getElemAssignment_1() { return cElemAssignment_1; }
+		
+		//OutAtomicOrRec
+		public RuleCall getElemOutAtomicOrRecParserRuleCall_1_0() { return cElemOutAtomicOrRecParserRuleCall_1_0; }
+		
+		//"in"
+		public Keyword getInKeyword_2() { return cInKeyword_2; }
+		
+		//tuple=OutAtomicOrRec
+		public Assignment getTupleAssignment_3() { return cTupleAssignment_3; }
+		
+		//OutAtomicOrRec
+		public RuleCall getTupleOutAtomicOrRecParserRuleCall_3_0() { return cTupleOutAtomicOrRecParserRuleCall_3_0; }
 	}
 	public class OutAtomicOrRecElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "com.sysma.goat.eclipse_plugin.GoatComponents.OutAtomicOrRec");
@@ -3217,7 +3466,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final PrintAllStatementElements pPrintAllStatement;
 	private final PrintFormattedStatementElements pPrintFormattedStatement;
 	private final EnvInitValueElements pEnvInitValue;
+	private final EnvInitOrArgElements pEnvInitOrArg;
 	private final EnvironmentElements pEnvironment;
+	private final EnvParamElements pEnvParam;
 	private final EnvironmentDefinitionElements pEnvironmentDefinition;
 	private final ComponentDefinitionElements pComponentDefinition;
 	private final ExpressionElements pExpression;
@@ -3228,6 +3479,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final PlusOrMinusElements pPlusOrMinus;
 	private final MulOrDivElements pMulOrDiv;
 	private final PrimaryElements pPrimary;
+	private final ContainmentExprElements pContainmentExpr;
+	private final AtomicOrExprElements pAtomicOrExpr;
 	private final LRefElements pLRef;
 	private final AtomicElements pAtomic;
 	private final AtomicIndexableElements pAtomicIndexable;
@@ -3237,6 +3490,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	private final OutAndElements pOutAnd;
 	private final OutEqualityComparisonElements pOutEqualityComparison;
 	private final OutPrimaryElements pOutPrimary;
+	private final OCEElements pOCE;
 	private final OutAtomicOrRecElements pOutAtomicOrRec;
 	private final OutAtomicElements pOutAtomic;
 	private final OutAtomicIndexableElements pOutAtomicIndexable;
@@ -3289,7 +3543,9 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPrintAllStatement = new PrintAllStatementElements();
 		this.pPrintFormattedStatement = new PrintFormattedStatementElements();
 		this.pEnvInitValue = new EnvInitValueElements();
+		this.pEnvInitOrArg = new EnvInitOrArgElements();
 		this.pEnvironment = new EnvironmentElements();
+		this.pEnvParam = new EnvParamElements();
 		this.pEnvironmentDefinition = new EnvironmentDefinitionElements();
 		this.pComponentDefinition = new ComponentDefinitionElements();
 		this.pExpression = new ExpressionElements();
@@ -3300,6 +3556,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPlusOrMinus = new PlusOrMinusElements();
 		this.pMulOrDiv = new MulOrDivElements();
 		this.pPrimary = new PrimaryElements();
+		this.pContainmentExpr = new ContainmentExprElements();
+		this.pAtomicOrExpr = new AtomicOrExprElements();
 		this.pLRef = new LRefElements();
 		this.pAtomic = new AtomicElements();
 		this.pAtomicIndexable = new AtomicIndexableElements();
@@ -3309,6 +3567,7 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		this.pOutAnd = new OutAndElements();
 		this.pOutEqualityComparison = new OutEqualityComparisonElements();
 		this.pOutPrimary = new OutPrimaryElements();
+		this.pOCE = new OCEElements();
 		this.pOutAtomicOrRec = new OutAtomicOrRecElements();
 		this.pOutAtomic = new OutAtomicElements();
 		this.pOutAtomicIndexable = new OutAtomicIndexableElements();
@@ -3643,8 +3902,18 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnvInitValueAccess().getRule();
 	}
 	
+	//EnvInitOrArg Expression:
+	//	EnvInitValue | {EnvironmentArg} arg=[EnvParam];
+	public EnvInitOrArgElements getEnvInitOrArgAccess() {
+		return pEnvInitOrArg;
+	}
+	
+	public ParserRule getEnvInitOrArgRule() {
+		return getEnvInitOrArgAccess().getRule();
+	}
+	
 	//Environment:
-	//	{Environment} "{" (attrs+=ID ':=' vals+=EnvInitValue ("," attrs+=ID ':=' vals+=EnvInitValue)*)? "}";
+	//	{Environment} "{" (attrs+=ID ':=' vals+=EnvInitOrArg ("," attrs+=ID ':=' vals+=EnvInitOrArg)*)? "}";
 	public EnvironmentElements getEnvironmentAccess() {
 		return pEnvironment;
 	}
@@ -3653,8 +3922,18 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 		return getEnvironmentAccess().getRule();
 	}
 	
+	//EnvParam:
+	//	name=ID;
+	public EnvParamElements getEnvParamAccess() {
+		return pEnvParam;
+	}
+	
+	public ParserRule getEnvParamRule() {
+		return getEnvParamAccess().getRule();
+	}
+	
 	//EnvironmentDefinition:
-	//	'environment' name=ID env=Environment;
+	//	'environment' name=ID ("(" envParams+=EnvParam ("," envParams+=EnvParam)* ")")? env=Environment;
 	public EnvironmentDefinitionElements getEnvironmentDefinitionAccess() {
 		return pEnvironmentDefinition;
 	}
@@ -3664,7 +3943,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ComponentDefinition:
-	//	"component" (envref=[EnvironmentDefinition] | env=Environment) ':' block=(PDPBlock | ProcessBlock);
+	//	"component" (envref=[EnvironmentDefinition] ("(" envargs+=EnvInitOrArg ("," envargs+=EnvInitOrArg)* ")")? |
+	//	env=Environment) ':' block=(PDPBlock | ProcessBlock);
 	public ComponentDefinitionElements getComponentDefinitionAccess() {
 		return pComponentDefinition;
 	}
@@ -3745,13 +4025,33 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Primary Expression:
-	//	'(' Expression ')' | {UnaryMinus} "-" expression=Primary | {Not} "!" expression=Primary | Atomic;
+	//	{UnaryMinus} "-" expression=ContainmentExpr | {Not} "!" expression=ContainmentExpr | ContainmentExpr;
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}
 	
 	public ParserRule getPrimaryRule() {
 		return getPrimaryAccess().getRule();
+	}
+	
+	//ContainmentExpr Expression:
+	//	AtomicOrExpr ({ContainmentExpression.elem=current} "in" tuple=AtomicOrExpr)?;
+	public ContainmentExprElements getContainmentExprAccess() {
+		return pContainmentExpr;
+	}
+	
+	public ParserRule getContainmentExprRule() {
+		return getContainmentExprAccess().getRule();
+	}
+	
+	//AtomicOrExpr Expression:
+	//	'(' Expression ')' | Atomic;
+	public AtomicOrExprElements getAtomicOrExprAccess() {
+		return pAtomicOrExpr;
+	}
+	
+	public ParserRule getAtomicOrExprRule() {
+		return getAtomicOrExprAccess().getRule();
 	}
 	
 	//LRef:
@@ -3825,8 +4125,8 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OutEqualityComparison Expression:
-	//	OutPrimary | {OutEqualityComparison} left=OutAtomicOrRec op=("==" | "!=" | ">=" | "<=" | ">" | "<")
-	//	right=OutAtomicOrRec;
+	//	OutPrimary | OutAtomicOrRec ({OutEqualityComparison.left=current} op=("==" | "!=" | ">=" | "<=" | ">" | "<")
+	//	right=OutAtomicOrRec | {ContainmentExpression.elem=current} "in" tuple=OutAtomicOrRec);
 	public OutEqualityComparisonElements getOutEqualityComparisonAccess() {
 		return pOutEqualityComparison;
 	}
@@ -3836,13 +4136,24 @@ public class GoatComponentsGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OutPrimary Expression:
-	//	'(' OutputPredicate ')' | {Not} "!" expression=OutPrimary | {BoolConstant} value=('true' | 'false');
+	//	{Not} "!" expression=(OutPrimary | OCE) |
+	//	'(' OutputPredicate ')' | {BoolConstant} value=('true' | 'false');
 	public OutPrimaryElements getOutPrimaryAccess() {
 		return pOutPrimary;
 	}
 	
 	public ParserRule getOutPrimaryRule() {
 		return getOutPrimaryAccess().getRule();
+	}
+	
+	//OCE Expression:
+	//	{ContainmentExpression} elem=OutAtomicOrRec "in" tuple=OutAtomicOrRec;
+	public OCEElements getOCEAccess() {
+		return pOCE;
+	}
+	
+	public ParserRule getOCERule() {
+		return getOCEAccess().getRule();
 	}
 	
 	//OutAtomicOrRec Expression:

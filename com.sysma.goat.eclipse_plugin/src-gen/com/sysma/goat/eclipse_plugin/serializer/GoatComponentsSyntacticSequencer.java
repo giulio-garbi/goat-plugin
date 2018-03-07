@@ -20,18 +20,18 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected GoatComponentsGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_OutPrimary_LeftParenthesisKeyword_0_0_a;
-	protected AbstractElementAlias match_OutPrimary_LeftParenthesisKeyword_0_0_p;
-	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_a;
-	protected AbstractElementAlias match_Primary_LeftParenthesisKeyword_0_0_p;
+	protected AbstractElementAlias match_AtomicOrExpr_LeftParenthesisKeyword_0_0_a;
+	protected AbstractElementAlias match_AtomicOrExpr_LeftParenthesisKeyword_0_0_p;
+	protected AbstractElementAlias match_OutPrimary_LeftParenthesisKeyword_1_0_a;
+	protected AbstractElementAlias match_OutPrimary_LeftParenthesisKeyword_1_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (GoatComponentsGrammarAccess) access;
-		match_OutPrimary_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getOutPrimaryAccess().getLeftParenthesisKeyword_0_0());
-		match_OutPrimary_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getOutPrimaryAccess().getLeftParenthesisKeyword_0_0());
-		match_Primary_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
-		match_Primary_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_0_0());
+		match_AtomicOrExpr_LeftParenthesisKeyword_0_0_a = new TokenAlias(true, true, grammarAccess.getAtomicOrExprAccess().getLeftParenthesisKeyword_0_0());
+		match_AtomicOrExpr_LeftParenthesisKeyword_0_0_p = new TokenAlias(true, false, grammarAccess.getAtomicOrExprAccess().getLeftParenthesisKeyword_0_0());
+		match_OutPrimary_LeftParenthesisKeyword_1_0_a = new TokenAlias(true, true, grammarAccess.getOutPrimaryAccess().getLeftParenthesisKeyword_1_0());
+		match_OutPrimary_LeftParenthesisKeyword_1_0_p = new TokenAlias(true, false, grammarAccess.getOutPrimaryAccess().getLeftParenthesisKeyword_1_0());
 	}
 	
 	@Override
@@ -46,14 +46,14 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_OutPrimary_LeftParenthesisKeyword_0_0_a.equals(syntax))
-				emit_OutPrimary_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_OutPrimary_LeftParenthesisKeyword_0_0_p.equals(syntax))
-				emit_OutPrimary_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Primary_LeftParenthesisKeyword_0_0_a.equals(syntax))
-				emit_Primary_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Primary_LeftParenthesisKeyword_0_0_p.equals(syntax))
-				emit_Primary_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_AtomicOrExpr_LeftParenthesisKeyword_0_0_a.equals(syntax))
+				emit_AtomicOrExpr_LeftParenthesisKeyword_0_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AtomicOrExpr_LeftParenthesisKeyword_0_0_p.equals(syntax))
+				emit_AtomicOrExpr_LeftParenthesisKeyword_0_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_OutPrimary_LeftParenthesisKeyword_1_0_a.equals(syntax))
+				emit_OutPrimary_LeftParenthesisKeyword_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_OutPrimary_LeftParenthesisKeyword_1_0_p.equals(syntax))
+				emit_OutPrimary_LeftParenthesisKeyword_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -63,37 +63,8 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '!' expression=OutPrimary
-	 *     (rule start) (ambiguity) left=OutAtomicOrRec
-	 *     (rule start) (ambiguity) value='false'
-	 *     (rule start) (ambiguity) value='true'
-	 *     (rule start) (ambiguity) {And.sub+=}
-	 *     (rule start) (ambiguity) {Or.sub+=}
-	 */
-	protected void emit_OutPrimary_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) left=OutAtomicOrRec
-	 *     (rule start) (ambiguity) {And.sub+=}
-	 *     (rule start) (ambiguity) {Or.sub+=}
-	 */
-	protected void emit_OutPrimary_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     '('*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '!' expression=Primary
-	 *     (rule start) (ambiguity) '-' expression=Primary
+	 *     (rule start) (ambiguity) '!' expression=ContainmentExpr
+	 *     (rule start) (ambiguity) '-' expression=ContainmentExpr
 	 *     (rule start) (ambiguity) '[' ']' (rule start)
 	 *     (rule start) (ambiguity) '[' elem+=Expression
 	 *     (rule start) (ambiguity) 'comp' '.' attribute=ID
@@ -108,6 +79,7 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     (rule start) (ambiguity) {And.sub+=}
 	 *     (rule start) (ambiguity) {Comparison.left=}
 	 *     (rule start) (ambiguity) {Concatenate.left=}
+	 *     (rule start) (ambiguity) {ContainmentExpression.elem=}
 	 *     (rule start) (ambiguity) {Equality.left=}
 	 *     (rule start) (ambiguity) {Minus.left=}
 	 *     (rule start) (ambiguity) {MulOrDiv.left=}
@@ -115,7 +87,46 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *     (rule start) (ambiguity) {Plus.left=}
 	 *     (rule start) (ambiguity) {TupleGet.elem=}
 	 */
-	protected void emit_Primary_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_AtomicOrExpr_LeftParenthesisKeyword_0_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '('+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) '!' expression=ContainmentExpr
+	 *     (rule start) (ambiguity) '-' expression=ContainmentExpr
+	 *     (rule start) (ambiguity) {And.sub+=}
+	 *     (rule start) (ambiguity) {Comparison.left=}
+	 *     (rule start) (ambiguity) {Concatenate.left=}
+	 *     (rule start) (ambiguity) {ContainmentExpression.elem=}
+	 *     (rule start) (ambiguity) {Equality.left=}
+	 *     (rule start) (ambiguity) {Minus.left=}
+	 *     (rule start) (ambiguity) {MulOrDiv.left=}
+	 *     (rule start) (ambiguity) {Or.sub+=}
+	 *     (rule start) (ambiguity) {Plus.left=}
+	 */
+	protected void emit_AtomicOrExpr_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '('*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) '!' expression=OCE
+	 *     (rule start) (ambiguity) '!' expression=OutPrimary
+	 *     (rule start) (ambiguity) value='false'
+	 *     (rule start) (ambiguity) value='true'
+	 *     (rule start) (ambiguity) {And.sub+=}
+	 *     (rule start) (ambiguity) {ContainmentExpression.elem=}
+	 *     (rule start) (ambiguity) {Or.sub+=}
+	 *     (rule start) (ambiguity) {OutEqualityComparison.left=}
+	 */
+	protected void emit_OutPrimary_LeftParenthesisKeyword_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -125,15 +136,11 @@ public class GoatComponentsSyntacticSequencer extends AbstractSyntacticSequencer
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) {And.sub+=}
-	 *     (rule start) (ambiguity) {Comparison.left=}
-	 *     (rule start) (ambiguity) {Concatenate.left=}
-	 *     (rule start) (ambiguity) {Equality.left=}
-	 *     (rule start) (ambiguity) {Minus.left=}
-	 *     (rule start) (ambiguity) {MulOrDiv.left=}
+	 *     (rule start) (ambiguity) {ContainmentExpression.elem=}
 	 *     (rule start) (ambiguity) {Or.sub+=}
-	 *     (rule start) (ambiguity) {Plus.left=}
+	 *     (rule start) (ambiguity) {OutEqualityComparison.left=}
 	 */
-	protected void emit_Primary_LeftParenthesisKeyword_0_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_OutPrimary_LeftParenthesisKeyword_1_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

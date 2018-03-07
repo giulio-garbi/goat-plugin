@@ -30,6 +30,7 @@ import com.sysma.goat.eclipse_plugin.goatComponents.OutEqualityComparison
 import com.sysma.goat.eclipse_plugin.goatComponents.TupleConstant
 import com.sysma.goat.eclipse_plugin.goatComponents.TupleLength
 import com.sysma.goat.eclipse_plugin.goatComponents.TupleGet
+import com.sysma.goat.eclipse_plugin.goatComponents.ContainmentExpression
 
 class CodeExpression {
 	def static cast(String typ, Expression expr, LocalVariableMap localAttributesMap, CharSequence attributesMap){
@@ -101,12 +102,14 @@ class CodeExpression {
 					throw new IllegalArgumentException("Unexpected component attribute")
 				else
 					'''«attributesMap».GetValue("«expr.attribute»")'''
+			ContainmentExpression:
+				'''(«cast("tuple", expr.tuple, localAttributesMap, attributesMap)»).Contains(«getExpressionWithAttributes(expr.elem, localAttributesMap, attributesMap)»)'''
 			TupleConstant:
 				'''goat.NewTuple(«expr.elem.map[getExpressionWithAttributes(it, localAttributesMap, attributesMap)].join(", ")»)'''
 			TupleLength:
 				'''(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»).Length()'''
 			TupleGet:
-				'''(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»).Get(«cast("int", expr.idx, localAttributesMap, attributesMap)»)'''
+				'''(«cast("tuple", expr.elem, localAttributesMap, attributesMap)»).Get(«cast("int", expr.idx, localAttributesMap, attributesMap)»)'''	
 		}
 	}
 	
@@ -171,6 +174,14 @@ class CodeExpression {
 				localAttributesMap.readValue(expr.attribute)
 			ComponentAttributeRef:
 				'''«attrName».GetValue("«expr.attribute»")'''
+			ContainmentExpression:
+			{
+				val isOpLImm = !isOPAttribute(expr.elem)
+				val isOpRImm = !isOPAttribute(expr.tuple)
+					
+				'''goat.IsIn(«getOutputPredicateExpr(expr.elem, localAttributesMap, attrName)», «!isOpLImm», '''
+					+ '''«getOutputPredicateExpr(expr.tuple, localAttributesMap, attrName)», «!isOpRImm»)'''
+			}
 			BoolConstant:
 				'''«expr.value»'''
 			FunctionCall:
