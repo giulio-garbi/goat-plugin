@@ -32,7 +32,8 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getModelAccess().getAlternatives_3(), "rule__Model__Alternatives_3");
-					put(grammarAccess.getProcessDefinitionAccess().getAlternatives_2(), "rule__ProcessDefinition__Alternatives_2");
+					put(grammarAccess.getModelAccess().getProcessesAlternatives_3_0_0(), "rule__Model__ProcessesAlternatives_3_0_0");
+					put(grammarAccess.getProcessDefinitionAccess().getAlternatives(), "rule__ProcessDefinition__Alternatives");
 					put(grammarAccess.getProcessStatementAccess().getAlternatives(), "rule__ProcessStatement__Alternatives");
 					put(grammarAccess.getProcessReceiveAccess().getAlternatives(), "rule__ProcessReceive__Alternatives");
 					put(grammarAccess.getProcessThenBlockAccess().getActionAlternatives_1_0(), "rule__ProcessThenBlock__ActionAlternatives_1_0");
@@ -65,8 +66,8 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOutAtomicIndexableAccess().getAlternatives(), "rule__OutAtomicIndexable__Alternatives");
 					put(grammarAccess.getFuncStatementAccess().getAlternatives(), "rule__FuncStatement__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
-					put(grammarAccess.getProcessDefinitionAccess().getGroup(), "rule__ProcessDefinition__Group__0");
-					put(grammarAccess.getProcessDefinitionAccess().getGroup_2_0(), "rule__ProcessDefinition__Group_2_0__0");
+					put(grammarAccess.getProcessDefinitionBlkAccess().getGroup(), "rule__ProcessDefinitionBlk__Group__0");
+					put(grammarAccess.getProcessDefinitionParAccess().getGroup(), "rule__ProcessDefinitionPar__Group__0");
 					put(grammarAccess.getPDPBlockAccess().getGroup(), "rule__PDPBlock__Group__0");
 					put(grammarAccess.getPDPBlockAccess().getGroup_0(), "rule__PDPBlock__Group_0__0");
 					put(grammarAccess.getProcessBlockAccess().getGroup(), "rule__ProcessBlock__Group__0");
@@ -195,15 +196,14 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getComponentsAssignment_3_1(), "rule__Model__ComponentsAssignment_3_1");
 					put(grammarAccess.getModelAccess().getFunctionsAssignment_3_2(), "rule__Model__FunctionsAssignment_3_2");
 					put(grammarAccess.getModelAccess().getEnvironmentsAssignment_3_3(), "rule__Model__EnvironmentsAssignment_3_3");
-					put(grammarAccess.getProcessDefinitionAccess().getNameAssignment_1(), "rule__ProcessDefinition__NameAssignment_1");
-					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_0_1(), "rule__ProcessDefinition__BlockAssignment_2_0_1");
-					put(grammarAccess.getProcessDefinitionAccess().getBlockAssignment_2_1(), "rule__ProcessDefinition__BlockAssignment_2_1");
-					put(grammarAccess.getPDPBlockAccess().getStatementsAssignment_0_0(), "rule__PDPBlock__StatementsAssignment_0_0");
-					put(grammarAccess.getPDPBlockAccess().getStatementsAssignment_1(), "rule__PDPBlock__StatementsAssignment_1");
-					put(grammarAccess.getPDPSpawnAccess().getProcAssignment(), "rule__PDPSpawn__ProcAssignment");
-					put(grammarAccess.getPDPCallAccess().getProcAssignment(), "rule__PDPCall__ProcAssignment");
+					put(grammarAccess.getProcessDefinitionBlkAccess().getNameAssignment_1(), "rule__ProcessDefinitionBlk__NameAssignment_1");
+					put(grammarAccess.getProcessDefinitionBlkAccess().getBlockAssignment_2(), "rule__ProcessDefinitionBlk__BlockAssignment_2");
+					put(grammarAccess.getProcessDefinitionParAccess().getNameAssignment_1(), "rule__ProcessDefinitionPar__NameAssignment_1");
+					put(grammarAccess.getProcessDefinitionParAccess().getBlockAssignment_3(), "rule__ProcessDefinitionPar__BlockAssignment_3");
+					put(grammarAccess.getPDPBlockAccess().getProcsAssignment_0_0(), "rule__PDPBlock__ProcsAssignment_0_0");
+					put(grammarAccess.getPDPBlockAccess().getProcsAssignment_1(), "rule__PDPBlock__ProcsAssignment_1");
 					put(grammarAccess.getProcessBlockAccess().getStatementsAssignment_2(), "rule__ProcessBlock__StatementsAssignment_2");
-					put(grammarAccess.getProcessSpawnAccess().getProcAssignment_2(), "rule__ProcessSpawn__ProcAssignment_2");
+					put(grammarAccess.getProcessSpawnAccess().getBlkAssignment_2(), "rule__ProcessSpawn__BlkAssignment_2");
 					put(grammarAccess.getProcessCallAccess().getProcAssignment_2(), "rule__ProcessCall__ProcAssignment_2");
 					put(grammarAccess.getProcessSendAccess().getMsgOutPartsAssignment_2_0(), "rule__ProcessSend__MsgOutPartsAssignment_2_0");
 					put(grammarAccess.getProcessSendAccess().getMsgOutPartsAssignment_2_1_1(), "rule__ProcessSend__MsgOutPartsAssignment_2_1_1");
@@ -218,7 +218,8 @@ public class GoatComponentsParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReceiveCaseAccess().getMsgInPartsAssignment_4_0(), "rule__ReceiveCase__MsgInPartsAssignment_4_0");
 					put(grammarAccess.getReceiveCaseAccess().getMsgInPartsAssignment_4_1_1(), "rule__ReceiveCase__MsgInPartsAssignment_4_1_1");
 					put(grammarAccess.getReceiveCaseAccess().getUpdatesAssignment_6(), "rule__ReceiveCase__UpdatesAssignment_6");
-					put(grammarAccess.getReceiveCaseAccess().getPrintAssignment_7(), "rule__ReceiveCase__PrintAssignment_7");
+					put(grammarAccess.getReceiveCaseAccess().getSpawnAssignment_7(), "rule__ReceiveCase__SpawnAssignment_7");
+					put(grammarAccess.getReceiveCaseAccess().getPrintAssignment_8(), "rule__ReceiveCase__PrintAssignment_8");
 					put(grammarAccess.getProcessIfAccess().getCondAssignment_2(), "rule__ProcessIf__CondAssignment_2");
 					put(grammarAccess.getProcessIfAccess().getCondAssignment_5_3(), "rule__ProcessIf__CondAssignment_5_3");
 					put(grammarAccess.getProcessThenBlockAccess().getActionAssignment_1(), "rule__ProcessThenBlock__ActionAssignment_1");

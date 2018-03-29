@@ -39,8 +39,20 @@ public class GoatComponentsScopeProvider extends AbstractGoatComponentsScopeProv
       _matched=true;
     }
     if (!_matched) {
-      EReference _processSpawn_Proc = GoatComponentsPackage.eINSTANCE.getProcessSpawn_Proc();
-      if (Objects.equal(reference, _processSpawn_Proc)) {
+      EReference _processDefinition_Block = GoatComponentsPackage.eINSTANCE.getProcessDefinition_Block();
+      if (Objects.equal(reference, _processDefinition_Block)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      EReference _pDPBlock_Procs = GoatComponentsPackage.eINSTANCE.getPDPBlock_Procs();
+      if (Objects.equal(reference, _pDPBlock_Procs)) {
+        _matched=true;
+      }
+    }
+    if (!_matched) {
+      EReference _processSpawn_Blk = GoatComponentsPackage.eINSTANCE.getProcessSpawn_Blk();
+      if (Objects.equal(reference, _processSpawn_Blk)) {
         _matched=true;
       }
     }

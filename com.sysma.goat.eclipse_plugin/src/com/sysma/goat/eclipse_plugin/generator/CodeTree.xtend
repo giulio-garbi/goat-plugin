@@ -47,7 +47,7 @@ class CodeTree implements CodeInfrastructure {
 					go goat.NewTreeAgentRegistration(«tree.registration.portNumber», «tree.root.makePlainList.goList»).Work(0, make(chan struct{}))
 				«ENDIF»
 				«FOR node : tree.root.nodesList.filter[address.isLocalAddress]»
-					go goat.NewTreeNode(«node.address.portNumber», "«(node.parentNode?.address)?:""»", «node.children.map[address].goList»).Work(0, make(chan struct{}))
+					go goat.NewTreeNode(«node.address.portNumber», "«(node.parentNode?.address)?:""»", "«tree.registration»", «node.children.map[address].goList»).Work(0, make(chan struct{}))
 				«ENDFOR»
 				fmt.Println("Started")
 				«IF mustWait»

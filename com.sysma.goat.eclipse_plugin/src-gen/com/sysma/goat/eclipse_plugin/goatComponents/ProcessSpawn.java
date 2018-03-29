@@ -13,7 +13,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn#getProc <em>Proc</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn#getBlk <em>Blk</em>}</li>
  * </ul>
  *
  * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessSpawn()
@@ -23,29 +23,29 @@ package com.sysma.goat.eclipse_plugin.goatComponents;
 public interface ProcessSpawn extends ProcessStatement
 {
   /**
-   * Returns the value of the '<em><b>Proc</b></em>' reference.
+   * Returns the value of the '<em><b>Blk</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Proc</em>' reference isn't clear,
+   * If the meaning of the '<em>Blk</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Proc</em>' reference.
-   * @see #setProc(ProcessDefinition)
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessSpawn_Proc()
-   * @model
+   * @return the value of the '<em>Blk</em>' containment reference.
+   * @see #setBlk(PDPBlock)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessSpawn_Blk()
+   * @model containment="true"
    * @generated
    */
-  ProcessDefinition getProc();
+  PDPBlock getBlk();
 
   /**
-   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn#getProc <em>Proc</em>}' reference.
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn#getBlk <em>Blk</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Proc</em>' reference.
-   * @see #getProc()
+   * @param value the new value of the '<em>Blk</em>' containment reference.
+   * @see #getBlk()
    * @generated
    */
-  void setProc(ProcessDefinition value);
+  void setBlk(PDPBlock value);
 
 } // ProcessSpawn

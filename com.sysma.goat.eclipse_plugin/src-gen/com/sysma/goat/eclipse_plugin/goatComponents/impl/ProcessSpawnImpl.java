@@ -4,10 +4,11 @@
 package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
-import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
+import com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -22,7 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessSpawnImpl#getProc <em>Proc</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ProcessSpawnImpl#getBlk <em>Blk</em>}</li>
  * </ul>
  *
  * @generated
@@ -30,14 +31,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpawn
 {
   /**
-   * The cached value of the '{@link #getProc() <em>Proc</em>}' reference.
+   * The cached value of the '{@link #getBlk() <em>Blk</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProc()
+   * @see #getBlk()
    * @generated
    * @ordered
    */
-  protected ProcessDefinition proc;
+  protected PDPBlock blk;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,19 +66,9 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDefinition getProc()
+  public PDPBlock getBlk()
   {
-    if (proc != null && proc.eIsProxy())
-    {
-      InternalEObject oldProc = (InternalEObject)proc;
-      proc = (ProcessDefinition)eResolveProxy(oldProc);
-      if (proc != oldProc)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, GoatComponentsPackage.PROCESS_SPAWN__PROC, oldProc, proc));
-      }
-    }
-    return proc;
+    return blk;
   }
 
   /**
@@ -85,22 +76,53 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
    * <!-- end-user-doc -->
    * @generated
    */
-  public ProcessDefinition basicGetProc()
+  public NotificationChain basicSetBlk(PDPBlock newBlk, NotificationChain msgs)
   {
-    return proc;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setProc(ProcessDefinition newProc)
-  {
-    ProcessDefinition oldProc = proc;
-    proc = newProc;
+    PDPBlock oldBlk = blk;
+    blk = newBlk;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_SPAWN__PROC, oldProc, proc));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_SPAWN__BLK, oldBlk, newBlk);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBlk(PDPBlock newBlk)
+  {
+    if (newBlk != blk)
+    {
+      NotificationChain msgs = null;
+      if (blk != null)
+        msgs = ((InternalEObject)blk).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_SPAWN__BLK, null, msgs);
+      if (newBlk != null)
+        msgs = ((InternalEObject)newBlk).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.PROCESS_SPAWN__BLK, null, msgs);
+      msgs = basicSetBlk(newBlk, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.PROCESS_SPAWN__BLK, newBlk, newBlk));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GoatComponentsPackage.PROCESS_SPAWN__BLK:
+        return basicSetBlk(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -113,9 +135,8 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.PROCESS_SPAWN__PROC:
-        if (resolve) return getProc();
-        return basicGetProc();
+      case GoatComponentsPackage.PROCESS_SPAWN__BLK:
+        return getBlk();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,8 +151,8 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.PROCESS_SPAWN__PROC:
-        setProc((ProcessDefinition)newValue);
+      case GoatComponentsPackage.PROCESS_SPAWN__BLK:
+        setBlk((PDPBlock)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,8 +168,8 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.PROCESS_SPAWN__PROC:
-        setProc((ProcessDefinition)null);
+      case GoatComponentsPackage.PROCESS_SPAWN__BLK:
+        setBlk((PDPBlock)null);
         return;
     }
     super.eUnset(featureID);
@@ -164,8 +185,8 @@ public class ProcessSpawnImpl extends ProcessStatementImpl implements ProcessSpa
   {
     switch (featureID)
     {
-      case GoatComponentsPackage.PROCESS_SPAWN__PROC:
-        return proc != null;
+      case GoatComponentsPackage.PROCESS_SPAWN__BLK:
+        return blk != null;
     }
     return super.eIsSet(featureID);
   }

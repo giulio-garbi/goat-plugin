@@ -3,16 +3,20 @@ package com.sysma.goat.eclipse_plugin.generator;
 import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
 import com.sysma.goat.eclipse_plugin.generator.CodeInfrastructureAgent;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessBlock;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.ComponentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Environment;
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg;
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
+import com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatInfrastructure.Infrastructure;
 import java.util.List;
 import java.util.Map;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -133,18 +137,39 @@ public class CodeComponentDefinition {
   public CharSequence getCode() {
     CharSequence _xblockexpression = null;
     {
-      ProcessBlock _block = this.cdef.getBlock();
-      LocalVariableMap _localVariableMap = new LocalVariableMap("locvar");
-      final CharSequence fncCode = new CodeProcessBlock(_block, _localVariableMap, "p").getCodeAsFunction();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("goat.NewProcess(");
-      _builder.append(this.compName);
-      _builder.append(").Run(");
-      _builder.append(this.mainFunc);
-      _builder.append("(&wg, ");
-      _builder.append(fncCode);
-      _builder.append(", &(map[string]interface{}{})))");
-      _xblockexpression = _builder;
+      CharSequence _xifexpression = null;
+      EObject _block = this.cdef.getBlock();
+      if ((_block instanceof ProcessBlock)) {
+        EObject _block_1 = this.cdef.getBlock();
+        LocalVariableMap _localVariableMap = new LocalVariableMap("locvar");
+        _xifexpression = new CodeProcessBlock(((ProcessBlock) _block_1), _localVariableMap, "p").getCodeAsFunction();
+      } else {
+        String _xifexpression_1 = null;
+        EObject _block_2 = this.cdef.getBlock();
+        if ((_block_2 instanceof PDPBlock)) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("unroll(");
+          EObject _block_3 = this.cdef.getBlock();
+          final Function1<ProcessDefinition, String> _function = (ProcessDefinition it) -> {
+            return new CodeProcessDefinition(it).getProcess_func_name();
+          };
+          String _join = IterableExtensions.join(ListExtensions.<ProcessDefinition, String>map(((PDPBlock) _block_3).getProcs(), _function), ", ");
+          _builder.append(_join);
+          _builder.append(")...");
+          _xifexpression_1 = _builder.toString();
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      final CharSequence fncCode = _xifexpression;
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("goat.NewProcess(");
+      _builder_1.append(this.compName);
+      _builder_1.append(").Run(");
+      _builder_1.append(this.mainFunc);
+      _builder_1.append("(&wg,  &(map[string]interface{}{}), ");
+      _builder_1.append(fncCode);
+      _builder_1.append(")...)");
+      _xblockexpression = _builder_1;
     }
     return _xblockexpression;
   }

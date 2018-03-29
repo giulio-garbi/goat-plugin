@@ -42,6 +42,15 @@ public interface GoatComponentsFactory extends EFactory
   ProcessDefinition createProcessDefinition();
 
   /**
+   * Returns a new object of class '<em>PDP Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>PDP Block</em>'.
+   * @generated
+   */
+  PDPBlock createPDPBlock();
+
+  /**
    * Returns a new object of class '<em>Process Block</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -49,6 +58,15 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   ProcessBlock createProcessBlock();
+
+  /**
+   * Returns a new object of class '<em>Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Process Statement</em>'.
+   * @generated
+   */
+  ProcessStatement createProcessStatement();
 
   /**
    * Returns a new object of class '<em>Process Spawn</em>'.
@@ -67,15 +85,6 @@ public interface GoatComponentsFactory extends EFactory
    * @generated
    */
   ProcessCall createProcessCall();
-
-  /**
-   * Returns a new object of class '<em>Process Statement</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Process Statement</em>'.
-   * @generated
-   */
-  ProcessStatement createProcessStatement();
 
   /**
    * Returns a new object of class '<em>Process Send</em>'.

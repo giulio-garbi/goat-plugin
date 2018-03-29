@@ -3,11 +3,14 @@ package com.sysma.goat.eclipse_plugin.generator;
 import com.sysma.goat.eclipse_plugin.generator.CodeExpression;
 import com.sysma.goat.eclipse_plugin.generator.CodePrint;
 import com.sysma.goat.eclipse_plugin.generator.CodeProcessBlock;
+import com.sysma.goat.eclipse_plugin.generator.CodeProcessDefinition;
 import com.sysma.goat.eclipse_plugin.generator.CodeUpdate;
 import com.sysma.goat.eclipse_plugin.generator.LocalVariableMap;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition;
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessReceive;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
 import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
 import com.sysma.goat.eclipse_plugin.typing.ExpressionTyping;
@@ -17,7 +20,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
@@ -174,6 +179,23 @@ public class CodeProcessReceive {
           CharSequence _code = new CodeUpdate(_updates, this.map, this.procRef, attributesVar).getCode();
           _builder.append(_code, "\t\t\t");
           _builder.newLineIfNotEmpty();
+          {
+            ProcessSpawn _spawn = input.getValue().getSpawn();
+            boolean _tripleNotEquals = (_spawn != null);
+            if (_tripleNotEquals) {
+              _builder.append("\t");
+              _builder.append("\t\t");
+              _builder.append(this.procRef, "\t\t\t");
+              _builder.append(".Spawn(unroll(");
+              final Function1<ProcessDefinition, String> _function = (ProcessDefinition it) -> {
+                return new CodeProcessDefinition(it).getProcess_func_name();
+              };
+              String _join = IterableExtensions.join(ListExtensions.<ProcessDefinition, String>map(input.getValue().getSpawn().getBlk().getProcs(), _function), ", ");
+              _builder.append(_join, "\t\t\t");
+              _builder.append(")...)");
+              _builder.newLineIfNotEmpty();
+            }
+          }
           _builder.append("\t");
           _builder.append("\t\t");
           PrintStatement _print = input.getValue().getPrint();
@@ -230,7 +252,7 @@ public class CodeProcessReceive {
         _builder.append("\t");
         _builder.append("\t");
         ProcessBlock _get = this.receive.getThen().get((input.getKey()).intValue());
-        Object _code = new CodeProcessBlock(_get, this.map, this.procRef).getCode();
+        CharSequence _code = new CodeProcessBlock(_get, this.map, this.procRef).getCode();
         _builder.append(_code, "\t\t");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");

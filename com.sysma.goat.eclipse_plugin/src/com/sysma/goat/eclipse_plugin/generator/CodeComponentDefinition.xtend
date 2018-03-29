@@ -7,6 +7,8 @@ import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentDefinition
 import java.util.List
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression
 import com.sysma.goat.eclipse_plugin.goatComponents.EnvironmentArg
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock
+import com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock
 
 class CodeComponentDefinition {
 	
@@ -54,9 +56,13 @@ class CodeComponentDefinition {
 	}
 	
 	def getCode() {
-		val fncCode = new CodeProcessBlock(cdef.block, new LocalVariableMap("locvar"), "p").codeAsFunction
+		val fncCode = if (cdef.block instanceof ProcessBlock) {
+			new CodeProcessBlock(cdef.block as ProcessBlock, new LocalVariableMap("locvar"), "p").codeAsFunction
+		} else  if (cdef.block instanceof PDPBlock) {
+			'''unroll(«(cdef.block as PDPBlock).procs.map[new CodeProcessDefinition(it).process_func_name].join(", ")»)...'''
+		}
 		'''
-		goat.NewProcess(«compName»).Run(«mainFunc»(&wg, «fncCode», &(map[string]interface{}{})))'''
+		goat.NewProcess(«compName»).Run(«mainFunc»(&wg,  &(map[string]interface{}{}), «fncCode»)...)'''
 	}
 	
 }

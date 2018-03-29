@@ -6,6 +6,7 @@ package com.sysma.goat.eclipse_plugin.goatComponents.impl;
 import com.sysma.goat.eclipse_plugin.goatComponents.Expression;
 import com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage;
 import com.sysma.goat.eclipse_plugin.goatComponents.PrintStatement;
+import com.sysma.goat.eclipse_plugin.goatComponents.ProcessSpawn;
 import com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase;
 import com.sysma.goat.eclipse_plugin.goatComponents.Update;
 
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ReceiveCaseImpl#getCond <em>Cond</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ReceiveCaseImpl#getMsgInParts <em>Msg In Parts</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ReceiveCaseImpl#getUpdates <em>Updates</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ReceiveCaseImpl#getSpawn <em>Spawn</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.impl.ReceiveCaseImpl#getPrint <em>Print</em>}</li>
  * </ul>
  *
@@ -71,6 +73,16 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
    * @ordered
    */
   protected Update updates;
+
+  /**
+   * The cached value of the '{@link #getSpawn() <em>Spawn</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSpawn()
+   * @generated
+   * @ordered
+   */
+  protected ProcessSpawn spawn;
 
   /**
    * The cached value of the '{@link #getPrint() <em>Print</em>}' containment reference.
@@ -218,6 +230,54 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
    * <!-- end-user-doc -->
    * @generated
    */
+  public ProcessSpawn getSpawn()
+  {
+    return spawn;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSpawn(ProcessSpawn newSpawn, NotificationChain msgs)
+  {
+    ProcessSpawn oldSpawn = spawn;
+    spawn = newSpawn;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.RECEIVE_CASE__SPAWN, oldSpawn, newSpawn);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSpawn(ProcessSpawn newSpawn)
+  {
+    if (newSpawn != spawn)
+    {
+      NotificationChain msgs = null;
+      if (spawn != null)
+        msgs = ((InternalEObject)spawn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.RECEIVE_CASE__SPAWN, null, msgs);
+      if (newSpawn != null)
+        msgs = ((InternalEObject)newSpawn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GoatComponentsPackage.RECEIVE_CASE__SPAWN, null, msgs);
+      msgs = basicSetSpawn(newSpawn, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GoatComponentsPackage.RECEIVE_CASE__SPAWN, newSpawn, newSpawn));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PrintStatement getPrint()
   {
     return print;
@@ -275,6 +335,8 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
         return basicSetCond(null, msgs);
       case GoatComponentsPackage.RECEIVE_CASE__UPDATES:
         return basicSetUpdates(null, msgs);
+      case GoatComponentsPackage.RECEIVE_CASE__SPAWN:
+        return basicSetSpawn(null, msgs);
       case GoatComponentsPackage.RECEIVE_CASE__PRINT:
         return basicSetPrint(null, msgs);
     }
@@ -297,6 +359,8 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
         return getMsgInParts();
       case GoatComponentsPackage.RECEIVE_CASE__UPDATES:
         return getUpdates();
+      case GoatComponentsPackage.RECEIVE_CASE__SPAWN:
+        return getSpawn();
       case GoatComponentsPackage.RECEIVE_CASE__PRINT:
         return getPrint();
     }
@@ -324,6 +388,9 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
       case GoatComponentsPackage.RECEIVE_CASE__UPDATES:
         setUpdates((Update)newValue);
         return;
+      case GoatComponentsPackage.RECEIVE_CASE__SPAWN:
+        setSpawn((ProcessSpawn)newValue);
+        return;
       case GoatComponentsPackage.RECEIVE_CASE__PRINT:
         setPrint((PrintStatement)newValue);
         return;
@@ -350,6 +417,9 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
       case GoatComponentsPackage.RECEIVE_CASE__UPDATES:
         setUpdates((Update)null);
         return;
+      case GoatComponentsPackage.RECEIVE_CASE__SPAWN:
+        setSpawn((ProcessSpawn)null);
+        return;
       case GoatComponentsPackage.RECEIVE_CASE__PRINT:
         setPrint((PrintStatement)null);
         return;
@@ -373,6 +443,8 @@ public class ReceiveCaseImpl extends MinimalEObjectImpl.Container implements Rec
         return msgInParts != null && !msgInParts.isEmpty();
       case GoatComponentsPackage.RECEIVE_CASE__UPDATES:
         return updates != null;
+      case GoatComponentsPackage.RECEIVE_CASE__SPAWN:
+        return spawn != null;
       case GoatComponentsPackage.RECEIVE_CASE__PRINT:
         return print != null;
     }

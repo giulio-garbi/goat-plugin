@@ -87,10 +87,24 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GoatComponentsPackage.PDP_BLOCK:
+      {
+        PDPBlock pdpBlock = (PDPBlock)theEObject;
+        T result = casePDPBlock(pdpBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GoatComponentsPackage.PROCESS_BLOCK:
       {
         ProcessBlock processBlock = (ProcessBlock)theEObject;
         T result = caseProcessBlock(processBlock);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GoatComponentsPackage.PROCESS_STATEMENT:
+      {
+        ProcessStatement processStatement = (ProcessStatement)theEObject;
+        T result = caseProcessStatement(processStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -107,13 +121,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
         ProcessCall processCall = (ProcessCall)theEObject;
         T result = caseProcessCall(processCall);
         if (result == null) result = caseProcessStatement(processCall);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GoatComponentsPackage.PROCESS_STATEMENT:
-      {
-        ProcessStatement processStatement = (ProcessStatement)theEObject;
-        T result = caseProcessStatement(processStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -606,6 +613,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>PDP Block</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>PDP Block</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePDPBlock(PDPBlock object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Process Block</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -617,6 +640,22 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProcessBlock(ProcessBlock object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Process Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Process Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcessStatement(ProcessStatement object)
   {
     return null;
   }
@@ -649,22 +688,6 @@ public class GoatComponentsSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProcessCall(ProcessCall object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Process Statement</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Process Statement</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessStatement(ProcessStatement object)
   {
     return null;
   }

@@ -86,9 +86,19 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
         return createProcessDefinitionAdapter();
       }
       @Override
+      public Adapter casePDPBlock(PDPBlock object)
+      {
+        return createPDPBlockAdapter();
+      }
+      @Override
       public Adapter caseProcessBlock(ProcessBlock object)
       {
         return createProcessBlockAdapter();
+      }
+      @Override
+      public Adapter caseProcessStatement(ProcessStatement object)
+      {
+        return createProcessStatementAdapter();
       }
       @Override
       public Adapter caseProcessSpawn(ProcessSpawn object)
@@ -99,11 +109,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
       public Adapter caseProcessCall(ProcessCall object)
       {
         return createProcessCallAdapter();
-      }
-      @Override
-      public Adapter caseProcessStatement(ProcessStatement object)
-      {
-        return createProcessStatementAdapter();
       }
       @Override
       public Adapter caseProcessSend(ProcessSend object)
@@ -448,6 +453,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock <em>PDP Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock
+   * @generated
+   */
+  public Adapter createPDPBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock <em>Process Block</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -458,6 +478,21 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProcessBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement <em>Process Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement
+   * @generated
+   */
+  public Adapter createProcessStatementAdapter()
   {
     return null;
   }
@@ -488,21 +523,6 @@ public class GoatComponentsAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProcessCallAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement <em>Process Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.sysma.goat.eclipse_plugin.goatComponents.ProcessStatement
-   * @generated
-   */
-  public Adapter createProcessStatementAdapter()
   {
     return null;
   }

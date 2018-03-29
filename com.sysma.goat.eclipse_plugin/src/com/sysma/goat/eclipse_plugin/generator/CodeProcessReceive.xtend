@@ -47,6 +47,9 @@ class CodeProcessReceive {
 						«map.assign(v.value, '''«messageVar».Get(«v.key»)''')»
 					«ENDFOR»
 					«new CodeUpdate(input.value.updates, map, procRef, attributesVar).code»
+					«IF input.value.spawn !== null»
+						«procRef».Spawn(unroll(«input.value.spawn.blk.procs.map[new CodeProcessDefinition(it).process_func_name].join(", ")»)...)
+					«ENDIF»
 					«CodePrint.ofProcAttrs(input.value.print, attributesVar, map, (input.value.msgInParts?:#[]))»
 					return true
 				}

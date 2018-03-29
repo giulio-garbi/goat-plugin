@@ -43,12 +43,45 @@ class Utils{
 	
 	def static utilityFunctions(){
 		'''
-		func runWith(wg *sync.WaitGroup, pfunc continuationProcess, vars *map[string]interface{}) func(*goat.Process){
-		    wg.Add(1)
-			return func(p *goat.Process){
-				for fnc := pfunc; fnc != nil; fnc = fnc(wg, vars, p) {}
-				wg.Done()
+		
+		func unroll(items ...interface{}) []continuationProcess {
+			if len(items) == 0 {
+				return []continuationProcess{}
+			} else if len(items) == 1 {
+			    if x, isElem := items[0].(continuationProcess); isElem {
+			        return []continuationProcess{x}
+			    } else if x, isElem := items[0].(func(*sync.WaitGroup, *map[string]interface{}, *goat.Process) continuationProcess); isElem {
+					return []continuationProcess{x}
+				} else if x, isV := items[0].([]continuationProcess); isV {
+				xv := make([]interface{}, len(x))
+				for i, v := range(x) {
+					xv[i] = v
+				}
+			        return unroll(xv...)
+			    } else {
+			        panic(".")
+			    }
+			} else {
+			    out := []continuationProcess{}
+			    for _, itI := range items {
+				    out = append(out, unroll(itI)...)
+				}
+				return out
 			}
+		}
+		
+		func runWith(wg *sync.WaitGroup, vars *map[string]interface{}, pfuncs ...continuationProcess) []func(*goat.Process){
+		    wg.Add(len(pfuncs))
+		    funcs := make([]func(*goat.Process), len(pfuncs))
+		    for i, pfunc := range pfuncs {
+				funcs[i] = func(w *sync.WaitGroup, v *map[string]interface{}, pf continuationProcess) func(p *goat.Process) {
+					return func(p *goat.Process){
+						for fnc := pf; fnc != nil; fnc = fnc(w, v, p) {}
+						w.Done()
+					}
+				}(wg, mapCopy(vars), pfunc)
+			}
+			return funcs
 		}
 		
 		func mapCopy(x *map[string]interface{}) *map[string]interface{}{

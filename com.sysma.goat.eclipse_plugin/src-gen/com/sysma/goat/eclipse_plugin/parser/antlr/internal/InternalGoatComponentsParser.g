@@ -96,21 +96,39 @@ ruleModel returns [EObject current=null]
 		(
 			(
 				(
-					{
-						newCompositeNode(grammarAccess.getModelAccess().getProcessesProcessDefinitionParserRuleCall_3_0_0());
-					}
-					lv_processes_3_0=ruleProcessDefinition
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getModelRule());
+					(
+						{
+							newCompositeNode(grammarAccess.getModelAccess().getProcessesProcessDefinitionBlkParserRuleCall_3_0_0_0());
 						}
-						add(
-							$current,
-							"processes",
-							lv_processes_3_0,
-							"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessDefinition");
-						afterParserOrEnumRuleCall();
-					}
+						lv_processes_3_1=ruleProcessDefinitionBlk
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getModelRule());
+							}
+							add(
+								$current,
+								"processes",
+								lv_processes_3_1,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessDefinitionBlk");
+							afterParserOrEnumRuleCall();
+						}
+						    |
+						{
+							newCompositeNode(grammarAccess.getModelAccess().getProcessesProcessDefinitionParParserRuleCall_3_0_0_1());
+						}
+						lv_processes_3_2=ruleProcessDefinitionPar
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getModelRule());
+							}
+							add(
+								$current,
+								"processes",
+								lv_processes_3_2,
+								"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessDefinitionPar");
+							afterParserOrEnumRuleCall();
+						}
+					)
 				)
 			)
 			    |
@@ -177,15 +195,15 @@ ruleModel returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleProcessDefinition
-entryRuleProcessDefinition returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getProcessDefinitionRule()); }
-	iv_ruleProcessDefinition=ruleProcessDefinition
-	{ $current=$iv_ruleProcessDefinition.current; }
+// Entry rule entryRuleProcessDefinitionBlk
+entryRuleProcessDefinitionBlk returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getProcessDefinitionBlkRule()); }
+	iv_ruleProcessDefinitionBlk=ruleProcessDefinitionBlk
+	{ $current=$iv_ruleProcessDefinitionBlk.current; }
 	EOF;
 
-// Rule ProcessDefinition
-ruleProcessDefinition returns [EObject current=null]
+// Rule ProcessDefinitionBlk
+ruleProcessDefinitionBlk returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -195,17 +213,17 @@ ruleProcessDefinition returns [EObject current=null]
 	(
 		otherlv_0=Process
 		{
-			newLeafNode(otherlv_0, grammarAccess.getProcessDefinitionAccess().getProcessKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getProcessDefinitionBlkAccess().getProcessKeyword_0());
 		}
 		(
 			(
 				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getProcessDefinitionAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getProcessDefinitionBlkAccess().getNameIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getProcessDefinitionRule());
+						$current = createModelElement(grammarAccess.getProcessDefinitionBlkRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -217,49 +235,85 @@ ruleProcessDefinition returns [EObject current=null]
 		)
 		(
 			(
-				otherlv_2=EqualsSign
 				{
-					newLeafNode(otherlv_2, grammarAccess.getProcessDefinitionAccess().getEqualsSignKeyword_2_0_0());
+					newCompositeNode(grammarAccess.getProcessDefinitionBlkAccess().getBlockProcessBlockParserRuleCall_2_0());
 				}
-				(
-					(
-						{
-							newCompositeNode(grammarAccess.getProcessDefinitionAccess().getBlockPDPBlockParserRuleCall_2_0_1_0());
-						}
-						lv_block_3_0=rulePDPBlock
-						{
-							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getProcessDefinitionRule());
-							}
-							set(
-								$current,
-								"block",
-								lv_block_3_0,
-								"com.sysma.goat.eclipse_plugin.GoatComponents.PDPBlock");
-							afterParserOrEnumRuleCall();
-						}
-					)
-				)
+				lv_block_2_0=ruleProcessBlock
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProcessDefinitionBlkRule());
+					}
+					set(
+						$current,
+						"block",
+						lv_block_2_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessBlock");
+					afterParserOrEnumRuleCall();
+				}
 			)
-			    |
+		)
+	)
+;
+
+// Entry rule entryRuleProcessDefinitionPar
+entryRuleProcessDefinitionPar returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getProcessDefinitionParRule()); }
+	iv_ruleProcessDefinitionPar=ruleProcessDefinitionPar
+	{ $current=$iv_ruleProcessDefinitionPar.current; }
+	EOF;
+
+// Rule ProcessDefinitionPar
+ruleProcessDefinitionPar returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0=Process
+		{
+			newLeafNode(otherlv_0, grammarAccess.getProcessDefinitionParAccess().getProcessKeyword_0());
+		}
+		(
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getProcessDefinitionAccess().getBlockProcessBlockParserRuleCall_2_1_0());
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getProcessDefinitionParAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getProcessDefinitionParRule());
 					}
-					lv_block_4_0=ruleProcessBlock
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getProcessDefinitionRule());
-						}
-						set(
-							$current,
-							"block",
-							lv_block_4_0,
-							"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessBlock");
-						afterParserOrEnumRuleCall();
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2=EqualsSign
+		{
+			newLeafNode(otherlv_2, grammarAccess.getProcessDefinitionParAccess().getEqualsSignKeyword_2());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getProcessDefinitionParAccess().getBlockPDPBlockParserRuleCall_3_0());
+				}
+				lv_block_3_0=rulePDPBlock
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProcessDefinitionParRule());
 					}
-				)
+					set(
+						$current,
+						"block",
+						lv_block_3_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.PDPBlock");
+					afterParserOrEnumRuleCall();
+				}
 			)
 		)
 	)
@@ -285,19 +339,13 @@ rulePDPBlock returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPDPBlockAccess().getStatementsPDPSpawnParserRuleCall_0_0_0());
-					}
-					lv_statements_0_0=rulePDPSpawn
-					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPDPBlockRule());
+							$current = createModelElement(grammarAccess.getPDPBlockRule());
 						}
-						add(
-							$current,
-							"statements",
-							lv_statements_0_0,
-							"com.sysma.goat.eclipse_plugin.GoatComponents.PDPSpawn");
-						afterParserOrEnumRuleCall();
+					}
+					otherlv_0=RULE_ID
+					{
+						newLeafNode(otherlv_0, grammarAccess.getPDPBlockAccess().getProcsProcessDefinitionCrossReference_0_0_0());
 					}
 				)
 			)
@@ -309,81 +357,15 @@ rulePDPBlock returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPDPBlockAccess().getStatementsPDPCallParserRuleCall_1_0());
-				}
-				lv_statements_2_0=rulePDPCall
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPDPBlockRule());
+						$current = createModelElement(grammarAccess.getPDPBlockRule());
 					}
-					add(
-						$current,
-						"statements",
-						lv_statements_2_0,
-						"com.sysma.goat.eclipse_plugin.GoatComponents.PDPCall");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getPDPBlockAccess().getProcsProcessDefinitionCrossReference_1_0());
 				}
 			)
-		)
-	)
-;
-
-// Entry rule entryRulePDPSpawn
-entryRulePDPSpawn returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPDPSpawnRule()); }
-	iv_rulePDPSpawn=rulePDPSpawn
-	{ $current=$iv_rulePDPSpawn.current; }
-	EOF;
-
-// Rule PDPSpawn
-rulePDPSpawn returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getPDPSpawnRule());
-				}
-			}
-			otherlv_0=RULE_ID
-			{
-				newLeafNode(otherlv_0, grammarAccess.getPDPSpawnAccess().getProcProcessDefinitionCrossReference_0());
-			}
-		)
-	)
-;
-
-// Entry rule entryRulePDPCall
-entryRulePDPCall returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPDPCallRule()); }
-	iv_rulePDPCall=rulePDPCall
-	{ $current=$iv_rulePDPCall.current; }
-	EOF;
-
-// Rule PDPCall
-rulePDPCall returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getPDPCallRule());
-				}
-			}
-			otherlv_0=RULE_ID
-			{
-				newLeafNode(otherlv_0, grammarAccess.getPDPCallAccess().getProcProcessDefinitionCrossReference_0());
-			}
 		)
 	)
 ;
@@ -558,13 +540,19 @@ ruleProcessSpawn returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getProcessSpawnRule());
-					}
+					newCompositeNode(grammarAccess.getProcessSpawnAccess().getBlkPDPBlockParserRuleCall_2_0());
 				}
-				otherlv_2=RULE_ID
+				lv_blk_2_0=rulePDPBlock
 				{
-					newLeafNode(otherlv_2, grammarAccess.getProcessSpawnAccess().getProcProcessDefinitionCrossReference_2_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProcessSpawnRule());
+					}
+					set(
+						$current,
+						"blk",
+						lv_blk_2_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.PDPBlock");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1090,9 +1078,28 @@ ruleReceiveCase returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getReceiveCaseAccess().getPrintPrintStatementParserRuleCall_7_0());
+					newCompositeNode(grammarAccess.getReceiveCaseAccess().getSpawnProcessSpawnParserRuleCall_7_0());
 				}
-				lv_print_9_0=rulePrintStatement
+				lv_spawn_9_0=ruleProcessSpawn
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getReceiveCaseRule());
+					}
+					set(
+						$current,
+						"spawn",
+						lv_spawn_9_0,
+						"com.sysma.goat.eclipse_plugin.GoatComponents.ProcessSpawn");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getReceiveCaseAccess().getPrintPrintStatementParserRuleCall_8_0());
+				}
+				lv_print_10_0=rulePrintStatement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getReceiveCaseRule());
@@ -1100,7 +1107,7 @@ ruleReceiveCase returns [EObject current=null]
 					set(
 						$current,
 						"print",
-						lv_print_9_0,
+						lv_print_10_0,
 						"com.sysma.goat.eclipse_plugin.GoatComponents.PrintStatement");
 					afterParserOrEnumRuleCall();
 				}

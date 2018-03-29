@@ -67,10 +67,11 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
     {
       case GoatComponentsPackage.MODEL: return createModel();
       case GoatComponentsPackage.PROCESS_DEFINITION: return createProcessDefinition();
+      case GoatComponentsPackage.PDP_BLOCK: return createPDPBlock();
       case GoatComponentsPackage.PROCESS_BLOCK: return createProcessBlock();
+      case GoatComponentsPackage.PROCESS_STATEMENT: return createProcessStatement();
       case GoatComponentsPackage.PROCESS_SPAWN: return createProcessSpawn();
       case GoatComponentsPackage.PROCESS_CALL: return createProcessCall();
-      case GoatComponentsPackage.PROCESS_STATEMENT: return createProcessStatement();
       case GoatComponentsPackage.PROCESS_SEND: return createProcessSend();
       case GoatComponentsPackage.PROCESS_RECEIVE: return createProcessReceive();
       case GoatComponentsPackage.PROCESS_RECEIVE_SINGLE: return createProcessReceiveSingle();
@@ -161,10 +162,32 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
    * <!-- end-user-doc -->
    * @generated
    */
+  public PDPBlock createPDPBlock()
+  {
+    PDPBlockImpl pdpBlock = new PDPBlockImpl();
+    return pdpBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ProcessBlock createProcessBlock()
   {
     ProcessBlockImpl processBlock = new ProcessBlockImpl();
     return processBlock;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ProcessStatement createProcessStatement()
+  {
+    ProcessStatementImpl processStatement = new ProcessStatementImpl();
+    return processStatement;
   }
 
   /**
@@ -187,17 +210,6 @@ public class GoatComponentsFactoryImpl extends EFactoryImpl implements GoatCompo
   {
     ProcessCallImpl processCall = new ProcessCallImpl();
     return processCall;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ProcessStatement createProcessStatement()
-  {
-    ProcessStatementImpl processStatement = new ProcessStatementImpl();
-    return processStatement;
   }
 
   /**

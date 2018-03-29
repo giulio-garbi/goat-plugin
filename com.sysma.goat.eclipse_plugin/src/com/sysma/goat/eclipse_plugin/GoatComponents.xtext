@@ -8,28 +8,25 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 Model:
 	{Model}
 	'infrastructure' infrastructure = [infr::Infrastructure]
-	(processes += ProcessDefinition |
+	(processes += (ProcessDefinitionBlk|ProcessDefinitionPar) |
 	components += ComponentDefinition | 
 	functions += FuncDefinition |
 	environments += EnvironmentDefinition)*;
 
 //Process
 
-
 ProcessDefinition:
-	'process' name=ID ('=' block = PDPBlock | block = ProcessBlock)
+	ProcessDefinitionBlk|ProcessDefinitionPar
+;
+ProcessDefinitionBlk returns ProcessDefinition:
+	'process' name=ID block = ProcessBlock
+;
+ProcessDefinitionPar returns ProcessDefinition:
+	'process' name=ID '=' block = PDPBlock
 ;
 
-PDPBlock returns ProcessBlock:
-	(statements += PDPSpawn "|")* statements += PDPCall
-;
-
-PDPSpawn returns ProcessSpawn :
-	proc = [ProcessDefinition]
-;
-
-PDPCall returns ProcessCall :
-	proc = [ProcessDefinition]
+PDPBlock:
+	(procs += [ProcessDefinition] "|")* procs += [ProcessDefinition]
 ;
 
 ProcessBlock:
@@ -43,7 +40,7 @@ ProcessStatement:
 ;
 
 ProcessSpawn:
-	"spawn" "(" proc = [ProcessDefinition] ")"
+	"spawn" "(" blk = PDPBlock ")" 
 ;
 
 ProcessCall:
@@ -71,7 +68,7 @@ ProcessReceiveMultiple:
 ;
 ReceiveCase:
 	 "(" cond = Expression ")" "{" (msgInParts+=ID ("," msgInParts+=ID)*)? "}"  
-		updates = Update (print = PrintStatement)? 
+		updates = Update (spawn = ProcessSpawn)? (print = PrintStatement)? 
 ;
 
 ProcessIf:

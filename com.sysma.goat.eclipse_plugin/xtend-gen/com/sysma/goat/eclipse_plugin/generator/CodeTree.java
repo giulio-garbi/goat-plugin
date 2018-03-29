@@ -119,6 +119,9 @@ public class CodeTree implements CodeInfrastructure {
             _elvis = "";
           }
           _builder.append(_elvis, "\t");
+          _builder.append("\", \"");
+          String _registration = this.tree.getRegistration();
+          _builder.append(_registration, "\t");
           _builder.append("\", ");
           final Function1<TreeNode, String> _function_1 = (TreeNode it) -> {
             return it.getAddress();

@@ -59,12 +59,12 @@ public interface ProcessDefinition extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Block</em>' containment reference.
-   * @see #setBlock(ProcessBlock)
+   * @see #setBlock(EObject)
    * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getProcessDefinition_Block()
    * @model containment="true"
    * @generated
    */
-  ProcessBlock getBlock();
+  EObject getBlock();
 
   /**
    * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition#getBlock <em>Block</em>}' containment reference.
@@ -74,6 +74,6 @@ public interface ProcessDefinition extends EObject
    * @see #getBlock()
    * @generated
    */
-  void setBlock(ProcessBlock value);
+  void setBlock(EObject value);
 
 } // ProcessDefinition

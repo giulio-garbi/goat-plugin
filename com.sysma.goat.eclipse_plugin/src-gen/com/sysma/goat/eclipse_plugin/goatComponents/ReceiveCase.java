@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getCond <em>Cond</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getMsgInParts <em>Msg In Parts</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getUpdates <em>Updates</em>}</li>
+ *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getSpawn <em>Spawn</em>}</li>
  *   <li>{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getPrint <em>Print</em>}</li>
  * </ul>
  *
@@ -95,6 +96,32 @@ public interface ReceiveCase extends EObject
    * @generated
    */
   void setUpdates(Update value);
+
+  /**
+   * Returns the value of the '<em><b>Spawn</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Spawn</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Spawn</em>' containment reference.
+   * @see #setSpawn(ProcessSpawn)
+   * @see com.sysma.goat.eclipse_plugin.goatComponents.GoatComponentsPackage#getReceiveCase_Spawn()
+   * @model containment="true"
+   * @generated
+   */
+  ProcessSpawn getSpawn();
+
+  /**
+   * Sets the value of the '{@link com.sysma.goat.eclipse_plugin.goatComponents.ReceiveCase#getSpawn <em>Spawn</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Spawn</em>' containment reference.
+   * @see #getSpawn()
+   * @generated
+   */
+  void setSpawn(ProcessSpawn value);
 
   /**
    * Returns the value of the '<em><b>Print</b></em>' containment reference.
