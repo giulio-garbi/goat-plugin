@@ -22,7 +22,7 @@ class CodeRing implements CodeInfrastructure {
 			
 			func main(){
 				«IF ring.mid_assigner.isLocalAddress»
-					go goat.NewClusterCounterPerf(false, «ring.mid_assigner.portNumber»).Work(0, make(chan struct{}))
+					go goat.NewRingCounter(«ring.mid_assigner.portNumber»).Work(0, make(chan struct{}))
 				«ENDIF»
 				«IF ring.registration.isLocalAddress»
 					go goat.NewRingAgentRegistration(«ring.registration.portNumber», «ring.nodes.goList»).Work(0, make(chan struct{}))

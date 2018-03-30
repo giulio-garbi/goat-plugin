@@ -47,7 +47,7 @@ public class CodeRing implements CodeInfrastructure {
         boolean _isLocalAddress = Utils.isLocalAddress(this.ring.getMid_assigner());
         if (_isLocalAddress) {
           _builder.append("\t");
-          _builder.append("go goat.NewClusterCounterPerf(false, ");
+          _builder.append("go goat.NewRingCounter(");
           int _portNumber = Utils.getPortNumber(this.ring.getMid_assigner());
           _builder.append(_portNumber, "\t");
           _builder.append(").Work(0, make(chan struct{}))");
