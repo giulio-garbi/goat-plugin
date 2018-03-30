@@ -22,13 +22,13 @@ class CodeRing implements CodeInfrastructure {
 			
 			func main(){
 				«IF ring.mid_assigner.isLocalAddress»
-					go goat.NewClusterCounter(«ring.mid_assigner.portNumber»).Work(0, make(chan struct{}))
+					go goat.NewClusterCounterPerf(false, «ring.mid_assigner.portNumber»).Work(0, make(chan struct{}))
 				«ENDIF»
 				«IF ring.registration.isLocalAddress»
 					go goat.NewRingAgentRegistration(«ring.registration.portNumber», «ring.nodes.goList»).Work(0, make(chan struct{}))
 				«ENDIF»
 				«FOR node : ring.nodes.indexed.filter[value.isLocalAddress]»
-					go goat.NewRingNode(«node.value.portNumber», "«ring.mid_assigner»", "«ring.nodes.get((node.key + 1)%(ring.nodes.length))»").Work(0, make(chan struct{}))
+					go goat.NewRingNode(«node.value.portNumber», "«ring.mid_assigner»", "«ring.nodes.get((node.key + 1)%(ring.nodes.length))»", "«ring.registration»").Work(0, make(chan struct{}))
 				«ENDFOR»
 				fmt.Println("Started")
 				«IF mustWait»
