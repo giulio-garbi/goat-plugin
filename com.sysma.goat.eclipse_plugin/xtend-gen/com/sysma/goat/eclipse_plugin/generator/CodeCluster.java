@@ -44,7 +44,7 @@ public class CodeCluster implements CodeInfrastructure {
         boolean _isLocalAddress = Utils.isLocalAddress(this.cluster.getMid_assigner());
         if (_isLocalAddress) {
           _builder.append("\t");
-          _builder.append("go goat.NewClusterCounterPerf(false, ");
+          _builder.append("go goat.NewClusterCounter(");
           int _portNumber = Utils.getPortNumber(this.cluster.getMid_assigner());
           _builder.append(_portNumber, "\t");
           _builder.append(").Work(0, make(chan struct{}))");
@@ -55,7 +55,7 @@ public class CodeCluster implements CodeInfrastructure {
         boolean _isLocalAddress_1 = Utils.isLocalAddress(this.cluster.getRegistration());
         if (_isLocalAddress_1) {
           _builder.append("\t");
-          _builder.append("go goat.NewClusterAgentRegistrationPerf(false, ");
+          _builder.append("go goat.NewClusterAgentRegistration(");
           int _portNumber_1 = Utils.getPortNumber(this.cluster.getRegistration());
           _builder.append(_portNumber_1, "\t");
           _builder.append(", \"");
@@ -72,7 +72,7 @@ public class CodeCluster implements CodeInfrastructure {
         boolean _isLocalAddress_2 = Utils.isLocalAddress(this.cluster.getMessage_queue());
         if (_isLocalAddress_2) {
           _builder.append("\t");
-          _builder.append("go goat.NewClusterMessageQueuePerf(false, ");
+          _builder.append("go goat.NewClusterMessageQueue(");
           int _portNumber_2 = Utils.getPortNumber(this.cluster.getMessage_queue());
           _builder.append(_portNumber_2, "\t");
           _builder.append(").Work(0, make(chan struct{}))");
@@ -86,7 +86,7 @@ public class CodeCluster implements CodeInfrastructure {
         Iterable<String> _filter = IterableExtensions.<String>filter(this.cluster.getNodes(), _function);
         for(final String node : _filter) {
           _builder.append("\t");
-          _builder.append("go goat.NewClusterNodePerf(false, ");
+          _builder.append("go goat.NewClusterNode(");
           int _portNumber_3 = Utils.getPortNumber(node);
           _builder.append(_portNumber_3, "\t");
           _builder.append(", \"");

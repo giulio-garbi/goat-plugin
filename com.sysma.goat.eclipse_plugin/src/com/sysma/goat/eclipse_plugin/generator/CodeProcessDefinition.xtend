@@ -2,7 +2,6 @@ package com.sysma.goat.eclipse_plugin.generator
 
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessDefinition
 import com.sysma.goat.eclipse_plugin.goatComponents.ProcessBlock
-import com.sysma.goat.eclipse_plugin.services.GoatComponentsGrammarAccess.ProcessDefinitionParElements
 import com.sysma.goat.eclipse_plugin.goatComponents.PDPBlock
 
 class CodeProcessDefinition {
